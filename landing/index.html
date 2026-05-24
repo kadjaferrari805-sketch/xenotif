@@ -1,0 +1,1106 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Xenotif — Dépasse tes limites</title>
+  <meta name="description" content="Xenotif, la plateforme sportive premium pour atteindre tes objectifs : musculation, running, HIIT, cyclisme, natation, CrossFit." />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind Play CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'sans-serif'] },
+          colors: {
+            xdark:   '#0A0B0F',
+            xcard:   '#111318',
+            xborder: '#1E2028',
+            xorange: '#FF4500',
+            xblue:   '#2563EB',
+            xlime:   '#A3FF00',
+            xgray:   '#8B929F',
+          },
+        },
+      },
+    }
+  </script>
+
+  <style>
+    * { box-sizing: border-box; }
+    body { background: #0A0B0F; color: #fff; font-family: 'Inter', sans-serif; }
+
+    /* ---------- scroll animations ---------- */
+    .fade-up { opacity: 0; transform: translateY(32px); transition: opacity .6s ease, transform .6s ease; }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+    .fade-up:nth-child(2) { transition-delay: .1s; }
+    .fade-up:nth-child(3) { transition-delay: .2s; }
+    .fade-up:nth-child(4) { transition-delay: .3s; }
+    .fade-up:nth-child(5) { transition-delay: .4s; }
+    .fade-up:nth-child(6) { transition-delay: .5s; }
+
+    /* ---------- hero slider ---------- */
+    .slide { position: absolute; inset: 0; opacity: 0; transition: opacity .9s ease; }
+    .slide.active { opacity: 1; }
+
+    /* ---------- FAQ accordion ---------- */
+    .faq-answer { max-height: 0; overflow: hidden; transition: max-height .4s ease, padding .3s ease; }
+    .faq-answer.open { max-height: 300px; }
+    .faq-icon { transition: transform .3s ease; }
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+
+    /* ---------- mobile menu ---------- */
+    .mobile-menu { max-height: 0; overflow: hidden; transition: max-height .4s ease; }
+    .mobile-menu.open { max-height: 500px; }
+
+    /* ---------- counter ---------- */
+    .counter { font-variant-numeric: tabular-nums; }
+
+    /* ---------- gallery ---------- */
+    .gallery-img { transition: transform .5s ease; }
+    .gallery-item:hover .gallery-img { transform: scale(1.06); }
+
+    /* ---------- progress bar ---------- */
+    .progress-bar { transition: width 1s ease; }
+
+    /* ---------- scrollbar ---------- */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #0A0B0F; }
+    ::-webkit-scrollbar-thumb { background: #FF4500; border-radius: 3px; }
+  </style>
+</head>
+<body class="antialiased">
+
+<!-- ============================================================
+     HEADER
+============================================================ -->
+<header id="header" class="fixed top-0 left-0 right-0 z-50 transition-shadow duration-300">
+  <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+    <!-- Logo -->
+    <a href="#hero" class="flex items-center gap-2.5 font-black text-lg text-white tracking-wider">
+      <span class="w-8 h-8 bg-xorange rounded-lg flex items-center justify-center font-black text-base">X</span>
+      XENOTIF
+    </a>
+
+    <!-- Desktop nav -->
+    <nav class="hidden md:flex gap-7 text-sm font-medium text-xgray">
+      <a href="#avantages" class="hover:text-white transition-colors">Avantages</a>
+      <a href="#disciplines" class="hover:text-white transition-colors">Disciplines</a>
+      <a href="#comment" class="hover:text-white transition-colors">Comment</a>
+      <a href="#temoignages" class="hover:text-white transition-colors">Témoignages</a>
+      <a href="#faq" class="hover:text-white transition-colors">FAQ</a>
+    </nav>
+
+    <!-- Desktop CTA -->
+    <div class="flex items-center gap-3">
+      <a href="#connexion" class="text-sm text-xgray hover:text-white transition-colors hidden sm:block">Connexion</a>
+      <a href="#newsletter" class="bg-xorange text-white px-4 py-2 rounded-full text-sm font-bold hover:bg-orange-600 transition-colors">
+        Rejoindre
+      </a>
+      <!-- Hamburger -->
+      <button id="hamburger" aria-label="Menu" class="md:hidden text-white p-1 ml-1">
+        <svg id="icon-menu" xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+        <svg id="icon-close" xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" class="hidden">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="mobile-menu md:hidden bg-xcard border-t border-xborder">
+    <div class="px-6 py-5 flex flex-col gap-4">
+      <a href="#avantages"   class="text-sm font-medium text-xgray hover:text-white transition-colors" onclick="closeMenu()">Avantages</a>
+      <a href="#disciplines" class="text-sm font-medium text-xgray hover:text-white transition-colors" onclick="closeMenu()">Disciplines</a>
+      <a href="#comment"     class="text-sm font-medium text-xgray hover:text-white transition-colors" onclick="closeMenu()">Comment</a>
+      <a href="#temoignages" class="text-sm font-medium text-xgray hover:text-white transition-colors" onclick="closeMenu()">Témoignages</a>
+      <a href="#faq"         class="text-sm font-medium text-xgray hover:text-white transition-colors" onclick="closeMenu()">FAQ</a>
+      <a href="#newsletter"  class="w-full bg-xorange text-white py-2.5 rounded-full text-sm font-bold hover:bg-orange-600 transition-colors mt-2 text-center" onclick="closeMenu()">Rejoindre maintenant</a>
+    </div>
+  </div>
+</header>
+
+
+<!-- ============================================================
+     HERO SLIDER
+============================================================ -->
+<section id="hero" class="relative h-screen min-h-[600px] overflow-hidden">
+
+  <!-- Slides -->
+  <div id="slider" class="relative h-full">
+
+    <!-- Slide 1 -->
+    <div class="slide active" data-index="0">
+      <div class="absolute inset-0 bg-cover bg-center" style="background-image:url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1400&q=80')"></div>
+      <div class="absolute inset-0 bg-gradient-to-r from-xdark/90 via-xdark/60 to-transparent"></div>
+    </div>
+
+    <!-- Slide 2 -->
+    <div class="slide" data-index="1">
+      <div class="absolute inset-0 bg-cover bg-center" style="background-image:url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=1400&q=80')"></div>
+      <div class="absolute inset-0 bg-gradient-to-r from-xdark/90 via-xdark/60 to-transparent"></div>
+    </div>
+
+    <!-- Slide 3 -->
+    <div class="slide" data-index="2">
+      <div class="absolute inset-0 bg-cover bg-center" style="background-image:url('https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=1400&q=80')"></div>
+      <div class="absolute inset-0 bg-gradient-to-r from-xdark/90 via-xdark/60 to-transparent"></div>
+    </div>
+  </div>
+
+  <!-- Hero content -->
+  <div class="absolute inset-0 flex items-center px-6 pt-16">
+    <div class="max-w-6xl mx-auto w-full flex items-center justify-between gap-12">
+
+      <!-- Left text -->
+      <div class="max-w-xl">
+        <div id="slide-tag" class="inline-flex items-center gap-2 border border-xorange/30 bg-xorange/10 text-xorange text-xs font-bold tracking-widest uppercase px-4 py-2 rounded-full mb-5 transition-opacity duration-500">
+          🏋️ Musculation &amp; Force
+        </div>
+        <h1 id="slide-h1" class="text-5xl md:text-7xl font-black leading-none tracking-tight mb-3">
+          FORGE TON<br/><span id="slide-accent" class="text-xlime">CORPS.</span>
+        </h1>
+        <p id="slide-sub" class="text-xgray text-base mb-8 max-w-md leading-relaxed">
+          Programmes adaptés, coaching IA, communauté soudée. Tout ce qu'il faut pour transformer ton corps et ta vie.
+        </p>
+        <div class="flex flex-wrap gap-3">
+          <a href="#newsletter" class="inline-flex items-center gap-2 bg-xorange text-white px-6 py-3.5 rounded-full font-bold text-sm hover:bg-orange-600 transition-all active:scale-95">
+            Commencer maintenant
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+          <a href="#disciplines" class="inline-flex items-center gap-2 border border-xborder text-white px-6 py-3.5 rounded-full font-bold text-sm hover:border-xorange transition-all">
+            Voir les disciplines
+          </a>
+        </div>
+      </div>
+
+      <!-- Right stats (desktop) -->
+      <div class="hidden lg:flex flex-col gap-4">
+        <div class="bg-xcard/80 backdrop-blur border border-xborder rounded-2xl p-5 min-w-[180px]">
+          <p class="text-3xl font-black text-xorange">+12K</p>
+          <p class="text-xs text-xgray mt-1">Membres actifs</p>
+        </div>
+        <div class="bg-xcard/80 backdrop-blur border border-xborder rounded-2xl p-5">
+          <p class="text-3xl font-black text-xlime">8</p>
+          <p class="text-xs text-xgray mt-1">Disciplines</p>
+        </div>
+        <div class="bg-xcard/80 backdrop-blur border border-xborder rounded-2xl p-5">
+          <p class="text-3xl font-black text-xblue">IA</p>
+          <p class="text-xs text-xgray mt-1">Coaching personnalisé</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slider controls -->
+  <div class="absolute bottom-10 left-0 right-0 flex items-center justify-center gap-4 px-6">
+    <div class="max-w-6xl w-full flex items-center justify-between">
+      <!-- Dots -->
+      <div class="flex gap-2">
+        <button onclick="goToSlide(0)" class="dot w-2 h-2 rounded-full bg-xorange transition-all" data-index="0"></button>
+        <button onclick="goToSlide(1)" class="dot w-2 h-2 rounded-full bg-white/30 transition-all" data-index="1"></button>
+        <button onclick="goToSlide(2)" class="dot w-2 h-2 rounded-full bg-white/30 transition-all" data-index="2"></button>
+      </div>
+      <!-- Prev / Next -->
+      <div class="flex gap-2">
+        <button onclick="prevSlide()" aria-label="Précédent" class="w-10 h-10 rounded-full border border-xborder flex items-center justify-center text-xgray hover:border-xorange hover:text-white transition-all">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+        </button>
+        <button onclick="nextSlide()" aria-label="Suivant" class="w-10 h-10 rounded-full border border-xborder flex items-center justify-center text-xgray hover:border-xorange hover:text-white transition-all">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 opacity-50 animate-bounce">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     STATS BAR
+============================================================ -->
+<section class="py-14 px-6 bg-xcard border-y border-xborder">
+  <div class="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+    <div class="fade-up">
+      <p class="text-4xl font-black text-xorange counter" data-target="12000" data-suffix="+" data-prefix="">0</p>
+      <p class="text-xgray text-sm mt-1">Membres actifs</p>
+    </div>
+    <div class="fade-up">
+      <p class="text-4xl font-black text-white counter" data-target="8" data-suffix="" data-prefix="">0</p>
+      <p class="text-xgray text-sm mt-1">Disciplines</p>
+    </div>
+    <div class="fade-up">
+      <p class="text-4xl font-black text-xlime counter" data-target="98" data-suffix="%" data-prefix="">0</p>
+      <p class="text-xgray text-sm mt-1">Taux de satisfaction</p>
+    </div>
+    <div class="fade-up">
+      <p class="text-4xl font-black text-xblue counter" data-target="500" data-suffix="+" data-prefix="">0</p>
+      <p class="text-xgray text-sm mt-1">Programmes disponibles</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     AVANTAGES
+============================================================ -->
+<section id="avantages" class="py-24 px-6 bg-xdark">
+  <div class="max-w-6xl mx-auto">
+
+    <!-- Header -->
+    <div class="text-center mb-16 fade-up">
+      <span class="inline-flex items-center gap-2 border border-xorange/30 bg-xorange/10 text-xorange text-xs font-bold tracking-widest uppercase px-4 py-2 rounded-full mb-5">
+        Pourquoi Xenotif
+      </span>
+      <h2 class="text-4xl md:text-5xl font-black text-white leading-tight mb-4">
+        Tout ce qu'il faut<br/>pour <span class="text-xorange">performer.</span>
+      </h2>
+      <p class="text-xgray max-w-xl mx-auto text-sm leading-relaxed">
+        Xenotif réunit les meilleurs outils, coaches et communautés pour t'aider à progresser chaque jour.
+      </p>
+    </div>
+
+    <!-- Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+      <div class="fade-up bg-xcard border border-xborder rounded-2xl p-7 hover:border-xorange/40 transition-all group">
+        <div class="w-12 h-12 rounded-xl bg-xorange/15 border border-xorange/30 flex items-center justify-center mb-5 group-hover:bg-xorange/25 transition-colors">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FF4500" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        </div>
+        <h3 class="text-white font-bold text-base mb-2">Coaching IA Personnalisé</h3>
+        <p class="text-xgray text-sm leading-relaxed">Un coach IA analyse tes données et adapte chaque programme à ton niveau, tes objectifs et ta récupération.</p>
+        <div class="mt-6 w-full bg-xdark rounded-full h-1.5">
+          <div class="progress-bar bg-xorange h-1.5 rounded-full w-0" data-width="92%"></div>
+        </div>
+        <p class="text-xs text-xgray mt-1.5">Taux d'adaptation : 92%</p>
+      </div>
+
+      <div class="fade-up bg-xcard border border-xborder rounded-2xl p-7 hover:border-xblue/40 transition-all group">
+        <div class="w-12 h-12 rounded-xl bg-xblue/15 border border-xblue/30 flex items-center justify-center mb-5 group-hover:bg-xblue/25 transition-colors">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h3 class="text-white font-bold text-base mb-2">Communauté Active</h3>
+        <p class="text-xgray text-sm leading-relaxed">+12 000 membres motivés partagent leurs WODs, défis et résultats. Progresse ensemble, avance plus vite.</p>
+        <div class="mt-6 w-full bg-xdark rounded-full h-1.5">
+          <div class="progress-bar bg-xblue h-1.5 rounded-full w-0" data-width="87%"></div>
+        </div>
+        <p class="text-xs text-xgray mt-1.5">Taux de rétention : 87%</p>
+      </div>
+
+      <div class="fade-up bg-xcard border border-xborder rounded-2xl p-7 hover:border-xlime/40 transition-all group">
+        <div class="w-12 h-12 rounded-xl bg-xlime/10 border border-xlime/30 flex items-center justify-center mb-5 group-hover:bg-xlime/20 transition-colors">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#A3FF00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        </div>
+        <h3 class="text-white font-bold text-base mb-2">Suivi des Performances</h3>
+        <p class="text-xgray text-sm leading-relaxed">Tableaux de bord, graphiques de progression, analyse des charges et prédiction de plateau pour toujours avancer.</p>
+        <div class="mt-6 w-full bg-xdark rounded-full h-1.5">
+          <div class="progress-bar bg-xlime h-1.5 rounded-full w-0" data-width="78%"></div>
+        </div>
+        <p class="text-xs text-xgray mt-1.5">Progression moyenne : +78%</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     DISCIPLINES
+============================================================ -->
+<section id="disciplines" class="py-24 px-6 bg-xcard border-y border-xborder">
+  <div class="max-w-6xl mx-auto">
+
+    <div class="text-center mb-16 fade-up">
+      <span class="inline-flex items-center gap-2 border border-xorange/30 bg-xorange/10 text-xorange text-xs font-bold tracking-widest uppercase px-4 py-2 rounded-full mb-5">
+        Disciplines
+      </span>
+      <h2 class="text-4xl md:text-5xl font-black text-white leading-tight mb-4">
+        8 disciplines. <span class="text-xorange">1 plateforme.</span>
+      </h2>
+      <p class="text-xgray max-w-xl mx-auto text-sm leading-relaxed">
+        Du cardio à la force — chaque sport, chaque niveau, chaque objectif.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
+
+      <!-- Card template repeated 6× -->
+      <div class="fade-up group bg-xdark border border-xborder rounded-2xl overflow-hidden hover:border-xorange/50 hover:-translate-y-1 transition-all duration-300 cursor-pointer">
+        <div class="relative h-44 overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=600&q=80" alt="Running" class="gallery-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+          <div class="absolute inset-0 bg-gradient-to-t from-xdark via-xdark/20 to-transparent"></div>
+          <div class="absolute bottom-3 left-4 flex items-center gap-2">
+            <div class="w-8 h-8 rounded-lg border border-xorange/30 bg-xorange/20 flex items-center justify-center text-xorange">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+            </div>
+            <span class="text-[10px] font-bold px-2.5 py-1 rounded-full bg-xorange text-white">Cardio</span>
+          </div>
+        </div>
+        <div class="p-5">
+          <h3 class="text-sm font-bold text-white mb-1.5">Running &amp; Cardio</h3>
+          <p class="text-xs text-xgray leading-relaxed mb-4">Améliore ton endurance et brûle des calories avec nos programmes running adaptés à tous les niveaux.</p>
+          <button class="flex items-center gap-1.5 text-xs font-bold text-xorange hover:gap-3 transition-all">
+            Découvrir
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="fade-up group bg-xdark border border-xborder rounded-2xl overflow-hidden hover:border-xorange/50 hover:-translate-y-1 transition-all duration-300 cursor-pointer">
+        <div class="relative h-44 overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=600&q=80" alt="Musculation" class="gallery-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+          <div class="absolute inset-0 bg-gradient-to-t from-xdark via-xdark/20 to-transparent"></div>
+          <div class="absolute bottom-3 left-4 flex items-center gap-2">
+            <div class="w-8 h-8 rounded-lg border border-xorange/30 bg-xorange/20 flex items-center justify-center text-xorange">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 6.5h11"/><path d="M6.5 17.5h11"/><path d="M3 12h18"/><path d="M3 3v18"/><path d="M21 3v18"/></svg>
+            </div>
+            <span class="text-[10px] font-bold px-2.5 py-1 rounded-full bg-xorange text-white">Force</span>
+          </div>
+        </div>
+        <div class="p-5">
+          <h3 class="text-sm font-bold text-white mb-1.5">Musculation</h3>
+          <p class="text-xs text-xgray leading-relaxed mb-4">Développe ta masse musculaire avec des programmes de prise de masse, sèche ou maintien parfaitement structurés.</p>
+          <button class="flex items-center gap-1.5 text-xs font-bold text-xorange hover:gap-3 transition-all">
+            Découvrir
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="fade-up group bg-xdark border border-xborder rounded-2xl overflow-hidden hover:border-xorange/50 hover:-translate-y-1 transition-all duration-300 cursor-pointer">
+        <div class="relative h-44 overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=600&q=80" alt="HIIT" class="gallery-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+          <div class="absolute inset-0 bg-gradient-to-t from-xdark via-xdark/20 to-transparent"></div>
+          <div class="absolute bottom-3 left-4 flex items-center gap-2">
+            <div class="w-8 h-8 rounded-lg border border-xlime/30 bg-xlime/10 flex items-center justify-center text-xlime">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+            </div>
+            <span class="text-[10px] font-bold px-2.5 py-1 rounded-full bg-xlime text-xdark">Intensité</span>
+          </div>
+        </div>
+        <div class="p-5">
+          <h3 class="text-sm font-bold text-white mb-1.5">HIIT</h3>
+          <p class="text-xs text-xgray leading-relaxed mb-4">Maximise ta dépense calorique en un minimum de temps avec nos circuits d'entraînement haute intensité.</p>
+          <button class="flex items-center gap-1.5 text-xs font-bold text-xorange hover:gap-3 transition-all">
+            Découvrir
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="fade-up group bg-xdark border border-xborder rounded-2xl overflow-hidden hover:border-xorange/50 hover:-translate-y-1 transition-all duration-300 cursor-pointer">
+        <div class="relative h-44 overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1485965120184-e220f721d03e?auto=format&fit=crop&w=600&q=80" alt="Cyclisme" class="gallery-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+          <div class="absolute inset-0 bg-gradient-to-t from-xdark via-xdark/20 to-transparent"></div>
+          <div class="absolute bottom-3 left-4 flex items-center gap-2">
+            <div class="w-8 h-8 rounded-lg border border-xblue/30 bg-xblue/20 flex items-center justify-center text-xblue">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18.5" cy="17.5" r="3.5"/><circle cx="5.5" cy="17.5" r="3.5"/><circle cx="15" cy="5" r="1"/><path d="M12 17.5V14l-3-3 4-3 2 3h2"/></svg>
+            </div>
+            <span class="text-[10px] font-bold px-2.5 py-1 rounded-full bg-xblue text-white">Endurance</span>
+          </div>
+        </div>
+        <div class="p-5">
+          <h3 class="text-sm font-bold text-white mb-1.5">Cyclisme</h3>
+          <p class="text-xs text-xgray leading-relaxed mb-4">Plans d'entraînement sur route et vélo indoor pour améliorer ta puissance et ta résistance sur la durée.</p>
+          <button class="flex items-center gap-1.5 text-xs font-bold text-xorange hover:gap-3 transition-all">
+            Découvrir
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="fade-up group bg-xdark border border-xborder rounded-2xl overflow-hidden hover:border-xorange/50 hover:-translate-y-1 transition-all duration-300 cursor-pointer">
+        <div class="relative h-44 overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1530549387789-4c161ac46e6a?auto=format&fit=crop&w=600&q=80" alt="Natation" class="gallery-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+          <div class="absolute inset-0 bg-gradient-to-t from-xdark via-xdark/20 to-transparent"></div>
+          <div class="absolute bottom-3 left-4 flex items-center gap-2">
+            <div class="w-8 h-8 rounded-lg border border-xblue/30 bg-xblue/20 flex items-center justify-center text-xblue">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h20M2 12c2-2 4-2 6 0s4 2 6 0 4-2 6 0"/><path d="M2 17c2-2 4-2 6 0s4 2 6 0 4-2 6 0"/><path d="M2 7c2-2 4-2 6 0s4 2 6 0 4-2 6 0"/></svg>
+            </div>
+            <span class="text-[10px] font-bold px-2.5 py-1 rounded-full bg-xblue text-white">Aquatique</span>
+          </div>
+        </div>
+        <div class="p-5">
+          <h3 class="text-sm font-bold text-white mb-1.5">Natation</h3>
+          <p class="text-xs text-xgray leading-relaxed mb-4">Programmes natation pour triathlètes, nageurs compétitifs ou débutants souhaitant améliorer leur technique.</p>
+          <button class="flex items-center gap-1.5 text-xs font-bold text-xorange hover:gap-3 transition-all">
+            Découvrir
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="fade-up group bg-xdark border border-xborder rounded-2xl overflow-hidden hover:border-xorange/50 hover:-translate-y-1 transition-all duration-300 cursor-pointer">
+        <div class="relative h-44 overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?auto=format&fit=crop&w=600&q=80" alt="CrossFit" class="gallery-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+          <div class="absolute inset-0 bg-gradient-to-t from-xdark via-xdark/20 to-transparent"></div>
+          <div class="absolute bottom-3 left-4 flex items-center gap-2">
+            <div class="w-8 h-8 rounded-lg border border-xorange/30 bg-xorange/20 flex items-center justify-center text-xorange">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m8 6 4-4 4 4"/><path d="M12 2v10.3"/><path d="M4.93 10.93 2.5 13.5"/><path d="M8 13.5c.67 2.28.96 4.37.6 6.5"/><path d="M16 13.5c-.67 2.28-.96 4.37-.6 6.5"/><path d="M19.07 10.93 21.5 13.5"/></svg>
+            </div>
+            <span class="text-[10px] font-bold px-2.5 py-1 rounded-full bg-xorange text-white">CrossFit</span>
+          </div>
+        </div>
+        <div class="p-5">
+          <h3 class="text-sm font-bold text-white mb-1.5">CrossFit</h3>
+          <p class="text-xs text-xgray leading-relaxed mb-4">WODs quotidiens, benchmarks et programmation périodisée pour devenir un athlète complet et explosif.</p>
+          <button class="flex items-center gap-1.5 text-xs font-bold text-xorange hover:gap-3 transition-all">
+            Découvrir
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     COMMENT ÇA MARCHE
+============================================================ -->
+<section id="comment" class="py-24 px-6 bg-xdark">
+  <div class="max-w-6xl mx-auto">
+
+    <div class="text-center mb-16 fade-up">
+      <span class="inline-flex items-center gap-2 border border-xorange/30 bg-xorange/10 text-xorange text-xs font-bold tracking-widest uppercase px-4 py-2 rounded-full mb-5">
+        Comment ça marche
+      </span>
+      <h2 class="text-4xl md:text-5xl font-black text-white leading-tight mb-4">
+        3 étapes pour <span class="text-xorange">commencer.</span>
+      </h2>
+      <p class="text-xgray max-w-xl mx-auto text-sm leading-relaxed">
+        Simple, rapide, efficace. Rejoins la communauté Xenotif en moins de 5 minutes.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-6 relative">
+      <!-- Line connector (desktop) -->
+      <div class="hidden md:block absolute top-14 left-[12.5%] right-[12.5%] h-px bg-gradient-to-r from-transparent via-xborder to-transparent"></div>
+
+      <div class="fade-up text-center">
+        <div class="relative w-16 h-16 rounded-2xl bg-xorange flex items-center justify-center mx-auto mb-5 text-white font-black text-xl shadow-lg shadow-xorange/30">
+          1
+        </div>
+        <h3 class="text-white font-bold text-sm mb-2">Crée ton compte</h3>
+        <p class="text-xgray text-xs leading-relaxed">Inscription gratuite en 30 secondes. Aucune carte bancaire requise pour commencer.</p>
+      </div>
+
+      <div class="fade-up text-center">
+        <div class="relative w-16 h-16 rounded-2xl bg-xcard border border-xborder flex items-center justify-center mx-auto mb-5 text-xorange font-black text-xl">
+          2
+        </div>
+        <h3 class="text-white font-bold text-sm mb-2">Choisis ta discipline</h3>
+        <p class="text-xgray text-xs leading-relaxed">Sélectionne parmi 8 sports et définis tes objectifs. L'IA construit ton plan en temps réel.</p>
+      </div>
+
+      <div class="fade-up text-center">
+        <div class="relative w-16 h-16 rounded-2xl bg-xcard border border-xborder flex items-center justify-center mx-auto mb-5 text-xorange font-black text-xl">
+          3
+        </div>
+        <h3 class="text-white font-bold text-sm mb-2">Entraîne-toi</h3>
+        <p class="text-xgray text-xs leading-relaxed">Suis tes séances, enregistre tes performances et partage tes progrès avec la communauté.</p>
+      </div>
+
+      <div class="fade-up text-center">
+        <div class="relative w-16 h-16 rounded-2xl bg-xcard border border-xborder flex items-center justify-center mx-auto mb-5 text-xlime font-black text-xl">
+          🏆
+        </div>
+        <h3 class="text-white font-bold text-sm mb-2">Atteins tes objectifs</h3>
+        <p class="text-xgray text-xs leading-relaxed">Analyse tes données, ajuste ton programme et celebrate chaque victoire avec ta communauté.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     TÉMOIGNAGES
+============================================================ -->
+<section id="temoignages" class="py-24 px-6 bg-xcard border-y border-xborder">
+  <div class="max-w-6xl mx-auto">
+
+    <div class="text-center mb-16 fade-up">
+      <span class="inline-flex items-center gap-2 border border-xorange/30 bg-xorange/10 text-xorange text-xs font-bold tracking-widest uppercase px-4 py-2 rounded-full mb-5">
+        Témoignages
+      </span>
+      <h2 class="text-4xl md:text-5xl font-black text-white leading-tight mb-4">
+        Ils ont <span class="text-xorange">transformé</span> leur corps
+      </h2>
+      <p class="text-xgray max-w-xl mx-auto text-sm leading-relaxed">
+        Des milliers d'athlètes font confiance à Xenotif pour atteindre leurs objectifs.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+
+      <div class="fade-up bg-xdark border border-xborder rounded-2xl p-6 flex flex-col">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FF4500" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="opacity-30 mb-4 shrink-0"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"/><path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"/></svg>
+        <p class="text-sm text-xgray leading-relaxed flex-1 mb-5">"Après 6 mois sur Xenotif, j'ai perdu 15 kg et je cours mon premier semi-marathon ce printemps. Le coaching IA a tout changé pour moi."</p>
+        <div class="flex gap-0.5 mb-4">
+          <span class="text-xorange text-sm">★★★★★</span>
+        </div>
+        <div class="flex items-center gap-3 pt-4 border-t border-xborder">
+          <div class="w-12 h-12 rounded-full overflow-hidden shrink-0 ring-2 ring-xborder">
+            <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&crop=faces&w=120&h=120&q=80" alt="Thomas D." class="w-full h-full object-cover" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+            <div class="hidden w-full h-full bg-xorange items-center justify-center font-black text-sm text-white">T</div>
+          </div>
+          <div class="min-w-0">
+            <p class="text-sm font-bold text-white">Thomas D.</p>
+            <p class="text-[10px] text-xgray truncate">Running • Membre depuis 2024</p>
+          </div>
+          <span class="ml-auto text-[10px] text-xgray bg-xcard border border-xborder px-2 py-1 rounded-full whitespace-nowrap shrink-0">Membre vérifié</span>
+        </div>
+      </div>
+
+      <div class="fade-up bg-xdark border border-xborder rounded-2xl p-6 flex flex-col">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FF4500" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="opacity-30 mb-4 shrink-0"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"/><path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"/></svg>
+        <p class="text-sm text-xgray leading-relaxed flex-1 mb-5">"La section HIIT est incroyable. En 3 mois, j'ai gagné en explosivité et ma composition corporelle a radicalement changé. Je recommande à 100%."</p>
+        <div class="flex gap-0.5 mb-4">
+          <span class="text-xorange text-sm">★★★★★</span>
+        </div>
+        <div class="flex items-center gap-3 pt-4 border-t border-xborder">
+          <div class="w-12 h-12 rounded-full overflow-hidden shrink-0 ring-2 ring-xborder">
+            <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&crop=faces&w=120&h=120&q=80" alt="Leila M." class="w-full h-full object-cover" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+            <div class="hidden w-full h-full bg-xblue items-center justify-center font-black text-sm text-white">L</div>
+          </div>
+          <div class="min-w-0">
+            <p class="text-sm font-bold text-white">Leila M.</p>
+            <p class="text-[10px] text-xgray truncate">HIIT • Membre depuis 2023</p>
+          </div>
+          <span class="ml-auto text-[10px] text-xgray bg-xcard border border-xborder px-2 py-1 rounded-full whitespace-nowrap shrink-0">Membre vérifié</span>
+        </div>
+      </div>
+
+      <div class="fade-up bg-xdark border border-xborder rounded-2xl p-6 flex flex-col">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FF4500" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="opacity-30 mb-4 shrink-0"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"/><path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"/></svg>
+        <p class="text-sm text-xgray leading-relaxed flex-1 mb-5">"Programme CrossFit au top. Les WODs sont bien expliqués, variés et progressifs. La communauté est bienveillante. Impossible de revenir en arrière."</p>
+        <div class="flex gap-0.5 mb-4">
+          <span class="text-xorange text-sm">★★★★★</span>
+        </div>
+        <div class="flex items-center gap-3 pt-4 border-t border-xborder">
+          <div class="w-12 h-12 rounded-full overflow-hidden shrink-0 ring-2 ring-xborder">
+            <img src="https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?auto=format&fit=crop&crop=faces&w=120&h=120&q=80" alt="Nicolas R." class="w-full h-full object-cover" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+            <div class="hidden w-full h-full items-center justify-center font-black text-sm" style="background:#A3FF00;color:#0A0B0F">N</div>
+          </div>
+          <div class="min-w-0">
+            <p class="text-sm font-bold text-white">Nicolas R.</p>
+            <p class="text-[10px] text-xgray truncate">CrossFit • Membre depuis 2024</p>
+          </div>
+          <span class="ml-auto text-[10px] text-xgray bg-xcard border border-xborder px-2 py-1 rounded-full whitespace-nowrap shrink-0">Membre vérifié</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     GALERIE
+============================================================ -->
+<section id="galerie" class="py-24 px-6 bg-xdark">
+  <div class="max-w-6xl mx-auto">
+
+    <div class="text-center mb-12 fade-up">
+      <span class="inline-flex items-center gap-2 border border-xorange/30 bg-xorange/10 text-xorange text-xs font-bold tracking-widest uppercase px-4 py-2 rounded-full mb-5">
+        Galerie
+      </span>
+      <h2 class="text-4xl md:text-5xl font-black text-white leading-tight mb-4">
+        L'effort, <span class="text-xorange">immortalisé.</span>
+      </h2>
+    </div>
+
+    <!-- Masonry-style grid -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+      <div class="gallery-item md:col-span-2 md:row-span-2 rounded-2xl overflow-hidden h-64 md:h-auto">
+        <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=800&q=80" alt="Sport 1" class="gallery-img w-full h-full object-cover" loading="lazy" />
+      </div>
+      <div class="gallery-item rounded-2xl overflow-hidden h-40">
+        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=400&q=80" alt="Sport 2" class="gallery-img w-full h-full object-cover" loading="lazy" />
+      </div>
+      <div class="gallery-item rounded-2xl overflow-hidden h-40">
+        <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=400&q=80" alt="Sport 3" class="gallery-img w-full h-full object-cover" loading="lazy" />
+      </div>
+      <div class="gallery-item rounded-2xl overflow-hidden h-40">
+        <img src="https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?auto=format&fit=crop&w=400&q=80" alt="Sport 4" class="gallery-img w-full h-full object-cover" loading="lazy" />
+      </div>
+      <div class="gallery-item rounded-2xl overflow-hidden h-40">
+        <img src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=400&q=80" alt="Sport 5" class="gallery-img w-full h-full object-cover" loading="lazy" />
+      </div>
+      <div class="gallery-item md:col-span-2 rounded-2xl overflow-hidden h-40">
+        <img src="https://images.unsplash.com/photo-1485965120184-e220f721d03e?auto=format&fit=crop&w=800&q=80" alt="Sport 6" class="gallery-img w-full h-full object-cover" loading="lazy" />
+      </div>
+      <div class="gallery-item rounded-2xl overflow-hidden h-40 col-span-2 md:col-span-1">
+        <img src="https://images.unsplash.com/photo-1530549387789-4c161ac46e6a?auto=format&fit=crop&w=400&q=80" alt="Sport 7" class="gallery-img w-full h-full object-cover" loading="lazy" />
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ============================================================
+     FAQ
+============================================================ -->
+<section id="faq" class="py-24 px-6 bg-xcard border-y border-xborder">
+  <div class="max-w-3xl mx-auto">
+
+    <div class="text-center mb-16 fade-up">
+      <span class="inline-flex items-center gap-2 border border-xorange/30 bg-xorange/10 text-xorange text-xs font-bold tracking-widest uppercase px-4 py-2 rounded-full mb-5">
+        FAQ
+      </span>
+      <h2 class="text-4xl md:text-5xl font-black text-white leading-tight mb-4">
+        Questions <span class="text-xorange">fréquentes</span>
+      </h2>
+    </div>
+
+    <div class="space-y-3 fade-up">
+
+      <div class="faq-item bg-xdark border border-xborder rounded-2xl overflow-hidden">
+        <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between px-6 py-5 text-left">
+          <span class="text-sm font-bold text-white">Xenotif est-il gratuit ?</span>
+          <span class="faq-icon text-xorange ml-4 shrink-0 text-xl font-light">+</span>
+        </button>
+        <div class="faq-answer px-6 text-sm text-xgray leading-relaxed">
+          <div class="pb-5">Oui, Xenotif propose un plan gratuit avec accès à des programmes de base pour toutes les disciplines. Le plan Premium débloque le coaching IA, les analyses avancées et l'accès illimité à la communauté.</div>
+        </div>
+      </div>
+
+      <div class="faq-item bg-xdark border border-xborder rounded-2xl overflow-hidden">
+        <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between px-6 py-5 text-left">
+          <span class="text-sm font-bold text-white">Comment fonctionne le coaching IA ?</span>
+          <span class="faq-icon text-xorange ml-4 shrink-0 text-xl font-light">+</span>
+        </button>
+        <div class="faq-answer px-6 text-sm text-xgray leading-relaxed">
+          <div class="pb-5">Notre IA analyse ton historique d'entraînement, tes performances, ta récupération et tes objectifs pour générer un programme 100% personnalisé. Elle s'adapte chaque semaine en fonction de tes progrès réels.</div>
+        </div>
+      </div>
+
+      <div class="faq-item bg-xdark border border-xborder rounded-2xl overflow-hidden">
+        <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between px-6 py-5 text-left">
+          <span class="text-sm font-bold text-white">Je suis débutant, est-ce adapté ?</span>
+          <span class="faq-icon text-xorange ml-4 shrink-0 text-xl font-light">+</span>
+        </button>
+        <div class="faq-answer px-6 text-sm text-xgray leading-relaxed">
+          <div class="pb-5">Absolument. Xenotif est conçu pour tous les niveaux, du grand débutant à l'athlète confirmé. Chaque programme propose 4 niveaux d'intensité et les vidéos explicatives t'accompagnent pas à pas.</div>
+        </div>
+      </div>
+
+      <div class="faq-item bg-xdark border border-xborder rounded-2xl overflow-hidden">
+        <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between px-6 py-5 text-left">
+          <span class="text-sm font-bold text-white">Puis-je m'entraîner sans équipement ?</span>
+          <span class="faq-icon text-xorange ml-4 shrink-0 text-xl font-light">+</span>
+        </button>
+        <div class="faq-answer px-6 text-sm text-xgray leading-relaxed">
+          <div class="pb-5">Oui ! Nous proposons de nombreux programmes bodyweight complets sans équipement. Tu peux t'entraîner chez toi, en déplacement ou en extérieur avec les mêmes résultats qu'en salle.</div>
+        </div>
+      </div>
+
+      <div class="faq-item bg-xdark border border-xborder rounded-2xl overflow-hidden">
+        <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between px-6 py-5 text-left">
+          <span class="text-sm font-bold text-white">Comment rejoindre la communauté ?</span>
+          <span class="faq-icon text-xorange ml-4 shrink-0 text-xl font-light">+</span>
+        </button>
+        <div class="faq-answer px-6 text-sm text-xgray leading-relaxed">
+          <div class="pb-5">L'accès à la communauté est inclus dès la création de ton compte. Tu peux partager tes séances, rejoindre des défis collectifs, poster tes WODs et interagir avec +12 000 athlètes motivés.</div>
+        </div>
+      </div>
+
+      <div class="faq-item bg-xdark border border-xborder rounded-2xl overflow-hidden">
+        <button onclick="toggleFaq(this)" class="w-full flex items-center justify-between px-6 py-5 text-left">
+          <span class="text-sm font-bold text-white">Y a-t-il une application mobile ?</span>
+          <span class="faq-icon text-xorange ml-4 shrink-0 text-xl font-light">+</span>
+        </button>
+        <div class="faq-answer px-6 text-sm text-xgray leading-relaxed">
+          <div class="pb-5">L'application Xenotif est disponible sur iOS et Android. Elle permet de suivre tes séances hors ligne, d'enregistrer tes performances et de rester connecté à la communauté partout et à tout moment.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     CTA / NEWSLETTER
+============================================================ -->
+<section id="newsletter" class="py-24 px-6 bg-xdark relative overflow-hidden">
+  <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[350px] rounded-full blur-3xl pointer-events-none" style="background:rgba(255,69,0,0.06)"></div>
+  <div class="absolute bottom-0 right-0 w-96 h-96 rounded-full blur-3xl pointer-events-none" style="background:rgba(37,99,235,0.05)"></div>
+
+  <div class="relative max-w-2xl mx-auto text-center fade-up">
+    <span class="inline-flex items-center gap-2 border border-xorange/30 bg-xorange/10 text-xorange text-xs font-bold tracking-widest uppercase px-4 py-2 rounded-full mb-6">
+      <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+      Rejoins la communauté
+    </span>
+    <h2 class="text-4xl md:text-5xl font-black text-white mb-4 leading-tight">
+      PRÊT À DÉPASSER<br/>
+      <span class="text-xorange">TES LIMITES ?</span>
+    </h2>
+    <p class="text-xgray mb-10 text-sm leading-relaxed max-w-md mx-auto">
+      Reçois chaque semaine : programmes gratuits, conseils nutrition, tips d'entraînement et les WODs de la communauté Xenotif.
+    </p>
+
+    <!-- Form -->
+    <div id="form-wrapper">
+      <form id="newsletter-form" onsubmit="handleNewsletter(event)" class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+        <label for="nl-email" class="sr-only">Email</label>
+        <input
+          id="nl-email"
+          type="email"
+          placeholder="ton@email.com"
+          class="flex-1 bg-xcard border border-xborder text-white placeholder-xgray rounded-full px-5 py-3.5 text-sm outline-none transition-colors focus:border-xorange"
+          oninput="clearNlError()"
+        />
+        <button type="submit" class="bg-xorange text-white px-6 py-3.5 rounded-full font-bold text-sm hover:bg-orange-600 active:scale-95 transition-all flex items-center gap-2 justify-center whitespace-nowrap">
+          S'abonner
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </button>
+      </form>
+      <p id="nl-error" class="text-red-400 text-xs mt-3 hidden">Adresse email invalide</p>
+    </div>
+
+    <!-- Success state (hidden) -->
+    <div id="nl-success" class="hidden flex flex-col items-center gap-4 py-6">
+      <div class="w-16 h-16 rounded-full border border-xorange/30 flex items-center justify-center" style="background:rgba(255,69,0,0.15)">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#FF4500" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>
+      </div>
+      <div>
+        <p class="text-white font-black text-xl mb-1">Bienvenue dans la communauté !</p>
+        <p class="text-xgray text-sm">Vérifie ta boîte mail pour confirmer ton inscription.</p>
+      </div>
+    </div>
+
+    <p id="nl-fine" class="text-[11px] text-xgray mt-4">Sans spam · Désabonnement en 1 clic · Données protégées</p>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     FOOTER
+============================================================ -->
+<footer class="bg-xcard border-t border-xborder px-6 py-16">
+  <div class="max-w-6xl mx-auto">
+
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-10 mb-12">
+
+      <!-- Brand -->
+      <div class="col-span-2 md:col-span-1">
+        <a href="#hero" class="flex items-center gap-2.5 font-black text-lg text-white tracking-wider mb-4">
+          <span class="w-8 h-8 bg-xorange rounded-lg flex items-center justify-center font-black text-base">X</span>
+          XENOTIF
+        </a>
+        <p class="text-xgray text-xs leading-relaxed mb-4">La plateforme sportive premium pour atteindre tes objectifs et dépasser tes limites.</p>
+        <div class="flex gap-3">
+          <!-- Instagram -->
+          <a href="#" aria-label="Instagram" class="w-9 h-9 rounded-full border border-xborder flex items-center justify-center text-xgray hover:text-white hover:border-xorange transition-all">
+            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+          </a>
+          <!-- Twitter/X -->
+          <a href="#" aria-label="Twitter" class="w-9 h-9 rounded-full border border-xborder flex items-center justify-center text-xgray hover:text-white hover:border-xorange transition-all">
+            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.261 5.634 5.903-5.634zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+          <!-- YouTube -->
+          <a href="#" aria-label="YouTube" class="w-9 h-9 rounded-full border border-xborder flex items-center justify-center text-xgray hover:text-white hover:border-xorange transition-all">
+            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><polygon points="10 15 15 12 10 9 10 15"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Disciplines -->
+      <div>
+        <p class="text-white font-bold text-xs tracking-widest uppercase mb-4">Disciplines</p>
+        <ul class="space-y-2.5">
+          <li><a href="#disciplines" class="text-xgray text-xs hover:text-white transition-colors">Running &amp; Cardio</a></li>
+          <li><a href="#disciplines" class="text-xgray text-xs hover:text-white transition-colors">Musculation</a></li>
+          <li><a href="#disciplines" class="text-xgray text-xs hover:text-white transition-colors">HIIT</a></li>
+          <li><a href="#disciplines" class="text-xgray text-xs hover:text-white transition-colors">Cyclisme</a></li>
+          <li><a href="#disciplines" class="text-xgray text-xs hover:text-white transition-colors">CrossFit</a></li>
+          <li><a href="#disciplines" class="text-xgray text-xs hover:text-white transition-colors">Natation</a></li>
+        </ul>
+      </div>
+
+      <!-- Programmes -->
+      <div>
+        <p class="text-white font-bold text-xs tracking-widest uppercase mb-4">Programmes</p>
+        <ul class="space-y-2.5">
+          <li><a href="#comment" class="text-xgray text-xs hover:text-white transition-colors">Débutant</a></li>
+          <li><a href="#comment" class="text-xgray text-xs hover:text-white transition-colors">Intermédiaire</a></li>
+          <li><a href="#comment" class="text-xgray text-xs hover:text-white transition-colors">Avancé</a></li>
+          <li><a href="#comment" class="text-xgray text-xs hover:text-white transition-colors">Élite</a></li>
+          <li><a href="#comment" class="text-xgray text-xs hover:text-white transition-colors">Coaching IA</a></li>
+        </ul>
+      </div>
+
+      <!-- Communauté -->
+      <div>
+        <p class="text-white font-bold text-xs tracking-widest uppercase mb-4">Communauté</p>
+        <ul class="space-y-2.5">
+          <li><a href="#newsletter" class="text-xgray text-xs hover:text-white transition-colors">Newsletter</a></li>
+          <li><a href="#temoignages" class="text-xgray text-xs hover:text-white transition-colors">Témoignages</a></li>
+          <li><a href="#faq" class="text-xgray text-xs hover:text-white transition-colors">FAQ</a></li>
+          <li><a href="#" class="text-xgray text-xs hover:text-white transition-colors">Blog</a></li>
+          <li><a href="#" class="text-xgray text-xs hover:text-white transition-colors">Contact</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="border-t border-xborder pt-8 flex flex-col sm:flex-row items-center justify-between gap-3">
+      <p class="text-xgray text-xs">© 2025 Xenotif. Tous droits réservés.</p>
+      <div class="flex gap-5">
+        <a href="#" class="text-xgray text-xs hover:text-white transition-colors">Confidentialité</a>
+        <a href="#" class="text-xgray text-xs hover:text-white transition-colors">Conditions</a>
+        <a href="#" class="text-xgray text-xs hover:text-white transition-colors">Cookies</a>
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+
+<!-- ============================================================
+     JAVASCRIPT
+============================================================ -->
+<script>
+  /* ---- Slider data ---- */
+  const SLIDES_DATA = [
+    {
+      tag: '🏋️ Musculation & Force',
+      h1: 'FORGE TON<br/><span id="slide-accent" class="text-xlime">CORPS.</span>',
+      accent: 'CORPS.',
+      accentColor: '#A3FF00',
+      sub: 'Programmes adaptés, coaching IA, communauté soudée. Tout ce qu\'il faut pour transformer ton corps et ta vie.',
+    },
+    {
+      tag: '🏃 Running & Cardio',
+      accent: 'PLUS FORT.',
+      accentColor: '#FF4500',
+      sub: 'Plans d\'entraînement running personnalisés, suivi GPS et communauté de coureurs passionnés.',
+    },
+    {
+      tag: '⚡ HIIT & CrossFit',
+      accent: 'IMBATTABLE.',
+      accentColor: '#2563EB',
+      sub: 'WODs quotidiens, circuits explosifs et coaching IA pour te pousser au-delà de tes limites chaque jour.',
+    },
+  ]
+  const HEADLINES = ['FORGE TON', 'COURS PLUS', 'BRISE TES LIMITES.']
+  const SUBTITLES = [
+    'Programmes adaptés, coaching IA, communauté soudée. Tout ce qu\'il faut pour transformer ton corps.',
+    'Plans d\'entraînement running personnalisés, suivi GPS et communauté de coureurs passionnés.',
+    'WODs quotidiens, circuits explosifs et coaching IA pour te pousser au-delà de tes limites.',
+  ]
+
+  let currentSlide = 0
+  let autoplayTimer = null
+
+  function goToSlide(index) {
+    const slides = document.querySelectorAll('.slide')
+    const dots = document.querySelectorAll('.dot')
+    slides[currentSlide].classList.remove('active')
+    dots[currentSlide].classList.remove('bg-xorange')
+    dots[currentSlide].classList.add('bg-white/30', 'w-2')
+    currentSlide = index
+    slides[currentSlide].classList.add('active')
+    dots[currentSlide].classList.add('bg-xorange')
+    dots[currentSlide].classList.remove('bg-white/30')
+    // Expand active dot
+    dots.forEach((d, i) => {
+      d.style.width = i === currentSlide ? '24px' : '8px'
+    })
+    updateHeroContent()
+  }
+
+  function nextSlide() {
+    goToSlide((currentSlide + 1) % 3)
+    resetAutoplay()
+  }
+
+  function prevSlide() {
+    goToSlide((currentSlide + 2) % 3)
+    resetAutoplay()
+  }
+
+  function updateHeroContent() {
+    const d = SLIDES_DATA[currentSlide]
+    document.getElementById('slide-tag').textContent = d.tag
+    const h = HEADLINES[currentSlide]
+    const accentEl = document.getElementById('slide-h1')
+    accentEl.innerHTML = h + '<br/><span style="color:' + d.accentColor + '">' + d.accent + '</span>'
+    document.getElementById('slide-sub').textContent = SUBTITLES[currentSlide]
+  }
+
+  function startAutoplay() {
+    autoplayTimer = setInterval(() => nextSlide(), 5000)
+  }
+
+  function resetAutoplay() {
+    clearInterval(autoplayTimer)
+    startAutoplay()
+  }
+
+  const heroSection = document.getElementById('hero')
+  heroSection.addEventListener('mouseenter', () => clearInterval(autoplayTimer))
+  heroSection.addEventListener('mouseleave', () => startAutoplay())
+
+  /* Expand first dot on load */
+  document.querySelectorAll('.dot')[0].style.width = '24px'
+  startAutoplay()
+
+
+  /* ---- Hamburger ---- */
+  const hamburgerBtn = document.getElementById('hamburger')
+  const mobileMenu = document.getElementById('mobile-menu')
+  const iconMenu = document.getElementById('icon-menu')
+  const iconClose = document.getElementById('icon-close')
+
+  hamburgerBtn.addEventListener('click', () => {
+    const isOpen = mobileMenu.classList.toggle('open')
+    iconMenu.classList.toggle('hidden', isOpen)
+    iconClose.classList.toggle('hidden', !isOpen)
+  })
+
+  function closeMenu() {
+    mobileMenu.classList.remove('open')
+    iconMenu.classList.remove('hidden')
+    iconClose.classList.add('hidden')
+  }
+
+
+  /* ---- Header scroll shadow ---- */
+  const header = document.getElementById('header')
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 10) {
+      header.style.background = 'rgba(10,11,15,0.98)'
+      header.style.boxShadow = '0 1px 0 rgba(30,32,40,1)'
+    } else {
+      header.style.background = ''
+      header.style.boxShadow = ''
+    }
+  })
+
+
+  /* ---- Smooth scroll for anchors ---- */
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', e => {
+      const target = document.querySelector(anchor.getAttribute('href'))
+      if (target) {
+        e.preventDefault()
+        target.scrollIntoView({ behavior: 'smooth' })
+      }
+    })
+  })
+
+
+  /* ---- FAQ accordion ---- */
+  function toggleFaq(btn) {
+    const item = btn.closest('.faq-item')
+    const answer = item.querySelector('.faq-answer')
+    const isOpen = item.classList.contains('open')
+    // Close all
+    document.querySelectorAll('.faq-item').forEach(i => {
+      i.classList.remove('open')
+      i.querySelector('.faq-answer').classList.remove('open')
+    })
+    // Open clicked if was closed
+    if (!isOpen) {
+      item.classList.add('open')
+      answer.classList.add('open')
+    }
+  }
+
+
+  /* ---- Scroll animations (IntersectionObserver) ---- */
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible')
+        // Trigger progress bars if inside
+        entry.target.querySelectorAll('.progress-bar[data-width]').forEach(bar => {
+          setTimeout(() => { bar.style.width = bar.dataset.width }, 200)
+        })
+        // Trigger counters if inside
+        entry.target.querySelectorAll('.counter[data-target]').forEach(el => {
+          animateCounter(el)
+        })
+      }
+    })
+  }, { threshold: 0.1 })
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el))
+
+  // Also observe progress bars not inside fade-up
+  const progressObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.style.width = entry.target.dataset.width
+        }, 300)
+      }
+    })
+  }, { threshold: 0.3 })
+
+  document.querySelectorAll('.progress-bar').forEach(bar => progressObserver.observe(bar))
+
+
+  /* ---- Animated counters ---- */
+  function animateCounter(el) {
+    const target = parseInt(el.dataset.target)
+    const suffix = el.dataset.suffix || ''
+    const duration = 1800
+    const start = performance.now()
+    function update(now) {
+      const elapsed = now - start
+      const progress = Math.min(elapsed / duration, 1)
+      const eased = 1 - Math.pow(1 - progress, 3)
+      const value = Math.round(eased * target)
+      el.textContent = (value >= 1000 ? (value / 1000).toFixed(value % 1000 === 0 ? 0 : 1) + 'K' : value) + suffix
+      if (progress < 1) requestAnimationFrame(update)
+    }
+    requestAnimationFrame(update)
+  }
+
+
+  /* ---- Newsletter form ---- */
+  function handleNewsletter(e) {
+    e.preventDefault()
+    const emailInput = document.getElementById('nl-email')
+    const errorEl = document.getElementById('nl-error')
+    const email = emailInput.value.trim()
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      emailInput.classList.add('border-red-500')
+      emailInput.classList.remove('border-xborder')
+      errorEl.classList.remove('hidden')
+      return
+    }
+    document.getElementById('form-wrapper').classList.add('hidden')
+    document.getElementById('nl-success').classList.remove('hidden')
+    document.getElementById('nl-success').classList.add('flex')
+    document.getElementById('nl-fine').classList.add('hidden')
+  }
+
+  function clearNlError() {
+    const errorEl = document.getElementById('nl-error')
+    const emailInput = document.getElementById('nl-email')
+    errorEl.classList.add('hidden')
+    emailInput.classList.remove('border-red-500')
+    emailInput.classList.add('border-xborder')
+  }
+</script>
+
+</body>
+</html>
