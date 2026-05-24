@@ -3,7 +3,7 @@ export const BRAND = {
   tagline: 'Forge ton corps. Dépasse tes limites.',
   members: 12400,
   programs: 50,
-  disciplines: 8,
+  disciplines: 6,
   rating: 4.9,
   reviewCount: 3200,
 }
@@ -11,7 +11,7 @@ export const BRAND = {
 export const STATS = [
   { value: '12K+', label: 'Athlètes actifs' },
   { value: '50+', label: 'Programmes' },
-  { value: '8', label: 'Disciplines' },
+  { value: '6', label: 'Disciplines' },
   { value: '4.9/5', label: 'Satisfaction' },
 ]
 

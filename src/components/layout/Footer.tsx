@@ -1,25 +1,29 @@
 import Link from 'next/link'
 
-const FOOTER_COLS = [
-  {
-    title: 'Disciplines',
-    links: ['Running & Cardio', 'Musculation', 'HIIT', 'Cyclisme', 'Natation', 'CrossFit'],
-  },
-  {
-    title: 'Programmes',
-    links: ['Débutant', 'Intermédiaire', 'Avancé', 'Élite', 'Triathlon', 'Marathon'],
-  },
-  {
-    title: 'Communauté',
-    links: [
-      'Blog sport',
-      'Coaching IA',
-      'Challenges',
-      'Partenaires',
-      'Mentions légales',
-      'Confidentialité',
-    ],
-  },
+const DISC_LINKS = [
+  { label: 'Running & Cardio', href: '/disciplines/running-cardio' },
+  { label: 'Musculation', href: '/disciplines/musculation' },
+  { label: 'HIIT', href: '/disciplines/hiit' },
+  { label: 'Cyclisme', href: '/disciplines/cyclisme' },
+  { label: 'Natation', href: '/disciplines/natation' },
+  { label: 'CrossFit', href: '/disciplines/crossfit' },
+]
+
+const PROG_LINKS = [
+  { label: 'Débutant', href: '/#programmes' },
+  { label: 'Intermédiaire', href: '/#programmes' },
+  { label: 'Avancé', href: '/#programmes' },
+  { label: 'Élite', href: '/#programmes' },
+  { label: 'Triathlon', href: '/#disciplines' },
+  { label: 'Marathon', href: '/#disciplines' },
+]
+
+const COMMUNITY_LINKS = [
+  { label: 'Coaching IA', href: '/#disciplines' },
+  { label: 'Challenges', href: '/#newsletter' },
+  { label: 'Partenaires', href: '/#newsletter' },
+  { label: 'Mentions légales', href: '/mentions-legales' },
+  { label: 'Confidentialité', href: '/confidentialite' },
 ]
 
 export function Footer() {
@@ -40,25 +44,44 @@ export function Footer() {
             </p>
           </div>
 
-          {FOOTER_COLS.map((col) => (
-            <div key={col.title}>
-              <h4 className="text-xs font-bold text-white uppercase tracking-widest mb-4">
-                {col.title}
-              </h4>
-              <ul className="flex flex-col gap-2.5">
-                {col.links.map((link) => (
-                  <li key={link}>
-                    <Link
-                      href="#"
-                      className="text-xs text-sport-gray hover:text-sport-orange transition-colors"
-                    >
-                      {link}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+          <div>
+            <h4 className="text-xs font-bold text-white uppercase tracking-widest mb-4">Disciplines</h4>
+            <ul className="flex flex-col gap-2.5">
+              {DISC_LINKS.map((link) => (
+                <li key={link.label}>
+                  <Link href={link.href} className="text-xs text-sport-gray hover:text-sport-orange transition-colors">
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="text-xs font-bold text-white uppercase tracking-widest mb-4">Programmes</h4>
+            <ul className="flex flex-col gap-2.5">
+              {PROG_LINKS.map((link) => (
+                <li key={link.label}>
+                  <Link href={link.href} className="text-xs text-sport-gray hover:text-sport-orange transition-colors">
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="text-xs font-bold text-white uppercase tracking-widest mb-4">Communauté</h4>
+            <ul className="flex flex-col gap-2.5">
+              {COMMUNITY_LINKS.map((link) => (
+                <li key={link.label}>
+                  <Link href={link.href} className="text-xs text-sport-gray hover:text-sport-orange transition-colors">
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </div>
 

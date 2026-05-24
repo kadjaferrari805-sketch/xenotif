@@ -5,10 +5,9 @@ import Link from 'next/link'
 import { Menu, X } from 'lucide-react'
 
 const NAV_LINKS = [
-  { href: '#disciplines', label: 'Disciplines' },
-  { href: '#programmes', label: 'Programmes' },
-  { href: '#coaching', label: 'Coaching' },
-  { href: '/blog', label: 'Blog' },
+  { href: '/#disciplines', label: 'Disciplines' },
+  { href: '/#programmes', label: 'Programmes' },
+  { href: '/#newsletter', label: 'Coaching' },
 ]
 
 export function Nav() {
@@ -44,7 +43,7 @@ export function Nav() {
         {/* Desktop actions */}
         <div className="flex items-center gap-3">
           <Link
-            href="/connexion"
+            href="/#newsletter"
             className="text-sm text-sport-gray hover:text-white transition-colors hidden sm:block"
           >
             Connexion

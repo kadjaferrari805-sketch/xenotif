@@ -13,7 +13,7 @@ const DISC_PHOTOS: Record<string, string> = {
   cyclisme:
     'https://images.unsplash.com/photo-1485965120184-e220f721d03e?auto=format&fit=crop&w=1200&q=80',
   natation:
-    'https://images.unsplash.com/photo-1530549387789-4c161ac46e6a?auto=format&fit=crop&w=1200&q=80',
+    'https://images.unsplash.com/photo-1519315901367-f34ff9154487?auto=format&fit=crop&w=1200&q=80',
   crossfit:
     'https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?auto=format&fit=crop&w=1200&q=80',
 }

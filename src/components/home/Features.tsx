@@ -39,7 +39,7 @@ const DISC_PHOTOS: Record<string, string> = {
   Cyclisme:
     'https://images.unsplash.com/photo-1485965120184-e220f721d03e?auto=format&fit=crop&w=600&q=80',
   Natation:
-    'https://images.unsplash.com/photo-1530549387789-4c161ac46e6a?auto=format&fit=crop&w=600&q=80',
+    'https://images.unsplash.com/photo-1519315901367-f34ff9154487?auto=format&fit=crop&w=600&q=80',
   CrossFit:
     'https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?auto=format&fit=crop&w=600&q=80',
 }
@@ -52,7 +52,7 @@ export function Features() {
       <div className="max-w-6xl mx-auto">
         <SectionHeader
           label="Disciplines"
-          title="8 disciplines. 1 plateforme."
+          title="6 disciplines. 1 plateforme."
           subtitle="Du cardio à la force — chaque sport, chaque niveau, chaque objectif"
         />
         <div ref={ref} className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 mt-12">

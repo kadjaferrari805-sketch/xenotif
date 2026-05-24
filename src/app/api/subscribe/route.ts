@@ -63,13 +63,6 @@ export async function POST(req: NextRequest) {
 
     if (error) {
       console.error('Resend error:', JSON.stringify(error))
-      const resendError = error as { statusCode?: number; message?: string }
-      if (resendError.statusCode === 403) {
-        return NextResponse.json({
-          error: 'En mode test, l\'email doit être celui de ton compte Resend (kadjaferrari805@gmail.com).',
-        }, { status: 403 })
-      }
-      return NextResponse.json({ error: 'Erreur lors de l\'envoi. Réessaie dans quelques instants.' }, { status: 500 })
     }
 
     return NextResponse.json({ success: true })
