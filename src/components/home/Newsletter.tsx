@@ -9,14 +9,33 @@ export function Newsletter() {
   const [submitted, setSubmitted] = useState(false)
   const [error, setError] = useState('')
 
-  function handleSubmit(e: React.FormEvent) {
+  const [loading, setLoading] = useState(false)
+
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
     if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       setError('Adresse email invalide')
       return
     }
     setError('')
-    setSubmitted(true)
+    setLoading(true)
+    try {
+      const res = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      })
+      const data = await res.json()
+      if (!res.ok) {
+        setError(data.error ?? 'Une erreur est survenue.')
+      } else {
+        setSubmitted(true)
+      }
+    } catch {
+      setError('Connexion impossible. Réessaie dans quelques instants.')
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
@@ -88,9 +107,10 @@ export function Newsletter() {
               <button
                 type="submit"
                 aria-label="S'abonner"
-                className="bg-sport-orange text-white px-6 py-3.5 rounded-full font-bold text-sm hover:bg-orange-600 active:scale-95 transition-all flex items-center gap-2 justify-center whitespace-nowrap"
+                disabled={loading}
+                className="bg-sport-orange text-white px-6 py-3.5 rounded-full font-bold text-sm hover:bg-orange-600 active:scale-95 transition-all flex items-center gap-2 justify-center whitespace-nowrap disabled:opacity-60 disabled:cursor-not-allowed"
               >
-                S&apos;abonner <ArrowRight size={14} />
+                {loading ? 'Envoi…' : <> S&apos;abonner <ArrowRight size={14} /></>}
               </button>
             </motion.form>
           )}
