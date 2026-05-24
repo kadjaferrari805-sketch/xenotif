@@ -79,6 +79,7 @@ export function Hero() {
             src={SLIDES[current].image}
             alt={SLIDES[current].tag}
             fill
+            sizes="100vw"
             className="object-cover"
             priority
           />

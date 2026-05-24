@@ -43,6 +43,7 @@ function Avatar({ name, initial, color }: { name: string; initial: string; color
         src={photo}
         alt={name}
         fill
+        sizes="48px"
         className="object-cover"
         onError={() => setError(true)}
       />
