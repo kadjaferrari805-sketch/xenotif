@@ -17,7 +17,7 @@ export async function POST(req: NextRequest) {
     const resend = new Resend(process.env.RESEND_API_KEY)
 
     const { error } = await resend.emails.send({
-      from: 'Xenotif® <onboarding@resend.dev>',
+      from: 'Xenotif® <noreply@xenotif.com>',
       to: email,
       subject: 'Bienvenue dans la communauté Xenotif® 🏆',
       html: `
