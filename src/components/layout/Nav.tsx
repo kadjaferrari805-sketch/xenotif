@@ -48,11 +48,11 @@ export function Nav() {
           >
             Connexion
           </Link>
-          <a href="#newsletter">
+          <Link href="/#newsletter">
             <button className="bg-sport-orange text-white px-4 py-2 rounded-full text-sm font-bold hover:bg-orange-600 transition-colors">
               Rejoindre
             </button>
-          </a>
+          </Link>
           {/* Hamburger — mobile only */}
           <button
             onClick={() => setIsOpen((v) => !v)}
@@ -77,11 +77,11 @@ export function Nav() {
               {link.label}
             </Link>
           ))}
-          <a href="#newsletter" onClick={() => setIsOpen(false)}>
+          <Link href="/#newsletter" onClick={() => setIsOpen(false)}>
             <button className="w-full bg-sport-orange text-white py-2.5 rounded-full text-sm font-bold hover:bg-orange-600 transition-colors mt-2">
               Rejoindre maintenant
             </button>
-          </a>
+          </Link>
         </div>
       )}
     </nav>
