@@ -4,7 +4,7 @@ import { HowItWorks } from './HowItWorks'
 describe('HowItWorks', () => {
   it('renders section title', () => {
     render(<HowItWorks />)
-    expect(screen.getByText(/comment ça marche/i)).toBeInTheDocument()
+    expect(screen.getByText(/comment rejoindre/i)).toBeInTheDocument()
   })
 
   it('renders 4 numbered steps', () => {

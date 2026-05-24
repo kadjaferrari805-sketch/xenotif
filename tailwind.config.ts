@@ -9,16 +9,14 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        primary: {
-          DEFAULT: '#0F766E',
-          dark: '#134e4a',
-          darker: '#0d3331',
-          light: '#e0f7f4',
-          lighter: '#f0fdfb',
-        },
-        amber: {
-          badge: '#d97706',
-          light: '#fef3c7',
+        sport: {
+          dark: '#0A0B0F',
+          card: '#111318',
+          border: '#1E2028',
+          orange: '#FF4500',
+          blue: '#2563EB',
+          lime: '#A3FF00',
+          gray: '#8B929F',
         },
       },
       fontFamily: {

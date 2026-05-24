@@ -10,13 +10,13 @@ describe('Button', () => {
   it('applies primary styles', () => {
     render(<Button variant="primary">Test</Button>)
     const btn = screen.getByRole('button')
-    expect(btn).toHaveClass('bg-primary')
+    expect(btn).toHaveClass('bg-sport-orange')
   })
 
   it('applies secondary styles', () => {
     render(<Button variant="secondary">Test</Button>)
     const btn = screen.getByRole('button')
-    expect(btn).toHaveClass('border-primary')
+    expect(btn).toHaveClass('border-sport-border')
   })
 
   it('passes additional className', () => {

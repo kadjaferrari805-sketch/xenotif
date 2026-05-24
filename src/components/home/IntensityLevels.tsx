@@ -1,60 +1,88 @@
+'use client'
+
+import { motion } from 'framer-motion'
+import { useInView } from 'react-intersection-observer'
 import { SectionHeader } from '@/components/ui/SectionHeader'
 
 const LEVELS = [
-  { range: 'Niv. 1–5', width: '30%', desc: 'Soin quotidien léger' },
-  { range: 'Niv. 6–10', width: '60%', desc: 'Raideurs cervicales' },
-  { range: 'Niv. 11–16', width: '100%', desc: 'Tensions chroniques sévères' },
-]
-
-const PROFILES = [
-  { icon: '💼', title: 'Pour les professionnels', desc: "Niveaux 1–8 recommandés après une longue journée de bureau ou de télétravail. Utilisable discrètement." },
-  { icon: '👴', title: 'Pour les seniors', desc: "Niveaux 1–6 idéaux — chaleur douce et stimulation légère pour améliorer la mobilité cervicale." },
-  { icon: '⚕️', title: 'Pour les douleurs chroniques', desc: "Niveaux 11–16 avec arrêt automatique 15 min. Résultats progressifs en 2–3 semaines." },
+  {
+    id: 'debutant',
+    label: 'Débutant',
+    emoji: '🌱',
+    desc: 'Pour ceux qui commencent ou reprennent le sport. Séances courtes, progressives, jamais décourageantes.',
+    border: 'border-emerald-500/40',
+    text: 'text-emerald-400',
+    bar: 'bg-emerald-500',
+    width: '25%',
+  },
+  {
+    id: 'intermediaire',
+    label: 'Intermédiaire',
+    emoji: '⚡',
+    desc: '6 mois de pratique régulière. Montée en charge progressive, nouveaux records personnels chaque mois.',
+    border: 'border-sport-blue/40',
+    text: 'text-sport-blue',
+    bar: 'bg-sport-blue',
+    width: '55%',
+  },
+  {
+    id: 'avance',
+    label: 'Avancé',
+    emoji: '🔥',
+    desc: 'Athlètes confirmés. Programmes périodisés, haute intensité, récupération optimisée.',
+    border: 'border-sport-orange/40',
+    text: 'text-sport-orange',
+    bar: 'bg-sport-orange',
+    width: '80%',
+  },
+  {
+    id: 'elite',
+    label: 'Élite',
+    emoji: '🏆',
+    desc: 'Compétiteurs et semi-pros. Planification annuelle, coaching individuel, suivi biomécanique complet.',
+    border: 'border-sport-lime/40',
+    text: 'text-sport-lime',
+    bar: 'bg-sport-lime',
+    width: '100%',
+  },
 ]
 
 export function IntensityLevels() {
+  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 })
+
   return (
-    <section className="py-16 px-6 bg-gradient-to-br from-primary-light to-primary-lighter">
+    <section className="py-20 px-6 bg-sport-dark">
       <div className="max-w-6xl mx-auto">
         <SectionHeader
-          label="Intensité"
-          title="Trouvez votre niveau idéal"
-          subtitle="16 niveaux pour s'adapter à chaque type de douleur"
+          label="Niveaux"
+          title="Un programme pour chaque athlète"
+          subtitle="De débutant à élite — Xenotif s'adapte à toi, pas l'inverse"
         />
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-          <div className="flex flex-col gap-4">
-            {LEVELS.map(l => (
-              <div key={l.range} className="flex items-center gap-4">
-                <span className="text-xs font-bold text-primary w-20 shrink-0">{l.range}</span>
-                <div className="flex-1 h-2.5 bg-teal-100 rounded-full overflow-hidden">
-                  <div className="h-full bg-gradient-to-r from-primary to-teal-400 rounded-full" style={{ width: l.width }} />
-                </div>
-                <span className="text-xs text-gray-500 w-36 shrink-0">{l.desc}</span>
+        <div
+          ref={ref}
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-12"
+        >
+          {LEVELS.map((level, i) => (
+            <motion.div
+              key={level.id}
+              initial={{ opacity: 0, y: 24 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ delay: i * 0.1, duration: 0.5 }}
+              className={`bg-sport-card border rounded-2xl p-6 ${level.border}`}
+            >
+              <div className="text-3xl mb-3">{level.emoji}</div>
+              <h3 className={`font-black text-base mb-2 ${level.text}`}>{level.label}</h3>
+              <p className="text-xs text-sport-gray leading-relaxed mb-4">{level.desc}</p>
+              <div className="h-1.5 bg-sport-border rounded-full overflow-hidden">
+                <motion.div
+                  initial={{ width: 0 }}
+                  animate={inView ? { width: level.width } : {}}
+                  transition={{ delay: i * 0.1 + 0.3, duration: 0.8, ease: 'easeOut' }}
+                  className={`h-full rounded-full ${level.bar}`}
+                />
               </div>
-            ))}
-            <div className="bg-white rounded-xl p-4 shadow-sm mt-4">
-              <div className="flex justify-between mb-3 text-xs font-bold">
-                <span className="text-primary-darker">Avant utilisation</span>
-                <span className="text-primary">Après utilisation</span>
-              </div>
-              <div className="flex rounded-lg overflow-hidden h-12">
-                <div className="flex-1 bg-gradient-to-r from-red-100 to-red-200 flex items-center justify-center text-xs font-bold text-red-600">😣 Tension</div>
-                <div className="w-0.5 bg-white" />
-                <div className="flex-1 bg-gradient-to-r from-emerald-100 to-emerald-200 flex items-center justify-center text-xs font-bold text-emerald-600">😌 Soulagé</div>
-              </div>
-            </div>
-          </div>
-          <div className="flex flex-col gap-4">
-            {PROFILES.map(p => (
-              <div key={p.title} className="bg-white rounded-xl p-4 shadow-sm flex gap-4">
-                <div className="w-11 h-11 bg-primary-light rounded-xl flex items-center justify-center text-xl shrink-0">{p.icon}</div>
-                <div>
-                  <h4 className="text-sm font-bold text-primary-darker mb-1">{p.title}</h4>
-                  <p className="text-xs text-gray-500 leading-relaxed">{p.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

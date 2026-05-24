@@ -8,12 +8,13 @@ import { Providers } from '@/providers/Providers'
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 
 export const metadata: Metadata = {
-  title: 'Xenotif — neckZen Massage Pro | Masseur cervical intelligent',
-  description: "Le neckZen massage combine chaleur thérapeutique, impulsions basse fréquence et 16 niveaux d'intensité pour soulager vos tensions cervicales.",
-  keywords: ['masseur cervical', 'douleur cou', 'neckzen', 'massage cervical', 'bien-être'],
+  title: 'Xenotif — Forge ton corps. Dépasse tes limites.',
+  description:
+    'La plateforme sport ultime — 50+ programmes, coaching IA, 8 disciplines. Rejoins 12 000+ athlètes qui transforment leur corps avec Xenotif.',
+  keywords: ['sport', 'fitness', 'coaching', 'running', 'musculation', 'HIIT', 'CrossFit', 'programme sportif'],
   openGraph: {
-    title: 'Xenotif — neckZen Massage Pro',
-    description: 'Dites adieu aux douleurs cervicales avec le neckZen',
+    title: 'Xenotif — Forge ton corps. Dépasse tes limites.',
+    description: 'La plateforme sport ultime pour athlètes de tous niveaux.',
     type: 'website',
   },
 }

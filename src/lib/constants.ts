@@ -1,97 +1,131 @@
-export const PRODUCT = {
-  name: 'neckZen Massage Pro',
-  tagline: 'Masseur cervical 4 têtes — Chaleur + Impulsions + 16 niveaux',
-  price: 79.90,
-  oldPrice: 119.90,
-  discount: 33,
+export const BRAND = {
+  name: 'Xenotif',
+  tagline: 'Forge ton corps. Dépasse tes limites.',
+  members: 12400,
+  programs: 50,
+  disciplines: 8,
   rating: 4.9,
-  reviewCount: 248,
-  sku: 'NECKZEN-PRO-001',
-  features: [
-    '4 têtes électrodes',
-    "Chaleur jusqu'à 42°C",
-    "16 niveaux d'intensité",
-    'Sans fil + USB-C',
-    'Commande vocale',
-    'Arrêt auto 15 min',
-  ],
+  reviewCount: 3200,
 }
+
+export const STATS = [
+  { value: '12K+', label: 'Athlètes actifs' },
+  { value: '50+', label: 'Programmes' },
+  { value: '8', label: 'Disciplines' },
+  { value: '4.9/5', label: 'Satisfaction' },
+]
 
 export const FEATURES = [
   {
-    icon: '⚡',
-    color: 'teal',
-    title: 'Impulsions basse fréquence',
-    description: "Stimulation neuromusculaire douce qui soulage les tensions en profondeur dès la 1ère séance",
-    tag: 'EMS / TENS',
+    icon: 'running',
+    color: 'orange',
+    title: 'Running & Cardio',
+    description:
+      'Programmes de course adaptés à tous les niveaux — du 5K au marathon. Plans personnalisés avec coaching GPS et suivi de fréquence cardiaque.',
+    tag: 'Cardio',
   },
   {
-    icon: '🔥',
-    color: 'amber',
-    title: 'Chaleur thérapeutique',
-    description: "Chaleur intégrée jusqu'à 42°C qui pénètre 20mm sous la peau pour détendre les muscles",
-    tag: 'Hot Compress',
+    icon: 'dumbbell',
+    color: 'blue',
+    title: 'Musculation',
+    description:
+      'Prise de masse, sèche ou tonification — nos coaches certifiés construisent ton programme sur mesure selon ta morphologie.',
+    tag: 'Strength',
   },
   {
-    icon: '🎯',
-    color: 'violet',
-    title: '4 têtes de massage',
-    description: 'Quatre électrodes positionnées scientifiquement pour couvrir toute la zone cervicale',
-    tag: '360° Coverage',
+    icon: 'zap',
+    color: 'orange',
+    title: 'HIIT',
+    description:
+      'Séances courtes et intenses pour brûler un maximum de calories et booster ton métabolisme durablement en 20 à 30 min.',
+    tag: 'Fat Burn',
   },
   {
-    icon: '🎚️',
-    color: 'sky',
-    title: "16 niveaux d'intensité",
-    description: "Du soin quotidien léger (1-5) aux tensions chroniques sévères (11-16) — adapté à chacun",
-    tag: 'Personnalisable',
+    icon: 'bike',
+    color: 'blue',
+    title: 'Cyclisme',
+    description:
+      'Entraînements indoor et outdoor avec puissance-mètre. De la sportive au grimpeur de cols, un plan adapté à chaque profil.',
+    tag: 'Endurance',
   },
   {
-    icon: '📡',
-    color: 'rose',
-    title: 'Portable & sans fil',
-    description: "Batterie longue durée, recharge USB-C — utilisez-le au bureau, en déplacement, à la maison",
-    tag: 'Wireless',
+    icon: 'waves',
+    color: 'lime',
+    title: 'Natation',
+    description:
+      'Techniques de nage, préparation triathlon, open water — progressez dans tous les styles avec des drills vidéo HD.',
+    tag: 'Aquatique',
   },
   {
-    icon: '🎙️',
-    color: 'emerald',
-    title: 'Commande vocale',
-    description: "Contrôlez intensité et modes mains libres grâce à l'assistant vocal intelligent intégré",
-    tag: 'Smart Voice',
+    icon: 'flame',
+    color: 'orange',
+    title: 'CrossFit',
+    description:
+      'WODs quotidiens, mouvements fonctionnels et challenges communautaires pour repousser tes limites chaque semaine.',
+    tag: 'Functional',
+  },
+]
+
+export const STEPS = [
+  {
+    num: '1',
+    title: 'Crée ton compte',
+    description:
+      'Inscription en 2 minutes. Remplis ton profil sportif pour un suivi personnalisé dès le premier jour.',
+  },
+  {
+    num: '2',
+    title: 'Choisis ton programme',
+    description:
+      "Notre IA analyse ton niveau, tes objectifs et ton temps disponible pour recommander le programme idéal.",
+  },
+  {
+    num: '3',
+    title: 'Entraîne-toi',
+    description:
+      'Suis tes séances guidées avec coaching audio, vidéos HD et feedback en temps réel sur ta technique.',
+  },
+  {
+    num: '4',
+    title: 'Suis tes progrès',
+    description:
+      'Tableau de bord complet, statistiques avancées et célébration de chaque objectif atteint.',
   },
 ]
 
 export const REVIEWS = [
   {
-    name: 'Marie L.',
-    initial: 'M',
-    color: 'teal',
-    date: 'Il y a 3 jours',
+    name: 'Thomas D.',
+    initial: 'T',
+    color: 'orange',
+    sport: 'Running · Marathon',
+    date: 'Il y a 2 jours',
     rating: 5,
-    text: "\"Incroyable ! Après 8h de télétravail, mes cervicales étaient à bout. Dès la première utilisation au niveau 6, j'ai ressenti un vrai soulagement. Je l'utilise maintenant chaque soir.\"",
+    text: '"En 3 mois de programme Xenotif, j\'ai battu mon record sur marathon de 18 minutes. Le coaching IA est bluffant — chaque séance est parfaitement calibrée à mon niveau."',
   },
   {
-    name: 'Jacques M., 68 ans',
-    initial: 'J',
-    color: 'amber',
+    name: 'Leila M.',
+    initial: 'L',
+    color: 'blue',
+    sport: 'HIIT · Musculation',
+    date: 'Il y a 5 jours',
+    rating: 5,
+    text: '"J\'ai perdu 12 kg en 4 mois tout en gagnant en force. Les séances HIIT + muscu sont parfaitement équilibrées. La communauté Xenotif me motive chaque matin."',
+  },
+  {
+    name: 'Nicolas R.',
+    initial: 'N',
+    color: 'lime',
+    sport: 'CrossFit · Natation',
     date: 'Il y a 1 semaine',
     rating: 5,
-    text: "\"J'avais des douleurs cervicales chroniques depuis des années. Le neckZen au niveau 12 avec la chaleur m'a soulagé comme jamais. Très facile à utiliser même pour moi.\"",
-  },
-  {
-    name: 'Sarah K.',
-    initial: 'S',
-    color: 'violet',
-    date: 'Il y a 2 semaines',
-    rating: 5,
-    text: "\"Je l'emmène partout — au bureau, en réunion, dans les transports. Sans fil, discret, et vraiment efficace. La commande vocale est un vrai plus ! Je recommande à 100%.\"",
+    text: '"Préparation triathlon avec Xenotif — résultat incroyable. J\'ai terminé mon premier Ironman grâce à cette plateforme. Merci Xenotif !"',
   },
 ]
 
 export const TRUST_ITEMS = [
-  { icon: '⭐', label: '4.9/5', sublabel: '248 avis vérifiés' },
-  { icon: '🚚', label: 'Livraison gratuite', sublabel: 'dès 50€' },
-  { icon: '🔄', label: '30 jours', sublabel: 'satisfait ou remboursé' },
-  { icon: '🔋', label: 'Recharge', sublabel: 'USB-C incluse' },
+  { label: '12K+ athlètes', sublabel: 'communauté active' },
+  { label: 'Coaching IA', sublabel: 'personnalisé' },
+  { label: 'Accès illimité', sublabel: 'tous programmes' },
+  { label: '30 jours', sublabel: 'satisfait ou remboursé' },
 ]

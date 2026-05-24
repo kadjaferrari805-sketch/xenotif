@@ -9,9 +9,9 @@ describe('Footer', () => {
 
   it('renders main column headings', () => {
     render(<Footer />)
-    expect(screen.getByText('Produit')).toBeInTheDocument()
-    expect(screen.getByText('Support')).toBeInTheDocument()
-    expect(screen.getByText('Entreprise')).toBeInTheDocument()
+    expect(screen.getByText('Disciplines')).toBeInTheDocument()
+    expect(screen.getByText('Programmes')).toBeInTheDocument()
+    expect(screen.getByText('Communauté')).toBeInTheDocument()
   })
 
   it('renders copyright', () => {

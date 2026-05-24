@@ -4,16 +4,16 @@ import { Features } from './Features'
 describe('Features', () => {
   it('renders section title', () => {
     render(<Features />)
-    expect(screen.getByText(/6 technologies/i)).toBeInTheDocument()
+    expect(screen.getByText(/8 disciplines/i)).toBeInTheDocument()
   })
 
-  it('renders all 6 feature cards', () => {
+  it('renders all 6 discipline cards', () => {
     render(<Features />)
-    expect(screen.getByText(/impulsions basse fréquence/i)).toBeInTheDocument()
-    expect(screen.getByText(/chaleur thérapeutique/i)).toBeInTheDocument()
-    expect(screen.getByText(/4 têtes de massage/i)).toBeInTheDocument()
-    expect(screen.getByText(/16 niveaux/i)).toBeInTheDocument()
-    expect(screen.getByText(/portable/i)).toBeInTheDocument()
-    expect(screen.getByText(/commande vocale/i)).toBeInTheDocument()
+    expect(screen.getByText(/running & cardio/i)).toBeInTheDocument()
+    expect(screen.getByText(/musculation/i)).toBeInTheDocument()
+    expect(screen.getByText(/hiit/i)).toBeInTheDocument()
+    expect(screen.getByText(/cyclisme/i)).toBeInTheDocument()
+    expect(screen.getByText(/natation/i)).toBeInTheDocument()
+    expect(screen.getByText(/crossfit/i)).toBeInTheDocument()
   })
 })

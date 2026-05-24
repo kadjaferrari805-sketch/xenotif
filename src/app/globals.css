@@ -5,21 +5,19 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
 
-  /* Xenotif primary palette */
-  --color-primary: #0F766E;
-  --color-primary-dark: #134e4a;
-  --color-primary-darker: #0d3331;
-  --color-primary-light: #e0f7f4;
-  --color-primary-lighter: #f0fdfb;
-
-  /* Amber accent */
-  --color-amber-badge: #d97706;
-  --color-amber-light: #fef3c7;
+  /* Xenotif Sport Palette */
+  --color-sport-dark: #0A0B0F;
+  --color-sport-card: #111318;
+  --color-sport-border: #1E2028;
+  --color-sport-orange: #FF4500;
+  --color-sport-blue: #2563EB;
+  --color-sport-lime: #A3FF00;
+  --color-sport-gray: #8B929F;
 }
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #0A0B0F;
+  --foreground: #ffffff;
 }
 
 @layer base {
@@ -27,25 +25,28 @@
     scroll-behavior: smooth;
   }
   body {
-    @apply text-gray-900 bg-white;
+    background-color: var(--color-sport-dark);
+    color: #ffffff;
     font-size: 14px;
   }
-  h1, h2, h3 {
+  h1,
+  h2,
+  h3 {
     @apply font-extrabold;
-    color: var(--color-primary-darker);
+    color: #ffffff;
   }
 }
 
 @layer components {
   .section-label {
     @apply text-[11px] font-bold tracking-[2px] uppercase text-center;
-    color: var(--color-primary);
+    color: var(--color-sport-orange);
   }
   .section-title {
-    @apply text-2xl font-extrabold text-center;
-    color: var(--color-primary-darker);
+    @apply text-3xl font-black text-center text-white;
   }
   .section-sub {
-    @apply text-sm text-gray-400 text-center;
+    @apply text-sm text-center;
+    color: var(--color-sport-gray);
   }
 }

@@ -1,36 +1,65 @@
+'use client'
+
+import { motion } from 'framer-motion'
+import { useInView } from 'react-intersection-observer'
+import { Activity, Dumbbell, Zap, Bike, Waves, Flame } from 'lucide-react'
 import { SectionHeader } from '@/components/ui/SectionHeader'
 import { FEATURES } from '@/lib/constants'
 
+const ICON_MAP: Record<string, React.ReactNode> = {
+  running: <Activity size={22} />,
+  dumbbell: <Dumbbell size={22} />,
+  zap: <Zap size={22} />,
+  bike: <Bike size={22} />,
+  waves: <Waves size={22} />,
+  flame: <Flame size={22} />,
+}
+
 const COLOR_MAP: Record<string, string> = {
-  teal: 'bg-primary-light',
-  amber: 'bg-amber-50',
-  violet: 'bg-violet-100',
-  sky: 'bg-sky-100',
-  rose: 'bg-rose-100',
-  emerald: 'bg-emerald-100',
+  orange: 'text-sport-orange bg-sport-orange/10 border-sport-orange/20',
+  blue: 'text-sport-blue bg-sport-blue/10 border-sport-blue/20',
+  lime: 'text-sport-lime bg-sport-lime/10 border-sport-lime/20',
+}
+
+const TAG_MAP: Record<string, string> = {
+  orange: 'bg-sport-orange/10 text-sport-orange',
+  blue: 'bg-sport-blue/10 text-sport-blue',
+  lime: 'bg-sport-lime/10 text-sport-lime',
 }
 
 export function Features() {
+  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 })
+
   return (
-    <section id="features" className="py-16 px-6 bg-gray-50">
+    <section id="disciplines" className="py-20 px-6 bg-sport-dark">
       <div className="max-w-6xl mx-auto">
         <SectionHeader
-          label="Technologie"
-          title="6 technologies pour votre cou"
-          subtitle="Le neckZen combine les meilleures innovations du massage cervical en un seul appareil compact"
+          label="Disciplines"
+          title="8 disciplines. 1 plateforme."
+          subtitle="Du cardio à la force — chaque sport, chaque niveau, chaque objectif"
         />
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
-          {FEATURES.map(feat => (
-            <div key={feat.title} className="bg-white rounded-2xl p-6 text-center shadow-sm border border-gray-100 hover:-translate-y-1 hover:shadow-md transition-all">
-              <div className={`w-14 h-14 ${COLOR_MAP[feat.color]} rounded-2xl flex items-center justify-center text-3xl mx-auto mb-4`}>
-                {feat.icon}
+        <div ref={ref} className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mt-12">
+          {FEATURES.map((feat, i) => (
+            <motion.div
+              key={feat.title}
+              initial={{ opacity: 0, y: 24 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ delay: i * 0.08, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+              className="bg-sport-card border border-sport-border rounded-2xl p-6 hover:border-sport-orange/40 hover:-translate-y-1 transition-all duration-200"
+            >
+              <div
+                className={`w-12 h-12 rounded-xl border flex items-center justify-center mb-4 ${COLOR_MAP[feat.color]}`}
+              >
+                {ICON_MAP[feat.icon]}
               </div>
-              <h3 className="text-sm font-bold text-primary-darker mb-2">{feat.title}</h3>
-              <p className="text-xs text-gray-500 leading-relaxed mb-3">{feat.description}</p>
-              <span className="inline-block bg-primary-light text-primary text-[10px] font-bold px-3 py-1 rounded-full">
+              <h3 className="text-sm font-bold text-white mb-2">{feat.title}</h3>
+              <p className="text-xs text-sport-gray leading-relaxed mb-4">{feat.description}</p>
+              <span
+                className={`inline-block text-[10px] font-bold px-3 py-1 rounded-full ${TAG_MAP[feat.color]}`}
+              >
                 {feat.tag}
               </span>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
