@@ -20,49 +20,67 @@ export const FEATURES = [
     icon: 'running',
     color: 'orange',
     title: 'Running & Cardio',
+    slug: 'running-cardio',
     description:
       'Programmes de course adaptés à tous les niveaux — du 5K au marathon. Plans personnalisés avec coaching GPS et suivi de fréquence cardiaque.',
     tag: 'Cardio',
+    levels: ['Débutant', 'Intermédiaire', 'Avancé', 'Élite'],
+    stats: ['+4 200 coureurs', '120+ plans', '12 semaines moy.'],
   },
   {
     icon: 'dumbbell',
     color: 'blue',
     title: 'Musculation',
+    slug: 'musculation',
     description:
       'Prise de masse, sèche ou tonification — nos coaches certifiés construisent ton programme sur mesure selon ta morphologie.',
     tag: 'Strength',
+    levels: ['Débutant', 'Intermédiaire', 'Avancé', 'Élite'],
+    stats: ['+3 800 membres', '90+ programmes', '8 semaines moy.'],
   },
   {
     icon: 'zap',
     color: 'orange',
     title: 'HIIT',
+    slug: 'hiit',
     description:
       'Séances courtes et intenses pour brûler un maximum de calories et booster ton métabolisme durablement en 20 à 30 min.',
     tag: 'Fat Burn',
+    levels: ['Débutant', 'Intermédiaire', 'Avancé'],
+    stats: ['+2 100 membres', '60+ circuits', '20-30 min / séance'],
   },
   {
     icon: 'bike',
     color: 'blue',
     title: 'Cyclisme',
+    slug: 'cyclisme',
     description:
       'Entraînements indoor et outdoor avec puissance-mètre. De la sportive au grimpeur de cols, un plan adapté à chaque profil.',
     tag: 'Endurance',
+    levels: ['Débutant', 'Intermédiaire', 'Avancé', 'Compétition'],
+    stats: ['+1 500 cyclistes', '45+ plans', '16 semaines moy.'],
   },
   {
     icon: 'waves',
     color: 'lime',
     title: 'Natation',
+    slug: 'natation',
     description:
       'Techniques de nage, préparation triathlon, open water — progressez dans tous les styles avec des drills vidéo HD.',
     tag: 'Aquatique',
+    levels: ['Débutant', 'Intermédiaire', 'Avancé', 'Triathlon'],
+    stats: ['+900 nageurs', '30+ programmes', '10 semaines moy.'],
   },
   {
     icon: 'flame',
     color: 'orange',
     title: 'CrossFit',
+    slug: 'crossfit',
     description:
       'WODs quotidiens, mouvements fonctionnels et challenges communautaires pour repousser tes limites chaque semaine.',
     tag: 'Functional',
+    levels: ['Débutant', 'Intermédiaire', 'RX', 'Compétition'],
+    stats: ['+1 800 athlètes', '365 WODs/an', '5× / semaine'],
   },
 ]
 

@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { Activity, Dumbbell, Zap, Bike, Waves, Flame, ArrowRight } from 'lucide-react'
 import Image from 'next/image'
+import Link from 'next/link'
 import { SectionHeader } from '@/components/ui/SectionHeader'
 import { FEATURES } from '@/lib/constants'
 
@@ -92,9 +93,12 @@ export function Features() {
               <div className="p-5">
                 <h3 className="text-sm font-bold text-white mb-1.5">{feat.title}</h3>
                 <p className="text-xs text-sport-gray leading-relaxed mb-4">{feat.description}</p>
-                <button className="flex items-center gap-1.5 text-xs font-bold text-sport-orange hover:gap-3 transition-all">
+                <Link
+                  href={`/disciplines/${feat.slug}`}
+                  className="flex items-center gap-1.5 text-xs font-bold text-sport-orange hover:gap-3 transition-all"
+                >
                   Découvrir <ArrowRight size={13} />
-                </button>
+                </Link>
               </div>
             </motion.div>
           ))}
