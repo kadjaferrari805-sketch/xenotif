@@ -38,7 +38,7 @@ export function Newsletter() {
 
         <p className="text-sport-gray mb-10 text-sm leading-relaxed max-w-md mx-auto">
           Reçois chaque semaine : programmes gratuits, conseils nutrition, tips
-          d&apos;entraînement et les WODs de la communauté Xenotif.
+          d&apos;entraînement et les WODs de la communauté Xenotif®.
         </p>
 
         <AnimatePresence mode="wait">

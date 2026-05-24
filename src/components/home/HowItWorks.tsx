@@ -13,7 +13,7 @@ export function HowItWorks() {
       <div className="max-w-6xl mx-auto">
         <SectionHeader
           label="Processus"
-          title="Comment rejoindre Xenotif"
+          title="Comment rejoindre Xenotif®"
           subtitle="4 étapes pour transformer ton entraînement pour toujours"
         />
         <div ref={ref} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">

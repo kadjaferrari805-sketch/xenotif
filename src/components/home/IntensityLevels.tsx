@@ -56,7 +56,7 @@ export function IntensityLevels() {
         <SectionHeader
           label="Niveaux"
           title="Un programme pour chaque athlète"
-          subtitle="De débutant à élite — Xenotif s'adapte à toi, pas l'inverse"
+          subtitle="De débutant à élite — Xenotif® s'adapte à toi, pas l'inverse"
         />
         <div
           ref={ref}

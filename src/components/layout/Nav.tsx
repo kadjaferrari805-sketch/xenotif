@@ -25,7 +25,7 @@ export function Nav() {
           <span className="w-8 h-8 bg-sport-orange rounded-lg flex items-center justify-center font-black text-base">
             X
           </span>
-          XENOTIF
+          XENOTIF®
         </Link>
 
         {/* Desktop links */}

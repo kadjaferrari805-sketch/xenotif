@@ -2,7 +2,7 @@ import { BRAND, FEATURES, REVIEWS, TRUST_ITEMS, STATS } from './constants'
 
 describe('constants', () => {
   it('brand has required fields', () => {
-    expect(BRAND.name).toBe('Xenotif')
+    expect(BRAND.name).toBe('Xenotif®')
     expect(BRAND.rating).toBe(4.9)
     expect(BRAND.members).toBe(12400)
   })

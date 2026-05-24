@@ -1,5 +1,5 @@
 export const BRAND = {
-  name: 'Xenotif',
+  name: 'Xenotif®',
   tagline: 'Forge ton corps. Dépasse tes limites.',
   members: 12400,
   programs: 50,
@@ -119,7 +119,7 @@ export const REVIEWS = [
     sport: 'Running · Marathon',
     date: 'Il y a 2 jours',
     rating: 5,
-    text: '"En 3 mois de programme Xenotif, j\'ai battu mon record sur marathon de 18 minutes. Le coaching IA est bluffant — chaque séance est parfaitement calibrée à mon niveau."',
+    text: '"En 3 mois de programme Xenotif®, j\'ai battu mon record sur marathon de 18 minutes. Le coaching IA est bluffant — chaque séance est parfaitement calibrée à mon niveau."',
   },
   {
     name: 'Leila M.',
@@ -128,7 +128,7 @@ export const REVIEWS = [
     sport: 'HIIT · Musculation',
     date: 'Il y a 5 jours',
     rating: 5,
-    text: '"J\'ai perdu 12 kg en 4 mois tout en gagnant en force. Les séances HIIT + muscu sont parfaitement équilibrées. La communauté Xenotif me motive chaque matin."',
+    text: '"J\'ai perdu 12 kg en 4 mois tout en gagnant en force. Les séances HIIT + muscu sont parfaitement équilibrées. La communauté Xenotif® me motive chaque matin."',
   },
   {
     name: 'Nicolas R.',
@@ -137,7 +137,7 @@ export const REVIEWS = [
     sport: 'CrossFit · Natation',
     date: 'Il y a 1 semaine',
     rating: 5,
-    text: '"Préparation triathlon avec Xenotif — résultat incroyable. J\'ai terminé mon premier Ironman grâce à cette plateforme. Merci Xenotif !"',
+    text: '"Préparation triathlon avec Xenotif® — résultat incroyable. J\'ai terminé mon premier Ironman grâce à cette plateforme. Merci Xenotif® !"',
   },
 ]
 

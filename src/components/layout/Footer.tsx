@@ -32,7 +32,7 @@ export function Footer() {
               <span className="w-8 h-8 bg-sport-orange rounded-lg flex items-center justify-center font-black text-white text-sm">
                 X
               </span>
-              <span className="font-black text-white text-lg tracking-wider">XENOTIF</span>
+              <span className="font-black text-white text-lg tracking-wider">XENOTIF®</span>
             </div>
             <p className="text-sm text-sport-gray leading-relaxed">
               La plateforme sport ultime pour athlètes de tous niveaux. Performance, coaching IA
@@ -63,7 +63,7 @@ export function Footer() {
       </div>
 
       <div className="bg-[#06070A] border-t border-sport-border px-6 py-4 flex flex-col md:flex-row justify-between items-center gap-2 text-xs text-sport-gray">
-        <span>© 2025 Xenotif — Tous droits réservés</span>
+        <span>© 2025 Xenotif® — Tous droits réservés</span>
         <span>Conçu pour les athlètes · Propulsé par l&apos;IA</span>
       </div>
     </footer>

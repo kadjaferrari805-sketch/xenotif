@@ -4,7 +4,7 @@ import { Footer } from './Footer'
 describe('Footer', () => {
   it('renders brand name', () => {
     render(<Footer />)
-    expect(screen.getByText('XENOTIF')).toBeInTheDocument()
+    expect(screen.getByText('XENOTIF®')).toBeInTheDocument()
   })
 
   it('renders main column headings', () => {
@@ -16,6 +16,6 @@ describe('Footer', () => {
 
   it('renders copyright', () => {
     render(<Footer />)
-    expect(screen.getByText(/2025 Xenotif/i)).toBeInTheDocument()
+    expect(screen.getByText(/2025 Xenotif®/i)).toBeInTheDocument()
   })
 })
