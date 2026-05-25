@@ -1,15 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server'
 import Stripe from 'stripe'
 
-const PLAN_PRICES: Record<string, string | undefined> = {
-  pro: process.env.STRIPE_PRICE_PRO,
-  elite: process.env.STRIPE_PRICE_ELITE,
-}
-
 export async function POST(req: NextRequest) {
   try {
-    if (!process.env.STRIPE_SECRET_KEY) {
-      console.error('STRIPE_SECRET_KEY is not set')
+    const secretKey = process.env.STRIPE_SECRET_KEY
+    if (!secretKey) {
+      console.error('ENV CHECK — STRIPE_SECRET_KEY: missing | STRIPE_PRICE_PRO:', process.env.STRIPE_PRICE_PRO ? 'ok' : 'missing', '| STRIPE_PRICE_ELITE:', process.env.STRIPE_PRICE_ELITE ? 'ok' : 'missing')
       return NextResponse.json({ error: 'Configuration serveur manquante.' }, { status: 500 })
     }
 
@@ -19,13 +15,13 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Plan invalide.' }, { status: 400 })
     }
 
-    const priceId = PLAN_PRICES[plan]
+    const priceId = plan === 'pro' ? process.env.STRIPE_PRICE_PRO : process.env.STRIPE_PRICE_ELITE
     if (!priceId) {
-      console.error(`STRIPE_PRICE_${plan.toUpperCase()} is not set`)
+      console.error(`STRIPE_PRICE_${(plan as string).toUpperCase()} is not set`)
       return NextResponse.json({ error: 'Ce plan n\'est pas encore configuré.' }, { status: 500 })
     }
 
-    const stripe = new Stripe(process.env.STRIPE_SECRET_KEY)
+    const stripe = new Stripe(secretKey)
     const baseUrl = process.env.NEXT_PUBLIC_URL ?? 'https://xenotif.vercel.app'
 
     const session = await stripe.checkout.sessions.create({
