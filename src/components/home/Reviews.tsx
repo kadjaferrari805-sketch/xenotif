@@ -2,14 +2,21 @@
 
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-import { Star, Quote, CheckCircle } from 'lucide-react'
+import { Star, Quote, CheckCircle, TrendingUp } from 'lucide-react'
 import { SectionHeader } from '@/components/ui/SectionHeader'
 import { REVIEWS } from '@/lib/constants'
 
 const AVATAR_BG: Record<string, string> = {
-  orange: 'bg-sport-orange',
-  blue: 'bg-sport-blue',
-  lime: 'bg-sport-lime text-[#0A0B0F]',
+  orange: 'bg-gradient-to-br from-sport-orange to-orange-700',
+  blue:   'bg-gradient-to-br from-sport-blue to-blue-700',
+  lime:   'bg-gradient-to-br from-sport-lime to-lime-400 text-[#0A0B0F]',
+}
+
+const RESULTS = ['+18 min de PR marathon', '-12 kg en 4 mois', 'Ironman terminé']
+const BORDER_HOVER: Record<string, string> = {
+  orange: 'hover:border-sport-orange/40',
+  blue:   'hover:border-sport-blue/40',
+  lime:   'hover:border-sport-lime/30',
 }
 
 export function Reviews() {
@@ -31,8 +38,8 @@ export function Reviews() {
               key={review.name}
               initial={{ opacity: 0, y: 24 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: i * 0.12, duration: 0.5 }}
-              className="card-base p-6 flex flex-col hover:border-sport-border/60 transition-colors"
+              transition={{ delay: i * 0.12, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+              className={`card-base p-6 flex flex-col transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl ${BORDER_HOVER[review.color] ?? ''}`}
             >
               {/* Stars */}
               <div className="flex gap-0.5 mb-4" aria-label={`Note : ${review.rating} étoiles sur 5`}>
@@ -41,19 +48,23 @@ export function Reviews() {
                 ))}
               </div>
 
-              {/* Quote icon */}
-              <Quote size={24} aria-hidden="true" className="text-sport-orange/25 mb-3 shrink-0" />
+              {/* Result badge */}
+              <div className="inline-flex items-center gap-1.5 bg-emerald-500/10 border border-emerald-500/25 text-emerald-400 text-[10px] font-bold px-2.5 py-1 rounded-full mb-4 w-fit">
+                <TrendingUp size={10} aria-hidden="true" />
+                {RESULTS[i]}
+              </div>
 
-              {/* Review text */}
+              {/* Quote */}
+              <Quote size={22} aria-hidden="true" className="text-sport-orange/20 mb-3 shrink-0" />
+
               <blockquote className="text-sm text-sport-gray leading-relaxed flex-1 mb-6">
                 {review.text}
               </blockquote>
 
               {/* Author */}
               <footer className="flex items-center gap-3 pt-5 border-t border-sport-border">
-                {/* Avatar with initials */}
                 <div
-                  className={`w-11 h-11 rounded-full flex items-center justify-center font-black text-sm shrink-0 text-white ${AVATAR_BG[review.color] ?? 'bg-sport-orange'}`}
+                  className={`w-11 h-11 rounded-full flex items-center justify-center font-black text-sm shrink-0 text-white shadow-md ${AVATAR_BG[review.color] ?? AVATAR_BG.orange}`}
                   aria-hidden="true"
                 >
                   {review.initial}
@@ -73,22 +84,39 @@ export function Reviews() {
           ))}
         </div>
 
-        {/* Global rating */}
+        {/* Global rating summary */}
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={inView ? { opacity: 1 } : {}}
+          initial={{ opacity: 0, y: 12 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 0.5, duration: 0.5 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-3 mt-10"
+          className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-12"
         >
-          <div className="flex gap-0.5" aria-hidden="true">
-            {Array.from({ length: 5 }).map((_, i) => (
-              <Star key={i} size={16} className="fill-sport-orange text-sport-orange" />
+          <div className="flex flex-col items-center sm:items-start">
+            <div className="flex gap-0.5 mb-1" aria-hidden="true">
+              {Array.from({ length: 5 }).map((_, i) => (
+                <Star key={i} size={18} className="fill-sport-orange text-sport-orange" />
+              ))}
+            </div>
+            <p className="text-sm text-sport-gray">
+              <strong className="text-white text-base">4.9 / 5</strong>{' '}
+              basé sur <strong className="text-white">3 200+</strong> avis vérifiés
+            </p>
+          </div>
+
+          <div className="hidden sm:block w-px h-10 bg-sport-border" aria-hidden="true" />
+
+          <div className="flex gap-6 text-center">
+            {[
+              { value: '97%', label: 'Satisfaits' },
+              { value: '4.2×', label: 'Plus rapide' },
+              { value: '30j', label: 'Premiers résultats' },
+            ].map(({ value, label }) => (
+              <div key={label}>
+                <p className="text-lg font-black text-white">{value}</p>
+                <p className="text-[10px] text-sport-gray uppercase tracking-wider">{label}</p>
+              </div>
             ))}
           </div>
-          <p className="text-sm text-sport-gray">
-            <strong className="text-white">4.9 / 5</strong> basé sur{' '}
-            <strong className="text-white">3 200+</strong> avis vérifiés
-          </p>
         </motion.div>
       </div>
     </section>

@@ -1,39 +1,71 @@
 'use client'
 
+import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { Users, BookOpen, Layers, Star } from 'lucide-react'
 
 const STATS = [
-  { Icon: Users, value: '12 000+', label: 'Athlètes actifs', sublabel: 'dans le monde entier' },
-  { Icon: BookOpen, value: '50+', label: 'Programmes', sublabel: 'tous niveaux' },
-  { Icon: Layers, value: '6', label: 'Disciplines', sublabel: 'sport complet' },
-  { Icon: Star, value: '4.9 / 5', label: 'Satisfaction', sublabel: '3 200+ avis vérifiés' },
+  { Icon: Users,    end: 12000, suffix: '+', label: 'Athlètes actifs',  sublabel: 'dans le monde entier', color: 'text-sport-orange', bg: 'bg-sport-orange/10 border-sport-orange/20' },
+  { Icon: BookOpen, end: 50,    suffix: '+', label: 'Programmes',       sublabel: 'tous niveaux',         color: 'text-sport-blue',   bg: 'bg-sport-blue/10 border-sport-blue/20' },
+  { Icon: Layers,   end: 6,     suffix: '',  label: 'Disciplines',      sublabel: 'sport complet',        color: 'text-sport-lime',   bg: 'bg-sport-lime/10 border-sport-lime/20' },
+  { Icon: Star,     end: 49,    suffix: '/5',label: 'Satisfaction',     sublabel: '3 200+ avis vérifiés', color: 'text-sport-orange', bg: 'bg-sport-orange/10 border-sport-orange/20', decimal: true },
 ]
 
+function Counter({ end, suffix, decimal, active }: { end: number; suffix: string; decimal?: boolean; active: boolean }) {
+  const [count, setCount] = useState(0)
+
+  useEffect(() => {
+    if (!active) return
+    let startTime: number | null = null
+    const duration = 1800
+
+    function step(timestamp: number) {
+      if (!startTime) startTime = timestamp
+      const elapsed = timestamp - startTime
+      const progress = Math.min(elapsed / duration, 1)
+      // Ease-out cubic
+      const eased = 1 - Math.pow(1 - progress, 3)
+      setCount(Math.floor(eased * end))
+      if (progress < 1) requestAnimationFrame(step)
+      else setCount(end)
+    }
+    requestAnimationFrame(step)
+  }, [active, end])
+
+  const display = decimal ? (count / 10).toFixed(1) : count >= 1000 ? `${Math.floor(count / 1000)} ${String(count % 1000).padStart(3, '0')}` : String(count)
+
+  return <>{display}{suffix}</>
+}
+
 export function ProofBar() {
-  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 })
+  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.15 })
 
   return (
-    <section aria-label="Chiffres clés" className="bg-sport-card border-y border-sport-border py-14 px-6">
-      <div className="max-w-6xl mx-auto" ref={ref}>
+    <section aria-label="Chiffres clés" className="bg-sport-card border-y border-sport-border py-14 px-6 relative overflow-hidden">
+      {/* subtle grid pattern */}
+      <div aria-hidden="true" className="absolute inset-0 opacity-[0.03]" style={{backgroundImage: 'linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)', backgroundSize: '40px 40px'}} />
+
+      <div className="max-w-6xl mx-auto relative" ref={ref}>
         <dl className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4">
           {STATS.map((stat, i) => (
             <motion.div
               key={stat.label}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 24 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: i * 0.1, duration: 0.5 }}
-              className="flex flex-col items-center text-center gap-1.5"
+              transition={{ delay: i * 0.1, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+              className="flex flex-col items-center text-center gap-1.5 group"
             >
               <div
                 aria-hidden="true"
-                className="w-11 h-11 rounded-xl bg-sport-orange/10 border border-sport-orange/20 flex items-center justify-center mb-2"
+                className={`w-12 h-12 rounded-xl border flex items-center justify-center mb-3 group-hover:scale-110 transition-transform ${stat.bg}`}
               >
-                <stat.Icon size={18} className="text-sport-orange" />
+                <stat.Icon size={20} className={stat.color} />
               </div>
-              <dt className="text-3xl font-black text-white">{stat.value}</dt>
-              <dd className="text-xs font-bold text-white uppercase tracking-widest">{stat.label}</dd>
+              <dt className={`text-4xl font-black ${stat.color} tabular-nums`}>
+                <Counter end={stat.end} suffix={stat.suffix} decimal={stat.decimal} active={inView} />
+              </dt>
+              <dd className="text-xs font-bold text-white uppercase tracking-widest mt-1">{stat.label}</dd>
               <span className="text-[11px] text-sport-gray">{stat.sublabel}</span>
             </motion.div>
           ))}

@@ -1,4 +1,5 @@
 import { Hero } from '@/components/home/Hero'
+import { MarqueeStrip } from '@/components/home/MarqueeStrip'
 import { ProofBar } from '@/components/home/ProofBar'
 import { Features } from '@/components/home/Features'
 import { HowItWorks } from '@/components/home/HowItWorks'
@@ -13,6 +14,7 @@ export default function HomePage() {
   return (
     <>
       <Hero />
+      <MarqueeStrip />
       <ProofBar />
       <Features />
       <HowItWorks />
