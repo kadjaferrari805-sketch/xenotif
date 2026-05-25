@@ -32,6 +32,14 @@ export interface ProgramWeek {
   sessions: { name: string; detail: string }[]
 }
 
+export interface Exercise {
+  name: string
+  muscles: string
+  sets: string
+  difficulty: 'Débutant' | 'Intermédiaire' | 'Avancé' | 'Tous niveaux'
+  description: string
+}
+
 export interface DisciplineContent {
   tagline: string
   heroStat: string
@@ -43,6 +51,7 @@ export interface DisciplineContent {
   }
   tips: ExpertTip[]
   videos: DisciplineVideo[]
+  exercises: Exercise[]
   program: ProgramWeek[]
   faq: DisciplineFAQ[]
 }
@@ -128,6 +137,40 @@ const runningContent: DisciplineContent = {
       level: 'Avancé',
       thumbnail: 'https://img.youtube.com/vi/_kGESn8ArrU/maxresdefault.jpg',
     },
+    {
+      youtubeId: 'KxKJEIqS1HQ',
+      title: 'Séance interval run 20 min',
+      description: 'Entraînement fractionné complet de 20 minutes — alternance sprints et récupération pour progresser vite.',
+      duration: '20 min',
+      level: 'Intermédiaire',
+      thumbnail: 'https://img.youtube.com/vi/KxKJEIqS1HQ/maxresdefault.jpg',
+    },
+    {
+      youtubeId: 'HFUz5qazxn0',
+      title: 'Conseils pour les intervalles',
+      description: 'Comment bien structurer ses intervalles pour maximiser la progression en course à pied.',
+      duration: '11 min',
+      level: 'Tous niveaux',
+      thumbnail: 'https://img.youtube.com/vi/HFUz5qazxn0/maxresdefault.jpg',
+    },
+    {
+      youtubeId: 'fbATY-sbqA8',
+      title: 'Pourquoi faire des intervalles ?',
+      description: 'La science derrière le fractionné — comment et pourquoi les intervalles boostent vos performances.',
+      duration: '13 min',
+      level: 'Débutant',
+      thumbnail: 'https://img.youtube.com/vi/fbATY-sbqA8/maxresdefault.jpg',
+    },
+  ],
+  exercises: [
+    { name: 'Fentes marchées', muscles: 'Quadriceps, fessiers, ischio-jambiers', sets: '3×12/jambe', difficulty: 'Débutant', description: 'Fais un grand pas en avant, descends le genou arrière près du sol, puis pousse sur le pied avant pour ramener l\'autre jambe. Maintiens le dos droit.' },
+    { name: 'Squat sauté', muscles: 'Quadriceps, fessiers, cardio', sets: '3×15', difficulty: 'Intermédiaire', description: 'Descends en squat parallèle puis explose vers le haut. Atterris doucement en fléchissant les genoux pour amortir. Renforce la puissance propulsive.' },
+    { name: 'Step-up sur caisse', muscles: 'Quadriceps, fessiers, stabilisateurs', sets: '3×10/jambe', difficulty: 'Débutant', description: 'Pose un pied sur une caisse ou step, pousse pour monter, redescends lentement. Simule la montée de côtes en course.' },
+    { name: 'Jumping lunges', muscles: 'Quadriceps, fessiers, explosivité', sets: '3×10/jambe', difficulty: 'Intermédiaire', description: 'Depuis la position de fente, saute et échange les jambes en l\'air. Excellent pour développer la puissance et l\'endurance des membres inférieurs.' },
+    { name: 'Single-leg deadlift', muscles: 'Ischio-jambiers, fessiers, équilibre', sets: '3×8/jambe', difficulty: 'Avancé', description: 'Penche-toi en avant sur une jambe en gardant le dos plat, l\'autre jambe s\'étend derrière. Reviens à la verticale sans poser le pied. Renforce proprioception.' },
+    { name: 'Box jumps', muscles: 'Quadriceps, mollets, explosivité', sets: '4×8', difficulty: 'Avancé', description: 'Saute sur une boîte en deux pieds, absorbe l\'atterrissage en demi-squat. Descends par l\'extérieur. Améliore la puissance explosive des membres inférieurs.' },
+    { name: 'Running A-drills', muscles: 'Fléchisseurs de hanche, cadence', sets: '3×20 m', difficulty: 'Débutant', description: 'Marche en montant les genoux haut à chaque pas, bras en rythme. Améliore la mécanique de course et la cadence en travaillant l\'activation des hanches.' },
+    { name: 'Planche latérale', muscles: 'Obliques, stabilité latérale', sets: '3×30 s/côté', difficulty: 'Débutant', description: 'Appui sur le coude et le côté du pied, corps en ligne droite. Renforce les muscles latéraux du tronc indispensables au maintien de la posture en course.' },
   ],
   program: [
     {
@@ -257,6 +300,42 @@ const musculationContent: DisciplineContent = {
       level: 'Intermédiaire',
       thumbnail: 'https://img.youtube.com/vi/gNdZuaYZz7E/maxresdefault.jpg',
     },
+    {
+      youtubeId: 'KzBvZ0KZ27k',
+      title: 'Meilleur programme développé couché',
+      description: 'Comment construire un programme efficace pour le bench press — progression, variations et erreurs à éviter.',
+      duration: '17 min',
+      level: 'Intermédiaire',
+      thumbnail: 'https://img.youtube.com/vi/KzBvZ0KZ27k/maxresdefault.jpg',
+    },
+    {
+      youtubeId: 'pxls2vBxFVs',
+      title: 'Technique développé couché parfaite',
+      description: 'Maîtrise la technique du bench press de A à Z — grip, arc, descente de barre et explosivité.',
+      duration: '14 min',
+      level: 'Tous niveaux',
+      thumbnail: 'https://img.youtube.com/vi/pxls2vBxFVs/maxresdefault.jpg',
+    },
+    {
+      youtubeId: 'rMmywzMtMYI',
+      title: 'SBD pour débutants — Squat, Bench, Deadlift',
+      description: 'Introduction aux trois mouvements fondamentaux de la force — tout ce qu\'un débutant doit savoir.',
+      duration: '20 min',
+      level: 'Débutant',
+      thumbnail: 'https://img.youtube.com/vi/rMmywzMtMYI/maxresdefault.jpg',
+    },
+  ],
+  exercises: [
+    { name: 'Squat barre', muscles: 'Quadriceps, fessiers, ischio-jambiers, dos', sets: '4×8', difficulty: 'Tous niveaux', description: 'Barre en position haute dorsale, pieds à largeur d\'épaules. Descend jusqu\'au parallèle en gardant les genoux dans l\'axe des pieds. Le roi des exercices de musculation.' },
+    { name: 'Deadlift', muscles: 'Dos entier, fessiers, ischio-jambiers, trapèzes', sets: '4×5', difficulty: 'Intermédiaire', description: 'Attrape la barre en pronation, dos plat, hanches basses. Pousse dans le sol et tire jusqu\'à l\'extension complète. Mouvement fondamental pour la force totale.' },
+    { name: 'Développé couché', muscles: 'Pectoraux, triceps, deltoïde antérieur', sets: '4×8', difficulty: 'Tous niveaux', description: 'Allongé sur le banc, barre au niveau de la poitrine. Pousse verticalement sans rebond. L\'exercice de référence pour développer la poitrine et les triceps.' },
+    { name: 'Tractions / Pull-ups', muscles: 'Grand dorsal, biceps, rhomboïdes', sets: '4×AMRAP', difficulty: 'Intermédiaire', description: 'Suspendu à la barre, prise en pronation. Tire jusqu\'au menton au-dessus de la barre. Meilleur exercice pour l\'épaisseur et la largeur du dos.' },
+    { name: 'Overhead Press', muscles: 'Épaules, triceps, trapèzes', sets: '4×8', difficulty: 'Intermédiaire', description: 'Barre au niveau des clavicules, pousse verticalement jusqu\'à extension complète. Rentre la tête dans les épaules en fin de mouvement pour un verrouillage sûr.' },
+    { name: 'Romanian Deadlift', muscles: 'Ischio-jambiers, fessiers, bas du dos', sets: '3×10', difficulty: 'Intermédiaire', description: 'Barre tenue devant les cuisses, penche le buste en avant en gardant le dos plat et les genoux légèrement fléchis. Excellent pour l\'hypertrophie des ischios.' },
+    { name: 'Dips', muscles: 'Pectoraux, triceps, deltoïde antérieur', sets: '3×12', difficulty: 'Intermédiaire', description: 'Appui sur les barres parallèles, descends jusqu\'à ce que les bras soient à 90°, remonte sans hyperextension des coudes. Ajoute un lest quand c\'est trop facile.' },
+    { name: 'Rowing barre', muscles: 'Grand dorsal, rhomboïdes, biceps, trapèzes', sets: '4×8', difficulty: 'Avancé', description: 'Penché à 45°, barre au sol, tire jusqu\'au bas de la poitrine. Volume sur les muscles du dos indispensable pour un dos épais et un équilibre musculaire optimal.' },
+    { name: 'Leg press', muscles: 'Quadriceps, fessiers, mollets', sets: '3×12', difficulty: 'Débutant', description: 'Machine leg press : pieds à largeur d\'épaules, descends jusqu\'au 90° puis pousse. Idéal pour augmenter le volume sur les jambes sans charger la colonne.' },
+    { name: 'Face pull', muscles: 'Deltoïde postérieur, coiffe des rotateurs, rhomboïdes', sets: '3×20', difficulty: 'Tous niveaux', description: 'Poulie haute, tire la corde vers le visage en écartant les mains. Indispensable pour la santé des épaules et contre-balancer le volume en développé couché.' },
   ],
   program: [
     {
@@ -386,6 +465,41 @@ const hiitContent: DisciplineContent = {
       level: 'Intermédiaire',
       thumbnail: 'https://img.youtube.com/vi/NvHsieMfZxU/maxresdefault.jpg',
     },
+    {
+      youtubeId: 'V4MqB6q3w44',
+      title: 'Tabata 24 min — Niveau avancé',
+      description: 'Séance Tabata intense pour sportifs confirmés — 24 minutes de travail à haute intensité.',
+      duration: '24 min',
+      level: 'Avancé',
+      thumbnail: 'https://img.youtube.com/vi/V4MqB6q3w44/maxresdefault.jpg',
+    },
+    {
+      youtubeId: '1u5eO7AvPjk',
+      title: 'Tabata Full Body 24 min',
+      description: 'Circuit Tabata complet : full body, 24 minutes, sans équipement — brûle calories et booste le cardio.',
+      duration: '24 min',
+      level: 'Intermédiaire',
+      thumbnail: 'https://img.youtube.com/vi/1u5eO7AvPjk/maxresdefault.jpg',
+    },
+    {
+      youtubeId: 'aoKrGARP634',
+      title: 'Tabata + Force 42 min',
+      description: 'Combinaison Tabata et musculation en 42 minutes — le meilleur des deux mondes pour la condition physique.',
+      duration: '42 min',
+      level: 'Avancé',
+      thumbnail: 'https://img.youtube.com/vi/aoKrGARP634/maxresdefault.jpg',
+    },
+  ],
+  exercises: [
+    { name: 'Burpees', muscles: 'Full body, cardio', sets: '3×15', difficulty: 'Intermédiaire', description: 'Position debout, descends en squat, pose les mains, étends les jambes en position pompe, fais une pompe, ramène les pieds, saute. L\'exercice HIIT ultime.' },
+    { name: 'Mountain climbers', muscles: 'Abdominaux, fléchisseurs de hanche, cardio', sets: '3×30 s', difficulty: 'Débutant', description: 'Position de planche haute, ramène les genoux vers la poitrine en alternance à vitesse maximum. Maintiens le bassin stable et les hanches basses.' },
+    { name: 'Squat jumps', muscles: 'Quadriceps, fessiers, explosivité cardio', sets: '3×15', difficulty: 'Intermédiaire', description: 'Squat à 90° puis explose vers le haut en sautant, bras propulsés. Atterris en amortissant avec les genoux fléchis. Développe la puissance et le cardio simultanément.' },
+    { name: 'High knees', muscles: 'Fléchisseurs de hanche, cardio', sets: '3×30 s', difficulty: 'Débutant', description: 'Course sur place en montant les genoux à hauteur des hanches. Bras en rythme à 90°. Excellent échauffement HIIT ou exercice d\'intensification cardio.' },
+    { name: 'Ice skaters', muscles: 'Fessiers, abducteurs, coordination cardio', sets: '3×20/côté', difficulty: 'Intermédiaire', description: 'Saute latéralement d\'un pied à l\'autre en mimant le patineur. Touche le sol avec la main opposée au pied d\'appui. Travaille les déplacements latéraux et le cardio.' },
+    { name: 'Push-up clapping', muscles: 'Pectoraux, triceps, explosivité', sets: '3×10', difficulty: 'Avancé', description: 'Pompe explosive avec claquement des mains en l\'air avant de revenir. Nécessite une bonne base de pompes classiques. Développe la puissance du haut du corps.' },
+    { name: 'Box jumps', muscles: 'Quadriceps, mollets, puissance cardio', sets: '4×10', difficulty: 'Intermédiaire', description: 'Monte sur une caisse en sautant, amortis en demi-squat. Descends par l\'extérieur. Hauteur progressive : 40, 50, 60, 70 cm selon le niveau.' },
+    { name: 'Planche dynamique', muscles: 'Abdominaux, épaules, gainage', sets: '3×30 s', difficulty: 'Intermédiaire', description: 'Depuis la planche haute, descends sur les avant-bras et remonte en alternant les bras. Garde les hanches stables et évite la rotation du bassin.' },
+    { name: 'Sprint 30 m', muscles: 'Cardio max, quadriceps, mollets', sets: '10×30 m', difficulty: 'Avancé', description: 'Sprint à 100 % de la vitesse maximale sur 30 mètres. Récupération complète (90 s) entre chaque. Développe la puissance anaérobie et la vitesse de pointe.' },
   ],
   program: [
     {
@@ -514,6 +628,40 @@ const cyclismeContent: DisciplineContent = {
       level: 'Avancé',
       thumbnail: 'https://img.youtube.com/vi/IKhK5RQ2RXI/maxresdefault.jpg',
     },
+    {
+      youtubeId: '5e5qS3t17gg',
+      title: 'HIIT Indoor Cycling — Zwift workout',
+      description: 'Séance HIIT à l\'intérieur sur hometrainer — structure d\'entraînement par intervalles avec Zwift.',
+      duration: '30 min',
+      level: 'Intermédiaire',
+      thumbnail: 'https://img.youtube.com/vi/5e5qS3t17gg/maxresdefault.jpg',
+    },
+    {
+      youtubeId: '_NQE6XbcTcA',
+      title: 'Débuter le cyclisme indoor',
+      description: 'Guide complet pour commencer le vélo d\'appartement — matériel, réglages, premières séances structurées.',
+      duration: '16 min',
+      level: 'Débutant',
+      thumbnail: 'https://img.youtube.com/vi/_NQE6XbcTcA/maxresdefault.jpg',
+    },
+    {
+      youtubeId: '17HZsFrbZLs',
+      title: 'Indoor cycling — 30 min intervalles',
+      description: 'Séance de 30 minutes avec intervalles progressifs sur vélo d\'intérieur — parfait pour progresser rapidement.',
+      duration: '30 min',
+      level: 'Intermédiaire',
+      thumbnail: 'https://img.youtube.com/vi/17HZsFrbZLs/maxresdefault.jpg',
+    },
+  ],
+  exercises: [
+    { name: 'Pédalage unijambiste', muscles: 'Quadriceps, fessiers, technique pédalage', sets: '3×2 min/jambe', difficulty: 'Tous niveaux', description: 'Pédale avec une seule jambe pendant 2 minutes, l\'autre repose sur le cadre. Révèle les points faibles du coup de pédale et corrige les asymétries de puissance.' },
+    { name: 'Sprints sur vélo 30 s', muscles: 'Puissance anaérobie, quadriceps, mollets', sets: '8×30 s', difficulty: 'Intermédiaire', description: 'Sprint maximum pendant 30 secondes, récupération 4 min en pédalage léger. Développe la puissance de pointe et la capacité à accélérer dans les finales.' },
+    { name: 'Sweet spot 2×20 min', muscles: 'Endurance seuil, cardio-respiratoire', sets: '2×20 min', difficulty: 'Intermédiaire', description: 'Pédale à 88–95 % de ton FTP pendant 20 minutes avec 5 min de repos entre. Le meilleur rapport bénéfice/fatigue pour progresser en cyclisme.' },
+    { name: 'Cadence drills 100+ RPM', muscles: 'Technique, efficacité musculaire', sets: '5×3 min', difficulty: 'Débutant', description: 'Pédale à cadence élevée (100+ RPM) en braquet léger pendant 3 min. Améliore la fluidité du coup de pédale et réduit la charge sur les genoux.' },
+    { name: 'Squat bulgare (cross-training)', muscles: 'Quadriceps, fessiers, stabilité', sets: '3×10/jambe', difficulty: 'Intermédiaire', description: 'Pied arrière posé sur un banc, descends en fente profonde. Renforce les jambes de façon asymétrique, corrige les déséquilibres droite/gauche courants en cyclisme.' },
+    { name: 'Gainage planche', muscles: 'Core, stabilité lombaire', sets: '3×45 s', difficulty: 'Débutant', description: 'Appui sur les avant-bras et les pointes des pieds, corps en ligne droite. Un core fort permet de transmettre la puissance des jambes efficacement sur le vélo.' },
+    { name: 'Étirements fléchisseurs de hanche', muscles: 'Psoas, fléchisseurs de hanche', sets: '3×60 s/côté', difficulty: 'Tous niveaux', description: 'En fente basse, maintiens la position en allongeant le psoas. Les fléchisseurs raccourcis en cyclisme réduisent la puissance et augmentent le risque de lombalgie.' },
+    { name: 'Climbing intervals 5 min', muscles: 'Puissance/poids, cardio seuil', sets: '5×5 min', difficulty: 'Avancé', description: 'En montée réelle ou simulée (pente > 5 %), maintiens une cadence de 70–75 RPM à 95–100 % FTP. Développe le rapport puissance/poids indispensable pour grimper.' },
   ],
   program: [
     {
@@ -642,6 +790,41 @@ const natationContent: DisciplineContent = {
       level: 'Débutant',
       thumbnail: 'https://img.youtube.com/vi/DUpfLigoWEc/maxresdefault.jpg',
     },
+    {
+      youtubeId: 'K5RMFjHBPHE',
+      title: 'Les 4 meilleurs drills de dos crawlé',
+      description: 'Quatre exercices ciblés pour améliorer ta technique de dos crawlé — rotation, entrée de bras, position.',
+      duration: '12 min',
+      level: 'Intermédiaire',
+      thumbnail: 'https://img.youtube.com/vi/K5RMFjHBPHE/maxresdefault.jpg',
+    },
+    {
+      youtubeId: 'WiMMuE7P7P4',
+      title: '3 drills de brasse essentiels',
+      description: 'Trois exercices clés pour perfectionner ta brasse — coordination bras-jambes, glisse et timing.',
+      duration: '10 min',
+      level: 'Tous niveaux',
+      thumbnail: 'https://img.youtube.com/vi/WiMMuE7P7P4/maxresdefault.jpg',
+    },
+    {
+      youtubeId: 'aU7sdctpxck',
+      title: 'Maîtriser le dos crawlé — 6 drills',
+      description: 'Six exercices progressifs pour maîtriser le dos crawlé de la technique de base aux niveaux avancés.',
+      duration: '18 min',
+      level: 'Avancé',
+      thumbnail: 'https://img.youtube.com/vi/aU7sdctpxck/maxresdefault.jpg',
+    },
+  ],
+  exercises: [
+    { name: 'Crawl drills catch-up', muscles: 'Épaules, grand dorsal, technique bras', sets: '6×50 m', difficulty: 'Tous niveaux', description: 'Nage en attendant que la main avant touche l\'autre avant de démarrer le bras suivant. Améliore l\'extension du bras et la rotation des hanches.' },
+    { name: 'Planche jambes', muscles: 'Fléchisseurs de cheville, quadriceps, technique kick', sets: '4×25 m', difficulty: 'Débutant', description: 'Tiens la planche devant toi à bout de bras et travaille uniquement les jambes. Battements petits et rapides depuis les hanches, genoux légèrement fléchis.' },
+    { name: 'Pull-buoy bras', muscles: 'Épaules, grand dorsal, pectoraux', sets: '4×50 m', difficulty: 'Débutant', description: 'Pull-buoy entre les cuisses, travaille uniquement les bras. Concentration maximale sur la traction dans l\'eau et le catch en haut du mouvement.' },
+    { name: 'Flip-turn isolé', muscles: 'Technique virage, abdominaux', sets: '3×10 virages', difficulty: 'Intermédiaire', description: 'Approche le mur à 1 m, exécute la roulade complète et pousse fort sur le mur. Pratique les virages hors de l\'eau d\'abord. Peut faire gagner 2–3 s aux 100 m.' },
+    { name: 'Intervals 10×100 m', muscles: 'Endurance aérobie, cardio-respiratoire', sets: '10×100 m', difficulty: 'Intermédiaire', description: 'Nage 100 m à 85 % de ta vitesse max, départ toutes les 2 min. Compte tes longueurs et chronomètre chaque 100 m pour suivre la régularité.' },
+    { name: 'Sprints 50 m', muscles: 'Vitesse maximale, puissance bras', sets: '8×50 m', difficulty: 'Avancé', description: 'Départ plongé ou culbute, sprint à 100 % sur 50 m. Récupération complète de 2 min entre chaque. Développe la vitesse de pointe et l\'explosivité en nage.' },
+    { name: 'Nage avec plaquettes', muscles: 'Force appuis eau, épaules, dos', sets: '4×50 m', difficulty: 'Intermédiaire', description: 'Plaquettes aux mains pour augmenter la surface d\'appui. Améliore la force et la proprioception de la prise d\'eau. Ne pas utiliser plus de 20 % du volume total.' },
+    { name: 'Brasse technique lente', muscles: 'Coordination globale, hanches, genoux', sets: '6×50 m', difficulty: 'Tous niveaux', description: 'Brasse très lente avec accent sur la glisse : après chaque traction, les bras s\'étendent en avant et les jambes se rejoignent — maintiens la glisse 2 s minimum.' },
+    { name: 'Dos crawlé', muscles: 'Trapèzes, grand dorsal, épaules, coordination', sets: '4×50 m', difficulty: 'Débutant', description: 'Sur le dos, entrée du bras dans l\'axe de l\'épaule, rotation des hanches à 45°. Regard vers le plafond, oreilles dans l\'eau. Travaille la coordination dos/bras.' },
   ],
   program: [
     {
@@ -770,6 +953,42 @@ const crossfitContent: DisciplineContent = {
       level: 'Intermédiaire',
       thumbnail: 'https://img.youtube.com/vi/XwmDh9qQtTc/maxresdefault.jpg',
     },
+    {
+      youtubeId: 'tCbRldfx7jk',
+      title: 'J\'ai essayé le WOD Murph',
+      description: 'Retour d\'expérience complet sur le WOD Murph — préparation, stratégie et ressenti après l\'effort.',
+      duration: '18 min',
+      level: 'Tous niveaux',
+      thumbnail: 'https://img.youtube.com/vi/tCbRldfx7jk/maxresdefault.jpg',
+    },
+    {
+      youtubeId: 'M_ry-0rLRoc',
+      title: 'Murph Hero WOD — Démonstration complète',
+      description: 'Exécution complète du WOD Murph avec conseils de stratégie, partition et rythme pour le finir.',
+      duration: '22 min',
+      level: 'Avancé',
+      thumbnail: 'https://img.youtube.com/vi/M_ry-0rLRoc/maxresdefault.jpg',
+    },
+    {
+      youtubeId: 'j77_rHevrm4',
+      title: 'Conseils live pour le Murph',
+      description: 'Stratégie détaillée pour le WOD Murph — partition optimale, gestion de l\'énergie et tips pour se dépasser.',
+      duration: '20 min',
+      level: 'Intermédiaire',
+      thumbnail: 'https://img.youtube.com/vi/j77_rHevrm4/maxresdefault.jpg',
+    },
+  ],
+  exercises: [
+    { name: 'Thrusters', muscles: 'Quadriceps, fessiers, épaules, triceps', sets: '5×5', difficulty: 'Intermédiaire', description: 'Squat avec la barre en rack frontal puis poussée overhead dans la continuité du mouvement. Exercice "roi" du CrossFit — combinaison squat et shoulder press en un.' },
+    { name: 'Pull-ups kipping', muscles: 'Grand dorsal, biceps, abdominal', sets: '5×10', difficulty: 'Intermédiaire', description: 'Traction avec balancier du corps pour maximiser l\'efficacité sur les WODs longs. Maîtrise d\'abord les strict pull-ups avant de passer au kipping pour protéger les épaules.' },
+    { name: 'Box jumps', muscles: 'Quadriceps, mollets, gainage, explosivité', sets: '5×10', difficulty: 'Tous niveaux', description: 'Saute sur la caisse en deux pieds, absorbe en demi-squat, descends par l\'extérieur. Commence à 40 cm et monte progressivement. Fondamental des WODs CrossFit.' },
+    { name: 'Snatch technique', muscles: 'Full body, coordination, puissance', sets: '4×3', difficulty: 'Avancé', description: 'L\'arraché olympique — de la barre au sol au verrouillage overhead en un mouvement explosif. Travail technique indispensable avant de charger. Commencer à la barre seule.' },
+    { name: 'Double-unders', muscles: 'Mollets, coordination, cardio', sets: '5×50', difficulty: 'Intermédiaire', description: 'La corde passe deux fois sous les pieds à chaque saut. Sauts légèrement plus hauts que les simples, poignets très rapides. 3–6 mois de pratique pour les maîtriser.' },
+    { name: 'Wall balls', muscles: 'Quadriceps, fessiers, épaules, coordination', sets: '5×15', difficulty: 'Débutant', description: 'Squat profond puis projette la medball (9/6 kg) contre la cible à 3 m. Attrape la balle à la descente et enchaîne directement. Développe l\'endurance musculaire globale.' },
+    { name: 'GHD sit-ups', muscles: 'Abdominaux, fléchisseurs de hanche, extenseurs dos', sets: '3×15', difficulty: 'Avancé', description: 'Sur le GHD machine, descends jusqu\'à l\'horizontale et remonte en utilisant les abdos. Commence avec petit range of motion — douleurs de DOMS intenses chez les débutants.' },
+    { name: 'Muscle-ups', muscles: 'Dos, triceps, pectoraux, coordination', sets: '3×3', difficulty: 'Avancé', description: 'Depuis la suspension, combine traction et dips en un seul mouvement pour passer au-dessus de la barre. Nécessite une base solide de pull-ups et dips avant de progresser vers cet objectif.' },
+    { name: 'Clean & Jerk', muscles: 'Full body, puissance, technique olympique', sets: '4×3', difficulty: 'Avancé', description: 'Épaulé-jeté olympique en deux temps — épaulé (barre de sol en rack) puis jeté (barre overhead). Le mouvement qui définit le CrossFit de haut niveau. Technique avant charge.' },
+    { name: 'Burpees box jumps', muscles: 'Full body, cardio, explosivité', sets: '4×10', difficulty: 'Intermédiaire', description: 'Burpee classique puis saute sur la caisse au lieu de sauter en l\'air. Combine l\'endurance du burpee et la puissance du box jump. Fréquent dans les WODs compétition.' },
   ],
   program: [
     {

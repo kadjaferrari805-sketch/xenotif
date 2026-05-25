@@ -1,8 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { ArrowRight, X, ShieldCheck } from 'lucide-react'
-import { PaymentBadgesRow } from '@/components/ui/PaymentBadges'
+import { ArrowRight, X } from 'lucide-react'
 
 type Plan = 'pro' | 'elite'
 
@@ -85,17 +84,6 @@ export function StickyCheckout() {
                 : <>Élite — 24,99 €/mois <ArrowRight size={12} aria-hidden="true" /></>
               }
             </button>
-          </div>
-
-          {/* Payment badges */}
-          <div className="hidden lg:flex shrink-0">
-            <PaymentBadgesRow size="xs" />
-          </div>
-
-          {/* Secure label */}
-          <div className="hidden xl:flex items-center gap-1 text-[10px] text-sport-gray shrink-0">
-            <ShieldCheck size={12} aria-hidden="true" className="text-emerald-500" />
-            Paiement sécurisé
           </div>
 
           {/* Dismiss */}

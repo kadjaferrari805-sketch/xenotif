@@ -5,7 +5,7 @@ import Image from 'next/image'
 import {
   ArrowLeft, ArrowRight, CheckCircle, Zap,
   Activity, Dumbbell, Bike, Waves, Flame, Star,
-  Play, BookOpen, Target, ChevronDown, ChevronUp,
+  Play, BookOpen, Target, Layers,
 } from 'lucide-react'
 import { FEATURES } from '@/lib/constants'
 import { DISCIPLINE_CONTENT } from '@/lib/disciplines'
@@ -223,6 +223,48 @@ export default async function DisciplinePage({ params }: { params: Promise<{ slu
         </section>
       )}
 
+      {/* ── Exercices ─────────────────────────────────────────── */}
+      {content?.exercises && content.exercises.length > 0 && (
+        <section aria-labelledby="exercises-title" className="py-20 px-6 bg-sport-dark border-b border-sport-border">
+          <div className="max-w-5xl mx-auto">
+            <div className="flex items-center gap-3 mb-2">
+              <div className={`w-9 h-9 rounded-xl flex items-center justify-center ${COLOR_CARD[color]}`}>
+                <Layers size={16} aria-hidden="true" className={COLOR_TEXT[color]} />
+              </div>
+              <p className={`text-[11px] font-bold tracking-[2px] uppercase ${COLOR_TEXT[color]}`}>Exercices clés</p>
+            </div>
+            <h2 id="exercises-title" className="text-3xl md:text-4xl font-black text-white mb-2">
+              Maîtrise les fondamentaux
+            </h2>
+            <p className="text-sport-gray text-sm mb-10 max-w-xl">
+              Les exercices essentiels à connaître — technique, muscles ciblés et conseils d&apos;exécution pour progresser sans se blesser.
+            </p>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {content.exercises.map((ex) => (
+                <div
+                  key={ex.name}
+                  className="bg-sport-card border border-sport-border rounded-2xl p-5 hover:border-sport-border/70 transition-all"
+                >
+                  <div className="flex items-start justify-between gap-3 mb-3">
+                    <h3 className={`font-black text-sm ${COLOR_TEXT[color]}`}>{ex.name}</h3>
+                    <span className={`shrink-0 text-[10px] font-bold px-2.5 py-1 rounded-full ${COLOR_CARD[color]} ${COLOR_TEXT[color]}`}>
+                      {ex.difficulty}
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-3 mb-3 text-[11px] text-sport-gray">
+                    <span className="font-bold text-white">{ex.sets}</span>
+                    <span aria-hidden="true">·</span>
+                    <span>{ex.muscles}</span>
+                  </div>
+                  <p className="text-xs text-sport-gray leading-relaxed">{ex.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* ── Programme détaillé + CTA ─────────────────────────── */}
       <section className="py-20 px-6 bg-sport-dark">
         <div className="max-w-5xl mx-auto grid md:grid-cols-5 gap-12">
@@ -269,7 +311,7 @@ export default async function DisciplinePage({ params }: { params: Promise<{ slu
                   {content.program.map((block, bi) => (
                     <div key={block.week} className="bg-sport-card border border-sport-border rounded-xl overflow-hidden">
                       {/* Week header */}
-                      <div className={`px-5 py-3 border-b border-sport-border flex items-center justify-between`}>
+                      <div className="px-5 py-3 border-b border-sport-border flex items-center justify-between">
                         <div>
                           <p className={`text-[10px] font-bold uppercase tracking-wider ${COLOR_TEXT[color]}`}>{block.week}</p>
                           <p className="text-sm font-bold text-white">{block.theme}</p>
@@ -331,7 +373,7 @@ export default async function DisciplinePage({ params }: { params: Promise<{ slu
 
               <Link
                 href="/#newsletter"
-                className={`w-full inline-flex items-center justify-center gap-2 bg-sport-orange text-white px-6 py-3.5 rounded-full font-bold text-sm hover:bg-orange-600 active:scale-95 transition-all shadow-xl shadow-sport-orange/25`}
+                className="w-full inline-flex items-center justify-center gap-2 bg-sport-orange text-white px-6 py-3.5 rounded-full font-bold text-sm hover:bg-orange-600 active:scale-95 transition-all shadow-xl shadow-sport-orange/25"
               >
                 Commencer gratuitement <ArrowRight size={14} aria-hidden="true" />
               </Link>
