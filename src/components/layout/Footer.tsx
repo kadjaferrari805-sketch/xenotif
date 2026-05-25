@@ -1,6 +1,5 @@
 import Link from 'next/link'
 import { Mail, Globe, PlayCircle, MessageCircle } from 'lucide-react'
-import { SecurePaymentBar } from '@/components/ui/PaymentBadges'
 
 const DISC_LINKS = [
   { label: 'Running & Cardio', href: '/disciplines/running-cardio' },
@@ -126,16 +125,6 @@ export function Footer() {
               </p>
             </div>
           </div>
-        </div>
-      </div>
-
-      {/* ── Secure payment trust bar ────────────────────────── */}
-      <div className="bg-sport-card border-t border-sport-border/50 px-6 py-8">
-        <div className="max-w-6xl mx-auto">
-          <p className="text-center text-[10px] font-bold uppercase tracking-[3px] text-sport-gray mb-5">
-            Paiement sécurisé · Méthodes acceptées
-          </p>
-          <SecurePaymentBar />
         </div>
       </div>
 

@@ -6,7 +6,6 @@ import { useInView } from 'react-intersection-observer'
 import { CheckCircle, ArrowRight, Zap } from 'lucide-react'
 import Link from 'next/link'
 import { SectionHeader } from '@/components/ui/SectionHeader'
-import { SecurePaymentBar } from '@/components/ui/PaymentBadges'
 
 type PlanId = 'gratuit' | 'pro' | 'elite'
 
@@ -201,17 +200,7 @@ export function Pricing() {
           ))}
         </div>
 
-        {/* Secure payment bar */}
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ delay: 0.4, duration: 0.5 }}
-          className="mt-12 pt-8 border-t border-sport-border"
-        >
-          <SecurePaymentBar />
-        </motion.div>
-
-        <p className="text-center text-sport-gray text-xs mt-4">
+        <p className="text-center text-sport-gray text-xs mt-12 pt-8 border-t border-sport-border">
           Sans engagement · Annulation à tout moment en 1 clic
         </p>
       </div>
