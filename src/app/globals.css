@@ -7,12 +7,12 @@
 
   /* Xenotif Sport Palette */
   --color-sport-dark: #0A0B0F;
-  --color-sport-card: #111318;
+  --color-sport-card: #0F1117;
   --color-sport-border: #1E2028;
   --color-sport-orange: #FF4500;
   --color-sport-blue: #2563EB;
   --color-sport-lime: #A3FF00;
-  --color-sport-gray: #8B929F;
+  --color-sport-gray: #9CA3AF;
 }
 
 :root {
@@ -28,12 +28,41 @@
     background-color: var(--color-sport-dark);
     color: #ffffff;
     font-size: 14px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
-  h1,
-  h2,
-  h3 {
+  h1, h2, h3 {
     @apply font-extrabold;
     color: #ffffff;
+  }
+
+  /* Skip link — visible only on keyboard focus */
+  .skip-link {
+    position: absolute;
+    top: -100%;
+    left: 1rem;
+    z-index: 100;
+    padding: 0.75rem 1.5rem;
+    background: #FF4500;
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 0.875rem;
+    border-radius: 0 0 0.75rem 0.75rem;
+    transition: top 0.15s ease;
+    text-decoration: none;
+  }
+  .skip-link:focus {
+    top: 0;
+  }
+
+  /* Global focus-visible for keyboard navigation */
+  :focus-visible {
+    outline: 2px solid #FF4500;
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+  :focus:not(:focus-visible) {
+    outline: none;
   }
 }
 
@@ -43,10 +72,19 @@
     color: var(--color-sport-orange);
   }
   .section-title {
-    @apply text-3xl font-black text-center text-white;
+    @apply text-3xl md:text-4xl font-black text-center text-white leading-tight;
   }
   .section-sub {
-    @apply text-sm text-center;
+    @apply text-sm text-center leading-relaxed;
     color: var(--color-sport-gray);
+  }
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 bg-sport-orange text-white px-6 py-3.5 rounded-full font-bold text-sm hover:bg-orange-600 active:scale-95 transition-all;
+  }
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 text-white border-2 border-white/30 px-6 py-3.5 rounded-full font-bold text-sm hover:border-white hover:bg-white/10 active:scale-95 transition-all;
+  }
+  .card-base {
+    @apply bg-sport-card border border-sport-border rounded-2xl;
   }
 }

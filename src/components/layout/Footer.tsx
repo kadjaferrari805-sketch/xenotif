@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { Mail, Globe, PlayCircle, MessageCircle } from 'lucide-react'
 
 const DISC_LINKS = [
   { label: 'Running & Cardio', href: '/disciplines/running-cardio' },
@@ -14,38 +15,70 @@ const PROG_LINKS = [
   { label: 'Intermédiaire', href: '/#programmes' },
   { label: 'Avancé', href: '/#programmes' },
   { label: 'Élite', href: '/#programmes' },
-  { label: 'Triathlon', href: '/#disciplines' },
-  { label: 'Marathon', href: '/#disciplines' },
+  { label: 'Coaching IA', href: '/#newsletter' },
+  { label: 'Tarifs', href: '/#tarifs' },
 ]
 
-const COMMUNITY_LINKS = [
-  { label: 'Coaching IA', href: '/#disciplines' },
-  { label: 'Challenges', href: '/#newsletter' },
-  { label: 'Partenaires', href: '/#newsletter' },
+const INFO_LINKS = [
   { label: 'Mentions légales', href: '/mentions-legales' },
   { label: 'Confidentialité', href: '/confidentialite' },
+  { label: 'Contact', href: 'mailto:contact@xenotif.com' },
+  { label: 'FAQ', href: '/#faq' },
+]
+
+const SOCIAL = [
+  { Icon: Globe, label: 'Instagram Xenotif', href: 'https://instagram.com/xenotif' },
+  { Icon: PlayCircle, label: 'YouTube Xenotif', href: 'https://youtube.com/@xenotif' },
+  { Icon: MessageCircle, label: 'Twitter / X Xenotif', href: 'https://twitter.com/xenotif' },
 ]
 
 export function Footer() {
   return (
-    <footer>
-      <div className="bg-sport-card border-t border-sport-border py-14 px-6">
-        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10">
+    <footer aria-label="Pied de page">
+      <div className="bg-sport-card border-t border-sport-border py-16 px-6">
+        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
+          {/* Brand */}
           <div>
-            <div className="flex items-center gap-2 mb-4">
-              <span className="w-8 h-8 bg-sport-orange rounded-lg flex items-center justify-center font-black text-white text-sm">
+            <Link
+              href="/"
+              aria-label="Xenotif — Retour à l'accueil"
+              className="flex items-center gap-2 mb-5"
+            >
+              <span aria-hidden="true" className="w-8 h-8 bg-sport-orange rounded-lg flex items-center justify-center font-black text-white text-sm">
                 X
               </span>
               <span className="font-black text-white text-lg tracking-wider">XENOTIF®</span>
-            </div>
-            <p className="text-sm text-sport-gray leading-relaxed">
+            </Link>
+            <p className="text-xs text-sport-gray leading-relaxed mb-6">
               La plateforme sport ultime pour athlètes de tous niveaux. Performance, coaching IA
               et communauté au service de tes objectifs.
             </p>
+            <div className="flex gap-3" aria-label="Réseaux sociaux">
+              {SOCIAL.map(({ Icon, label, href }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={label}
+                  className="w-9 h-9 rounded-lg bg-sport-dark border border-sport-border flex items-center justify-center text-sport-gray hover:text-sport-orange hover:border-sport-orange/50 transition-colors"
+                >
+                  <Icon size={15} aria-hidden="true" />
+                </a>
+              ))}
+              <a
+                href="mailto:contact@xenotif.com"
+                aria-label="Contacter Xenotif par email"
+                className="w-9 h-9 rounded-lg bg-sport-dark border border-sport-border flex items-center justify-center text-sport-gray hover:text-sport-orange hover:border-sport-orange/50 transition-colors"
+              >
+                <Mail size={15} aria-hidden="true" />
+              </a>
+            </div>
           </div>
 
+          {/* Disciplines */}
           <div>
-            <h4 className="text-xs font-bold text-white uppercase tracking-widest mb-4">Disciplines</h4>
+            <h3 className="text-xs font-bold text-white uppercase tracking-widest mb-5">Disciplines</h3>
             <ul className="flex flex-col gap-2.5">
               {DISC_LINKS.map((link) => (
                 <li key={link.label}>
@@ -57,8 +90,9 @@ export function Footer() {
             </ul>
           </div>
 
+          {/* Programmes */}
           <div>
-            <h4 className="text-xs font-bold text-white uppercase tracking-widest mb-4">Programmes</h4>
+            <h3 className="text-xs font-bold text-white uppercase tracking-widest mb-5">Programmes</h3>
             <ul className="flex flex-col gap-2.5">
               {PROG_LINKS.map((link) => (
                 <li key={link.label}>
@@ -70,10 +104,11 @@ export function Footer() {
             </ul>
           </div>
 
+          {/* Informations */}
           <div>
-            <h4 className="text-xs font-bold text-white uppercase tracking-widest mb-4">Communauté</h4>
+            <h3 className="text-xs font-bold text-white uppercase tracking-widest mb-5">Informations</h3>
             <ul className="flex flex-col gap-2.5">
-              {COMMUNITY_LINKS.map((link) => (
+              {INFO_LINKS.map((link) => (
                 <li key={link.label}>
                   <Link href={link.href} className="text-xs text-sport-gray hover:text-sport-orange transition-colors">
                     {link.label}
@@ -81,13 +116,22 @@ export function Footer() {
                 </li>
               ))}
             </ul>
+            <div className="mt-6 p-4 bg-sport-dark border border-sport-border rounded-xl">
+              <p className="text-[10px] text-sport-gray leading-relaxed">
+                <strong className="text-white block mb-1">Xenotif®</strong>
+                contact@xenotif.com<br />
+                xenotif.com
+              </p>
+            </div>
           </div>
         </div>
       </div>
 
-      <div className="bg-[#06070A] border-t border-sport-border px-6 py-4 flex flex-col md:flex-row justify-between items-center gap-2 text-xs text-sport-gray">
-        <span>© 2025 Xenotif® — Tous droits réservés</span>
-        <span>Conçu pour les athlètes · Propulsé par l&apos;IA</span>
+      <div className="bg-[#06070A] border-t border-sport-border px-6 py-4">
+        <div className="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2 text-xs text-sport-gray">
+          <span>© 2025 Xenotif® — Tous droits réservés</span>
+          <span>Conçu pour les athlètes · Propulsé par l&apos;IA</span>
+        </div>
       </div>
     </footer>
   )

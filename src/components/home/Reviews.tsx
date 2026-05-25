@@ -1,103 +1,95 @@
 'use client'
 
-import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-import { Star, Quote } from 'lucide-react'
-import Image from 'next/image'
+import { Star, Quote, CheckCircle } from 'lucide-react'
 import { SectionHeader } from '@/components/ui/SectionHeader'
 import { REVIEWS } from '@/lib/constants'
 
-const AVATAR_PHOTOS: Record<string, string> = {
-  'Thomas D.':
-    'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&crop=faces&w=120&h=120&q=80',
-  'Leila M.':
-    'https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&crop=faces&w=120&h=120&q=80',
-  'Nicolas R.':
-    'https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?auto=format&fit=crop&crop=faces&w=120&h=120&q=80',
-}
-
 const AVATAR_BG: Record<string, string> = {
-  orange: 'bg-sport-orange text-white',
-  blue: 'bg-sport-blue text-white',
+  orange: 'bg-sport-orange',
+  blue: 'bg-sport-blue',
   lime: 'bg-sport-lime text-[#0A0B0F]',
-}
-
-function Avatar({ name, initial, color }: { name: string; initial: string; color: string }) {
-  const [error, setError] = useState(false)
-  const photo = AVATAR_PHOTOS[name]
-
-  if (!photo || error) {
-    return (
-      <div
-        className={`w-12 h-12 rounded-full flex items-center justify-center font-black text-sm shrink-0 ${AVATAR_BG[color] ?? 'bg-sport-orange text-white'}`}
-      >
-        {initial}
-      </div>
-    )
-  }
-
-  return (
-    <div className="relative w-12 h-12 rounded-full overflow-hidden shrink-0 ring-2 ring-sport-border">
-      <Image
-        src={photo}
-        alt={name}
-        fill
-        sizes="48px"
-        className="object-cover"
-        onError={() => setError(true)}
-      />
-    </div>
-  )
 }
 
 export function Reviews() {
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 })
 
   return (
-    <section className="py-20 px-6 bg-sport-card border-y border-sport-border">
+    <section aria-labelledby="avis-title" className="py-24 px-6 bg-sport-dark">
       <div className="max-w-6xl mx-auto">
         <SectionHeader
+          id="avis-title"
           label="Témoignages"
           title="Ils ont transformé leur corps"
-          subtitle="Des milliers d'athlètes font confiance à Xenotif pour atteindre leurs objectifs"
+          subtitle="Des milliers d'athlètes font confiance à Xenotif® pour atteindre leurs objectifs"
         />
-        <div ref={ref} className="grid grid-cols-1 md:grid-cols-3 gap-5 mt-12">
+
+        <div ref={ref} className="grid grid-cols-1 md:grid-cols-3 gap-5 mt-14">
           {REVIEWS.map((review, i) => (
-            <motion.div
+            <motion.article
               key={review.name}
               initial={{ opacity: 0, y: 24 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: i * 0.12, duration: 0.5 }}
-              className="bg-sport-dark border border-sport-border rounded-2xl p-6 flex flex-col"
+              className="card-base p-6 flex flex-col hover:border-sport-border/60 transition-colors"
             >
-              {/* Quote icon */}
-              <Quote size={28} className="text-sport-orange/30 mb-4 shrink-0" />
-
-              {/* Review text */}
-              <p className="text-sm text-sport-gray leading-relaxed flex-1 mb-5">{review.text}</p>
-
               {/* Stars */}
-              <div className="flex gap-0.5 mb-4">
+              <div className="flex gap-0.5 mb-4" aria-label={`Note : ${review.rating} étoiles sur 5`}>
                 {Array.from({ length: review.rating }).map((_, j) => (
-                  <Star key={j} size={13} className="fill-sport-orange text-sport-orange" />
+                  <Star key={j} size={13} aria-hidden="true" className="fill-sport-orange text-sport-orange" />
                 ))}
               </div>
 
+              {/* Quote icon */}
+              <Quote size={24} aria-hidden="true" className="text-sport-orange/25 mb-3 shrink-0" />
+
+              {/* Review text */}
+              <blockquote className="text-sm text-sport-gray leading-relaxed flex-1 mb-6">
+                {review.text}
+              </blockquote>
+
               {/* Author */}
-              <div className="flex items-center gap-3 pt-4 border-t border-sport-border">
-                <Avatar name={review.name} initial={review.initial} color={review.color} />
-                <div className="min-w-0">
-                  <p className="text-sm font-bold text-white">{review.name}</p>
-                  <p className="text-[10px] text-sport-gray truncate">{review.sport}</p>
+              <footer className="flex items-center gap-3 pt-5 border-t border-sport-border">
+                {/* Avatar with initials */}
+                <div
+                  className={`w-11 h-11 rounded-full flex items-center justify-center font-black text-sm shrink-0 text-white ${AVATAR_BG[review.color] ?? 'bg-sport-orange'}`}
+                  aria-hidden="true"
+                >
+                  {review.initial}
                 </div>
-                <span className="ml-auto text-[10px] text-sport-gray bg-sport-card border border-sport-border px-2 py-1 rounded-full whitespace-nowrap shrink-0">
-                  Membre vérifié
-                </span>
-              </div>
-            </motion.div>
+
+                <div className="min-w-0 flex-1">
+                  <p className="text-sm font-bold text-white leading-tight">{review.name}</p>
+                  <p className="text-[10px] text-sport-gray mt-0.5">{review.sport}</p>
+                </div>
+
+                <div className="flex items-center gap-1 text-[10px] text-emerald-400 font-bold shrink-0">
+                  <CheckCircle size={11} aria-hidden="true" />
+                  Vérifié
+                </div>
+              </footer>
+            </motion.article>
           ))}
         </div>
+
+        {/* Global rating */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={inView ? { opacity: 1 } : {}}
+          transition={{ delay: 0.5, duration: 0.5 }}
+          className="flex flex-col sm:flex-row items-center justify-center gap-3 mt-10"
+        >
+          <div className="flex gap-0.5" aria-hidden="true">
+            {Array.from({ length: 5 }).map((_, i) => (
+              <Star key={i} size={16} className="fill-sport-orange text-sport-orange" />
+            ))}
+          </div>
+          <p className="text-sm text-sport-gray">
+            <strong className="text-white">4.9 / 5</strong> basé sur{' '}
+            <strong className="text-white">3 200+</strong> avis vérifiés
+          </p>
+        </motion.div>
       </div>
     </section>
   )
