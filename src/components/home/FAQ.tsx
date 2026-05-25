@@ -78,7 +78,7 @@ function FAQItem({ q, a, index }: { q: string; a: string; index: number }) {
 
 export function FAQ() {
   return (
-    <section aria-labelledby="faq-title" className="py-24 px-6 bg-sport-card border-y border-sport-border">
+    <section id="faq" aria-labelledby="faq-title" className="py-24 px-6 bg-sport-card border-y border-sport-border">
       <div className="max-w-2xl mx-auto">
         <SectionHeader
           id="faq-title"
