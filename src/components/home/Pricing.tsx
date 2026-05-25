@@ -6,41 +6,7 @@ import { useInView } from 'react-intersection-observer'
 import { CheckCircle, ArrowRight, Zap, ShieldCheck } from 'lucide-react'
 import Link from 'next/link'
 import { SectionHeader } from '@/components/ui/SectionHeader'
-
-/* Inline SVG payment icons */
-function PaymentIcons() {
-  return (
-    <div className="flex items-center gap-1.5 flex-wrap" aria-label="Moyens de paiement">
-      {/* Visa */}
-      <svg viewBox="0 0 40 14" width="34" height="12" aria-label="Visa" role="img">
-        <rect width="40" height="14" rx="2" fill="#1A1F71" />
-        <text x="5" y="11" fontFamily="Arial" fontWeight="900" fontSize="9" fill="#ffffff">VISA</text>
-      </svg>
-      {/* Mastercard */}
-      <svg viewBox="0 0 32 20" width="26" height="16" aria-label="Mastercard" role="img">
-        <circle cx="11" cy="10" r="9" fill="#EB001B" />
-        <circle cx="21" cy="10" r="9" fill="#F79E1B" />
-        <path d="M16 4.5a9 9 0 0 1 0 11A9 9 0 0 1 16 4.5z" fill="#FF5F00" />
-      </svg>
-      {/* PayPal */}
-      <svg viewBox="0 0 44 14" width="38" height="12" aria-label="PayPal" role="img">
-        <rect width="44" height="14" rx="2" fill="#003087" />
-        <text x="5" y="10.5" fontFamily="Arial" fontWeight="700" fontSize="7.5" fill="#ffffff">PayPal</text>
-      </svg>
-      {/* Apple Pay */}
-      <svg viewBox="0 0 48 14" width="42" height="12" aria-label="Apple Pay" role="img">
-        <rect width="48" height="14" rx="2" fill="#000000" />
-        <text x="4" y="10.5" fontFamily="Arial" fontWeight="700" fontSize="7" fill="#ffffff"> Pay</text>
-      </svg>
-      {/* Google Pay */}
-      <svg viewBox="0 0 50 14" width="44" height="12" aria-label="Google Pay" role="img">
-        <rect width="50" height="14" rx="2" fill="#ffffff" stroke="#d0d0d0" strokeWidth="0.5" />
-        <text x="4" y="10.5" fontFamily="Arial" fontWeight="900" fontSize="7.5" fill="#4285F4">G</text>
-        <text x="11" y="10.5" fontFamily="Arial" fontWeight="700" fontSize="7" fill="#333333">Pay</text>
-      </svg>
-    </div>
-  )
-}
+import { PaymentBadgesRow } from '@/components/ui/PaymentBadges'
 
 type PlanId = 'gratuit' | 'pro' | 'elite'
 
@@ -242,7 +208,7 @@ export function Pricing() {
           transition={{ delay: 0.4, duration: 0.5 }}
           className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-10"
         >
-          <PaymentIcons />
+          <PaymentBadgesRow size="sm" />
           <div className="flex items-center gap-1.5 text-[11px] text-sport-gray">
             <ShieldCheck size={13} aria-hidden="true" className="text-emerald-500" />
             Paiement 100 % sécurisé par Stripe · Données chiffrées SSL

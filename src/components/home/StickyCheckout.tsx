@@ -2,50 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { ArrowRight, X, ShieldCheck } from 'lucide-react'
-
-/* Inline SVG payment badges */
-function VisaBadge() {
-  return (
-    <svg viewBox="0 0 40 14" width="36" height="13" aria-label="Visa" role="img">
-      <rect width="40" height="14" rx="2" fill="#1A1F71" />
-      <text x="5" y="11" fontFamily="Arial" fontWeight="900" fontSize="9" fill="#ffffff" letterSpacing="0">VISA</text>
-    </svg>
-  )
-}
-function MastercardBadge() {
-  return (
-    <svg viewBox="0 0 32 20" width="28" height="18" aria-label="Mastercard" role="img">
-      <circle cx="11" cy="10" r="9" fill="#EB001B" />
-      <circle cx="21" cy="10" r="9" fill="#F79E1B" />
-      <path d="M16 4.5a9 9 0 0 1 0 11A9 9 0 0 1 16 4.5z" fill="#FF5F00" />
-    </svg>
-  )
-}
-function PaypalBadge() {
-  return (
-    <svg viewBox="0 0 44 14" width="40" height="13" aria-label="PayPal" role="img">
-      <rect width="44" height="14" rx="2" fill="#003087" />
-      <text x="5" y="10.5" fontFamily="Arial" fontWeight="700" fontSize="7.5" fill="#ffffff">PayPal</text>
-    </svg>
-  )
-}
-function ApplePayBadge() {
-  return (
-    <svg viewBox="0 0 44 14" width="40" height="13" aria-label="Apple Pay" role="img">
-      <rect width="44" height="14" rx="2" fill="#000000" />
-      <text x="5" y="10.5" fontFamily="Arial" fontWeight="700" fontSize="7" fill="#ffffff"> Pay</text>
-    </svg>
-  )
-}
-function GooglePayBadge() {
-  return (
-    <svg viewBox="0 0 50 14" width="46" height="13" aria-label="Google Pay" role="img">
-      <rect width="50" height="14" rx="2" fill="#ffffff" stroke="#e0e0e0" strokeWidth="0.5" />
-      <text x="4" y="10.5" fontFamily="Arial" fontWeight="700" fontSize="7" fill="#4285F4">G</text>
-      <text x="10" y="10.5" fontFamily="Arial" fontWeight="700" fontSize="7" fill="#333333">Pay</text>
-    </svg>
-  )
-}
+import { PaymentBadgesRow } from '@/components/ui/PaymentBadges'
 
 type Plan = 'pro' | 'elite'
 
@@ -131,15 +88,8 @@ export function StickyCheckout() {
           </div>
 
           {/* Payment badges */}
-          <div
-            className="hidden md:flex items-center gap-1.5 shrink-0"
-            aria-label="Moyens de paiement acceptés"
-          >
-            <VisaBadge />
-            <MastercardBadge />
-            <PaypalBadge />
-            <ApplePayBadge />
-            <GooglePayBadge />
+          <div className="hidden md:flex shrink-0">
+            <PaymentBadgesRow size="sm" />
           </div>
 
           {/* Secure label */}
