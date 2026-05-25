@@ -37,26 +37,24 @@ export async function POST(req: NextRequest) {
     // Use pre-configured price IDs if available, otherwise use inline pricing
     const priceId = plan === 'pro' ? process.env.STRIPE_PRICE_PRO : process.env.STRIPE_PRICE_ELITE
 
-    const lineItem: Stripe.Checkout.SessionCreateParams.LineItem = priceId
-      ? { price: priceId, quantity: 1 }
-      : {
-          quantity: 1,
-          price_data: {
-            currency: 'eur',
-            unit_amount: config.unit_amount,
-            recurring: { interval: 'month' },
-            product_data: {
-              name: config.name,
-              description: config.description,
-            },
-          },
-        }
-
     const session = await stripe.checkout.sessions.create({
       mode: 'subscription',
       locale: 'fr',
       payment_method_types: ['card', 'paypal'],
-      line_items: [lineItem],
+      line_items: priceId
+        ? [{ price: priceId, quantity: 1 }]
+        : [{
+            quantity: 1,
+            price_data: {
+              currency: 'eur',
+              unit_amount: config.unit_amount,
+              recurring: { interval: 'month' },
+              product_data: {
+                name: config.name,
+                description: config.description,
+              },
+            },
+          }],
       allow_promotion_codes: true,
       subscription_data: {
         trial_period_days: 30,
