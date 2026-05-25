@@ -1,14 +1,52 @@
 'use client'
 
+import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-import { CheckCircle, ArrowRight, Zap } from 'lucide-react'
+import { CheckCircle, ArrowRight, Zap, ShieldCheck } from 'lucide-react'
 import Link from 'next/link'
 import { SectionHeader } from '@/components/ui/SectionHeader'
 
+/* Inline SVG payment icons */
+function PaymentIcons() {
+  return (
+    <div className="flex items-center gap-1.5 flex-wrap" aria-label="Moyens de paiement">
+      {/* Visa */}
+      <svg viewBox="0 0 40 14" width="34" height="12" aria-label="Visa" role="img">
+        <rect width="40" height="14" rx="2" fill="#1A1F71" />
+        <text x="5" y="11" fontFamily="Arial" fontWeight="900" fontSize="9" fill="#ffffff">VISA</text>
+      </svg>
+      {/* Mastercard */}
+      <svg viewBox="0 0 32 20" width="26" height="16" aria-label="Mastercard" role="img">
+        <circle cx="11" cy="10" r="9" fill="#EB001B" />
+        <circle cx="21" cy="10" r="9" fill="#F79E1B" />
+        <path d="M16 4.5a9 9 0 0 1 0 11A9 9 0 0 1 16 4.5z" fill="#FF5F00" />
+      </svg>
+      {/* PayPal */}
+      <svg viewBox="0 0 44 14" width="38" height="12" aria-label="PayPal" role="img">
+        <rect width="44" height="14" rx="2" fill="#003087" />
+        <text x="5" y="10.5" fontFamily="Arial" fontWeight="700" fontSize="7.5" fill="#ffffff">PayPal</text>
+      </svg>
+      {/* Apple Pay */}
+      <svg viewBox="0 0 48 14" width="42" height="12" aria-label="Apple Pay" role="img">
+        <rect width="48" height="14" rx="2" fill="#000000" />
+        <text x="4" y="10.5" fontFamily="Arial" fontWeight="700" fontSize="7" fill="#ffffff"> Pay</text>
+      </svg>
+      {/* Google Pay */}
+      <svg viewBox="0 0 50 14" width="44" height="12" aria-label="Google Pay" role="img">
+        <rect width="50" height="14" rx="2" fill="#ffffff" stroke="#d0d0d0" strokeWidth="0.5" />
+        <text x="4" y="10.5" fontFamily="Arial" fontWeight="900" fontSize="7.5" fill="#4285F4">G</text>
+        <text x="11" y="10.5" fontFamily="Arial" fontWeight="700" fontSize="7" fill="#333333">Pay</text>
+      </svg>
+    </div>
+  )
+}
+
+type PlanId = 'gratuit' | 'pro' | 'elite'
+
 const PLANS = [
   {
-    id: 'gratuit',
+    id: 'gratuit' as PlanId,
     name: 'Gratuit',
     price: '0 €',
     period: 'pour toujours',
@@ -21,11 +59,10 @@ const PLANS = [
       'WOD hebdomadaire gratuit',
     ],
     cta: 'Commencer gratuitement',
-    href: '/#newsletter',
     highlight: false,
   },
   {
-    id: 'pro',
+    id: 'pro' as PlanId,
     name: 'Pro',
     price: '9,99 €',
     period: 'par mois',
@@ -40,11 +77,10 @@ const PLANS = [
       'Challenges communautaires',
     ],
     cta: 'Essai gratuit 30 jours',
-    href: '/#newsletter',
     highlight: true,
   },
   {
-    id: 'elite',
+    id: 'elite' as PlanId,
     name: 'Élite',
     price: '24,99 €',
     period: 'par mois',
@@ -59,10 +95,75 @@ const PLANS = [
       'Accès anticipé aux nouveautés',
     ],
     cta: 'Parler à un coach',
-    href: '/#newsletter',
     highlight: false,
   },
 ]
+
+function PlanButton({
+  plan,
+  highlight,
+}: {
+  plan: (typeof PLANS)[number]
+  highlight: boolean
+}) {
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState('')
+
+  // Free plan → newsletter
+  if (plan.id === 'gratuit') {
+    return (
+      <Link
+        href="/#newsletter"
+        className="w-full text-center py-3.5 px-6 rounded-full font-bold text-sm transition-all inline-flex items-center justify-center gap-2 border border-sport-border text-white hover:border-sport-gray hover:bg-white/5 active:scale-95"
+      >
+        {plan.cta} <ArrowRight size={14} aria-hidden="true" />
+      </Link>
+    )
+  }
+
+  async function handleCheckout() {
+    setLoading(true)
+    setError('')
+    try {
+      const res = await fetch('/api/checkout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ plan: plan.id }),
+      })
+      const data = await res.json()
+      if (data.url) {
+        window.location.href = data.url
+      } else {
+        setError(data.error ?? 'Erreur. Réessaie.')
+      }
+    } catch {
+      setError('Connexion impossible.')
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  return (
+    <div>
+      <button
+        onClick={handleCheckout}
+        disabled={loading}
+        aria-label={`S'abonner au plan ${plan.name} — ${plan.price} ${plan.period}`}
+        className={`w-full py-3.5 px-6 rounded-full font-bold text-sm transition-all inline-flex items-center justify-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed active:scale-95 ${
+          highlight
+            ? 'bg-sport-orange text-white hover:bg-orange-600 shadow-lg shadow-sport-orange/25'
+            : 'border border-sport-border text-white hover:border-sport-gray hover:bg-white/5'
+        }`}
+      >
+        {loading
+          ? <><span className="w-4 h-4 border-2 border-white/40 border-t-white rounded-full animate-spin" />Chargement…</>
+          : <>{plan.cta} <ArrowRight size={14} aria-hidden="true" /></>
+        }
+      </button>
+      {error && <p role="alert" className="text-red-400 text-[10px] mt-2 text-center">{error}</p>}
+    </div>
+  )
+}
 
 export function Pricing() {
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 })
@@ -74,7 +175,7 @@ export function Pricing() {
           id="tarifs-title"
           label="Tarifs"
           title="Simple. Transparent. Sans surprise."
-          subtitle="Essai gratuit 30 jours sur tous les plans payants — sans carte bancaire requise"
+          subtitle="Essai gratuit 30 jours sur tous les plans payants — aucune carte bancaire requise"
         />
 
         <div ref={ref} className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-14">
@@ -87,7 +188,7 @@ export function Pricing() {
               className={`relative flex flex-col rounded-2xl border p-8 transition-all ${
                 plan.highlight
                   ? 'bg-sport-dark border-sport-orange shadow-2xl shadow-sport-orange/15 ring-1 ring-sport-orange/40'
-                  : 'bg-sport-dark border-sport-border hover:border-sport-border/60'
+                  : 'bg-sport-dark border-sport-border'
               }`}
             >
               {plan.badge && (
@@ -106,6 +207,11 @@ export function Pricing() {
                   <span className="text-4xl font-black text-white">{plan.price}</span>
                   <span className="text-sport-gray text-xs">{plan.period}</span>
                 </div>
+                {plan.id !== 'gratuit' && (
+                  <p className="text-[10px] text-emerald-400 mt-1.5 font-semibold">
+                    ✓ 30 jours gratuits · Sans engagement
+                  </p>
+                )}
               </div>
 
               <ul
@@ -124,22 +230,27 @@ export function Pricing() {
                 ))}
               </ul>
 
-              <Link
-                href={plan.href}
-                className={`w-full text-center py-3.5 px-6 rounded-full font-bold text-sm transition-all inline-flex items-center justify-center gap-2 ${
-                  plan.highlight
-                    ? 'bg-sport-orange text-white hover:bg-orange-600 active:scale-95 shadow-lg shadow-sport-orange/25'
-                    : 'border border-sport-border text-white hover:border-sport-gray hover:bg-white/5 active:scale-95'
-                }`}
-              >
-                {plan.cta} <ArrowRight size={14} aria-hidden="true" />
-              </Link>
+              <PlanButton plan={plan} highlight={plan.highlight} />
             </motion.div>
           ))}
         </div>
 
-        <p className="text-center text-sport-gray text-xs mt-8">
-          Paiement sécurisé · Sans engagement · Annulation à tout moment en 1 clic
+        {/* Payment methods + security */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={inView ? { opacity: 1 } : {}}
+          transition={{ delay: 0.4, duration: 0.5 }}
+          className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-10"
+        >
+          <PaymentIcons />
+          <div className="flex items-center gap-1.5 text-[11px] text-sport-gray">
+            <ShieldCheck size={13} aria-hidden="true" className="text-emerald-500" />
+            Paiement 100 % sécurisé par Stripe · Données chiffrées SSL
+          </div>
+        </motion.div>
+
+        <p className="text-center text-sport-gray text-xs mt-4">
+          Sans engagement · Annulation à tout moment en 1 clic
         </p>
       </div>
     </section>
