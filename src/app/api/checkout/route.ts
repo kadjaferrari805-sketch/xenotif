@@ -58,7 +58,9 @@ export async function POST(req: NextRequest) {
       allow_promotion_codes: true,
       subscription_data: {
         trial_period_days: 30,
+        metadata: { plan },
       },
+      metadata: { plan },
       success_url: `${baseUrl}/success?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${baseUrl}/#tarifs`,
     })
