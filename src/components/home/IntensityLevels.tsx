@@ -91,7 +91,7 @@ export function IntensityLevels() {
                   className="h-1.5 bg-sport-border rounded-full overflow-hidden"
                   role="progressbar"
                   aria-label={`Intensité ${level.label}`}
-                  aria-valuenow={parseInt(level.width)}
+                  aria-valuenow={parseInt(level.width.replace('%', ''), 10)}
                   aria-valuemin={0}
                   aria-valuemax={100}
                 >
