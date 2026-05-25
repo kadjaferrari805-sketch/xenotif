@@ -1,12 +1,6 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import {
-  VisaFlatRoundedIcon,
-  MastercardFlatRoundedIcon,
-  AmericanExpressFlatRoundedIcon,
-  PayPalFlatRoundedIcon,
-} from 'react-svg-credit-card-payment-icons'
 
 /* ─── Apple Pay — Simple Icons official badge path ──────────── */
 const APPLE_PAY_PATH =
@@ -16,10 +10,101 @@ const APPLE_PAY_PATH =
 const GOOGLE_PAY_PATH =
   'M3.963 7.235A3.963 3.963 0 00.422 9.419a3.963 3.963 0 000 3.559 3.963 3.963 0 003.541 2.184c1.07 0 1.97-.352 2.627-.957.748-.69 1.18-1.71 1.18-2.916a4.722 4.722 0 00-.07-.806H3.964v1.526h2.14a1.835 1.835 0 01-.79 1.205c-.356.241-.814.379-1.35.379-1.034 0-1.911-.697-2.225-1.636a2.375 2.375 0 010-1.517c.314-.94 1.191-1.636 2.225-1.636a2.152 2.152 0 011.52.594l1.132-1.13a3.808 3.808 0 00-2.652-1.033zm6.501.55v6.9h.886V11.89h1.465c.603 0 1.11-.196 1.522-.588a1.911 1.911 0 00.635-1.464 1.92 1.92 0 00-.635-1.456 2.125 2.125 0 00-1.522-.598zm2.427.85a1.156 1.156 0 01.823.365 1.176 1.176 0 010 1.686 1.171 1.171 0 01-.877.357H11.35V8.635h1.487a1.156 1.156 0 01.054 0zm4.124 1.175c-.842 0-1.477.308-1.907.925l.781.491c.288-.417.68-.626 1.175-.626a1.255 1.255 0 01.856.323 1.009 1.009 0 01.366.785v.202c-.34-.193-.774-.289-1.3-.289-.617 0-1.11.145-1.479.434-.37.288-.554.677-.554 1.165a1.476 1.476 0 00.525 1.156c.35.308.785.463 1.305.463.61 0 1.098-.27 1.465-.81h.038v.655h.848v-2.909c0-.61-.19-1.09-.568-1.44-.38-.35-.896-.525-1.551-.525zm2.263.154l1.946 4.422-1.098 2.38h.915L24 9.963h-.965l-1.368 3.391h-.02l-1.406-3.39zm-2.146 2.368c.494 0 .88.11 1.156.33 0 .372-.147.696-.44.973a1.413 1.413 0 01-.997.414 1.081 1.081 0 01-.69-.232.708.708 0 01-.293-.578c0-.257.12-.47.363-.647.24-.173.54-.26.9-.26Z'
 
+/* ─── Size configs ───────────────────────────────────────────── */
+const SIZES = {
+  xs:  { w: 40, h: 26 },
+  sm:  { w: 48, h: 30 },
+  md:  { w: 58, h: 36 },
+  lg:  { w: 72, h: 46 },
+}
+
+type BadgeSize = keyof typeof SIZES
+
+/* ─── Pure-SVG card badge components ────────────────────────── */
+
+function VisaBadge({ w, h }: { w: number; h: number }) {
+  return (
+    <svg viewBox="0 0 58 36" width={w} height={h} aria-label="Visa" role="img">
+      <rect width="58" height="36" rx="4.5" fill="white" stroke="#D1D5DB" strokeWidth="0.8" />
+      <text
+        x="29" y="24"
+        textAnchor="middle"
+        fontFamily="Arial,sans-serif"
+        fontWeight="900"
+        fontSize="17"
+        fill="#1A1F71"
+        fontStyle="italic"
+      >
+        VISA
+      </text>
+    </svg>
+  )
+}
+
+function MastercardBadge({ w, h }: { w: number; h: number }) {
+  return (
+    <svg viewBox="0 0 58 36" width={w} height={h} aria-label="Mastercard" role="img">
+      <rect width="58" height="36" rx="4.5" fill="white" stroke="#D1D5DB" strokeWidth="0.8" />
+      <circle cx="22" cy="18" r="9" fill="#EB001B" />
+      <circle cx="36" cy="18" r="9" fill="#F79E1B" />
+      {/* Lens-shaped intersection: arcs of both circles through overlap zone */}
+      <path d="M29 12.34 A9 9 0 0 1 29 23.66 A9 9 0 0 0 29 12.34Z" fill="#FF5F00" />
+    </svg>
+  )
+}
+
+function AmexBadge({ w, h }: { w: number; h: number }) {
+  return (
+    <svg viewBox="0 0 58 36" width={w} height={h} aria-label="American Express" role="img">
+      <rect width="58" height="36" rx="4.5" fill="#2E77BC" />
+      <text
+        x="29" y="15"
+        textAnchor="middle"
+        fontFamily="Arial,sans-serif"
+        fontWeight="700"
+        fontSize="6.5"
+        fill="white"
+        letterSpacing="1"
+      >
+        AMERICAN
+      </text>
+      <text
+        x="29" y="24"
+        textAnchor="middle"
+        fontFamily="Arial,sans-serif"
+        fontWeight="700"
+        fontSize="6.5"
+        fill="white"
+        letterSpacing="1"
+      >
+        EXPRESS
+      </text>
+    </svg>
+  )
+}
+
+function PayPalBadge({ w, h }: { w: number; h: number }) {
+  return (
+    <svg viewBox="0 0 58 36" width={w} height={h} aria-label="PayPal" role="img">
+      <rect width="58" height="36" rx="4.5" fill="white" stroke="#D1D5DB" strokeWidth="0.8" />
+      <text
+        x="29" y="23"
+        textAnchor="middle"
+        fontFamily="Arial,sans-serif"
+        fontWeight="900"
+        fontSize="13"
+      >
+        <tspan fill="#003087">Pay</tspan>
+        <tspan fill="#009CDE">Pal</tspan>
+      </text>
+    </svg>
+  )
+}
+
 function ApplePayBadge({ w, h }: { w: number; h: number }) {
   return (
     <svg viewBox="0 0 22.337 18" width={w} height={h} aria-label="Apple Pay" role="img">
-      <path d={APPLE_PAY_PATH} fill="#000000" />
+      <path d={APPLE_PAY_PATH} fill="white" />
     </svg>
   )
 }
@@ -32,16 +117,6 @@ function GooglePayBadge({ w, h }: { w: number; h: number }) {
     </svg>
   )
 }
-
-/* ─── Size configs ───────────────────────────────────────────── */
-const SIZES = {
-  xs:  { w: 40, h: 26 },
-  sm:  { w: 48, h: 30 },
-  md:  { w: 58, h: 36 },
-  lg:  { w: 72, h: 46 },
-}
-
-type BadgeSize = keyof typeof SIZES
 
 /* ─── Single animated badge wrapper ─────────────────────────── */
 function Badge({ children, label }: { children: React.ReactNode; label: string }) {
@@ -62,10 +137,10 @@ function Badge({ children, label }: { children: React.ReactNode; label: string }
 export function PaymentBadgesRow({ size = 'md' }: { size?: BadgeSize }) {
   const { w, h } = SIZES[size]
   const icons = [
-    { label: 'Visa',             el: <VisaFlatRoundedIcon width={w} height={h} /> },
-    { label: 'Mastercard',       el: <MastercardFlatRoundedIcon width={w} height={h} /> },
-    { label: 'American Express', el: <AmericanExpressFlatRoundedIcon width={w} height={h} /> },
-    { label: 'PayPal',           el: <PayPalFlatRoundedIcon width={w} height={h} /> },
+    { label: 'Visa',             el: <VisaBadge w={w} h={h} /> },
+    { label: 'Mastercard',       el: <MastercardBadge w={w} h={h} /> },
+    { label: 'American Express', el: <AmexBadge w={w} h={h} /> },
+    { label: 'PayPal',           el: <PayPalBadge w={w} h={h} /> },
     { label: 'Apple Pay',        el: <ApplePayBadge w={w} h={h} /> },
     { label: 'Google Pay',       el: <GooglePayBadge w={w} h={h} /> },
   ]
