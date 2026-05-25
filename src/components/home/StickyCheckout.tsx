@@ -88,8 +88,8 @@ export function StickyCheckout() {
           </div>
 
           {/* Payment badges */}
-          <div className="hidden md:flex shrink-0">
-            <PaymentBadgesRow size="sm" />
+          <div className="hidden lg:flex shrink-0">
+            <PaymentBadgesRow size="xs" />
           </div>
 
           {/* Secure label */}

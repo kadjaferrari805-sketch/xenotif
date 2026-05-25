@@ -3,10 +3,10 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-import { CheckCircle, ArrowRight, Zap, ShieldCheck } from 'lucide-react'
+import { CheckCircle, ArrowRight, Zap } from 'lucide-react'
 import Link from 'next/link'
 import { SectionHeader } from '@/components/ui/SectionHeader'
-import { PaymentBadgesRow } from '@/components/ui/PaymentBadges'
+import { SecurePaymentBar } from '@/components/ui/PaymentBadges'
 
 type PlanId = 'gratuit' | 'pro' | 'elite'
 
@@ -201,18 +201,14 @@ export function Pricing() {
           ))}
         </div>
 
-        {/* Payment methods + security */}
+        {/* Secure payment bar */}
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={inView ? { opacity: 1 } : {}}
+          initial={{ opacity: 0, y: 10 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 0.4, duration: 0.5 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-10"
+          className="mt-12 pt-8 border-t border-sport-border"
         >
-          <PaymentBadgesRow size="sm" />
-          <div className="flex items-center gap-1.5 text-[11px] text-sport-gray">
-            <ShieldCheck size={13} aria-hidden="true" className="text-emerald-500" />
-            Paiement 100 % sécurisé par Stripe · Données chiffrées SSL
-          </div>
+          <SecurePaymentBar />
         </motion.div>
 
         <p className="text-center text-sport-gray text-xs mt-4">

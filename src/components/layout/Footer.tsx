@@ -1,40 +1,42 @@
 import Link from 'next/link'
 import { Mail, Globe, PlayCircle, MessageCircle } from 'lucide-react'
+import { SecurePaymentBar } from '@/components/ui/PaymentBadges'
 
 const DISC_LINKS = [
   { label: 'Running & Cardio', href: '/disciplines/running-cardio' },
-  { label: 'Musculation', href: '/disciplines/musculation' },
-  { label: 'HIIT', href: '/disciplines/hiit' },
-  { label: 'Cyclisme', href: '/disciplines/cyclisme' },
-  { label: 'Natation', href: '/disciplines/natation' },
-  { label: 'CrossFit', href: '/disciplines/crossfit' },
+  { label: 'Musculation',      href: '/disciplines/musculation' },
+  { label: 'HIIT',             href: '/disciplines/hiit' },
+  { label: 'Cyclisme',         href: '/disciplines/cyclisme' },
+  { label: 'Natation',         href: '/disciplines/natation' },
+  { label: 'CrossFit',         href: '/disciplines/crossfit' },
 ]
 
 const PROG_LINKS = [
-  { label: 'Débutant', href: '/#programmes' },
+  { label: 'Débutant',    href: '/#programmes' },
   { label: 'Intermédiaire', href: '/#programmes' },
-  { label: 'Avancé', href: '/#programmes' },
-  { label: 'Élite', href: '/#programmes' },
+  { label: 'Avancé',      href: '/#programmes' },
+  { label: 'Élite',       href: '/#programmes' },
   { label: 'Coaching IA', href: '/#newsletter' },
-  { label: 'Tarifs', href: '/#tarifs' },
+  { label: 'Tarifs',      href: '/#tarifs' },
 ]
 
 const INFO_LINKS = [
-  { label: 'Mentions légales', href: '/mentions-legales' },
-  { label: 'Confidentialité', href: '/confidentialite' },
-  { label: 'Contact', href: 'mailto:contact@xenotif.com' },
-  { label: 'FAQ', href: '/#faq' },
+  { label: 'Mentions légales',  href: '/mentions-legales' },
+  { label: 'Confidentialité',   href: '/confidentialite' },
+  { label: 'Contact',           href: 'mailto:contact@xenotif.com' },
+  { label: 'FAQ',               href: '/#faq' },
 ]
 
 const SOCIAL = [
-  { Icon: Globe, label: 'Instagram Xenotif', href: 'https://instagram.com/xenotif' },
-  { Icon: PlayCircle, label: 'YouTube Xenotif', href: 'https://youtube.com/@xenotif' },
+  { Icon: Globe,         label: 'Instagram Xenotif', href: 'https://instagram.com/xenotif' },
+  { Icon: PlayCircle,    label: 'YouTube Xenotif',   href: 'https://youtube.com/@xenotif' },
   { Icon: MessageCircle, label: 'Twitter / X Xenotif', href: 'https://twitter.com/xenotif' },
 ]
 
 export function Footer() {
   return (
     <footer aria-label="Pied de page">
+      {/* ── Main grid ───────────────────────────────────────── */}
       <div className="bg-sport-card border-t border-sport-border py-16 px-6">
         <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
           {/* Brand */}
@@ -127,9 +129,20 @@ export function Footer() {
         </div>
       </div>
 
+      {/* ── Secure payment trust bar ────────────────────────── */}
+      <div className="bg-sport-card border-t border-sport-border/50 px-6 py-8">
+        <div className="max-w-6xl mx-auto">
+          <p className="text-center text-[10px] font-bold uppercase tracking-[3px] text-sport-gray mb-5">
+            Paiement sécurisé · Méthodes acceptées
+          </p>
+          <SecurePaymentBar />
+        </div>
+      </div>
+
+      {/* ── Copyright bar ────────────────────────────────────── */}
       <div className="bg-[#06070A] border-t border-sport-border px-6 py-4">
         <div className="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2 text-xs text-sport-gray">
-          <span>© 2025 Xenotif® — Tous droits réservés</span>
+          <span>© 2026 Xenotif® — Tous droits réservés</span>
           <span>Conçu pour les athlètes · Propulsé par l&apos;IA</span>
         </div>
       </div>
