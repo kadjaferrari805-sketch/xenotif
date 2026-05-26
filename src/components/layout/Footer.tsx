@@ -41,13 +41,9 @@ export function Footer() {
         <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
           {/* Brand */}
           <div>
-            <Link
-              href="/"
-              aria-label="Xenotif — Retour à l'accueil"
-              className="flex items-center gap-2 mb-5"
-            >
-              <Logo href="" size="sm" />
-            </Link>
+            <div className="mb-5">
+              <Logo href="/" size="sm" />
+            </div>
             <p className="text-xs text-sport-gray leading-relaxed mb-6">
               La plateforme sport ultime pour athlètes de tous niveaux. Performance, coaching IA
               et communauté au service de tes objectifs.
