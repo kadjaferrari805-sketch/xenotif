@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from 'react'
 import { CheckCircle, AlertTriangle, CreditCard, Calendar, ArrowRight, ShieldCheck, X } from 'lucide-react'
-import { createClient } from '@/lib/supabase/client'
 
 type Sub = {
   plan: string; status: string; trial_end: string | null;
@@ -30,15 +29,10 @@ export default function AbonnementPage() {
   const [portalLoading, setPortalLoading] = useState(false)
 
   useEffect(() => {
-    async function load() {
-      const supabase = createClient()
-      const { data: { user } } = await supabase.auth.getUser()
-      if (!user) return
-      const { data } = await supabase.from('subscriptions').select('*').eq('user_id', user.id).single()
-      setSub(data)
-      setLoading(false)
-    }
-    load()
+    fetch('/api/subscription')
+      .then(r => r.json())
+      .then(data => { setSub(data); setLoading(false) })
+      .catch(() => setLoading(false))
   }, [])
 
   const now = new Date()
