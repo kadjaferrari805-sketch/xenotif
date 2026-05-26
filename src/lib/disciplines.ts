@@ -1037,6 +1037,667 @@ const crossfitContent: DisciplineContent = {
 }
 
 /* ── Master map ────────────────────────────────────────────────── */
+/* ── Yoga ──────────────────────────────────────────────────────── */
+const yogaContent: DisciplineContent = {
+  tagline: 'Flexibilité, force intérieure et sérénité — sur et hors du tapis.',
+  heroStat: '2 900+ pratiquants actifs',
+  guide: {
+    technique: {
+      emoji: '🧘',
+      title: 'Technique & Alignement',
+      items: [
+        'Alignement corporel : oreilles, épaules, hanches et chevilles dans le même axe en postures debout',
+        'Respiration ujjayi — souffle lent par le nez, gorge légèrement contractée, synchronisé avec chaque mouvement',
+        'Engage le bandha abdominal (uddiyana) pour protéger le bas du dos dans les flexions et extensions',
+        'Progression posturale : ne force jamais une posture — utilise des briques et sangles pour adapter l\'amplitude',
+        'Maintiens chaque posture de 5 à 10 respirations — la tenue dans le temps est plus bénéfique que la profondeur',
+      ],
+    },
+    equipment: {
+      emoji: '🛒',
+      title: 'Équipement recommandé',
+      items: [
+        'Tapis antidérapant 4–6 mm (TPE ou caoutchouc naturel) — indispensable pour la stabilité et le confort articulaire',
+        'Deux briques yoga (liège ou mousse) pour adapter les postures à ta souplesse actuelle',
+        'Sangle de yoga pour les postures de flexion avant et d\'ouverture des hanches',
+        'Bolster cylindrique pour le yoga restauratif et les postures de récupération passives',
+        'Vêtements ajustés et respirants (pas de vêtements trop amples qui gênent la vision de l\'alignement)',
+      ],
+    },
+    nutrition: {
+      emoji: '🥗',
+      title: 'Nutrition & Hydratation',
+      items: [
+        'Pratique à jeun ou au moins 2h après un repas — l\'estomac plein gêne les torsions et les inversions',
+        'Hydratation douce : bois 300–400 ml d\'eau avant la séance, pas pendant les postures actives',
+        'Thé vert ou infusion gingembre-citron 30 min avant la pratique pour activer la digestion',
+        'Post-séance : repas léger riche en protéines végétales (lentilles, quinoa, tofu) pour la récupération',
+        'Évite sucre raffiné et alcool les jours de pratique intensive — ils amplifient l\'inflammation',
+      ],
+    },
+    recovery: {
+      emoji: '💆',
+      title: 'Récupération & Bien-être',
+      items: [
+        'Savasana obligatoire 5–10 min à chaque fin de séance — c\'est là que le corps intègre le travail',
+        'Yoga nidra (yoga du sommeil) 20 min remplace 1h de sommeil conventionnel selon les études',
+        'Auto-massage des pieds et des mollets avec balle de tennis après les séances en debout',
+        'Douche chaude post-pratique pour relâcher les tensions musculaires profondes',
+        'Journal de pratique : note tes ressentis après chaque séance pour suivre tes progrès subtils',
+      ],
+    },
+  },
+  tips: [
+    { icon: '🌬️', title: 'Le souffle est roi', body: 'Si tu perds le contrôle de ta respiration, tu as dépassé ta limite. La respiration guide la posture — jamais l\'inverse.' },
+    { icon: '📅', title: 'Régularité > Durée', body: '20 minutes chaque jour transforment le corps en 4 semaines. Une heure une fois par semaine ne produit que peu de changements durables.' },
+    { icon: '🧠', title: 'Yoga = entraînement du cerveau', body: 'Les études IRM montrent que 8 semaines de pratique régulière augmentent le volume du cortex préfrontal, réduisant l\'anxiété de 40 %.' },
+    { icon: '🔄', title: 'Enchaîne yin et yang', body: 'Alterne yoga dynamique (vinyasa, ashtanga) et yoga passif (yin, restauratif) dans la semaine pour équilibrer renforcement et récupération.' },
+  ],
+  videos: [
+    {
+      youtubeId: 'v7AYKMP6rOE',
+      title: 'Yoga débutant — 30 min flow',
+      description: 'Séquence yoga complète pour débutants — postures fondamentales, alignement et respiration guidés étape par étape.',
+      duration: '30 min',
+      level: 'Débutant',
+      thumbnail: 'https://img.youtube.com/vi/v7AYKMP6rOE/maxresdefault.jpg',
+    },
+    {
+      youtubeId: 'sTANio_2E0Q',
+      title: 'Vinyasa flow 45 min',
+      description: 'Enchaînement vinyasa intermédiaire — lien souffle-mouvement, ouverture des hanches et renforcement du core.',
+      duration: '45 min',
+      level: 'Intermédiaire',
+      thumbnail: 'https://img.youtube.com/vi/sTANio_2E0Q/maxresdefault.jpg',
+    },
+    {
+      youtubeId: '4pKly2JojMw',
+      title: 'Yoga du matin — Réveil en douceur',
+      description: 'Séquence matinale de 20 minutes pour éveiller le corps, activer l\'énergie et préparer la journée.',
+      duration: '20 min',
+      level: 'Tous niveaux',
+      thumbnail: 'https://img.youtube.com/vi/4pKly2JojMw/maxresdefault.jpg',
+    },
+    {
+      youtubeId: 'VaoV1PrYft4',
+      title: 'Yin Yoga — Ouverture profonde',
+      description: 'Yin yoga 40 minutes axé sur les hanches et le bas du dos — postures tenues longtemps pour les fascias et ligaments.',
+      duration: '40 min',
+      level: 'Tous niveaux',
+      thumbnail: 'https://img.youtube.com/vi/VaoV1PrYft4/maxresdefault.jpg',
+    },
+    {
+      youtubeId: 'U9YBY4PpDGQ',
+      title: 'Yoga force — Niveau avancé',
+      description: 'Séquence yoga avancée avec inversions, équilibres sur les mains et postures exigeantes de force.',
+      duration: '50 min',
+      level: 'Avancé',
+      thumbnail: 'https://img.youtube.com/vi/U9YBY4PpDGQ/maxresdefault.jpg',
+    },
+    {
+      youtubeId: 'CoRuMYBwHEE',
+      title: 'Yoga du soir — Détente & sommeil',
+      description: 'Yoga restauratif 30 minutes pour se décompresser, relâcher les tensions de la journée et favoriser un sommeil profond.',
+      duration: '30 min',
+      level: 'Débutant',
+      thumbnail: 'https://img.youtube.com/vi/CoRuMYBwHEE/maxresdefault.jpg',
+    },
+  ],
+  exercises: [
+    { name: 'Chien tête en bas (Adho Mukha)', muscles: 'Ischio-jambiers, mollets, épaules, dos', sets: '5 respirations', difficulty: 'Débutant', description: 'Depuis la planche, pousse les hanches vers le plafond en formant un V inversé. Talons vers le sol, dos allongé. Posture de référence qui étire et renforce simultanément.' },
+    { name: 'Guerrier I (Virabhadrasana I)', muscles: 'Quadriceps, fessiers, fléchisseurs de hanche', sets: '5–8 respirations/côté', difficulty: 'Débutant', description: 'Pied avant à 90°, pied arrière à 45°, genou avant au-dessus de la cheville. Bras levés, épaules relâchées. Renforce les jambes et ouvre la poitrine.' },
+    { name: 'Guerrier II (Virabhadrasana II)', muscles: 'Quadriceps, fessiers, abducteurs, épaules', sets: '5–8 respirations/côté', difficulty: 'Débutant', description: 'Pieds sur une même ligne, genou avant dans l\'axe du pied. Bras horizontaux, regard au-dessus de la main avant. Développe la force des jambes et la concentration.' },
+    { name: 'Triangle (Trikonasana)', muscles: 'Ischio-jambiers, obliques, fléchisseurs de hanche', sets: '5 respirations/côté', difficulty: 'Intermédiaire', description: 'Jambes écartées, buste incliné latéralement, main basse sur le tibia ou le sol. Torsion ouvrant la poitrine. Améliore la souplesse latérale et l\'équilibre.' },
+    { name: 'Planche (Phalakasana)', muscles: 'Abdominaux, épaules, fessiers, gainage global', sets: '3×30–60 s', difficulty: 'Débutant', description: 'Corps en ligne droite, poignets sous les épaules. Active les abdominaux, les fessiers et les jambes. La planche de yoga renforce sans comprimer les lombaires.' },
+    { name: 'Corbeau (Bakasana)', muscles: 'Abdominaux, triceps, avant-bras, équilibre', sets: '3×5 respirations', difficulty: 'Avancé', description: 'Accroupi, pose les genoux sur les bras fléchis, incline le buste en avant et soulève les pieds. Renforce profondément le core et les bras. Posture d\'équilibre emblématique.' },
+    { name: 'Posture de l\'enfant (Balasana)', muscles: 'Bas du dos, fessiers, épaules (étirement)', sets: '1–3 min', difficulty: 'Tous niveaux', description: 'Assis sur les talons, allonge les bras devant ou le long du corps. Relâche complètement le dos et les épaules. Posture de repos et de récupération entre les séquences.' },
+    { name: 'Demi-pont (Setu Bandha)', muscles: 'Fessiers, ischio-jambiers, colonne vertébrale', sets: '3×10 respirations', difficulty: 'Débutant', description: 'Allongé sur le dos, genoux fléchis, pousse les hanches vers le plafond. Presse les pieds dans le sol. Ouvre la poitrine, renforce les fessiers et étire la colonne.' },
+    { name: 'Torsion assise (Ardha Matsyendrasana)', muscles: 'Obliques, muscles paravertébraux, hanche', sets: '5 respirations/côté', difficulty: 'Intermédiaire', description: 'Assis au sol, pied d\'une jambe posé à l\'extérieur du genou opposé, torsion du buste. Détoxifie les organes abdominaux et améliore la mobilité thoracique.' },
+    { name: 'Équilibre sur une jambe (Vrksasana)', muscles: 'Muscles stabilisateurs de la cheville, fessiers', sets: '5 respirations/côté', difficulty: 'Débutant', description: 'Debout sur une jambe, pied de l\'autre posé sur le tibia ou la cuisse. Mains en prière ou bras levés. Développe la proprioception et la concentration mentale.' },
+  ],
+  program: [
+    {
+      week: 'Semaine 1–2',
+      theme: 'Fondations — Postures de base',
+      sessions: [
+        { name: 'Flow débutant 30 min', detail: 'Salutation au soleil A × 5, guerriers I & II, chien tête en bas, posture de l\'enfant' },
+        { name: 'Yin yoga 40 min', detail: 'Papillon, demi-grenouille, torsion allongée — postures tenues 3–5 min chacune' },
+        { name: 'Yoga du matin 20 min', detail: 'Séquence réveil : chat-vache, chien tête en bas, fentes basses, demi-pont' },
+      ],
+    },
+    {
+      week: 'Semaine 3–4',
+      theme: 'Renforcement & Équilibre',
+      sessions: [
+        { name: 'Vinyasa flow 45 min', detail: 'Salutation au soleil B, guerrier III, triangle, planche latérale, chaturanga' },
+        { name: 'Yoga core 30 min', detail: 'Planche, bateau, demi-bateau, planche latérale, boat crunches — renforcement profond' },
+        { name: 'Yoga restauratif 40 min', detail: 'Postures soutenues par bolster/briques — libération des hanches et du bas du dos' },
+        { name: 'Méditation assise 15 min', detail: 'Pranayama (cohérence cardiaque 5/5) + balayage corporel — ancrage mental' },
+      ],
+    },
+    {
+      week: 'Semaine 5–6',
+      theme: 'Inversions & Approfondissement',
+      sessions: [
+        { name: 'Yoga avancé — inversions 50 min', detail: 'Prépa chandelle, demi-poirier contre le mur, corbeau, ouverture des épaules au sol' },
+        { name: 'Ashtanga primary series partielle 60 min', detail: 'Debout + assis jusqu\'à navasana — practice dynamique et rigoureuse' },
+        { name: 'Yin & restoratif 45 min', detail: 'Postures yin passives longues pour compenser l\'intensité du vinyasa' },
+      ],
+    },
+    {
+      week: 'Semaine 7–8',
+      theme: 'Intégration & Autonomie',
+      sessions: [
+        { name: 'Pratique autonome 45 min', detail: 'Crée ta propre séquence avec les postures apprises — cultive ton intelligence intuitive du mouvement' },
+        { name: 'Atelier posture clé', detail: 'Focus sur une posture avancée de ton choix : ouverture de hanche, inversion ou équilibre de bras' },
+        { name: 'Yoga nidra 30 min', detail: 'Relaxation profonde guidée — intégration complète du cycle de 8 semaines' },
+        { name: 'Bilan souplesse & force', detail: 'Test de flexion avant, équilibre unipodal, chaturanga max — mesure de la progression' },
+      ],
+    },
+  ],
+  faq: [
+    { q: 'Faut-il être souple pour faire du yoga ?', a: 'Non — la raideur est justement la raison de commencer le yoga, pas un obstacle. Chaque posture est adaptable avec des accessoires (briques, sangle). La souplesse viendra avec la pratique.' },
+    { q: 'Quelle différence entre vinyasa, ashtanga et yin yoga ?', a: 'Vinyasa est dynamique et créatif (lien souffle-mouvement). Ashtanga suit une séquence fixe, très structurée. Yin est passif et lent (postures tenues 3–5 min). Commence par le vinyasa ou le hatha pour un bon équilibre.' },
+    { q: 'À quelle fréquence pratiquer pour voir des résultats ?', a: 'Minimum 3 séances/semaine de 30–45 min. Les changements de souplesse apparaissent en 3–4 semaines. Les bénéfices sur le stress et la qualité du sommeil souvent dès la première semaine.' },
+    { q: 'Le yoga peut-il remplacer la musculation ?', a: 'Le yoga développe la force fonctionnelle, la mobilité et l\'endurance musculaire — complémentaire mais différent. Des styles comme l\'ashtanga ou le rocket yoga offrent un renforcement sérieux. L\'idéal est de combiner les deux.' },
+  ],
+}
+
+/* ── Boxing ────────────────────────────────────────────────────── */
+const boxingContent: DisciplineContent = {
+  tagline: 'Puissance, explosivité et maîtrise de soi — forgées sur le ring.',
+  heroStat: '1 800+ boxeurs actifs',
+  guide: {
+    technique: {
+      emoji: '🥊',
+      title: 'Technique & Garde',
+      items: [
+        'Garde orthodoxe (gaucher en avant) ou southpaw (droitier en avant) — pied directeur détermine la garde naturelle',
+        'Position de base : pieds à largeur d\'épaules + 45°, poids 55 % sur la jambe arrière pour la mobilité',
+        'Jab — coup direct du poing avant, bras tendu, épaule qui remonte pour protéger le menton',
+        'Cross — coup du poing arrière avec rotation complète des hanches — 70 % de la puissance vient de la rotation du bassin',
+        'Le mouvement de tête (slip, roll) est aussi important que les frappes — protège et crée les opportunités',
+      ],
+    },
+    equipment: {
+      emoji: '🛒',
+      title: 'Équipement essentiel',
+      items: [
+        'Gants de boxe (10–12 oz pour entraînement général, 16 oz pour sparring) — protège les poignets et les adversaires',
+        'Bandes de boxe 4,5 m — obligatoires sous les gants pour le soutien des poignets et des articulations',
+        'Protège-dents moulé sur mesure — protection n°1 contre les commotions et fractures dentaires',
+        'Sac de frappe (lourd 40–60 kg pour force, léger 20 kg pour vitesse et technique)',
+        'Corde à sauter — l\'outil de cardio et de coordination le plus efficace de la boxe',
+      ],
+    },
+    nutrition: {
+      emoji: '🥩',
+      title: 'Nutrition du boxeur',
+      items: [
+        'Repas pré-entraînement 2h avant : riz + protéine maigre + légumes — energie stable sans lourdeur',
+        'Hydratation : minimum 600 ml d\'eau par heure d\'entraînement — la déshydratation ralentit les réflexes',
+        'Protéines : 2–2,2 g/kg/jour pour maintenir la masse musculaire en période de préparation',
+        'Gestion du poids : déficit calorique max 500 kcal/jour — les coupures de poids brutales réduisent la puissance de 15 %',
+        'Récupération : collagène + vitamine C post-séance pour la santé des poignets, coudes et épaules',
+      ],
+    },
+    recovery: {
+      emoji: '💆',
+      title: 'Récupération du boxeur',
+      items: [
+        'Glaçage poignets et articulations 10–15 min après chaque séance intense — prévention tendinite',
+        'Étirements actifs des épaules, pectoraux et fléchisseurs de hanche post-séance (10 min)',
+        'Rotation agoniste/antagoniste : jour frappe / jour jambes + core pour répartir la charge',
+        'Massage des avant-bras et de la nuque — zones les plus contractées lors de la boxe',
+        'Sommeil réparateur : les réflexes et la coordination se consolident pendant les phases de sommeil profond',
+      ],
+    },
+  },
+  tips: [
+    { icon: '⚡', title: 'La puissance vient des hanches', body: 'Un cross généré uniquement par le bras représente 30 % de la puissance maximale. Ajoute la rotation des hanches et du tronc pour atteindre 100 % de ton potentiel.' },
+    { icon: '🧠', title: 'Pense en combinaisons', body: 'Un seul coup est facilement évitable. Les combinaisons (1-2, 1-1-2, 1-2-3b) créent des ouvertures. Maîtrise 3 combinaisons avant d\'en apprendre de nouvelles.' },
+    { icon: '🦶', title: 'Le travail de jambes est la clé', body: 'Un boxeur avec un mauvais travail de jambes ne peut pas attaquer ni défendre efficacement. Consacre 30 % de ton temps à la corde et aux déplacements.' },
+    { icon: '🎯', title: 'Qualité > Quantité sur le sac', body: 'Frapper 100 coups propres vaut mieux que 500 coups bâclés. Chaque frappe sur le sac doit être précise, bien ancrée, avec retrait rapide des mains.' },
+  ],
+  videos: [
+    {
+      youtubeId: '6BLpYlpG_zE',
+      title: 'Boxe débutant — Bases techniques',
+      description: 'Initiation complète à la boxe — garde, jab, cross, crochet et uppercut expliqués pour les débutants absolus.',
+      duration: '25 min',
+      level: 'Débutant',
+      thumbnail: 'https://img.youtube.com/vi/6BLpYlpG_zE/maxresdefault.jpg',
+    },
+    {
+      youtubeId: '7fUn17aCFAk',
+      title: 'Combinaisons de boxe — Intermédiaire',
+      description: 'Apprentissage de 10 combinaisons essentielles avec travail sur sac et mitaines — progression garantie.',
+      duration: '30 min',
+      level: 'Intermédiaire',
+      thumbnail: 'https://img.youtube.com/vi/7fUn17aCFAk/maxresdefault.jpg',
+    },
+    {
+      youtubeId: 'yKJfSgwqrSk',
+      title: 'Séance shadow boxing 20 min',
+      description: 'Entraînement shadow boxing complet — mouvement de jambes, combinaisons, esquives et visualisation de l\'adversaire.',
+      duration: '20 min',
+      level: 'Tous niveaux',
+      thumbnail: 'https://img.youtube.com/vi/yKJfSgwqrSk/maxresdefault.jpg',
+    },
+    {
+      youtubeId: 'X0bdJU2fBxQ',
+      title: 'Cardio boxe — Brûle-graisses intense',
+      description: 'Circuit cardio boxe de 35 minutes — combinaisons, footwork et exercices athlétiques pour une condition physique optimale.',
+      duration: '35 min',
+      level: 'Intermédiaire',
+      thumbnail: 'https://img.youtube.com/vi/X0bdJU2fBxQ/maxresdefault.jpg',
+    },
+    {
+      youtubeId: 'lSINFdWs5uY',
+      title: 'Travail de tête et esquives',
+      description: 'Maîtrise le slip, le roll et le bob & weave — les mouvements défensifs qui séparent les bons boxeurs des grands.',
+      duration: '22 min',
+      level: 'Intermédiaire',
+      thumbnail: 'https://img.youtube.com/vi/lSINFdWs5uY/maxresdefault.jpg',
+    },
+    {
+      youtubeId: 'NwZvFVTN3Tk',
+      title: 'Puissance de frappe — Niveau avancé',
+      description: 'Développe ta puissance maximale avec des exercices de plyométrie, de rotation et de frappe lourde sur sac.',
+      duration: '40 min',
+      level: 'Avancé',
+      thumbnail: 'https://img.youtube.com/vi/NwZvFVTN3Tk/maxresdefault.jpg',
+    },
+  ],
+  exercises: [
+    { name: 'Corde à sauter', muscles: 'Cardio, mollets, coordination, rythme', sets: '10×1 min / récup 30 s', difficulty: 'Tous niveaux', description: 'Saut simple en rythme constant, progresser vers double-under et crossover. L\'outil fondamental de tout boxeur pour améliorer la coordination pied-main-oeil et le cardio.' },
+    { name: 'Shadow boxing', muscles: 'Épaules, cardio, technique, coordination', sets: '5×3 min / 1 min repos', difficulty: 'Débutant', description: 'Boxe dans le vide en visualisant un adversaire. Travaille les combinaisons, les déplacements, les esquives et la fluidité. Séance technique par excellence.' },
+    { name: 'Sac lourd — combinaisons', muscles: 'Épaules, pectoraux, triceps, core, cardio', sets: '6×3 min / 1 min repos', difficulty: 'Intermédiaire', description: 'Enchaîne des combinaisons prédéfinies (1-2, 1-2-3b, 1-2-lb) sur le sac lourd. Focus sur la qualité de frappe, le retrait rapide des mains et la rotation des hanches.' },
+    { name: 'Pompes boxeur', muscles: 'Pectoraux, triceps, épaules, core', sets: '4×15', difficulty: 'Intermédiaire', description: 'Pompe classique avec rotation du buste et extension du bras en uppercut en fin de mouvement. Renforce les muscles de frappe tout en travaillant la coordination.' },
+    { name: 'Footwork en échelle', muscles: 'Mollets, coordination, vitesse de réaction', sets: '3×4 passages', difficulty: 'Débutant', description: 'Utilise une échelle de coordination au sol pour travailler les pas de boxe (in-out, latéral, pivot). Améliore la vitesse de déplacement et l\'équilibre dynamique en garde.' },
+    { name: 'Squat sauté avec crochet', muscles: 'Quadriceps, fessiers, épaules, explosivité', sets: '4×10', difficulty: 'Intermédiaire', description: 'Descend en squat, explose vers le haut et envoie un crochet imaginaire en montant. Combine puissance des jambes et frappe — comme pour sortir d\'un clinch et contre-attaquer.' },
+    { name: 'Gainage avec rotation (Russian twist)', muscles: 'Obliques, abdominaux, rotation du tronc', sets: '3×20', difficulty: 'Débutant', description: 'Assis en V, pieds décollés, tourne le buste de droite à gauche en touchant le sol de chaque côté. La rotation du tronc est la source de puissance de tous les coups latéraux.' },
+    { name: 'Medicine ball slam', muscles: 'Épaules, dos, abdominaux, explosivité', sets: '4×12', difficulty: 'Intermédiaire', description: 'Lève le médecine ball à bout de bras puis projette-le violemment au sol. Simule la puissance d\'un overhand ou d\'un coup de tête. Excellent pour l\'explosivité du haut du corps.' },
+    { name: 'Défense aux mitaines', muscles: 'Réflexes, coordination, cardio', sets: '4×3 min', difficulty: 'Avancé', description: 'Face au partenaire tenant les mitaines, travaille frappe-esquive alternée. Développe la vision périphérique, la vitesse de réaction et l\'adaptation tactique en temps réel.' },
+  ],
+  program: [
+    {
+      week: 'Semaine 1–2',
+      theme: 'Fondations — Garde et coups de base',
+      sessions: [
+        { name: 'Technique débutant 45 min', detail: 'Garde, jab, cross, déplacements latéraux + 10 min corde à sauter basique' },
+        { name: 'Cardio boxe 30 min', detail: 'Shadow boxing 3×3 min + sac léger combinaisons simples (1-2) 4×2 min' },
+        { name: 'Conditioning athlétique 40 min', detail: 'Corde 5 min + pompes 4×15 + squat 4×15 + gainage 3×45 s + étirements' },
+      ],
+    },
+    {
+      week: 'Semaine 3–4',
+      theme: 'Combinaisons & Cardio boxing',
+      sessions: [
+        { name: 'Mitaines / sac — combinaisons', detail: '10 combinaisons différentes en rotation sur sac lourd — 6×3 min avec 1 min repos' },
+        { name: 'Sparring léger (si partenaire)', detail: '4×2 min de sparring technique à 50 % — focus déplacements et jab uniquement' },
+        { name: 'HIIT boxe 25 min', detail: 'Shadow boxing 30 s / repos 15 s × 10, puis burpees boxeur 20 s / 10 s × 10' },
+        { name: 'Renforcement fonctionnel', detail: 'Medicine ball slam 4×12 + Russian twist 3×20 + pompes boxeur 4×15' },
+      ],
+    },
+    {
+      week: 'Semaine 5–6',
+      theme: 'Puissance & Défense',
+      sessions: [
+        { name: 'Séance puissance sac lourd', detail: 'Travail de puissance maximale : 5×3 min avec focus cross et uppercut à intensité maximale' },
+        { name: 'Esquives et contre-attaques', detail: 'Slip/roll en réponse aux jabs du partenaire + contre 1-2 immédiat — 6×2 min' },
+        { name: 'Cardio endurance 40 min', detail: 'Corde 15 min + shadow boxing 15 min + sac 10 min — intensité modérée continue' },
+      ],
+    },
+    {
+      week: 'Semaine 7–8',
+      theme: 'Sparring & Consolidation',
+      sessions: [
+        { name: 'Sparring complet 4×3 min', detail: 'Application tactique complète — tous les coups et esquives appris en situation réelle' },
+        { name: 'Affûtage technique 45 min', detail: 'Retour aux fondamentaux : garde, jab, déplacements — affiner la précision et la fluidité' },
+        { name: 'Bilan performance', detail: 'Test corde à sauter max 3 min + test frappe puissance sur sac avec capteur + évaluation technique' },
+        { name: 'Récupération active', detail: 'Yoga 30 min + étirements profonds épaules et poignets + auto-massage bras' },
+      ],
+    },
+  ],
+  faq: [
+    { q: 'La boxe est-elle dangereuse pour les débutants ?', a: 'L\'entraînement boxe fitness (sac, shadow, mitaines) est très sûr et sans contact. Le sparring nécessite un équipement complet et un entraîneur compétent. La boxe développe la self-défense et la confiance en soi.' },
+    { q: 'Combien de temps pour apprendre les bases ?', a: 'En 4 semaines de pratique régulière (3 séances/sem), tu maîtrises la garde, le jab, le cross et les déplacements de base. Les combinaisons et la défense nécessitent 3–6 mois.' },
+    { q: 'La boxe fait-elle perdre du poids efficacement ?', a: 'Oui — une séance de boxe de 45 min brûle entre 500 et 800 kcal selon l\'intensité. C\'est l\'un des sports les plus efficaces pour la dépense calorique totale grâce à l\'implication du corps entier.' },
+    { q: 'Faut-il un partenaire pour s\'entraîner à la boxe ?', a: 'Non — sac de frappe, shadow boxing et corde à sauter permettent un entraînement complet en solo. Le partenaire est un plus (mitaines, sparring) mais pas une nécessité, surtout au début.' },
+  ],
+}
+
+/* ── Stretching ────────────────────────────────────────────────── */
+const stretchingContent: DisciplineContent = {
+  tagline: 'Libère ton corps, récupère mieux et bougez sans douleur.',
+  heroStat: '3 200+ pratiquants actifs',
+  guide: {
+    technique: {
+      emoji: '🤸',
+      title: 'Technique d\'étirement',
+      items: [
+        'Étirement statique : tiens 30–60 secondes, respire profondément, relâche 20 % de tension à l\'expir',
+        'PNF (Proprioceptive Neuromuscular Facilitation) : contraction 6 s → relâchement → approfondissement — gain de 30 % d\'amplitude',
+        'Ne jamais étirer un muscle froid — attends 5 min d\'échauffement léger (marche, rotation) avant tout stretching profond',
+        'Seuil de confort : sensation de tension tolérable, jamais de douleur aiguë — la douleur déclenche le réflexe myotatique',
+        'Étirement dynamique avant l\'effort, étirement statique après — ne pas confondre les deux dans ta routine',
+      ],
+    },
+    equipment: {
+      emoji: '🛒',
+      title: 'Matériel recommandé',
+      items: [
+        'Tapis de sol épais (6–8 mm) pour le confort articulaire des genoux et des hanches',
+        'Sangle de stretching (ou ceinture) pour les étirements des ischio-jambiers et des fléchisseurs de hanche',
+        'Foam roller (rouleau de massage) pour le relâchement myofascial avant les étirements',
+        'Balle de lacrosse ou balle de tennis pour le massage des points trigger sur mollets et voûte plantaire',
+        'Timer / application pour respecter les durées d\'étirement — ne jamais estimer à l\'oeil',
+      ],
+    },
+    nutrition: {
+      emoji: '🍊',
+      title: 'Nutrition pour la souplesse',
+      items: [
+        'Collagène (10–15 g) + vitamine C 30–60 min avant les séances de stretching intensif pour la synthèse du collagène',
+        'Hydratation optimale : les fascias et les tendons sont composés à 70 % d\'eau — bois 2L minimum par jour',
+        'Magnésium (300–400 mg/j) : réduit les crampes et favorise la relaxation musculaire profonde',
+        'Curcumine + poivre noir post-séance : anti-inflammatoire naturel puissant pour les douleurs de courbatures',
+        'Évite le café en excès les jours de stretching intensif — la caféine augmente le tonus musculaire basal',
+      ],
+    },
+    recovery: {
+      emoji: '💆',
+      title: 'Intégration & Récupération',
+      items: [
+        'Foam rolling 5–10 min avant les étirements libère les restrictions fasciales et amplifie les gains de mobilité',
+        'Bain chaud 20 min (38–40 °C) pré-séance — la chaleur augmente l\'élasticité du collagène de 15 %',
+        'Stretching du soir → meilleur sommeil : les étirements parasympathiques abaissent la fréquence cardiaque',
+        'Maintiens les gains : 10 min de stretching quotidien vaut mieux qu\'une session intensive hebdomadaire',
+        'Progressive overload en souplesse : augmente l\'amplitude de 5 % par semaine — la progression est linéaire si régulière',
+      ],
+    },
+  },
+  tips: [
+    { icon: '🌡️', title: 'Chaud = plus souple', body: 'La température musculaire améliore l\'élasticité. Étire-toi après l\'effort ou après un bain chaud pour des gains 2× plus rapides.' },
+    { icon: '📐', title: 'La respiration est l\'outil', body: 'À chaque expiration, les muscles se relâchent naturellement. Expire lentement pour "aller plus loin" dans l\'étirement sans forcer.' },
+    { icon: '🔄', title: 'Mobilité ≠ Souplesse', body: 'La souplesse est passive (jusqu\'où tu peux aller). La mobilité est active (jusqu\'où tu contrôles). Travaille les deux pour une flexibilité fonctionnelle.' },
+    { icon: '⏰', title: 'La constance prime', body: '10 minutes chaque jour produisent des résultats en 3 semaines. Sans régularité, les tissus conjonctifs retournent à leur longueur d\'origine en 72h.' },
+  ],
+  videos: [
+    {
+      youtubeId: 'g_tea8ZNk5A',
+      title: 'Stretching full body 30 min',
+      description: 'Programme d\'étirement complet du corps en 30 minutes — idéal après l\'entraînement ou le soir pour récupérer.',
+      duration: '30 min',
+      level: 'Tous niveaux',
+      thumbnail: 'https://img.youtube.com/vi/g_tea8ZNk5A/maxresdefault.jpg',
+    },
+    {
+      youtubeId: 'aBodaYBaFGE',
+      title: 'Étirements ischio-jambiers & dos',
+      description: 'Routine ciblée 25 minutes pour soulager les ischio-jambiers tendus et les douleurs lombaires — résultats dès la première séance.',
+      duration: '25 min',
+      level: 'Débutant',
+      thumbnail: 'https://img.youtube.com/vi/aBodaYBaFGE/maxresdefault.jpg',
+    },
+    {
+      youtubeId: 'L_xrDAtykMI',
+      title: 'Mobilité des hanches — Routine complète',
+      description: 'Programme mobilité des hanches en 35 minutes — ouverture, rotation interne/externe et libération du psoas.',
+      duration: '35 min',
+      level: 'Intermédiaire',
+      thumbnail: 'https://img.youtube.com/vi/L_xrDAtykMI/maxresdefault.jpg',
+    },
+    {
+      youtubeId: 'qOBLKJMsNHo',
+      title: 'Stretching épaules & cou',
+      description: 'Libère les tensions cervicales et les épaules bloquées en 20 minutes — parfait pour les personnes travaillant assis.',
+      duration: '20 min',
+      level: 'Débutant',
+      thumbnail: 'https://img.youtube.com/vi/qOBLKJMsNHo/maxresdefault.jpg',
+    },
+    {
+      youtubeId: 'tPbHyvKEbF8',
+      title: 'PNF Stretching — Techniques avancées',
+      description: 'Méthode PNF expliquée et appliquée sur 6 groupes musculaires majeurs — gains de mobilité rapides et durables.',
+      duration: '40 min',
+      level: 'Avancé',
+      thumbnail: 'https://img.youtube.com/vi/tPbHyvKEbF8/maxresdefault.jpg',
+    },
+    {
+      youtubeId: 'UItWltVZZmE',
+      title: 'Foam rolling + Stretching récupération',
+      description: 'Protocole complet de récupération : automassage au rouleau suivi d\'étirements ciblés pour accélérer la récupération musculaire.',
+      duration: '35 min',
+      level: 'Tous niveaux',
+      thumbnail: 'https://img.youtube.com/vi/UItWltVZZmE/maxresdefault.jpg',
+    },
+  ],
+  exercises: [
+    { name: 'Flexion avant jambes tendues', muscles: 'Ischio-jambiers, bas du dos, mollets', sets: '3×45 s', difficulty: 'Débutant', description: 'Debout, jambes jointes et tendues, descends lentement les mains vers le sol. Fléchis légèrement les genoux si douleur dans le bas du dos. Tiens la position en respirant profondément.' },
+    { name: 'Fente basse psoas (lézard)', muscles: 'Psoas, fléchisseurs de hanche, quadriceps', sets: '3×45 s/côté', difficulty: 'Débutant', description: 'En fente profonde, genou arrière au sol, bassin poussé vers l\'avant. Optionnel : lève les bras pour approfondir. Libère le psoas raccourci par la position assise prolongée.' },
+    { name: 'Papillon assis', muscles: 'Adducteurs, fléchisseurs de hanche, aine', sets: '3×60 s', difficulty: 'Débutant', description: 'Assis, plantes des pieds collées, genoux vers le sol. Penche doucement le buste en avant en gardant le dos droit. Étirement fondamental pour les coureurs et cyclistes.' },
+    { name: 'Pigeon (préparatoire)', muscles: 'Fessiers, rotateurs externes de hanche, psoas', sets: '2 min/côté', difficulty: 'Intermédiaire', description: 'En quadrupédie, avance un genou entre les mains, étends la jambe arrière. Incline progressivement le buste vers l\'avant. L\'un des étirements de hanche les plus efficaces qui existe.' },
+    { name: 'Étirement pectoral à la porte', muscles: 'Pectoraux, biceps, coiffe des rotateurs', sets: '3×30 s/côté', difficulty: 'Débutant', description: 'Bras à 90° contre le montant d\'une porte, fais un pas en avant. Ressens l\'étirement de toute la face antérieure de l\'épaule. Contre-balance le volume en développé couché.' },
+    { name: 'Cobra (Bhujangasana)', muscles: 'Abdominaux, fléchisseurs de hanche, pectoraux', sets: '3×30 s', difficulty: 'Débutant', description: 'Allongé face au sol, mains sous les épaules, pousse le buste vers le haut en gardant le bassin au sol. Étire toute la face antérieure du corps et renforce les érecteurs du rachis.' },
+    { name: 'Rotation thoracique à genoux', muscles: 'Muscles paravertébraux thoraciques, obliques', sets: '3×10/côté', difficulty: 'Intermédiaire', description: 'En quadrupédie, main derrière la tête, ouvre le coude vers le plafond en pivotant le buste. Améliore la mobilité thoracique essentielle pour la course, la natation et la boxe.' },
+    { name: 'Étirement du mollet au mur', muscles: 'Gastrocnémiens, soléaire, tendon d\'Achille', sets: '3×45 s/côté', difficulty: 'Débutant', description: 'Mains au mur, jambe arrière tendue, talon ancré au sol. Variante genou fléchi pour cibler le soléaire. Incontournable pour les coureurs et pratiquants de sports de raquette.' },
+    { name: 'Lacet (figure 4)', muscles: 'Fessiers, pyramidal, rotateurs profonds de hanche', sets: '2 min/côté', difficulty: 'Tous niveaux', description: 'Assis sur le dos, croise la cheville sur le genou opposé, tire la cuisse vers la poitrine. Excellent pour soulager le syndrome du piriforme et les sciatiques d\'origine fessière.' },
+  ],
+  program: [
+    {
+      week: 'Semaine 1–2',
+      theme: 'Découverte — Étirements essentiels',
+      sessions: [
+        { name: 'Full body stretching 30 min', detail: 'Ischio-jambiers, psoas, pectoraux, mollets, fessiers — 40 s par posture' },
+        { name: 'Mobilité matinale 15 min', detail: 'Rotations articulaires dynamiques (cou, épaules, hanches, chevilles) + 3 postures clés' },
+        { name: 'Foam rolling récupération', detail: 'Quadriceps, IT band, dos thoracique, mollets — 60 s par zone' },
+      ],
+    },
+    {
+      week: 'Semaine 3–4',
+      theme: 'Ciblé — Zones prioritaires',
+      sessions: [
+        { name: 'Hanches & bas du dos 35 min', detail: 'Pigeon, fente basse, papillon, torsion assise — 60–90 s par posture' },
+        { name: 'Chaîne postérieure 30 min', detail: 'Flexion avant, mollets, ischio-jambiers debout et allongé, lacet' },
+        { name: 'Épaules & thorax 25 min', detail: 'Ouverture pectorale, étirement biceps, rotation thoracique, cobra' },
+        { name: 'Relaxation profonde 20 min', detail: 'Yoga restauratif : postures soutenues avec bolster — relâchement total' },
+      ],
+    },
+    {
+      week: 'Semaine 5–6',
+      theme: 'PNF & Gains d\'amplitude',
+      sessions: [
+        { name: 'PNF ischio-jambiers 30 min', detail: 'Contraction 6 s — relâchement — approfondissement × 4 cycles par jambe' },
+        { name: 'PNF hanches & adducteurs', detail: 'Protocole PNF sur papillon, pigeon et flexion latérale — 3 cycles par zone' },
+        { name: 'Stretching actif-passif 40 min', detail: 'Alternance contraction concentrique et étirement passif profond sur les grands groupes' },
+      ],
+    },
+    {
+      week: 'Semaine 7–8',
+      theme: 'Intégration & Autonomie',
+      sessions: [
+        { name: 'Séquence personnalisée 40 min', detail: 'Construis ta routine avec les étirements les plus bénéfiques identifiés sur 6 semaines' },
+        { name: 'Test d\'amplitude bilan', detail: 'Distance doigts-sol, rotation d\'épaule, flexion latérale, test Thomas pour psoas' },
+        { name: 'Stretching sport-spécifique', detail: 'Adapte ta routine à ton sport principal — running, musculation, boxe ou yoga' },
+        { name: 'Programme d\'entretien 10 min/j', detail: 'Mini-routine quotidienne des 5 zones prioritaires pour maintenir les acquis' },
+      ],
+    },
+  ],
+  faq: [
+    { q: 'Quand faut-il s\'étirer : avant ou après l\'entraînement ?', a: 'Avant : privilégie les étirements dynamiques (balancés, rotations) pour préparer les articulations. Après : les étirements statiques (30–60 s tenus) pour récupérer et augmenter la souplesse à froid musculaire.' },
+    { q: 'Combien de temps avant de voir une amélioration de la souplesse ?', a: 'Avec 3–4 séances par semaine de 20–30 min, les premiers gains mesurables apparaissent en 3–4 semaines. Une souplesse significative se construit sur 3–6 mois de pratique régulière.' },
+    { q: 'Est-ce que s\'étirer fait vraiment mal au début ?', a: 'Une sensation de tension intense est normale et nécessaire. La douleur aiguë ou articulaire est un signal d\'arrêt immédiat. Travaille à 70–80 % de ton amplitude maximale pour progresser en sécurité.' },
+    { q: 'Le stretching peut-il réduire les douleurs chroniques ?', a: 'Oui — de nombreuses douleurs lombaires, cervicales et des hanches sont causées par des muscles raccourcis. Un programme régulier de stretching ciblé réduit significativement ces douleurs en 4–8 semaines selon les études.' },
+  ],
+}
+
+/* ── Nutrition ─────────────────────────────────────────────────── */
+const nutritionContent: DisciplineContent = {
+  tagline: 'Mange avec intelligence — la performance commence dans l\'assiette.',
+  heroStat: '4 100+ membres actifs',
+  guide: {
+    technique: {
+      emoji: '🥗',
+      title: 'Principes nutritionnels',
+      items: [
+        'Déficit calorique pour perdre du poids : 300–500 kcal/jour sous le TDEE — jamais sous 1 200 kcal (femmes) ou 1 500 kcal (hommes)',
+        'Surplus calorique pour la prise de masse : 200–300 kcal/jour au-dessus du TDEE pour une prise lean',
+        'Macronutriments sportifs : 30–35 % protéines / 40–50 % glucides / 20–25 % lipides pour la performance',
+        'Index glycémique (IG) : privilégie les glucides à IG bas (quinoa, patate douce, légumineuses) pour une énergie stable',
+        'Chrononutrition : glucides en priorité le matin et autour des entraînements, lipides le soir',
+      ],
+    },
+    equipment: {
+      emoji: '⚖️',
+      title: 'Outils essentiels',
+      items: [
+        'Balance alimentaire de précision (au gramme) — indispensable pour comprendre les portions réelles',
+        'Application de suivi nutritionnel (MyFitnessPal, Cronometer) pour tracker les macros et micronutriments',
+        'Boîtes de préparation repas (meal prep) hermétiques pour la planification hebdomadaire',
+        'Mixeur haute puissance pour les smoothies protéinés et les sauces maison nutritives',
+        'Thermomètre de cuisson pour maîtriser la température et préserver les nutriments des aliments',
+      ],
+    },
+    nutrition: {
+      emoji: '🍽️',
+      title: 'Planification & Répartition',
+      items: [
+        'Timing protéines : 20–40 g de protéines toutes les 3–4 h pour maximiser la synthèse protéique musculaire',
+        'Fenêtre anabolique : repas riche en protéines et glucides dans les 60–90 min post-entraînement',
+        'Repas pré-entraînement : glucides complexes + protéines légères 2–3h avant (riz + poulet + légumes)',
+        '5 portions de légumes/fruits par jour minimum — vitamines, minéraux et fibres pour la santé globale',
+        'Hydratation : 35 ml/kg de poids corporel par jour + 500 ml supplémentaires par heure d\'exercice',
+      ],
+    },
+    recovery: {
+      emoji: '🔄',
+      title: 'Nutrition de récupération',
+      items: [
+        'Les 30 premières minutes post-effort sont la fenêtre de réponse maximale : glucides + protéines 4:1',
+        'Caséine (protéine à digestion lente) au coucher pour alimenter la synthèse protéique nocturne',
+        'Oméga-3 (2–4 g/jour EPA+DHA) : réduisent l\'inflammation musculaire et accélèrent la récupération',
+        'Tart cherry ou jus de betterave post-effort intense : anti-inflammatoires naturels validés scientifiquement',
+        'Alcool post-effort : réduit la synthèse protéique de 37 % — à éviter dans les 6h qui suivent une séance intensive',
+      ],
+    },
+  },
+  tips: [
+    { icon: '🍳', title: 'Meal prep = réussite', body: 'Prépare tes repas du dimanche pour la semaine. Les études montrent que les personnes qui planifient leur alimentation atteignent leurs objectifs 2,5× plus souvent que celles qui improvisent.' },
+    { icon: '🥦', title: 'La règle de l\'assiette', body: 'Chaque repas principal : 1/2 assiette légumes, 1/4 protéines, 1/4 glucides complexes. Simple, efficace, sans calculer les calories à chaque fois.' },
+    { icon: '💧', title: 'La soif = déjà déshydraté', body: 'Quand tu ressens la soif, tu as déjà perdu 1–2 % de ton poids en eau. Bois régulièrement tout au long de la journée — pas en grandes quantités sporadiques.' },
+    { icon: '📊', title: 'Les calories de base d\'abord', body: 'Maîtrise d\'abord la quantité (calories totales), puis optimise la qualité (macros), enfin le timing (chrononutrition). Ne saute pas les étapes.' },
+  ],
+  videos: [
+    {
+      youtubeId: 'MCMvFw5OGBo',
+      title: 'Nutrition sportive — Bases essentielles',
+      description: 'Comprends les macronutriments, le TDEE, les protéines et les glucides pour optimiser ta nutrition sportive dès aujourd\'hui.',
+      duration: '22 min',
+      level: 'Débutant',
+      thumbnail: 'https://img.youtube.com/vi/MCMvFw5OGBo/maxresdefault.jpg',
+    },
+    {
+      youtubeId: '4Pz1SPSN1xA',
+      title: 'Protéines — Tout ce que tu dois savoir',
+      description: 'Sources, quantités, timing et suppléments protéinés — guide complet et scientifiquement validé sur les protéines pour le sport.',
+      duration: '28 min',
+      level: 'Tous niveaux',
+      thumbnail: 'https://img.youtube.com/vi/4Pz1SPSN1xA/maxresdefault.jpg',
+    },
+    {
+      youtubeId: 'MiCBBmZMh-8',
+      title: 'Meal prep — Planifier ses repas sportifs',
+      description: 'Comment préparer une semaine de repas équilibrés en 2 heures le dimanche — méthode complète avec recettes pour sportifs.',
+      duration: '35 min',
+      level: 'Débutant',
+      thumbnail: 'https://img.youtube.com/vi/MiCBBmZMh-8/maxresdefault.jpg',
+    },
+    {
+      youtubeId: '7C8Hq5Ps5rA',
+      title: 'Perte de poids — La science derrière',
+      description: 'Comprends le déficit calorique, le métabolisme de base et les stratégies nutritionnelles qui fonctionnent vraiment pour perdre du gras.',
+      duration: '30 min',
+      level: 'Intermédiaire',
+      thumbnail: 'https://img.youtube.com/vi/7C8Hq5Ps5rA/maxresdefault.jpg',
+    },
+    {
+      youtubeId: '2bXPY7MZNAA',
+      title: 'Prise de masse — Nutrition optimisée',
+      description: 'Le guide nutritionnel complet de la prise de masse : surplus calorique, macros, timing et suppléments pour un bulk clean.',
+      duration: '32 min',
+      level: 'Intermédiaire',
+      thumbnail: 'https://img.youtube.com/vi/2bXPY7MZNAA/maxresdefault.jpg',
+    },
+    {
+      youtubeId: 'YOzRBT0QLp0',
+      title: 'Suppléments — Lesquels fonctionnent vraiment ?',
+      description: 'Analyse objective des compléments alimentaires les plus populaires — créatine, whey, BCAA, oméga-3 : la vérité scientifique.',
+      duration: '38 min',
+      level: 'Avancé',
+      thumbnail: 'https://img.youtube.com/vi/YOzRBT0QLp0/maxresdefault.jpg',
+    },
+  ],
+  exercises: [
+    { name: 'Planification hebdomadaire des repas', muscles: 'Habitude, organisation nutritionnelle', sets: '1× /semaine — 20 min', difficulty: 'Débutant', description: 'Chaque dimanche, planifie tes 5 repas principaux pour la semaine. Calcule les macros cibles, liste les ingrédients, prépare les protéines et céréales à l\'avance. Fondement de la réussite nutritionnelle.' },
+    { name: 'Calcul de son TDEE', muscles: 'Connaissance métabolique', sets: '1× au départ puis chaque mois', difficulty: 'Débutant', description: 'Calcule ton Total Daily Energy Expenditure (TDEE) avec la formule Mifflin-St Jeor × facteur d\'activité. Ajuste de ±300 kcal selon l\'objectif (perte ou prise). Recalcule à chaque -5 kg.' },
+    { name: 'Tracking macros 7 jours', muscles: 'Conscience alimentaire', sets: '7 jours consécutifs', difficulty: 'Débutant', description: 'Note chaque aliment dans une app (Cronometer recommandé) pendant 7 jours consécutifs sans changer tes habitudes. Révèle les écarts réels entre ce que tu penses manger et ce que tu manges réellement.' },
+    { name: 'Batch cooking protéines', muscles: 'Préparation culinaire sportive', sets: '1× /semaine — 45 min', difficulty: 'Débutant', description: 'Cuis 600–800 g de protéines maigres (poulet, œufs durs, thon, lentilles) en une session. Répartis en portions de 150–200 g. Garantit tes apports protéiques sans effort en semaine.' },
+    { name: 'Audit de l\'assiette', muscles: 'Équilibre nutritionnel', sets: 'À chaque repas', difficulty: 'Tous niveaux', description: 'Avant chaque repas, vérifie visuellement : 50 % légumes, 25 % protéines, 25 % glucides complexes dans l\'assiette. Méthode simple qui remplace le comptage de calories pour la plupart des objectifs.' },
+    { name: 'Hydratation structurée', muscles: 'Métabolisme, performance physique', sets: '8 verres répartis sur la journée', difficulty: 'Débutant', description: 'Planifie tes apports hydriques : verre au réveil, avant chaque repas, pendant et après l\'exercice. Utilise une bouteille graduée de 1,5L comme référence. La déshydratation de 2 % réduit la performance de 20 %.' },
+    { name: 'Fenêtre anabolique post-effort', muscles: 'Récupération, synthèse protéique', sets: 'Après chaque entraînement', difficulty: 'Intermédiaire', description: 'Dans les 30–60 min suivant chaque séance, consomme 30–40 g de protéines + 50–80 g de glucides (riz, banane, pain complet). Maximise la récupération et l\'adaptation musculaire.' },
+    { name: 'Chrononutrition — Test 4 semaines', muscles: 'Synchronisation circadienne', sets: '4 semaines', difficulty: 'Intermédiaire', description: 'Semaine 1 : repas normaux (référence). Semaines 2–4 : glucides concentrés sur petit-déj et déjeuner, protéines/lipides le soir. Compare les niveaux d\'énergie, la récupération et la composition corporelle.' },
+    { name: 'Supplément créatine — Protocole', muscles: 'Force, récupération, performance', sets: '3–5 g/jour en continu', difficulty: 'Intermédiaire', description: 'Prends 3–5 g de créatine monohydrate par jour à n\'importe quelle heure (la saturation prend 4 semaines). Pas de phase de charge nécessaire. Le supplément le plus validé scientifiquement pour la performance sportive.' },
+  ],
+  program: [
+    {
+      week: 'Semaine 1–2',
+      theme: 'Diagnostic — Connais ton point de départ',
+      sessions: [
+        { name: 'Calcul TDEE & macros cibles', detail: 'Formule Mifflin-St Jeor + facteur activité → déficit ou surplus de 300 kcal selon objectif' },
+        { name: 'Tracking alimentaire 7 j', detail: 'Note tout sans changer tes habitudes — révèle les vrais déficits (protéines en général)' },
+        { name: 'Audit du frigo et placard', detail: 'Identifie les aliments ultra-transformés à remplacer progressivement par des alternatives saines' },
+      ],
+    },
+    {
+      week: 'Semaine 3–4',
+      theme: 'Structure — Mettre en place les bases',
+      sessions: [
+        { name: 'Premier meal prep complet', detail: 'Prépare 5 déjeuners + 5 dîners le dimanche — riz, légumes rôtis, protéines variées' },
+        { name: 'Optimisation petit-déjeuner', detail: 'Transition vers un petit-déjeuner protéiné 25–30 g : œufs + flocons + fruits + noix' },
+        { name: 'Hydratation structurée', detail: 'Bouteille 1,5L à finir avant 18h + 500 ml autour de chaque entraînement' },
+        { name: 'Bilan macros semaine 4', detail: 'Vérifie l\'atteinte des objectifs protein/carbs/fats sur 7 jours avec l\'app — ajuste si besoin' },
+      ],
+    },
+    {
+      week: 'Semaine 5–6',
+      theme: 'Optimisation — Timing et qualité',
+      sessions: [
+        { name: 'Chrononutrition appliquée', detail: 'Glucides le matin et péri-entraînement, lipides au dîner — teste sur 2 semaines' },
+        { name: 'Fenêtre anabolique systématique', detail: 'Shaker whey + banane ou riz + thon dans les 30 min post-effort à chaque séance' },
+        { name: 'Intégration suppléments', detail: 'Créatine 5 g/j + oméga-3 2 g/j + vitamine D3 2 000 UI/j — protocole de base éprouvé' },
+      ],
+    },
+    {
+      week: 'Semaine 7–8',
+      theme: 'Autonomie & Pérennité',
+      sessions: [
+        { name: 'Flexibilité nutritionnelle', detail: 'Applique la règle 80/20 — 80 % nutrition rigoureuse, 20 % repas libres sans culpabilité' },
+        { name: 'Recettes hautes protéines maison', detail: 'Maîtrise 5 recettes rapides (< 15 min) qui atteignent 40 g de protéines/portion' },
+        { name: 'Bilan composition corporelle', detail: 'Tour de taille, poids, photos comparatives J1/J56 — évalue l\'impact sur la composition' },
+        { name: 'Plan de maintenance personnalisé', detail: 'Adapte les macros cibles à ta nouvelle composition — recalcul TDEE post-progression' },
+      ],
+    },
+  ],
+  faq: [
+    { q: 'Faut-il compter les calories pour progresser ?', a: 'Pas nécessairement au quotidien, mais le faire au moins une fois pendant 2–4 semaines est très révélateur. Ça calibre l\'intuition alimentaire de façon permanente. Ensuite, la méthode de l\'assiette (50/25/25) suffit pour la majorité des objectifs.' },
+    { q: 'Les compléments alimentaires sont-ils indispensables ?', a: 'Non — l\'alimentation doit couvrir 90 % des besoins. La whey est pratique (pas magique), la créatine améliore mesurément la performance, les oméga-3 et la vitamine D sont pertinents si les apports alimentaires sont insuffisants. Tout le reste est marketing.' },
+    { q: 'Peut-on perdre du gras et prendre du muscle en même temps ?', a: 'Oui, en débutant ou après une longue pause (recomposition corporelle). Nécessite un apport protéique élevé (2–2,2 g/kg), un entraînement en résistance et un déficit calorique léger (−200 kcal max). Les résultats sont plus lents mais durables.' },
+    { q: 'Combien de repas par jour faut-il manger ?', a: 'La fréquence des repas a peu d\'impact sur le métabolisme. Ce qui compte : atteindre ses cibles caloriques et protéiques totales sur la journée. 3 repas ou 5 repas : choisis celui qui s\'intègre le mieux à ton mode de vie et t\'aide à respecter tes objectifs.' },
+  ],
+}
+
 export const DISCIPLINE_CONTENT: Record<string, DisciplineContent> = {
   'running-cardio': runningContent,
   musculation: musculationContent,
@@ -1044,4 +1705,8 @@ export const DISCIPLINE_CONTENT: Record<string, DisciplineContent> = {
   cyclisme: cyclismeContent,
   natation: natationContent,
   crossfit: crossfitContent,
+  yoga: yogaContent,
+  boxing: boxingContent,
+  stretching: stretchingContent,
+  nutrition: nutritionContent,
 }
