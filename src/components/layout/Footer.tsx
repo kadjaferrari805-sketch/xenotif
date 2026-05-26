@@ -15,14 +15,14 @@ const PROG_LINKS = [
   { label: 'Intermédiaire', href: '/#programmes' },
   { label: 'Avancé',      href: '/#programmes' },
   { label: 'Élite',       href: '/#programmes' },
-  { label: 'Coaching IA', href: '/#newsletter' },
+  { label: 'Coaching IA', href: '/dashboard/coach' },
   { label: 'Tarifs',      href: '/#tarifs' },
 ]
 
 const INFO_LINKS = [
   { label: 'Mentions légales',  href: '/mentions-legales' },
   { label: 'Confidentialité',   href: '/confidentialite' },
-  { label: 'Contact',           href: 'mailto:contact@xenotif.com' },
+  { label: 'Contact',           href: '/contact' },
   { label: 'FAQ',               href: '/#faq' },
 ]
 

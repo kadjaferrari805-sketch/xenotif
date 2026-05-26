@@ -1,11 +1,12 @@
 import { redirect } from 'next/navigation'
 import Link from 'next/link'
 import { createClient } from '@/lib/supabase/server'
-import { LayoutDashboard, Dumbbell, TrendingUp, CreditCard, User } from 'lucide-react'
+import { LayoutDashboard, Dumbbell, TrendingUp, CreditCard, User, Bot } from 'lucide-react'
 import { DashboardSignOut } from '@/components/dashboard/SignOut'
 
 const NAV = [
   { href: '/dashboard',              label: 'Vue d\'ensemble', Icon: LayoutDashboard },
+  { href: '/dashboard/coach',        label: 'Coach IA',        Icon: Bot },
   { href: '/dashboard/programme',    label: 'Mon Programme',   Icon: Dumbbell },
   { href: '/dashboard/progression',  label: 'Progression',     Icon: TrendingUp },
   { href: '/dashboard/abonnement',   label: 'Abonnement',      Icon: CreditCard },
