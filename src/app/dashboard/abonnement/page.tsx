@@ -27,6 +27,7 @@ export default function AbonnementPage() {
   const [showCancel, setShowCancel] = useState(false)
   const [cancelled, setCancelled] = useState(false)
   const [portalLoading, setPortalLoading] = useState(false)
+  const [portalError, setPortalError] = useState('')
 
   useEffect(() => {
     fetch('/api/subscription')
@@ -45,10 +46,19 @@ export default function AbonnementPage() {
 
   async function openPortal() {
     setPortalLoading(true)
+    setPortalError('')
     const res = await fetch('/api/stripe-portal', { method: 'POST' })
     const data = await res.json()
-    if (data.url) window.location.href = data.url
-    else setPortalLoading(false)
+    if (data.url) {
+      window.location.href = data.url
+    } else {
+      setPortalError(
+        data.error === 'portal_not_configured'
+          ? 'Le portail de paiement n\'est pas encore activé. Va sur dashboard.stripe.com → Billing → Customer portal pour l\'activer.'
+          : (data.error ?? 'Impossible d\'ouvrir le portail de paiement.')
+      )
+      setPortalLoading(false)
+    }
   }
 
   async function cancelSubscription() {
@@ -193,6 +203,9 @@ export default function AbonnementPage() {
         >
           {portalLoading ? <><span className="w-4 h-4 border-2 border-white/40 border-t-white rounded-full animate-spin" />Chargement…</> : <><CreditCard size={14} /> Gérer le paiement & les factures</>}
         </button>
+        {portalError && (
+          <p className="text-xs text-orange-400 bg-orange-400/10 border border-orange-400/20 rounded-xl px-4 py-3 leading-relaxed">{portalError}</p>
+        )}
 
         {(isTrialing || isActive) && !isCanceled && (
           <button
