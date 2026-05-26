@@ -24,8 +24,7 @@ export default function SignInPage() {
       setError('Email ou mot de passe incorrect.')
       setLoading(false)
     } else {
-      router.push('/dashboard')
-      router.refresh()
+      router.replace('/dashboard')
     }
   }
 
