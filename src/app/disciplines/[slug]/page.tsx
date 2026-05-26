@@ -5,7 +5,7 @@ import Image from 'next/image'
 import {
   ArrowLeft, ArrowRight, CheckCircle, Zap,
   Activity, Dumbbell, Bike, Waves, Flame, Star,
-  Play, BookOpen, Target, Layers,
+  Play, BookOpen, Target, Layers, Leaf,
 } from 'lucide-react'
 import { FEATURES } from '@/lib/constants'
 import { DISCIPLINE_CONTENT } from '@/lib/disciplines'
@@ -21,6 +21,10 @@ const DISC_PHOTOS: Record<string, string> = {
   cyclisme:         'https://images.unsplash.com/photo-1485965120184-e220f721d03e?auto=format&fit=crop&w=1920&q=80',
   natation:         'https://images.unsplash.com/photo-1519315901367-f34ff9154487?auto=format&fit=crop&w=1920&q=80',
   crossfit:         'https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?auto=format&fit=crop&w=1920&q=80',
+  yoga:             'https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=1920&q=80',
+  boxing:           'https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?auto=format&fit=crop&w=1920&q=80',
+  stretching:       'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=1920&q=80',
+  nutrition:        'https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=1920&q=80',
 }
 
 const DISC_ICONS: Record<string, React.ReactNode> = {
@@ -30,6 +34,9 @@ const DISC_ICONS: Record<string, React.ReactNode> = {
   bike:     <Bike size={20} aria-hidden="true" />,
   waves:    <Waves size={20} aria-hidden="true" />,
   flame:    <Flame size={20} aria-hidden="true" />,
+  leaf:     <Leaf size={20} aria-hidden="true" />,
+  target:   <Target size={20} aria-hidden="true" />,
+  layers:   <Layers size={20} aria-hidden="true" />,
 }
 
 const COLOR_TEXT:  Record<string, string> = { orange: 'text-sport-orange',    blue: 'text-sport-blue',   lime: 'text-sport-lime' }
