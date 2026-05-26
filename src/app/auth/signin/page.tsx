@@ -102,8 +102,8 @@ export default function SignInPage() {
           <div className="mt-6 pt-6 border-t border-sport-border text-center">
             <p className="text-xs text-sport-gray">
               Pas encore de compte ?{' '}
-              <Link href="/#tarifs" className="text-sport-orange font-bold hover:underline">
-                Choisir un abonnement →
+              <Link href="/auth/signup" className="text-sport-orange font-bold hover:underline">
+                Créer un compte →
               </Link>
             </p>
           </div>

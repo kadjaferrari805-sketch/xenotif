@@ -295,7 +295,7 @@ export default async function DisciplinePage({ params }: { params: Promise<{ slu
                       <span className="text-sm font-semibold text-white">{level}</span>
                     </div>
                     <Link
-                      href="/#newsletter"
+                      href="/auth/signup"
                       aria-label={`Rejoindre le programme ${level}`}
                       className={`text-xs font-bold hover:underline flex items-center gap-1 ${COLOR_TEXT[color]}`}
                     >
@@ -379,13 +379,13 @@ export default async function DisciplinePage({ params }: { params: Promise<{ slu
               </ul>
 
               <Link
-                href="/#newsletter"
+                href="/auth/signup"
                 className="w-full inline-flex items-center justify-center gap-2 bg-sport-orange text-white px-6 py-3.5 rounded-full font-bold text-sm hover:bg-orange-600 active:scale-95 transition-all shadow-xl shadow-sport-orange/25"
               >
                 Commencer gratuitement <ArrowRight size={14} aria-hidden="true" />
               </Link>
 
-              <Link href="/#tarifs" className="block text-center text-xs text-sport-gray hover:text-white transition-colors mt-3">
+              <Link href="/auth/signup" className="block text-center text-xs text-sport-gray hover:text-white transition-colors mt-3">
                 Voir les tarifs →
               </Link>
 

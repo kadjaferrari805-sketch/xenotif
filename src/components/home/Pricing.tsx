@@ -5,6 +5,7 @@ import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { CheckCircle, ArrowRight, Zap } from 'lucide-react'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import { SectionHeader } from '@/components/ui/SectionHeader'
 
 type PlanId = 'gratuit' | 'pro' | 'elite'
@@ -73,67 +74,24 @@ const PLANS = [
 function PlanButton({
   plan,
   highlight,
-  period,
 }: {
   plan: (typeof PLANS)[number]
   highlight: boolean
-  period: Period
 }) {
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState('')
-
-  if (plan.id === 'gratuit') {
-    return (
-      <Link
-        href="/#newsletter"
-        className="w-full text-center py-3.5 px-6 rounded-full font-bold text-sm transition-all inline-flex items-center justify-center gap-2 border border-sport-border text-white hover:border-sport-gray hover:bg-white/5 active:scale-95"
-      >
-        {plan.cta} <ArrowRight size={14} aria-hidden="true" />
-      </Link>
-    )
-  }
-
-  async function handleCheckout() {
-    setLoading(true)
-    setError('')
-    try {
-      const res = await fetch('/api/checkout', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ plan: plan.id, period }),
-      })
-      const data = await res.json()
-      if (data.url) {
-        window.location.href = data.url
-      } else {
-        setError(data.error ?? 'Erreur. Réessaie.')
-      }
-    } catch {
-      setError('Connexion impossible.')
-    } finally {
-      setLoading(false)
-    }
-  }
+  const router = useRouter()
 
   return (
-    <div>
-      <button
-        onClick={handleCheckout}
-        disabled={loading}
-        aria-label={`S'abonner au plan ${plan.name}`}
-        className={`w-full py-3.5 px-6 rounded-full font-bold text-sm transition-all inline-flex items-center justify-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed active:scale-95 ${
-          highlight
-            ? 'bg-sport-orange text-white hover:bg-orange-600 shadow-lg shadow-sport-orange/25'
-            : 'border border-sport-border text-white hover:border-sport-gray hover:bg-white/5'
-        }`}
-      >
-        {loading
-          ? <><span className="w-4 h-4 border-2 border-white/40 border-t-white rounded-full animate-spin" />Chargement…</>
-          : <>{plan.cta} <ArrowRight size={14} aria-hidden="true" /></>
-        }
-      </button>
-      {error && <p role="alert" className="text-red-400 text-[10px] mt-2 text-center">{error}</p>}
-    </div>
+    <button
+      onClick={() => router.push(`/auth/signup?plan=${plan.id}`)}
+      aria-label={`S'abonner au plan ${plan.name}`}
+      className={`w-full py-3.5 px-6 rounded-full font-bold text-sm transition-all inline-flex items-center justify-center gap-2 active:scale-95 ${
+        highlight
+          ? 'bg-sport-orange text-white hover:bg-orange-600 shadow-lg shadow-sport-orange/25'
+          : 'border border-sport-border text-white hover:border-sport-gray hover:bg-white/5'
+      }`}
+    >
+      {plan.cta} <ArrowRight size={14} aria-hidden="true" />
+    </button>
   )
 }
 
@@ -220,7 +178,7 @@ export function Pricing() {
                 ))}
               </ul>
 
-              <PlanButton plan={plan} highlight={plan.highlight} period={period} />
+              <PlanButton plan={plan} highlight={plan.highlight} />
             </motion.div>
           ))}
         </div>

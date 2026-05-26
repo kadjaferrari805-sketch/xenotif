@@ -85,8 +85,8 @@ export default function AbonnementPage() {
           <CreditCard size={32} className="text-sport-gray mx-auto mb-4" />
           <p className="text-white font-bold mb-2">Aucun abonnement actif</p>
           <p className="text-sport-gray text-sm mb-6">Choisis un plan pour accéder à tous les programmes.</p>
-          <a href="/#tarifs" className="inline-flex items-center gap-2 bg-sport-orange text-white px-6 py-3 rounded-full font-bold text-sm hover:bg-orange-600 transition-all">
-            Voir les offres <ArrowRight size={14} />
+          <a href="/auth/signup?plan=pro" className="inline-flex items-center gap-2 bg-sport-orange text-white px-6 py-3 rounded-full font-bold text-sm hover:bg-orange-600 transition-all">
+            Choisir un plan <ArrowRight size={14} />
           </a>
         </div>
       </div>

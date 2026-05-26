@@ -112,7 +112,7 @@ export function Nav() {
                 Connexion
               </Link>
               <Link
-                href="/#tarifs"
+                href="/auth/signup"
                 className="inline-flex items-center gap-1.5 bg-sport-orange text-white px-4 py-2 rounded-full text-sm font-bold hover:bg-orange-600 transition-all shadow-lg shadow-sport-orange/20 hover:shadow-sport-orange/40 active:scale-95"
               >
                 <Zap size={13} aria-hidden="true" />
@@ -177,7 +177,7 @@ export function Nav() {
                     Connexion
                   </Link>
                   <Link
-                    href="/#tarifs"
+                    href="/auth/signup"
                     onClick={() => setIsOpen(false)}
                     className="mt-4 w-full text-center bg-sport-orange text-white py-3 rounded-full text-sm font-bold hover:bg-orange-600 transition-colors"
                   >

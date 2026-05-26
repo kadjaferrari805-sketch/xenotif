@@ -28,7 +28,7 @@ export default async function DashboardLayout({ children }: { children: React.Re
       <aside className="hidden md:flex flex-col w-64 bg-sport-card border-r border-sport-border shrink-0">
         {/* Brand */}
         <div className="px-6 py-6 border-b border-sport-border">
-          <Link href="/" className="flex items-center gap-2">
+          <Link href="/dashboard" className="flex items-center gap-2">
             <span className="w-8 h-8 bg-sport-orange rounded-lg flex items-center justify-center font-black text-white text-sm">X</span>
             <span className="font-black text-white tracking-wider">XENOTIF®</span>
           </Link>
@@ -72,7 +72,7 @@ export default async function DashboardLayout({ children }: { children: React.Re
 
       {/* Mobile header */}
       <div className="md:hidden fixed top-0 left-0 right-0 z-50 bg-sport-card border-b border-sport-border px-4 py-3 flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-2">
+        <Link href="/dashboard" className="flex items-center gap-2">
           <span className="w-7 h-7 bg-sport-orange rounded-md flex items-center justify-center font-black text-white text-xs">X</span>
           <span className="font-black text-white text-sm tracking-wider">XENOTIF®</span>
         </Link>
