@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-import { Activity, Dumbbell, Zap, Bike, Waves, Flame, ArrowRight } from 'lucide-react'
+import { Activity, Dumbbell, Zap, Bike, Waves, Flame, ArrowRight, Leaf, Target, Layers } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { SectionHeader } from '@/components/ui/SectionHeader'
@@ -15,6 +15,9 @@ const ICON_MAP: Record<string, React.ReactNode> = {
   bike:     <Bike size={18} aria-hidden="true" />,
   waves:    <Waves size={18} aria-hidden="true" />,
   flame:    <Flame size={18} aria-hidden="true" />,
+  leaf:     <Leaf size={18} aria-hidden="true" />,
+  target:   <Target size={18} aria-hidden="true" />,
+  layers:   <Layers size={18} aria-hidden="true" />,
 }
 
 const ACCENT: Record<string, { icon: string; tag: string; glow: string; border: string }> = {
@@ -30,6 +33,10 @@ const DISC_PHOTOS: Record<string, string> = {
   Cyclisme:           'https://images.unsplash.com/photo-1485965120184-e220f721d03e?auto=format&fit=crop&w=600&q=80',
   Natation:           'https://images.unsplash.com/photo-1519315901367-f34ff9154487?auto=format&fit=crop&w=600&q=80',
   CrossFit:           'https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?auto=format&fit=crop&w=600&q=80',
+  Yoga:               'https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=600&q=80',
+  Boxe:               'https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?auto=format&fit=crop&w=600&q=80',
+  Stretching:         'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=600&q=80',
+  Nutrition:          'https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=600&q=80',
 }
 
 export function Features() {
@@ -41,7 +48,7 @@ export function Features() {
         <SectionHeader
           id="disciplines-title"
           label="Disciplines"
-          title="6 disciplines. 1 plateforme."
+          title="10 disciplines. 1 plateforme."
           subtitle="Du cardio à la force — chaque sport, chaque niveau, chaque objectif"
         />
         <div ref={ref} className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 mt-14">
