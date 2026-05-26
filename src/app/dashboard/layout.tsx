@@ -1,7 +1,7 @@
 import { redirect } from 'next/navigation'
 import Link from 'next/link'
 import { createClient } from '@/lib/supabase/server'
-import { LayoutDashboard, Dumbbell, TrendingUp, CreditCard, User, Bot } from 'lucide-react'
+import { LayoutDashboard, Dumbbell, TrendingUp, CreditCard, User, Bot, LogOut } from 'lucide-react'
 import { DashboardSignOut } from '@/components/dashboard/SignOut'
 import { DashboardGuard } from '@/components/dashboard/DashboardGuard'
 import { Logo } from '@/components/ui/Logo'
@@ -73,10 +73,11 @@ export default async function DashboardLayout({ children }: { children: React.Re
       {/* Mobile header */}
       <div className="md:hidden fixed top-0 left-0 right-0 z-50 bg-sport-card border-b border-sport-border px-4 py-3 flex items-center justify-between">
         <Logo href="/dashboard" size="sm" />
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2">
           <div className="w-8 h-8 rounded-full bg-sport-orange/20 border border-sport-orange/40 flex items-center justify-center font-black text-sport-orange text-xs">
             {initials}
           </div>
+          <DashboardSignOut iconOnly />
         </div>
       </div>
 

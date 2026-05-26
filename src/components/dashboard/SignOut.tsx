@@ -4,14 +4,25 @@ import { useRouter } from 'next/navigation'
 import { LogOut } from 'lucide-react'
 import { createClient } from '@/lib/supabase/client'
 
-export function DashboardSignOut() {
+export function DashboardSignOut({ iconOnly = false }: { iconOnly?: boolean }) {
   const router = useRouter()
 
   async function signOut() {
     const supabase = createClient()
     await supabase.auth.signOut()
-    router.push('/')
-    router.refresh()
+    router.replace('/')
+  }
+
+  if (iconOnly) {
+    return (
+      <button
+        onClick={signOut}
+        aria-label="Se déconnecter"
+        className="w-8 h-8 flex items-center justify-center rounded-full text-sport-gray hover:text-red-400 hover:bg-red-400/10 transition-all"
+      >
+        <LogOut size={15} />
+      </button>
+    )
   }
 
   return (
