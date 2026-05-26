@@ -1,6 +1,7 @@
 import { redirect } from 'next/navigation'
 import { createClient, createServiceClient } from '@/lib/supabase/server'
 import { Users, CreditCard, TrendingUp, Euro, CheckCircle, Clock, XCircle } from 'lucide-react'
+import { AdminEmailForm } from '@/components/admin/EmailForm'
 
 export default async function AdminPage() {
   const supabase = await createClient()
@@ -138,6 +139,9 @@ export default async function AdminPage() {
           )}
         </div>
       </div>
+
+      {/* Email broadcast */}
+      <AdminEmailForm />
     </div>
   )
 }
