@@ -61,7 +61,7 @@ export async function POST(req: NextRequest) {
           }],
       allow_promotion_codes: true,
       subscription_data: {
-        trial_period_days: 30,
+        trial_period_days: 7,
         metadata: { plan, period },
       },
       metadata: { plan, period },

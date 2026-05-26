@@ -39,7 +39,7 @@ export default function SuccessPage() {
         </h1>
 
         <p className="text-sport-gray text-sm leading-relaxed mb-12 max-w-sm mx-auto">
-          Ton essai gratuit de <strong className="text-white">30 jours</strong> démarre maintenant.
+          Ton essai gratuit de <strong className="text-white">7 jours</strong> démarre maintenant.
           Aucun débit avant la fin de la période d&apos;essai.
         </p>
 
