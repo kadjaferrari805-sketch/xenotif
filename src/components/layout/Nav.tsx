@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
 import { Menu, X, Zap, LayoutDashboard } from 'lucide-react'
+import { Logo } from '@/components/ui/Logo'
 import { createClient } from '@/lib/supabase/client'
 import type { User } from '@supabase/supabase-js'
 
@@ -65,19 +66,7 @@ export function Nav() {
     >
       <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
         {/* Logo */}
-        <Link
-          href="/"
-          aria-label="Xenotif — Retour à l'accueil"
-          className="flex items-center gap-2.5 font-black text-lg text-white tracking-wider shrink-0 group"
-        >
-          <span
-            aria-hidden="true"
-            className="w-8 h-8 bg-sport-orange rounded-lg flex items-center justify-center font-black text-base shadow-lg shadow-sport-orange/30 group-hover:shadow-sport-orange/50 transition-shadow"
-          >
-            X
-          </span>
-          <span className="hidden sm:block">XENOTIF®</span>
-        </Link>
+        <Logo href="/" size="sm" />
 
         {/* Desktop links */}
         <div className="hidden md:flex gap-7 text-sm font-medium text-sport-gray">

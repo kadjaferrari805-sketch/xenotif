@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { Logo } from '@/components/ui/Logo'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { Eye, EyeOff, CheckCircle } from 'lucide-react'
@@ -28,10 +29,7 @@ export default function ResetPasswordPage() {
   return (
     <div className="min-h-screen bg-sport-dark flex items-center justify-center px-4 py-16">
       <div className="w-full max-w-md">
-        <Link href="/" className="flex items-center justify-center gap-2 mb-10">
-          <span className="w-9 h-9 bg-sport-orange rounded-lg flex items-center justify-center font-black text-white text-sm">X</span>
-          <span className="font-black text-white text-xl tracking-wider">XENOTIF®</span>
-        </Link>
+        <div className="flex justify-center mb-10"><Logo href="/" size="md" /></div>
 
         <div className="bg-sport-card border border-sport-border rounded-2xl p-8">
           {done ? (
