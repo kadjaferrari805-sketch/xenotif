@@ -442,12 +442,12 @@ const hiitContent: DisciplineContent = {
   ],
   videos: [
     {
-      youtubeId: 'cDEZrynoEdM',
-      title: 'HIIT 20 min — Brûle-graisse total',
+      youtubeId: '5C8Ew76sxVY',
+      title: 'HIIT 20 min — Brûle-graisse total débutant',
       description: 'Séance HIIT débutant sans équipement — brûle des graisses, construit l\'endurance, améliore la condition physique.',
       duration: '20 min',
       level: 'Débutant',
-      thumbnail: 'https://img.youtube.com/vi/cDEZrynoEdM/maxresdefault.jpg',
+      thumbnail: 'https://img.youtube.com/vi/5C8Ew76sxVY/maxresdefault.jpg',
     },
     {
       youtubeId: 'J8EeluUr4ak',
