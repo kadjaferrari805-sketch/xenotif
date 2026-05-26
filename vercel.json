@@ -1,0 +1,10 @@
+{
+  "buildCommand": "npm run build && node scripts/setup-webhook.mjs",
+  "framework": "nextjs",
+  "crons": [
+    {
+      "path": "/api/cron/daily-motivation",
+      "schedule": "0 8 * * *"
+    }
+  ]
+}

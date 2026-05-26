@@ -118,6 +118,117 @@ export async function sendTrialReminderEmail({
   })
 }
 
+const DAILY_MESSAGES = [
+  // 0 = Sunday
+  {
+    subject: '☀️ Nouveau départ — ta semaine commence aujourd\'hui !',
+    quote: '« Le succès n\'est pas final, l\'échec n\'est pas fatal : c\'est le courage de continuer qui compte. »',
+    quoteAuthor: '— Winston Churchill',
+    headline: 'Lance ta semaine du bon pied !',
+    body: 'Le dimanche, c\'est le moment idéal pour poser les bases de ta semaine. Une courte séance aujourd\'hui et tu arrives lundi avec de l\'énergie et de la confiance.',
+    challenge: 'Défi du jour : 15 min de mobilité ou une marche active pour préparer ton corps.',
+  },
+  // 1 = Monday
+  {
+    subject: '💪 Lundi = jour J. Prêt(e) à tout donner ?',
+    quote: '« Ce n\'est pas l\'envie qui manque, c\'est la discipline qui fait la différence. »',
+    quoteAuthor: '— Xenotif®',
+    headline: 'Lundi, c\'est ton jour de force.',
+    body: 'Les champions ne choisissent pas leurs jours. Ils s\'entraînent parce qu\'ils savent que chaque effort compte, même les jours sans motivation.',
+    challenge: 'Défi du jour : complète une séance muscu ou cardio complète sur ton tableau de bord.',
+  },
+  // 2 = Tuesday
+  {
+    subject: '🔥 Mardi — garde le rythme, ne lâche rien !',
+    quote: '« La douleur d\'aujourd\'hui est la force de demain. »',
+    quoteAuthor: '— Arnold Schwarzenegger',
+    headline: 'Le momentum est de ton côté.',
+    body: 'Après le lundi, le mardi c\'est là où les engagements se testent. Ceux qui restent constants maintenant seront ceux qui voient des résultats dans 30 jours.',
+    challenge: 'Défi du jour : ajoute 5 % de charge ou 2 répétitions à ton exercice principal.',
+  },
+  // 3 = Wednesday
+  {
+    subject: '⚡ Mi-semaine — tu es à mi-chemin, continue !',
+    quote: '« Ton corps peut tout. C\'est ton esprit qu\'il faut convaincre. »',
+    quoteAuthor: '— Xenotif®',
+    headline: 'Mercredi : le cap de la semaine.',
+    body: 'La mi-semaine est souvent le moment où la fatigue se fait sentir. Mais c\'est aussi le moment où les vrais athlètes font la différence. Reste dans ta routine.',
+    challenge: 'Défi du jour : séance cardio courte ou yoga pour récupérer et rester actif(ve).',
+  },
+  // 4 = Thursday
+  {
+    subject: '🎯 Jeudi — presque vendredi, pousse encore !',
+    quote: '« Chaque rep, chaque set, chaque goutte de sueur te rapproche de ton objectif. »',
+    quoteAuthor: '— Xenotif®',
+    headline: 'L\'effort d\'aujourd\'hui fait la transformation de demain.',
+    body: 'Jeudi c\'est le sprint final de la semaine. Tu as déjà fait le plus dur. Aujourd\'hui, donne le reste — ton futur toi te remerciera.',
+    challenge: 'Défi du jour : termine une séance complète et note tes progrès dans ton suivi.',
+  },
+  // 5 = Friday
+  {
+    subject: '🏆 Vendredi — termine la semaine en beauté !',
+    quote: '« Les résultats ne viennent pas du talent, mais de la constance. »',
+    quoteAuthor: '— Dwayne Johnson',
+    headline: 'Finisher le vendredi, c\'est le meilleur sentiment.',
+    body: 'Une semaine complète d\'entraînement — c\'est 52 semaines par an de progression. Ceux qui s\'entraînent le vendredi sont ceux qui transforment leur corps durablement.',
+    challenge: 'Défi du jour : séance intensive, repousse tes limites — c\'est le dernier effort de la semaine !',
+  },
+  // 6 = Saturday
+  {
+    subject: '🌟 Samedi actif — profite et reste en mouvement !',
+    quote: '« Le corps réalise ce que l\'esprit croit. »',
+    quoteAuthor: '— Napoleon Hill',
+    headline: 'Samedi : récupération active ou nouveau challenge.',
+    body: 'Le week-end n\'est pas une pause, c\'est une opportunité. Une petite séance ou une activité sportive dehors te gardera dans la dynamique et boostera ton humeur toute la journée.',
+    challenge: 'Défi du jour : sport en plein air, nage, vélo ou séance légère — 30 min suffisent !',
+  },
+]
+
+export async function sendDailyMotivationEmail({
+  email, name,
+}: {
+  email: string; name: string
+}) {
+  const dayIndex = new Date().getDay() // 0=Sunday … 6=Saturday
+  const msg = DAILY_MESSAGES[dayIndex]
+  const firstName = name ? name.split(' ')[0] : ''
+
+  await resend.emails.send({
+    from: FROM,
+    to: email,
+    subject: msg.subject,
+    html: wrap(`
+      <h1 style="font-size:24px;font-weight:900;margin:0 0 8px;">
+        ${msg.headline}${firstName ? ` ${firstName}` : ''} 🔥
+      </h1>
+
+      <div style="background:#111218;border-left:4px solid #F97316;border-radius:0 12px 12px 0;padding:16px 20px;margin:24px 0;">
+        <p style="margin:0;font-style:italic;color:#E5E7EB;font-size:15px;line-height:1.6;">${msg.quote}</p>
+        <p style="margin:8px 0 0;font-size:12px;color:#6B7280;">${msg.quoteAuthor}</p>
+      </div>
+
+      <p style="color:#9CA3AF;font-size:15px;line-height:1.6;margin:0 0 24px;">${msg.body}</p>
+
+      <div style="background:#111218;border:1px solid #1F2937;border-radius:16px;padding:20px 24px;margin-bottom:24px;">
+        <p style="margin:0 0 8px;font-size:12px;font-weight:700;letter-spacing:1px;color:#F97316;text-transform:uppercase;">Défi du jour</p>
+        <p style="margin:0;color:#fff;font-size:14px;line-height:1.6;">${msg.challenge}</p>
+      </div>
+
+      <div style="text-align:center;margin:32px 0;">
+        <a href="${BASE_URL}/dashboard"
+           style="display:inline-block;background:#F97316;color:#fff;padding:16px 36px;border-radius:50px;font-weight:900;font-size:15px;text-decoration:none;letter-spacing:0.5px;">
+          Commencer ma séance →
+        </a>
+      </div>
+
+      <p style="color:#374151;font-size:12px;text-align:center;line-height:1.6;">
+        Tu reçois cet email quotidien car tu es abonné(e) à Xenotif®.<br/>
+        <a href="${BASE_URL}/dashboard/abonnement" style="color:#6B7280;">Gérer mes préférences</a>
+      </p>
+    `),
+  })
+}
+
 export async function sendCancellationEmail({
   email, name,
 }: {
