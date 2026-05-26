@@ -5,12 +5,14 @@ const PLAN_CONFIG = {
   pro: {
     name: 'Xenotif® — Plan Pro',
     description: 'Accès illimité à tous les programmes, coaching IA personnalisé, statistiques avancées, vidéos HD, support prioritaire 7j/7.',
-    unit_amount: 999,
+    unit_monthly: 999,
+    unit_annual: 9588,
   },
   elite: {
     name: 'Xenotif® — Plan Élite',
     description: 'Tout le plan Pro + coach personnel dédié, bilan mensuel visio 1-1, plan nutritionnel sur mesure, analyse biomécanique vidéo.',
-    unit_amount: 2499,
+    unit_monthly: 2499,
+    unit_annual: 23988,
   },
 } as const
 
@@ -24,7 +26,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Configuration serveur manquante.' }, { status: 500 })
     }
 
-    const { plan } = await req.json() as { plan: string }
+    const { plan, period = 'monthly' } = await req.json() as { plan: string; period?: string }
 
     if (!plan || !(plan in PLAN_CONFIG)) {
       return NextResponse.json({ error: 'Plan invalide.' }, { status: 400 })
@@ -33,9 +35,11 @@ export async function POST(req: NextRequest) {
     const config = PLAN_CONFIG[plan as PlanKey]
     const stripe = new Stripe(secretKey)
     const baseUrl = process.env.NEXT_PUBLIC_URL ?? 'https://xenotif.vercel.app'
+    const isAnnual = period === 'annual'
 
-    // Use pre-configured price IDs if available, otherwise use inline pricing
-    const priceId = plan === 'pro' ? process.env.STRIPE_PRICE_PRO : process.env.STRIPE_PRICE_ELITE
+    const priceId = isAnnual
+      ? (plan === 'pro' ? process.env.STRIPE_PRICE_PRO_ANNUAL : process.env.STRIPE_PRICE_ELITE_ANNUAL)
+      : (plan === 'pro' ? process.env.STRIPE_PRICE_PRO : process.env.STRIPE_PRICE_ELITE)
 
     const session = await stripe.checkout.sessions.create({
       mode: 'subscription',
@@ -47,10 +51,10 @@ export async function POST(req: NextRequest) {
             quantity: 1,
             price_data: {
               currency: 'eur',
-              unit_amount: config.unit_amount,
-              recurring: { interval: 'month' },
+              unit_amount: isAnnual ? config.unit_annual : config.unit_monthly,
+              recurring: { interval: isAnnual ? 'year' : 'month' },
               product_data: {
-                name: config.name,
+                name: `${config.name}${isAnnual ? ' — Annuel' : ''}`,
                 description: config.description,
               },
             },
@@ -58,7 +62,9 @@ export async function POST(req: NextRequest) {
       allow_promotion_codes: true,
       subscription_data: {
         trial_period_days: 30,
+        metadata: { plan, period },
       },
+      metadata: { plan, period },
       success_url: `${baseUrl}/success?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${baseUrl}/#tarifs`,
     })

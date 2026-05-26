@@ -79,12 +79,40 @@
     color: var(--color-sport-gray);
   }
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 bg-sport-orange text-white px-6 py-3.5 rounded-full font-bold text-sm hover:bg-orange-600 active:scale-95 transition-all;
+    @apply inline-flex items-center justify-center gap-2 bg-sport-orange text-white px-6 py-3.5 rounded-full font-bold text-sm hover:bg-orange-600 active:scale-95 transition-all duration-200;
   }
   .btn-secondary {
-    @apply inline-flex items-center justify-center gap-2 text-white border-2 border-white/30 px-6 py-3.5 rounded-full font-bold text-sm hover:border-white hover:bg-white/10 active:scale-95 transition-all;
+    @apply inline-flex items-center justify-center gap-2 text-white border-2 border-white/30 px-6 py-3.5 rounded-full font-bold text-sm hover:border-white hover:bg-white/10 active:scale-95 transition-all duration-200;
   }
   .card-base {
     @apply bg-sport-card border border-sport-border rounded-2xl;
   }
+  /* Hover scale for feature images */
+  .group-hover\:scale-108:hover {
+    transform: scale(1.08);
+  }
+}
+
+/* ── Marquee animation ──────────────────────────────────────── */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.marquee-track {
+  animation: marquee 28s linear infinite;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+/* ── Subtle ambient glow on section transitions ─────────────── */
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.04; }
+  50%       { opacity: 0.08; }
+}
+
+.ambient-glow {
+  animation: pulse-glow 4s ease-in-out infinite;
 }

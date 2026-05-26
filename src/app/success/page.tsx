@@ -62,11 +62,11 @@ export default function SuccessPage() {
         </div>
 
         <div className="flex flex-col sm:flex-row gap-3 justify-center">
-          <Link href="/#disciplines" className="btn-primary shadow-lg shadow-sport-orange/20">
-            Découvrir les disciplines <ArrowRight size={15} aria-hidden="true" />
+          <Link href="/dashboard" className="btn-primary shadow-lg shadow-sport-orange/20">
+            Accéder à mon espace <ArrowRight size={15} aria-hidden="true" />
           </Link>
-          <Link href="/" className="btn-secondary">
-            Retour à l&apos;accueil
+          <Link href="/auth/signin" className="btn-secondary">
+            Se connecter
           </Link>
         </div>
 
