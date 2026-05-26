@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { createClient } from '@/lib/supabase/server'
 import { LayoutDashboard, Dumbbell, TrendingUp, CreditCard, User, Bot } from 'lucide-react'
 import { DashboardSignOut } from '@/components/dashboard/SignOut'
+import { DashboardGuard } from '@/components/dashboard/DashboardGuard'
 
 const NAV = [
   { href: '/dashboard',              label: 'Vue d\'ensemble', Icon: LayoutDashboard },
@@ -23,6 +24,7 @@ export default async function DashboardLayout({ children }: { children: React.Re
 
   return (
     <div className="min-h-screen bg-sport-dark text-white flex">
+      <DashboardGuard />
 
       {/* Sidebar */}
       <aside className="hidden md:flex flex-col w-64 bg-sport-card border-r border-sport-border shrink-0">
