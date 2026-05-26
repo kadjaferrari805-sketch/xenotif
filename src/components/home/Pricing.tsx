@@ -8,12 +8,14 @@ import Link from 'next/link'
 import { SectionHeader } from '@/components/ui/SectionHeader'
 
 type PlanId = 'gratuit' | 'pro' | 'elite'
+type Period = 'monthly' | 'annual'
 
 const PLANS = [
   {
     id: 'gratuit' as PlanId,
     name: 'Gratuit',
-    price: '0 €',
+    priceMonthly: '0 €',
+    priceAnnual: '0 €',
     period: 'pour toujours',
     badge: null,
     description: 'Découvre Xenotif® et commence ta transformation sans risque.',
@@ -29,7 +31,9 @@ const PLANS = [
   {
     id: 'pro' as PlanId,
     name: 'Pro',
-    price: '9,99 €',
+    priceMonthly: '9,99 €',
+    priceAnnual: '7,99 €',
+    totalAnnual: '95,88 €',
     period: 'par mois',
     badge: 'Le plus populaire',
     description: 'Accès illimité à tous les programmes et au coaching IA personnalisé.',
@@ -47,7 +51,9 @@ const PLANS = [
   {
     id: 'elite' as PlanId,
     name: 'Élite',
-    price: '24,99 €',
+    priceMonthly: '24,99 €',
+    priceAnnual: '19,99 €',
+    totalAnnual: '239,88 €',
     period: 'par mois',
     badge: null,
     description: 'Coaching individuel et suivi personnalisé par un expert certifié.',
@@ -67,14 +73,15 @@ const PLANS = [
 function PlanButton({
   plan,
   highlight,
+  period,
 }: {
   plan: (typeof PLANS)[number]
   highlight: boolean
+  period: Period
 }) {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
 
-  // Free plan → newsletter
   if (plan.id === 'gratuit') {
     return (
       <Link
@@ -93,7 +100,7 @@ function PlanButton({
       const res = await fetch('/api/checkout', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ plan: plan.id }),
+        body: JSON.stringify({ plan: plan.id, period }),
       })
       const data = await res.json()
       if (data.url) {
@@ -113,7 +120,7 @@ function PlanButton({
       <button
         onClick={handleCheckout}
         disabled={loading}
-        aria-label={`S'abonner au plan ${plan.name} — ${plan.price} ${plan.period}`}
+        aria-label={`S'abonner au plan ${plan.name}`}
         className={`w-full py-3.5 px-6 rounded-full font-bold text-sm transition-all inline-flex items-center justify-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed active:scale-95 ${
           highlight
             ? 'bg-sport-orange text-white hover:bg-orange-600 shadow-lg shadow-sport-orange/25'
@@ -132,6 +139,7 @@ function PlanButton({
 
 export function Pricing() {
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 })
+  const [period, setPeriod] = useState<Period>('monthly')
 
   return (
     <section id="tarifs" aria-labelledby="tarifs-title" className="py-24 px-6 bg-sport-card border-y border-sport-border">
@@ -143,7 +151,24 @@ export function Pricing() {
           subtitle="Essai gratuit 30 jours sur tous les plans payants — aucune carte bancaire requise"
         />
 
-        <div ref={ref} className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-14">
+        {/* Billing toggle */}
+        <div className="flex items-center justify-center gap-4 mt-10">
+          <button
+            onClick={() => setPeriod('monthly')}
+            className={`px-5 py-2 rounded-full text-sm font-bold transition-all ${period === 'monthly' ? 'bg-sport-orange text-white' : 'text-sport-gray hover:text-white'}`}
+          >
+            Mensuel
+          </button>
+          <button
+            onClick={() => setPeriod('annual')}
+            className={`px-5 py-2 rounded-full text-sm font-bold transition-all flex items-center gap-2 ${period === 'annual' ? 'bg-sport-orange text-white' : 'text-sport-gray hover:text-white'}`}
+          >
+            Annuel
+            <span className="text-[10px] font-black bg-emerald-500 text-white px-2 py-0.5 rounded-full">-20%</span>
+          </button>
+        </div>
+
+        <div ref={ref} className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10">
           {PLANS.map((plan, i) => (
             <motion.div
               key={plan.id}
@@ -169,9 +194,16 @@ export function Pricing() {
 
               <div className="mb-8 pb-8 border-b border-sport-border">
                 <div className="flex items-baseline gap-2">
-                  <span className="text-4xl font-black text-white">{plan.price}</span>
+                  <span className="text-4xl font-black text-white">
+                    {period === 'annual' ? plan.priceAnnual : plan.priceMonthly}
+                  </span>
                   <span className="text-sport-gray text-xs">{plan.period}</span>
                 </div>
+                {period === 'annual' && 'totalAnnual' in plan && (
+                  <p className="text-[10px] text-sport-gray mt-1">
+                    Facturé <strong className="text-white">{plan.totalAnnual}/an</strong>
+                  </p>
+                )}
                 {plan.id !== 'gratuit' && (
                   <p className="text-[10px] text-emerald-400 mt-1.5 font-semibold">
                     ✓ 30 jours gratuits · Sans engagement
@@ -179,23 +211,16 @@ export function Pricing() {
                 )}
               </div>
 
-              <ul
-                className="space-y-3 mb-8 flex-1"
-                aria-label={`Fonctionnalités incluses dans le plan ${plan.name}`}
-              >
+              <ul className="space-y-3 mb-8 flex-1" aria-label={`Fonctionnalités plan ${plan.name}`}>
                 {plan.features.map((feature) => (
                   <li key={feature} className="flex items-start gap-2.5 text-xs text-sport-gray">
-                    <CheckCircle
-                      size={14}
-                      aria-hidden="true"
-                      className={`shrink-0 mt-0.5 ${plan.highlight ? 'text-sport-orange' : 'text-emerald-500'}`}
-                    />
+                    <CheckCircle size={14} aria-hidden="true" className={`shrink-0 mt-0.5 ${plan.highlight ? 'text-sport-orange' : 'text-emerald-500'}`} />
                     {feature}
                   </li>
                 ))}
               </ul>
 
-              <PlanButton plan={plan} highlight={plan.highlight} />
+              <PlanButton plan={plan} highlight={plan.highlight} period={period} />
             </motion.div>
           ))}
         </div>

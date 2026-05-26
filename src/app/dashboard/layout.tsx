@@ -1,7 +1,7 @@
 import { redirect } from 'next/navigation'
 import Link from 'next/link'
 import { createClient } from '@/lib/supabase/server'
-import { LayoutDashboard, Dumbbell, TrendingUp, CreditCard, LogOut, Settings } from 'lucide-react'
+import { LayoutDashboard, Dumbbell, TrendingUp, CreditCard, User } from 'lucide-react'
 import { DashboardSignOut } from '@/components/dashboard/SignOut'
 
 const NAV = [
@@ -9,6 +9,7 @@ const NAV = [
   { href: '/dashboard/programme',    label: 'Mon Programme',   Icon: Dumbbell },
   { href: '/dashboard/progression',  label: 'Progression',     Icon: TrendingUp },
   { href: '/dashboard/abonnement',   label: 'Abonnement',      Icon: CreditCard },
+  { href: '/dashboard/profil',       label: 'Mon Profil',      Icon: User },
 ]
 
 export default async function DashboardLayout({ children }: { children: React.ReactNode }) {

@@ -5,10 +5,11 @@ import { Flame, Clock, Award, TrendingUp, Plus, CheckCircle } from 'lucide-react
 import { createClient } from '@/lib/supabase/client'
 import { DISCIPLINE_CONTENT } from '@/lib/disciplines'
 
-const DISCIPLINES = ['running-cardio', 'musculation', 'hiit', 'cyclisme', 'natation', 'crossfit']
+const DISCIPLINES = ['running-cardio', 'musculation', 'hiit', 'cyclisme', 'natation', 'crossfit', 'yoga', 'boxing', 'stretching', 'nutrition']
 const DISC_NAMES: Record<string, string> = {
   'running-cardio': 'Running', musculation: 'Musculation', hiit: 'HIIT',
   cyclisme: 'Cyclisme', natation: 'Natation', crossfit: 'CrossFit',
+  yoga: 'Yoga', boxing: 'Boxing', stretching: 'Stretching', nutrition: 'Nutrition',
 }
 
 const BADGES = [
@@ -172,6 +173,44 @@ export default function ProgressionPage() {
           })}
         </div>
       </div>
+
+      {/* Weekly chart */}
+      {workouts.length > 0 && (() => {
+        const days = ['Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam', 'Dim']
+        const now = new Date()
+        const weekStart = new Date(now)
+        weekStart.setDate(now.getDate() - now.getDay() + 1)
+        weekStart.setHours(0, 0, 0, 0)
+        const counts = days.map((_, i) => {
+          const d = new Date(weekStart)
+          d.setDate(weekStart.getDate() + i)
+          const next = new Date(d); next.setDate(d.getDate() + 1)
+          return workouts.filter(w => {
+            const t = new Date(w.completed_at).getTime()
+            return t >= d.getTime() && t < next.getTime()
+          }).length
+        })
+        const maxCount = Math.max(...counts, 1)
+        return (
+          <div className="bg-sport-card border border-sport-border rounded-2xl p-6 mb-8">
+            <h2 className="text-base font-black text-white mb-5">Activité cette semaine</h2>
+            <div className="flex items-end gap-2 h-24">
+              {days.map((day, i) => (
+                <div key={day} className="flex-1 flex flex-col items-center gap-1.5">
+                  <div className="w-full rounded-t-md transition-all duration-700 bg-sport-orange/20 relative overflow-hidden" style={{ height: '80px' }}>
+                    <div
+                      className="absolute bottom-0 w-full bg-sport-orange rounded-t-md transition-all duration-700"
+                      style={{ height: `${(counts[i] / maxCount) * 100}%` }}
+                    />
+                  </div>
+                  <span className="text-[10px] text-sport-gray font-semibold">{day}</span>
+                  {counts[i] > 0 && <span className="text-[9px] text-sport-orange font-black">{counts[i]}</span>}
+                </div>
+              ))}
+            </div>
+          </div>
+        )
+      })()}
 
       {/* Recent workouts */}
       <div>

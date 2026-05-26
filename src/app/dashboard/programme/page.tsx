@@ -9,12 +9,16 @@ import Link from 'next/link'
 import { Suspense } from 'react'
 
 const DISCIPLINES = [
-  { slug: 'running-cardio', label: 'Running', color: 'orange' },
-  { slug: 'musculation',    label: 'Muscu',   color: 'blue' },
-  { slug: 'hiit',           label: 'HIIT',    color: 'lime' },
-  { slug: 'cyclisme',       label: 'Cyclisme', color: 'orange' },
-  { slug: 'natation',       label: 'Natation', color: 'blue' },
-  { slug: 'crossfit',       label: 'CrossFit', color: 'lime' },
+  { slug: 'running-cardio', label: 'Running',    color: 'orange' },
+  { slug: 'musculation',    label: 'Muscu',      color: 'blue' },
+  { slug: 'hiit',           label: 'HIIT',       color: 'lime' },
+  { slug: 'cyclisme',       label: 'Cyclisme',   color: 'orange' },
+  { slug: 'natation',       label: 'Natation',   color: 'blue' },
+  { slug: 'crossfit',       label: 'CrossFit',   color: 'lime' },
+  { slug: 'yoga',           label: 'Yoga',       color: 'orange' },
+  { slug: 'boxing',         label: 'Boxing',     color: 'blue' },
+  { slug: 'stretching',     label: 'Stretching', color: 'lime' },
+  { slug: 'nutrition',      label: 'Nutrition',  color: 'orange' },
 ]
 
 const COLOR: Record<string, string> = {
