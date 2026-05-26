@@ -45,7 +45,7 @@ const PLANS = [
       'Support prioritaire 7j/7',
       'Challenges communautaires',
     ],
-    cta: 'Essai gratuit 30 jours',
+    cta: 'Essai gratuit 7 jours',
     highlight: true,
   },
   {
@@ -148,7 +148,7 @@ export function Pricing() {
           id="tarifs-title"
           label="Tarifs"
           title="Simple. Transparent. Sans surprise."
-          subtitle="Essai gratuit 30 jours sur tous les plans payants — aucune carte bancaire requise"
+          subtitle="Essai gratuit 7 jours sur tous les plans payants — aucune carte bancaire requise"
         />
 
         {/* Billing toggle */}
@@ -206,7 +206,7 @@ export function Pricing() {
                 )}
                 {plan.id !== 'gratuit' && (
                   <p className="text-[10px] text-emerald-400 mt-1.5 font-semibold">
-                    ✓ 30 jours gratuits · Sans engagement
+                    ✓ 7 jours gratuits · Sans engagement
                   </p>
                 )}
               </div>

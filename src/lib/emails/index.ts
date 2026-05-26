@@ -42,7 +42,7 @@ export async function sendWelcomeEmail({
         Bienvenue ${name ? `, ${name.split(' ')[0]}` : ''} ! 💪
       </h1>
       <p style="color:#9CA3AF;font-size:15px;line-height:1.6;margin:0 0 24px;">
-        Ton essai gratuit de <strong style="color:#fff;">30 jours</strong> sur le
+        Ton essai gratuit de <strong style="color:#fff;">7 jours</strong> sur le
         <strong style="color:#F97316;">Plan ${planLabel}</strong> vient de commencer.
         Aucun débit avant la fin de la période d'essai.
       </p>
