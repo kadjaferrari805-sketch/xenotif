@@ -24,18 +24,72 @@ if (!stripeKey) {
   process.exit(0)
 }
 
+// Always configure the billing portal (idempotent)
+const Stripe = (await import('stripe')).default
+const stripe  = new Stripe(stripeKey)
+
+await setupBillingPortal(stripe)
+
 if (alreadySet) {
-  console.log('[setup-webhook] STRIPE_WEBHOOK_SECRET already configured — skipping')
+  console.log('[setup-webhook] STRIPE_WEBHOOK_SECRET already configured — skipping webhook setup')
   process.exit(0)
+}
+
+async function setupBillingPortal(stripe) {
+  try {
+    const BASE_URL = 'https://xenotif.vercel.app'
+
+    // Check if a configuration already exists
+    const configs = await stripe.billingPortal.configurations.list({ limit: 1 })
+
+    if (configs.data.length > 0) {
+      // Update the existing one to make sure it's correct
+      await stripe.billingPortal.configurations.update(configs.data[0].id, {
+        default_return_url: `${BASE_URL}/dashboard/abonnement`,
+        business_profile: {
+          headline: 'Gérez votre abonnement Xenotif®',
+        },
+        features: {
+          invoice_history: { enabled: true },
+          payment_method_update: { enabled: true },
+          subscription_cancel: {
+            enabled: true,
+            mode: 'at_period_end',
+            proration_behavior: 'none',
+          },
+          subscription_pause: { enabled: false },
+        },
+      })
+      console.log('[setup-portal] Billing portal configuration updated ✓')
+    } else {
+      // Create a new configuration
+      await stripe.billingPortal.configurations.create({
+        default_return_url: `${BASE_URL}/dashboard/abonnement`,
+        business_profile: {
+          headline: 'Gérez votre abonnement Xenotif®',
+        },
+        features: {
+          invoice_history: { enabled: true },
+          payment_method_update: { enabled: true },
+          subscription_cancel: {
+            enabled: true,
+            mode: 'at_period_end',
+            proration_behavior: 'none',
+          },
+          subscription_pause: { enabled: false },
+        },
+      })
+      console.log('[setup-portal] Billing portal configuration created ✓')
+    }
+  } catch (err) {
+    console.error('[setup-portal] Failed to configure billing portal:', err.message)
+  }
 }
 
 if (!vercelToken) {
   console.log('[setup-webhook] VERCEL_TOKEN not set — skipping Vercel env update')
 }
 
-// Use dynamic import so this works without installing stripe as a build dep
-const Stripe = (await import('stripe')).default
-const stripe  = new Stripe(stripeKey)
 
 // Remove old webhooks for this URL
 const existing = await stripe.webhookEndpoints.list({ limit: 20 })
