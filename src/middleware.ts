@@ -1,43 +1,22 @@
-import { createServerClient } from '@supabase/ssr'
 import { NextResponse, type NextRequest } from 'next/server'
 
-export async function middleware(request: NextRequest) {
-  let supabaseResponse = NextResponse.next({ request })
-
-  const supabase = createServerClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-    {
-      cookies: {
-        getAll() { return request.cookies.getAll() },
-        setAll(toSet) {
-          toSet.forEach(({ name, value }) => request.cookies.set(name, value))
-          supabaseResponse = NextResponse.next({ request })
-          toSet.forEach(({ name, value, options }) =>
-            supabaseResponse.cookies.set(name, value, options)
-          )
-        },
-      },
-    },
-  )
-
-  const { data: { user } } = await supabase.auth.getUser()
-
+export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl
 
-  // Protect /dashboard and /admin routes
-  if ((pathname.startsWith('/dashboard') || pathname.startsWith('/admin')) && !user) {
+  // Check for Supabase session cookie (sb-*-auth-token)
+  const hasSession = request.cookies.getAll().some(c => c.name.startsWith('sb-') && c.name.endsWith('-auth-token'))
+
+  // Protect /dashboard and /admin — redirect to signin if no session cookie
+  if ((pathname.startsWith('/dashboard') || pathname.startsWith('/admin')) && !hasSession) {
     return NextResponse.redirect(new URL('/auth/signin', request.url))
   }
 
-  // Admin protection — checked in page server-side (avoids extra DB call here)
-
-  // Redirect authenticated users away from auth pages
-  if (pathname.startsWith('/auth/') && user && !pathname.includes('/callback') && !pathname.includes('/reset-password')) {
+  // Redirect logged-in users away from auth pages
+  if (pathname.startsWith('/auth/') && hasSession && !pathname.includes('/callback') && !pathname.includes('/reset-password')) {
     return NextResponse.redirect(new URL('/dashboard', request.url))
   }
 
-  return supabaseResponse
+  return NextResponse.next()
 }
 
 export const config = {
