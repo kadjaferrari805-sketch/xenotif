@@ -1,7 +1,7 @@
 import { redirect } from 'next/navigation'
 import Link from 'next/link'
 import { createClient } from '@/lib/supabase/server'
-import { LayoutDashboard, Dumbbell, TrendingUp, CreditCard, User, Bot, LogOut } from 'lucide-react'
+import { LayoutDashboard, Dumbbell, TrendingUp, CreditCard, User, Bot } from 'lucide-react'
 import { DashboardSignOut } from '@/components/dashboard/SignOut'
 import { DashboardGuard } from '@/components/dashboard/DashboardGuard'
 import { Logo } from '@/components/ui/Logo'
