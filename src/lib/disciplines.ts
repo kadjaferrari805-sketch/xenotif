@@ -442,12 +442,12 @@ const hiitContent: DisciplineContent = {
   ],
   videos: [
     {
-      youtubeId: 'cDEZrynoEdM',
+      youtubeId: '5C8Ew76sxVY',
       title: 'HIIT 20 min — Brûle-graisse total',
       description: 'Séance HIIT débutant sans équipement — brûle des graisses, construit l\'endurance, améliore la condition physique.',
       duration: '20 min',
       level: 'Débutant',
-      thumbnail: 'https://img.youtube.com/vi/cDEZrynoEdM/maxresdefault.jpg',
+      thumbnail: 'https://img.youtube.com/vi/5C8Ew76sxVY/maxresdefault.jpg',
     },
     {
       youtubeId: 'J8EeluUr4ak',
@@ -458,12 +458,12 @@ const hiitContent: DisciplineContent = {
       thumbnail: 'https://img.youtube.com/vi/J8EeluUr4ak/maxresdefault.jpg',
     },
     {
-      youtubeId: 'NvHsieMfZxU',
+      youtubeId: 'fIuACtB2ZZs',
       title: '20 min HIIT — Zéro équipement',
       description: 'Entraînement HIIT complet pour débutants — poids du corps, full body, résultats rapides.',
       duration: '20 min',
       level: 'Intermédiaire',
-      thumbnail: 'https://img.youtube.com/vi/NvHsieMfZxU/maxresdefault.jpg',
+      thumbnail: 'https://img.youtube.com/vi/fIuACtB2ZZs/maxresdefault.jpg',
     },
     {
       youtubeId: 'V4MqB6q3w44',
