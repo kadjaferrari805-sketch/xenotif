@@ -81,7 +81,7 @@ export function HowItWorks() {
           transition={{ delay: 0.65, duration: 0.5 }}
           className="text-center mt-12"
         >
-          <Link href="/#newsletter" className="btn-primary shadow-xl shadow-sport-orange/25 hover:shadow-sport-orange/40 hover:scale-[1.02] active:scale-95">
+          <Link href="/auth/signup" className="btn-primary shadow-xl shadow-sport-orange/25 hover:shadow-sport-orange/40 hover:scale-[1.02] active:scale-95">
             Commencer maintenant <ArrowRight size={15} aria-hidden="true" />
           </Link>
           <p className="text-[11px] text-sport-gray mt-3">Gratuit · Sans engagement · Sans carte bancaire</p>

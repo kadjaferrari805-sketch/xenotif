@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { Logo } from '@/components/ui/Logo'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { ArrowRight, Eye, EyeOff, Zap } from 'lucide-react'
@@ -24,8 +25,7 @@ export default function SignInPage() {
       setError('Email ou mot de passe incorrect.')
       setLoading(false)
     } else {
-      router.push('/dashboard')
-      router.refresh()
+      router.replace('/dashboard')
     }
   }
 
@@ -34,10 +34,9 @@ export default function SignInPage() {
       <div className="w-full max-w-md">
 
         {/* Logo */}
-        <Link href="/" className="flex items-center justify-center gap-2 mb-10">
-          <span className="w-9 h-9 bg-sport-orange rounded-lg flex items-center justify-center font-black text-white text-sm">X</span>
-          <span className="font-black text-white text-xl tracking-wider">XENOTIF®</span>
-        </Link>
+        <div className="flex justify-center mb-10">
+          <Logo href="/" size="md" />
+        </div>
 
         <div className="bg-sport-card border border-sport-border rounded-2xl p-8">
           <div className="text-center mb-8">
@@ -102,8 +101,8 @@ export default function SignInPage() {
           <div className="mt-6 pt-6 border-t border-sport-border text-center">
             <p className="text-xs text-sport-gray">
               Pas encore de compte ?{' '}
-              <Link href="/#tarifs" className="text-sport-orange font-bold hover:underline">
-                Choisir un abonnement →
+              <Link href="/auth/signup" className="text-sport-orange font-bold hover:underline">
+                Créer un compte →
               </Link>
             </p>
           </div>

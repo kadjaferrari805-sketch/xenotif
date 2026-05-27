@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { Mail, Globe, PlayCircle, MessageCircle } from 'lucide-react'
+import { Logo } from '@/components/ui/Logo'
 
 const DISC_LINKS = [
   { label: 'Running & Cardio', href: '/disciplines/running-cardio' },
@@ -40,16 +41,9 @@ export function Footer() {
         <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
           {/* Brand */}
           <div>
-            <Link
-              href="/"
-              aria-label="Xenotif — Retour à l'accueil"
-              className="flex items-center gap-2 mb-5"
-            >
-              <span aria-hidden="true" className="w-8 h-8 bg-sport-orange rounded-lg flex items-center justify-center font-black text-white text-sm">
-                X
-              </span>
-              <span className="font-black text-white text-lg tracking-wider">XENOTIF®</span>
-            </Link>
+            <div className="mb-5">
+              <Logo href="/" size="sm" />
+            </div>
             <p className="text-xs text-sport-gray leading-relaxed mb-6">
               La plateforme sport ultime pour athlètes de tous niveaux. Performance, coaching IA
               et communauté au service de tes objectifs.

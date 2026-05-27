@@ -3,7 +3,7 @@ export const BRAND = {
   tagline: 'Forge ton corps. Dépasse tes limites.',
   members: 12400,
   programs: 50,
-  disciplines: 6,
+  disciplines: 10,
   rating: 4.9,
   reviewCount: 3200,
 }
@@ -11,7 +11,7 @@ export const BRAND = {
 export const STATS = [
   { value: '12K+', label: 'Athlètes actifs' },
   { value: '50+', label: 'Programmes' },
-  { value: '6', label: 'Disciplines' },
+  { value: '10', label: 'Disciplines' },
   { value: '4.9/5', label: 'Satisfaction' },
 ]
 
@@ -81,6 +81,50 @@ export const FEATURES = [
     tag: 'Functional',
     levels: ['Débutant', 'Intermédiaire', 'RX', 'Compétition'],
     stats: ['+1 800 athlètes', '365 WODs/an', '5× / semaine'],
+  },
+  {
+    icon: 'leaf',
+    color: 'lime',
+    title: 'Yoga',
+    slug: 'yoga',
+    description:
+      'Flexibilité, force intérieure et pleine conscience — des flows débutants au yoga avancé pour un corps et un esprit équilibrés.',
+    tag: 'Bien-être',
+    levels: ['Débutant', 'Intermédiaire', 'Avancé', 'Tous niveaux'],
+    stats: ['+2 000 pratiquants', '40+ séquences', '20-60 min / séance'],
+  },
+  {
+    icon: 'target',
+    color: 'orange',
+    title: 'Boxe',
+    slug: 'boxing',
+    description:
+      'Technique, cardio et puissance — des bases aux combinaisons avancées pour te transformer physiquement et mentalement.',
+    tag: 'Combat',
+    levels: ['Débutant', 'Intermédiaire', 'Avancé', 'Compétition'],
+    stats: ['+1 200 boxeurs', '35+ programmes', '8 semaines moy.'],
+  },
+  {
+    icon: 'layers',
+    color: 'blue',
+    title: 'Stretching',
+    slug: 'stretching',
+    description:
+      'Mobilité, souplesse et récupération optimale — des routines d\'étirements guidées pour prévenir les blessures et performer.',
+    tag: 'Mobilité',
+    levels: ['Débutant', 'Intermédiaire', 'Avancé', 'Tous niveaux'],
+    stats: ['+1 600 membres', '30+ routines', '10-30 min / séance'],
+  },
+  {
+    icon: 'zap',
+    color: 'lime',
+    title: 'Nutrition',
+    slug: 'nutrition',
+    description:
+      'Plans alimentaires personnalisés, calcul des macros et stratégies nutritionnelles pour atteindre tes objectifs sportifs.',
+    tag: 'Alimentation',
+    levels: ['Débutant', 'Intermédiaire', 'Avancé', 'Athlète'],
+    stats: ['+3 000 membres', '50+ plans', 'Suivi quotidien'],
   },
 ]
 

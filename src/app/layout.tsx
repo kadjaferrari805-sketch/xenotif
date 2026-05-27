@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
+import { headers } from 'next/headers'
 import './globals.css'
 import { Nav } from '@/components/layout/Nav'
 import { Footer } from '@/components/layout/Footer'
@@ -30,7 +31,11 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://xenotif.com'),
 }
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const headersList = await headers()
+  const currentPath = headersList.get('x-current-path') ?? ''
+  const isAppRoute = currentPath.startsWith('/dashboard') || currentPath.startsWith('/admin')
+
   return (
     <html lang="fr" className={inter.variable}>
       <body>
@@ -38,11 +43,17 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           Aller au contenu principal
         </a>
         <Providers>
-          <Nav />
-          <main id="contenu-principal" tabIndex={-1}>
-            {children}
-          </main>
-          <Footer />
+          {isAppRoute ? (
+            children
+          ) : (
+            <>
+              <Nav />
+              <main id="contenu-principal" tabIndex={-1}>
+                {children}
+              </main>
+              <Footer />
+            </>
+          )}
         </Providers>
       </body>
     </html>

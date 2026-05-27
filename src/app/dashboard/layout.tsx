@@ -3,6 +3,8 @@ import Link from 'next/link'
 import { createClient } from '@/lib/supabase/server'
 import { LayoutDashboard, Dumbbell, TrendingUp, CreditCard, User, Bot } from 'lucide-react'
 import { DashboardSignOut } from '@/components/dashboard/SignOut'
+import { DashboardGuard } from '@/components/dashboard/DashboardGuard'
+import { Logo } from '@/components/ui/Logo'
 
 const NAV = [
   { href: '/dashboard',              label: 'Vue d\'ensemble', Icon: LayoutDashboard },
@@ -23,15 +25,13 @@ export default async function DashboardLayout({ children }: { children: React.Re
 
   return (
     <div className="min-h-screen bg-sport-dark text-white flex">
+      <DashboardGuard />
 
       {/* Sidebar */}
       <aside className="hidden md:flex flex-col w-64 bg-sport-card border-r border-sport-border shrink-0">
         {/* Brand */}
         <div className="px-6 py-6 border-b border-sport-border">
-          <Link href="/" className="flex items-center gap-2">
-            <span className="w-8 h-8 bg-sport-orange rounded-lg flex items-center justify-center font-black text-white text-sm">X</span>
-            <span className="font-black text-white tracking-wider">XENOTIF®</span>
-          </Link>
+          <Logo href="/dashboard" size="sm" />
         </div>
 
         {/* User */}
@@ -72,14 +72,12 @@ export default async function DashboardLayout({ children }: { children: React.Re
 
       {/* Mobile header */}
       <div className="md:hidden fixed top-0 left-0 right-0 z-50 bg-sport-card border-b border-sport-border px-4 py-3 flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-2">
-          <span className="w-7 h-7 bg-sport-orange rounded-md flex items-center justify-center font-black text-white text-xs">X</span>
-          <span className="font-black text-white text-sm tracking-wider">XENOTIF®</span>
-        </Link>
-        <div className="flex items-center gap-3">
+        <Logo href="/dashboard" size="sm" />
+        <div className="flex items-center gap-2">
           <div className="w-8 h-8 rounded-full bg-sport-orange/20 border border-sport-orange/40 flex items-center justify-center font-black text-sport-orange text-xs">
             {initials}
           </div>
+          <DashboardSignOut iconOnly />
         </div>
       </div>
 

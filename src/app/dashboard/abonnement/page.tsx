@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from 'react'
 import { CheckCircle, AlertTriangle, CreditCard, Calendar, ArrowRight, ShieldCheck, X } from 'lucide-react'
-import { createClient } from '@/lib/supabase/client'
 
 type Sub = {
   plan: string; status: string; trial_end: string | null;
@@ -28,17 +27,13 @@ export default function AbonnementPage() {
   const [showCancel, setShowCancel] = useState(false)
   const [cancelled, setCancelled] = useState(false)
   const [portalLoading, setPortalLoading] = useState(false)
+  const [portalError, setPortalError] = useState('')
 
   useEffect(() => {
-    async function load() {
-      const supabase = createClient()
-      const { data: { user } } = await supabase.auth.getUser()
-      if (!user) return
-      const { data } = await supabase.from('subscriptions').select('*').eq('user_id', user.id).single()
-      setSub(data)
-      setLoading(false)
-    }
-    load()
+    fetch('/api/subscription')
+      .then(r => r.json())
+      .then(data => { setSub(data); setLoading(false) })
+      .catch(() => setLoading(false))
   }, [])
 
   const now = new Date()
@@ -51,10 +46,19 @@ export default function AbonnementPage() {
 
   async function openPortal() {
     setPortalLoading(true)
+    setPortalError('')
     const res = await fetch('/api/stripe-portal', { method: 'POST' })
     const data = await res.json()
-    if (data.url) window.location.href = data.url
-    else setPortalLoading(false)
+    if (data.url) {
+      window.location.href = data.url
+    } else {
+      setPortalError(
+        data.error === 'portal_not_configured'
+          ? 'Le portail de paiement n\'est pas encore activé. Va sur dashboard.stripe.com → Billing → Customer portal pour l\'activer.'
+          : (data.error ?? 'Impossible d\'ouvrir le portail de paiement.')
+      )
+      setPortalLoading(false)
+    }
   }
 
   async function cancelSubscription() {
@@ -85,8 +89,8 @@ export default function AbonnementPage() {
           <CreditCard size={32} className="text-sport-gray mx-auto mb-4" />
           <p className="text-white font-bold mb-2">Aucun abonnement actif</p>
           <p className="text-sport-gray text-sm mb-6">Choisis un plan pour accéder à tous les programmes.</p>
-          <a href="/#tarifs" className="inline-flex items-center gap-2 bg-sport-orange text-white px-6 py-3 rounded-full font-bold text-sm hover:bg-orange-600 transition-all">
-            Voir les offres <ArrowRight size={14} />
+          <a href="/auth/signup?plan=pro" className="inline-flex items-center gap-2 bg-sport-orange text-white px-6 py-3 rounded-full font-bold text-sm hover:bg-orange-600 transition-all">
+            Choisir un plan <ArrowRight size={14} />
           </a>
         </div>
       </div>
@@ -199,6 +203,9 @@ export default function AbonnementPage() {
         >
           {portalLoading ? <><span className="w-4 h-4 border-2 border-white/40 border-t-white rounded-full animate-spin" />Chargement…</> : <><CreditCard size={14} /> Gérer le paiement & les factures</>}
         </button>
+        {portalError && (
+          <p className="text-xs text-orange-400 bg-orange-400/10 border border-orange-400/20 rounded-xl px-4 py-3 leading-relaxed">{portalError}</p>
+        )}
 
         {(isTrialing || isActive) && !isCanceled && (
           <button

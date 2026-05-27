@@ -1,6 +1,8 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { CheckCircle, ArrowRight, Zap } from 'lucide-react'
+import Stripe from 'stripe'
+import { createServiceClient } from '@/lib/supabase/server'
 
 export const metadata: Metadata = {
   title: 'Paiement confirmé — Xenotif®',
@@ -13,7 +15,50 @@ const NEXT_STEPS = [
   { num: '3', text: 'Choisis ta première discipline et lance ta première séance.' },
 ]
 
-export default function SuccessPage() {
+async function syncSubscription(sessionId: string) {
+  try {
+    const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!)
+    const session = await stripe.checkout.sessions.retrieve(sessionId, {
+      expand: ['subscription'],
+    })
+    if (session.mode !== 'subscription' || !session.customer || !session.subscription) return
+    if (typeof session.subscription === 'string') return
+
+    const sub = session.subscription as Stripe.Subscription
+    const email = session.customer_details?.email ?? session.customer_email
+    if (!email) return
+
+    const service = await createServiceClient()
+    const { data: users } = await service.auth.admin.listUsers()
+    const user = users?.users?.find(u => u.email === email)
+    if (!user) return
+
+    const plan = session.metadata?.plan
+      ?? ((sub.items.data[0]?.price?.unit_amount ?? 0) > 1000 ? 'elite' : 'pro')
+
+    await service.from('subscriptions').upsert({
+      user_id: user.id,
+      stripe_customer_id: typeof session.customer === 'string' ? session.customer : session.customer.id,
+      stripe_subscription_id: sub.id,
+      plan,
+      status: sub.status,
+      trial_end: sub.trial_end ? new Date(sub.trial_end * 1000).toISOString() : null,
+      current_period_end: new Date((sub.items.data[0]?.current_period_end ?? 0) * 1000).toISOString(),
+      cancel_at_period_end: sub.cancel_at_period_end,
+    }, { onConflict: 'user_id' })
+  } catch (err) {
+    console.error('syncSubscription error:', err)
+  }
+}
+
+export default async function SuccessPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ session_id?: string }>
+}) {
+  const { session_id } = await searchParams
+  if (session_id) await syncSubscription(session_id)
+
   return (
     <main className="min-h-[80vh] flex flex-col items-center justify-center px-6 py-20 bg-sport-dark">
       {/* Glow */}
@@ -62,11 +107,11 @@ export default function SuccessPage() {
         </div>
 
         <div className="flex flex-col sm:flex-row gap-3 justify-center">
-          <Link href="/dashboard" className="btn-primary shadow-lg shadow-sport-orange/20">
-            Accéder à mon espace <ArrowRight size={15} aria-hidden="true" />
+          <Link href="/dashboard/abonnement" className="btn-primary shadow-lg shadow-sport-orange/20">
+            Voir mon abonnement <ArrowRight size={15} aria-hidden="true" />
           </Link>
-          <Link href="/auth/signin" className="btn-secondary">
-            Se connecter
+          <Link href="/dashboard" className="btn-secondary">
+            Mon espace
           </Link>
         </div>
 

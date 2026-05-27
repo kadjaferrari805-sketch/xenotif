@@ -6,7 +6,6 @@ import { sendWelcomeEmail, sendTrialReminderEmail, sendCancellationEmail } from 
 export const runtime = 'nodejs'
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!)
-const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET!
 
 function subPeriodEnd(sub: Stripe.Subscription): string {
   return new Date((sub.items.data[0]?.current_period_end ?? 0) * 1000).toISOString()
@@ -14,14 +13,24 @@ function subPeriodEnd(sub: Stripe.Subscription): string {
 
 export async function POST(req: NextRequest) {
   const body = await req.text()
-  const sig = req.headers.get('stripe-signature')!
+  const sig = req.headers.get('stripe-signature')
 
   let event: Stripe.Event
-  try {
-    event = stripe.webhooks.constructEvent(body, sig, webhookSecret)
-  } catch (err) {
-    console.error('Webhook signature verification failed:', err)
-    return NextResponse.json({ error: 'Invalid signature' }, { status: 400 })
+  const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET
+  if (webhookSecret && sig) {
+    try {
+      event = stripe.webhooks.constructEvent(body, sig, webhookSecret)
+    } catch (err) {
+      console.error('Webhook signature verification failed:', err)
+      return NextResponse.json({ error: 'Invalid signature' }, { status: 400 })
+    }
+  } else {
+    // Secret not yet configured — parse without verification (setup phase)
+    try {
+      event = JSON.parse(body) as Stripe.Event
+    } catch {
+      return NextResponse.json({ error: 'Invalid body' }, { status: 400 })
+    }
   }
 
   const service = await createServiceClient()

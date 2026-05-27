@@ -27,8 +27,14 @@ export async function POST() {
     })
 
     return NextResponse.json({ url: portal.url })
-  } catch (err) {
+  } catch (err: unknown) {
     console.error('Stripe portal error:', err)
+    const msg = err instanceof Error ? err.message : ''
+    if (msg.includes('No configuration was found')) {
+      return NextResponse.json({
+        error: 'portal_not_configured',
+      }, { status: 500 })
+    }
     return NextResponse.json({ error: 'Impossible d\'ouvrir le portail.' }, { status: 500 })
   }
 }

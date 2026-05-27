@@ -192,7 +192,7 @@ export function Hero() {
               className="flex flex-wrap gap-3 mb-8"
             >
               <Link
-                href="/#newsletter"
+                href="/auth/signup"
                 className="btn-primary shadow-xl shadow-sport-orange/30 hover:shadow-sport-orange/50 hover:scale-[1.02] active:scale-95"
               >
                 Rejoindre gratuitement <ArrowRight size={15} aria-hidden="true" />
