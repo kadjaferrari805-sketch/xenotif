@@ -143,13 +143,12 @@ export default async function DisciplinePage({ params }: { params: Promise<{ slu
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
               {content.videos.map((video) => (
                 <VideoCard
-                  key={video.youtubeId}
-                  youtubeId={video.youtubeId}
+                  key={video.youtubeIds[0]}
+                  youtubeIds={video.youtubeIds}
                   title={video.title}
                   description={video.description}
                   duration={video.duration}
                   level={video.level}
-                  thumbnail={video.thumbnail}
                   accentColor={COLOR_VIDEO[color]}
                 />
               ))}
