@@ -1218,7 +1218,7 @@ const boxingContent: DisciplineContent = {
   ],
   videos: [
     {
-      youtubeIds: ['Xc9QRXUoNMw', 'fm1tL3RYiTY'],
+      youtubeIds: ['kKDHdsVN0b8', 'jhcIjFgz2bI', 'N0U5RPGpjSg'],
       title: 'Boxe débutant — Bases techniques',
       description: 'Initiation complète à la boxe — garde, jab, cross, crochet et uppercut expliqués pour les débutants absolus.',
       duration: '25 min',
