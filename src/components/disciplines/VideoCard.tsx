@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useId } from 'react'
 import { Play, Clock, BarChart2, VideoOff } from 'lucide-react'
 
 interface VideoCardProps {
@@ -18,6 +18,8 @@ export function VideoCard({ youtubeIds, title, description, duration, level, acc
   const [currentIdx, setCurrentIdx] = useState(0)
   const [allFailed, setAllFailed] = useState(false)
 
+  const uid = useId()
+  const playerId = `yt${uid.replace(/[^a-z0-9]/gi, '')}`
   const currentId = youtubeIds[currentIdx] ?? youtubeIds[0]
   const mainThumb = `https://img.youtube.com/vi/${currentId}/maxresdefault.jpg`
   const fallbackThumb = `https://img.youtube.com/vi/${currentId}/hqdefault.jpg`
@@ -33,6 +35,7 @@ export function VideoCard({ youtubeIds, title, description, duration, level, acc
       if (event.origin !== 'https://www.youtube.com') return
       try {
         const data = typeof event.data === 'string' ? JSON.parse(event.data) : event.data
+        if (String(data?.id) !== playerId) return  // ignore events from other players
         // 100 = video not found/private, 101/150 = embedding disabled
         if (data?.event === 'onError' && [100, 101, 150].includes(data?.info)) {
           if (currentIdx < youtubeIds.length - 1) {
@@ -46,7 +49,7 @@ export function VideoCard({ youtubeIds, title, description, duration, level, acc
 
     window.addEventListener('message', onYTMessage)
     return () => window.removeEventListener('message', onYTMessage)
-  }, [playing, currentIdx, youtubeIds])
+  }, [playing, currentIdx, youtubeIds, playerId])
 
   const metaFooter = (
     <div className="p-4">
@@ -82,6 +85,7 @@ export function VideoCard({ youtubeIds, title, description, duration, level, acc
           {/* key forces iframe re-mount when backup ID changes */}
           <iframe
             key={currentId}
+            id={playerId}
             src={`https://www.youtube.com/embed/${currentId}?autoplay=1&rel=0&modestbranding=1&color=white&enablejsapi=1`}
             title={title}
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
