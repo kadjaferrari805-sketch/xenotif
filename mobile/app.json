@@ -4,15 +4,9 @@
     "slug": "xenotif",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
     "scheme": "xenotif",
     "userInterfaceStyle": "dark",
     "backgroundColor": "#0A0B0F",
-    "splash": {
-      "image": "./assets/images/splash.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#0A0B0F"
-    },
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.xenotif.app",
@@ -29,10 +23,6 @@
       }
     },
     "android": {
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/images/adaptive-icon.png",
-        "backgroundColor": "#0A0B0F"
-      },
       "package": "com.xenotif.app",
       "versionCode": 1,
       "permissions": [
@@ -47,26 +37,18 @@
     },
     "web": {
       "bundler": "metro",
-      "output": "static",
-      "favicon": "./assets/images/favicon.png"
+      "output": "static"
     },
     "plugins": [
       "expo-router",
-      "expo-font",
-      [
-        "expo-notifications",
-        {
-          "icon": "./assets/images/notification-icon.png",
-          "color": "#FF4500"
-        }
-      ]
+      "expo-font"
     ],
     "experiments": {
       "typedRoutes": true
     },
     "extra": {
       "eas": {
-        "projectId": "YOUR_EAS_PROJECT_ID"
+        "projectId": "b6236a1f-a958-4110-b8da-23cd447345b4"
       }
     }
   }
