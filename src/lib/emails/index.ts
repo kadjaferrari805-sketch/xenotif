@@ -1,6 +1,6 @@
 import { Resend } from 'resend'
 
-const resend = new Resend(process.env.RESEND_API_KEY!)
+const resend = new Resend(process.env.RESEND_API_KEY ?? 'placeholder')
 const FROM = 'Xenotif® <noreply@xenotif.com>'
 const BASE_URL = process.env.NEXT_PUBLIC_URL ?? 'https://xenotif.vercel.app'
 

@@ -5,7 +5,7 @@ import { sendWelcomeEmail, sendTrialReminderEmail, sendCancellationEmail } from 
 
 export const runtime = 'nodejs'
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!)
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY ?? 'sk_placeholder')
 
 function subPeriodEnd(sub: Stripe.Subscription): string {
   return new Date((sub.items.data[0]?.current_period_end ?? 0) * 1000).toISOString()

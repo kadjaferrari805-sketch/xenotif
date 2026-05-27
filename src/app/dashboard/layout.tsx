@@ -1,7 +1,7 @@
 import { redirect } from 'next/navigation'
 import Link from 'next/link'
 import { createClient } from '@/lib/supabase/server'
-import { LayoutDashboard, Dumbbell, TrendingUp, CreditCard, User, Bot } from 'lucide-react'
+import { LayoutDashboard, Dumbbell, TrendingUp, CreditCard, User, Bot, Watch } from 'lucide-react'
 import { DashboardSignOut } from '@/components/dashboard/SignOut'
 import { DashboardGuard } from '@/components/dashboard/DashboardGuard'
 import { Logo } from '@/components/ui/Logo'
@@ -11,6 +11,7 @@ const NAV = [
   { href: '/dashboard/coach',        label: 'Coach IA',        Icon: Bot },
   { href: '/dashboard/programme',    label: 'Mon Programme',   Icon: Dumbbell },
   { href: '/dashboard/progression',  label: 'Progression',     Icon: TrendingUp },
+  { href: '/dashboard/smartwatch',   label: 'Montre Connectée', Icon: Watch },
   { href: '/dashboard/abonnement',   label: 'Abonnement',      Icon: CreditCard },
   { href: '/dashboard/profil',       label: 'Mon Profil',      Icon: User },
 ]
