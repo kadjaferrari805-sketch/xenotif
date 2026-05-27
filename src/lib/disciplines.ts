@@ -277,12 +277,12 @@ const musculationContent: DisciplineContent = {
   ],
   videos: [
     {
-      youtubeId: 'WP0IFHkkRZ0',
+      youtubeId: 'DUuh5wrkLIY',
       title: 'Tutoriel ultime du Deadlift',
       description: 'Le soulevé de terre parfait avec Martins Licis (Champion du Monde Strongman 2019) — technique complète.',
       duration: '18 min',
       level: 'Tous niveaux',
-      thumbnail: 'https://img.youtube.com/vi/WP0IFHkkRZ0/maxresdefault.jpg',
+      thumbnail: 'https://img.youtube.com/vi/DUuh5wrkLIY/maxresdefault.jpg',
     },
     {
       youtubeId: 'c5tXZfw0nCU',
@@ -317,12 +317,12 @@ const musculationContent: DisciplineContent = {
       thumbnail: 'https://img.youtube.com/vi/pxls2vBxFVs/maxresdefault.jpg',
     },
     {
-      youtubeId: 'rMmywzMtMYI',
+      youtubeId: 'h--woXuXXmk',
       title: 'SBD pour débutants — Squat, Bench, Deadlift',
       description: 'Introduction aux trois mouvements fondamentaux de la force — tout ce qu\'un débutant doit savoir.',
       duration: '20 min',
       level: 'Débutant',
-      thumbnail: 'https://img.youtube.com/vi/rMmywzMtMYI/maxresdefault.jpg',
+      thumbnail: 'https://img.youtube.com/vi/h--woXuXXmk/maxresdefault.jpg',
     },
   ],
   exercises: [
@@ -775,12 +775,12 @@ const natationContent: DisciplineContent = {
       thumbnail: 'https://img.youtube.com/vi/6_vXycbD2TM/maxresdefault.jpg',
     },
     {
-      youtubeId: 'AQy_c30lNjI',
+      youtubeId: 'OAvy6-XiYng',
       title: 'Technique crawl — Masterclass',
       description: 'Analyse en détail de la technique de nage crawl (front crawl) par un coach certifié fédéral.',
       duration: '18 min',
       level: 'Intermédiaire',
-      thumbnail: 'https://img.youtube.com/vi/AQy_c30lNjI/maxresdefault.jpg',
+      thumbnail: 'https://img.youtube.com/vi/OAvy6-XiYng/maxresdefault.jpg',
     },
     {
       youtubeId: 'DUpfLigoWEc',
@@ -1103,12 +1103,12 @@ const yogaContent: DisciplineContent = {
       thumbnail: 'https://img.youtube.com/vi/v7AYKMP6rOE/maxresdefault.jpg',
     },
     {
-      youtubeId: 'sTANio_2E0Q',
+      youtubeId: '2zCYsv4f4z0',
       title: 'Vinyasa flow 45 min',
       description: 'Enchaînement vinyasa intermédiaire — lien souffle-mouvement, ouverture des hanches et renforcement du core.',
       duration: '45 min',
       level: 'Intermédiaire',
-      thumbnail: 'https://img.youtube.com/vi/sTANio_2E0Q/maxresdefault.jpg',
+      thumbnail: 'https://img.youtube.com/vi/2zCYsv4f4z0/maxresdefault.jpg',
     },
     {
       youtubeId: '4pKly2JojMw',
