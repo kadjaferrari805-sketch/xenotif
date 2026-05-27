@@ -1093,7 +1093,7 @@ const yogaContent: DisciplineContent = {
       level: 'Avancé',
     },
     {
-      youtubeIds: ['PbccCKw-uq4', 'QYtzWYkT-iM', 'ktvLt-WNgRE'],
+      youtubeIds: ['_yZHcnEsiaA'],
       title: 'Yoga du soir — Détente & sommeil',
       description: 'Yoga restauratif 30 minutes pour se décompresser, relâcher les tensions de la journée et favoriser un sommeil profond.',
       duration: '30 min',
