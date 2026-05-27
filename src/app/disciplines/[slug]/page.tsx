@@ -5,7 +5,7 @@ import Image from 'next/image'
 import {
   ArrowLeft, ArrowRight, CheckCircle, Zap,
   Activity, Dumbbell, Bike, Waves, Flame, Star,
-  Play, BookOpen, Target, Layers, Leaf,
+  Play, BookOpen, Target, Layers,
 } from 'lucide-react'
 import { FEATURES } from '@/lib/constants'
 import { DISCIPLINE_CONTENT } from '@/lib/disciplines'
@@ -21,10 +21,6 @@ const DISC_PHOTOS: Record<string, string> = {
   cyclisme:         'https://images.unsplash.com/photo-1485965120184-e220f721d03e?auto=format&fit=crop&w=1920&q=80',
   natation:         'https://images.unsplash.com/photo-1519315901367-f34ff9154487?auto=format&fit=crop&w=1920&q=80',
   crossfit:         'https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?auto=format&fit=crop&w=1920&q=80',
-  yoga:             'https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=1920&q=80',
-  boxing:           'https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?auto=format&fit=crop&w=1920&q=80',
-  stretching:       'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=1920&q=80',
-  nutrition:        'https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=1920&q=80',
 }
 
 const DISC_ICONS: Record<string, React.ReactNode> = {
@@ -34,9 +30,6 @@ const DISC_ICONS: Record<string, React.ReactNode> = {
   bike:     <Bike size={20} aria-hidden="true" />,
   waves:    <Waves size={20} aria-hidden="true" />,
   flame:    <Flame size={20} aria-hidden="true" />,
-  leaf:     <Leaf size={20} aria-hidden="true" />,
-  target:   <Target size={20} aria-hidden="true" />,
-  layers:   <Layers size={20} aria-hidden="true" />,
 }
 
 const COLOR_TEXT:  Record<string, string> = { orange: 'text-sport-orange',    blue: 'text-sport-blue',   lime: 'text-sport-lime' }
@@ -150,13 +143,12 @@ export default async function DisciplinePage({ params }: { params: Promise<{ slu
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
               {content.videos.map((video) => (
                 <VideoCard
-                  key={video.youtubeId}
-                  youtubeId={video.youtubeId}
+                  key={video.youtubeIds[0]}
+                  youtubeIds={video.youtubeIds}
                   title={video.title}
                   description={video.description}
                   duration={video.duration}
                   level={video.level}
-                  thumbnail={video.thumbnail}
                   accentColor={COLOR_VIDEO[color]}
                 />
               ))}
@@ -295,7 +287,7 @@ export default async function DisciplinePage({ params }: { params: Promise<{ slu
                       <span className="text-sm font-semibold text-white">{level}</span>
                     </div>
                     <Link
-                      href="/auth/signup"
+                      href="/#newsletter"
                       aria-label={`Rejoindre le programme ${level}`}
                       className={`text-xs font-bold hover:underline flex items-center gap-1 ${COLOR_TEXT[color]}`}
                     >
@@ -379,13 +371,13 @@ export default async function DisciplinePage({ params }: { params: Promise<{ slu
               </ul>
 
               <Link
-                href="/auth/signup"
+                href="/#newsletter"
                 className="w-full inline-flex items-center justify-center gap-2 bg-sport-orange text-white px-6 py-3.5 rounded-full font-bold text-sm hover:bg-orange-600 active:scale-95 transition-all shadow-xl shadow-sport-orange/25"
               >
                 Commencer gratuitement <ArrowRight size={14} aria-hidden="true" />
               </Link>
 
-              <Link href="/auth/signup" className="block text-center text-xs text-sport-gray hover:text-white transition-colors mt-3">
+              <Link href="/#tarifs" className="block text-center text-xs text-sport-gray hover:text-white transition-colors mt-3">
                 Voir les tarifs →
               </Link>
 
