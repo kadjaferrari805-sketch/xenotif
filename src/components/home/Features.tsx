@@ -69,7 +69,7 @@ export function Features() {
                     alt={`Discipline ${feat.title}`}
                     fill
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    className="object-cover group-hover:scale-108 transition-transform duration-700 ease-out"
+                    className="object-cover feature-img-zoom"
                   />
                   {/* Dark gradient */}
                   <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-sport-dark via-sport-dark/30 to-transparent" />

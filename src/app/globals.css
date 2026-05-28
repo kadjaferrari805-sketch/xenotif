@@ -87,13 +87,16 @@
   .card-base {
     @apply bg-sport-card border border-sport-border rounded-2xl;
   }
-  /* Hover scale for feature images */
-  .group-hover\:scale-108:hover {
+  /* Feature image scale on parent group hover */
+  .feature-img-zoom {
+    transition: transform 0.5s ease;
+  }
+  .group:hover .feature-img-zoom {
     transform: scale(1.08);
   }
 }
 
-/* ── Marquee animation ──────────────────────────────────────── */
+/* ── Marquee animations ─────────────────────────────────────── */
 @keyframes marquee {
   from { transform: translateX(0); }
   to   { transform: translateX(-50%); }
@@ -104,6 +107,19 @@
 }
 
 .marquee-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes marquee-reverse {
+  from { transform: translateX(-50%); }
+  to   { transform: translateX(0); }
+}
+
+.marquee-track-reverse {
+  animation: marquee-reverse 32s linear infinite;
+}
+
+.marquee-track-reverse:hover {
   animation-play-state: paused;
 }
 
