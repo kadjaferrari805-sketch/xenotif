@@ -38,6 +38,19 @@ export async function POST(req: NextRequest) {
     switch (event.type) {
       case 'checkout.session.completed': {
         const session = event.data.object as Stripe.Checkout.Session
+
+        // Paiement boutique (mode payment) → marquer le panier comme récupéré
+        if (session.mode === 'payment') {
+          const buyerEmail = session.customer_details?.email ?? session.customer_email
+          if (buyerEmail) {
+            await service
+              .from('abandoned_carts')
+              .update({ recovered: true })
+              .eq('email', buyerEmail.toLowerCase())
+          }
+          break
+        }
+
         if (session.mode !== 'subscription') break
 
         const customerId = session.customer as string

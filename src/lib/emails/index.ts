@@ -266,3 +266,55 @@ export async function sendCancellationEmail({
     `),
   })
 }
+
+export async function sendAbandonedCartEmail({
+  email, items, total, recoverUrl,
+}: {
+  email: string
+  items: { name: string; price: string; image: string }[]
+  total: string
+  recoverUrl: string
+}) {
+  const itemsHtml = items.map(i => `
+    <tr>
+      <td style="padding:12px 0;border-bottom:1px solid #1F2937;">
+        <table style="width:100%;"><tr>
+          <td style="width:56px;">
+            <img src="${i.image}" alt="" width="48" height="48" style="border-radius:8px;object-fit:cover;display:block;" />
+          </td>
+          <td style="padding-left:12px;color:#fff;font-size:14px;font-weight:600;">${i.name}</td>
+          <td style="text-align:right;color:#F97316;font-size:14px;font-weight:700;white-space:nowrap;">${i.price}</td>
+        </tr></table>
+      </td>
+    </tr>
+  `).join('')
+
+  await resend.emails.send({
+    from: FROM,
+    to: email,
+    subject: '🛒 Tu as oublié quelque chose dans ton panier Xenotif®',
+    html: wrap(`
+      <h1 style="font-size:26px;font-weight:900;margin:0 0 8px;">Ton panier t'attend 💪</h1>
+      <p style="color:#9CA3AF;font-size:15px;line-height:1.6;margin:0 0 24px;">
+        Tu as laissé des articles dans ton panier. Termine ta commande avant qu'ils ne partent !
+      </p>
+
+      <div style="background:#111218;border:1px solid #1F2937;border-radius:16px;padding:20px 24px;margin-bottom:8px;">
+        <table style="width:100%;border-collapse:collapse;">${itemsHtml}</table>
+        <table style="width:100%;margin-top:16px;"><tr>
+          <td style="color:#fff;font-weight:900;font-size:16px;">Total</td>
+          <td style="text-align:right;color:#F97316;font-weight:900;font-size:18px;">${total}</td>
+        </tr></table>
+      </div>
+
+      <a href="${recoverUrl}"
+         style="display:inline-block;background:#F97316;color:#fff;padding:14px 28px;border-radius:50px;font-weight:700;font-size:14px;text-decoration:none;margin:16px 0;">
+        Finaliser ma commande →
+      </a>
+
+      <div style="margin-top:8px;color:#9CA3AF;font-size:13px;line-height:1.8;">
+        🚚 Livraison offerte dès 50€ &nbsp;·&nbsp; ↩️ Retours 30 jours &nbsp;·&nbsp; 🔒 Paiement sécurisé
+      </div>
+    `),
+  })
+}

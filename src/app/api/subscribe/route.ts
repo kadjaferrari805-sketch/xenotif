@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { Resend } from 'resend'
+import { createAdminClient } from '@/lib/supabase/admin'
 
 export async function POST(req: NextRequest) {
   try {
@@ -12,6 +13,17 @@ export async function POST(req: NextRequest) {
     if (!process.env.RESEND_API_KEY) {
       console.error('RESEND_API_KEY is not set')
       return NextResponse.json({ error: 'Configuration serveur manquante.' }, { status: 500 })
+    }
+
+    // Enregistrer l'abonné dans la liste newsletter persistante (non bloquant)
+    try {
+      const supabase = createAdminClient()
+      await supabase.from('newsletter_subscribers').upsert(
+        { email: email.toLowerCase().trim(), source: 'newsletter', subscribed_at: new Date().toISOString() },
+        { onConflict: 'email' }
+      )
+    } catch (dbErr) {
+      console.error('[subscribe] DB upsert error (non-bloquant):', dbErr)
     }
 
     const resend = new Resend(process.env.RESEND_API_KEY)

@@ -10,16 +10,33 @@ export default function PanierPage() {
   const { items, count, total, removeItem, updateQty } = useCart()
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
+  const [email, setEmail] = useState('')
 
   // Séparer produits Xenotif (Stripe) et affiliés Amazon
   const ownItems = items.filter(i => !i.product.isAffiliate)
   const affiliateItems = items.filter(i => i.product.isAffiliate)
   const ownTotal = ownItems.reduce((s, i) => s + i.product.price_cents * i.quantity, 0)
 
+  // Sauvegarde le panier pour la relance si email valide saisi
+  async function saveCartForRecovery() {
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || !ownItems.length) return
+    try {
+      await fetch('/api/boutique/save-cart', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email,
+          items: ownItems.map(i => ({ product_id: i.product.id, quantity: i.quantity })),
+        }),
+      })
+    } catch { /* silencieux — ne bloque jamais l'achat */ }
+  }
+
   async function checkout() {
     if (!ownItems.length) return
     setLoading(true)
     setError('')
+    void saveCartForRecovery() // capture pour relance, non bloquant
     try {
       const res = await fetch('/api/boutique/checkout', {
         method: 'POST',
@@ -162,6 +179,18 @@ export default function PanierPage() {
                     <span className="font-black text-white">Total</span>
                     <span className="text-xl font-black text-sport-orange">{formatPrice(ownTotal)}</span>
                   </div>
+                </div>
+
+                {/* Email — relance panier + reçu */}
+                <div className="mb-3">
+                  <input
+                    type="email"
+                    value={email}
+                    onChange={e => setEmail(e.target.value)}
+                    onBlur={() => void saveCartForRecovery()}
+                    placeholder="Ton email (pour le reçu)"
+                    className="w-full rounded-xl border border-sport-border bg-sport-dark px-3 py-2.5 text-sm text-white placeholder:text-sport-gray focus:outline-none focus:border-sport-orange transition-colors"
+                  />
                 </div>
 
                 {error && (
