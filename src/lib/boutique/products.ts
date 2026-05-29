@@ -31,11 +31,15 @@ export interface Product {
   isAffiliate: boolean
 }
 
-const AMAZON_TAG = 'xenotif-21'
+const AMAZON_TAG = 'xenotif-21' // ← Remplace par ton vrai tag amazon.de quand tu as ton compte Associates
+const AMAZON_DOMAIN = 'www.amazon.de'
 
 function amazonUrl(asin: string): string {
-  return `https://www.amazon.fr/dp/${asin}?tag=${AMAZON_TAG}`
+  return `https://${AMAZON_DOMAIN}/dp/${asin}?tag=${AMAZON_TAG}`
 }
+
+export const AMAZON_ASSOCIATE_TAG = AMAZON_TAG
+export const AMAZON_ASSOCIATE_DOMAIN = AMAZON_DOMAIN
 
 export const PRODUCTS: Product[] = [
   // ─── ÉQUIPEMENTS ──────────────────────────────────────────────────
