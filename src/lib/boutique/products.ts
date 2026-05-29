@@ -229,7 +229,8 @@ export const PRODUCTS: Product[] = [
     tags: ['short', 'training', 'running', 'homme'],
     disciplines: ['running-cardio', 'hiit', 'crossfit', 'boxing'],
     features: ['Tissu 4-way stretch', 'Dry-Fit moisture-wicking', 'Poche zippée', 'S à XXL', '3 coloris disponibles'],
-    isAffiliate: false,
+    amazon: { asin: '', affiliateUrl: amazonUrl('sport shorts herren training fitness') },
+    isAffiliate: true,
   },
   {
     id: 'v2', slug: 'legging-compression-femme-premium',
@@ -245,7 +246,8 @@ export const PRODUCTS: Product[] = [
     tags: ['legging', 'compression', 'femme', 'yoga'],
     disciplines: ['yoga', 'running-cardio', 'crossfit', 'hiit'],
     features: ['Compression graduée', 'Taille haute plate', 'Opaque anti-UV', 'Poche téléphone', 'XS à XL · 5 coloris'],
-    isAffiliate: false,
+    amazon: { asin: '', affiliateUrl: amazonUrl('sport leggings damen high waist fitness') },
+    isAffiliate: true,
   },
 
   // ─── PROGRAMMES DIGITAUX ──────────────────────────────────────────
