@@ -12,6 +12,7 @@ const NAV_LINKS = [
   { href: '/#disciplines', label: 'Disciplines' },
   { href: '/#programmes', label: 'Programmes' },
   { href: '/boutique', label: '🛒 Boutique' },
+  { href: '/blog', label: '📝 Blog' },
   { href: '/#tarifs', label: 'Tarifs' },
   { href: '/#faq', label: 'FAQ' },
 ]

@@ -5,6 +5,7 @@ import './globals.css'
 import { Nav } from '@/components/layout/Nav'
 import { Footer } from '@/components/layout/Footer'
 import { Providers } from '@/providers/Providers'
+import { OrganizationSchema, WebsiteSchema } from '@/components/SchemaOrg'
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 
@@ -59,6 +60,8 @@ export default async function RootLayout({ children }: { children: React.ReactNo
             </>
           )}
         </Providers>
+        <OrganizationSchema />
+        <WebsiteSchema />
       </body>
     </html>
   )
