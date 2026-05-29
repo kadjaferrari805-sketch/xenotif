@@ -31,7 +31,7 @@ export interface Product {
   isAffiliate: boolean
 }
 
-const AMAZON_TAG = 'xenotif-21' // ← Remplace par ton vrai tag amazon.de quand tu as ton compte Associates
+const AMAZON_TAG = 'xenotif21-21' // Tag Amazon PartnerNet officiel
 const AMAZON_DOMAIN = 'www.amazon.de'
 
 function amazonUrl(asin: string): string {
