@@ -34,8 +34,9 @@ export interface Product {
 const AMAZON_TAG = 'xenotif21-21'
 const AMAZON_DOMAIN = 'www.amazon.de'
 
-function amazonUrl(asin: string): string {
-  return `https://${AMAZON_DOMAIN}/dp/${asin}?tag=${AMAZON_TAG}`
+// Lien de recherche Amazon affilié — ne tombe jamais en 404 et conserve la commission
+function amazonUrl(keywords: string): string {
+  return `https://${AMAZON_DOMAIN}/s?k=${encodeURIComponent(keywords)}&tag=${AMAZON_TAG}`
 }
 
 export const AMAZON_ASSOCIATE_TAG = AMAZON_TAG
@@ -55,7 +56,7 @@ export const PRODUCTS: Product[] = [
     tags: ['kettlebell', 'crossfit', 'musculation', 'force'],
     disciplines: ['crossfit', 'musculation', 'hiit'],
     features: ['20 kg — idéal CrossFit & HIIT', 'Fonte 80% recyclée', 'Base caoutchouc antidérapant', 'Poignée sablée grip optimal', 'Garantie 2 ans'],
-    amazon: { asin: 'B07CWRS8BD', affiliateUrl: amazonUrl('B07CWRS8BD') },
+    amazon: { asin: 'B07CWRS8BD', affiliateUrl: amazonUrl('kettlebell 20kg gusseisen') },
     isAffiliate: true,
   },
   {
@@ -70,7 +71,7 @@ export const PRODUCTS: Product[] = [
     tags: ['bandes élastiques', 'résistance', 'fitness', 'yoga'],
     disciplines: ['musculation', 'yoga', 'stretching', 'running-cardio'],
     features: ['5 niveaux : 8 à 60 kg', 'Latex naturel certifié', 'Fabriqué en France', 'Sac + guide inclus', 'Garantie 2 ans'],
-    amazon: { asin: 'B08GWMXHVJ', affiliateUrl: amazonUrl('B08GWMXHVJ') },
+    amazon: { asin: 'B08GWMXHVJ', affiliateUrl: amazonUrl('fitnessbänder set widerstandsbänder') },
     isAffiliate: true,
   },
   {
@@ -85,7 +86,7 @@ export const PRODUCTS: Product[] = [
     tags: ['tapis yoga', 'pilates', 'méditation', 'stretching'],
     disciplines: ['yoga', 'stretching'],
     features: ['10mm confort premium', 'Double face antidérapant', 'TPE sans PVC ni latex', '183×61 cm', 'Sangle transport incluse'],
-    amazon: { asin: 'B003JIW3EC', affiliateUrl: amazonUrl('B003JIW3EC') },
+    amazon: { asin: 'B003JIW3EC', affiliateUrl: amazonUrl('yogamatte rutschfest 10mm') },
     isAffiliate: true,
   },
   {
@@ -100,7 +101,7 @@ export const PRODUCTS: Product[] = [
     tags: ['corde à sauter', 'cardio', 'crossfit', 'boxe'],
     disciplines: ['crossfit', 'hiit', 'boxing', 'running-cardio'],
     features: ['Câble acier revêtu', 'Roulements alu précision', 'Réglable 2,5—3,5m', 'Poignées ergonomiques', 'Bag de transport'],
-    amazon: { asin: 'B07D7XR895', affiliateUrl: amazonUrl('B07D7XR895') },
+    amazon: { asin: 'B07D7XR895', affiliateUrl: amazonUrl('springseil speed rope crossfit') },
     isAffiliate: true,
   },
   {
@@ -115,7 +116,7 @@ export const PRODUCTS: Product[] = [
     tags: ['haltères', 'musculation', 'home gym', 'force'],
     disciplines: ['musculation', 'hiit', 'crossfit'],
     features: ['2 à 24 kg en 2 secondes', 'Remplace 15 paires', 'Construction acier chromé', 'Revêtement antidérapant', 'Garantie 2 ans'],
-    amazon: { asin: 'B001ARYU58', affiliateUrl: amazonUrl('B001ARYU58') },
+    amazon: { asin: 'B001ARYU58', affiliateUrl: amazonUrl('verstellbare hanteln set') },
     isAffiliate: true,
   },
   {
@@ -130,7 +131,7 @@ export const PRODUCTS: Product[] = [
     tags: ['vélo', 'cardio', 'indoor cycling', 'connected'],
     disciplines: ['cyclisme', 'running-cardio', 'hiit'],
     features: ['24 niveaux magnétiques', 'Connecté Bluetooth', 'Compatible Zwift/Kinomap', 'Selle confort réglable', 'Console LCD complète'],
-    amazon: { asin: 'B086C2L1B7', affiliateUrl: amazonUrl('B086C2L1B7') },
+    amazon: { asin: 'B086C2L1B7', affiliateUrl: amazonUrl('heimtrainer fahrrad ergometer') },
     isAffiliate: true,
   },
 
@@ -147,7 +148,7 @@ export const PRODUCTS: Product[] = [
     tags: ['whey', 'protéine', 'musculation', 'récupération'],
     disciplines: ['musculation', 'crossfit', 'running-cardio'],
     features: ['22g protéines / portion', '103 kcal seulement', '5g BCAAs naturels', 'Fabriquée en Europe', 'Sans sucres ajoutés'],
-    amazon: { asin: 'B000GIQT2Q', affiliateUrl: amazonUrl('B000GIQT2Q') },
+    amazon: { asin: 'B000GIQT2Q', affiliateUrl: amazonUrl('whey protein schokolade 1kg') },
     isAffiliate: true,
   },
   {
@@ -162,7 +163,7 @@ export const PRODUCTS: Product[] = [
     tags: ['créatine', 'force', 'puissance', 'musculation'],
     disciplines: ['musculation', 'crossfit', 'hiit'],
     features: ['Pureté 99,9%', '60 portions de 5g', 'Informed Sport certifiée', 'Sans goût', 'Résultats en 4 semaines'],
-    amazon: { asin: 'B000GIQT3A', affiliateUrl: amazonUrl('B000GIQT3A') },
+    amazon: { asin: 'B000GIQT3A', affiliateUrl: amazonUrl('kreatin monohydrat pulver') },
     isAffiliate: true,
   },
   {
@@ -177,7 +178,7 @@ export const PRODUCTS: Product[] = [
     tags: ['bcaa', 'récupération', 'endurance', 'vegan'],
     disciplines: ['musculation', 'running-cardio', 'crossfit'],
     features: ['Ratio 2:1:1 optimal', '7g BCAAs/dose', '83 portions', 'Certifié vegan', 'Anti-catabolisme'],
-    amazon: { asin: 'B00BXZ5Y8A', affiliateUrl: amazonUrl('B00BXZ5Y8A') },
+    amazon: { asin: 'B00BXZ5Y8A', affiliateUrl: amazonUrl('bcaa pulver') },
     isAffiliate: true,
   },
 
@@ -194,7 +195,7 @@ export const PRODUCTS: Product[] = [
     tags: ['foam roller', 'récupération', 'massage', 'mobilité'],
     disciplines: ['running-cardio', 'musculation', 'yoga', 'stretching'],
     features: ['Surface GRID 3 zones', 'Simule massage pro', 'Support 160kg', 'Corps creux durable', 'Vidéos incluses'],
-    amazon: { asin: 'B0093VBBZA', affiliateUrl: amazonUrl('B0093VBBZA') },
+    amazon: { asin: 'B0093VBBZA', affiliateUrl: amazonUrl('faszienrolle foam roller') },
     isAffiliate: true,
   },
   {
@@ -209,7 +210,7 @@ export const PRODUCTS: Product[] = [
     tags: ['pistolet massage', 'percussion', 'récupération', 'theragun'],
     disciplines: ['musculation', 'running-cardio', 'crossfit', 'yoga'],
     features: ['2400 RPM puissants', '3 vitesses adaptées', '150min autonomie', 'Ultra-silencieux 60dB', 'Compact & voyager'],
-    amazon: { asin: 'B08F9P2BYD', affiliateUrl: amazonUrl('B08F9P2BYD') },
+    amazon: { asin: 'B08F9P2BYD', affiliateUrl: amazonUrl('massagepistole muskel') },
     isAffiliate: true,
   },
 
