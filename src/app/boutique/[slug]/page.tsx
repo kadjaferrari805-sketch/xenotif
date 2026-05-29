@@ -3,7 +3,7 @@ import { use, useState } from 'react'
 import { notFound } from 'next/navigation'
 import Image from 'next/image'
 import Link from 'next/link'
-import { ArrowLeft, ShoppingCart, Download, Check } from 'lucide-react'
+import { ArrowLeft, ShoppingCart, Download, Check, Star, ExternalLink } from 'lucide-react'
 import { getProductBySlug, formatPrice, PRODUCTS } from '@/lib/boutique/products'
 import { useCart } from '@/lib/boutique/cart'
 import { ProductCard } from '@/components/boutique/ProductCard'
@@ -24,9 +24,9 @@ export default function ProductPage({ params }: { params: Promise<{ slug: string
   }
 
   const related = PRODUCTS.filter(p => p.category === product.category && p.id !== product.id).slice(0, 3)
-  const features = product.type === 'digital'
-    ? ['Téléchargement instantané', 'Format PDF tous appareils', 'Accès à vie', 'Mises à jour incluses']
-    : ['Livraison offerte dès 50€', 'Retours gratuits 30 jours', 'Garantie qualité 2 ans', 'Emballage éco-responsable']
+  const discount = product.original_price_cents
+    ? Math.round((1 - product.price_cents / product.original_price_cents) * 100)
+    : null
 
   return (
     <div className="min-h-screen bg-sport-dark pt-20">
@@ -42,26 +42,53 @@ export default function ProductPage({ params }: { params: Promise<{ slug: string
             {product.badge && (
               <span className="absolute top-4 left-4 rounded-full bg-sport-orange px-3 py-1 text-sm font-black text-white">{product.badge}</span>
             )}
+            {discount && (
+              <span className="absolute top-4 right-4 rounded-full bg-red-500 px-3 py-1 text-sm font-black text-white">-{discount}%</span>
+            )}
           </div>
 
-          {/* Infos */}
+          {/* Détails */}
           <div className="flex flex-col">
-            <div className="flex gap-2 mb-3">
-              <span className="rounded-full border border-sport-border px-3 py-1 text-xs font-semibold text-sport-gray">{product.category}</span>
-              <span className="rounded-full border border-sport-border px-3 py-1 text-xs font-semibold text-sport-gray">
-                {product.type === 'digital' ? '📥 Digital' : '📦 Livraison 2-5j'}
+            {/* Marque + catégorie */}
+            <div className="flex items-center gap-2 mb-3">
+              <span className="rounded-full border border-sport-border bg-sport-card px-3 py-1 text-xs font-bold text-sport-gray">{product.brand}</span>
+              <span className="rounded-full border border-sport-border bg-sport-card px-3 py-1 text-xs font-semibold text-sport-gray">{product.category}</span>
+              <span className="rounded-full border border-sport-border bg-sport-card px-3 py-1 text-xs font-semibold text-sport-gray">
+                {product.type === 'digital' ? '📥 Digital' : '📦 Physique'}
               </span>
             </div>
-            <h1 className="text-3xl font-black text-white mb-4">{product.name}</h1>
+
+            <h1 className="text-3xl font-black text-white mb-3">{product.name}</h1>
+
+            {/* Rating */}
+            <div className="flex items-center gap-2 mb-6">
+              <div className="flex">
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <Star key={i} size={14} className={i < Math.round(product.rating) ? 'fill-sport-orange text-sport-orange' : 'fill-sport-border text-sport-border'} />
+                ))}
+              </div>
+              <span className="text-sm font-bold text-sport-orange">{product.rating}/5</span>
+              <span className="text-sm text-sport-gray">({product.reviews.toLocaleString('fr-FR')} avis)</span>
+            </div>
+
             <p className="text-sport-gray leading-relaxed mb-8">{product.description}</p>
-            <div className="mb-8">
+
+            {/* Prix */}
+            <div className="flex items-baseline gap-3 mb-8">
               <span className="text-4xl font-black text-white">{formatPrice(product.price_cents)}</span>
+              {product.original_price_cents && (
+                <>
+                  <span className="text-xl text-sport-gray line-through">{formatPrice(product.original_price_cents)}</span>
+                  <span className="rounded-full bg-red-500 px-2.5 py-0.5 text-sm font-black text-white">-{discount}%</span>
+                </>
+              )}
             </div>
 
             {/* Features */}
             <div className="rounded-2xl border border-sport-border bg-sport-card p-4 mb-8">
+              <p className="text-xs font-bold uppercase tracking-wider text-sport-gray mb-3">Ce qui est inclus</p>
               <ul className="space-y-2">
-                {features.map(f => (
+                {product.features.map(f => (
                   <li key={f} className="flex items-center gap-2 text-sm text-white">
                     <Check size={14} className="flex-shrink-0 text-sport-lime" />{f}
                   </li>
@@ -69,6 +96,7 @@ export default function ProductPage({ params }: { params: Promise<{ slug: string
               </ul>
             </div>
 
+            {/* CTAs */}
             <div className="flex gap-3">
               <button
                 onClick={handleAdd}
@@ -76,11 +104,36 @@ export default function ProductPage({ params }: { params: Promise<{ slug: string
                   added ? 'bg-emerald-600' : 'bg-sport-orange hover:bg-orange-600 shadow-[0_0_20px_rgba(255,69,0,0.3)]'
                 }`}
               >
-                {added ? <><Check size={16} />Ajouté !</> : product.type === 'digital' ? <><Download size={16} />Ajouter au panier</> : <><ShoppingCart size={16} />Ajouter au panier</>}
+                {added
+                  ? <><Check size={16} />Ajouté au panier !</>
+                  : product.type === 'digital'
+                    ? <><Download size={16} />Acheter — {formatPrice(product.price_cents)}</>
+                    : <><ShoppingCart size={16} />Ajouter au panier</>
+                }
               </button>
-              <Link href="/boutique/panier" className="flex items-center gap-2 rounded-2xl border border-sport-border px-6 py-3.5 font-bold text-white hover:border-sport-orange/50 transition-all">
-                Commander
-              </Link>
+              {product.affiliate_url && (
+                <a href={product.affiliate_url} target="_blank" rel="noopener noreferrer"
+                  className="flex items-center gap-2 rounded-2xl border border-sport-border px-4 py-3.5 font-bold text-sport-gray hover:text-white hover:border-white/30 transition-all text-sm">
+                  <ExternalLink size={14} /> Voir chez {product.brand}
+                </a>
+              )}
+            </div>
+
+            {/* Livraison info */}
+            <div className="mt-6 flex flex-wrap gap-3 text-xs text-sport-gray">
+              {product.type === 'physical' ? (
+                <>
+                  <span>🚚 Livraison gratuite dès 50€</span>
+                  <span>↩️ Retours 30 jours</span>
+                  <span>🔒 Paiement sécurisé</span>
+                </>
+              ) : (
+                <>
+                  <span>⚡ Téléchargement immédiat</span>
+                  <span>📱 Compatible tous appareils</span>
+                  <span>♾️ Accès à vie</span>
+                </>
+              )}
             </div>
           </div>
         </div>
@@ -90,7 +143,7 @@ export default function ProductPage({ params }: { params: Promise<{ slug: string
           <section className="pt-12 border-t border-sport-border">
             <h2 className="text-2xl font-black text-white mb-8">Vous aimerez aussi</h2>
             <div className="grid gap-6 sm:grid-cols-3">
-              {related.map((p, i) => <ProductCard key={p.id} product={p} index={i} />)}
+              {related.map(p => <ProductCard key={p.id} product={p} />)}
             </div>
           </section>
         )}

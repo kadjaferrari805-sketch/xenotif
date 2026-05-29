@@ -124,6 +124,66 @@ export default function SmartWatchPage() {
   const { today, weekly, sessions, goals, connections, isDemo } = data
   const connectedDevice = connections.find(c => c.is_active)
 
+  // Si pas de montre connectée → afficher uniquement l'écran de connexion
+  if (isDemo) {
+    return (
+      <div className="p-4 md:p-8 max-w-3xl mx-auto pb-28 md:pb-10">
+        <div className="flex items-center gap-3 mb-8">
+          <div className="w-10 h-10 rounded-xl bg-sport-orange/10 border border-sport-orange/20 flex items-center justify-center">
+            <Watch size={20} className="text-sport-orange" />
+          </div>
+          <div>
+            <h1 className="text-xl md:text-2xl font-black text-white leading-none">Montre Connectée</h1>
+            <p className="text-[11px] text-sport-gray">Synchronisation fitness en temps réel</p>
+          </div>
+        </div>
+
+        <div className="bg-sport-card border border-sport-border rounded-2xl p-8 text-center mb-6">
+          <div className="w-20 h-20 rounded-full bg-sport-orange/10 border border-sport-orange/20 flex items-center justify-center mx-auto mb-6">
+            <Watch size={36} className="text-sport-orange" />
+          </div>
+          <h2 className="text-xl font-black text-white mb-2">Connecte ta montre</h2>
+          <p className="text-sport-gray text-sm max-w-md mx-auto mb-6">
+            Synchronise ta montre connectée pour afficher tes vraies données de santé — pas, calories, fréquence cardiaque, sommeil et bien plus.
+          </p>
+          <div className="flex flex-wrap justify-center gap-3 text-xs text-sport-gray mb-8">
+            {['⌚ Apple Watch', '🏃 Garmin', '💪 Fitbit', '📱 Samsung Health', '🔵 Polar', '⚡ Suunto'].map(w => (
+              <span key={w} className="rounded-full border border-sport-border bg-sport-dark px-3 py-1.5 font-semibold">{w}</span>
+            ))}
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6">
+          {WATCH_PROVIDERS.map(provider => {
+            const connection = connections.find(c => c.provider === provider.id && c.is_active)
+            return (
+              <DeviceCard
+                key={provider.id}
+                provider={provider}
+                connection={connection}
+                onConnect={handleConnect}
+                onDisconnect={handleDisconnect}
+                onSync={handleSync}
+              />
+            )
+          })}
+        </div>
+
+        <div className="bg-sport-card border border-sport-border rounded-2xl p-4 flex items-start gap-3">
+          <div className="w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center shrink-0">
+            <span className="text-sm">🔒</span>
+          </div>
+          <div>
+            <p className="text-xs font-bold text-white mb-1">Données chiffrées & RGPD</p>
+            <p className="text-[11px] text-sport-gray leading-relaxed">
+              Tes données de santé sont chiffrées et stockées sur des serveurs sécurisés en Europe. Aucune donnée n&apos;est revendue à des tiers.
+            </p>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
   const rings = [
     { value: today.active_minutes,  max: goals.active_minutes_daily, color: '#FF4500', label: 'Activité',  unit: 'min' },
     { value: today.calories_burned, max: goals.calories_daily,       color: '#A3FF00', label: 'Calories',  unit: 'kcal' },
@@ -148,18 +208,12 @@ export default function SmartWatchPage() {
         </div>
 
         <div className="flex items-center gap-2 flex-wrap">
-          {/* Demo / connected badge */}
-          {isDemo ? (
-            <div className="flex items-center gap-1.5 bg-amber-500/10 border border-amber-500/20 rounded-full px-3 py-1.5">
-              <WifiOff size={11} className="text-amber-400" />
-              <span className="text-[11px] text-amber-400 font-bold">Mode démo</span>
-            </div>
-          ) : connectedDevice ? (
+          {connectedDevice && (
             <div className="flex items-center gap-1.5 bg-emerald-500/10 border border-emerald-500/20 rounded-full px-3 py-1.5">
               <Wifi size={11} className="text-emerald-400" />
               <span className="text-[11px] text-emerald-400 font-bold">Synchronisé</span>
             </div>
-          ) : null}
+          )}
 
           {connectedDevice && (
             <button
@@ -195,20 +249,6 @@ export default function SmartWatchPage() {
       {/* ─── Overview ─────────────────────────────── */}
       {tab === 'overview' && (
         <div className="space-y-4">
-
-          {/* Demo banner */}
-          {isDemo && (
-            <div className="bg-amber-500/5 border border-amber-500/20 rounded-2xl p-4 flex items-start gap-3">
-              <Watch size={18} className="text-amber-400 mt-0.5 shrink-0" />
-              <div>
-                <p className="text-sm font-bold text-white mb-1">Connecte ta montre pour voir tes vraies données</p>
-                <p className="text-xs text-sport-gray">Les données affichées sont des exemples. Va dans &laquo; Appareils &raquo; pour connecter Apple Watch, Fitbit, Garmin et plus.</p>
-                <button onClick={() => setTab('devices')} className="inline-flex items-center gap-1 mt-2 text-xs text-sport-orange font-bold hover:underline">
-                  Connecter maintenant <ChevronRight size={11} />
-                </button>
-              </div>
-            </div>
-          )}
 
           {/* Activity rings + metrics */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
