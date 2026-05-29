@@ -38,11 +38,6 @@ function amazonUrl(asin: string): string {
   return `https://${AMAZON_DOMAIN}/dp/${asin}?tag=${AMAZON_TAG}`
 }
 
-// Image produit Amazon directement depuis leur CDN officiel
-function amazonImg(asin: string): string {
-  return `https://images-eu.ssl-images-amazon.com/images/P/${asin}.01._SL800_.jpg`
-}
-
 export const AMAZON_ASSOCIATE_TAG = AMAZON_TAG
 export const AMAZON_ASSOCIATE_DOMAIN = AMAZON_DOMAIN
 
@@ -55,7 +50,7 @@ export const PRODUCTS: Product[] = [
     description: 'Kettlebell fonte 20 kg avec base caoutchouc antidérapante et poignée sablée pour CrossFit, HIIT et musculation fonctionnelle.',
     longDescription: 'Conçue pour les athlètes exigeants, cette kettlebell en fonte à 80% recyclée offre une prise sablée pour un grip parfait même en sueur. La base caoutchouc protège le sol et assure une stabilité parfaite. Idéale pour swings, Turkish get-up, clean & press et snatch.',
     type: 'physical', price_cents: 6499, stripe_price_id: 'price_kettlebell_20kg',
-    images: [amazonImg('B07CWRS8BD'), 'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&w=800&q=80'],
+    images: ['https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&w=800&q=80'],
     badge: '⭐ Bestseller', category: 'Équipements', rating: 4.8, reviews: 2847, inStock: true,
     tags: ['kettlebell', 'crossfit', 'musculation', 'force'],
     disciplines: ['crossfit', 'musculation', 'hiit'],
@@ -70,7 +65,7 @@ export const PRODUCTS: Product[] = [
     description: 'Set de 5 bandes de résistance progressive en latex 100% naturel, conçu en France. Résistances de 8 à 60 kg.',
     longDescription: 'Fabriquées en latex naturel 100% pur, ces bandes offrent une tension douce et progressive pour muscler en toute sécurité. Du débutant à l\'athlète confirmé : 5 niveaux de résistance adaptés à chaque exercice. Sac de transport et guide d\'exercices inclus.',
     type: 'physical', price_cents: 3499, original_price_cents: 4999, stripe_price_id: 'price_bandes_elastiques',
-    images: [amazonImg('B08GWMXHVJ'), 'https://images.unsplash.com/photo-1598289431512-b97b0917afbe?auto=format&fit=crop&w=800&q=80'],
+    images: ['https://images.unsplash.com/photo-1598289431512-b97b0917afbe?auto=format&fit=crop&w=800&q=80'],
     badge: '🔥 -30%', category: 'Équipements', rating: 4.7, reviews: 1523, inStock: true,
     tags: ['bandes élastiques', 'résistance', 'fitness', 'yoga'],
     disciplines: ['musculation', 'yoga', 'stretching', 'running-cardio'],
@@ -85,7 +80,7 @@ export const PRODUCTS: Product[] = [
     description: 'Tapis yoga double-face 10mm en TPE écologique. Antidérapant parfait, 183×61cm. Sangle transport incluse.',
     longDescription: 'Le tapis Gaiam premium offre une épaisseur de 10mm pour un amorti parfait des articulations. Sa surface texturée double-face garantit une adhérence maximale sur tous sols. Le matériau TPE est exempt de PVC, latex et phtalates — idéal pour les pratiquants soucieux de l\'environnement.',
     type: 'physical', price_cents: 3999, stripe_price_id: 'price_tapis_yoga',
-    images: [amazonImg('B003JIW3EC'), 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=800&q=80'],
+    images: ['https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=800&q=80'],
     badge: null, category: 'Équipements', rating: 4.6, reviews: 3241, inStock: true,
     tags: ['tapis yoga', 'pilates', 'méditation', 'stretching'],
     disciplines: ['yoga', 'stretching'],
@@ -100,7 +95,7 @@ export const PRODUCTS: Product[] = [
     description: 'Corde à sauter câble acier revêtu, roulements à billes aluminium. Réglable 2,5—3,5m. Parfaite pour HIIT et boxe.',
     longDescription: 'La corde à sauter Reebok Speed est conçue pour les athlètes CrossFit et boxeurs. Câble acier ultra-léger, roulements à billes de précision pour une rotation fluide à haute vitesse. Poignées ergonomiques en aluminium brossé. Idéale pour double-unders et HIIT intensif.',
     type: 'physical', price_cents: 2999, stripe_price_id: 'price_corde_sauter',
-    images: [amazonImg('B07D7XR895'), 'https://images.unsplash.com/photo-1599058917765-a780eda07a3e?auto=format&fit=crop&w=800&q=80'],
+    images: ['https://images.unsplash.com/photo-1599058917765-a780eda07a3e?auto=format&fit=crop&w=800&q=80'],
     badge: '⚡ Pro', category: 'Équipements', rating: 4.5, reviews: 892, inStock: true,
     tags: ['corde à sauter', 'cardio', 'crossfit', 'boxe'],
     disciplines: ['crossfit', 'hiit', 'boxing', 'running-cardio'],
@@ -115,7 +110,7 @@ export const PRODUCTS: Product[] = [
     description: 'Remplacement de 15 paires d\'haltères. Sélection du poids en 2 secondes de 2 à 24 kg. Design ergonomique.',
     longDescription: 'Les haltères Bowflex SelectTech 552i sont la référence mondiale en matière d\'haltères réglables. Un simple tournage du sélecteur remplace jusqu\'à 15 paires d\'haltères classiques. Gain de place et de budget considérable. Structure en acier chromé avec revêtement antidérapant.',
     type: 'physical', price_cents: 34900, original_price_cents: 42900, stripe_price_id: 'price_halteres_bowflex',
-    images: [amazonImg('B001ARYU58'), 'https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=800&q=80'],
+    images: ['https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=800&q=80'],
     badge: '💪 Premium', category: 'Équipements', rating: 4.9, reviews: 5623, inStock: true,
     tags: ['haltères', 'musculation', 'home gym', 'force'],
     disciplines: ['musculation', 'hiit', 'crossfit'],
@@ -130,7 +125,7 @@ export const PRODUCTS: Product[] = [
     description: 'Vélo cardio connecté avec 24 niveaux de résistance magnétique. Écran LCD. Selle et guidon réglables. Connecté apps fitness.',
     longDescription: 'Le vélo DOMYOS VC500 est idéal pour le cyclisme indoor. Résistance magnétique ultra-silencieuse, 24 niveaux progressifs. Compatible avec les applications Decathlon Coach, Zwift et Kinomap via Bluetooth. Selle confort large réglable en hauteur et profondeur. Console LCD affichant vitesse, distance, calories, fréquence cardiaque.',
     type: 'physical', price_cents: 44900, original_price_cents: 59900, stripe_price_id: 'price_velo_domyos',
-    images: [amazonImg('B086C2L1B7'), 'https://images.unsplash.com/photo-1520877880798-5ee004e3f11e?auto=format&fit=crop&w=800&q=80'],
+    images: ['https://images.unsplash.com/photo-1520877880798-5ee004e3f11e?auto=format&fit=crop&w=800&q=80'],
     badge: '🚴 Connecté', category: 'Cardio', rating: 4.4, reviews: 1876, inStock: true,
     tags: ['vélo', 'cardio', 'indoor cycling', 'connected'],
     disciplines: ['cyclisme', 'running-cardio', 'hiit'],
@@ -147,7 +142,7 @@ export const PRODUCTS: Product[] = [
     description: 'N°1 en Europe. 22g protéines, 103 kcal, 5g BCAAs par portion. Lait de vaches en pâturage. Goût chocolat intense.',
     longDescription: 'La whey la plus vendue en Europe depuis 15 ans. Formulée à partir de lactosérum ultra-filtré provenant de vaches de pâturages irlandais. Profil aminé complet avec 5g de BCAAs par portion. Se mélange parfaitement dans l\'eau ou le lait. Idéale en post-workout pour maximiser la synthèse protéique.',
     type: 'physical', price_cents: 2999, original_price_cents: 4499, stripe_price_id: 'price_whey_chocolat',
-    images: [amazonImg('B000GIQT2Q'), 'https://images.unsplash.com/photo-1593095948071-474c5cc2989d?auto=format&fit=crop&w=800&q=80'],
+    images: ['https://images.unsplash.com/photo-1593095948071-474c5cc2989d?auto=format&fit=crop&w=800&q=80'],
     badge: '🏆 N°1 Europe', category: 'Nutrition', rating: 4.8, reviews: 89432, inStock: true,
     tags: ['whey', 'protéine', 'musculation', 'récupération'],
     disciplines: ['musculation', 'crossfit', 'running-cardio'],
@@ -162,7 +157,7 @@ export const PRODUCTS: Product[] = [
     description: 'Créatine micronisée 99,9% pure. 60 doses. Certifiée Informed Sport. Force et puissance en 4 semaines.',
     longDescription: 'La créatine monohydrate est le supplément le plus étudié en science du sport avec des centaines d\'études confirmant son efficacité. La version micronisée de MyProtein se dissout instantanément et est absorbée plus rapidement. Certifiée Informed Sport — testée antidopage. Sans goût pour se mélanger à n\'importe quelle boisson.',
     type: 'physical', price_cents: 1999, stripe_price_id: 'price_creatine',
-    images: [amazonImg('B000GIQT3A'), 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=800&q=80'],
+    images: ['https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=800&q=80'],
     badge: null, category: 'Nutrition', rating: 4.9, reviews: 45123, inStock: true,
     tags: ['créatine', 'force', 'puissance', 'musculation'],
     disciplines: ['musculation', 'crossfit', 'hiit'],
@@ -177,7 +172,7 @@ export const PRODUCTS: Product[] = [
     description: 'BCAAs ratio 2:1:1. 7g par dose, 83 portions. Certifié vegan. Récupération, anti-catabolisme, endurance.',
     longDescription: 'Les BCAAs (acides aminés branchés) en ratio 2:1:1 optimisé : Leucine, Isoleucine, Valine. La Leucine stimule directement la synthèse protéique, l\'Isoleucine aide à l\'utilisation du glucose et la Valine réduit la fatigue centrale. Idéals pendant l\'entraînement pour préserver la masse musculaire.',
     type: 'physical', price_cents: 2499, stripe_price_id: 'price_bcaa',
-    images: [amazonImg('B00BXZ5Y8A'), 'https://images.unsplash.com/photo-1571731956672-f2b94d7dd0cb?auto=format&fit=crop&w=800&q=80'],
+    images: ['https://images.unsplash.com/photo-1571731956672-f2b94d7dd0cb?auto=format&fit=crop&w=800&q=80'],
     badge: '💊 Vegan', category: 'Nutrition', rating: 4.6, reviews: 12847, inStock: true,
     tags: ['bcaa', 'récupération', 'endurance', 'vegan'],
     disciplines: ['musculation', 'running-cardio', 'crossfit'],
@@ -194,7 +189,7 @@ export const PRODUCTS: Product[] = [
     description: 'Rouleau de massage multizone avec surface GRID brevetée. Simule les mains d\'un masseur. Récupération optimale.',
     longDescription: 'Le GRID de TriggerPoint est le foam roller de référence des professionnels. Sa surface à 3 zones distinctes (creux, tubulaire, plat) simule les doigts, paumes et pouces d\'un masseur. Le corps creux au centre assure la durabilité et l\'absorption de poids jusqu\'à 160kg. Inclus : accès à la bibliothèque vidéo complète.',
     type: 'physical', price_cents: 4499, stripe_price_id: 'price_foam_roller',
-    images: [amazonImg('B0093VBBZA'), 'https://images.unsplash.com/photo-1559656914-a30970c1affd?auto=format&fit=crop&w=800&q=80'],
+    images: ['https://images.unsplash.com/photo-1559656914-a30970c1affd?auto=format&fit=crop&w=800&q=80'],
     badge: '🔵 Pro', category: 'Recovery', rating: 4.7, reviews: 8921, inStock: true,
     tags: ['foam roller', 'récupération', 'massage', 'mobilité'],
     disciplines: ['running-cardio', 'musculation', 'yoga', 'stretching'],
@@ -209,7 +204,7 @@ export const PRODUCTS: Product[] = [
     description: 'Mini pistolet percussion 2400 RPM, 3 vitesses, silencieux. Batterie 150min. Compact et puissant pour récupération rapide.',
     longDescription: 'Le Theragun Mini est la version compacte du pistolet de massage professionnel plébiscité par les athlètes NBA, NFL et olympiques. 2400 percussions/minute pénétrant 16mm en profondeur pour activer la circulation et libérer les tensions musculaires. 3 vitesses adaptées. Fonctionnement ultra-silencieux. Autonomie de 150 minutes.',
     type: 'physical', price_cents: 17900, original_price_cents: 21900, stripe_price_id: 'price_theragun_mini',
-    images: [amazonImg('B08F9P2BYD'), 'https://images.unsplash.com/photo-1576678927484-cc907957088c?auto=format&fit=crop&w=800&q=80'],
+    images: ['https://images.unsplash.com/photo-1576678927484-cc907957088c?auto=format&fit=crop&w=800&q=80'],
     badge: '🏅 Pro Athlete', category: 'Recovery', rating: 4.8, reviews: 15234, inStock: true,
     tags: ['pistolet massage', 'percussion', 'récupération', 'theragun'],
     disciplines: ['musculation', 'running-cardio', 'crossfit', 'yoga'],
