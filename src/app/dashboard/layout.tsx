@@ -32,7 +32,7 @@ export default async function DashboardLayout({ children }: { children: React.Re
       <aside className="hidden md:flex flex-col w-64 bg-sport-card border-r border-sport-border shrink-0">
         {/* Brand */}
         <div className="px-6 py-6 border-b border-sport-border">
-          <Logo href="/dashboard" size="sm" />
+          <Logo href="/" size="sm" />
         </div>
 
         {/* User */}
