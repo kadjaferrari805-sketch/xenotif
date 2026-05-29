@@ -1,60 +1,122 @@
 'use client'
 import Link from 'next/link'
 import Image from 'next/image'
-import { ShoppingCart, Download, Star } from 'lucide-react'
+import { ShoppingCart, Download, Star, Heart, ExternalLink, Eye } from 'lucide-react'
+import { motion } from 'framer-motion'
 import { formatPrice, type Product } from '@/lib/boutique/products'
 import { useCart } from '@/lib/boutique/cart'
+import { useWishlist } from '@/lib/boutique/wishlist'
+import { useState } from 'react'
 
-export function ProductCard({ product }: { product: Product; index?: number }) {
+interface ProductCardProps {
+  product: Product
+  index?: number
+  onCartOpen?: () => void
+}
+
+export function ProductCard({ product, index = 0, onCartOpen }: ProductCardProps) {
   const { addItem } = useCart()
+  const { toggle, isWishlisted } = useWishlist()
+  const [added, setAdded] = useState(false)
+  const wishlisted = isWishlisted(product.id)
+
   const discount = product.original_price_cents
     ? Math.round((1 - product.price_cents / product.original_price_cents) * 100)
     : null
 
+  function handleAdd() {
+    addItem(product)
+    setAdded(true)
+    onCartOpen?.()
+    setTimeout(() => setAdded(false), 2000)
+  }
+
+  // Produit affiliation Amazon → redirection directe
+  if (product.isAffiliate && product.amazon) {
+    return (
+      <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3, delay: index * 0.05 }}>
+        <a href={product.amazon.affiliateUrl} target="_blank" rel="noopener noreferrer"
+          className="group block overflow-hidden rounded-2xl border border-sport-border bg-sport-card hover:-translate-y-1 transition-all duration-300">
+          <div className="relative h-52 overflow-hidden bg-sport-border/20">
+            <Image src={product.images[0] ?? ''} alt={product.name} fill className="object-cover transition-transform duration-500 group-hover:scale-105"
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw" />
+            {product.badge && <span className="absolute top-3 left-3 rounded-full bg-sport-orange px-2.5 py-1 text-xs font-black text-white shadow-lg">{product.badge}</span>}
+            {discount && <span className="absolute top-3 right-10 rounded-full bg-red-500 px-2 py-0.5 text-xs font-black text-white">-{discount}%</span>}
+            <span className="absolute top-3 right-3 flex h-7 w-7 items-center justify-center rounded-full bg-sport-dark/80 text-xs">🔗</span>
+            <div className="absolute inset-0 bg-gradient-to-t from-sport-dark/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center pb-4">
+              <span className="flex items-center gap-1.5 rounded-full bg-sport-orange px-4 py-2 text-xs font-bold text-white">
+                <ExternalLink size={12} /> Voir sur Amazon
+              </span>
+            </div>
+          </div>
+          <div className="p-4">
+            <p className="text-[10px] font-bold uppercase tracking-wider text-sport-gray mb-1">{product.brand} · Amazon</p>
+            <h3 className="text-sm font-black text-white group-hover:text-sport-orange transition-colors line-clamp-2 mb-2">{product.name}</h3>
+            <div className="flex items-center gap-1.5 mb-3">
+              <div className="flex">{Array.from({ length: 5 }).map((_, i) => <Star key={i} size={10} className={i < Math.round(product.rating) ? 'fill-sport-orange text-sport-orange' : 'fill-sport-border text-sport-border'} />)}</div>
+              <span className="text-[11px] font-bold text-sport-orange">{product.rating}</span>
+              <span className="text-[10px] text-sport-gray">({product.reviews.toLocaleString('fr-FR')})</span>
+            </div>
+            <div className="flex items-center justify-between">
+              <div>
+                <span className="text-base font-black text-white">{formatPrice(product.price_cents)}</span>
+                {product.original_price_cents && <span className="ml-1.5 text-xs text-sport-gray line-through">{formatPrice(product.original_price_cents)}</span>}
+              </div>
+              <span className="flex items-center gap-1 rounded-xl bg-sport-orange/15 px-3 py-1.5 text-xs font-bold text-sport-orange border border-sport-orange/30">
+                <ExternalLink size={10} /> Amazon
+              </span>
+            </div>
+          </div>
+        </a>
+      </motion.div>
+    )
+  }
+
+  // Produit propre XENOTIF
   return (
-    <div className="group overflow-hidden rounded-2xl border border-sport-border bg-sport-card hover:-translate-y-1 transition-all duration-300 flex flex-col">
-      <Link href={`/boutique/${product.slug}`} className="relative block h-52 overflow-hidden bg-sport-border/20">
-        <Image src={product.images[0] ?? ''} alt={product.name} fill
-          className="object-cover transition-transform duration-500 group-hover:scale-105"
-          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw" />
-        {product.badge && (
-          <span className="absolute top-3 left-3 rounded-full bg-sport-orange px-2.5 py-1 text-xs font-black text-white shadow-lg">{product.badge}</span>
-        )}
-        {discount && (
-          <span className="absolute top-3 right-3 rounded-full bg-red-500 px-2 py-0.5 text-xs font-black text-white">-{discount}%</span>
-        )}
-        <span className="absolute bottom-3 left-3 rounded-full border border-sport-border bg-sport-dark/80 px-2 py-0.5 text-[10px] font-semibold text-sport-gray backdrop-blur-sm">
-          {product.type === 'digital' ? '📥 Digital' : '📦 Physique'}
-        </span>
-      </Link>
-      <div className="flex flex-1 flex-col p-4">
-        <p className="mb-0.5 text-[10px] font-bold uppercase tracking-wider text-sport-gray">{product.brand} · {product.category}</p>
-        <Link href={`/boutique/${product.slug}`}>
-          <h3 className="mb-2 font-black text-white group-hover:text-sport-orange transition-colors line-clamp-2 text-sm leading-snug">{product.name}</h3>
-        </Link>
-        <div className="mb-3 flex items-center gap-1.5">
-          <div className="flex">
-            {Array.from({ length: 5 }).map((_, i) => (
-              <Star key={i} size={11} className={i < Math.round(product.rating) ? 'fill-sport-orange text-sport-orange' : 'fill-sport-border text-sport-border'} />
-            ))}
-          </div>
-          <span className="text-[11px] font-bold text-sport-orange">{product.rating}</span>
-          <span className="text-[10px] text-sport-gray">({product.reviews.toLocaleString('fr-FR')})</span>
-        </div>
-        <div className="mt-auto flex items-center justify-between gap-2">
-          <div>
-            <span className="text-lg font-black text-white">{formatPrice(product.price_cents)}</span>
-            {product.original_price_cents && (
-              <span className="ml-1.5 text-xs text-sport-gray line-through">{formatPrice(product.original_price_cents)}</span>
-            )}
-          </div>
-          <button onClick={() => addItem(product)}
-            className="flex items-center gap-1.5 rounded-xl bg-sport-orange px-3 py-2 text-xs font-bold text-white hover:bg-orange-600 transition-all whitespace-nowrap">
-            {product.type === 'digital' ? <Download size={12} /> : <ShoppingCart size={12} />}
-            Ajouter
+    <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3, delay: index * 0.05 }}>
+      <div className="group overflow-hidden rounded-2xl border border-sport-border bg-sport-card hover:-translate-y-1 transition-all duration-300 flex flex-col">
+        <Link href={`/boutique/${product.slug}`} className="relative block h-52 overflow-hidden bg-sport-border/20">
+          <Image src={product.images[0] ?? ''} alt={product.name} fill className="object-cover transition-transform duration-500 group-hover:scale-105"
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw" />
+          {product.badge && <span className="absolute top-3 left-3 rounded-full bg-sport-orange px-2.5 py-1 text-xs font-black text-white shadow-lg">{product.badge}</span>}
+          {discount && <span className="absolute top-3 right-10 rounded-full bg-red-500 px-2 py-0.5 text-xs font-black text-white">-{discount}%</span>}
+          {/* Wishlist */}
+          <button onClick={e => { e.preventDefault(); toggle(product.id) }}
+            className={`absolute top-3 right-3 flex h-7 w-7 items-center justify-center rounded-full transition-all ${wishlisted ? 'bg-red-500 text-white' : 'bg-sport-dark/80 text-sport-gray hover:text-red-400'}`}>
+            <Heart size={12} fill={wishlisted ? 'currentColor' : 'none'} />
           </button>
+          {/* Quick view overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-sport-dark/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center pb-3">
+            <Link href={`/boutique/${product.slug}`} onClick={e => e.stopPropagation()}
+              className="flex items-center gap-1.5 rounded-full bg-white/20 backdrop-blur-sm px-3 py-1.5 text-xs font-bold text-white hover:bg-white/30 transition-colors">
+              <Eye size={11} /> Voir détails
+            </Link>
+          </div>
+        </Link>
+        <div className="flex flex-1 flex-col p-4">
+          <p className="text-[10px] font-bold uppercase tracking-wider text-sport-gray mb-0.5">{product.brand} · {product.category}</p>
+          <Link href={`/boutique/${product.slug}`}>
+            <h3 className="text-sm font-black text-white group-hover:text-sport-orange transition-colors line-clamp-2 mb-2">{product.name}</h3>
+          </Link>
+          <div className="flex items-center gap-1.5 mb-3">
+            <div className="flex">{Array.from({ length: 5 }).map((_, i) => <Star key={i} size={10} className={i < Math.round(product.rating) ? 'fill-sport-orange text-sport-orange' : 'fill-sport-border text-sport-border'} />)}</div>
+            <span className="text-[11px] font-bold text-sport-orange">{product.rating}</span>
+            <span className="text-[10px] text-sport-gray">({product.reviews.toLocaleString('fr-FR')})</span>
+          </div>
+          <div className="mt-auto flex items-center justify-between gap-2">
+            <div>
+              <span className="text-base font-black text-white">{formatPrice(product.price_cents)}</span>
+              {product.original_price_cents && <span className="ml-1.5 text-xs text-sport-gray line-through">{formatPrice(product.original_price_cents)}</span>}
+            </div>
+            <button onClick={handleAdd}
+              className={`flex items-center gap-1.5 rounded-xl px-3 py-2 text-xs font-bold text-white transition-all whitespace-nowrap ${added ? 'bg-emerald-600' : 'bg-sport-orange hover:bg-orange-600 hover:shadow-[0_0_16px_rgba(255,69,0,0.4)]'}`}>
+              {added ? '✓' : product.type === 'digital' ? <Download size={12} /> : <ShoppingCart size={12} />}
+              {added ? 'Ajouté !' : 'Ajouter'}
+            </button>
+          </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   )
 }
