@@ -375,4 +375,3 @@ export const CATEGORY_ICONS: Record<string, string> = {
   'Recovery':    '💆',
 }
 
-export const AMAZON_ASSOCIATE_TAG = 'xenotif-21'
