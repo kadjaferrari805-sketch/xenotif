@@ -1,6 +1,15 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { Resend } from 'resend'
 
+function escapeHtml(str: string): string {
+  return str
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;')
+}
+
 export async function POST(req: NextRequest) {
   const { name, email, subject, message } = await req.json() as {
     name: string; email: string; subject: string; message: string
@@ -9,6 +18,16 @@ export async function POST(req: NextRequest) {
   if (!name?.trim() || !email?.trim() || !subject?.trim() || !message?.trim()) {
     return NextResponse.json({ error: 'Tous les champs sont requis.' }, { status: 400 })
   }
+
+  // Validation longueur max
+  if (name.length > 100 || subject.length > 200 || message.length > 5000) {
+    return NextResponse.json({ error: 'Contenu trop long.' }, { status: 400 })
+  }
+
+  const safeName    = escapeHtml(name.trim())
+  const safeEmail   = escapeHtml(email.trim())
+  const safeSubject = escapeHtml(subject.trim())
+  const safeMessage = escapeHtml(message.trim())
 
   const resend = new Resend(process.env.RESEND_API_KEY!)
 
@@ -20,10 +39,10 @@ export async function POST(req: NextRequest) {
       <span style="font-weight:900;font-size:16px;letter-spacing:2px;color:#fff;">XENOTIF® — Nouveau message</span>
     </div>
     <div style="background:#111218;border:1px solid #1F2937;border-radius:16px;padding:24px;">
-      <p style="color:#9CA3AF;font-size:13px;margin:0 0 8px;"><strong style="color:#fff;">De :</strong> ${name} &lt;${email}&gt;</p>
-      <p style="color:#9CA3AF;font-size:13px;margin:0 0 16px;"><strong style="color:#fff;">Sujet :</strong> ${subject}</p>
+      <p style="color:#9CA3AF;font-size:13px;margin:0 0 8px;"><strong style="color:#fff;">De :</strong> ${safeName} &lt;${safeEmail}&gt;</p>
+      <p style="color:#9CA3AF;font-size:13px;margin:0 0 16px;"><strong style="color:#fff;">Sujet :</strong> ${safeSubject}</p>
       <hr style="border:none;border-top:1px solid #1F2937;margin:0 0 16px;"/>
-      ${message.split('\n').map(line => `<p style="color:#9CA3AF;font-size:15px;line-height:1.6;margin:0 0 12px;">${line}</p>`).join('')}
+      ${safeMessage.split('\n').map(line => `<p style="color:#9CA3AF;font-size:15px;line-height:1.6;margin:0 0 12px;">${line}</p>`).join('')}
     </div>
     <p style="color:#374151;font-size:11px;margin-top:32px;">Xenotif® · contact@xenotif.com</p>
   </div>
