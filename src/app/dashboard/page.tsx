@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { createClient } from '@/lib/supabase/server'
 import { CheckCircle, Flame, TrendingUp, Calendar, ArrowRight, Zap, Clock, Award } from 'lucide-react'
 import { DISCIPLINE_CONTENT } from '@/lib/disciplines'
+import { ActivityRing } from '@/components/dashboard/ActivityRing'
 
 function StatusBadge({ status }: { status: string }) {
   const map: Record<string, { label: string; cls: string }> = {
@@ -77,6 +78,36 @@ export default async function DashboardPage() {
           <Link href="/dashboard/abonnement" className="inline-flex items-center gap-2 text-sport-orange text-xs font-bold hover:underline">
             Gérer <ArrowRight size={12} />
           </Link>
+        </div>
+      </div>
+
+      {/* Activity Rings */}
+      <div className="bg-sport-card border border-sport-border rounded-2xl p-6 mb-6">
+        <h2 className="text-sm font-bold uppercase tracking-wider text-sport-gray mb-4">Activité du jour</h2>
+        <div className="flex items-center gap-8">
+          <ActivityRing
+            rings={[
+              { value: 487, max: 600,   color: '#FF4500', label: 'Calories' },
+              { value: 8432, max: 10000, color: '#A3FF00', label: 'Pas' },
+              { value: 42,  max: 60,    color: '#2563EB', label: 'Actif' },
+            ]}
+            size={150}
+            strokeWidth={13}
+          />
+          <div className="flex flex-col gap-3">
+            {[
+              { label: 'Calories', value: '487', max: '600', color: '#FF4500' },
+              { label: 'Pas',      value: '8 432', max: '10 000', color: '#A3FF00' },
+              { label: 'Actif',    value: '42 min', max: '60 min', color: '#2563EB' },
+            ].map(r => (
+              <div key={r.label} className="flex items-center gap-2">
+                <div className="h-2 w-2 rounded-full" style={{ backgroundColor: r.color }} />
+                <span className="text-xs text-sport-gray">{r.label}</span>
+                <span className="text-sm font-black" style={{ color: r.color }}>{r.value}</span>
+                <span className="text-xs text-sport-gray">/ {r.max}</span>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 

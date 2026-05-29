@@ -2,6 +2,7 @@ import { redirect } from 'next/navigation'
 import { createClient, createServiceClient } from '@/lib/supabase/server'
 import { Users, CreditCard, TrendingUp, Euro, CheckCircle, Clock, XCircle } from 'lucide-react'
 import { AdminEmailForm } from '@/components/admin/EmailForm'
+import { RevenueChart } from '@/components/admin/RevenueChart'
 
 export default async function AdminPage() {
   const supabase = await createClient()
@@ -60,6 +61,12 @@ export default async function AdminPage() {
             <p className="text-[11px] text-sport-gray mt-1 leading-tight">{label}</p>
           </div>
         ))}
+      </div>
+
+      {/* Revenue Chart */}
+      <div className="bg-sport-card border border-sport-border rounded-2xl p-6 mb-8">
+        <h2 className="text-sm font-black text-white mb-4">Revenus mensuels (7 derniers mois)</h2>
+        <RevenueChart />
       </div>
 
       {/* Status breakdown */}
