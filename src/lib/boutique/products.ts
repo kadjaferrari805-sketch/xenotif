@@ -158,7 +158,7 @@ export const PRODUCTS: Product[] = [
     description: 'Créatine micronisée 99,9% pure. 60 doses. Certifiée Informed Sport. Force et puissance en 4 semaines.',
     longDescription: 'La créatine monohydrate est le supplément le plus étudié en science du sport avec des centaines d\'études confirmant son efficacité. La version micronisée de MyProtein se dissout instantanément et est absorbée plus rapidement. Certifiée Informed Sport — testée antidopage. Sans goût pour se mélanger à n\'importe quelle boisson.',
     type: 'physical', price_cents: 1999, stripe_price_id: 'price_creatine',
-    images: ['https://images.pexels.com/photos/13779116/pexels-photo-13779116.jpeg?auto=compress&cs=tinysrgb&w=800'],
+    images: ['https://images.pexels.com/photos/33921585/pexels-photo-33921585.jpeg?auto=compress&cs=tinysrgb&w=800'],
     badge: null, category: 'Nutrition', rating: 4.9, reviews: 45123, inStock: true,
     tags: ['créatine', 'force', 'puissance', 'musculation'],
     disciplines: ['musculation', 'crossfit', 'hiit'],
