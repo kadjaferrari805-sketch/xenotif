@@ -38,7 +38,9 @@ export function ProductCard({ product, index = 0, onCartOpen }: ProductCardProps
         <a href={product.amazon.affiliateUrl} target="_blank" rel="noopener noreferrer"
           className="group block overflow-hidden rounded-2xl border border-sport-border bg-sport-card hover:-translate-y-1 transition-all duration-300">
           <div className="relative h-52 overflow-hidden bg-sport-border/20">
-            <Image src={product.images[0] ?? ''} alt={product.name} fill className={`${product.imageFit === 'contain' ? 'object-contain p-2' : 'object-cover'} transition-transform duration-500 group-hover:scale-105`}
+            <Image src={product.images[0] ?? ''} alt={product.name} fill
+              className={`${product.imageFit === 'contain' ? 'object-contain p-2' : 'object-cover'} transition-transform duration-500 group-hover:scale-105`}
+              style={product.imagePosition ? { objectPosition: product.imagePosition } : undefined}
               sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw" />
             {product.badge && <span className="absolute top-3 left-3 rounded-full bg-sport-orange px-2.5 py-1 text-xs font-black text-white shadow-lg">{product.badge}</span>}
             {discount && <span className="absolute top-3 right-10 rounded-full bg-red-500 px-2 py-0.5 text-xs font-black text-white">-{discount}%</span>}
