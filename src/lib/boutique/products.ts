@@ -143,7 +143,7 @@ export const PRODUCTS: Product[] = [
     description: 'N°1 en Europe. 22g protéines, 103 kcal, 5g BCAAs par portion. Lait de vaches en pâturage. Goût chocolat intense.',
     longDescription: 'La whey la plus vendue en Europe depuis 15 ans. Formulée à partir de lactosérum ultra-filtré provenant de vaches de pâturages irlandais. Profil aminé complet avec 5g de BCAAs par portion. Se mélange parfaitement dans l\'eau ou le lait. Idéale en post-workout pour maximiser la synthèse protéique.',
     type: 'physical', price_cents: 2999, original_price_cents: 4499, stripe_price_id: 'price_whey_chocolat',
-    images: ['https://images.pexels.com/photos/13779103/pexels-photo-13779103.jpeg?auto=compress&cs=tinysrgb&w=800'],
+    images: ['https://images.pexels.com/photos/6551143/pexels-photo-6551143.jpeg?auto=compress&cs=tinysrgb&w=800'],
     badge: '🏆 N°1 Europe', category: 'Nutrition', rating: 4.8, reviews: 89432, inStock: true,
     tags: ['whey', 'protéine', 'musculation', 'récupération'],
     disciplines: ['musculation', 'crossfit', 'running-cardio'],
