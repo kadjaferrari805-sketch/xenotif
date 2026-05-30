@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import { headers } from 'next/headers'
+import { GoogleAnalytics } from '@next/third-parties/google'
 import './globals.css'
 import { Nav } from '@/components/layout/Nav'
 import { Footer } from '@/components/layout/Footer'
@@ -64,6 +65,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <OrganizationSchema />
         <WebsiteSchema />
       </body>
+      <GoogleAnalytics gaId="G-3H3JTM404V" />
     </html>
   )
 }
