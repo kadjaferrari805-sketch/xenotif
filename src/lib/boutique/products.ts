@@ -29,6 +29,7 @@ export interface Product {
   amazon?: AmazonProduct
   disciplines?: string[]
   isAffiliate: boolean
+  imageFit?: 'cover' | 'contain'
 }
 
 const AMAZON_TAG = 'xenotif21-21'
@@ -150,6 +151,7 @@ export const PRODUCTS: Product[] = [
     features: ['22g protéines / portion', '103 kcal seulement', '5g BCAAs naturels', 'Fabriquée en Europe', 'Sans sucres ajoutés'],
     amazon: { asin: 'B000GIQT2Q', affiliateUrl: amazonUrl('whey protein schokolade 1kg') },
     isAffiliate: true,
+    imageFit: 'contain',
   },
   {
     id: 'n2', slug: 'creatine-monohydrate-myprotein-300g',

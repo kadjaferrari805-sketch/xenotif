@@ -38,7 +38,7 @@ export default function ProductPage({ params }: { params: Promise<{ slug: string
         <div className="grid gap-12 lg:grid-cols-2 mb-16">
           {/* Image */}
           <div className="relative aspect-square overflow-hidden rounded-2xl border border-sport-border bg-sport-card">
-            <Image src={product.images[0] ?? ''} alt={product.name} fill className="object-cover" />
+            <Image src={product.images[0] ?? ''} alt={product.name} fill className={product.imageFit === 'contain' ? 'object-contain p-4' : 'object-cover'} />
             {product.badge && (
               <span className="absolute top-4 left-4 rounded-full bg-sport-orange px-3 py-1 text-sm font-black text-white">{product.badge}</span>
             )}
