@@ -55,7 +55,8 @@ export async function POST(req: NextRequest) {
 
     const sessionParams: Stripe.Checkout.SessionCreateParams = {
       mode: 'payment',
-      payment_method_types: ['card'],
+      // Pas de payment_method_types → Stripe affiche automatiquement toutes les
+      // méthodes activées dans le dashboard (carte, Apple Pay, Google Pay…)
       line_items: lineItems,
       success_url: `${req.nextUrl.origin}/boutique/succes?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${req.nextUrl.origin}/boutique/panier`,
