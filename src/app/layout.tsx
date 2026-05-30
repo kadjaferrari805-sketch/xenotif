@@ -64,8 +64,8 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         </Providers>
         <OrganizationSchema />
         <WebsiteSchema />
+        <GoogleAnalytics gaId="G-3H3JTM404V" />
       </body>
-      <GoogleAnalytics gaId="G-3H3JTM404V" />
     </html>
   )
 }
