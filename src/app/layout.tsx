@@ -34,6 +34,7 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large' } },
   metadataBase: new URL('https://xenotif.vercel.app'),
   alternates: { canonical: 'https://xenotif.vercel.app' },
+  verification: { google: '2kJvq3omakuRUmacSG5OcvKqNZCNofHayAK7f-vVA-c' },
 }
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
