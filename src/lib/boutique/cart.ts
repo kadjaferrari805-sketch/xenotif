@@ -1,10 +1,15 @@
 'use client'
-import { useState, useEffect, useCallback } from 'react'
+import { useSyncExternalStore, useCallback } from 'react'
 import type { Product } from './products'
 
 export interface CartItem { product: Product; quantity: number }
 
 const KEY = 'xenotif_cart'
+
+// ─── Store partagé global (singleton) ──────────────────────────────
+let items: CartItem[] = []
+let initialized = false
+const listeners = new Set<() => void>()
 
 function load(): CartItem[] {
   if (typeof window === 'undefined') return []
@@ -12,38 +17,78 @@ function load(): CartItem[] {
   catch { return [] }
 }
 
-function save(items: CartItem[]) {
+function persist() {
   if (typeof window !== 'undefined') localStorage.setItem(KEY, JSON.stringify(items))
 }
 
-export function useCart() {
-  const [items, setItems] = useState<CartItem[]>([])
+function emit() {
+  for (const l of listeners) l()
+}
 
-  useEffect(() => { setItems(load()) }, [])
+function setItems(next: CartItem[]) {
+  items = next
+  persist()
+  emit()
+}
 
-  const addItem = useCallback((product: Product) => {
-    setItems(prev => {
-      const next = prev.find(i => i.product.id === product.id)
-        ? prev.map(i => i.product.id === product.id ? { ...i, quantity: i.quantity + 1 } : i)
-        : [...prev, { product, quantity: 1 }]
-      save(next)
-      return next
+function ensureInit() {
+  if (!initialized && typeof window !== 'undefined') {
+    items = load()
+    initialized = true
+    // Sync entre onglets
+    window.addEventListener('storage', e => {
+      if (e.key === KEY) { items = load(); emit() }
     })
-  }, [])
+  }
+}
 
-  const removeItem = useCallback((id: string) => {
-    setItems(prev => { const next = prev.filter(i => i.product.id !== id); save(next); return next })
-  }, [])
+function subscribe(cb: () => void) {
+  ensureInit()
+  listeners.add(cb)
+  return () => listeners.delete(cb)
+}
 
-  const updateQty = useCallback((id: string, qty: number) => {
-    if (qty <= 0) { removeItem(id); return }
-    setItems(prev => { const next = prev.map(i => i.product.id === id ? { ...i, quantity: qty } : i); save(next); return next })
-  }, [removeItem])
+function getSnapshot(): CartItem[] {
+  return items
+}
 
-  const clear = useCallback(() => { setItems([]); save([]) }, [])
+function getServerSnapshot(): CartItem[] {
+  return []
+}
 
-  const total = items.reduce((s, i) => s + i.product.price_cents * i.quantity, 0)
-  const count = items.reduce((s, i) => s + i.quantity, 0)
+// ─── Actions ───────────────────────────────────────────────────────
+export function addToCart(product: Product) {
+  ensureInit()
+  const existing = items.find(i => i.product.id === product.id)
+  setItems(existing
+    ? items.map(i => i.product.id === product.id ? { ...i, quantity: i.quantity + 1 } : i)
+    : [...items, { product, quantity: 1 }])
+}
 
-  return { items, count, total, addItem, removeItem, updateQty, clear }
+export function removeFromCart(id: string) {
+  setItems(items.filter(i => i.product.id !== id))
+}
+
+export function setQuantity(id: string, qty: number) {
+  if (qty <= 0) { removeFromCart(id); return }
+  setItems(items.map(i => i.product.id === id ? { ...i, quantity: qty } : i))
+}
+
+export function clearCart() {
+  setItems([])
+}
+
+// ─── Hook ──────────────────────────────────────────────────────────
+export function useCart() {
+  const cartItems = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot)
+
+  const addItem = useCallback((product: Product) => addToCart(product), [])
+  const removeItem = useCallback((id: string) => removeFromCart(id), [])
+  const updateQty = useCallback((id: string, qty: number) => setQuantity(id, qty), [])
+  const clear = useCallback(() => clearCart(), [])
+
+  const total = cartItems.reduce((s, i) => s + i.product.price_cents * i.quantity, 0)
+  const count = cartItems.reduce((s, i) => s + i.quantity, 0)
+
+  return { items: cartItems, count, total, addItem, removeItem, updateQty, clear }
 }
