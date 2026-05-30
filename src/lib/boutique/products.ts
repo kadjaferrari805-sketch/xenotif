@@ -68,7 +68,7 @@ export const PRODUCTS: Product[] = [
     description: 'Set de 5 bandes de résistance progressive en latex 100% naturel, conçu en France. Résistances de 8 à 60 kg.',
     longDescription: 'Fabriquées en latex naturel 100% pur, ces bandes offrent une tension douce et progressive pour muscler en toute sécurité. Du débutant à l\'athlète confirmé : 5 niveaux de résistance adaptés à chaque exercice. Sac de transport et guide d\'exercices inclus.',
     type: 'physical', price_cents: 3499, original_price_cents: 4999, stripe_price_id: 'price_bandes_elastiques',
-    images: ['https://images.pexels.com/photos/12745676/pexels-photo-12745676.jpeg?auto=compress&cs=tinysrgb&w=800'],
+    images: ['https://images.pexels.com/photos/16695681/pexels-photo-16695681.jpeg?auto=compress&cs=tinysrgb&w=800'],
     badge: '🔥 Promo', category: 'Équipements', rating: 4.7, reviews: 1523, inStock: true,
     tags: ['bandes élastiques', 'résistance', 'fitness', 'yoga'],
     disciplines: ['musculation', 'yoga', 'stretching', 'running-cardio'],
