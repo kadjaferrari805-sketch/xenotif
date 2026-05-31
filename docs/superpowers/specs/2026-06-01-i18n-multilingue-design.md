@@ -143,8 +143,9 @@ Chaque phase est **livrable et testable indépendamment** (le site reste fonctio
 
 ---
 
-## 12. Hypothèses à confirmer
+## 12. Décisions confirmées
 
-- Dashboard membre & emails = **P4** (confirmé au design).
-- Les pages légales (`mentions-legales`, `confidentialite`) sont traduites comme le reste (incluses dans « tout »).
-- Pas de gestion de devise/monnaie par pays dans ce périmètre (prix en EUR partout) — **hors scope** sauf demande explicite ultérieure.
+- Dashboard membre & emails = **P4** (confirmé).
+- Pages légales (`mentions-legales`, `confidentialite`) : **traduites comme le reste** (confirmé).
+- **Devise = euro partout**, pas de conversion par pays (confirmé) — **hors scope**.
+- Premier plan d'implémentation = **Phase 1 uniquement** (socle) ; P2→P4 suivront par plans séparés.
