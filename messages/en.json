@@ -1,0 +1,47 @@
+{
+  "common": {
+    "nav": {
+      "disciplines": "Disciplines",
+      "programmes": "Programmes",
+      "boutique": "🛒 Boutique",
+      "blog": "📝 Blog",
+      "tarifs": "Tarifs",
+      "faq": "FAQ",
+      "connexion": "Connexion",
+      "rejoindre": "Rejoindre",
+      "monEspace": "Mon espace",
+      "ouvrirMenu": "Ouvrir le menu de navigation",
+      "fermerMenu": "Fermer le menu"
+    },
+    "footer": {
+      "tagline": "La plateforme sport ultime pour athlètes de tous niveaux. Performance, coaching IA et communauté au service de tes objectifs.",
+      "disciplines": "Disciplines",
+      "programmes": "Programmes",
+      "informations": "Informations",
+      "copyright": "© 2026 Xenotif® — Tous droits réservés",
+      "baseline": "Conçu pour les athlètes · Propulsé par l'IA",
+      "links": {
+        "mentionsLegales": "Mentions légales",
+        "confidentialite": "Confidentialité",
+        "contact": "Contact",
+        "debutant": "Débutant",
+        "intermediaire": "Intermédiaire",
+        "avance": "Avancé",
+        "elite": "Élite",
+        "coachingIA": "Coaching IA"
+      }
+    },
+    "skipLink": "Aller au contenu principal"
+  },
+  "languages": {
+    "fr": "Français",
+    "en": "English",
+    "de": "Deutsch",
+    "it": "Italiano",
+    "es": "Español",
+    "switch": "Changer de langue"
+  },
+  "home": {},
+  "faq": {},
+  "auth": {}
+}
