@@ -14,14 +14,14 @@ export const metadata: Metadata = {
   title: { default: 'Xenotif® — Forge ton corps. Dépasse tes limites.', template: '%s | Xenotif®' },
   description: 'La plateforme fitness premium — 10 disciplines, coaching IA personnalisé, 300+ séances. Rejoins 12 000+ athlètes qui transforment leur corps avec Xenotif®.',
   keywords: ['fitness', 'sport', 'coaching IA', 'running', 'musculation', 'HIIT', 'CrossFit', 'natation', 'cyclisme', 'programme sportif', 'abonnement fitness', 'application sport'],
-  authors: [{ name: 'Xenotif®', url: 'https://xenotif.vercel.app' }],
+  authors: [{ name: 'Xenotif®', url: 'https://xenotif.com' }],
   creator: 'Xenotif®',
   publisher: 'Xenotif®',
   openGraph: {
     title: 'Xenotif® — Forge ton corps. Dépasse tes limites.',
     description: 'La plateforme fitness premium — 10 disciplines, coaching IA, 12 000+ athlètes.',
     type: 'website',
-    url: 'https://xenotif.vercel.app',
+    url: 'https://xenotif.com',
     siteName: 'Xenotif®',
     locale: 'fr_FR',
     images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: 'Xenotif® — Plateforme Fitness Premium' }],
@@ -33,8 +33,8 @@ export const metadata: Metadata = {
     images: ['/og-image.jpg'],
   },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large' } },
-  metadataBase: new URL('https://xenotif.vercel.app'),
-  alternates: { canonical: 'https://xenotif.vercel.app' },
+  metadataBase: new URL('https://xenotif.com'),
+  alternates: { canonical: 'https://xenotif.com' },
   verification: { google: '2kJvq3omakuRUmacSG5OcvKqNZCNofHayAK7f-vVA-c' },
 }
 

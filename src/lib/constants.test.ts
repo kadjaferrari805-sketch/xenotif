@@ -7,8 +7,8 @@ describe('constants', () => {
     expect(BRAND.members).toBe(12400)
   })
 
-  it('features has 6 items', () => {
-    expect(FEATURES).toHaveLength(6)
+  it('features has 10 items', () => {
+    expect(FEATURES).toHaveLength(10)
     FEATURES.forEach((f) => {
       expect(f.icon).toBeTruthy()
       expect(f.title).toBeTruthy()

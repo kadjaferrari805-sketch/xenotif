@@ -19,7 +19,7 @@ export async function POST() {
     }
 
     const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!)
-    const baseUrl = process.env.NEXT_PUBLIC_URL ?? 'https://xenotif.vercel.app'
+    const baseUrl = process.env.NEXT_PUBLIC_URL ?? 'https://xenotif.com'
 
     const portal = await stripe.billingPortal.sessions.create({
       customer: sub.stripe_customer_id,

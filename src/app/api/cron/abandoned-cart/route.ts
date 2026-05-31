@@ -7,7 +7,7 @@ export const runtime = 'nodejs'
 export const dynamic = 'force-dynamic'
 
 const PRODUCT_BY_ID = new Map(PRODUCTS.map(p => [p.id, p]))
-const BASE_URL = process.env.NEXT_PUBLIC_URL ?? 'https://xenotif.vercel.app'
+const BASE_URL = process.env.NEXT_PUBLIC_URL ?? 'https://xenotif.com'
 
 export async function GET(request: Request) {
   const authHeader = request.headers.get('Authorization')

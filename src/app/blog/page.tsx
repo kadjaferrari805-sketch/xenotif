@@ -17,12 +17,12 @@ export const metadata: Metadata = {
     'récupération musculaire',
     'comparatif matériel fitness',
   ],
-  alternates: { canonical: 'https://xenotif.vercel.app/blog' },
+  alternates: { canonical: 'https://xenotif.com/blog' },
   openGraph: {
     title: 'Blog Fitness — Conseils, Guides & Comparatifs | Xenotif®',
     description:
       'Conseils fitness experts, guides nutritionnels, comparatifs matériel. Progressez plus vite avec Xenotif®.',
-    url: 'https://xenotif.vercel.app/blog',
+    url: 'https://xenotif.com/blog',
     type: 'website',
   },
 }

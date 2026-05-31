@@ -29,26 +29,41 @@ export async function GET(request: Request) {
 
   const userIds = subscribers.map((s: { user_id: string }) => s.user_id)
 
-  const { data: profiles, error: profilesError } = await supabase
+  // Prénom (optionnel) depuis profiles
+  const { data: profiles } = await supabase
     .from('profiles')
-    .select('id, email, full_name')
+    .select('id, full_name')
     .in('id', userIds)
+  const nameById = new Map<string, string | null>(
+    (profiles ?? []).map((p: { id: string; full_name: string | null }) => [p.id, p.full_name])
+  )
 
-  if (profilesError) {
-    console.error('[daily-motivation] profiles query error:', profilesError)
-    return NextResponse.json({ error: profilesError.message }, { status: 500 })
+  // Email depuis auth.users (source de vérité — toujours présent, contrairement à profiles.email)
+  const wanted = new Set(userIds)
+  const emailById = new Map<string, string>()
+  for (let page = 1; page <= 25; page++) {
+    const { data: list, error: listErr } = await supabase.auth.admin.listUsers({ page, perPage: 200 })
+    if (listErr) {
+      console.error('[daily-motivation] listUsers error:', listErr)
+      break
+    }
+    for (const u of list.users) {
+      if (u.email && wanted.has(u.id)) emailById.set(u.id, u.email)
+    }
+    if (list.users.length < 200) break
   }
 
   let sent = 0
   const errors: string[] = []
 
-  for (const profile of profiles ?? []) {
-    if (!profile.email) continue
+  for (const userId of userIds) {
+    const email = emailById.get(userId)
+    if (!email) continue
     try {
-      await sendDailyMotivationEmail({ email: profile.email, name: profile.full_name ?? '' })
+      await sendDailyMotivationEmail({ email, name: nameById.get(userId) ?? '' })
       sent++
     } catch (e) {
-      errors.push(`${profile.email}: ${e}`)
+      errors.push(`${email}: ${e}`)
     }
   }
 

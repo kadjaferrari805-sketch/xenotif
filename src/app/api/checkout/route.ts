@@ -34,7 +34,7 @@ export async function POST(req: NextRequest) {
 
     const config = PLAN_CONFIG[plan as PlanKey]
     const stripe = new Stripe(secretKey)
-    const baseUrl = process.env.NEXT_PUBLIC_URL ?? 'https://xenotif.vercel.app'
+    const baseUrl = process.env.NEXT_PUBLIC_URL ?? 'https://xenotif.com'
     const isAnnual = period === 'annual'
 
     const priceId = isAnnual

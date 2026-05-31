@@ -58,13 +58,13 @@ export async function POST(req: NextRequest) {
                 </ul>
               </div>
 
-              <a href="https://xenotif.vercel.app/#disciplines"
+              <a href="https://xenotif.com/#disciplines"
                  style="display:inline-block;background:#F97316;color:#fff;padding:14px 28px;border-radius:50px;font-weight:700;font-size:14px;text-decoration:none;">
                 Découvrir mes programmes →
               </a>
 
               <p style="color:#4B5563;font-size:11px;margin-top:32px;">
-                Tu reçois cet email car tu t'es inscrit(e) sur xenotif.vercel.app.<br />
+                Tu reçois cet email car tu t'es inscrit(e) sur xenotif.com.<br />
                 Pour te désabonner, réponds à cet email avec "STOP".
               </p>
             </div>

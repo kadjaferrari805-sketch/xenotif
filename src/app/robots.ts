@@ -9,7 +9,7 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ['/dashboard', '/admin', '/auth', '/api', '/boutique/panier'],
       },
     ],
-    sitemap: 'https://xenotif.vercel.app/sitemap.xml',
-    host: 'https://xenotif.vercel.app',
+    sitemap: 'https://xenotif.com/sitemap.xml',
+    host: 'https://xenotif.com',
   }
 }

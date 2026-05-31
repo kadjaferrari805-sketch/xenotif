@@ -4,7 +4,7 @@ import { useState, useEffect, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
-import { Users, Trophy, Zap, ChevronLeft, ChevronRight, ArrowRight, Star } from 'lucide-react'
+import { Users, Trophy, Zap, ArrowRight, Star } from 'lucide-react'
 import { TRUST_ITEMS } from '@/lib/constants'
 
 const SLIDES = [
@@ -134,9 +134,8 @@ export function Hero() {
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="flex items-center gap-2 mb-5"
+              className="flex items-center mb-5"
             >
-              <span aria-hidden="true" className="w-5 h-px bg-sport-orange" />
               <span className="text-[10px] font-black tracking-[3px] uppercase text-sport-orange">
                 La Plateforme Sport Premium
               </span>
@@ -253,14 +252,6 @@ export function Hero() {
         className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex items-center gap-4"
         onKeyDown={handleCarouselKey}
       >
-        <button
-          onClick={prev}
-          aria-label="Diapositive précédente"
-          className="w-9 h-9 rounded-full bg-white/10 hover:bg-white/25 border border-white/20 flex items-center justify-center text-white transition-all hover:scale-110 active:scale-95"
-        >
-          <ChevronLeft size={17} aria-hidden="true" />
-        </button>
-
         {/* Slide dots with progress */}
         <div className="flex gap-2 items-center" role="tablist" aria-label="Diapositives">
           {SLIDES.map((_, i) => (
@@ -283,14 +274,6 @@ export function Hero() {
             </button>
           ))}
         </div>
-
-        <button
-          onClick={next}
-          aria-label="Diapositive suivante"
-          className="w-9 h-9 rounded-full bg-white/10 hover:bg-white/25 border border-white/20 flex items-center justify-center text-white transition-all hover:scale-110 active:scale-95"
-        >
-          <ChevronRight size={17} aria-hidden="true" />
-        </button>
       </div>
 
       {/* Scroll indicator */}

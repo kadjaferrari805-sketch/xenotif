@@ -2,28 +2,52 @@ import { Resend } from 'resend'
 
 const resend = new Resend(process.env.RESEND_API_KEY ?? 'placeholder')
 const FROM = 'Xenotif® <noreply@xenotif.com>'
-const BASE_URL = process.env.NEXT_PUBLIC_URL ?? 'https://xenotif.vercel.app'
+const BASE_URL = process.env.NEXT_PUBLIC_URL ?? 'https://xenotif.com'
 
-function logo() {
-  return `
-    <div style="display:flex;align-items:center;gap:10px;margin-bottom:32px;">
-      <div style="width:36px;height:36px;background:#F97316;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:18px;color:#fff;">X</div>
-      <span style="font-weight:900;font-size:16px;letter-spacing:2px;color:#fff;">XENOTIF®</span>
-    </div>
-  `
-}
+// Gabarit email premium — layout table-based (compatible Outlook, Gmail, Apple Mail).
+function wrap(content: string, preheader = 'Xenotif® — Forge ton corps. Dépasse tes limites.') {
+  const font = `-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif`
+  return `<!DOCTYPE html>
+<html lang="fr"><head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<meta name="color-scheme" content="dark light"/>
+<meta name="x-apple-disable-message-reformatting"/>
+</head>
+<body style="margin:0;padding:0;background:#070809;">
+<div style="display:none;max-height:0;overflow:hidden;opacity:0;color:#070809;">${preheader}</div>
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#070809;">
+<tr><td align="center" style="padding:36px 16px;">
+<table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0" style="width:100%;max-width:600px;font-family:${font};">
 
-function wrap(content: string) {
-  return `<!DOCTYPE html><html><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/></head>
-<body style="background:#0A0B0F;color:#fff;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;margin:0;padding:40px 20px;">
-  <div style="max-width:560px;margin:0 auto;">
-    ${logo()}
+  <!-- En-tête de marque -->
+  <tr><td style="padding:0 4px 16px;">
+    <table role="presentation" width="100%"><tr>
+      <td style="font-weight:900;font-size:21px;letter-spacing:3px;color:#ffffff;">XENOTIF<span style="color:#FF4500;">®</span></td>
+      <td align="right" style="font-weight:600;font-size:10px;letter-spacing:1.5px;color:#586173;text-transform:uppercase;">Performance · Coaching IA</td>
+    </tr></table>
+  </td></tr>
+  <tr><td style="padding:0 4px;"><div style="height:3px;background:linear-gradient(90deg,#FF4500 0%,#FF6a33 45%,rgba(255,69,0,0) 100%);border-radius:99px;"></div></td></tr>
+
+  <!-- Corps -->
+  <tr><td style="padding:34px 6px 8px;color:#e6e8ec;font-size:15px;line-height:1.65;">
     ${content}
-    <p style="color:#374151;font-size:11px;margin-top:40px;line-height:1.6;">
-      Xenotif® · contact@xenotif.com<br/>
-      Tu reçois cet email car tu as un compte sur xenotif.com.
+  </td></tr>
+
+  <!-- Pied de page -->
+  <tr><td style="padding:30px 6px 0;">
+    <div style="height:1px;background:#1b1f27;margin-bottom:22px;"></div>
+    <p style="margin:0;font-size:12px;color:#6b7280;line-height:1.8;">
+      <a href="${BASE_URL}" style="color:#9aa2ad;text-decoration:none;font-weight:600;">xenotif.com</a>
+      &nbsp;·&nbsp;<a href="${BASE_URL}/boutique" style="color:#9aa2ad;text-decoration:none;">Boutique</a>
+      &nbsp;·&nbsp;<a href="mailto:contact@xenotif.com" style="color:#9aa2ad;text-decoration:none;">Contact</a><br/>
+      <span style="color:#4b5563;">© 2026 Xenotif® — Tous droits réservés. Forge ton corps. Dépasse tes limites.</span>
     </p>
-  </div>
+  </td></tr>
+
+</table>
+</td></tr>
+</table>
 </body></html>`
 }
 
@@ -316,5 +340,66 @@ export async function sendAbandonedCartEmail({
         🚚 Livraison offerte dès 50€ &nbsp;·&nbsp; ↩️ Retours 30 jours &nbsp;·&nbsp; 🔒 Paiement sécurisé
       </div>
     `),
+  })
+}
+
+// ─── Livraison des programmes/guides digitaux après achat ──────────────
+export async function sendDigitalDeliveryEmail({
+  email, name, sessionId, items,
+}: {
+  email: string
+  name?: string
+  sessionId: string
+  items: { id: string; name: string }[]
+}) {
+  if (!items.length) return
+
+  const itemsHtml = items.map(i => {
+    const url = `${BASE_URL}/api/boutique/download?session=${encodeURIComponent(sessionId)}&p=${encodeURIComponent(i.id)}`
+    return `
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#0f1216;border:1px solid #232a33;border-radius:16px;margin:0 0 14px;">
+        <tr><td style="padding:22px 24px;">
+          <div style="font-weight:800;font-size:10px;letter-spacing:1.5px;color:#FF4500;text-transform:uppercase;margin:0 0 7px;">Guide PDF · Xenotif®</div>
+          <div style="font-weight:800;font-size:16px;color:#ffffff;line-height:1.3;margin:0 0 4px;">${i.name}</div>
+          <div style="font-size:12px;color:#6b7280;margin:0 0 18px;">Format PDF · Accès à vie · Compatible tous appareils</div>
+          <a href="${url}"
+             style="display:inline-block;background:#15803d;color:#ffffff;padding:13px 26px;border-radius:10px;font-weight:700;font-size:14px;text-decoration:none;">
+            ↓&nbsp;&nbsp;Télécharger le PDF
+          </a>
+        </td></tr>
+      </table>
+    `
+  }).join('')
+
+  const hello = name ? `Merci ${name.split(' ')[0]} 🙌` : 'Merci pour ta confiance 🙌'
+  const plural = items.length > 1
+
+  await resend.emails.send({
+    from: FROM,
+    to: email,
+    subject: `Ton guide Xenotif® est prêt 📘`,
+    html: wrap(`
+      <div style="font-weight:800;font-size:11px;letter-spacing:1.5px;color:#16a34a;text-transform:uppercase;margin:0 0 12px;">&#10003; Commande confirmée</div>
+      <h1 style="font-size:27px;font-weight:900;margin:0 0 10px;color:#ffffff;line-height:1.2;">
+        ${plural ? 'Tes guides sont prêts' : 'Ton guide est prêt'} 📘
+      </h1>
+      <p style="color:#9aa2ad;font-size:15px;line-height:1.65;margin:0 0 26px;">
+        ${hello} — ${plural ? 'tes guides sont disponibles' : 'ton guide est disponible'} immédiatement.
+        Télécharge${plural ? '-les' : '-le'} ci-dessous : ${plural ? 'ils sont' : 'il est'} à toi pour toujours.
+      </p>
+
+      ${itemsHtml}
+
+      <table role="presentation" width="100%" style="margin:6px 0 0;"><tr>
+        <td style="font-size:12px;color:#6b7280;line-height:1.7;">
+          🔒 Lien sécurisé &nbsp;·&nbsp; ♾️ Accès à vie &nbsp;·&nbsp; 📱 Tous appareils
+        </td>
+      </tr></table>
+
+      <p style="color:#6b7280;font-size:12.5px;line-height:1.7;margin:24px 0 0;border-top:1px solid #1b1f27;padding-top:20px;">
+        Conserve cet email : tu peux retélécharger ${plural ? 'tes guides' : 'ton guide'} à tout moment via ce lien.
+        Une question ? Réponds simplement à cet email — notre équipe te répond sous 24&nbsp;h.
+      </p>
+    `, `${plural ? 'Tes guides Xenotif®' : 'Ton guide Xenotif®'} est disponible — télécharge ton PDF maintenant.`),
   })
 }

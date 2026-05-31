@@ -163,16 +163,9 @@ export function Nav() {
                   <Link
                     href="/auth/signin"
                     onClick={() => setIsOpen(false)}
-                    className="text-sm font-medium text-sport-gray hover:text-white transition-colors py-3 border-b border-sport-border"
+                    className="text-sm font-medium text-sport-gray hover:text-white transition-colors py-3"
                   >
                     Connexion
-                  </Link>
-                  <Link
-                    href="/auth/signup"
-                    onClick={() => setIsOpen(false)}
-                    className="mt-4 w-full text-center bg-sport-orange text-white py-3 rounded-full text-sm font-bold hover:bg-orange-600 transition-colors"
-                  >
-                    Rejoindre maintenant
                   </Link>
                 </>
               )}

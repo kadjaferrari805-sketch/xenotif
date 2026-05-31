@@ -1,9 +1,9 @@
 import { redirect } from 'next/navigation'
 import Link from 'next/link'
 import { createClient } from '@/lib/supabase/server'
-import { CheckCircle, Flame, TrendingUp, Calendar, ArrowRight, Zap, Clock, Award } from 'lucide-react'
+import { CheckCircle, Flame, TrendingUp, ArrowRight, Zap, Clock, Award } from 'lucide-react'
 import { DISCIPLINE_CONTENT } from '@/lib/disciplines'
-import { ActivityRing } from '@/components/dashboard/ActivityRing'
+import { LiveActivity } from '@/components/dashboard/LiveActivity'
 
 function StatusBadge({ status }: { status: string }) {
   const map: Record<string, { label: string; cls: string }> = {
@@ -21,16 +21,31 @@ export default async function DashboardPage() {
   const { data: { user } } = await supabase.auth.getUser()
   if (!user) redirect('/auth/signin')
 
-  const [{ data: profile }, { data: subscription }, { data: workouts }, { data: progress }] = await Promise.all([
-    supabase.from('profiles').select('full_name').eq('id', user.id).single(),
-    supabase.from('subscriptions').select('*').eq('user_id', user.id).single(),
-    supabase.from('workouts').select('*').eq('user_id', user.id).order('completed_at', { ascending: false }).limit(5),
+  const [{ data: profile }, { data: subscription }, { data: allWorkouts }, { data: progress }] = await Promise.all([
+    supabase.from('profiles').select('full_name').eq('id', user.id).maybeSingle(),
+    supabase.from('subscriptions').select('*').eq('user_id', user.id).maybeSingle(),
+    supabase.from('workouts').select('*').eq('user_id', user.id).order('completed_at', { ascending: false }).limit(60),
     supabase.from('progress').select('*').eq('user_id', user.id),
   ])
 
   const firstName = (profile?.full_name ?? '').split(' ')[0] || 'Athlète'
   const totalSessions = (progress ?? []).filter(p => p.completed).length
-  const totalWorkouts = (workouts ?? []).length
+
+  // ── Activité de la semaine : séances loggées + modules de programme ──
+  const workouts = allWorkouts ?? []
+  const recentWorkouts = workouts.slice(0, 5)
+  const progressRows = progress ?? []
+  const weekAgoMs = Date.now() - 7 * 86400000
+  const dayOf = (d: string | null) => (d ? d.split('T')[0] : '')
+  const withinWeek = (d: string | null) => !!d && new Date(d).getTime() >= weekAgoMs
+
+  const weekWorkouts = workouts.filter(w => withinWeek(w.completed_at))
+  const progWeek = progressRows.filter(p => p.completed && withinWeek(p.completed_at))
+  const sessionsThisWeek = weekWorkouts.length + progWeek.length
+  const activeDays = new Set([
+    ...weekWorkouts.map(w => dayOf(w.completed_at)),
+    ...progWeek.map(p => dayOf(p.completed_at)),
+  ]).size
 
   const now = new Date()
   const trialEnd = subscription?.trial_end ? new Date(subscription.trial_end) : null
@@ -81,42 +96,15 @@ export default async function DashboardPage() {
         </div>
       </div>
 
-      {/* Activity Rings */}
-      <div className="bg-sport-card border border-sport-border rounded-2xl p-6 mb-6">
-        <h2 className="text-sm font-bold uppercase tracking-wider text-sport-gray mb-4">Activité du jour</h2>
-        <div className="flex items-center gap-8">
-          <ActivityRing
-            rings={[
-              { value: 487, max: 600,   color: '#FF4500', label: 'Calories' },
-              { value: 8432, max: 10000, color: '#A3FF00', label: 'Pas' },
-              { value: 42,  max: 60,    color: '#2563EB', label: 'Actif' },
-            ]}
-            size={150}
-            strokeWidth={13}
-          />
-          <div className="flex flex-col gap-3">
-            {[
-              { label: 'Calories', value: '487', max: '600', color: '#FF4500' },
-              { label: 'Pas',      value: '8 432', max: '10 000', color: '#A3FF00' },
-              { label: 'Actif',    value: '42 min', max: '60 min', color: '#2563EB' },
-            ].map(r => (
-              <div key={r.label} className="flex items-center gap-2">
-                <div className="h-2 w-2 rounded-full" style={{ backgroundColor: r.color }} />
-                <span className="text-xs text-sport-gray">{r.label}</span>
-                <span className="text-sm font-black" style={{ color: r.color }}>{r.value}</span>
-                <span className="text-xs text-sport-gray">/ {r.max}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
+      {/* Activité en direct (capteur de mouvement, démarrage auto) */}
+      <LiveActivity />
 
       {/* Stats grid */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
         {[
-          { icon: Flame,      label: 'Séances cette semaine', value: totalWorkouts.toString(), color: 'text-sport-orange' },
+          { icon: Flame,      label: 'Séances cette semaine', value: sessionsThisWeek.toString(), color: 'text-sport-orange' },
           { icon: CheckCircle,label: 'Modules complétés',     value: totalSessions.toString(), color: 'text-emerald-400' },
-          { icon: TrendingUp, label: 'Jours d\'activité',     value: '0',                      color: 'text-sport-blue' },
+          { icon: TrendingUp, label: 'Jours d\'activité',     value: activeDays.toString(),    color: 'text-sport-blue' },
           { icon: Award,      label: 'Badges obtenus',        value: totalSessions >= 5 ? '1' : '0', color: 'text-yellow-400' },
         ].map(({ icon: Icon, label, value, color }) => (
           <div key={label} className="bg-sport-card border border-sport-border rounded-xl p-4">
@@ -165,7 +153,7 @@ export default async function DashboardPage() {
       {/* Recent activity */}
       <div>
         <h2 className="text-lg font-black text-white mb-4">Activité récente</h2>
-        {(workouts ?? []).length === 0 ? (
+        {recentWorkouts.length === 0 ? (
           <div className="bg-sport-card border border-sport-border rounded-xl p-8 text-center">
             <Clock size={28} className="text-sport-gray mx-auto mb-3" />
             <p className="text-sport-gray text-sm">Aucune séance enregistrée pour l&apos;instant.</p>
@@ -175,7 +163,7 @@ export default async function DashboardPage() {
           </div>
         ) : (
           <div className="space-y-3">
-            {(workouts ?? []).map((w) => (
+            {recentWorkouts.map((w) => (
               <div key={w.id} className="bg-sport-card border border-sport-border rounded-xl px-4 py-3 flex items-center justify-between">
                 <div className="flex items-center gap-3">
                   <div className="w-8 h-8 bg-sport-orange/15 rounded-lg flex items-center justify-center">

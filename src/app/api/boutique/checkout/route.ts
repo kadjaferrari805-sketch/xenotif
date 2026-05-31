@@ -53,6 +53,13 @@ export async function POST(req: NextRequest) {
 
     const stripe = new Stripe(process.env.STRIPE_SECRET_KEY)
 
+    // Ids des programmes digitaux achetés → utilisés pour la livraison (email
+    // + téléchargement sécurisé du guide PDF après paiement).
+    const digitalIds = items
+      .map(i => PRODUCT_MAP.get(i.product_id))
+      .filter((p): p is NonNullable<typeof p> => !!p && p.type === 'digital')
+      .map(p => p.id)
+
     const sessionParams: Stripe.Checkout.SessionCreateParams = {
       mode: 'payment',
       // Pas de payment_method_types → Stripe affiche automatiquement toutes les
@@ -62,6 +69,7 @@ export async function POST(req: NextRequest) {
       cancel_url: `${req.nextUrl.origin}/boutique/panier`,
       locale: 'fr',
       billing_address_collection: 'auto',
+      metadata: { digital_ids: digitalIds.join(',') },
     }
 
     // Ajouter la collecte d'adresse seulement pour les produits physiques

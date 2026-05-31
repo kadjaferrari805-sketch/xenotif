@@ -13,8 +13,8 @@ describe('Nav', () => {
     expect(screen.getByRole('link', { name: /blog/i })).toBeInTheDocument()
   })
 
-  it('renders join button', () => {
+  it('renders join link', () => {
     render(<Nav />)
-    expect(screen.getByRole('button', { name: /rejoindre/i })).toBeInTheDocument()
+    expect(screen.getByRole('link', { name: /rejoindre/i })).toBeInTheDocument()
   })
 })

@@ -10,16 +10,21 @@ import { ProductCard } from '@/components/boutique/ProductCard'
 
 export default function ProductPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = use(params)
+  // Les hooks doivent être appelés inconditionnellement, AVANT tout retour
+  // anticipé (Rules of Hooks) — sinon le nombre de hooks change selon que le
+  // produit existe ou non, ce qui fait planter le rendu React.
+  const { addItem } = useCart()
+  const [added, setAdded] = useState(false)
+
   const found = getProductBySlug(slug)
   if (!found) return notFound()
   const product = found
 
-  const { addItem } = useCart()
-  const [added, setAdded] = useState(false)
-
   function handleAdd() {
     addItem(product)
     setAdded(true)
+    // Pas d'ouverture auto du panier : le bouton passe à « Ajouté au panier ! »
+    // et le compteur du panier flottant se met à jour.
     setTimeout(() => setAdded(false), 2000)
   }
 

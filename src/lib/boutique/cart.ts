@@ -78,6 +78,27 @@ export function clearCart() {
   setItems([])
 }
 
+// ─── État d'ouverture du panier (global, partagé) ──────────────────
+let cartOpen = false
+const openListeners = new Set<() => void>()
+
+function emitOpen() { for (const l of openListeners) l() }
+
+export function openCart() { cartOpen = true; emitOpen() }
+export function closeCart() { cartOpen = false; emitOpen() }
+
+function subscribeOpen(cb: () => void) {
+  openListeners.add(cb)
+  return () => openListeners.delete(cb)
+}
+function getOpenSnapshot() { return cartOpen }
+function getOpenServerSnapshot() { return false }
+
+export function useCartOpen() {
+  const open = useSyncExternalStore(subscribeOpen, getOpenSnapshot, getOpenServerSnapshot)
+  return { open, openCart, closeCart }
+}
+
 // ─── Hook ──────────────────────────────────────────────────────────
 export function useCart() {
   const cartItems = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot)

@@ -5,10 +5,10 @@ export function OrganizationSchema() {
     '@context': 'https://schema.org',
     '@type': 'Organization',
     name: 'Xenotif®',
-    url: 'https://xenotif.vercel.app',
+    url: 'https://xenotif.com',
     logo: {
       '@type': 'ImageObject',
-      url: 'https://xenotif.vercel.app/og-image.jpg',
+      url: 'https://xenotif.com/og-image.jpg',
       width: 1200,
       height: 630,
     },
@@ -40,7 +40,7 @@ export function WebsiteSchema() {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
     name: 'Xenotif®',
-    url: 'https://xenotif.vercel.app',
+    url: 'https://xenotif.com',
     description:
       'Plateforme fitness premium avec coaching IA, 10 disciplines sportives et boutique équipement.',
     inLanguage: 'fr-FR',
@@ -48,7 +48,7 @@ export function WebsiteSchema() {
       '@type': 'SearchAction',
       target: {
         '@type': 'EntryPoint',
-        urlTemplate: 'https://xenotif.vercel.app/boutique?q={search_term_string}',
+        urlTemplate: 'https://xenotif.com/boutique?q={search_term_string}',
       },
       'query-input': 'required name=search_term_string',
     },

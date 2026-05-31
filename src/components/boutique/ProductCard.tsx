@@ -11,10 +11,9 @@ import { useState } from 'react'
 interface ProductCardProps {
   product: Product
   index?: number
-  onCartOpen?: () => void
 }
 
-export function ProductCard({ product, index = 0, onCartOpen }: ProductCardProps) {
+export function ProductCard({ product, index = 0 }: ProductCardProps) {
   const { addItem } = useCart()
   const { toggle, isWishlisted } = useWishlist()
   const [added, setAdded] = useState(false)
@@ -27,7 +26,8 @@ export function ProductCard({ product, index = 0, onCartOpen }: ProductCardProps
   function handleAdd() {
     addItem(product)
     setAdded(true)
-    onCartOpen?.()
+    // On n'ouvre PAS le panier automatiquement : le compteur du panier
+    // flottant se met à jour et le bouton affiche « Ajouté ! » comme retour visuel.
     setTimeout(() => setAdded(false), 2000)
   }
 
@@ -88,12 +88,11 @@ export function ProductCard({ product, index = 0, onCartOpen }: ProductCardProps
             className={`absolute top-3 right-3 flex h-7 w-7 items-center justify-center rounded-full transition-all ${wishlisted ? 'bg-red-500 text-white' : 'bg-sport-dark/80 text-sport-gray hover:text-red-400'}`}>
             <Heart size={12} fill={wishlisted ? 'currentColor' : 'none'} />
           </button>
-          {/* Quick view overlay */}
+          {/* Quick view overlay — span (pas de <a> imbriqué dans le <Link> image) */}
           <div className="absolute inset-0 bg-gradient-to-t from-sport-dark/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center pb-3">
-            <Link href={`/boutique/${product.slug}`} onClick={e => e.stopPropagation()}
-              className="flex items-center gap-1.5 rounded-full bg-white/20 backdrop-blur-sm px-3 py-1.5 text-xs font-bold text-white hover:bg-white/30 transition-colors">
+            <span className="flex items-center gap-1.5 rounded-full bg-white/20 backdrop-blur-sm px-3 py-1.5 text-xs font-bold text-white">
               <Eye size={11} /> Voir détails
-            </Link>
+            </span>
           </div>
         </Link>
         <div className="flex flex-1 flex-col p-4">

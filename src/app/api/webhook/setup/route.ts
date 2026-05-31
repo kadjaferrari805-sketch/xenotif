@@ -3,7 +3,7 @@ import Stripe from 'stripe'
 
 const VERCEL_PROJECT_ID = 'prj_pL3t9KgP44lzourq5Vusk4FEOhi6'
 const VERCEL_TEAM_ID    = 'team_UPv0ZcLiLb5ewMjzOMCQbkkN'
-const WEBHOOK_URL       = 'https://xenotif.vercel.app/api/webhook/stripe'
+const WEBHOOK_URL       = 'https://xenotif.com/api/webhook/stripe'
 
 const EVENTS = [
   'checkout.session.completed',

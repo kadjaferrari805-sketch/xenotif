@@ -8,45 +8,26 @@ export async function GET() {
   if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
 
   const today = new Date().toISOString().split('T')[0]
-
-  // Try to load real connections
-  const { data: connections } = await supabase
-    .from('smartwatch_connections')
-    .select('*')
-    .eq('user_id', user.id)
-    .eq('is_active', true)
-
-  // Try to load real metrics
-  const { data: realMetrics } = await supabase
-    .from('health_metrics')
-    .select('*')
-    .eq('user_id', user.id)
-    .eq('date', today)
-    .single()
-
-  // Try to load weekly metrics
   const weekAgo = new Date(Date.now() - 7 * 86400000).toISOString().split('T')[0]
-  const { data: weeklyMetrics } = await supabase
-    .from('health_metrics')
-    .select('*')
-    .eq('user_id', user.id)
-    .gte('date', weekAgo)
-    .order('date', { ascending: true })
 
-  // Try to load sessions
-  const { data: sessions } = await supabase
-    .from('smartwatch_sessions')
-    .select('*')
-    .eq('user_id', user.id)
-    .order('started_at', { ascending: false })
-    .limit(10)
+  // Les 5 requêtes sont indépendantes → on les lance EN PARALLÈLE
+  // (1 aller-retour groupé au lieu de 5 en série → page bien plus rapide).
+  const [connRes, todayRes, weeklyRes, sessionsRes, goalsRes] = await Promise.all([
+    supabase.from('smartwatch_connections').select('*').eq('user_id', user.id).eq('is_active', true),
+    supabase.from('health_metrics').select('*').eq('user_id', user.id).eq('date', today),
+    supabase.from('health_metrics').select('*').eq('user_id', user.id).gte('date', weekAgo).order('date', { ascending: true }),
+    supabase.from('smartwatch_sessions').select('*').eq('user_id', user.id).order('started_at', { ascending: false }).limit(10),
+    supabase.from('fitness_goals').select('*').eq('user_id', user.id).maybeSingle(),
+  ])
 
-  // Try to load goals
-  const { data: goals } = await supabase
-    .from('fitness_goals')
-    .select('*')
-    .eq('user_id', user.id)
-    .single()
+  const connections = connRes.data
+  // Plusieurs sources possibles aujourd'hui (démo + fitbit) → on privilégie
+  // la métrique d'un appareil réellement connecté, sinon la première dispo.
+  const todayList = todayRes.data ?? []
+  const realMetrics = todayList.find(m => (connections ?? []).some(c => c.provider === m.source)) ?? todayList[0] ?? null
+  const weeklyMetrics = weeklyRes.data
+  const sessions = sessionsRes.data
+  const goals = goalsRes.data
 
   const hasRealDevice = (connections ?? []).length > 0
   const todayMetrics = realMetrics ?? generateDemoMetrics(today)

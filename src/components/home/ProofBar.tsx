@@ -8,7 +8,7 @@ import { Users, BookOpen, Layers, Star } from 'lucide-react'
 const STATS = [
   { Icon: Users,    end: 12000, suffix: '+', label: 'Athlètes actifs',  sublabel: 'dans le monde entier', color: 'text-sport-orange', bg: 'bg-sport-orange/10 border-sport-orange/20' },
   { Icon: BookOpen, end: 50,    suffix: '+', label: 'Programmes',       sublabel: 'tous niveaux',         color: 'text-sport-blue',   bg: 'bg-sport-blue/10 border-sport-blue/20' },
-  { Icon: Layers,   end: 6,     suffix: '',  label: 'Disciplines',      sublabel: 'sport complet',        color: 'text-sport-lime',   bg: 'bg-sport-lime/10 border-sport-lime/20' },
+  { Icon: Layers,   end: 10,    suffix: '',  label: 'Disciplines',      sublabel: 'sport complet',        color: 'text-sport-lime',   bg: 'bg-sport-lime/10 border-sport-lime/20' },
   { Icon: Star,     end: 49,    suffix: '/5',label: 'Satisfaction',     sublabel: '3 200+ avis vérifiés', color: 'text-sport-orange', bg: 'bg-sport-orange/10 border-sport-orange/20', decimal: true },
 ]
 

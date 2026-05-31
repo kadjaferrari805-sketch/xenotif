@@ -1,7 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server'
 import Stripe from 'stripe'
 import { createServiceClient } from '@/lib/supabase/server'
-import { sendWelcomeEmail, sendTrialReminderEmail, sendCancellationEmail } from '@/lib/emails'
+import { sendWelcomeEmail, sendTrialReminderEmail, sendCancellationEmail, sendDigitalDeliveryEmail } from '@/lib/emails'
+import { getProductById } from '@/lib/boutique/products'
 
 export const runtime = 'nodejs'
 
@@ -39,14 +40,47 @@ export async function POST(req: NextRequest) {
       case 'checkout.session.completed': {
         const session = event.data.object as Stripe.Checkout.Session
 
-        // Paiement boutique (mode payment) → marquer le panier comme récupéré
+        // Paiement boutique (mode payment) → relance panier + livraison digitale
         if (session.mode === 'payment') {
           const buyerEmail = session.customer_details?.email ?? session.customer_email
+          const buyerName = session.customer_details?.name ?? ''
+
           if (buyerEmail) {
             await service
               .from('abandoned_carts')
               .update({ recovered: true })
               .eq('email', buyerEmail.toLowerCase())
+          }
+
+          // Livraison des guides/programmes digitaux achetés
+          const digitalIds = (session.metadata?.digital_ids ?? '')
+            .split(',').map(s => s.trim()).filter(Boolean)
+
+          if (buyerEmail && digitalIds.length) {
+            const products = digitalIds
+              .map(id => getProductById(id))
+              .filter((p): p is NonNullable<typeof p> => !!p)
+
+            // Enregistre la commande (idempotent : stripe_session_id unique).
+            // L'email de livraison n'est envoyé qu'à la 1re insertion.
+            const { error: insertErr } = await service.from('boutique_orders').insert({
+              email: buyerEmail.toLowerCase(),
+              customer_name: buyerName,
+              stripe_session_id: session.id,
+              product_ids: digitalIds,
+              amount_total: session.amount_total ?? 0,
+            })
+
+            if (!insertErr) {
+              await sendDigitalDeliveryEmail({
+                email: buyerEmail,
+                name: buyerName,
+                sessionId: session.id,
+                items: products.map(p => ({ id: p.id, name: p.name })),
+              })
+            } else if (insertErr.code !== '23505') {
+              console.error('orders insert error:', insertErr)
+            }
           }
           break
         }

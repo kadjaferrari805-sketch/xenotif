@@ -3,7 +3,7 @@ import { DISCIPLINE_CONTENT } from '@/lib/disciplines'
 import { PRODUCTS } from '@/lib/boutique/products'
 import { getAllPosts } from '@/lib/blog/posts'
 
-const BASE_URL = 'https://xenotif.vercel.app'
+const BASE_URL = 'https://xenotif.com'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const disciplines = Object.keys(DISCIPLINE_CONTENT).map(slug => ({

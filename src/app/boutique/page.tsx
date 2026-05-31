@@ -2,10 +2,8 @@
 import { useState, useMemo } from 'react'
 import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Search, SlidersHorizontal, ArrowRight, Zap, ShoppingBag, Star, TrendingUp, X, ShoppingCart } from 'lucide-react'
+import { Search, SlidersHorizontal, ArrowRight, Zap, ShoppingBag, Star, TrendingUp, X } from 'lucide-react'
 import { ProductCard } from '@/components/boutique/ProductCard'
-import { CartSidebar } from '@/components/boutique/CartSidebar'
-import { useCart } from '@/lib/boutique/cart'
 import { PRODUCTS, getCategories, CATEGORY_ICONS, formatPrice } from '@/lib/boutique/products'
 
 const DISCIPLINES = [
@@ -32,8 +30,6 @@ export default function BoutiquePage() {
   const [sort, setSort] = useState('popular')
   const [priceRange] = useState<[number, number]>([0, 50000])
   const [showFilters, setShowFilters] = useState(false)
-  const [cartOpen, setCartOpen] = useState(false)
-  const { count } = useCart()
 
   const categories = ['all', ...getCategories()]
 
@@ -60,22 +56,6 @@ export default function BoutiquePage() {
 
   return (
     <div className="min-h-screen bg-sport-dark">
-      <CartSidebar open={cartOpen} onClose={() => setCartOpen(false)} />
-
-      {/* Bouton panier flottant — toujours visible */}
-      <button
-        onClick={() => setCartOpen(true)}
-        aria-label="Ouvrir le panier"
-        className="fixed bottom-6 right-6 z-40 flex h-14 w-14 items-center justify-center rounded-full bg-sport-orange text-white shadow-[0_0_30px_rgba(255,69,0,0.5)] hover:bg-orange-600 hover:scale-105 transition-all"
-      >
-        <ShoppingCart size={22} />
-        {count > 0 && (
-          <span className="absolute -top-1 -right-1 flex h-6 w-6 items-center justify-center rounded-full bg-white text-xs font-black text-sport-orange border-2 border-sport-dark">
-            {count}
-          </span>
-        )}
-      </button>
-
       {/* Hero */}
       <section className="relative overflow-hidden pt-24 pb-16">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(255,69,0,0.15),transparent)]" />
@@ -231,7 +211,7 @@ export default function BoutiquePage() {
           </div>
         ) : (
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-            {filtered.map((p, i) => <ProductCard key={p.id} product={p} index={i} onCartOpen={() => setCartOpen(true)} />)}
+            {filtered.map((p, i) => <ProductCard key={p.id} product={p} index={i} />)}
           </div>
         )}
 

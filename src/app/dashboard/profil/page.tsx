@@ -18,7 +18,7 @@ export default function ProfilPage() {
       const { data: { user } } = await supabase.auth.getUser()
       if (!user) return
       setEmail(user.email ?? '')
-      const { data: profile } = await supabase.from('profiles').select('full_name').eq('id', user.id).single()
+      const { data: profile } = await supabase.from('profiles').select('full_name').eq('id', user.id).maybeSingle()
       const name = profile?.full_name ?? ''
       setFullName(name)
       setInitials(name ? name.slice(0, 2).toUpperCase() : (user.email ?? 'U').slice(0, 2).toUpperCase())

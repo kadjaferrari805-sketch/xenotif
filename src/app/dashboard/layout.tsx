@@ -21,7 +21,7 @@ export default async function DashboardLayout({ children }: { children: React.Re
   const { data: { user } } = await supabase.auth.getUser()
   if (!user) redirect('/auth/signin')
 
-  const { data: profile } = await supabase.from('profiles').select('full_name').eq('id', user.id).single()
+  const { data: profile } = await supabase.from('profiles').select('full_name').eq('id', user.id).maybeSingle()
   const initials = (profile?.full_name ?? user.email ?? 'U').slice(0, 2).toUpperCase()
 
   return (
@@ -73,7 +73,7 @@ export default async function DashboardLayout({ children }: { children: React.Re
 
       {/* Mobile header */}
       <div className="md:hidden fixed top-0 left-0 right-0 z-50 bg-sport-card border-b border-sport-border px-4 py-3 flex items-center justify-between">
-        <Logo href="/dashboard" size="sm" />
+        <Logo href="/" size="sm" />
         <div className="flex items-center gap-2">
           <div className="w-8 h-8 rounded-full bg-sport-orange/20 border border-sport-orange/40 flex items-center justify-center font-black text-sport-orange text-xs">
             {initials}

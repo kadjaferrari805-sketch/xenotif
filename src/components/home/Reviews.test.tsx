@@ -11,7 +11,7 @@ describe('Reviews', () => {
 
   it('renders verified badge on each review', () => {
     render(<Reviews />)
-    const badges = screen.getAllByText(/membre vérifié/i)
+    const badges = screen.getAllByText('Vérifié')
     expect(badges).toHaveLength(3)
   })
 })

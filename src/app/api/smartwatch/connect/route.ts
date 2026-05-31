@@ -64,7 +64,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ type: 'demo', message: 'Connecté en mode démonstration' })
   }
 
-  const redirectUri = `${process.env.NEXT_PUBLIC_SITE_URL}/api/smartwatch/callback`
+  const redirectUri = `${process.env.NEXT_PUBLIC_URL ?? 'https://xenotif.com'}/api/smartwatch/callback`
   const state = Buffer.from(JSON.stringify({ user_id: user.id, provider })).toString('base64')
 
   const params = new URLSearchParams({

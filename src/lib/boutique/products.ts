@@ -68,14 +68,13 @@ export const PRODUCTS: Product[] = [
     description: 'Set de 5 bandes de résistance pour musculation et fitness. Résistances progressives de 25 à 125 lbs. Idéal entraînement complet à la maison.',
     longDescription: 'Le kit PORTENTUM comprend 5 bandes de résistance de couleurs différentes (de 25-65 lbs à 50-125 lbs) pour un entraînement progressif et complet. Parfaites pour la musculation, le crossfit, le yoga, la rééducation et le renforcement musculaire à la maison ou en déplacement. Durables, anti-glisse et faciles à transporter.',
     type: 'physical', price_cents: 3499, original_price_cents: 4999, stripe_price_id: 'price_bandes_elastiques',
-    images: ['https://m.media-amazon.com/images/P/B0FP5BCCRL.01._SL800_.jpg'],
+    images: ['https://images.unsplash.com/photo-1584827386916-b5351d3ba34b?auto=format&fit=crop&w=1200&q=80'],
     badge: '🔥 Promo', category: 'Équipements', rating: 4.7, reviews: 1523, inStock: true,
     tags: ['bandes élastiques', 'résistance', 'fitness', 'musculation'],
     disciplines: ['musculation', 'yoga', 'stretching', 'running-cardio'],
     features: ['5 niveaux : 25 à 125 lbs', 'Musculation & fitness complet', 'Anti-glisse durable', 'Idéal à la maison', 'Faciles à transporter'],
     amazon: { asin: 'B0FP5BCCRL', affiliateUrl: 'https://www.amazon.de/dp/B0FP5BCCRL?tag=xenotif21-21' },
     isAffiliate: true,
-    imageFit: 'contain',
   },
   {
     id: 'e3', slug: 'tapis-yoga-premium-10mm',
@@ -389,6 +388,10 @@ export const PRODUCTS: Product[] = [
 
 export function getProductBySlug(slug: string): Product | undefined {
   return PRODUCTS.find(p => p.slug === slug)
+}
+
+export function getProductById(id: string): Product | undefined {
+  return PRODUCTS.find(p => p.id === id)
 }
 
 export function getProductsByCategory(category: string): Product[] {
