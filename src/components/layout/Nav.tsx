@@ -19,15 +19,8 @@ const NAV_LINKS = [
 
 export function Nav() {
   const [isOpen, setIsOpen] = useState(false)
-  const [scrolled, setScrolled] = useState(false)
   const [user, setUser] = useState<User | null>(null)
   const hamburgerRef = useRef<HTMLButtonElement>(null)
-
-  useEffect(() => {
-    function onScroll() { setScrolled(window.scrollY > 40) }
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
 
   useEffect(() => {
     const supabase = createClient()
@@ -60,11 +53,9 @@ export function Nav() {
       initial={{ y: -64, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-      className={`sticky top-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? 'bg-sport-dark/90 backdrop-blur-xl border-b border-sport-border shadow-xl shadow-black/30'
-          : 'bg-transparent border-b border-transparent'
-      }`}
+      // Barre d'en-tête toujours transparente (logo + liens flottent au-dessus
+      // de la page), y compris au scroll.
+      className="sticky top-0 z-50 transition-all duration-300 bg-transparent border-b border-transparent"
     >
       <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
         {/* Logo */}
@@ -136,7 +127,7 @@ export function Nav() {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.25 }}
-            className="md:hidden bg-sport-card border-t border-sport-border overflow-hidden"
+            className="md:hidden bg-sport-dark/80 backdrop-blur-xl border-t border-white/10 overflow-hidden"
           >
             <div className="px-6 py-5 flex flex-col gap-1">
               {NAV_LINKS.map((link) => (
