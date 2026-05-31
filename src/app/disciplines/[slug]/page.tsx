@@ -53,13 +53,15 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params
   const discipline = FEATURES.find((f) => f.slug === slug)
   if (!discipline) return {}
-  const content = DISCIPLINE_CONTENT[slug]
+  // Le template du layout ajoute déjà « | Xenotif® » → ne pas le remettre dans
+  // le title (sinon double marque). On garde une description riche en mots-clés.
   return {
-    title: `${discipline.title} — Guide complet & Programmes | Xenotif®`,
-    description: content?.tagline ?? discipline.description,
+    title: `${discipline.title} — Guide complet & Programmes`,
+    description: discipline.description,
+    alternates: { canonical: `https://xenotif.com/disciplines/${slug}` },
     openGraph: {
-      title: `${discipline.title} — Xenotif®`,
-      description: content?.tagline ?? discipline.description,
+      title: `${discipline.title} — Guide complet & Programmes | Xenotif®`,
+      description: discipline.description,
       images: [DISC_PHOTOS[slug] ?? ''],
     },
   }
