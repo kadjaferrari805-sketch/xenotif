@@ -2,6 +2,10 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import { headers } from 'next/headers'
 import Script from 'next/script'
+import { NextIntlClientProvider, hasLocale } from 'next-intl'
+import { setRequestLocale, getTranslations } from 'next-intl/server'
+import { notFound } from 'next/navigation'
+import { routing } from '@/i18n/routing'
 import '../globals.css'
 import { Nav } from '@/components/layout/Nav'
 import { Footer } from '@/components/layout/Footer'
@@ -10,58 +14,107 @@ import { OrganizationSchema, WebsiteSchema } from '@/components/SchemaOrg'
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 
-export const metadata: Metadata = {
-  title: { default: 'Xenotif® — Forge ton corps. Dépasse tes limites.', template: '%s | Xenotif®' },
-  description: 'La plateforme fitness premium — 10 disciplines, coaching IA personnalisé, 300+ séances. Rejoins 12 000+ athlètes qui transforment leur corps avec Xenotif®.',
-  keywords: ['fitness', 'sport', 'coaching IA', 'running', 'musculation', 'HIIT', 'CrossFit', 'natation', 'cyclisme', 'programme sportif', 'abonnement fitness', 'application sport'],
-  authors: [{ name: 'Xenotif®', url: 'https://xenotif.com' }],
-  creator: 'Xenotif®',
-  publisher: 'Xenotif®',
-  openGraph: {
-    title: 'Xenotif® — Forge ton corps. Dépasse tes limites.',
-    description: 'La plateforme fitness premium — 10 disciplines, coaching IA, 12 000+ athlètes.',
-    type: 'website',
-    url: 'https://xenotif.com',
-    siteName: 'Xenotif®',
-    locale: 'fr_FR',
-    // L'image OG est fournie par src/app/opengraph-image.tsx (générée à la volée).
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Xenotif® — Forge ton corps. Dépasse tes limites.',
-    description: 'La plateforme fitness premium — coaching IA, 10 disciplines, 12 000+ athlètes.',
-    // Pas de twitter:image explicite → X se rabat sur l'image og:image générée.
-  },
-  robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large' } },
-  metadataBase: new URL('https://xenotif.com'),
-  alternates: { canonical: 'https://xenotif.com' },
-  verification: { google: '2kJvq3omakuRUmacSG5OcvKqNZCNofHayAK7f-vVA-c' },
+const SITE = 'https://xenotif.com'
+const LOCALE_OG: Record<string, string> = {
+  fr: 'fr_FR',
+  en: 'en_US',
+  de: 'de_DE',
+  it: 'it_IT',
+  es: 'es_ES',
 }
 
-export default async function RootLayout({ children }: { children: React.ReactNode }) {
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }))
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>
+}): Promise<Metadata> {
+  const { locale } = await params
+  const t = await getTranslations({ locale, namespace: 'home' })
+
+  const languages: Record<string, string> = { 'x-default': SITE }
+  for (const l of routing.locales) {
+    languages[l] = l === routing.defaultLocale ? SITE : `${SITE}/${l}`
+  }
+
+  return {
+    metadataBase: new URL(SITE),
+    title: { default: t('metaTitle'), template: '%s | Xenotif®' },
+    description: t('metaDescription'),
+    keywords: [
+      'fitness', 'sport', 'coaching IA', 'running', 'musculation',
+      'HIIT', 'CrossFit', 'natation', 'cyclisme', 'programme sportif',
+      'abonnement fitness', 'application sport',
+    ],
+    authors: [{ name: 'Xenotif®', url: SITE }],
+    creator: 'Xenotif®',
+    publisher: 'Xenotif®',
+    alternates: { canonical: languages[locale] ?? SITE, languages },
+    openGraph: {
+      title: t('metaTitle'),
+      description: t('metaDescription'),
+      url: languages[locale] ?? SITE,
+      siteName: 'Xenotif®',
+      type: 'website',
+      locale: LOCALE_OG[locale] ?? 'fr_FR',
+      // L'image OG est fournie par src/app/opengraph-image.tsx (générée à la volée).
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: t('metaTitle'),
+      description: t('metaDescription'),
+      // Pas de twitter:image explicite → X se rabat sur l'image og:image générée.
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: { index: true, follow: true, 'max-image-preview': 'large' },
+    },
+    verification: { google: '2kJvq3omakuRUmacSG5OcvKqNZCNofHayAK7f-vVA-c' },
+  }
+}
+
+export default async function RootLayout({
+  children,
+  params,
+}: {
+  children: React.ReactNode
+  params: Promise<{ locale: string }>
+}) {
+  const { locale } = await params
+  if (!hasLocale(routing.locales, locale)) notFound()
+  setRequestLocale(locale)
+
   const headersList = await headers()
-  const currentPath = headersList.get('x-current-path') ?? ''
+  const currentPath = headersList.get('x-current-path') ?? '' // déjà sans préfixe locale (proxy)
   const isAppRoute = currentPath.startsWith('/dashboard') || currentPath.startsWith('/admin')
 
+  const t = await getTranslations('common')
+
   return (
-    <html lang="fr" className={inter.variable}>
+    <html lang={locale} className={inter.variable}>
       <body>
         <a href="#contenu-principal" className="skip-link">
-          Aller au contenu principal
+          {t('skipLink')}
         </a>
-        <Providers>
-          {isAppRoute ? (
-            children
-          ) : (
-            <>
-              <Nav />
-              <main id="contenu-principal" tabIndex={-1}>
-                {children}
-              </main>
-              <Footer />
-            </>
-          )}
-        </Providers>
+        <NextIntlClientProvider>
+          <Providers>
+            {isAppRoute ? (
+              children
+            ) : (
+              <>
+                <Nav />
+                <main id="contenu-principal" tabIndex={-1}>
+                  {children}
+                </main>
+                <Footer />
+              </>
+            )}
+          </Providers>
+        </NextIntlClientProvider>
         <OrganizationSchema />
         <WebsiteSchema />
 

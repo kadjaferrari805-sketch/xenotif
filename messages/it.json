@@ -41,7 +41,10 @@
     "es": "Español",
     "switch": "Changer de langue"
   },
-  "home": {},
+  "home": {
+    "metaTitle": "Xenotif® — Forge ton corps. Dépasse tes limites.",
+    "metaDescription": "La plateforme fitness premium — 10 disciplines, coaching IA personnalisé, 300+ séances. Rejoins 12 000+ athlètes qui transforment leur corps avec Xenotif®."
+  },
   "faq": {},
   "auth": {}
 }
