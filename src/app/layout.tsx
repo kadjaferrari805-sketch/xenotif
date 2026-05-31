@@ -24,13 +24,13 @@ export const metadata: Metadata = {
     url: 'https://xenotif.com',
     siteName: 'Xenotif®',
     locale: 'fr_FR',
-    images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: 'Xenotif® — Plateforme Fitness Premium' }],
+    // L'image OG est fournie par src/app/opengraph-image.tsx (générée à la volée).
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Xenotif® — Forge ton corps. Dépasse tes limites.',
     description: 'La plateforme fitness premium — coaching IA, 10 disciplines, 12 000+ athlètes.',
-    images: ['/og-image.jpg'],
+    // Pas de twitter:image explicite → X se rabat sur l'image og:image générée.
   },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large' } },
   metadataBase: new URL('https://xenotif.com'),
