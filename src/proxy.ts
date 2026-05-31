@@ -1,54 +1,100 @@
 import { createServerClient } from '@supabase/ssr'
 import { NextResponse, type NextRequest } from 'next/server'
+import createMiddleware from 'next-intl/middleware'
+import { routing } from '@/i18n/routing'
+
+// Middleware next-intl : gère la détection de locale (Accept-Language → cookie NEXT_LOCALE),
+// les redirections de préfixe (/en/dashboard) et les rewrites pour la locale par défaut (fr, sans préfixe).
+const handleI18n = createMiddleware(routing)
+
+/**
+ * Extrait le préfixe de locale de l'URL (ex: "/en") s'il est présent.
+ * Avec localePrefix:'as-needed' et defaultLocale:'fr', le français n'a pas de préfixe.
+ */
+function getLocalePrefix(pathname: string): string {
+  const seg = pathname.split('/')[1]
+  if ((routing.locales as readonly string[]).includes(seg)) {
+    return `/${seg}`
+  }
+  return ''
+}
+
+/**
+ * Retourne le pathname sans le préfixe de locale.
+ * ex: "/en/dashboard" → "/dashboard", "/dashboard" → "/dashboard"
+ */
+function stripLocale(pathname: string): string {
+  const prefix = getLocalePrefix(pathname)
+  if (prefix) {
+    const rest = pathname.slice(prefix.length) || '/'
+    return rest
+  }
+  return pathname
+}
 
 export async function proxy(request: NextRequest) {
-  const { pathname } = request.nextUrl
-  let supabaseResponse = NextResponse.next({ request })
+  // 1. Laisser next-intl faire sa détection de locale et ses rewrites/redirects.
+  //    Pour localePrefix:'as-needed' avec defaultLocale:'fr' :
+  //    - /dashboard      → pas de redirect, rewrite transparent (locale fr implicite)
+  //    - /en/dashboard   → rewrite interne vers /dashboard avec locale en dans les headers
+  //    - /de             → rewrite transparent
+  //    Si next-intl émet un redirect (ex: normalisation de préfixe), il contient le cookie NEXT_LOCALE.
+  const i18nResponse = handleI18n(request)
 
+  // 2. Extraire le pathname sans locale pour la logique d'auth.
+  const { pathname } = request.nextUrl
+  const path = stripLocale(pathname)
+  const localePrefix = getLocalePrefix(pathname)
+
+  // 3. Initialiser Supabase en lisant depuis request.cookies et en écrivant
+  //    directement sur i18nResponse (évite de créer un nouveau NextResponse qui
+  //    écraserait les headers/cookies posés par next-intl).
   const supabase = createServerClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
     {
       cookies: {
-        getAll()          { return request.cookies.getAll() },
+        getAll() { return request.cookies.getAll() },
         setAll(cookiesToSet) {
-          cookiesToSet.forEach(({ name, value }) => request.cookies.set(name, value))
-          supabaseResponse = NextResponse.next({ request })
+          // Écrire les cookies Supabase (refresh de session) sur la réponse
+          // qui sera retournée au client, quelle qu'elle soit.
           cookiesToSet.forEach(({ name, value, options }) =>
-            supabaseResponse.cookies.set(name, value, options)
+            i18nResponse.cookies.set(name, value, options)
           )
         },
       },
     }
   )
 
-  // Validation de session réelle côté serveur
   const { data: { user } } = await supabase.auth.getUser()
 
-  // Protéger /dashboard et /admin
-  if ((pathname.startsWith('/dashboard') || pathname.startsWith('/admin')) && !user) {
+  // 4. Protéger /dashboard et /admin.
+  //    On préserve le préfixe de locale dans la redirection : /en/dashboard → /en/auth/signin.
+  if ((path.startsWith('/dashboard') || path.startsWith('/admin')) && !user) {
     const url = request.nextUrl.clone()
-    url.pathname = '/auth/signin'
+    url.pathname = `${localePrefix}/auth/signin`
     return NextResponse.redirect(url)
   }
 
-  // Rediriger les utilisateurs connectés depuis les pages auth
+  // 5. Rediriger les utilisateurs déjà connectés hors des pages d'auth.
+  //    On préserve le préfixe de locale : /en/auth/signin → /en/dashboard.
   if (
-    pathname.startsWith('/auth/') &&
+    path.startsWith('/auth/') &&
     user &&
-    !pathname.includes('/callback') &&
-    !pathname.includes('/reset-password')
+    !path.includes('/callback') &&
+    !path.includes('/reset-password')
   ) {
     const url = request.nextUrl.clone()
-    url.pathname = '/dashboard'
+    url.pathname = `${localePrefix}/dashboard`
     return NextResponse.redirect(url)
   }
 
-  // Transmettre le path courant pour le layout
-  supabaseResponse.headers.set('x-current-path', pathname)
-  return supabaseResponse
+  // 6. Transmettre le path sans préfixe de locale pour le layout.
+  i18nResponse.headers.set('x-current-path', path)
+  return i18nResponse
 }
 
 export const config = {
-  matcher: ['/dashboard/:path*', '/admin/:path*', '/auth/:path*'],
+  // Exclure : routes API, assets Next.js internes, Vercel, et tout fichier avec une extension (favicon, images, sitemap…)
+  matcher: ['/((?!api|_next|_vercel|.*\\..*).*)'],
 }
