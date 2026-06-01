@@ -1,12 +1,15 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { useTranslations } from 'next-intl'
 import { useInView } from 'react-intersection-observer'
 import { Activity, Dumbbell, Zap, Bike, Waves, Flame, ArrowRight, Leaf, Target, Layers } from 'lucide-react'
 import Image from 'next/image'
-import Link from 'next/link'
+import { Link } from '@/i18n/navigation'
 import { SectionHeader } from '@/components/ui/SectionHeader'
 import { FEATURES } from '@/lib/constants'
+
+type FeatureText = { title: string; description: string; tag: string; stats: string[] }
 
 const ICON_MAP: Record<string, React.ReactNode> = {
   running:  <Activity size={18} aria-hidden="true" />,
@@ -40,6 +43,8 @@ const DISC_PHOTOS: Record<string, string> = {
 }
 
 export function Features() {
+  const t = useTranslations('home.features')
+  const items = t.raw('items') as FeatureText[]
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.05 })
 
   return (
@@ -47,13 +52,14 @@ export function Features() {
       <div className="max-w-6xl mx-auto">
         <SectionHeader
           id="disciplines-title"
-          label="Disciplines"
-          title="10 disciplines. 1 plateforme."
-          subtitle="Du cardio à la force — chaque sport, chaque niveau, chaque objectif"
+          label={t('label')}
+          title={t('title')}
+          subtitle={t('subtitle')}
         />
         <div ref={ref} className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 mt-14">
           {FEATURES.map((feat, i) => {
             const accent = ACCENT[feat.color]
+            const tr = items[i]
             return (
               <motion.article
                 key={feat.title}
@@ -66,7 +72,7 @@ export function Features() {
                 <div className="relative h-48 overflow-hidden">
                   <Image
                     src={DISC_PHOTOS[feat.title] ?? ''}
-                    alt={`Discipline ${feat.title}`}
+                    alt={`Discipline ${tr.title}`}
                     fill
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     className="object-cover group-hover:scale-108 transition-transform duration-700 ease-out"
@@ -76,7 +82,7 @@ export function Features() {
                   {/* Top label */}
                   <div className="absolute top-3 right-3">
                     <span className={`text-[10px] font-bold px-2.5 py-1 rounded-full ${accent.tag}`}>
-                      {feat.tag}
+                      {tr.tag}
                     </span>
                   </div>
                   {/* Bottom icon */}
@@ -89,12 +95,12 @@ export function Features() {
 
                 {/* Text content */}
                 <div className="p-5">
-                  <h3 className="text-sm font-bold text-white mb-2 group-hover:text-white transition-colors">{feat.title}</h3>
-                  <p className="text-xs text-sport-gray leading-relaxed mb-4">{feat.description}</p>
+                  <h3 className="text-sm font-bold text-white mb-2 group-hover:text-white transition-colors">{tr.title}</h3>
+                  <p className="text-xs text-sport-gray leading-relaxed mb-4">{tr.description}</p>
 
                   {/* Stats chips */}
                   <div className="flex flex-wrap gap-1.5 mb-4">
-                    {feat.stats.map((s) => (
+                    {tr.stats.map((s) => (
                       <span key={s} className="text-[10px] text-sport-gray bg-sport-dark border border-sport-border px-2.5 py-1 rounded-full">
                         {s}
                       </span>
@@ -103,10 +109,10 @@ export function Features() {
 
                   <Link
                     href={`/disciplines/${feat.slug}`}
-                    aria-label={`Découvrir la discipline ${feat.title}`}
+                    aria-label={t('discoverAria', { name: tr.title })}
                     className="inline-flex items-center gap-1.5 text-xs font-bold text-sport-orange group-hover:gap-2.5 transition-all duration-200"
                   >
-                    Découvrir <ArrowRight size={13} aria-hidden="true" />
+                    {t('discover')} <ArrowRight size={13} aria-hidden="true" />
                   </Link>
                 </div>
               </motion.article>

@@ -2,35 +2,11 @@
 
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { useTranslations } from 'next-intl'
 import { Plus, Minus } from 'lucide-react'
 import { SectionHeader } from '@/components/ui/SectionHeader'
 
-const FAQS = [
-  {
-    q: 'Xenotif® est-il adapté aux débutants ?',
-    a: 'Absolument. Xenotif® propose des programmes pour tous les niveaux, du grand débutant à l\'athlète confirmé. Notre IA adapte chaque programme à ton profil dès l\'inscription — niveau, objectifs, disponibilités.',
-  },
-  {
-    q: 'Puis-je annuler mon abonnement à tout moment ?',
-    a: 'Oui, sans conditions ni frais cachés. Tu peux annuler depuis ton espace membre en 2 clics. L\'accès reste actif jusqu\'à la fin de la période payée.',
-  },
-  {
-    q: 'Comment fonctionne le coaching IA ?',
-    a: 'Notre IA analyse ton profil (niveau, objectifs, temps disponible, éventuelles blessures) et génère un programme sur mesure. Il s\'adapte chaque semaine selon tes retours et performances.',
-  },
-  {
-    q: 'Ai-je besoin de matériel spécifique ?',
-    a: 'Non. Xenotif® propose des séances adaptées à tous les équipements — en salle, à la maison, ou en extérieur. Au moment de choisir ton programme, tu indiques ce dont tu disposes.',
-  },
-  {
-    q: 'Que comprend la garantie satisfait ou remboursé ?',
-    a: 'Si tu n\'es pas satisfait(e) dans les 30 premiers jours, on te rembourse intégralement — sans question. Il suffit de nous contacter à contact@xenotif.com.',
-  },
-  {
-    q: 'Les programmes fonctionnent-ils sur mobile ?',
-    a: 'Oui. Xenotif® est entièrement responsive et accessible sur smartphone, tablette et ordinateur. Tes séances te suivent partout, même hors-ligne (mode hors-connexion disponible sur le plan Pro).',
-  },
-]
+type FaqItem = { q: string; a: string }
 
 function FAQItem({ q, a, index }: { q: string; a: string; index: number }) {
   const [open, setOpen] = useState(false)
@@ -77,24 +53,27 @@ function FAQItem({ q, a, index }: { q: string; a: string; index: number }) {
 }
 
 export function FAQ() {
+  const t = useTranslations('home.faq')
+  const items = t.raw('items') as FaqItem[]
+
   return (
     <section id="faq" aria-labelledby="faq-title" className="py-24 px-6 bg-sport-card border-y border-sport-border">
       <div className="max-w-2xl mx-auto">
         <SectionHeader
           id="faq-title"
-          label="FAQ"
-          title="Questions fréquentes"
-          subtitle="Tout ce que tu dois savoir avant de commencer"
+          label={t('label')}
+          title={t('title')}
+          subtitle={t('subtitle')}
         />
 
         <div className="mt-12">
-          {FAQS.map((item, i) => (
+          {items.map((item, i) => (
             <FAQItem key={i} q={item.q} a={item.a} index={i} />
           ))}
         </div>
 
         <p className="text-center text-sport-gray text-xs mt-10">
-          D&apos;autres questions ?{' '}
+          {t('moreQuestions')}{' '}
           <a
             href="mailto:contact@xenotif.com"
             className="text-sport-orange hover:underline font-bold"

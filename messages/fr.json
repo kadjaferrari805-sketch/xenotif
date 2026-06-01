@@ -42,8 +42,256 @@
   },
   "home": {
     "metaTitle": "Xenotif® — Forge ton corps. Dépasse tes limites.",
-    "metaDescription": "La plateforme fitness premium — 10 disciplines, coaching IA personnalisé, 300+ séances. Rejoins 12 000+ athlètes qui transforment leur corps avec Xenotif®."
+    "metaDescription": "La plateforme fitness premium — 10 disciplines, coaching IA personnalisé, 300+ séances. Rejoins 12 000+ athlètes qui transforment leur corps avec Xenotif®.",
+    "hero": {
+      "eyebrow": "La Plateforme Sport Premium",
+      "ctaPrimary": "Rejoindre gratuitement",
+      "ctaSecondary": "Voir les disciplines",
+      "scroll": "Scroll",
+      "slides": [
+        { "tag": "🏋️ Musculation & Force", "headline": "FORGE TON CORPS.", "accent": "DÉPASSE TES LIMITES." },
+        { "tag": "🏃 Running & Cardio", "headline": "COURS PLUS VITE.", "accent": "BRÛLE PLUS FORT." },
+        { "tag": "⚡ HIIT & CrossFit", "headline": "BRISE TES LIMITES.", "accent": "DEVIENS IMBATTABLE." }
+      ],
+      "badges": [
+        { "label": "+12 000 membres", "sub": "actifs" },
+        { "label": "Coaching IA", "sub": "inclus" },
+        { "label": "4.9 / 5", "sub": "3 200 avis" },
+        { "label": "Résultats", "sub": "dès 30 jours" }
+      ],
+      "trust": [
+        { "label": "12K+ athlètes", "sublabel": "communauté active" },
+        { "label": "Coaching IA", "sublabel": "personnalisé" },
+        { "label": "Accès illimité", "sublabel": "tous programmes" },
+        { "label": "30 jours", "sublabel": "satisfait ou remboursé" }
+      ],
+      "aria": {
+        "welcome": "Bienvenue sur Xenotif",
+        "guarantees": "Nos garanties",
+        "carousel": "Navigation du carrousel",
+        "slides": "Diapositives",
+        "slide": "Diapositive {n} sur {total}"
+      }
+    },
+    "marquee": {
+      "items": [
+        "Musculation",
+        "Running",
+        "HIIT",
+        "Cyclisme",
+        "Natation",
+        "CrossFit",
+        "Coaching IA",
+        "12K+ Athlètes",
+        "Résultats garantis",
+        "Programmes sur mesure"
+      ]
+    },
+    "proof": {
+      "aria": "Chiffres clés",
+      "stats": [
+        { "label": "Athlètes actifs", "sublabel": "dans le monde entier" },
+        { "label": "Programmes", "sublabel": "tous niveaux" },
+        { "label": "Disciplines", "sublabel": "sport complet" },
+        { "label": "Satisfaction", "sublabel": "3 200+ avis vérifiés" }
+      ]
+    },
+    "features": {
+      "label": "Disciplines",
+      "title": "10 disciplines. 1 plateforme.",
+      "subtitle": "Du cardio à la force — chaque sport, chaque niveau, chaque objectif",
+      "discover": "Découvrir",
+      "discoverAria": "Découvrir la discipline {name}",
+      "items": [
+        { "title": "Running & Cardio", "tag": "Cardio", "description": "Programmes de course adaptés à tous les niveaux — du 5K au marathon. Plans personnalisés avec coaching GPS et suivi de fréquence cardiaque.", "stats": ["+4 200 coureurs", "120+ plans", "12 semaines moy."] },
+        { "title": "Musculation", "tag": "Strength", "description": "Prise de masse, sèche ou tonification — nos coaches certifiés construisent ton programme sur mesure selon ta morphologie.", "stats": ["+3 800 membres", "90+ programmes", "8 semaines moy."] },
+        { "title": "HIIT", "tag": "Fat Burn", "description": "Séances courtes et intenses pour brûler un maximum de calories et booster ton métabolisme durablement en 20 à 30 min.", "stats": ["+2 100 membres", "60+ circuits", "20-30 min / séance"] },
+        { "title": "Cyclisme", "tag": "Endurance", "description": "Entraînements indoor et outdoor avec puissance-mètre. De la sportive au grimpeur de cols, un plan adapté à chaque profil.", "stats": ["+1 500 cyclistes", "45+ plans", "16 semaines moy."] },
+        { "title": "Natation", "tag": "Aquatique", "description": "Techniques de nage, préparation triathlon, open water — progressez dans tous les styles avec des drills vidéo HD.", "stats": ["+900 nageurs", "30+ programmes", "10 semaines moy."] },
+        { "title": "CrossFit", "tag": "Functional", "description": "WODs quotidiens, mouvements fonctionnels et challenges communautaires pour repousser tes limites chaque semaine.", "stats": ["+1 800 athlètes", "365 WODs/an", "5× / semaine"] },
+        { "title": "Yoga", "tag": "Bien-être", "description": "Flexibilité, force intérieure et pleine conscience — des flows débutants au yoga avancé pour un corps et un esprit équilibrés.", "stats": ["+2 000 pratiquants", "40+ séquences", "20-60 min / séance"] },
+        { "title": "Boxe", "tag": "Combat", "description": "Technique, cardio et puissance — des bases aux combinaisons avancées pour te transformer physiquement et mentalement.", "stats": ["+1 200 boxeurs", "35+ programmes", "8 semaines moy."] },
+        { "title": "Stretching", "tag": "Mobilité", "description": "Mobilité, souplesse et récupération optimale — des routines d'étirements guidées pour prévenir les blessures et performer.", "stats": ["+1 600 membres", "30+ routines", "10-30 min / séance"] },
+        { "title": "Nutrition", "tag": "Alimentation", "description": "Plans alimentaires personnalisés, calcul des macros et stratégies nutritionnelles pour atteindre tes objectifs sportifs.", "stats": ["+3 000 membres", "50+ plans", "Suivi quotidien"] }
+      ]
+    },
+    "howItWorks": {
+      "label": "Comment ça marche",
+      "title": "Commence en 4 étapes",
+      "subtitle": "De l'inscription à tes premiers résultats — simple, rapide, efficace",
+      "cta": "Commencer maintenant",
+      "ctaNote": "Gratuit · Sans engagement · Sans carte bancaire",
+      "steps": [
+        { "title": "Crée ton compte", "description": "Inscription en 2 minutes. Remplis ton profil sportif pour un suivi personnalisé dès le premier jour." },
+        { "title": "Choisis ton programme", "description": "Notre IA analyse ton niveau, tes objectifs et ton temps disponible pour recommander le programme idéal." },
+        { "title": "Entraîne-toi", "description": "Suis tes séances guidées avec coaching audio, vidéos HD et feedback en temps réel sur ta technique." },
+        { "title": "Suis tes progrès", "description": "Tableau de bord complet, statistiques avancées et célébration de chaque objectif atteint." }
+      ]
+    },
+    "intensity": {
+      "label": "Niveaux",
+      "title": "Un programme pour chaque athlète",
+      "subtitle": "De débutant à élite — Xenotif® s'adapte à toi, pas l'inverse",
+      "intensityLabel": "Intensité",
+      "seePricing": "Voir les tarifs",
+      "levels": [
+        { "label": "Débutant", "desc": "Pour ceux qui commencent ou reprennent le sport. Séances courtes, progressives, jamais décourageantes.", "detail": "Dès 20 min / séance" },
+        { "label": "Intermédiaire", "desc": "6 mois de pratique régulière. Montée en charge progressive, nouveaux records personnels chaque mois.", "detail": "3 à 4× / semaine" },
+        { "label": "Avancé", "desc": "Athlètes confirmés. Programmes périodisés, haute intensité, récupération optimisée.", "detail": "5× / semaine" },
+        { "label": "Élite", "desc": "Compétiteurs et semi-pros. Planification annuelle, coaching individuel, suivi biomécanique complet.", "detail": "6 à 7× / semaine" }
+      ]
+    },
+    "pricing": {
+      "label": "Tarifs",
+      "title": "Simple. Transparent. Sans surprise.",
+      "subtitle": "Essai gratuit 7 jours sur tous les plans payants — aucune carte bancaire requise",
+      "monthly": "Mensuel",
+      "annual": "Annuel",
+      "save": "-20%",
+      "billed": "Facturé <b>{total}/an</b>",
+      "freeTrialNote": "✓ 7 jours gratuits · Sans engagement",
+      "subscribeAria": "S'abonner au plan {name}",
+      "featuresAria": "Fonctionnalités plan {name}",
+      "footnote": "Sans engagement · Annulation à tout moment en 1 clic",
+      "plans": [
+        { "name": "Gratuit", "period": "pour toujours", "badge": "", "description": "Découvre Xenotif® et commence ta transformation sans risque.", "cta": "Commencer gratuitement", "features": ["3 programmes d'accès", "Suivi de séances basique", "Accès à la communauté", "WOD hebdomadaire gratuit"] },
+        { "name": "Pro", "period": "par mois", "badge": "Le plus populaire", "description": "Accès illimité à tous les programmes et au coaching IA personnalisé.", "cta": "Essai gratuit 7 jours", "features": ["Tous les programmes illimités", "Coaching IA personnalisé", "Statistiques & suivi avancé", "Vidéos HD haute qualité", "Support prioritaire 7j/7", "Challenges communautaires"] },
+        { "name": "Élite", "period": "par mois", "badge": "", "description": "Coaching individuel et suivi personnalisé par un expert certifié.", "cta": "Parler à un coach", "features": ["Tout le plan Pro inclus", "Coach personnel dédié", "Bilan mensuel visio 1-1", "Plan nutritionnel sur mesure", "Analyse biomécanique vidéo", "Accès anticipé aux nouveautés"] }
+      ]
+    },
+    "reviews": {
+      "label": "Témoignages",
+      "title": "Ils ont transformé leur corps",
+      "subtitle": "Des milliers d'athlètes font confiance à Xenotif® pour atteindre leurs objectifs",
+      "verified": "Vérifié",
+      "ratingAria": "Note : {rating} étoiles sur 5",
+      "results": ["+18 min de PR marathon", "-12 kg en 4 mois", "Ironman terminé"],
+      "items": [
+        { "sport": "Running · Marathon", "date": "Il y a 2 jours", "text": "\"En 3 mois de programme Xenotif®, j'ai battu mon record sur marathon de 18 minutes. Le coaching IA est bluffant — chaque séance est parfaitement calibrée à mon niveau.\"" },
+        { "sport": "HIIT · Musculation", "date": "Il y a 5 jours", "text": "\"J'ai perdu 12 kg en 4 mois tout en gagnant en force. Les séances HIIT + muscu sont parfaitement équilibrées. La communauté Xenotif® me motive chaque matin.\"" },
+        { "sport": "CrossFit · Natation", "date": "Il y a 1 semaine", "text": "\"Préparation triathlon avec Xenotif® — résultat incroyable. J'ai terminé mon premier Ironman grâce à cette plateforme. Merci Xenotif® !\"" }
+      ],
+      "summary": {
+        "rating": "4.9 / 5",
+        "basedOn": "basé sur",
+        "count": "3 200+",
+        "reviews": "avis vérifiés",
+        "stats": [
+          { "value": "97%", "label": "Satisfaits" },
+          { "value": "4.2×", "label": "Plus rapide" },
+          { "value": "30j", "label": "Premiers résultats" }
+        ]
+      }
+    },
+    "newsletter": {
+      "eyebrow": "Rejoins la communauté",
+      "titleTop": "PRÊT À DÉPASSER",
+      "titleBottom": "TES LIMITES ?",
+      "desc": "Rejoins <b>12 000+ athlètes</b> qui reçoivent chaque semaine : programmes, conseils nutrition, tips d'entraînement et WODs exclusifs.",
+      "perks": [
+        "Programmes gratuits chaque semaine",
+        "WODs & défis communautaires",
+        "Conseils nutrition & récupération"
+      ],
+      "perksAria": "Avantages de l'inscription",
+      "formAria": "Formulaire d'inscription à la newsletter",
+      "emailLabel": "Adresse email",
+      "placeholder": "ton@email.com",
+      "submit": "S'abonner",
+      "sending": "Envoi…",
+      "successTitle": "Bienvenue dans la communauté !",
+      "successText": "Vérifie ta boîte mail — un email de confirmation t'a été envoyé.",
+      "errorInvalid": "Adresse email invalide",
+      "errorGeneric": "Une erreur est survenue.",
+      "errorNetwork": "Connexion impossible. Réessaie dans quelques instants.",
+      "privacyNote": "Sans spam · Désabonnement en 1 clic · Données protégées (RGPD)"
+    },
+    "faq": {
+      "label": "FAQ",
+      "title": "Questions fréquentes",
+      "subtitle": "Tout ce que tu dois savoir avant de commencer",
+      "moreQuestions": "D'autres questions ?",
+      "items": [
+        { "q": "Xenotif® est-il adapté aux débutants ?", "a": "Absolument. Xenotif® propose des programmes pour tous les niveaux, du grand débutant à l'athlète confirmé. Notre IA adapte chaque programme à ton profil dès l'inscription — niveau, objectifs, disponibilités." },
+        { "q": "Puis-je annuler mon abonnement à tout moment ?", "a": "Oui, sans conditions ni frais cachés. Tu peux annuler depuis ton espace membre en 2 clics. L'accès reste actif jusqu'à la fin de la période payée." },
+        { "q": "Comment fonctionne le coaching IA ?", "a": "Notre IA analyse ton profil (niveau, objectifs, temps disponible, éventuelles blessures) et génère un programme sur mesure. Il s'adapte chaque semaine selon tes retours et performances." },
+        { "q": "Ai-je besoin de matériel spécifique ?", "a": "Non. Xenotif® propose des séances adaptées à tous les équipements — en salle, à la maison, ou en extérieur. Au moment de choisir ton programme, tu indiques ce dont tu disposes." },
+        { "q": "Que comprend la garantie satisfait ou remboursé ?", "a": "Si tu n'es pas satisfait(e) dans les 30 premiers jours, on te rembourse intégralement — sans question. Il suffit de nous contacter à contact@xenotif.com." },
+        { "q": "Les programmes fonctionnent-ils sur mobile ?", "a": "Oui. Xenotif® est entièrement responsive et accessible sur smartphone, tablette et ordinateur. Tes séances te suivent partout, même hors-ligne (mode hors-connexion disponible sur le plan Pro)." }
+      ]
+    }
   },
-  "faq": {},
-  "auth": {}
+  "auth": {
+    "signin": {
+      "title": "Connexion",
+      "subtitle": "Accède à ton espace membre",
+      "emailLabel": "Email",
+      "passwordLabel": "Mot de passe",
+      "show": "Afficher",
+      "hide": "Masquer",
+      "submit": "Se connecter",
+      "submitting": "Connexion…",
+      "forgot": "Mot de passe oublié ?",
+      "noAccount": "Pas encore de compte ?",
+      "createAccount": "Créer un compte →",
+      "secure": "Connexion sécurisée SSL — Tes données sont protégées",
+      "errorInvalid": "Email ou mot de passe incorrect."
+    },
+    "signup": {
+      "title": "Crée ton compte",
+      "subtitle": "Choisis ton plan, puis complète ton inscription",
+      "fullNameLabel": "Prénom & Nom",
+      "fullNamePlaceholder": "Jean Dupont",
+      "emailLabel": "Email",
+      "passwordLabel": "Mot de passe",
+      "passwordPlaceholder": "8 caractères minimum",
+      "show": "Afficher",
+      "hide": "Masquer",
+      "submitFree": "Créer mon compte gratuit",
+      "submitPaid": "Continuer vers le paiement",
+      "creating": "Création du compte…",
+      "legalPrefix": "En créant un compte, tu acceptes nos",
+      "legalNotice": "mentions légales",
+      "legalAnd": "et notre",
+      "privacyPolicy": "politique de confidentialité",
+      "haveAccount": "Déjà un compte ?",
+      "signinLink": "Se connecter →",
+      "secure": "Inscription sécurisée SSL · Sans engagement · Annulation libre",
+      "doneTitle": "Vérifie ton email !",
+      "doneText": "Un lien de confirmation a été envoyé à {email}.",
+      "doneCta": "Clique dessus pour activer ton compte.",
+      "backToSignin": "Retour à la connexion →",
+      "errorShortPassword": "Le mot de passe doit faire au moins 8 caractères.",
+      "errorAlreadyUsed": "Cet email est déjà utilisé. Connecte-toi.",
+      "errorCheckout": "Erreur lors de la redirection vers le paiement.",
+      "plans": [
+        { "name": "Gratuit", "period": "pour toujours", "badge": "", "features": ["3 programmes", "Suivi basique", "Communauté"] },
+        { "name": "Pro", "period": "/mois", "badge": "7j gratuits", "features": ["Tous les programmes", "Coaching IA", "Stats avancées"] },
+        { "name": "Élite", "period": "/mois", "badge": "7j gratuits", "features": ["Plan Pro inclus", "Coach dédié", "Bilan mensuel"] }
+      ]
+    },
+    "forgot": {
+      "back": "Retour",
+      "title": "Mot de passe oublié",
+      "subtitle": "Entre ton email pour recevoir un lien de réinitialisation.",
+      "emailLabel": "Email",
+      "submit": "Envoyer le lien",
+      "submitting": "Envoi…",
+      "doneTitle": "Email envoyé !",
+      "doneText": "Un lien de réinitialisation a été envoyé à {email}.",
+      "doneHint": "Vérifie tes spams si tu ne vois rien dans 2 minutes.",
+      "backToSignin": "Retour à la connexion →"
+    },
+    "reset": {
+      "title": "Nouveau mot de passe",
+      "subtitle": "Choisis un mot de passe sécurisé.",
+      "passwordLabel": "Nouveau mot de passe",
+      "passwordPlaceholder": "8 caractères minimum",
+      "submit": "Mettre à jour",
+      "submitting": "Mise à jour…",
+      "errorShort": "8 caractères minimum.",
+      "doneTitle": "Mot de passe mis à jour !",
+      "doneText": "Redirection vers ton dashboard…"
+    }
+  }
 }

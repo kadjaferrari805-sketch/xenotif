@@ -1,11 +1,14 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { useTranslations } from 'next-intl'
 import { useInView } from 'react-intersection-observer'
-import Link from 'next/link'
+import { Link } from '@/i18n/navigation'
 import { ArrowRight, UserPlus, Target, Dumbbell, BarChart3 } from 'lucide-react'
 import { SectionHeader } from '@/components/ui/SectionHeader'
 import { STEPS } from '@/lib/constants'
+
+type StepText = { title: string; description: string }
 
 const STEP_ICONS = [UserPlus, Target, Dumbbell, BarChart3]
 const STEP_COLORS = [
@@ -16,6 +19,8 @@ const STEP_COLORS = [
 ]
 
 export function HowItWorks() {
+  const t = useTranslations('home.howItWorks')
+  const steps = t.raw('steps') as StepText[]
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 })
 
   return (
@@ -26,9 +31,9 @@ export function HowItWorks() {
       <div className="max-w-6xl mx-auto relative">
         <SectionHeader
           id="programmes-title"
-          label="Comment ça marche"
-          title="Commence en 4 étapes"
-          subtitle="De l'inscription à tes premiers résultats — simple, rapide, efficace"
+          label={t('label')}
+          title={t('title')}
+          subtitle={t('subtitle')}
         />
 
         <div ref={ref} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-14">
@@ -67,8 +72,8 @@ export function HowItWorks() {
                     </div>
                   </div>
 
-                  <h3 className="text-sm font-bold text-white mb-2">{step.title}</h3>
-                  <p className="text-xs text-sport-gray leading-relaxed">{step.description}</p>
+                  <h3 className="text-sm font-bold text-white mb-2">{steps[i].title}</h3>
+                  <p className="text-xs text-sport-gray leading-relaxed">{steps[i].description}</p>
                 </div>
               </motion.div>
             )
@@ -82,9 +87,9 @@ export function HowItWorks() {
           className="text-center mt-12"
         >
           <Link href="/auth/signup" className="btn-primary shadow-xl shadow-sport-orange/25 hover:shadow-sport-orange/40 hover:scale-[1.02] active:scale-95">
-            Commencer maintenant <ArrowRight size={15} aria-hidden="true" />
+            {t('cta')} <ArrowRight size={15} aria-hidden="true" />
           </Link>
-          <p className="text-[11px] text-sport-gray mt-3">Gratuit · Sans engagement · Sans carte bancaire</p>
+          <p className="text-[11px] text-sport-gray mt-3">{t('ctaNote')}</p>
         </motion.div>
       </div>
     </section>

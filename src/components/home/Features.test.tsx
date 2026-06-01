@@ -1,14 +1,15 @@
-import { render, screen } from '@testing-library/react'
+import { screen } from '@testing-library/react'
+import { renderWithIntl } from '@/test/intl'
 import { Features } from './Features'
 
 describe('Features', () => {
   it('renders section title', () => {
-    render(<Features />)
+    renderWithIntl(<Features />)
     expect(screen.getByText(/10 disciplines/i)).toBeInTheDocument()
   })
 
   it('renders all 6 discipline cards', () => {
-    render(<Features />)
+    renderWithIntl(<Features />)
     expect(screen.getByText(/running & cardio/i)).toBeInTheDocument()
     expect(screen.getByText(/musculation/i)).toBeInTheDocument()
     expect(screen.getByText(/hiit/i)).toBeInTheDocument()

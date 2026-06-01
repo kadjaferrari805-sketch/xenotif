@@ -1,14 +1,15 @@
-import { render, screen } from '@testing-library/react'
+import { screen } from '@testing-library/react'
+import { renderWithIntl } from '@/test/intl'
 import { HowItWorks } from './HowItWorks'
 
 describe('HowItWorks', () => {
   it('renders section title', () => {
-    render(<HowItWorks />)
+    renderWithIntl(<HowItWorks />)
     expect(screen.getByText(/comment ça marche/i)).toBeInTheDocument()
   })
 
   it('renders 4 numbered steps', () => {
-    render(<HowItWorks />)
+    renderWithIntl(<HowItWorks />)
     expect(screen.getByText('1')).toBeInTheDocument()
     expect(screen.getByText('2')).toBeInTheDocument()
     expect(screen.getByText('3')).toBeInTheDocument()

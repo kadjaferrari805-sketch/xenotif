@@ -1,59 +1,26 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { useTranslations } from 'next-intl'
 import { useInView } from 'react-intersection-observer'
-import Link from 'next/link'
+import { Link } from '@/i18n/navigation'
 import { ArrowRight } from 'lucide-react'
 import { SectionHeader } from '@/components/ui/SectionHeader'
 
-const LEVELS = [
-  {
-    id: 'debutant',
-    label: 'Débutant',
-    emoji: '🌱',
-    desc: 'Pour ceux qui commencent ou reprennent le sport. Séances courtes, progressives, jamais décourageantes.',
-    border: 'border-emerald-500/30',
-    text: 'text-emerald-400',
-    bar: 'bg-emerald-500',
-    width: '25%',
-    detail: 'Dès 20 min / séance',
-  },
-  {
-    id: 'intermediaire',
-    label: 'Intermédiaire',
-    emoji: '⚡',
-    desc: '6 mois de pratique régulière. Montée en charge progressive, nouveaux records personnels chaque mois.',
-    border: 'border-sport-blue/30',
-    text: 'text-sport-blue',
-    bar: 'bg-sport-blue',
-    width: '55%',
-    detail: '3 à 4× / semaine',
-  },
-  {
-    id: 'avance',
-    label: 'Avancé',
-    emoji: '🔥',
-    desc: 'Athlètes confirmés. Programmes périodisés, haute intensité, récupération optimisée.',
-    border: 'border-sport-orange/30',
-    text: 'text-sport-orange',
-    bar: 'bg-sport-orange',
-    width: '80%',
-    detail: '5× / semaine',
-  },
-  {
-    id: 'elite',
-    label: 'Élite',
-    emoji: '🏆',
-    desc: 'Compétiteurs et semi-pros. Planification annuelle, coaching individuel, suivi biomécanique complet.',
-    border: 'border-sport-lime/30',
-    text: 'text-sport-lime',
-    bar: 'bg-sport-lime',
-    width: '100%',
-    detail: '6 à 7× / semaine',
-  },
+// Style structurel par niveau (emoji, couleurs, largeur de barre). Les textes
+// (label, desc, detail) viennent de messages → home.intensity.levels.
+const LEVEL_STYLE = [
+  { id: 'debutant',      emoji: '🌱', border: 'border-emerald-500/30',  text: 'text-emerald-400', bar: 'bg-emerald-500',  width: '25%' },
+  { id: 'intermediaire', emoji: '⚡', border: 'border-sport-blue/30',   text: 'text-sport-blue',  bar: 'bg-sport-blue',   width: '55%' },
+  { id: 'avance',        emoji: '🔥', border: 'border-sport-orange/30', text: 'text-sport-orange', bar: 'bg-sport-orange', width: '80%' },
+  { id: 'elite',         emoji: '🏆', border: 'border-sport-lime/30',   text: 'text-sport-lime',  bar: 'bg-sport-lime',   width: '100%' },
 ]
 
+type LevelText = { label: string; desc: string; detail: string }
+
 export function IntensityLevels() {
+  const t = useTranslations('home.intensity')
+  const levels = t.raw('levels') as LevelText[]
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 })
 
   return (
@@ -61,13 +28,13 @@ export function IntensityLevels() {
       <div className="max-w-6xl mx-auto">
         <SectionHeader
           id="niveaux-title"
-          label="Niveaux"
-          title="Un programme pour chaque athlète"
-          subtitle="De débutant à élite — Xenotif® s'adapte à toi, pas l'inverse"
+          label={t('label')}
+          title={t('title')}
+          subtitle={t('subtitle')}
         />
 
         <div ref={ref} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mt-14">
-          {LEVELS.map((level, i) => (
+          {LEVEL_STYLE.map((level, i) => (
             <motion.div
               key={level.id}
               initial={{ opacity: 0, y: 24 }}
@@ -77,20 +44,20 @@ export function IntensityLevels() {
             >
               <div className="text-3xl" aria-hidden="true">{level.emoji}</div>
               <div>
-                <h3 className={`font-black text-base mb-1.5 ${level.text}`}>{level.label}</h3>
-                <p className="text-xs text-sport-gray leading-relaxed">{level.desc}</p>
+                <h3 className={`font-black text-base mb-1.5 ${level.text}`}>{levels[i].label}</h3>
+                <p className="text-xs text-sport-gray leading-relaxed">{levels[i].desc}</p>
               </div>
 
               {/* Progress bar */}
               <div>
                 <div className="flex justify-between items-center mb-1.5">
-                  <span className="text-[10px] text-sport-gray uppercase tracking-wider">Intensité</span>
+                  <span className="text-[10px] text-sport-gray uppercase tracking-wider">{t('intensityLabel')}</span>
                   <span className={`text-[10px] font-bold ${level.text}`}>{level.width}</span>
                 </div>
                 <div
                   className="h-1.5 bg-sport-border rounded-full overflow-hidden"
                   role="progressbar"
-                  aria-label={`Intensité ${level.label}`}
+                  aria-label={`${t('intensityLabel')} ${levels[i].label}`}
                   aria-valuenow={parseInt(level.width.replace('%', ''), 10)}
                   aria-valuemin={0}
                   aria-valuemax={100}
@@ -104,7 +71,7 @@ export function IntensityLevels() {
                 </div>
               </div>
 
-              <p className={`text-[11px] font-bold ${level.text}`}>{level.detail}</p>
+              <p className={`text-[11px] font-bold ${level.text}`}>{levels[i].detail}</p>
             </motion.div>
           ))}
         </div>
@@ -116,7 +83,7 @@ export function IntensityLevels() {
           className="text-center mt-10"
         >
           <Link href="/#tarifs" className="text-sm text-sport-orange hover:underline inline-flex items-center gap-1 font-bold">
-            Voir les tarifs <ArrowRight size={13} aria-hidden="true" />
+            {t('seePricing')} <ArrowRight size={13} aria-hidden="true" />
           </Link>
         </motion.div>
       </div>

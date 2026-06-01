@@ -2,14 +2,17 @@
 
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
+import { useTranslations } from 'next-intl'
 import { useInView } from 'react-intersection-observer'
 import { Users, BookOpen, Layers, Star } from 'lucide-react'
 
-const STATS = [
-  { Icon: Users,    end: 12000, suffix: '+', label: 'Athlètes actifs',  sublabel: 'dans le monde entier', color: 'text-sport-orange', bg: 'bg-sport-orange/10 border-sport-orange/20' },
-  { Icon: BookOpen, end: 50,    suffix: '+', label: 'Programmes',       sublabel: 'tous niveaux',         color: 'text-sport-blue',   bg: 'bg-sport-blue/10 border-sport-blue/20' },
-  { Icon: Layers,   end: 10,    suffix: '',  label: 'Disciplines',      sublabel: 'sport complet',        color: 'text-sport-lime',   bg: 'bg-sport-lime/10 border-sport-lime/20' },
-  { Icon: Star,     end: 49,    suffix: '/5',label: 'Satisfaction',     sublabel: '3 200+ avis vérifiés', color: 'text-sport-orange', bg: 'bg-sport-orange/10 border-sport-orange/20', decimal: true },
+// Données structurelles des stats (icône, valeur, couleurs). Les libellés
+// (label, sublabel) viennent de messages → home.proof.stats.
+const STAT_STYLE = [
+  { Icon: Users,    end: 12000, suffix: '+',  color: 'text-sport-orange', bg: 'bg-sport-orange/10 border-sport-orange/20' },
+  { Icon: BookOpen, end: 50,    suffix: '+',  color: 'text-sport-blue',   bg: 'bg-sport-blue/10 border-sport-blue/20' },
+  { Icon: Layers,   end: 10,    suffix: '',   color: 'text-sport-lime',   bg: 'bg-sport-lime/10 border-sport-lime/20' },
+  { Icon: Star,     end: 49,    suffix: '/5', color: 'text-sport-orange', bg: 'bg-sport-orange/10 border-sport-orange/20', decimal: true },
 ]
 
 function Counter({ end, suffix, decimal, active }: { end: number; suffix: string; decimal?: boolean; active: boolean }) {
@@ -39,18 +42,20 @@ function Counter({ end, suffix, decimal, active }: { end: number; suffix: string
 }
 
 export function ProofBar() {
+  const t = useTranslations('home.proof')
+  const labels = t.raw('stats') as { label: string; sublabel: string }[]
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.15 })
 
   return (
-    <section aria-label="Chiffres clés" className="bg-sport-card border-y border-sport-border py-14 px-6 relative overflow-hidden">
+    <section aria-label={t('aria')} className="bg-sport-card border-y border-sport-border py-14 px-6 relative overflow-hidden">
       {/* subtle grid pattern */}
       <div aria-hidden="true" className="absolute inset-0 opacity-[0.03]" style={{backgroundImage: 'linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)', backgroundSize: '40px 40px'}} />
 
       <div className="max-w-6xl mx-auto relative" ref={ref}>
         <dl className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4">
-          {STATS.map((stat, i) => (
+          {STAT_STYLE.map((stat, i) => (
             <motion.div
-              key={stat.label}
+              key={labels[i].label}
               initial={{ opacity: 0, y: 24 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: i * 0.1, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
@@ -65,8 +70,8 @@ export function ProofBar() {
               <dt className={`text-4xl font-black ${stat.color} tabular-nums`}>
                 <Counter end={stat.end} suffix={stat.suffix} decimal={stat.decimal} active={inView} />
               </dt>
-              <dd className="text-xs font-bold text-white uppercase tracking-widest mt-1">{stat.label}</dd>
-              <span className="text-[11px] text-sport-gray">{stat.sublabel}</span>
+              <dd className="text-xs font-bold text-white uppercase tracking-widest mt-1">{labels[i].label}</dd>
+              <span className="text-[11px] text-sport-gray">{labels[i].sublabel}</span>
             </motion.div>
           ))}
         </dl>

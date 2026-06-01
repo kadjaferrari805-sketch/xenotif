@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { useTranslations } from 'next-intl'
 import { useInView } from 'react-intersection-observer'
 import { Star, Quote, CheckCircle, TrendingUp } from 'lucide-react'
 import { SectionHeader } from '@/components/ui/SectionHeader'
@@ -12,14 +13,20 @@ const AVATAR_BG: Record<string, string> = {
   lime:   'bg-gradient-to-br from-sport-lime to-lime-400 text-[#0A0B0F]',
 }
 
-const RESULTS = ['+18 min de PR marathon', '-12 kg en 4 mois', 'Ironman terminé']
 const BORDER_HOVER: Record<string, string> = {
   orange: 'hover:border-sport-orange/40',
   blue:   'hover:border-sport-blue/40',
   lime:   'hover:border-sport-lime/30',
 }
 
+type ReviewText = { sport: string; date: string; text: string }
+type SummaryStat = { value: string; label: string }
+
 export function Reviews() {
+  const t = useTranslations('home.reviews')
+  const items = t.raw('items') as ReviewText[]
+  const results = t.raw('results') as string[]
+  const summaryStats = t.raw('summary.stats') as SummaryStat[]
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 })
 
   return (
@@ -27,9 +34,9 @@ export function Reviews() {
       <div className="max-w-6xl mx-auto">
         <SectionHeader
           id="avis-title"
-          label="Témoignages"
-          title="Ils ont transformé leur corps"
-          subtitle="Des milliers d'athlètes font confiance à Xenotif® pour atteindre leurs objectifs"
+          label={t('label')}
+          title={t('title')}
+          subtitle={t('subtitle')}
         />
 
         <div ref={ref} className="grid grid-cols-1 md:grid-cols-3 gap-5 mt-14">
@@ -42,7 +49,7 @@ export function Reviews() {
               className={`card-base p-6 flex flex-col transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl ${BORDER_HOVER[review.color] ?? ''}`}
             >
               {/* Stars */}
-              <div className="flex gap-0.5 mb-4" aria-label={`Note : ${review.rating} étoiles sur 5`}>
+              <div className="flex gap-0.5 mb-4" aria-label={t('ratingAria', { rating: review.rating })}>
                 {Array.from({ length: review.rating }).map((_, j) => (
                   <Star key={j} size={13} aria-hidden="true" className="fill-sport-orange text-sport-orange" />
                 ))}
@@ -51,14 +58,14 @@ export function Reviews() {
               {/* Result badge */}
               <div className="inline-flex items-center gap-1.5 bg-emerald-500/10 border border-emerald-500/25 text-emerald-400 text-[10px] font-bold px-2.5 py-1 rounded-full mb-4 w-fit">
                 <TrendingUp size={10} aria-hidden="true" />
-                {RESULTS[i]}
+                {results[i]}
               </div>
 
               {/* Quote */}
               <Quote size={22} aria-hidden="true" className="text-sport-orange/20 mb-3 shrink-0" />
 
               <blockquote className="text-sm text-sport-gray leading-relaxed flex-1 mb-6">
-                {review.text}
+                {items[i].text}
               </blockquote>
 
               {/* Author */}
@@ -72,12 +79,12 @@ export function Reviews() {
 
                 <div className="min-w-0 flex-1">
                   <p className="text-sm font-bold text-white leading-tight">{review.name}</p>
-                  <p className="text-[10px] text-sport-gray mt-0.5">{review.sport}</p>
+                  <p className="text-[10px] text-sport-gray mt-0.5">{items[i].sport}</p>
                 </div>
 
                 <div className="flex items-center gap-1 text-[10px] text-emerald-400 font-bold shrink-0">
                   <CheckCircle size={11} aria-hidden="true" />
-                  Vérifié
+                  {t('verified')}
                 </div>
               </footer>
             </motion.article>
@@ -98,19 +105,15 @@ export function Reviews() {
               ))}
             </div>
             <p className="text-sm text-sport-gray">
-              <strong className="text-white text-base">4.9 / 5</strong>{' '}
-              basé sur <strong className="text-white">3 200+</strong> avis vérifiés
+              <strong className="text-white text-base">{t('summary.rating')}</strong>{' '}
+              {t('summary.basedOn')} <strong className="text-white">{t('summary.count')}</strong> {t('summary.reviews')}
             </p>
           </div>
 
           <div className="hidden sm:block w-px h-10 bg-sport-border" aria-hidden="true" />
 
           <div className="flex gap-6 text-center">
-            {[
-              { value: '97%', label: 'Satisfaits' },
-              { value: '4.2×', label: 'Plus rapide' },
-              { value: '30j', label: 'Premiers résultats' },
-            ].map(({ value, label }) => (
+            {summaryStats.map(({ value, label }) => (
               <div key={label}>
                 <p className="text-lg font-black text-white">{value}</p>
                 <p className="text-[10px] text-sport-gray uppercase tracking-wider">{label}</p>

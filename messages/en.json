@@ -42,8 +42,256 @@
   },
   "home": {
     "metaTitle": "Xenotif® — Forge your body. Push your limits.",
-    "metaDescription": "The premium fitness platform — 10 disciplines, personalized AI coaching, 300+ workouts. Join 12,000+ athletes transforming their bodies with Xenotif®."
+    "metaDescription": "The premium fitness platform — 10 disciplines, personalized AI coaching, 300+ workouts. Join 12,000+ athletes transforming their bodies with Xenotif®.",
+    "hero": {
+      "eyebrow": "The Premium Sports Platform",
+      "ctaPrimary": "Join for free",
+      "ctaSecondary": "Explore the disciplines",
+      "scroll": "Scroll",
+      "slides": [
+        { "tag": "🏋️ Strength & Power", "headline": "FORGE YOUR BODY.", "accent": "PUSH YOUR LIMITS." },
+        { "tag": "🏃 Running & Cardio", "headline": "RUN FASTER.", "accent": "BURN HARDER." },
+        { "tag": "⚡ HIIT & CrossFit", "headline": "BREAK YOUR LIMITS.", "accent": "BECOME UNSTOPPABLE." }
+      ],
+      "badges": [
+        { "label": "+12,000 members", "sub": "active" },
+        { "label": "AI Coaching", "sub": "included" },
+        { "label": "4.9 / 5", "sub": "3,200 reviews" },
+        { "label": "Results", "sub": "within 30 days" }
+      ],
+      "trust": [
+        { "label": "12K+ athletes", "sublabel": "active community" },
+        { "label": "AI Coaching", "sublabel": "personalized" },
+        { "label": "Unlimited access", "sublabel": "all programs" },
+        { "label": "30 days", "sublabel": "money-back guarantee" }
+      ],
+      "aria": {
+        "welcome": "Welcome to Xenotif",
+        "guarantees": "Our guarantees",
+        "carousel": "Carousel navigation",
+        "slides": "Slides",
+        "slide": "Slide {n} of {total}"
+      }
+    },
+    "marquee": {
+      "items": [
+        "Strength training",
+        "Running",
+        "HIIT",
+        "Cycling",
+        "Swimming",
+        "CrossFit",
+        "AI Coaching",
+        "12K+ Athletes",
+        "Guaranteed results",
+        "Tailored programs"
+      ]
+    },
+    "proof": {
+      "aria": "Key figures",
+      "stats": [
+        { "label": "Active athletes", "sublabel": "worldwide" },
+        { "label": "Programs", "sublabel": "all levels" },
+        { "label": "Disciplines", "sublabel": "complete training" },
+        { "label": "Satisfaction", "sublabel": "3,200+ verified reviews" }
+      ]
+    },
+    "features": {
+      "label": "Disciplines",
+      "title": "10 disciplines. 1 platform.",
+      "subtitle": "From cardio to strength — every sport, every level, every goal",
+      "discover": "Discover",
+      "discoverAria": "Discover the {name} discipline",
+      "items": [
+        { "title": "Running & Cardio", "tag": "Cardio", "description": "Running programs for every level — from 5K to marathon. Personalized plans with GPS coaching and heart-rate tracking.", "stats": ["+4,200 runners", "120+ plans", "12 weeks avg."] },
+        { "title": "Strength training", "tag": "Strength", "description": "Bulking, cutting or toning — our certified coaches build a custom program tailored to your body type.", "stats": ["+3,800 members", "90+ programs", "8 weeks avg."] },
+        { "title": "HIIT", "tag": "Fat Burn", "description": "Short, intense sessions to burn maximum calories and boost your metabolism for the long run in 20 to 30 min.", "stats": ["+2,100 members", "60+ circuits", "20-30 min / session"] },
+        { "title": "Cycling", "tag": "Endurance", "description": "Indoor and outdoor training with a power meter. From road racer to climber, a plan tailored to every profile.", "stats": ["+1,500 cyclists", "45+ plans", "16 weeks avg."] },
+        { "title": "Swimming", "tag": "Aquatic", "description": "Stroke technique, triathlon prep, open water — progress in every style with HD video drills.", "stats": ["+900 swimmers", "30+ programs", "10 weeks avg."] },
+        { "title": "CrossFit", "tag": "Functional", "description": "Daily WODs, functional movements and community challenges to push your limits every week.", "stats": ["+1,800 athletes", "365 WODs/yr", "5× / week"] },
+        { "title": "Yoga", "tag": "Wellness", "description": "Flexibility, inner strength and mindfulness — from beginner flows to advanced yoga for a balanced body and mind.", "stats": ["+2,000 practitioners", "40+ sequences", "20-60 min / session"] },
+        { "title": "Boxing", "tag": "Combat", "description": "Technique, cardio and power — from the basics to advanced combinations to transform you physically and mentally.", "stats": ["+1,200 boxers", "35+ programs", "8 weeks avg."] },
+        { "title": "Stretching", "tag": "Mobility", "description": "Mobility, flexibility and optimal recovery — guided stretching routines to prevent injuries and perform.", "stats": ["+1,600 members", "30+ routines", "10-30 min / session"] },
+        { "title": "Nutrition", "tag": "Diet", "description": "Personalized meal plans, macro tracking and nutrition strategies to reach your athletic goals.", "stats": ["+3,000 members", "50+ plans", "Daily tracking"] }
+      ]
+    },
+    "howItWorks": {
+      "label": "How it works",
+      "title": "Get started in 4 steps",
+      "subtitle": "From sign-up to your first results — simple, fast, effective",
+      "cta": "Start now",
+      "ctaNote": "Free · No commitment · No credit card",
+      "steps": [
+        { "title": "Create your account", "description": "Sign up in 2 minutes. Fill in your sports profile for personalized tracking from day one." },
+        { "title": "Choose your program", "description": "Our AI analyzes your level, your goals and your available time to recommend the ideal program." },
+        { "title": "Train", "description": "Follow your guided sessions with audio coaching, HD videos and real-time feedback on your technique." },
+        { "title": "Track your progress", "description": "Complete dashboard, advanced statistics and celebration of every goal achieved." }
+      ]
+    },
+    "intensity": {
+      "label": "Levels",
+      "title": "A program for every athlete",
+      "subtitle": "From beginner to elite — Xenotif® adapts to you, not the other way around",
+      "intensityLabel": "Intensity",
+      "seePricing": "See pricing",
+      "levels": [
+        { "label": "Beginner", "desc": "For those starting out or getting back into sport. Short, progressive sessions that are never discouraging.", "detail": "From 20 min / session" },
+        { "label": "Intermediate", "desc": "6 months of regular practice. Progressive load increase, new personal records every month.", "detail": "3 to 4× / week" },
+        { "label": "Advanced", "desc": "Seasoned athletes. Periodized programs, high intensity, optimized recovery.", "detail": "5× / week" },
+        { "label": "Elite", "desc": "Competitors and semi-pros. Yearly planning, one-on-one coaching, full biomechanical tracking.", "detail": "6 to 7× / week" }
+      ]
+    },
+    "pricing": {
+      "label": "Pricing",
+      "title": "Simple. Transparent. No surprises.",
+      "subtitle": "7-day free trial on all paid plans — no credit card required",
+      "monthly": "Monthly",
+      "annual": "Annual",
+      "save": "-20%",
+      "billed": "Billed <b>{total}/year</b>",
+      "freeTrialNote": "✓ 7 days free · No commitment",
+      "subscribeAria": "Subscribe to the {name} plan",
+      "featuresAria": "{name} plan features",
+      "footnote": "No commitment · Cancel anytime in 1 click",
+      "plans": [
+        { "name": "Free", "period": "forever", "badge": "", "description": "Discover Xenotif® and start your transformation risk-free.", "cta": "Start for free", "features": ["3 starter programs", "Basic session tracking", "Community access", "Free weekly WOD"] },
+        { "name": "Pro", "period": "per month", "badge": "Most popular", "description": "Unlimited access to all programs and personalized AI coaching.", "cta": "7-day free trial", "features": ["All programs unlimited", "Personalized AI coaching", "Advanced stats & tracking", "High-quality HD videos", "Priority support 7/7", "Community challenges"] },
+        { "name": "Elite", "period": "per month", "badge": "", "description": "One-on-one coaching and personalized tracking by a certified expert.", "cta": "Talk to a coach", "features": ["Everything in Pro included", "Dedicated personal coach", "Monthly 1-on-1 video review", "Custom nutrition plan", "Video biomechanical analysis", "Early access to new features"] }
+      ]
+    },
+    "reviews": {
+      "label": "Testimonials",
+      "title": "They transformed their bodies",
+      "subtitle": "Thousands of athletes trust Xenotif® to reach their goals",
+      "verified": "Verified",
+      "ratingAria": "Rating: {rating} out of 5 stars",
+      "results": ["+18 min marathon PR", "-12 kg in 4 months", "Ironman finished"],
+      "items": [
+        { "sport": "Running · Marathon", "date": "2 days ago", "text": "\"In 3 months on the Xenotif® program, I beat my marathon record by 18 minutes. The AI coaching is stunning — every session is perfectly calibrated to my level.\"" },
+        { "sport": "HIIT · Strength", "date": "5 days ago", "text": "\"I lost 12 kg in 4 months while getting stronger. The HIIT + strength sessions are perfectly balanced. The Xenotif® community motivates me every morning.\"" },
+        { "sport": "CrossFit · Swimming", "date": "1 week ago", "text": "\"Triathlon prep with Xenotif® — incredible result. I finished my first Ironman thanks to this platform. Thank you Xenotif®!\"" }
+      ],
+      "summary": {
+        "rating": "4.9 / 5",
+        "basedOn": "based on",
+        "count": "3,200+",
+        "reviews": "verified reviews",
+        "stats": [
+          { "value": "97%", "label": "Satisfied" },
+          { "value": "4.2×", "label": "Faster" },
+          { "value": "30d", "label": "First results" }
+        ]
+      }
+    },
+    "newsletter": {
+      "eyebrow": "Join the community",
+      "titleTop": "READY TO PUSH",
+      "titleBottom": "YOUR LIMITS?",
+      "desc": "Join <b>12,000+ athletes</b> who get every week: workout programs, nutrition advice, training tips and exclusive WODs.",
+      "perks": [
+        "Free programs every week",
+        "WODs & community challenges",
+        "Nutrition & recovery tips"
+      ],
+      "perksAria": "Sign-up benefits",
+      "formAria": "Newsletter sign-up form",
+      "emailLabel": "Email address",
+      "placeholder": "your@email.com",
+      "submit": "Subscribe",
+      "sending": "Sending…",
+      "successTitle": "Welcome to the community!",
+      "successText": "Check your inbox — a confirmation email has been sent to you.",
+      "errorInvalid": "Invalid email address",
+      "errorGeneric": "Something went wrong.",
+      "errorNetwork": "Connection failed. Please try again in a few moments.",
+      "privacyNote": "No spam · Unsubscribe in 1 click · Data protected (GDPR)"
+    },
+    "faq": {
+      "label": "FAQ",
+      "title": "Frequently asked questions",
+      "subtitle": "Everything you need to know before getting started",
+      "moreQuestions": "More questions?",
+      "items": [
+        { "q": "Is Xenotif® suitable for beginners?", "a": "Absolutely. Xenotif® offers programs for every level, from complete beginner to seasoned athlete. Our AI tailors every program to your profile from sign-up — level, goals, availability." },
+        { "q": "Can I cancel my subscription anytime?", "a": "Yes, with no conditions or hidden fees. You can cancel from your member area in 2 clicks. Access stays active until the end of the paid period." },
+        { "q": "How does the AI coaching work?", "a": "Our AI analyzes your profile (level, goals, available time, any injuries) and generates a custom program. It adapts every week based on your feedback and performance." },
+        { "q": "Do I need any specific equipment?", "a": "No. Xenotif® offers sessions adapted to any equipment — at the gym, at home, or outdoors. When choosing your program, you indicate what you have available." },
+        { "q": "What does the money-back guarantee cover?", "a": "If you're not satisfied within the first 30 days, we refund you in full — no questions asked. Just contact us at contact@xenotif.com." },
+        { "q": "Do the programs work on mobile?", "a": "Yes. Xenotif® is fully responsive and accessible on smartphone, tablet and computer. Your sessions follow you everywhere, even offline (offline mode available on the Pro plan)." }
+      ]
+    }
   },
-  "faq": {},
-  "auth": {}
+  "auth": {
+    "signin": {
+      "title": "Sign in",
+      "subtitle": "Access your member area",
+      "emailLabel": "Email",
+      "passwordLabel": "Password",
+      "show": "Show",
+      "hide": "Hide",
+      "submit": "Sign in",
+      "submitting": "Signing in…",
+      "forgot": "Forgot password?",
+      "noAccount": "No account yet?",
+      "createAccount": "Create an account →",
+      "secure": "Secure SSL connection — Your data is protected",
+      "errorInvalid": "Incorrect email or password."
+    },
+    "signup": {
+      "title": "Create your account",
+      "subtitle": "Choose your plan, then complete your sign-up",
+      "fullNameLabel": "First & Last name",
+      "fullNamePlaceholder": "John Doe",
+      "emailLabel": "Email",
+      "passwordLabel": "Password",
+      "passwordPlaceholder": "8 characters minimum",
+      "show": "Show",
+      "hide": "Hide",
+      "submitFree": "Create my free account",
+      "submitPaid": "Continue to payment",
+      "creating": "Creating account…",
+      "legalPrefix": "By creating an account, you agree to our",
+      "legalNotice": "legal notice",
+      "legalAnd": "and our",
+      "privacyPolicy": "privacy policy",
+      "haveAccount": "Already have an account?",
+      "signinLink": "Sign in →",
+      "secure": "Secure SSL sign-up · No commitment · Cancel anytime",
+      "doneTitle": "Check your email!",
+      "doneText": "A confirmation link has been sent to {email}.",
+      "doneCta": "Click it to activate your account.",
+      "backToSignin": "Back to sign in →",
+      "errorShortPassword": "Password must be at least 8 characters.",
+      "errorAlreadyUsed": "This email is already in use. Please sign in.",
+      "errorCheckout": "Error while redirecting to payment.",
+      "plans": [
+        { "name": "Free", "period": "forever", "badge": "", "features": ["3 programs", "Basic tracking", "Community"] },
+        { "name": "Pro", "period": "/month", "badge": "7 days free", "features": ["All programs", "AI Coaching", "Advanced stats"] },
+        { "name": "Elite", "period": "/month", "badge": "7 days free", "features": ["Pro plan included", "Dedicated coach", "Monthly review"] }
+      ]
+    },
+    "forgot": {
+      "back": "Back",
+      "title": "Forgot password",
+      "subtitle": "Enter your email to receive a reset link.",
+      "emailLabel": "Email",
+      "submit": "Send the link",
+      "submitting": "Sending…",
+      "doneTitle": "Email sent!",
+      "doneText": "A reset link has been sent to {email}.",
+      "doneHint": "Check your spam if you don't see anything within 2 minutes.",
+      "backToSignin": "Back to sign in →"
+    },
+    "reset": {
+      "title": "New password",
+      "subtitle": "Choose a secure password.",
+      "passwordLabel": "New password",
+      "passwordPlaceholder": "8 characters minimum",
+      "submit": "Update",
+      "submitting": "Updating…",
+      "errorShort": "8 characters minimum.",
+      "doneTitle": "Password updated!",
+      "doneText": "Redirecting to your dashboard…"
+    }
+  }
 }

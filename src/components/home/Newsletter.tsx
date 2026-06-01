@@ -2,15 +2,14 @@
 
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { useTranslations } from 'next-intl'
 import { ArrowRight, Zap, CheckCircle, Shield, Bell } from 'lucide-react'
 
-const PERKS = [
-  { Icon: Bell, text: 'Programmes gratuits chaque semaine' },
-  { Icon: Zap, text: 'WODs & défis communautaires' },
-  { Icon: Shield, text: 'Conseils nutrition & récupération' },
-]
+const PERK_ICONS = [Bell, Zap, Shield]
 
 export function Newsletter() {
+  const t = useTranslations('home.newsletter')
+  const perks = t.raw('perks') as string[]
   const [email, setEmail] = useState('')
   const [submitted, setSubmitted] = useState(false)
   const [error, setError] = useState('')
@@ -19,7 +18,7 @@ export function Newsletter() {
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
     if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      setError('Adresse email invalide')
+      setError(t('errorInvalid'))
       return
     }
     setError('')
@@ -32,12 +31,12 @@ export function Newsletter() {
       })
       const data = await res.json()
       if (!res.ok) {
-        setError(data.error ?? 'Une erreur est survenue.')
+        setError(data.error ?? t('errorGeneric'))
       } else {
         setSubmitted(true)
       }
     } catch {
-      setError('Connexion impossible. Réessaie dans quelques instants.')
+      setError(t('errorNetwork'))
     } finally {
       setLoading(false)
     }
@@ -52,26 +51,25 @@ export function Newsletter() {
       <div className="relative max-w-2xl mx-auto text-center">
         <span className="inline-flex items-center gap-2 border border-sport-orange/30 bg-sport-orange/10 text-sport-orange text-[11px] font-bold tracking-[2px] uppercase px-4 py-2 rounded-full mb-6">
           <Zap size={11} aria-hidden="true" />
-          Rejoins la communauté
+          {t('eyebrow')}
         </span>
 
         <h2 id="newsletter-title" className="text-4xl md:text-5xl font-black text-white mb-4 leading-tight">
-          PRÊT À DÉPASSER
+          {t('titleTop')}
           <br />
-          <span className="text-sport-orange">TES LIMITES ?</span>
+          <span className="text-sport-orange">{t('titleBottom')}</span>
         </h2>
 
         <p className="text-sport-gray mb-8 text-sm leading-relaxed max-w-md mx-auto">
-          Rejoins <strong className="text-white">12 000+ athlètes</strong> qui reçoivent chaque semaine :
-          programmes, conseils nutrition, tips d&apos;entraînement et WODs exclusifs.
+          {t.rich('desc', { b: (c) => <strong className="text-white">{c}</strong> })}
         </p>
 
         {/* Perks list */}
-        <ul className="flex flex-col sm:flex-row gap-4 justify-center mb-10" aria-label="Avantages de l'inscription">
-          {PERKS.map(({ Icon, text }) => (
-            <li key={text} className="flex items-center gap-2 text-xs text-sport-gray">
+        <ul className="flex flex-col sm:flex-row gap-4 justify-center mb-10" aria-label={t('perksAria')}>
+          {PERK_ICONS.map((Icon, i) => (
+            <li key={perks[i]} className="flex items-center gap-2 text-xs text-sport-gray">
               <Icon size={13} aria-hidden="true" className="text-sport-orange shrink-0" />
-              {text}
+              {perks[i]}
             </li>
           ))}
         </ul>
@@ -92,8 +90,8 @@ export function Newsletter() {
                 <CheckCircle size={32} className="text-sport-orange" aria-hidden="true" />
               </div>
               <div>
-                <p className="text-white font-black text-xl mb-1">Bienvenue dans la communauté !</p>
-                <p className="text-sport-gray text-sm">Vérifie ta boîte mail — un email de confirmation t&apos;a été envoyé.</p>
+                <p className="text-white font-black text-xl mb-1">{t('successTitle')}</p>
+                <p className="text-sport-gray text-sm">{t('successText')}</p>
               </div>
             </motion.div>
           ) : (
@@ -103,19 +101,19 @@ export function Newsletter() {
               animate={{ opacity: 1 }}
               onSubmit={handleSubmit}
               noValidate
-              aria-label="Formulaire d'inscription à la newsletter"
+              aria-label={t('formAria')}
               className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto"
             >
               <div className="flex-1">
                 <label htmlFor="newsletter-email" className="sr-only">
-                  Adresse email
+                  {t('emailLabel')}
                 </label>
                 <input
                   id="newsletter-email"
                   type="email"
                   value={email}
                   onChange={(e) => { setEmail(e.target.value); if (error) setError('') }}
-                  placeholder="ton@email.com"
+                  placeholder={t('placeholder')}
                   autoComplete="email"
                   aria-required="true"
                   aria-describedby={error ? 'newsletter-error' : undefined}
@@ -130,7 +128,7 @@ export function Newsletter() {
                 disabled={loading}
                 className="bg-sport-orange text-white px-6 py-3.5 rounded-full font-bold text-sm hover:bg-orange-600 active:scale-95 transition-all flex items-center gap-2 justify-center whitespace-nowrap disabled:opacity-60 disabled:cursor-not-allowed"
               >
-                {loading ? 'Envoi…' : <> S&apos;abonner <ArrowRight size={14} aria-hidden="true" /></>}
+                {loading ? t('sending') : <> {t('submit')} <ArrowRight size={14} aria-hidden="true" /></>}
               </button>
             </motion.form>
           )}
@@ -150,7 +148,7 @@ export function Newsletter() {
 
         {!submitted && (
           <p className="text-[11px] text-sport-gray mt-4">
-            Sans spam · Désabonnement en 1 clic · Données protégées (RGPD)
+            {t('privacyNote')}
           </p>
         )}
       </div>

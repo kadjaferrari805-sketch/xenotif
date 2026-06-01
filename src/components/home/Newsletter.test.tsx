@@ -1,14 +1,15 @@
-import { render, screen } from '@testing-library/react'
+import { screen } from '@testing-library/react'
+import { renderWithIntl } from '@/test/intl'
 import { Newsletter } from './Newsletter'
 
 describe('Newsletter', () => {
   it('renders email input', () => {
-    render(<Newsletter />)
+    renderWithIntl(<Newsletter />)
     expect(screen.getByRole('textbox', { name: /email/i })).toBeInTheDocument()
   })
 
   it('renders subscribe button', () => {
-    render(<Newsletter />)
+    renderWithIntl(<Newsletter />)
     expect(screen.getByRole('button', { name: /abonne/i })).toBeInTheDocument()
   })
 })
