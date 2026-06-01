@@ -1,7 +1,7 @@
 'use client'
 
 import { Suspense, useState, useEffect } from 'react'
-import { useTranslations } from 'next-intl'
+import { useTranslations, useLocale } from 'next-intl'
 import { useSearchParams } from 'next/navigation'
 import { Link, useRouter } from '@/i18n/navigation'
 import { ArrowRight, CheckCircle, Zap, Eye, EyeOff } from 'lucide-react'
@@ -23,6 +23,7 @@ const INPUT = 'w-full bg-sport-dark border border-sport-border rounded-xl px-4 p
 
 function SignUpForm() {
   const t = useTranslations('auth.signup')
+  const locale = useLocale()
   const plans = t.raw('plans') as PlanText[]
   const router = useRouter()
   const searchParams = useSearchParams()
@@ -80,7 +81,7 @@ function SignUpForm() {
       const res = await fetch('/api/checkout', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ plan: selectedPlan, period: 'monthly' }),
+        body: JSON.stringify({ plan: selectedPlan, period: 'monthly', locale }),
       })
       const data = await res.json()
       if (data.url) { window.location.href = data.url; return }

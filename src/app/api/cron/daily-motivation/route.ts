@@ -32,10 +32,13 @@ export async function GET(request: Request) {
   // Prénom (optionnel) depuis profiles
   const { data: profiles } = await supabase
     .from('profiles')
-    .select('id, full_name')
+    .select('id, full_name, locale')
     .in('id', userIds)
   const nameById = new Map<string, string | null>(
     (profiles ?? []).map((p: { id: string; full_name: string | null }) => [p.id, p.full_name])
+  )
+  const localeById = new Map<string, string>(
+    (profiles ?? []).map((p: { id: string; locale: string | null }) => [p.id, p.locale ?? 'fr'])
   )
 
   // Email depuis auth.users (source de vérité — toujours présent, contrairement à profiles.email)
@@ -60,7 +63,7 @@ export async function GET(request: Request) {
     const email = emailById.get(userId)
     if (!email) continue
     try {
-      await sendDailyMotivationEmail({ email, name: nameById.get(userId) ?? '' })
+      await sendDailyMotivationEmail({ email, name: nameById.get(userId) ?? '', locale: localeById.get(userId) ?? 'fr' })
       sent++
     } catch (e) {
       errors.push(`${email}: ${e}`)

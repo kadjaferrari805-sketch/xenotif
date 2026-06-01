@@ -26,7 +26,8 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Configuration serveur manquante.' }, { status: 500 })
     }
 
-    const { plan, period = 'monthly' } = await req.json() as { plan: string; period?: string }
+    const { plan, period = 'monthly', locale: rawLocale } = await req.json() as { plan: string; period?: string; locale?: string }
+    const locale = rawLocale === 'en' ? 'en' : 'fr'
 
     if (!plan || !(plan in PLAN_CONFIG)) {
       return NextResponse.json({ error: 'Plan invalide.' }, { status: 400 })
@@ -43,7 +44,7 @@ export async function POST(req: NextRequest) {
 
     const session = await stripe.checkout.sessions.create({
       mode: 'subscription',
-      locale: 'fr',
+      locale,
       // Méthodes de paiement automatiques (carte, Apple Pay, Google Pay…)
       line_items: priceId
         ? [{ price: priceId, quantity: 1 }]
@@ -62,9 +63,9 @@ export async function POST(req: NextRequest) {
       allow_promotion_codes: true,
       subscription_data: {
         trial_period_days: 7,
-        metadata: { plan, period },
+        metadata: { plan, period, locale },
       },
-      metadata: { plan, period },
+      metadata: { plan, period, locale },
       success_url: `${baseUrl}/success?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${baseUrl}/#tarifs`,
     })

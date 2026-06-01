@@ -1,7 +1,7 @@
 'use client'
 import { Link } from '@/i18n/navigation'
 import Image from 'next/image'
-import { useTranslations } from 'next-intl'
+import { useTranslations, useLocale } from 'next-intl'
 import { Minus, Plus, Trash2, ArrowRight, ShoppingBag, ExternalLink, Lock } from 'lucide-react'
 import { useCart } from '@/lib/boutique/cart'
 import { formatPrice } from '@/lib/boutique/products'
@@ -9,6 +9,7 @@ import { useState } from 'react'
 
 export default function PanierPage() {
   const t = useTranslations('boutique.panier')
+  const locale = useLocale()
   const { items, count, total, removeItem, updateQty } = useCart()
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
@@ -29,6 +30,7 @@ export default function PanierPage() {
         body: JSON.stringify({
           email,
           items: ownItems.map(i => ({ product_id: i.product.id, quantity: i.quantity })),
+          locale,
         }),
       })
     } catch { /* silencieux — ne bloque jamais l'achat */ }
@@ -45,6 +47,7 @@ export default function PanierPage() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           items: ownItems.map(i => ({ product_id: i.product.id, quantity: i.quantity })),
+          locale,
         }),
       })
       const data = await res.json() as { url?: string; error?: string }

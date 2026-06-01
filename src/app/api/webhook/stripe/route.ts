@@ -77,6 +77,7 @@ export async function POST(req: NextRequest) {
                 name: buyerName,
                 sessionId: session.id,
                 items: products.map(p => ({ id: p.id, name: p.name })),
+                locale: session.metadata?.locale,
               })
             } else if (insertErr.code !== '23505') {
               console.error('orders insert error:', insertErr)
@@ -92,6 +93,7 @@ export async function POST(req: NextRequest) {
         const customerEmail = session.customer_details?.email ?? session.customer_email
         const customerName = session.customer_details?.name ?? ''
         const plan = session.metadata?.plan ?? 'pro'
+        const locale = session.metadata?.locale ?? 'fr'
 
         const sub = await stripe.subscriptions.retrieve(subscriptionId)
         const trialEnd = sub.trial_end ? new Date(sub.trial_end * 1000).toISOString() : null
@@ -122,6 +124,7 @@ export async function POST(req: NextRequest) {
           await service.from('profiles').upsert({
             id: userId,
             full_name: customerName,
+            locale,
           }, { onConflict: 'id' })
 
           const { data: linkData } = await service.auth.admin.generateLink({
@@ -134,6 +137,7 @@ export async function POST(req: NextRequest) {
             name: customerName,
             plan,
             setupLink: linkData?.properties?.action_link ?? `${process.env.NEXT_PUBLIC_URL}/auth/signin`,
+            locale,
           })
         }
 
@@ -177,7 +181,7 @@ export async function POST(req: NextRequest) {
           if (daysLeft === 3) {
             const { data: profile } = await service
               .from('profiles')
-              .select('full_name')
+              .select('full_name, locale')
               .eq('id', existing.user_id)
               .single()
             const { data: userData } = await service.auth.admin.getUserById(existing.user_id)
@@ -186,6 +190,7 @@ export async function POST(req: NextRequest) {
                 email: userData.user.email,
                 name: profile?.full_name ?? '',
                 daysLeft,
+                locale: sub.metadata?.locale ?? profile?.locale ?? 'fr',
               })
             }
           }
@@ -210,7 +215,7 @@ export async function POST(req: NextRequest) {
         if (existing) {
           const { data: profile } = await service
             .from('profiles')
-            .select('full_name')
+            .select('full_name, locale')
             .eq('id', existing.user_id)
             .single()
           const { data: userData } = await service.auth.admin.getUserById(existing.user_id)
@@ -218,6 +223,7 @@ export async function POST(req: NextRequest) {
             await sendCancellationEmail({
               email: userData.user.email,
               name: profile?.full_name ?? '',
+              locale: sub.metadata?.locale ?? profile?.locale ?? 'fr',
             })
           }
         }

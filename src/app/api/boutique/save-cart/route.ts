@@ -8,10 +8,12 @@ const VALID_IDS = new Set(PRODUCTS.map(p => p.id))
 
 export async function POST(req: NextRequest) {
   try {
-    const { email, items } = await req.json() as {
+    const { email, items, locale: rawLocale } = await req.json() as {
       email: string
       items: { product_id: string; quantity: number }[]
+      locale?: string
     }
+    const locale = rawLocale === 'en' ? 'en' : 'fr'
 
     if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       return NextResponse.json({ error: 'Email invalide' }, { status: 400 })
@@ -32,6 +34,7 @@ export async function POST(req: NextRequest) {
       items: validItems,
       reminder_sent: false,
       recovered: false,
+      locale,
       updated_at: new Date().toISOString(),
     }, { onConflict: 'email' })
 
