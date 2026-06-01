@@ -2,48 +2,45 @@
   "common": {
     "nav": {
       "disciplines": "Disciplines",
-      "programmes": "Programmes",
-      "boutique": "🛒 Boutique",
+      "programmes": "Programs",
+      "boutique": "🛒 Shop",
       "blog": "📝 Blog",
-      "tarifs": "Tarifs",
+      "tarifs": "Pricing",
       "faq": "FAQ",
-      "connexion": "Connexion",
-      "rejoindre": "Rejoindre",
-      "monEspace": "Mon espace",
-      "ouvrirMenu": "Ouvrir le menu de navigation",
-      "fermerMenu": "Fermer le menu"
+      "connexion": "Sign in",
+      "rejoindre": "Join",
+      "monEspace": "My space",
+      "ouvrirMenu": "Open navigation menu",
+      "fermerMenu": "Close menu"
     },
     "footer": {
-      "tagline": "La plateforme sport ultime pour athlètes de tous niveaux. Performance, coaching IA et communauté au service de tes objectifs.",
+      "tagline": "The ultimate sports platform for athletes of all levels. Performance, AI coaching and community to serve your goals.",
       "disciplines": "Disciplines",
-      "programmes": "Programmes",
-      "informations": "Informations",
-      "copyright": "© 2026 Xenotif® — Tous droits réservés",
-      "baseline": "Conçu pour les athlètes · Propulsé par l'IA",
+      "programmes": "Programs",
+      "informations": "Information",
+      "copyright": "© 2026 Xenotif® — All rights reserved",
+      "baseline": "Built for athletes · Powered by AI",
       "links": {
-        "mentionsLegales": "Mentions légales",
-        "confidentialite": "Confidentialité",
+        "mentionsLegales": "Legal notice",
+        "confidentialite": "Privacy",
         "contact": "Contact",
-        "debutant": "Débutant",
-        "intermediaire": "Intermédiaire",
-        "avance": "Avancé",
-        "elite": "Élite",
-        "coachingIA": "Coaching IA"
+        "debutant": "Beginner",
+        "intermediaire": "Intermediate",
+        "avance": "Advanced",
+        "elite": "Elite",
+        "coachingIA": "AI Coaching"
       }
     },
-    "skipLink": "Aller au contenu principal"
+    "skipLink": "Skip to main content"
   },
   "languages": {
     "fr": "Français",
     "en": "English",
-    "de": "Deutsch",
-    "it": "Italiano",
-    "es": "Español",
-    "switch": "Changer de langue"
+    "switch": "Change language"
   },
   "home": {
-    "metaTitle": "Xenotif® — Forge ton corps. Dépasse tes limites.",
-    "metaDescription": "La plateforme fitness premium — 10 disciplines, coaching IA personnalisé, 300+ séances. Rejoins 12 000+ athlètes qui transforment leur corps avec Xenotif®."
+    "metaTitle": "Xenotif® — Forge your body. Push your limits.",
+    "metaDescription": "The premium fitness platform — 10 disciplines, personalized AI coaching, 300+ workouts. Join 12,000+ athletes transforming their bodies with Xenotif®."
   },
   "faq": {},
   "auth": {}

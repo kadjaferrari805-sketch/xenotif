@@ -18,9 +18,6 @@ const SITE = 'https://xenotif.com'
 const LOCALE_OG: Record<string, string> = {
   fr: 'fr_FR',
   en: 'en_US',
-  de: 'de_DE',
-  it: 'it_IT',
-  es: 'es_ES',
 }
 
 export function generateStaticParams() {
