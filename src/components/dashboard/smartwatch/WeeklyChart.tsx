@@ -1,5 +1,6 @@
 'use client'
 
+import { useTranslations } from 'next-intl'
 import type { WeeklyData } from '@/lib/smartwatch/types'
 
 type Metric = 'steps' | 'calories' | 'activeMinutes'
@@ -16,19 +17,22 @@ const MAX: Record<Metric, number> = {
   activeMinutes: 90,
 }
 
-const LABELS: Record<Metric, string> = {
-  steps: 'Pas',
-  calories: 'Cal',
-  activeMinutes: 'Min actives',
-}
+// Référence FR (abrégés produits par toLocaleDateString('fr-FR')) → index Lun..Dim
+const FR_DAY_REF = ['lun', 'mar', 'mer', 'jeu', 'ven', 'sam', 'dim']
 
 export function WeeklyChart({ data, metric, color }: WeeklyChartProps) {
+  const t = useTranslations('dashboard.smartwatch')
+  const weekDays = t.raw('weekDays') as string[]
+  const dayLabel = (d: string) => {
+    const idx = FR_DAY_REF.indexOf(d.toLowerCase().slice(0, 3))
+    return idx >= 0 ? weekDays[idx] : d
+  }
   const max = MAX[metric]
   const todayIdx = new Date().getDay() === 0 ? 6 : new Date().getDay() - 1
 
   return (
     <div className="w-full">
-      <p className="text-[11px] text-sport-gray font-semibold mb-3 uppercase tracking-wider">{LABELS[metric]} cette semaine</p>
+      <p className="text-[11px] text-sport-gray font-semibold mb-3 uppercase tracking-wider">{t('chartThisWeek', { label: t(`chartFull.${metric}`) })}</p>
       <div className="flex items-end gap-2 h-20">
         {data.map((d, i) => {
           const val = d[metric] as number
@@ -50,7 +54,7 @@ export function WeeklyChart({ data, metric, color }: WeeklyChartProps) {
                 />
               </div>
               <span className={`text-[9px] font-bold ${isToday ? 'text-white' : 'text-sport-gray'}`}>
-                {d.day}
+                {dayLabel(d.day)}
               </span>
             </div>
           )

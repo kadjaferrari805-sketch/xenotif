@@ -1,7 +1,8 @@
 'use client'
 
+import { useTranslations, useLocale } from 'next-intl'
 import { Heart, Flame, MapPin, Clock } from 'lucide-react'
-import { ACTIVITY_LABELS, ACTIVITY_ICONS } from '@/lib/smartwatch/demo-data'
+import { ACTIVITY_ICONS } from '@/lib/smartwatch/demo-data'
 import type { SmartWatchSession } from '@/lib/smartwatch/types'
 
 interface SessionCardProps {
@@ -29,12 +30,15 @@ function formatPace(paceSeconds: number | null): string {
 }
 
 export function SessionCard({ session }: SessionCardProps) {
-  const label = ACTIVITY_LABELS[session.activity_type] ?? session.activity_type
+  const t = useTranslations('dashboard.smartwatch')
+  const locale = useLocale()
+  const numLocale = locale === 'en' ? 'en-US' : 'fr-FR'
+  const label = t.has(`activities.${session.activity_type}`) ? t(`activities.${session.activity_type}`) : session.activity_type
   const icon = ACTIVITY_ICONS[session.activity_type] ?? '🏅'
-  const date = new Date(session.started_at).toLocaleDateString('fr-FR', {
+  const date = new Date(session.started_at).toLocaleDateString(numLocale, {
     day: 'numeric', month: 'short',
   })
-  const time = new Date(session.started_at).toLocaleTimeString('fr-FR', {
+  const time = new Date(session.started_at).toLocaleTimeString(numLocale, {
     hour: '2-digit', minute: '2-digit',
   })
 
@@ -54,7 +58,7 @@ export function SessionCard({ session }: SessionCardProps) {
           <p className="text-sm font-black text-white">{formatDuration(session.duration_seconds)}</p>
           <div className="flex items-center gap-1 text-sport-gray justify-end">
             <Clock size={9} />
-            <span className="text-[10px]">durée</span>
+            <span className="text-[10px]">{t('session.duration')}</span>
           </div>
         </div>
       </div>
@@ -71,7 +75,7 @@ export function SessionCard({ session }: SessionCardProps) {
           <Heart size={12} className="text-red-400 shrink-0" />
           <div>
             <p className="text-xs font-black text-white">{session.avg_heart_rate ?? '—'}</p>
-            <p className="text-[9px] text-sport-gray">bpm moy.</p>
+            <p className="text-[9px] text-sport-gray">{t('session.bpmAvg')}</p>
           </div>
         </div>
         <div className="bg-sport-dark rounded-xl px-3 py-2 flex items-center gap-2">
@@ -81,7 +85,7 @@ export function SessionCard({ session }: SessionCardProps) {
               {session.distance_meters > 0 ? formatDistance(session.distance_meters) : formatPace(session.avg_pace_per_km)}
             </p>
             <p className="text-[9px] text-sport-gray">
-              {session.distance_meters > 0 ? 'distance' : 'allure'}
+              {session.distance_meters > 0 ? t('session.distance') : t('session.pace')}
             </p>
           </div>
         </div>

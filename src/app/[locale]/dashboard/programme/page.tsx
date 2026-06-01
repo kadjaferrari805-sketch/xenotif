@@ -2,23 +2,24 @@
 
 import { useState, useEffect } from 'react'
 import { useSearchParams } from 'next/navigation'
-import { CheckCircle, Circle, Play, ArrowRight, Dumbbell } from 'lucide-react'
+import { useTranslations } from 'next-intl'
+import { CheckCircle, Circle, Play, ArrowRight } from 'lucide-react'
 import { createClient } from '@/lib/supabase/client'
 import { DISCIPLINE_CONTENT } from '@/lib/disciplines'
-import Link from 'next/link'
+import { Link } from '@/i18n/navigation'
 import { Suspense } from 'react'
 
 const DISCIPLINES = [
-  { slug: 'running-cardio', label: 'Running',    color: 'orange' },
-  { slug: 'musculation',    label: 'Muscu',      color: 'blue' },
-  { slug: 'hiit',           label: 'HIIT',       color: 'lime' },
-  { slug: 'cyclisme',       label: 'Cyclisme',   color: 'orange' },
-  { slug: 'natation',       label: 'Natation',   color: 'blue' },
-  { slug: 'crossfit',       label: 'CrossFit',   color: 'lime' },
-  { slug: 'yoga',           label: 'Yoga',       color: 'orange' },
-  { slug: 'boxing',         label: 'Boxing',     color: 'blue' },
-  { slug: 'stretching',     label: 'Stretching', color: 'lime' },
-  { slug: 'nutrition',      label: 'Nutrition',  color: 'orange' },
+  { slug: 'running-cardio', color: 'orange' },
+  { slug: 'musculation',    color: 'blue' },
+  { slug: 'hiit',           color: 'lime' },
+  { slug: 'cyclisme',       color: 'orange' },
+  { slug: 'natation',       color: 'blue' },
+  { slug: 'crossfit',       color: 'lime' },
+  { slug: 'yoga',           color: 'orange' },
+  { slug: 'boxing',         color: 'blue' },
+  { slug: 'stretching',     color: 'lime' },
+  { slug: 'nutrition',      color: 'orange' },
 ]
 
 const COLOR: Record<string, string> = {
@@ -28,6 +29,7 @@ const COLOR: Record<string, string> = {
 }
 
 function ProgrammeContent() {
+  const t = useTranslations('dashboard.programme')
   const searchParams = useSearchParams()
   const initialSlug = searchParams.get('discipline') ?? 'running-cardio'
 
@@ -37,7 +39,6 @@ function ProgrammeContent() {
   const [loading, setLoading] = useState(true)
 
   const content = DISCIPLINE_CONTENT[selected]
-  const disc = DISCIPLINES.find(d => d.slug === selected)
 
   useEffect(() => {
     async function load() {
@@ -72,7 +73,7 @@ function ProgrammeContent() {
 
   return (
     <div className="p-6 md:p-8 max-w-4xl mx-auto pb-24 md:pb-8">
-      <h1 className="text-2xl font-black text-white mb-6">Mon Programme</h1>
+      <h1 className="text-2xl font-black text-white mb-6">{t('title')}</h1>
 
       {/* Discipline tabs */}
       <div className="flex gap-2 flex-wrap mb-8">
@@ -86,7 +87,7 @@ function ProgrammeContent() {
                 : 'border-sport-border text-sport-gray hover:text-white hover:border-sport-gray bg-transparent'
             }`}
           >
-            {d.label}
+            {t(`disciplines.${d.slug}`)}
           </button>
         ))}
       </div>
@@ -95,8 +96,8 @@ function ProgrammeContent() {
       <div className="bg-sport-card border border-sport-border rounded-2xl p-5 mb-8">
         <div className="flex items-center justify-between mb-3">
           <div>
-            <p className="text-sm font-black text-white">{disc?.label} — 8 semaines</p>
-            <p className="text-[11px] text-sport-gray">{completedCount}/{totalSessions} séances complétées</p>
+            <p className="text-sm font-black text-white">{t('weeks', { name: t(`disciplines.${selected}`) })}</p>
+            <p className="text-[11px] text-sport-gray">{t('sessionsCompleted', { completed: completedCount, total: totalSessions })}</p>
           </div>
           <span className="text-2xl font-black text-sport-orange">{pct}%</span>
         </div>
@@ -105,7 +106,7 @@ function ProgrammeContent() {
         </div>
         {pct === 100 && (
           <p className="text-emerald-400 text-xs font-bold mt-3 flex items-center gap-1.5">
-            <CheckCircle size={13} /> Programme terminé — Félicitations ! 🎉
+            <CheckCircle size={13} /> {t('done')}
           </p>
         )}
       </div>
@@ -121,8 +122,8 @@ function ProgrammeContent() {
               <Play size={14} className="text-sport-orange ml-0.5" />
             </div>
             <div>
-              <p className="text-sm font-bold text-white">{content.videos.length} vidéos disponibles</p>
-              <p className="text-[11px] text-sport-gray">Tutoriels techniques & séances guidées</p>
+              <p className="text-sm font-bold text-white">{t('videosAvailable', { count: content.videos.length })}</p>
+              <p className="text-[11px] text-sport-gray">{t('videosSubtitle')}</p>
             </div>
           </div>
           <ArrowRight size={14} className="text-sport-gray group-hover:text-sport-orange transition-colors" />
@@ -143,7 +144,7 @@ function ProgrammeContent() {
                   <p className="text-[10px] font-bold uppercase tracking-wider text-sport-orange">{block.week}</p>
                   <p className="text-sm font-bold text-white">{block.theme}</p>
                 </div>
-                <span className="text-xs font-bold text-sport-gray">Phase {bi + 1}</span>
+                <span className="text-xs font-bold text-sport-gray">{t('phase', { n: bi + 1 })}</span>
               </div>
               <ul className="divide-y divide-sport-border">
                 {block.sessions.map((session, si) => {
@@ -153,7 +154,7 @@ function ProgrammeContent() {
                     <li key={session.name} className="px-5 py-4 flex gap-4 items-start">
                       <button
                         onClick={() => toggleSession(bi + 1, session.name, done)}
-                        aria-label={done ? `Marquer comme non complété : ${session.name}` : `Marquer comme complété : ${session.name}`}
+                        aria-label={done ? t('markUndone', { name: session.name }) : t('markDone', { name: session.name })}
                         className="mt-0.5 shrink-0 transition-all hover:scale-110"
                       >
                         {done
@@ -178,5 +179,5 @@ function ProgrammeContent() {
 }
 
 export default function ProgrammePage() {
-  return <Suspense fallback={<div className="p-8 text-sport-gray text-sm">Chargement…</div>}><ProgrammeContent /></Suspense>
+  return <Suspense fallback={<div className="p-8 text-sport-gray text-sm" />}><ProgrammeContent /></Suspense>
 }

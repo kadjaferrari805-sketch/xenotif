@@ -1,5 +1,7 @@
 'use client'
 
+import { useTranslations } from 'next-intl'
+
 interface GoalRingProps {
   label: string
   value: number
@@ -10,6 +12,7 @@ interface GoalRingProps {
 }
 
 export function GoalRing({ label, value, goal, unit, color, icon }: GoalRingProps) {
+  const t = useTranslations('dashboard.smartwatch')
   const pct = Math.min((value / goal) * 100, 100)
   const done = value >= goal
 
@@ -22,7 +25,7 @@ export function GoalRing({ label, value, goal, unit, color, icon }: GoalRingProp
         </div>
         {done && (
           <span className="text-[10px] font-black text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2 py-0.5 rounded-full">
-            ✓ Objectif
+            {t('goalReached')}
           </span>
         )}
       </div>

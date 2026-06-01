@@ -1,5 +1,6 @@
 import { redirect } from 'next/navigation'
-import Link from 'next/link'
+import { getTranslations } from 'next-intl/server'
+import { Link } from '@/i18n/navigation'
 import { createClient } from '@/lib/supabase/server'
 import { LayoutDashboard, Dumbbell, TrendingUp, CreditCard, User, Bot, Watch } from 'lucide-react'
 import { DashboardSignOut } from '@/components/dashboard/SignOut'
@@ -7,20 +8,21 @@ import { DashboardGuard } from '@/components/dashboard/DashboardGuard'
 import { Logo } from '@/components/ui/Logo'
 
 const NAV = [
-  { href: '/dashboard',              label: 'Vue d\'ensemble', Icon: LayoutDashboard },
-  { href: '/dashboard/coach',        label: 'Coach IA',        Icon: Bot },
-  { href: '/dashboard/programme',    label: 'Mon Programme',   Icon: Dumbbell },
-  { href: '/dashboard/progression',  label: 'Progression',     Icon: TrendingUp },
-  { href: '/dashboard/smartwatch',   label: 'Montre Connectée', Icon: Watch },
-  { href: '/dashboard/abonnement',   label: 'Abonnement',      Icon: CreditCard },
-  { href: '/dashboard/profil',       label: 'Mon Profil',      Icon: User },
-]
+  { href: '/dashboard',              key: 'overview',     Icon: LayoutDashboard },
+  { href: '/dashboard/coach',        key: 'coach',        Icon: Bot },
+  { href: '/dashboard/programme',    key: 'programme',    Icon: Dumbbell },
+  { href: '/dashboard/progression',  key: 'progression',  Icon: TrendingUp },
+  { href: '/dashboard/smartwatch',   key: 'smartwatch',   Icon: Watch },
+  { href: '/dashboard/abonnement',   key: 'abonnement',   Icon: CreditCard },
+  { href: '/dashboard/profil',       key: 'profil',       Icon: User },
+] as const
 
 export default async function DashboardLayout({ children }: { children: React.ReactNode }) {
   const supabase = await createClient()
   const { data: { user } } = await supabase.auth.getUser()
   if (!user) redirect('/auth/signin')
 
+  const t = await getTranslations('dashboard')
   const { data: profile } = await supabase.from('profiles').select('full_name').eq('id', user.id).maybeSingle()
   const initials = (profile?.full_name ?? user.email ?? 'U').slice(0, 2).toUpperCase()
 
@@ -42,23 +44,23 @@ export default async function DashboardLayout({ children }: { children: React.Re
               {initials}
             </div>
             <div className="min-w-0">
-              <p className="text-sm font-bold text-white truncate">{profile?.full_name ?? 'Athlète'}</p>
+              <p className="text-sm font-bold text-white truncate">{profile?.full_name ?? t('athlete')}</p>
               <p className="text-[11px] text-sport-gray truncate">{user.email}</p>
             </div>
           </div>
         </div>
 
         {/* Nav */}
-        <nav className="flex-1 px-3 py-4" aria-label="Navigation dashboard">
+        <nav className="flex-1 px-3 py-4" aria-label={t('navAria')}>
           <ul className="space-y-1">
-            {NAV.map(({ href, label, Icon }) => (
+            {NAV.map(({ href, key, Icon }) => (
               <li key={href}>
                 <Link
                   href={href}
                   className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-semibold text-sport-gray hover:text-white hover:bg-white/5 transition-all group"
                 >
                   <Icon size={16} className="shrink-0 group-hover:text-sport-orange transition-colors" aria-hidden="true" />
-                  {label}
+                  {t(`nav.${key}`)}
                 </Link>
               </li>
             ))}
@@ -89,10 +91,10 @@ export default async function DashboardLayout({ children }: { children: React.Re
 
       {/* Mobile bottom nav */}
       <nav className="md:hidden fixed bottom-0 left-0 right-0 bg-sport-card border-t border-sport-border px-2 py-2 flex justify-around z-50">
-        {NAV.map(({ href, label, Icon }) => (
+        {NAV.map(({ href, key, Icon }) => (
           <Link key={href} href={href} className="flex flex-col items-center gap-1 px-3 py-1.5 text-sport-gray hover:text-sport-orange transition-colors">
             <Icon size={18} aria-hidden="true" />
-            <span className="text-[9px] font-semibold">{label.split(' ')[0]}</span>
+            <span className="text-[9px] font-semibold">{t(`nav.${key}`).split(' ')[0]}</span>
           </Link>
         ))}
       </nav>

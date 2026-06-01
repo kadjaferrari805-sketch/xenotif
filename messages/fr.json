@@ -527,5 +527,348 @@
     "backToBlog": "Retour au Blog",
     "recommendedProduct": "Produit recommandé",
     "viewProduct": "Voir le produit"
+  },
+  "dashboard": {
+    "nav": {
+      "overview": "Vue d'ensemble",
+      "coach": "Coach IA",
+      "programme": "Mon Programme",
+      "progression": "Progression",
+      "smartwatch": "Montre Connectée",
+      "abonnement": "Abonnement",
+      "profil": "Mon Profil"
+    },
+    "navAria": "Navigation dashboard",
+    "signOut": "Déconnexion",
+    "athlete": "Athlète",
+    "statusShort": {
+      "trialing": "Essai gratuit",
+      "active": "Actif",
+      "canceled": "Annulé",
+      "past_due": "Paiement dû"
+    },
+    "overview": {
+      "greeting": "Bonjour, <o>{name}</o> 👋",
+      "subtitle": "Prêt à t'entraîner ? Voici ton tableau de bord.",
+      "plan": "Plan {plan}",
+      "trialDaysLeft": "{days, plural, one {# jour d'essai gratuit restant} other {# jours d'essai gratuit restants}}",
+      "renewOn": "Renouvellement le <o>{date}</o>",
+      "manage": "Gérer",
+      "statSessionsWeek": "Séances cette semaine",
+      "statModules": "Modules complétés",
+      "statActiveDays": "Jours d'activité",
+      "statBadges": "Badges obtenus",
+      "yourPrograms": "Tes programmes",
+      "seeAll": "Voir tout",
+      "disciplines": {
+        "running-cardio": "Running & Cardio",
+        "musculation": "Musculation",
+        "hiit": "HIIT",
+        "cyclisme": "Cyclisme",
+        "natation": "Natation",
+        "crossfit": "CrossFit"
+      },
+      "sessions": "{completed}/{total} séances",
+      "recentActivity": "Activité récente",
+      "noActivity": "Aucune séance enregistrée pour l'instant.",
+      "startProgram": "Commencer un programme",
+      "min": "{minutes} min"
+    },
+    "profil": {
+      "title": "Mon Profil",
+      "personalInfo": "Informations personnelles",
+      "fullName": "Nom complet",
+      "fullNamePlaceholder": "Ton prénom et nom",
+      "email": "Email",
+      "emailNote": "L'email ne peut pas être modifié ici. Contacte le support pour le changer.",
+      "saving": "Enregistrement…",
+      "saved": "Sauvegardé !",
+      "save": "Sauvegarder",
+      "security": "Sécurité",
+      "changePassword": "Changer mon mot de passe"
+    },
+    "programme": {
+      "title": "Mon Programme",
+      "disciplines": {
+        "running-cardio": "Running",
+        "musculation": "Muscu",
+        "hiit": "HIIT",
+        "cyclisme": "Cyclisme",
+        "natation": "Natation",
+        "crossfit": "CrossFit",
+        "yoga": "Yoga",
+        "boxing": "Boxing",
+        "stretching": "Stretching",
+        "nutrition": "Nutrition"
+      },
+      "weeks": "{name} — 8 semaines",
+      "sessionsCompleted": "{completed}/{total} séances complétées",
+      "done": "Programme terminé — Félicitations ! 🎉",
+      "videosAvailable": "{count} vidéos disponibles",
+      "videosSubtitle": "Tutoriels techniques & séances guidées",
+      "phase": "Phase {n}",
+      "markDone": "Marquer comme complété : {name}",
+      "markUndone": "Marquer comme non complété : {name}"
+    },
+    "coach": {
+      "title": "Coach IA",
+      "online": "En ligne",
+      "poweredBy": "Propulsé par Claude · Xenotif®",
+      "newSession": "Nouvelle session",
+      "emptyTitle": "Ton coach sportif personnel",
+      "emptySubtitle": "Pose-moi n'importe quelle question sur l'entraînement, la nutrition ou la récupération. Je crée des plans sur mesure pour toi.",
+      "suggestions": [
+        "Crée-moi un plan d'entraînement sur 4 semaines pour perdre du poids",
+        "Quels exercices pour développer mes épaules sans matériel ?",
+        "Comment améliorer mon endurance en course à pied ?",
+        "Programme nutrition pour la prise de masse",
+        "Routine d'étirements post-entraînement",
+        "Comment progresser en HIIT débutant ?"
+      ],
+      "error": "Désolé, une erreur est survenue. Réessaie dans un moment.",
+      "placeholder": "Pose ta question au Coach IA…",
+      "send": "Envoyer",
+      "disclaimer": "Coach IA · Xenotif® — Ne remplace pas un avis médical"
+    },
+    "abonnement": {
+      "title": "Mon Abonnement",
+      "noneTitle": "Aucun abonnement actif",
+      "noneDesc": "Choisis un plan pour accéder à tous les programmes.",
+      "choosePlan": "Choisir un plan",
+      "confirmCancelTitle": "Confirmer la résiliation",
+      "cancelIntro": "Tu vas résilier ton abonnement <o>Plan {plan}</o>.",
+      "accessUntilDate": "Ton accès reste actif jusqu'au <o>{date}</o>.",
+      "cancel": "Annuler",
+      "confirmCancel": "Confirmer la résiliation",
+      "cancelling": "Résiliation…",
+      "plan": "Plan {plan}",
+      "perMonth": "par mois",
+      "trialEndsIn": "Fin de l'essai gratuit dans <o>{days, plural, one {# jour} other {# jours}}</o>",
+      "accessUntilLabel": "Accès jusqu'au",
+      "nextRenewal": "Prochain renouvellement",
+      "securePayment": "Paiement sécurisé via Stripe",
+      "includedTitle": "Inclus dans ton plan",
+      "featuresPro": [
+        "Tous les programmes illimités",
+        "Coaching IA personnalisé",
+        "Statistiques & suivi avancé",
+        "Vidéos HD haute qualité",
+        "Support prioritaire 7j/7",
+        "Challenges communautaires"
+      ],
+      "featuresElite": [
+        "Tout le plan Pro inclus",
+        "Coach personnel dédié",
+        "Bilan mensuel visio 1-1",
+        "Plan nutritionnel sur mesure",
+        "Analyse biomécanique vidéo",
+        "Accès anticipé aux nouveautés"
+      ],
+      "managePayment": "Gérer le paiement & les factures",
+      "portalNotConfigured": "Le portail de paiement n'est pas encore activé. Va sur dashboard.stripe.com → Billing → Customer portal pour l'activer.",
+      "portalError": "Impossible d'ouvrir le portail de paiement.",
+      "unsubscribe": "Se désabonner",
+      "cancelConfirmed": "✓ Résiliation confirmée",
+      "cancelConfirmedDesc": "Ton accès reste actif jusqu'à la fin de la période.",
+      "questions": "Des questions ? Contacte-nous à",
+      "loading": "Chargement…",
+      "status": {
+        "trialing": "Essai gratuit en cours",
+        "active": "Actif",
+        "canceled": "Annulé",
+        "pastDue": "Paiement en attente"
+      }
+    },
+    "progression": {
+      "title": "Ma Progression",
+      "addSession": "Ajouter séance",
+      "newSession": "Nouvelle séance",
+      "discipline": "Discipline",
+      "durationMin": "Durée (minutes)",
+      "notesOptional": "Notes (optionnel)",
+      "notesPlaceholder": "Ressenti, exercices, PR…",
+      "cancel": "Annuler",
+      "saving": "Enregistrement…",
+      "save": "Enregistrer",
+      "statTotalSessions": "Séances totales",
+      "statHours": "Heures d'entraînement",
+      "statModules": "Modules complétés",
+      "statBadges": "Badges obtenus",
+      "byDiscipline": "Progression par discipline",
+      "badges": "Badges",
+      "weekActivity": "Activité cette semaine",
+      "history": "Historique des séances",
+      "noHistory": "Aucune séance enregistrée. Clique sur \"Ajouter séance\" pour commencer !",
+      "days": [
+        "Lun",
+        "Mar",
+        "Mer",
+        "Jeu",
+        "Ven",
+        "Sam",
+        "Dim"
+      ],
+      "disciplines": {
+        "running-cardio": "Running",
+        "musculation": "Musculation",
+        "hiit": "HIIT",
+        "cyclisme": "Cyclisme",
+        "natation": "Natation",
+        "crossfit": "CrossFit",
+        "yoga": "Yoga",
+        "boxing": "Boxing",
+        "stretching": "Stretching",
+        "nutrition": "Nutrition"
+      },
+      "badgeFirst": {
+        "label": "Premier pas",
+        "desc": "1ère séance enregistrée"
+      },
+      "badgeWeek": {
+        "label": "Semaine complète",
+        "desc": "7 séances enregistrées"
+      },
+      "badgeMonth": {
+        "label": "Athlète du mois",
+        "desc": "30 séances enregistrées"
+      },
+      "badgeElite": {
+        "label": "Élite",
+        "desc": "100 séances enregistrées"
+      }
+    },
+    "liveActivity": {
+      "title": "Activité du jour",
+      "moving": "En mouvement",
+      "paused": "En pause",
+      "phoneSensor": "Capteur du téléphone",
+      "steps": "Pas",
+      "calories": "Calories",
+      "distance": "Distance",
+      "activeDuration": "Durée active",
+      "stepsUnit": "pas",
+      "autoSaved": "✓ Enregistré automatiquement · La durée ne compte que pendant ton mouvement. Garde l'app ouverte pendant ton activité.",
+      "tapToStart": "Touche l'écran pour démarrer 👆",
+      "tapHint": "Ton iPhone demande une autorisation pour le capteur de mouvement. Touche n'importe où pour lancer le suivi.",
+      "denied": "Accès au mouvement refusé. Autorise-le dans les réglages de ton navigateur, puis recharge la page.",
+      "noSensor": "Aucun capteur de mouvement détecté — le suivi en direct fonctionne sur smartphone. 📱",
+      "startTracking": "Démarrer le suivi"
+    },
+    "smartwatch": {
+      "title": "Montre Connectée",
+      "subtitle": "Synchronisation fitness en temps réel",
+      "loading": "Chargement des données fitness…",
+      "tabs": {
+        "overview": "Vue d'ensemble",
+        "devices": "Appareils",
+        "history": "Historique",
+        "goals": "Objectifs"
+      },
+      "connectTitle": "Connecte ta montre",
+      "connectDesc": "Synchronise ta montre connectée pour afficher tes vraies données de santé — pas, calories, fréquence cardiaque, sommeil et bien plus.",
+      "securityTitle": "Données chiffrées & RGPD",
+      "securityDescShort": "Tes données de santé sont chiffrées et stockées sur des serveurs sécurisés en Europe. Aucune donnée n'est revendue à des tiers.",
+      "securityDescLong": "Tes données de santé sont chiffrées et stockées sur des serveurs sécurisés en Europe. Tu peux supprimer toutes tes données à tout moment depuis ton profil. Aucune donnée n'est revendue à des tiers.",
+      "synced": "Synchronisé",
+      "sync": "Synchroniser",
+      "rings": {
+        "activity": "Activité",
+        "calories": "Calories",
+        "steps": "Pas"
+      },
+      "ringsCenter": "activité",
+      "metrics": {
+        "stepsToday": "Pas aujourd'hui",
+        "caloriesBurned": "Calories brûlées",
+        "distance": "Distance",
+        "hydration": "Hydratation",
+        "sleep": "Sommeil",
+        "activeMinutes": "Minutes actives"
+      },
+      "sleepScore": "score {score}",
+      "heartRateTitle": "Fréquence cardiaque",
+      "weeklyActivity": "Activité hebdomadaire",
+      "chartToggle": {
+        "steps": "Pas",
+        "calories": "Cal",
+        "activeMinutes": "Actif"
+      },
+      "chartFull": {
+        "steps": "Pas",
+        "calories": "Cal",
+        "activeMinutes": "Min actives"
+      },
+      "chartThisWeek": "{label} cette semaine",
+      "weekDays": ["Lun", "Mar", "Mer", "Jeu", "Ven", "Sam", "Dim"],
+      "aiTitle": "Coach IA — Recommandations personnalisées",
+      "aiRecs": [
+        "Tu as atteint 84% de ton objectif de pas aujourd'hui — un sprint de 10 min suffit pour boucler ça !",
+        "Ton sommeil est légèrement en dessous de 7h. Couche-toi 30 min plus tôt ce soir pour optimiser ta récupération.",
+        "Hydratation à 87% — bois 250ml avant ta prochaine séance pour maintenir ta performance.",
+        "Ta fréquence cardiaque au repos de 58 bpm indique une excellente condition cardiovasculaire. Continue !"
+      ],
+      "supportedTitle": "Appareils supportés",
+      "supportedDesc": "Connecte ta montre pour synchroniser automatiquement tes données fitness après chaque séance.",
+      "recentSessions": "Séances récentes",
+      "sessionsCount": "{count, plural, one {# séance} other {# séances}}",
+      "noSessions": "Aucune séance enregistrée.",
+      "noSessionsHint": "Connecte ta montre pour voir ton historique.",
+      "dailyGoals": "Objectifs quotidiens",
+      "dailyGoalsDesc": "Tes objectifs sont mis à jour en temps réel depuis ta montre connectée.",
+      "goalLabels": {
+        "steps": "Pas quotidiens",
+        "calories": "Calories brûlées",
+        "activeMinutes": "Minutes actives",
+        "sleep": "Sommeil",
+        "hydration": "Hydratation",
+        "sessionsWeek": "Séances / semaine"
+      },
+      "goalUnitSteps": "pas",
+      "goalUnitSessions": "séances",
+      "goalReached": "✓ Objectif",
+      "weekSummary": "Bilan de la semaine",
+      "summary": {
+        "totalSteps": "Pas total",
+        "caloriesBurned": "Cal. brûlées",
+        "activeMinutes": "Min. actives"
+      },
+      "summaryUnitSteps": "pas",
+      "device": {
+        "connected": "Connecté",
+        "comingSoon": "Bientôt",
+        "comingSoonDesc": "Bientôt disponible",
+        "syncedOn": "Synchronisé le {date}",
+        "sync": "Synchroniser",
+        "connect": "Connecter"
+      },
+      "heart": {
+        "bpmAvg": "bpm moy.",
+        "max": "Max",
+        "resting": "Repos",
+        "zoneRest": "Repos",
+        "zoneLight": "Cardio léger",
+        "zoneModerate": "Cardio modéré",
+        "zoneIntense": "Cardio intense",
+        "zoneMax": "Zone maximale"
+      },
+      "session": {
+        "duration": "durée",
+        "bpmAvg": "bpm moy.",
+        "distance": "distance",
+        "pace": "allure"
+      },
+      "activities": {
+        "running": "Course à pied",
+        "cycling": "Cyclisme",
+        "strength_training": "Musculation",
+        "yoga": "Yoga",
+        "hiit": "HIIT",
+        "swimming": "Natation",
+        "walking": "Marche",
+        "crossfit": "CrossFit",
+        "boxing": "Boxe",
+        "stretching": "Stretching"
+      }
+    }
   }
 }

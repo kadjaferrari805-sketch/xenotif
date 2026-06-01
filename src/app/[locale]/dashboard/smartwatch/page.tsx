@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect, useCallback } from 'react'
+import { useTranslations, useLocale } from 'next-intl'
 import {
   Watch, RefreshCw, Loader2, Footprints, Flame, Heart,
   Zap, Moon, Droplets, MapPin, TrendingUp, Brain, ChevronRight,
@@ -29,19 +30,14 @@ interface DashboardData {
   goals: FitnessGoals
 }
 
-const TABS: { id: Tab; label: string; icon: React.ReactNode }[] = [
-  { id: 'overview', label: 'Vue d\'ensemble', icon: <TrendingUp size={14} /> },
-  { id: 'devices',  label: 'Appareils',        icon: <Watch size={14} /> },
-  { id: 'history',  label: 'Historique',        icon: <Zap size={14} /> },
-  { id: 'goals',    label: 'Objectifs',          icon: <Flame size={14} /> },
+const TABS: { id: Tab; icon: React.ReactNode }[] = [
+  { id: 'overview', icon: <TrendingUp size={14} /> },
+  { id: 'devices',  icon: <Watch size={14} /> },
+  { id: 'history',  icon: <Zap size={14} /> },
+  { id: 'goals',    icon: <Flame size={14} /> },
 ]
 
-const AI_RECS = [
-  { icon: '🏃', text: 'Tu as atteint 84% de ton objectif de pas aujourd\'hui — un sprint de 10 min suffit pour boucler ça !', color: '#FF4500' },
-  { icon: '💤', text: 'Ton sommeil est légèrement en dessous de 7h. Couche-toi 30 min plus tôt ce soir pour optimiser ta récupération.', color: '#6366f1' },
-  { icon: '💧', text: 'Hydratation à 87% — bois 250ml avant ta prochaine séance pour maintenir ta performance.', color: '#38bdf8' },
-  { icon: '❤️', text: 'Ta fréquence cardiaque au repos de 58 bpm indique une excellente condition cardiovasculaire. Continue !', color: '#ef4444' },
-]
+const AI_REC_META = ['🏃', '💤', '💧', '❤️']
 
 function formatSleep(minutes: number): string {
   const h = Math.floor(minutes / 60)
@@ -50,6 +46,9 @@ function formatSleep(minutes: number): string {
 }
 
 export default function SmartWatchPage() {
+  const t = useTranslations('dashboard.smartwatch')
+  const locale = useLocale()
+  const numLocale = locale === 'en' ? 'en-US' : 'fr-FR'
   const [tab, setTab] = useState<Tab>('overview')
   const [data, setData] = useState<DashboardData | null>(null)
   const [loading, setLoading] = useState(true)
@@ -113,7 +112,7 @@ export default function SmartWatchPage() {
           <div className="w-16 h-16 rounded-2xl bg-sport-orange/10 border border-sport-orange/20 flex items-center justify-center">
             <Watch size={28} className="text-sport-orange animate-pulse" />
           </div>
-          <p className="text-sport-gray text-sm">Chargement des données fitness...</p>
+          <p className="text-sport-gray text-sm">{t('loading')}</p>
         </div>
       </div>
     )
@@ -133,8 +132,8 @@ export default function SmartWatchPage() {
             <Watch size={20} className="text-sport-orange" />
           </div>
           <div>
-            <h1 className="text-xl md:text-2xl font-black text-white leading-none">Montre Connectée</h1>
-            <p className="text-[11px] text-sport-gray">Synchronisation fitness en temps réel</p>
+            <h1 className="text-xl md:text-2xl font-black text-white leading-none">{t('title')}</h1>
+            <p className="text-[11px] text-sport-gray">{t('subtitle')}</p>
           </div>
         </div>
 
@@ -142,9 +141,9 @@ export default function SmartWatchPage() {
           <div className="w-20 h-20 rounded-full bg-sport-orange/10 border border-sport-orange/20 flex items-center justify-center mx-auto mb-6">
             <Watch size={36} className="text-sport-orange" />
           </div>
-          <h2 className="text-xl font-black text-white mb-2">Connecte ta montre</h2>
+          <h2 className="text-xl font-black text-white mb-2">{t('connectTitle')}</h2>
           <p className="text-sport-gray text-sm max-w-md mx-auto mb-6">
-            Synchronise ta montre connectée pour afficher tes vraies données de santé — pas, calories, fréquence cardiaque, sommeil et bien plus.
+            {t('connectDesc')}
           </p>
           <div className="flex flex-wrap justify-center gap-3 text-xs text-sport-gray mb-8">
             {['⌚ Apple Watch', '🏃 Garmin', '💪 Fitbit', '📱 Samsung Health', '🔵 Polar', '⚡ Suunto'].map(w => (
@@ -174,9 +173,9 @@ export default function SmartWatchPage() {
             <span className="text-sm">🔒</span>
           </div>
           <div>
-            <p className="text-xs font-bold text-white mb-1">Données chiffrées & RGPD</p>
+            <p className="text-xs font-bold text-white mb-1">{t('securityTitle')}</p>
             <p className="text-[11px] text-sport-gray leading-relaxed">
-              Tes données de santé sont chiffrées et stockées sur des serveurs sécurisés en Europe. Aucune donnée n&apos;est revendue à des tiers.
+              {t('securityDescShort')}
             </p>
           </div>
         </div>
@@ -185,9 +184,9 @@ export default function SmartWatchPage() {
   }
 
   const rings = [
-    { value: today.active_minutes,  max: goals.active_minutes_daily, color: '#FF4500', label: 'Activité',  unit: 'min' },
-    { value: today.calories_burned, max: goals.calories_daily,       color: '#A3FF00', label: 'Calories',  unit: 'kcal' },
-    { value: today.steps,           max: goals.steps_daily,          color: '#38bdf8', label: 'Pas',       unit: '' },
+    { value: today.active_minutes,  max: goals.active_minutes_daily, color: '#FF4500', label: t('rings.activity'), unit: 'min' },
+    { value: today.calories_burned, max: goals.calories_daily,       color: '#A3FF00', label: t('rings.calories'), unit: 'kcal' },
+    { value: today.steps,           max: goals.steps_daily,          color: '#38bdf8', label: t('rings.steps'),    unit: '' },
   ]
 
   return (
@@ -201,8 +200,8 @@ export default function SmartWatchPage() {
               <Watch size={20} className="text-sport-orange" />
             </div>
             <div>
-              <h1 className="text-xl md:text-2xl font-black text-white leading-none">Montre Connectée</h1>
-              <p className="text-[11px] text-sport-gray">Synchronisation fitness en temps réel</p>
+              <h1 className="text-xl md:text-2xl font-black text-white leading-none">{t('title')}</h1>
+              <p className="text-[11px] text-sport-gray">{t('subtitle')}</p>
             </div>
           </div>
         </div>
@@ -211,7 +210,7 @@ export default function SmartWatchPage() {
           {connectedDevice && (
             <div className="flex items-center gap-1.5 bg-emerald-500/10 border border-emerald-500/20 rounded-full px-3 py-1.5">
               <Wifi size={11} className="text-emerald-400" />
-              <span className="text-[11px] text-emerald-400 font-bold">Synchronisé</span>
+              <span className="text-[11px] text-emerald-400 font-bold">{t('synced')}</span>
             </div>
           )}
 
@@ -222,7 +221,7 @@ export default function SmartWatchPage() {
               className="flex items-center gap-2 bg-sport-card border border-sport-border hover:border-white/20 rounded-xl px-4 py-2 text-xs font-bold text-white transition-all"
             >
               {syncing ? <Loader2 size={13} className="animate-spin text-sport-orange" /> : <RefreshCw size={13} className="text-sport-orange" />}
-              Synchroniser
+              {t('sync')}
             </button>
           )}
         </div>
@@ -230,18 +229,18 @@ export default function SmartWatchPage() {
 
       {/* Tabs */}
       <div className="flex gap-1 bg-sport-card border border-sport-border rounded-xl p-1 mb-6 overflow-x-auto scrollbar-hide">
-        {TABS.map(t => (
+        {TABS.map(tb => (
           <button
-            key={t.id}
-            onClick={() => setTab(t.id)}
+            key={tb.id}
+            onClick={() => setTab(tb.id)}
             className={`flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-bold whitespace-nowrap transition-all flex-1 justify-center ${
-              tab === t.id
+              tab === tb.id
                 ? 'bg-sport-orange text-white shadow-lg shadow-sport-orange/20'
                 : 'text-sport-gray hover:text-white'
             }`}
           >
-            {t.icon}
-            {t.label}
+            {tb.icon}
+            {t(`tabs.${tb.id}`)}
           </button>
         ))}
       </div>
@@ -270,12 +269,12 @@ export default function SmartWatchPage() {
             {/* Today metrics grid */}
             <div className="grid grid-cols-2 gap-3">
               {[
-                { icon: <Footprints size={15} className="text-sky-400" />,   label: 'Pas aujourd\'hui', value: today.steps.toLocaleString('fr-FR'), unit: `/ ${(goals.steps_daily / 1000).toFixed(0)}k`, color: '#38bdf8' },
-                { icon: <Flame size={15} className="text-sport-orange" />,    label: 'Calories brûlées',  value: today.calories_burned.toString(),     unit: 'kcal',                                    color: '#FF4500' },
-                { icon: <MapPin size={15} className="text-purple-400" />,     label: 'Distance',          value: `${(today.distance_meters / 1000).toFixed(1)}`, unit: 'km',                             color: '#a78bfa' },
-                { icon: <Droplets size={15} className="text-cyan-400" />,     label: 'Hydratation',       value: `${today.hydration_ml}`,             unit: 'ml',                                      color: '#22d3ee' },
-                { icon: <Moon size={15} className="text-indigo-400" />,       label: 'Sommeil',           value: formatSleep(today.sleep_minutes),    unit: today.sleep_score ? `score ${today.sleep_score}` : '', color: '#818cf8' },
-                { icon: <Zap size={15} className="text-sport-lime" />,        label: 'Minutes actives',   value: today.active_minutes.toString(),     unit: `/ ${goals.active_minutes_daily} min`,     color: '#A3FF00' },
+                { icon: <Footprints size={15} className="text-sky-400" />,   label: t('metrics.stepsToday'),    value: today.steps.toLocaleString(numLocale), unit: `/ ${(goals.steps_daily / 1000).toFixed(0)}k`, color: '#38bdf8' },
+                { icon: <Flame size={15} className="text-sport-orange" />,    label: t('metrics.caloriesBurned'), value: today.calories_burned.toString(),      unit: 'kcal',                                    color: '#FF4500' },
+                { icon: <MapPin size={15} className="text-purple-400" />,     label: t('metrics.distance'),       value: `${(today.distance_meters / 1000).toFixed(1)}`, unit: 'km',                             color: '#a78bfa' },
+                { icon: <Droplets size={15} className="text-cyan-400" />,     label: t('metrics.hydration'),      value: `${today.hydration_ml}`,               unit: 'ml',                                      color: '#22d3ee' },
+                { icon: <Moon size={15} className="text-indigo-400" />,       label: t('metrics.sleep'),          value: formatSleep(today.sleep_minutes),      unit: today.sleep_score ? t('sleepScore', { score: today.sleep_score }) : '', color: '#818cf8' },
+                { icon: <Zap size={15} className="text-sport-lime" />,        label: t('metrics.activeMinutes'),  value: today.active_minutes.toString(),       unit: `/ ${goals.active_minutes_daily} min`,     color: '#A3FF00' },
               ].map(m => (
                 <div key={m.label} className="bg-sport-card border border-sport-border rounded-xl p-3 flex flex-col gap-1.5">
                   <div className="flex items-center gap-2">
@@ -294,7 +293,7 @@ export default function SmartWatchPage() {
           {/* Heart rate */}
           <div className="bg-sport-card border border-sport-border rounded-2xl p-5">
             <p className="text-sm font-black text-white mb-4 flex items-center gap-2">
-              <Heart size={14} className="text-red-400" /> Fréquence cardiaque
+              <Heart size={14} className="text-red-400" /> {t('heartRateTitle')}
             </p>
             <HeartRateDisplay
               avg={today.heart_rate_avg ?? 72}
@@ -306,7 +305,7 @@ export default function SmartWatchPage() {
           {/* Weekly chart */}
           <div className="bg-sport-card border border-sport-border rounded-2xl p-5">
             <div className="flex items-center justify-between mb-4">
-              <p className="text-sm font-black text-white">Activité hebdomadaire</p>
+              <p className="text-sm font-black text-white">{t('weeklyActivity')}</p>
               <div className="flex gap-1">
                 {(['steps', 'calories', 'activeMinutes'] as const).map(m => (
                   <button
@@ -316,7 +315,7 @@ export default function SmartWatchPage() {
                       chartMetric === m ? 'bg-sport-orange text-white' : 'text-sport-gray hover:text-white'
                     }`}
                   >
-                    {m === 'steps' ? 'Pas' : m === 'calories' ? 'Cal' : 'Actif'}
+                    {t(`chartToggle.${m}`)}
                   </button>
                 ))}
               </div>
@@ -331,13 +330,13 @@ export default function SmartWatchPage() {
           {/* AI Recommendations */}
           <div className="bg-gradient-to-br from-sport-orange/10 via-sport-card to-sport-card border border-sport-orange/20 rounded-2xl p-5">
             <p className="text-sm font-black text-white mb-4 flex items-center gap-2">
-              <Brain size={14} className="text-sport-orange" /> Coach IA — Recommandations personnalisées
+              <Brain size={14} className="text-sport-orange" /> {t('aiTitle')}
             </p>
             <div className="space-y-3">
-              {AI_RECS.map((r, i) => (
+              {(t.raw('aiRecs') as string[]).map((text, i) => (
                 <div key={i} className="flex items-start gap-3 bg-sport-dark/60 rounded-xl p-3">
-                  <span className="text-base mt-0.5">{r.icon}</span>
-                  <p className="text-xs text-sport-gray leading-relaxed">{r.text}</p>
+                  <span className="text-base mt-0.5">{AI_REC_META[i]}</span>
+                  <p className="text-xs text-sport-gray leading-relaxed">{text}</p>
                 </div>
               ))}
             </div>
@@ -349,8 +348,8 @@ export default function SmartWatchPage() {
       {tab === 'devices' && (
         <div className="space-y-4">
           <div className="bg-sport-card border border-sport-border rounded-2xl p-4">
-            <p className="text-sm font-black text-white mb-1">Appareils supportés</p>
-            <p className="text-xs text-sport-gray">Connecte ta montre pour synchroniser automatiquement tes données fitness après chaque séance.</p>
+            <p className="text-sm font-black text-white mb-1">{t('supportedTitle')}</p>
+            <p className="text-xs text-sport-gray">{t('supportedDesc')}</p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -375,10 +374,9 @@ export default function SmartWatchPage() {
               <span className="text-sm">🔒</span>
             </div>
             <div>
-              <p className="text-xs font-bold text-white mb-1">Données chiffrées & RGPD</p>
+              <p className="text-xs font-bold text-white mb-1">{t('securityTitle')}</p>
               <p className="text-[11px] text-sport-gray leading-relaxed">
-                Tes données de santé sont chiffrées et stockées sur des serveurs sécurisés en Europe.
-                Tu peux supprimer toutes tes données à tout moment depuis ton profil. Aucune donnée n&apos;est revendue à des tiers.
+                {t('securityDescLong')}
               </p>
             </div>
           </div>
@@ -389,8 +387,8 @@ export default function SmartWatchPage() {
       {tab === 'history' && (
         <div className="space-y-3">
           <div className="flex items-center justify-between mb-2">
-            <p className="text-sm font-black text-white">Séances récentes</p>
-            <span className="text-[11px] text-sport-gray">{sessions.length} séances</span>
+            <p className="text-sm font-black text-white">{t('recentSessions')}</p>
+            <span className="text-[11px] text-sport-gray">{t('sessionsCount', { count: sessions.length })}</span>
           </div>
           {sessions.map(s => (
             <SessionCard key={s.id} session={s} />
@@ -398,8 +396,8 @@ export default function SmartWatchPage() {
           {sessions.length === 0 && (
             <div className="bg-sport-card border border-sport-border rounded-2xl p-10 text-center">
               <Watch size={32} className="text-sport-gray mx-auto mb-3" />
-              <p className="text-sport-gray text-sm">Aucune séance enregistrée.</p>
-              <p className="text-[11px] text-sport-gray mt-1">Connecte ta montre pour voir ton historique.</p>
+              <p className="text-sport-gray text-sm">{t('noSessions')}</p>
+              <p className="text-[11px] text-sport-gray mt-1">{t('noSessionsHint')}</p>
             </div>
           )}
         </div>
@@ -409,34 +407,34 @@ export default function SmartWatchPage() {
       {tab === 'goals' && (
         <div className="space-y-4">
           <div className="bg-sport-card border border-sport-border rounded-2xl p-4 mb-2">
-            <p className="text-sm font-black text-white mb-1">Objectifs quotidiens</p>
-            <p className="text-xs text-sport-gray">Tes objectifs sont mis à jour en temps réel depuis ta montre connectée.</p>
+            <p className="text-sm font-black text-white mb-1">{t('dailyGoals')}</p>
+            <p className="text-xs text-sport-gray">{t('dailyGoalsDesc')}</p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            <GoalRing label="Pas quotidiens"    value={today.steps}           goal={goals.steps_daily}          unit="pas"  color="#38bdf8" icon="👟" />
-            <GoalRing label="Calories brûlées"  value={today.calories_burned} goal={goals.calories_daily}       unit="kcal" color="#FF4500" icon="🔥" />
-            <GoalRing label="Minutes actives"   value={today.active_minutes}  goal={goals.active_minutes_daily} unit="min"  color="#A3FF00" icon="⚡" />
-            <GoalRing label="Sommeil"           value={today.sleep_minutes}   goal={goals.sleep_minutes_daily}  unit="min"  color="#818cf8" icon="🌙" />
-            <GoalRing label="Hydratation"       value={today.hydration_ml}    goal={goals.water_ml_daily}       unit="ml"   color="#22d3ee" icon="💧" />
-            <GoalRing label="Séances / semaine" value={sessions.filter(s => {
+            <GoalRing label={t('goalLabels.steps')}        value={today.steps}           goal={goals.steps_daily}          unit={t('goalUnitSteps')} color="#38bdf8" icon="👟" />
+            <GoalRing label={t('goalLabels.calories')}     value={today.calories_burned} goal={goals.calories_daily}       unit="kcal"               color="#FF4500" icon="🔥" />
+            <GoalRing label={t('goalLabels.activeMinutes')} value={today.active_minutes}  goal={goals.active_minutes_daily} unit="min"                color="#A3FF00" icon="⚡" />
+            <GoalRing label={t('goalLabels.sleep')}        value={today.sleep_minutes}   goal={goals.sleep_minutes_daily}  unit="min"                color="#818cf8" icon="🌙" />
+            <GoalRing label={t('goalLabels.hydration')}    value={today.hydration_ml}    goal={goals.water_ml_daily}       unit="ml"                 color="#22d3ee" icon="💧" />
+            <GoalRing label={t('goalLabels.sessionsWeek')} value={sessions.filter(s => {
               const d = new Date(s.started_at)
               const now = new Date()
               const weekAgo = new Date(now.getTime() - 7 * 86400000)
               return d >= weekAgo
-            }).length} goal={goals.workouts_weekly} unit="séances" color="#f59e0b" icon="💪" />
+            }).length} goal={goals.workouts_weekly} unit={t('goalUnitSessions')} color="#f59e0b" icon="💪" />
           </div>
 
           {/* Weekly summary */}
           <div className="bg-gradient-to-r from-sport-orange/10 to-sport-card border border-sport-orange/20 rounded-2xl p-5">
             <p className="text-sm font-black text-white mb-3 flex items-center gap-2">
-              <TrendingUp size={14} className="text-sport-orange" /> Bilan de la semaine
+              <TrendingUp size={14} className="text-sport-orange" /> {t('weekSummary')}
             </p>
             <div className="grid grid-cols-3 gap-3">
               {[
-                { label: 'Pas total',    value: weekly.reduce((a, d) => a + d.steps, 0).toLocaleString('fr-FR'),     unit: 'pas' },
-                { label: 'Cal. brûlées', value: weekly.reduce((a, d) => a + d.calories, 0).toString(),               unit: 'kcal' },
-                { label: 'Min. actives', value: weekly.reduce((a, d) => a + d.activeMinutes, 0).toString(),          unit: 'min' },
+                { label: t('summary.totalSteps'),    value: weekly.reduce((a, d) => a + d.steps, 0).toLocaleString(numLocale), unit: t('summaryUnitSteps') },
+                { label: t('summary.caloriesBurned'), value: weekly.reduce((a, d) => a + d.calories, 0).toString(),            unit: 'kcal' },
+                { label: t('summary.activeMinutes'), value: weekly.reduce((a, d) => a + d.activeMinutes, 0).toString(),        unit: 'min' },
               ].map(s => (
                 <div key={s.label} className="text-center">
                   <p className="text-xl font-black text-white">{s.value}</p>
