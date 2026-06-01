@@ -293,5 +293,66 @@
       "doneTitle": "Password updated!",
       "doneText": "Redirecting to your dashboard…"
     }
+  },
+  "disciplines": {
+    "back": "Back to disciplines",
+    "metaTitle": "{name} — Complete guide & Programs",
+    "ratingAria": "5-star rating",
+    "heroAria": "{name} discipline",
+    "heroAlt": "Athlete practicing {name}",
+    "videos": {
+      "eyebrow": "Videos & Tutorials",
+      "title": "Learn from the best",
+      "subtitle": "Technical tutorials, guided sessions and expert tips — click to play a video.",
+      "unavailable": "Video unavailable",
+      "playAria": "Play the video: {title}"
+    },
+    "guide": {
+      "eyebrow": "Expert Guide",
+      "title": "Everything you need to know"
+    },
+    "tips": {
+      "eyebrow": "Expert tips",
+      "title": "The pros' secrets"
+    },
+    "exercises": {
+      "eyebrow": "Key exercises",
+      "title": "Master the fundamentals",
+      "subtitle": "The essential exercises to know — technique, target muscles and execution tips to progress without getting injured."
+    },
+    "levels": {
+      "title": "Available levels",
+      "join": "Join",
+      "joinAria": "Join the {level} program"
+    },
+    "program": {
+      "title": "8-week program",
+      "phase": "Phase {n}",
+      "note": "* Program personalized by the Xenotif® AI based on your profile, level and goals."
+    },
+    "cta": {
+      "title": "Join the community",
+      "desc": "Get access to the <b>{title}</b> programs, personalized AI coaching and thousands of motivated athletes.",
+      "features": [
+        "Complete guide + HD videos",
+        "AI-personalized program",
+        "Advanced progress tracking",
+        "Coaches community",
+        "30-day money-back guarantee"
+      ],
+      "primary": "Start for free",
+      "pricing": "See pricing →",
+      "noCard": "No card required",
+      "freeCancel": "Cancel anytime"
+    },
+    "faq": {
+      "eyebrow": "Frequently asked questions",
+      "title": "All about {name}"
+    },
+    "others": {
+      "title": "Explore other disciplines",
+      "cardAria": "Discover the {name} discipline",
+      "alt": "{name} discipline"
+    }
   }
 }

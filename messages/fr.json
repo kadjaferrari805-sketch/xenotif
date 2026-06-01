@@ -293,5 +293,66 @@
       "doneTitle": "Mot de passe mis à jour !",
       "doneText": "Redirection vers ton dashboard…"
     }
+  },
+  "disciplines": {
+    "back": "Retour aux disciplines",
+    "metaTitle": "{name} — Guide complet & Programmes",
+    "ratingAria": "Note 5 étoiles",
+    "heroAria": "Discipline {name}",
+    "heroAlt": "Athlète pratiquant {name}",
+    "videos": {
+      "eyebrow": "Vidéos & Tutoriels",
+      "title": "Apprends avec les meilleurs",
+      "subtitle": "Tutoriels techniques, séances guidées et conseils d'experts — clique pour lancer une vidéo.",
+      "unavailable": "Vidéo non disponible",
+      "playAria": "Lancer la vidéo : {title}"
+    },
+    "guide": {
+      "eyebrow": "Guide Expert",
+      "title": "Tout ce qu'il faut savoir"
+    },
+    "tips": {
+      "eyebrow": "Conseils d'experts",
+      "title": "Les secrets des pros"
+    },
+    "exercises": {
+      "eyebrow": "Exercices clés",
+      "title": "Maîtrise les fondamentaux",
+      "subtitle": "Les exercices essentiels à connaître — technique, muscles ciblés et conseils d'exécution pour progresser sans se blesser."
+    },
+    "levels": {
+      "title": "Niveaux disponibles",
+      "join": "Rejoindre",
+      "joinAria": "Rejoindre le programme {level}"
+    },
+    "program": {
+      "title": "Programme 8 semaines",
+      "phase": "Phase {n}",
+      "note": "* Programme personnalisé par l'IA Xenotif® selon ton profil, ton niveau et tes objectifs."
+    },
+    "cta": {
+      "title": "Rejoins la communauté",
+      "desc": "Accède aux programmes <b>{title}</b>, au coaching IA personnalisé et à des milliers d'athlètes motivés.",
+      "features": [
+        "Guide complet + vidéos HD",
+        "Programme personnalisé IA",
+        "Suivi de progression avancé",
+        "Communauté de coaches",
+        "30 j satisfait ou remboursé"
+      ],
+      "primary": "Commencer gratuitement",
+      "pricing": "Voir les tarifs →",
+      "noCard": "Sans CB requise",
+      "freeCancel": "Annulation libre"
+    },
+    "faq": {
+      "eyebrow": "Questions fréquentes",
+      "title": "Tout sur {name}"
+    },
+    "others": {
+      "title": "Explore d'autres disciplines",
+      "cardAria": "Découvrir la discipline {name}",
+      "alt": "Discipline {name}"
+    }
   }
 }

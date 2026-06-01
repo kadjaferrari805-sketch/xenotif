@@ -1,5 +1,8 @@
 /* ── Per-discipline rich content ─────────────────────────────── */
 
+import { FEATURES } from './constants'
+import { DISCIPLINE_CONTENT_EN, DISCIPLINE_META_EN } from './disciplines.en'
+
 export interface DisciplineVideo {
   youtubeIds: string[]
   title: string
@@ -35,8 +38,18 @@ export interface Exercise {
   name: string
   muscles: string
   sets: string
-  difficulty: 'Débutant' | 'Intermédiaire' | 'Avancé' | 'Tous niveaux'
+  // Libellé de niveau affiché tel quel (localisé dans les données par langue).
+  difficulty: string
   description: string
+}
+
+// Méta d'une discipline (titre, description, stats, niveaux) — version localisée.
+export interface DisciplineMeta {
+  title: string
+  tag: string
+  description: string
+  stats: string[]
+  levels: string[]
 }
 
 export interface DisciplineContent {
@@ -1648,4 +1661,23 @@ export const DISCIPLINE_CONTENT: Record<string, DisciplineContent> = {
   boxing: boxingContent,
   stretching: stretchingContent,
   nutrition: nutritionContent,
+}
+
+// Méta FR dérivée de FEATURES (source unique des libellés FR de disciplines).
+const DISCIPLINE_META_FR: Record<string, DisciplineMeta> = Object.fromEntries(
+  FEATURES.map((f) => [
+    f.slug,
+    { title: f.title, tag: f.tag, description: f.description, stats: f.stats, levels: f.levels },
+  ]),
+)
+
+// Contenu localisé : repli sur le FR si la langue n'a pas de variante traduite.
+export function getDisciplineContent(locale: string): Record<string, DisciplineContent> {
+  return locale === 'en' ? DISCIPLINE_CONTENT_EN : DISCIPLINE_CONTENT
+}
+
+// Méta localisée par slug (titre/tag/description/stats/levels) : FR par défaut.
+export function getDisciplineMeta(slug: string, locale: string): DisciplineMeta | undefined {
+  if (locale === 'en') return DISCIPLINE_META_EN[slug]
+  return DISCIPLINE_META_FR[slug]
 }

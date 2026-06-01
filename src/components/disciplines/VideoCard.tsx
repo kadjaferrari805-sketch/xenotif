@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect, useId } from 'react'
+import { useTranslations } from 'next-intl'
 import { Play, Clock, BarChart2, VideoOff } from 'lucide-react'
 
 interface VideoCardProps {
@@ -13,6 +14,7 @@ interface VideoCardProps {
 }
 
 export function VideoCard({ youtubeIds, title, description, duration, level, accentColor }: VideoCardProps) {
+  const t = useTranslations('disciplines.videos')
   const [playing, setPlaying] = useState(false)
   const [imgError, setImgError] = useState(false)
   const [currentIdx, setCurrentIdx] = useState(0)
@@ -70,7 +72,7 @@ export function VideoCard({ youtubeIds, title, description, duration, level, acc
         <div className="relative w-full bg-sport-dark" style={{ paddingBottom: '56.25%' }}>
           <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 text-sport-gray">
             <VideoOff size={36} strokeWidth={1.5} />
-            <p className="text-sm font-semibold">Vidéo non disponible</p>
+            <p className="text-sm font-semibold">{t('unavailable')}</p>
           </div>
         </div>
         {metaFooter}
@@ -97,7 +99,7 @@ export function VideoCard({ youtubeIds, title, description, duration, level, acc
       ) : (
         <button
           onClick={() => setPlaying(true)}
-          aria-label={`Lancer la vidéo : ${title}`}
+          aria-label={t('playAria', { title })}
           className="block w-full text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-sport-orange"
         >
           <div className="relative w-full overflow-hidden bg-sport-dark" style={{ paddingBottom: '56.25%' }}>

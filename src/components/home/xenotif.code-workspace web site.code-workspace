@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "../../.."
+		},
+		{
+			"path": "../../../../xenotif-instagram"
+		}
+	],
+	"settings": {
+		"mcpFigma.autoStartWebSocket": true
+	}
+}
