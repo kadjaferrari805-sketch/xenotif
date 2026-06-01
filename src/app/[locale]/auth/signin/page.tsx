@@ -1,13 +1,14 @@
 'use client'
 
 import { useState } from 'react'
+import { useTranslations } from 'next-intl'
 import { Logo } from '@/components/ui/Logo'
-import Link from 'next/link'
-import { useRouter } from 'next/navigation'
+import { Link, useRouter } from '@/i18n/navigation'
 import { ArrowRight, Eye, EyeOff, Zap } from 'lucide-react'
 import { createClient } from '@/lib/supabase/client'
 
 export default function SignInPage() {
+  const t = useTranslations('auth.signin')
   const router = useRouter()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -22,7 +23,7 @@ export default function SignInPage() {
     const supabase = createClient()
     const { error: err } = await supabase.auth.signInWithPassword({ email, password })
     if (err) {
-      setError('Email ou mot de passe incorrect.')
+      setError(t('errorInvalid'))
       setLoading(false)
     } else {
       router.replace('/dashboard')
@@ -40,13 +41,13 @@ export default function SignInPage() {
 
         <div className="bg-sport-card border border-sport-border rounded-2xl p-8">
           <div className="text-center mb-8">
-            <h1 className="text-2xl font-black text-white mb-2">Connexion</h1>
-            <p className="text-sport-gray text-sm">Accède à ton espace membre</p>
+            <h1 className="text-2xl font-black text-white mb-2">{t('title')}</h1>
+            <p className="text-sport-gray text-sm">{t('subtitle')}</p>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-5">
             <div>
-              <label htmlFor="email" className="block text-xs font-bold text-white mb-2 uppercase tracking-wider">Email</label>
+              <label htmlFor="email" className="block text-xs font-bold text-white mb-2 uppercase tracking-wider">{t('emailLabel')}</label>
               <input
                 id="email"
                 type="email"
@@ -59,7 +60,7 @@ export default function SignInPage() {
             </div>
 
             <div>
-              <label htmlFor="password" className="block text-xs font-bold text-white mb-2 uppercase tracking-wider">Mot de passe</label>
+              <label htmlFor="password" className="block text-xs font-bold text-white mb-2 uppercase tracking-wider">{t('passwordLabel')}</label>
               <div className="relative">
                 <input
                   id="password"
@@ -74,7 +75,7 @@ export default function SignInPage() {
                   type="button"
                   onClick={() => setShowPwd(v => !v)}
                   className="absolute right-3 top-1/2 -translate-y-1/2 text-sport-gray hover:text-white transition-colors p-1"
-                  aria-label={showPwd ? 'Masquer' : 'Afficher'}
+                  aria-label={showPwd ? t('hide') : t('show')}
                 >
                   {showPwd ? <EyeOff size={16} /> : <Eye size={16} />}
                 </button>
@@ -88,21 +89,21 @@ export default function SignInPage() {
               disabled={loading}
               className="w-full bg-sport-orange text-white py-3.5 rounded-full font-bold text-sm hover:bg-orange-600 active:scale-95 transition-all inline-flex items-center justify-center gap-2 disabled:opacity-60 shadow-lg shadow-sport-orange/25"
             >
-              {loading ? <><span className="w-4 h-4 border-2 border-white/40 border-t-white rounded-full animate-spin" />Connexion…</> : <>Se connecter <ArrowRight size={14} /></>}
+              {loading ? <><span className="w-4 h-4 border-2 border-white/40 border-t-white rounded-full animate-spin" />{t('submitting')}</> : <>{t('submit')} <ArrowRight size={14} /></>}
             </button>
           </form>
 
           <div className="mt-5 text-center">
             <Link href="/auth/forgot-password" className="text-xs text-sport-gray hover:text-sport-orange transition-colors">
-              Mot de passe oublié ?
+              {t('forgot')}
             </Link>
           </div>
 
           <div className="mt-6 pt-6 border-t border-sport-border text-center">
             <p className="text-xs text-sport-gray">
-              Pas encore de compte ?{' '}
+              {t('noAccount')}{' '}
               <Link href="/auth/signup" className="text-sport-orange font-bold hover:underline">
-                Créer un compte →
+                {t('createAccount')}
               </Link>
             </p>
           </div>
@@ -110,7 +111,7 @@ export default function SignInPage() {
 
         <div className="mt-6 flex items-center justify-center gap-2 text-[11px] text-sport-gray">
           <Zap size={12} className="text-sport-orange" />
-          Connexion sécurisée SSL — Tes données sont protégées
+          {t('secure')}
         </div>
       </div>
     </div>

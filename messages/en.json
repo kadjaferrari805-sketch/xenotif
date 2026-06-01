@@ -258,7 +258,7 @@
       "signinLink": "Sign in →",
       "secure": "Secure SSL sign-up · No commitment · Cancel anytime",
       "doneTitle": "Check your email!",
-      "doneText": "A confirmation link has been sent to {email}.",
+      "doneText": "A confirmation link has been sent to <b>{email}</b>.",
       "doneCta": "Click it to activate your account.",
       "backToSignin": "Back to sign in →",
       "errorShortPassword": "Password must be at least 8 characters.",
@@ -278,7 +278,7 @@
       "submit": "Send the link",
       "submitting": "Sending…",
       "doneTitle": "Email sent!",
-      "doneText": "A reset link has been sent to {email}.",
+      "doneText": "A reset link has been sent to <b>{email}</b>.",
       "doneHint": "Check your spam if you don't see anything within 2 minutes.",
       "backToSignin": "Back to sign in →"
     },

@@ -258,7 +258,7 @@
       "signinLink": "Se connecter →",
       "secure": "Inscription sécurisée SSL · Sans engagement · Annulation libre",
       "doneTitle": "Vérifie ton email !",
-      "doneText": "Un lien de confirmation a été envoyé à {email}.",
+      "doneText": "Un lien de confirmation a été envoyé à <b>{email}</b>.",
       "doneCta": "Clique dessus pour activer ton compte.",
       "backToSignin": "Retour à la connexion →",
       "errorShortPassword": "Le mot de passe doit faire au moins 8 caractères.",
@@ -278,7 +278,7 @@
       "submit": "Envoyer le lien",
       "submitting": "Envoi…",
       "doneTitle": "Email envoyé !",
-      "doneText": "Un lien de réinitialisation a été envoyé à {email}.",
+      "doneText": "Un lien de réinitialisation a été envoyé à <b>{email}</b>.",
       "doneHint": "Vérifie tes spams si tu ne vois rien dans 2 minutes.",
       "backToSignin": "Retour à la connexion →"
     },
