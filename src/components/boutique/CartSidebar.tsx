@@ -1,7 +1,8 @@
 'use client'
 import { X, ShoppingBag, Minus, Plus, Trash2, ArrowRight, Truck } from 'lucide-react'
 import Image from 'next/image'
-import Link from 'next/link'
+import { Link } from '@/i18n/navigation'
+import { useTranslations } from 'next-intl'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useCart } from '@/lib/boutique/cart'
 import { formatPrice } from '@/lib/boutique/products'
@@ -14,6 +15,7 @@ interface CartSidebarProps {
 const FREE_SHIPPING_THRESHOLD = 5000 // 50€
 
 export function CartSidebar({ open, onClose }: CartSidebarProps) {
+  const t = useTranslations('boutique.cart')
   const { items, count, total, removeItem, updateQty } = useCart()
   const remaining = Math.max(0, FREE_SHIPPING_THRESHOLD - total)
   const progress = Math.min(100, (total / FREE_SHIPPING_THRESHOLD) * 100)
@@ -42,7 +44,7 @@ export function CartSidebar({ open, onClose }: CartSidebarProps) {
             <div className="flex items-center justify-between border-b border-sport-border px-6 py-5">
               <div className="flex items-center gap-2">
                 <ShoppingBag size={18} className="text-sport-orange" />
-                <h2 className="font-black text-white">Mon panier</h2>
+                <h2 className="font-black text-white">{t('title')}</h2>
                 {count > 0 && <span className="rounded-full bg-sport-orange px-2 py-0.5 text-xs font-black text-white">{count}</span>}
               </div>
               <button onClick={onClose} className="rounded-lg p-2 text-sport-gray hover:text-white hover:bg-sport-border/50 transition-colors">
@@ -55,11 +57,11 @@ export function CartSidebar({ open, onClose }: CartSidebarProps) {
               <div className="border-b border-sport-border px-6 py-4">
                 {remaining > 0 ? (
                   <p className="text-xs font-semibold text-sport-gray mb-2">
-                    Plus que <span className="font-black text-sport-lime">{formatPrice(remaining)}</span> pour la livraison offerte 🚚
+                    {t.rich('remaining', { amount: formatPrice(remaining), o: (c) => <span className="font-black text-sport-lime">{c}</span> })}
                   </p>
                 ) : (
                   <p className="text-xs font-semibold text-sport-lime mb-2 flex items-center gap-1">
-                    <Truck size={12} /> Livraison gratuite débloquée ! 🎉
+                    <Truck size={12} /> {t('unlocked')}
                   </p>
                 )}
                 <div className="h-1.5 rounded-full bg-sport-border overflow-hidden">
@@ -76,11 +78,11 @@ export function CartSidebar({ open, onClose }: CartSidebarProps) {
                     <ShoppingBag size={28} className="text-sport-gray" />
                   </div>
                   <div>
-                    <p className="font-black text-white">Ton panier est vide</p>
-                    <p className="text-sm text-sport-gray mt-1">Ajoute des produits pour commencer</p>
+                    <p className="font-black text-white">{t('emptyTitle')}</p>
+                    <p className="text-sm text-sport-gray mt-1">{t('emptyDesc')}</p>
                   </div>
                   <button onClick={onClose} className="rounded-xl bg-sport-orange px-6 py-2.5 text-sm font-bold text-white hover:bg-orange-600 transition-colors">
-                    Découvrir les produits
+                    {t('discover')}
                   </button>
                 </div>
               ) : (
@@ -109,7 +111,7 @@ export function CartSidebar({ open, onClose }: CartSidebarProps) {
                                 <Plus size={10} />
                               </button>
                             </div>
-                          ) : <span className="text-xs text-sport-lime font-semibold">📥 Digital</span>}
+                          ) : <span className="text-xs text-sport-lime font-semibold">{t('digital')}</span>}
                           <span className="text-sm font-black text-white">{formatPrice(product.price_cents * quantity)}</span>
                         </div>
                       </div>
@@ -123,16 +125,16 @@ export function CartSidebar({ open, onClose }: CartSidebarProps) {
             {items.length > 0 && (
               <div className="border-t border-sport-border px-6 py-5 space-y-4">
                 <div className="flex items-center justify-between">
-                  <span className="font-semibold text-sport-gray">Sous-total</span>
+                  <span className="font-semibold text-sport-gray">{t('subtotal')}</span>
                   <span className="text-xl font-black text-white">{formatPrice(total)}</span>
                 </div>
-                <p className="text-xs text-sport-gray">Livraison calculée au checkout · Taxes incluses</p>
+                <p className="text-xs text-sport-gray">{t('shippingNote')}</p>
                 <Link href="/boutique/panier" onClick={onClose}
                   className="flex w-full items-center justify-center gap-2 rounded-2xl bg-sport-orange py-4 font-bold text-white hover:bg-orange-600 transition-all hover:shadow-[0_0_30px_rgba(255,69,0,0.4)]">
-                  Passer commande <ArrowRight size={16} />
+                  {t('checkout')} <ArrowRight size={16} />
                 </Link>
                 <button onClick={onClose} className="w-full text-center text-sm font-semibold text-sport-gray hover:text-white transition-colors">
-                  Continuer mes achats
+                  {t('continueShopping')}
                 </button>
               </div>
             )}

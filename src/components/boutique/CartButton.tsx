@@ -1,5 +1,6 @@
 'use client'
-import { usePathname } from 'next/navigation'
+import { useTranslations } from 'next-intl'
+import { usePathname } from '@/i18n/navigation'
 import { ShoppingCart } from 'lucide-react'
 import { useCart, useCartOpen } from '@/lib/boutique/cart'
 import { CartSidebar } from './CartSidebar'
@@ -11,9 +12,10 @@ import { CartSidebar } from './CartSidebar'
  * ouvre ce même panier.
  */
 export function CartButton() {
+  const t = useTranslations('boutique.cart')
   const { count } = useCart()
   const { open, openCart, closeCart } = useCartOpen()
-  const pathname = usePathname()
+  const pathname = usePathname() // sans préfixe de locale
 
   // Pas de bouton flottant sur la page panier elle-même (redondant)
   const hideFab = pathname === '/boutique/panier'
@@ -25,7 +27,7 @@ export function CartButton() {
       {!hideFab && (
         <button
           onClick={openCart}
-          aria-label={count > 0 ? `Ouvrir le panier (${count} article${count !== 1 ? 's' : ''})` : 'Ouvrir le panier'}
+          aria-label={count > 0 ? t('openAriaCount', { count }) : t('openAria')}
           className="fixed bottom-6 right-6 z-40 flex h-14 w-14 items-center justify-center rounded-full bg-sport-orange text-white shadow-[0_0_30px_rgba(255,69,0,0.5)] hover:bg-orange-600 hover:scale-105 transition-all"
         >
           <ShoppingCart size={22} />

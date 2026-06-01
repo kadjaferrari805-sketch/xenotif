@@ -354,5 +354,138 @@
       "cardAria": "Discover the {name} discipline",
       "alt": "{name} discipline"
     }
+  },
+  "boutique": {
+    "metaTitle": "Shop — Gear, Supplements & Fitness Programs",
+    "metaDescription": "The Xenotif® shop: sports gear, proven supplements, smartwatches and digital programs created by our certified coaches. Fast delivery, secure payment.",
+    "ogTitle": "Xenotif® Shop — Gear, Supplements & Programs",
+    "ogDescription": "Pro gear, proven supplements and digital programs created by our certified coaches.",
+    "badge": "🛒 Official XENOTIF® Store",
+    "heroTitle": "Premium <o>Gear &</o><br></br><o>Programs</o>",
+    "heroSubtitle": "Pro gear, proven supplements and programs created by our certified coaches — everything to reach your goals.",
+    "searchPlaceholder": "Search kettlebell, whey, HIIT program...",
+    "filters": "Filters",
+    "stats": {
+      "products": "Premium products",
+      "rating": "Average rating",
+      "customers": "Happy customers",
+      "customersValue": "12,000+",
+      "delivery": "Express delivery"
+    },
+    "trust": [
+      "🔒 100% secure SSL payment",
+      "🚚 Free shipping over €50",
+      "📥 Instant download",
+      "↩️ 30-day returns",
+      "✓ Tested & approved products"
+    ],
+    "filterCategory": "Category",
+    "allCategory": "🌟 All",
+    "filterDiscipline": "Discipline",
+    "allDisciplines": "All",
+    "filterSort": "Sort by",
+    "reset": "Reset filters",
+    "count": "{count, plural, =0 {No products} one {# product} other {# products}}",
+    "forSearch": "for \"{q}\"",
+    "emptyTitle": "No products found",
+    "emptyDesc": "Try other terms or reset the filters.",
+    "amazonDisclaimer": "🔗 Some products are Amazon affiliate links. By purchasing through them, you support Xenotif® at no extra cost to you. Prices and availability may vary on Amazon.",
+    "disciplinesFilter": {
+      "musculation": "💪 Strength",
+      "running-cardio": "🏃 Running",
+      "hiit": "⚡ HIIT",
+      "yoga": "🧘 Yoga",
+      "crossfit": "🔥 CrossFit",
+      "boxing": "🥊 Boxing"
+    },
+    "sort": {
+      "popular": "Most popular",
+      "price_asc": "Price: low to high",
+      "price_desc": "Price: high to low",
+      "rating": "Top rated",
+      "new": "New arrivals"
+    },
+    "categories": {
+      "Équipements": "Equipment",
+      "Nutrition": "Nutrition",
+      "Vêtements": "Apparel",
+      "Programmes": "Programs",
+      "Cardio": "Cardio",
+      "Recovery": "Recovery",
+      "Tech": "Tech"
+    },
+    "card": {
+      "amazonView": "View on Amazon",
+      "detailsView": "View details",
+      "add": "Add",
+      "added": "Added!"
+    },
+    "cart": {
+      "title": "My cart",
+      "remaining": "Only <o>{amount}</o> away from free shipping 🚚",
+      "unlocked": "Free shipping unlocked! 🎉",
+      "emptyTitle": "Your cart is empty",
+      "emptyDesc": "Add products to get started",
+      "discover": "Browse products",
+      "digital": "📥 Digital",
+      "subtotal": "Subtotal",
+      "shippingNote": "Shipping calculated at checkout · Taxes included",
+      "checkout": "Checkout",
+      "continueShopping": "Continue shopping",
+      "openAria": "Open cart",
+      "openAriaCount": "Open cart ({count, plural, one {# item} other {# items}})"
+    },
+    "detail": {
+      "back": "Back to shop",
+      "typeDigital": "📥 Digital",
+      "typePhysical": "📦 Physical",
+      "amazon": "🔗 Amazon",
+      "reviews": "({count} reviews)",
+      "included": "What's included",
+      "buyAmazon": "Buy on Amazon — {price}",
+      "addedToCart": "Added to cart!",
+      "buyDigital": "Buy — {price}",
+      "addToCart": "Add to cart",
+      "shippingAffiliate": ["🔗 Amazon affiliate link", "📦 Shipped by Amazon", "🔒 Secure payment"],
+      "shippingPhysical": ["🚚 Free shipping over €50", "↩️ 30-day returns", "🔒 Secure payment"],
+      "shippingDigital": ["⚡ Instant download", "📱 Works on all devices", "♾️ Lifetime access"],
+      "related": "You may also like"
+    },
+    "panier": {
+      "emptyTitle": "Your cart is empty",
+      "emptyDesc": "Discover our premium products",
+      "seeShop": "View the shop",
+      "title": "Cart",
+      "itemsCount": "({count, plural, one {# item} other {# items}})",
+      "ownSection": "XENOTIF products — Secure payment",
+      "digitalImmediate": "📥 Instant download",
+      "physicalDelivery": "📦 Delivery 3-7 days",
+      "affiliateSection": "🔗 Amazon products — Order on Amazon.de",
+      "affiliateNote": "These products are ordered directly on Amazon.de by clicking the button.",
+      "summary": "Summary",
+      "total": "Total",
+      "emailPlaceholder": "Your email (for the receipt)",
+      "payError": "Payment error",
+      "connError": "Connection error. Please try again.",
+      "redirecting": "Redirecting...",
+      "payNow": "Pay now",
+      "payTrust": ["🔒 SSL", "💳 Visa / MC / Amex", "↩️ 30 days"],
+      "affiliateOnlyTitle": "Amazon products are ordered directly on Amazon.de",
+      "affiliateOnlyDesc": "Click \"Amazon\" next to each product.",
+      "continueShopping": "← Continue shopping"
+    },
+    "succes": {
+      "metaTitle": "Order confirmed — Xenotif®",
+      "title": "Order confirmed!",
+      "subtitle": "Thank you for your purchase. A confirmation email will arrive in a few minutes.",
+      "downloadReady": "Your download is ready",
+      "downloadDesc": "Available immediately. You've also received these links by email.",
+      "whatNow": "What now?",
+      "digitalAbove": "Your <o>digital programs</o> are available immediately above.",
+      "digitalEmail": "Your <o>digital programs</o> are available immediately in your email.",
+      "physicalShipped": "Your <o>physical products</o> will be shipped within 2-5 business days.",
+      "continueShopping": "Continue shopping",
+      "goDashboard": "Go to dashboard →"
+    }
   }
 }

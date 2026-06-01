@@ -354,5 +354,138 @@
       "cardAria": "Découvrir la discipline {name}",
       "alt": "Discipline {name}"
     }
+  },
+  "boutique": {
+    "metaTitle": "Boutique — Équipements, Suppléments & Programmes Fitness",
+    "metaDescription": "La boutique Xenotif® : équipements de sport, suppléments éprouvés, montres connectées et programmes digitaux créés par nos coachs certifiés. Livraison rapide, paiement sécurisé.",
+    "ogTitle": "Boutique Xenotif® — Équipements, Suppléments & Programmes",
+    "ogDescription": "Équipements pro, suppléments éprouvés et programmes digitaux créés par nos coachs certifiés.",
+    "badge": "🛒 Boutique Officielle XENOTIF®",
+    "heroTitle": "Équipements <o>&</o><br></br><o>Programmes</o> Premium",
+    "heroSubtitle": "Des équipements pro, des suppléments éprouvés et des programmes créés par nos coachs certifiés — tout pour atteindre tes objectifs.",
+    "searchPlaceholder": "Rechercher kettlebell, whey, programme HIIT...",
+    "filters": "Filtres",
+    "stats": {
+      "products": "Produits premium",
+      "rating": "Note moyenne",
+      "customers": "Clients satisfaits",
+      "customersValue": "12 000+",
+      "delivery": "Livraison express"
+    },
+    "trust": [
+      "🔒 Paiement 100% sécurisé SSL",
+      "🚚 Livraison offerte dès 50€",
+      "📥 Téléchargement instantané",
+      "↩️ Retours 30 jours",
+      "✓ Produits testés & approuvés"
+    ],
+    "filterCategory": "Catégorie",
+    "allCategory": "🌟 Tous",
+    "filterDiscipline": "Discipline",
+    "allDisciplines": "Toutes",
+    "filterSort": "Trier par",
+    "reset": "Réinitialiser les filtres",
+    "count": "{count, plural, =0 {Aucun produit} one {# produit} other {# produits}}",
+    "forSearch": "pour « {q} »",
+    "emptyTitle": "Aucun produit trouvé",
+    "emptyDesc": "Essaie avec d'autres termes ou réinitialise les filtres.",
+    "amazonDisclaimer": "🔗 Certains produits sont des liens affiliés Amazon. En achetant via ces liens, tu soutiens Xenotif® sans coût supplémentaire pour toi. Les prix et disponibilités peuvent varier selon Amazon.",
+    "disciplinesFilter": {
+      "musculation": "💪 Musculation",
+      "running-cardio": "🏃 Running",
+      "hiit": "⚡ HIIT",
+      "yoga": "🧘 Yoga",
+      "crossfit": "🔥 CrossFit",
+      "boxing": "🥊 Boxe"
+    },
+    "sort": {
+      "popular": "Plus populaires",
+      "price_asc": "Prix croissant",
+      "price_desc": "Prix décroissant",
+      "rating": "Meilleures notes",
+      "new": "Nouveautés"
+    },
+    "categories": {
+      "Équipements": "Équipements",
+      "Nutrition": "Nutrition",
+      "Vêtements": "Vêtements",
+      "Programmes": "Programmes",
+      "Cardio": "Cardio",
+      "Recovery": "Récupération",
+      "Tech": "Tech"
+    },
+    "card": {
+      "amazonView": "Voir sur Amazon",
+      "detailsView": "Voir détails",
+      "add": "Ajouter",
+      "added": "Ajouté !"
+    },
+    "cart": {
+      "title": "Mon panier",
+      "remaining": "Plus que <o>{amount}</o> pour la livraison offerte 🚚",
+      "unlocked": "Livraison gratuite débloquée ! 🎉",
+      "emptyTitle": "Ton panier est vide",
+      "emptyDesc": "Ajoute des produits pour commencer",
+      "discover": "Découvrir les produits",
+      "digital": "📥 Digital",
+      "subtotal": "Sous-total",
+      "shippingNote": "Livraison calculée au checkout · Taxes incluses",
+      "checkout": "Passer commande",
+      "continueShopping": "Continuer mes achats",
+      "openAria": "Ouvrir le panier",
+      "openAriaCount": "Ouvrir le panier ({count, plural, one {# article} other {# articles}})"
+    },
+    "detail": {
+      "back": "Retour à la boutique",
+      "typeDigital": "📥 Digital",
+      "typePhysical": "📦 Physique",
+      "amazon": "🔗 Amazon",
+      "reviews": "({count} avis)",
+      "included": "Ce qui est inclus",
+      "buyAmazon": "Acheter sur Amazon — {price}",
+      "addedToCart": "Ajouté au panier !",
+      "buyDigital": "Acheter — {price}",
+      "addToCart": "Ajouter au panier",
+      "shippingAffiliate": ["🔗 Lien affilié Amazon", "📦 Expédié par Amazon", "🔒 Paiement sécurisé"],
+      "shippingPhysical": ["🚚 Livraison gratuite dès 50€", "↩️ Retours 30 jours", "🔒 Paiement sécurisé"],
+      "shippingDigital": ["⚡ Téléchargement immédiat", "📱 Compatible tous appareils", "♾️ Accès à vie"],
+      "related": "Vous aimerez aussi"
+    },
+    "panier": {
+      "emptyTitle": "Ton panier est vide",
+      "emptyDesc": "Découvre nos produits premium",
+      "seeShop": "Voir la boutique",
+      "title": "Panier",
+      "itemsCount": "({count, plural, one {# article} other {# articles}})",
+      "ownSection": "Produits XENOTIF — Paiement sécurisé",
+      "digitalImmediate": "📥 Téléchargement immédiat",
+      "physicalDelivery": "📦 Livraison 3-7 jours",
+      "affiliateSection": "🔗 Produits Amazon — Commander sur Amazon.de",
+      "affiliateNote": "Ces produits se commandent directement sur Amazon.de en cliquant sur le bouton.",
+      "summary": "Récapitulatif",
+      "total": "Total",
+      "emailPlaceholder": "Ton email (pour le reçu)",
+      "payError": "Erreur lors du paiement",
+      "connError": "Erreur de connexion. Réessaie.",
+      "redirecting": "Redirection...",
+      "payNow": "Payer maintenant",
+      "payTrust": ["🔒 SSL", "💳 Visa / MC / Amex", "↩️ 30 jours"],
+      "affiliateOnlyTitle": "Les produits Amazon se commandent directement sur Amazon.de",
+      "affiliateOnlyDesc": "Clique sur « Amazon » à côté de chaque produit.",
+      "continueShopping": "← Continuer mes achats"
+    },
+    "succes": {
+      "metaTitle": "Commande confirmée — Xenotif®",
+      "title": "Commande confirmée !",
+      "subtitle": "Merci pour ton achat. Un email de confirmation arrive dans quelques minutes.",
+      "downloadReady": "Ton téléchargement est prêt",
+      "downloadDesc": "Disponible immédiatement. Tu as aussi reçu ces liens par email.",
+      "whatNow": "Et maintenant ?",
+      "digitalAbove": "Tes <o>programmes digitaux</o> sont disponibles immédiatement ci-dessus.",
+      "digitalEmail": "Tes <o>programmes digitaux</o> sont disponibles immédiatement dans ton email.",
+      "physicalShipped": "Tes <o>produits physiques</o> seront expédiés sous 2-5 jours ouvrés.",
+      "continueShopping": "Continuer mes achats",
+      "goDashboard": "Aller au dashboard →"
+    }
   }
 }

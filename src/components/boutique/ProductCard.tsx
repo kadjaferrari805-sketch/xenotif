@@ -1,6 +1,7 @@
 'use client'
-import Link from 'next/link'
+import { Link } from '@/i18n/navigation'
 import Image from 'next/image'
+import { useTranslations, useLocale } from 'next-intl'
 import { ShoppingCart, Download, Star, Heart, ExternalLink, Eye } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { formatPrice, type Product } from '@/lib/boutique/products'
@@ -14,6 +15,8 @@ interface ProductCardProps {
 }
 
 export function ProductCard({ product, index = 0 }: ProductCardProps) {
+  const t = useTranslations('boutique')
+  const locale = useLocale()
   const { addItem } = useCart()
   const { toggle, isWishlisted } = useWishlist()
   const [added, setAdded] = useState(false)
@@ -47,7 +50,7 @@ export function ProductCard({ product, index = 0 }: ProductCardProps) {
             <span className="absolute top-3 right-3 flex h-7 w-7 items-center justify-center rounded-full bg-sport-dark/80 text-xs">🔗</span>
             <div className="absolute inset-0 bg-gradient-to-t from-sport-dark/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center pb-4">
               <span className="flex items-center gap-1.5 rounded-full bg-sport-orange px-4 py-2 text-xs font-bold text-white">
-                <ExternalLink size={12} /> Voir sur Amazon
+                <ExternalLink size={12} /> {t('card.amazonView')}
               </span>
             </div>
           </div>
@@ -57,7 +60,7 @@ export function ProductCard({ product, index = 0 }: ProductCardProps) {
             <div className="flex items-center gap-1.5 mb-3">
               <div className="flex">{Array.from({ length: 5 }).map((_, i) => <Star key={i} size={10} className={i < Math.round(product.rating) ? 'fill-sport-orange text-sport-orange' : 'fill-sport-border text-sport-border'} />)}</div>
               <span className="text-[11px] font-bold text-sport-orange">{product.rating}</span>
-              <span className="text-[10px] text-sport-gray">({product.reviews.toLocaleString('fr-FR')})</span>
+              <span className="text-[10px] text-sport-gray">({product.reviews.toLocaleString(locale)})</span>
             </div>
             <div className="flex items-center justify-between">
               <div>
@@ -91,19 +94,19 @@ export function ProductCard({ product, index = 0 }: ProductCardProps) {
           {/* Quick view overlay — span (pas de <a> imbriqué dans le <Link> image) */}
           <div className="absolute inset-0 bg-gradient-to-t from-sport-dark/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center pb-3">
             <span className="flex items-center gap-1.5 rounded-full bg-white/20 backdrop-blur-sm px-3 py-1.5 text-xs font-bold text-white">
-              <Eye size={11} /> Voir détails
+              <Eye size={11} /> {t('card.detailsView')}
             </span>
           </div>
         </Link>
         <div className="flex flex-1 flex-col p-4">
-          <p className="text-[10px] font-bold uppercase tracking-wider text-sport-gray mb-0.5">{product.brand} · {product.category}</p>
+          <p className="text-[10px] font-bold uppercase tracking-wider text-sport-gray mb-0.5">{product.brand} · {t(`categories.${product.category}`)}</p>
           <Link href={`/boutique/${product.slug}`}>
             <h3 className="text-sm font-black text-white group-hover:text-sport-orange transition-colors line-clamp-2 mb-2">{product.name}</h3>
           </Link>
           <div className="flex items-center gap-1.5 mb-3">
             <div className="flex">{Array.from({ length: 5 }).map((_, i) => <Star key={i} size={10} className={i < Math.round(product.rating) ? 'fill-sport-orange text-sport-orange' : 'fill-sport-border text-sport-border'} />)}</div>
             <span className="text-[11px] font-bold text-sport-orange">{product.rating}</span>
-            <span className="text-[10px] text-sport-gray">({product.reviews.toLocaleString('fr-FR')})</span>
+            <span className="text-[10px] text-sport-gray">({product.reviews.toLocaleString(locale)})</span>
           </div>
           <div className="mt-auto flex items-center justify-between gap-2">
             <div>
@@ -113,7 +116,7 @@ export function ProductCard({ product, index = 0 }: ProductCardProps) {
             <button onClick={handleAdd}
               className={`flex items-center gap-1.5 rounded-xl px-3 py-2 text-xs font-bold text-white transition-all whitespace-nowrap ${added ? 'bg-emerald-600' : 'bg-sport-orange hover:bg-orange-600 hover:shadow-[0_0_16px_rgba(255,69,0,0.4)]'}`}>
               {added ? '✓' : product.type === 'digital' ? <Download size={12} /> : <ShoppingCart size={12} />}
-              {added ? 'Ajouté !' : 'Ajouter'}
+              {added ? t('card.added') : t('card.add')}
             </button>
           </div>
         </div>
