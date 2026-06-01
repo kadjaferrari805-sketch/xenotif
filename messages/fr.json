@@ -28,7 +28,9 @@
         "intermediaire": "Intermédiaire",
         "avance": "Avancé",
         "elite": "Élite",
-        "coachingIA": "Coaching IA"
+        "coachingIA": "Coaching IA",
+        "tarifs": "Tarifs",
+        "faq": "FAQ"
       }
     },
     "skipLink": "Aller au contenu principal"

@@ -1,7 +1,10 @@
-import Link from 'next/link'
+import { useTranslations } from 'next-intl'
+import { Link } from '@/i18n/navigation'
 import { Mail, Globe, PlayCircle, MessageCircle } from 'lucide-react'
 import { Logo } from '@/components/ui/Logo'
 
+// Noms de disciplines = noms propres/marque → laissés en FR en P1 (cohérent
+// avec les pages disciplines, dont le contenu est traduit en P2).
 const DISC_LINKS = [
   { label: 'Running & Cardio', href: '/disciplines/running-cardio' },
   { label: 'Musculation',      href: '/disciplines/musculation' },
@@ -12,20 +15,20 @@ const DISC_LINKS = [
 ]
 
 const PROG_LINKS = [
-  { label: 'Débutant',    href: '/#programmes' },
-  { label: 'Intermédiaire', href: '/#programmes' },
-  { label: 'Avancé',      href: '/#programmes' },
-  { label: 'Élite',       href: '/#programmes' },
-  { label: 'Coaching IA', href: '/dashboard/coach' },
-  { label: 'Tarifs',      href: '/#tarifs' },
-]
+  { key: 'debutant',      href: '/#programmes' },
+  { key: 'intermediaire', href: '/#programmes' },
+  { key: 'avance',        href: '/#programmes' },
+  { key: 'elite',         href: '/#programmes' },
+  { key: 'coachingIA',    href: '/dashboard/coach' },
+  { key: 'tarifs',        href: '/#tarifs' },
+] as const
 
 const INFO_LINKS = [
-  { label: 'Mentions légales',  href: '/mentions-legales' },
-  { label: 'Confidentialité',   href: '/confidentialite' },
-  { label: 'Contact',           href: '/contact' },
-  { label: 'FAQ',               href: '/#faq' },
-]
+  { key: 'mentionsLegales', href: '/mentions-legales' },
+  { key: 'confidentialite', href: '/confidentialite' },
+  { key: 'contact',         href: '/contact' },
+  { key: 'faq',             href: '/#faq' },
+] as const
 
 const SOCIAL = [
   { Icon: Globe,         label: 'Instagram Xenotif', href: 'https://instagram.com/xenotif' },
@@ -34,6 +37,8 @@ const SOCIAL = [
 ]
 
 export function Footer() {
+  const t = useTranslations('common.footer')
+
   return (
     <footer aria-label="Pied de page">
       {/* ── Main grid ───────────────────────────────────────── */}
@@ -45,8 +50,7 @@ export function Footer() {
               <Logo href="/" size="sm" />
             </div>
             <p className="text-xs text-sport-gray leading-relaxed mb-6">
-              La plateforme sport ultime pour athlètes de tous niveaux. Performance, coaching IA
-              et communauté au service de tes objectifs.
+              {t('tagline')}
             </p>
             <div className="flex gap-3" aria-label="Réseaux sociaux">
               {SOCIAL.map(({ Icon, label, href }) => (
@@ -73,7 +77,7 @@ export function Footer() {
 
           {/* Disciplines */}
           <div>
-            <h3 className="text-xs font-bold text-white uppercase tracking-widest mb-5">Disciplines</h3>
+            <h3 className="text-xs font-bold text-white uppercase tracking-widest mb-5">{t('disciplines')}</h3>
             <ul className="flex flex-col gap-2.5">
               {DISC_LINKS.map((link) => (
                 <li key={link.label}>
@@ -87,12 +91,12 @@ export function Footer() {
 
           {/* Programmes */}
           <div>
-            <h3 className="text-xs font-bold text-white uppercase tracking-widest mb-5">Programmes</h3>
+            <h3 className="text-xs font-bold text-white uppercase tracking-widest mb-5">{t('programmes')}</h3>
             <ul className="flex flex-col gap-2.5">
               {PROG_LINKS.map((link) => (
-                <li key={link.label}>
+                <li key={link.key}>
                   <Link href={link.href} className="text-xs text-sport-gray hover:text-sport-orange transition-colors">
-                    {link.label}
+                    {t(`links.${link.key}`)}
                   </Link>
                 </li>
               ))}
@@ -101,12 +105,12 @@ export function Footer() {
 
           {/* Informations */}
           <div>
-            <h3 className="text-xs font-bold text-white uppercase tracking-widest mb-5">Informations</h3>
+            <h3 className="text-xs font-bold text-white uppercase tracking-widest mb-5">{t('informations')}</h3>
             <ul className="flex flex-col gap-2.5">
               {INFO_LINKS.map((link) => (
-                <li key={link.label}>
+                <li key={link.key}>
                   <Link href={link.href} className="text-xs text-sport-gray hover:text-sport-orange transition-colors">
-                    {link.label}
+                    {t(`links.${link.key}`)}
                   </Link>
                 </li>
               ))}
@@ -125,8 +129,8 @@ export function Footer() {
       {/* ── Copyright bar ────────────────────────────────────── */}
       <div className="bg-[#06070A] border-t border-sport-border px-6 py-4">
         <div className="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2 text-xs text-sport-gray">
-          <span>© 2026 Xenotif® — Tous droits réservés</span>
-          <span>Conçu pour les athlètes · Propulsé par l&apos;IA</span>
+          <span>{t('copyright')}</span>
+          <span>{t('baseline')}</span>
         </div>
       </div>
     </footer>
