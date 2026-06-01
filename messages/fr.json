@@ -487,5 +487,45 @@
       "continueShopping": "Continuer mes achats",
       "goDashboard": "Aller au dashboard →"
     }
+  },
+  "blog": {
+    "metaTitle": "Blog Fitness — Conseils, Guides & Comparatifs",
+    "metaDescription": "Conseils fitness experts, guides nutritionnels, comparatifs matériel et programmes d'entraînement. Tout ce qu'il faut savoir pour progresser, rédigé par des experts Xenotif®.",
+    "ogTitle": "Blog Fitness — Conseils, Guides & Comparatifs | Xenotif®",
+    "ogDescription": "Conseils fitness experts, guides nutritionnels, comparatifs matériel. Progressez plus vite avec Xenotif®.",
+    "keywords": ["blog fitness", "conseils musculation", "nutrition sportive", "programme running", "guide HIIT", "récupération musculaire", "comparatif matériel fitness"],
+    "eyebrow": "Le Blog Xenotif®",
+    "title": "Conseils Fitness <o>par des Experts</o>",
+    "subtitle": "Guides techniques, programmes d'entraînement, nutrition scientifique et comparatifs matériel. Tout ce qu'il faut pour progresser plus vite.",
+    "statsArticles": "{count} articles",
+    "statsExperts": "Experts vérifiés",
+    "statsUpdated": "Mis à jour 2026",
+    "allCategory": "Tous",
+    "categories": {
+      "Musculation": "Musculation",
+      "Nutrition": "Nutrition",
+      "Running": "Running",
+      "Récupération": "Récupération",
+      "Matériel": "Matériel",
+      "HIIT": "HIIT"
+    },
+    "categoryHeading": "{count, plural, one {# article} other {# articles}} en {category}",
+    "emptyCategory": "Aucun article dans cette catégorie.",
+    "seeAll": "Voir tous les articles",
+    "ctaTitle": "Prêt à <o>Passer à l'Action ?</o>",
+    "ctaSubtitle": "Les conseils théoriques c'est bien, un programme structuré par des experts c'est mieux. Rejoignez les 12 000+ athlètes Xenotif®.",
+    "ctaShop": "Voir la Boutique",
+    "ctaJoin": "Rejoindre Xenotif®",
+    "readingTime": "{minutes} min",
+    "readingTimeLong": "{minutes} min de lecture",
+    "breadcrumbAria": "Fil d'Ariane",
+    "breadcrumbHome": "Accueil",
+    "breadcrumbBlog": "Blog",
+    "recommendedTitle": "Produits <o>Recommandés</o>",
+    "recommendedSubtitle": "Sélectionnés par nos experts en lien avec cet article.",
+    "relatedTitle": "Articles <o>Similaires</o>",
+    "backToBlog": "Retour au Blog",
+    "recommendedProduct": "Produit recommandé",
+    "viewProduct": "Voir le produit"
   }
 }

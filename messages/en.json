@@ -487,5 +487,45 @@
       "continueShopping": "Continue shopping",
       "goDashboard": "Go to dashboard →"
     }
+  },
+  "blog": {
+    "metaTitle": "Fitness Blog — Tips, Guides & Comparisons",
+    "metaDescription": "Expert fitness tips, nutrition guides, gear comparisons and training programs. Everything you need to know to progress, written by Xenotif® experts.",
+    "ogTitle": "Fitness Blog — Tips, Guides & Comparisons | Xenotif®",
+    "ogDescription": "Expert fitness tips, nutrition guides, gear comparisons. Progress faster with Xenotif®.",
+    "keywords": ["fitness blog", "strength tips", "sports nutrition", "running program", "HIIT guide", "muscle recovery", "fitness gear comparison"],
+    "eyebrow": "The Xenotif® Blog",
+    "title": "Fitness Tips <o>from Experts</o>",
+    "subtitle": "Technical guides, training programs, science-based nutrition and gear comparisons. Everything you need to progress faster.",
+    "statsArticles": "{count} articles",
+    "statsExperts": "Verified experts",
+    "statsUpdated": "Updated 2026",
+    "allCategory": "All",
+    "categories": {
+      "Musculation": "Strength",
+      "Nutrition": "Nutrition",
+      "Running": "Running",
+      "Récupération": "Recovery",
+      "Matériel": "Gear",
+      "HIIT": "HIIT"
+    },
+    "categoryHeading": "{count, plural, one {# article} other {# articles}} in {category}",
+    "emptyCategory": "No articles in this category.",
+    "seeAll": "See all articles",
+    "ctaTitle": "Ready to <o>Take Action?</o>",
+    "ctaSubtitle": "Theory is good, a program structured by experts is better. Join the 12,000+ Xenotif® athletes.",
+    "ctaShop": "View the Shop",
+    "ctaJoin": "Join Xenotif®",
+    "readingTime": "{minutes} min",
+    "readingTimeLong": "{minutes} min read",
+    "breadcrumbAria": "Breadcrumb",
+    "breadcrumbHome": "Home",
+    "breadcrumbBlog": "Blog",
+    "recommendedTitle": "Recommended <o>Products</o>",
+    "recommendedSubtitle": "Selected by our experts in relation to this article.",
+    "relatedTitle": "Related <o>Articles</o>",
+    "backToBlog": "Back to the Blog",
+    "recommendedProduct": "Recommended product",
+    "viewProduct": "View the product"
   }
 }
