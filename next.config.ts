@@ -24,7 +24,19 @@ const securityHeaders = [
 ]
 
 const nextConfig: NextConfig = {
-  transpilePackages: ['next-intl'],
+  // next-intl et toute sa chaîne de dépendances ESM doivent être transpilés
+  // pour Jest (next/jest n'autorise que `transpilePackages` à transformer node_modules).
+  transpilePackages: [
+    'next-intl',
+    'use-intl',
+    'intl-messageformat',
+    'icu-minify',
+    '@schummar/icu-type-parser',
+    '@formatjs/fast-memoize',
+    '@formatjs/icu-messageformat-parser',
+    '@formatjs/icu-skeleton-parser',
+    '@formatjs/intl-localematcher',
+  ],
   images: {
     remotePatterns: [
       { protocol: 'https', hostname: 'images.unsplash.com' },

@@ -1,5 +1,24 @@
 import '@testing-library/jest-dom'
 
+// next/navigation requiert un contexte App Router (absent en jsdom). Les hooks
+// locale-aware de next-intl (usePathname/useRouter via @/i18n/navigation)
+// délèguent à next/navigation : on fournit des stubs pour les tests de rendu.
+jest.mock('next/navigation', () => ({
+  useRouter: () => ({
+    push: jest.fn(),
+    replace: jest.fn(),
+    prefetch: jest.fn(),
+    back: jest.fn(),
+    forward: jest.fn(),
+    refresh: jest.fn(),
+  }),
+  usePathname: () => '/',
+  useParams: () => ({ locale: 'fr' }),
+  useSearchParams: () => new URLSearchParams(),
+  redirect: jest.fn(),
+  notFound: jest.fn(),
+}))
+
 // Variables d'env factices : certains composants (Nav, etc.) instancient un
 // client Supabase au rendu, qui exige une URL + clé. Sans ça, leurs tests
 // plantent avec « Your project's URL and API key are required ».
