@@ -197,7 +197,7 @@ const BLOG_POSTS: BlogPost[] = [
     publishedAt: '2026-01-22T08:00:00Z',
     readingMinutes: 10,
     productSlugs: [
-      'whey-proteine-chocolat-1kg',
+      'whey-myprotein-chocolat-1kg',
       'creatine-monohydrate-myprotein-300g',
       'bcaa-myprotein-500g-fruit',
     ],
@@ -232,7 +232,7 @@ const BLOG_POSTS: BlogPost[] = [
       },
       {
         type: 'productCta',
-        productSlug: 'whey-proteine-chocolat-1kg',
+        productSlug: 'whey-myprotein-chocolat-1kg',
         reason:
           'Notre whey chocolat MyProtein Impact est une concentrate de qualité premium : 21g de protéines par dose, 4,5g de BCAA naturels, prix imbattable. Le rapport qualité/prix de référence sur le marché.',
       },

@@ -77,7 +77,7 @@ const TEXT_EN: Record<string, PostText> = {
         'Whey Hydrolysate: pre-digested protein, ultra-fast absorption. More expensive, marginal benefit except after an intense effort.',
       ] },
       { type: 'paragraph', text: "Our recommendation: whey concentrate is more than enough for 90% of trainees. If you're lactose intolerant or looking to minimize carbs during a cut, switch to isolate. Hydrolysate shows no proven performance benefit for the average trainee." },
-      { type: 'productCta', productSlug: 'whey-proteine-chocolat-1kg', reason: "Our MyProtein Impact chocolate whey is a premium-quality concentrate: 21g of protein per serving, 4.5g of natural BCAAs, unbeatable price. The benchmark for value on the market." },
+      { type: 'productCta', productSlug: 'whey-myprotein-chocolat-1kg', reason: "Our MyProtein Impact chocolate whey is a premium-quality concentrate: 21g of protein per serving, 4.5g of natural BCAAs, unbeatable price. The benchmark for value on the market." },
       { type: 'heading', text: 'How Much Protein Per Day? The Real Recommendations' },
       { type: 'paragraph', text: "The official recommendations (0.8g/kg of body weight) are calibrated for a sedentary population. For a strength trainee looking to build muscle, the most recent studies converge on a range of 1.6 to 2.2 g/kg of body weight per day. For an 80 kg man: between 128 and 176 g of protein daily." },
       { type: 'subheading', text: 'How to Calculate Your Personal Needs' },
