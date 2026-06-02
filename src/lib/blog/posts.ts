@@ -192,7 +192,7 @@ const BLOG_POSTS: BlogPost[] = [
     ],
     category: 'Nutrition',
     coverImage:
-      'https://images.unsplash.com/photo-1593095948071-474c5cc2989d?auto=format&fit=crop&w=1200&q=80',
+      'https://images.pexels.com/photos/5236668/pexels-photo-5236668.jpeg?auto=compress&cs=tinysrgb&w=1200',
     author: 'Dr. Sophie Laurent',
     publishedAt: '2026-01-22T08:00:00Z',
     readingMinutes: 10,
