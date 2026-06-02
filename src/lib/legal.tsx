@@ -81,7 +81,7 @@ const FR: Record<LegalSlug, { metaTitle: string; metaDescription: string; eyebro
     intro: 'Informations relatives à l’éditeur et à l’hébergeur du site xenotif.com.',
     sections: [
       { id: 'editeur', title: 'Éditeur du site', body: (
-        <p><strong className="text-white">Xenotif®</strong> — Plateforme sportive en ligne<br />Email : {mail}<br />Site : <a href="https://xenotif.com" className={LINK} target="_blank" rel="noopener noreferrer">xenotif.com</a></p>
+        <p><strong className="text-white">Xenotif LTD</strong> — société à responsabilité limitée (private limited company) immatriculée en Angleterre et au Pays de Galles.<br />Numéro de société (Companies House) : 17013934<br />Siège social : 20 Wenlock Road, Londres N1 7GU, Royaume-Uni<br />Directeur de la publication : Dave Ferrari<br />Email : {mail}<br />Site : <a href="https://xenotif.com" className={LINK} target="_blank" rel="noopener noreferrer">xenotif.com</a></p>
       )},
       { id: 'hebergement', title: 'Hébergement', body: (
         <p><strong className="text-white">Vercel Inc.</strong><br />440 N Barranca Ave #4133, Covina, CA 91723, USA<br /><a href="https://vercel.com" className={LINK} target="_blank" rel="noopener noreferrer">vercel.com</a></p>
@@ -108,7 +108,7 @@ const FR: Record<LegalSlug, { metaTitle: string; metaDescription: string; eyebro
         <p>Les présentes Conditions Générales de Vente (CGV) régissent toute commande passée sur le site xenotif.com : abonnements (Pro, Élite), guides et programmes digitaux, et produits physiques. Toute commande implique l&apos;acceptation pleine et entière des présentes CGV.</p>
       )},
       { id: 'vendeur', title: '2. Vendeur', body: (
-        <p>Les produits et services sont vendus par <strong className="text-white">Xenotif®</strong>. Les coordonnées complètes de l&apos;éditeur figurent dans les <Link href="/mentions-legales" className={LINK}>mentions légales</Link>. Contact : {mail}.</p>
+        <p>Les produits et services sont vendus par <strong className="text-white">Xenotif LTD</strong> (société immatriculée en Angleterre et au Pays de Galles, n° 17013934). Les coordonnées complètes figurent dans les <Link href="/mentions-legales" className={LINK}>mentions légales</Link>. Contact : {mail}.</p>
       )},
       { id: 'produits', title: '3. Produits et services', body: (
         <>
@@ -195,7 +195,7 @@ const EN: Record<LegalSlug, { metaTitle: string; metaDescription: string; eyebro
     intro: 'Information about the publisher and host of the xenotif.com website.',
     sections: [
       { id: 'editeur', title: 'Site publisher', body: (
-        <p><strong className="text-white">Xenotif®</strong> — Online sports platform<br />Email: {mail}<br />Site: <a href="https://xenotif.com" className={LINK} target="_blank" rel="noopener noreferrer">xenotif.com</a></p>
+        <p><strong className="text-white">Xenotif LTD</strong> — a private limited company registered in England and Wales.<br />Company number (Companies House): 17013934<br />Registered office: 20 Wenlock Road, London N1 7GU, United Kingdom<br />Publication director: Dave Ferrari<br />Email: {mail}<br />Site: <a href="https://xenotif.com" className={LINK} target="_blank" rel="noopener noreferrer">xenotif.com</a></p>
       )},
       { id: 'hebergement', title: 'Hosting', body: (
         <p><strong className="text-white">Vercel Inc.</strong><br />440 N Barranca Ave #4133, Covina, CA 91723, USA<br /><a href="https://vercel.com" className={LINK} target="_blank" rel="noopener noreferrer">vercel.com</a></p>
@@ -222,7 +222,7 @@ const EN: Record<LegalSlug, { metaTitle: string; metaDescription: string; eyebro
         <p>These Terms of Sale govern any order placed on xenotif.com: subscriptions (Pro, Elite), digital guides and programs, and physical products. Any order implies full acceptance of these terms.</p>
       )},
       { id: 'vendeur', title: '2. Seller', body: (
-        <p>Products and services are sold by <strong className="text-white">Xenotif®</strong>. Full publisher details are in the <Link href="/mentions-legales" className={LINK}>legal notice</Link>. Contact: {mail}.</p>
+        <p>Products and services are sold by <strong className="text-white">Xenotif LTD</strong> (a company registered in England and Wales, no. 17013934). Full details are in the <Link href="/mentions-legales" className={LINK}>legal notice</Link>. Contact: {mail}.</p>
       )},
       { id: 'produits', title: '3. Products and services', body: (
         <>
