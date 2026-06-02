@@ -6,7 +6,7 @@ import { getTranslations } from 'next-intl/server'
 import { getAllPosts } from '@/lib/blog/posts'
 import type { ContentBlock } from '@/lib/blog/posts'
 import { getPostBySlugLocalized, getRelatedPostsLocalized } from '@/lib/blog/posts.en'
-import { formatPrice } from '@/lib/boutique/products'
+import { formatPrice, amazonGoHref } from '@/lib/boutique/products'
 import { getProductBySlugLocalized } from '@/lib/boutique/products.en'
 import { ProductCard } from '@/components/boutique/ProductCard'
 
@@ -76,7 +76,7 @@ function ProductCtaCard({ productSlug, reason, ctx }: { productSlug: string; rea
   const product = getProductBySlugLocalized(productSlug, ctx.locale)
   if (!product) return null
 
-  const href = product.isAffiliate && product.amazon ? product.amazon.affiliateUrl : `/boutique/${product.slug}`
+  const href = product.isAffiliate && product.amazon ? amazonGoHref(product.id) : `/boutique/${product.slug}`
   const isExternal = product.isAffiliate && !!product.amazon
 
   return (

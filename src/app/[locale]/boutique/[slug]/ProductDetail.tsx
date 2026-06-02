@@ -4,7 +4,7 @@ import Image from 'next/image'
 import { Link } from '@/i18n/navigation'
 import { useTranslations, useLocale } from 'next-intl'
 import { ArrowLeft, ShoppingCart, Download, Check, Star, ExternalLink } from 'lucide-react'
-import { formatPrice, type Product } from '@/lib/boutique/products'
+import { formatPrice, amazonGoHref, type Product } from '@/lib/boutique/products'
 import { getProductsLocalized } from '@/lib/boutique/products.en'
 import { useCart } from '@/lib/boutique/cart'
 import { ProductCard } from '@/components/boutique/ProductCard'
@@ -111,7 +111,7 @@ export function ProductDetail({ product }: { product: Product }) {
             <div className="flex gap-3">
               {product.isAffiliate && product.amazon ? (
                 <a
-                  href={product.amazon.affiliateUrl}
+                  href={amazonGoHref(product.id)}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex flex-1 items-center justify-center gap-2 rounded-2xl bg-sport-orange px-6 py-3.5 font-bold text-white hover:bg-orange-600 transition-all shadow-[0_0_20px_rgba(255,69,0,0.3)]"

@@ -44,3 +44,6 @@ next-env.d.ts
 
 # editor
 *.code-workspace
+
+# claude code (local)
+.claude/

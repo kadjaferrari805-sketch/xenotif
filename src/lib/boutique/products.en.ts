@@ -2,7 +2,7 @@
 /* On réutilise PRODUCTS (FR) pour tout le structurel (id, slug, prix, images,
    category-clé, amazon, disciplines…) et on ne surcharge que les champs texte. */
 
-import { PRODUCTS, amazonSearchUrl, type Product } from './products'
+import { PRODUCTS, amazonSearchUrl, AMAZON_TAG_DE, type Product } from './products'
 
 type ProductText = Pick<Product, 'name' | 'description' | 'longDescription' | 'features' | 'tags'> & {
   badge?: string | null
@@ -202,7 +202,7 @@ export const PRODUCTS_EN: Product[] = PRODUCTS.map((p) => {
   const merged: Product = { ...p, ...TEXT_EN[p.id] }
   const deKeywords = AMAZON_DE_KEYWORDS[p.id]
   if (p.amazon && deKeywords) {
-    merged.amazon = { ...p.amazon, affiliateUrl: amazonSearchUrl('www.amazon.de', deKeywords) }
+    merged.amazon = { ...p.amazon, affiliateUrl: amazonSearchUrl('www.amazon.de', deKeywords, AMAZON_TAG_DE) }
   }
   return merged
 })

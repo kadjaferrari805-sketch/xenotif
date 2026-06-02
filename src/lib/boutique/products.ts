@@ -33,17 +33,21 @@ export interface Product {
   imagePosition?: string // ex: '50% 65%' pour recadrer sur une zone précise
 }
 
-// Tag affilié Amazon (programme EU — fonctionne sur amazon.fr ET amazon.de).
-export const AMAZON_TAG = 'xenotif-21'
+// Tags affiliés Amazon (programme Associates EU) — un tag par marketplace.
+export const AMAZON_TAG = 'xenotif-21'        // amazon.fr
+export const AMAZON_TAG_DE = 'xenotif21-21'   // amazon.de
 
 // Lien de recherche Amazon affilié — ne tombe jamais en 404 et conserve la commission.
-// Domaine paramétrable pour servir le bon marché selon la langue (fr→.fr, en→.de).
-export function amazonSearchUrl(domain: string, keywords: string): string {
-  return `https://${domain}/s?k=${encodeURIComponent(keywords)}&tag=${AMAZON_TAG}`
+export function amazonSearchUrl(domain: string, keywords: string, tag: string = AMAZON_TAG): string {
+  return `https://${domain}/s?k=${encodeURIComponent(keywords)}&tag=${tag}`
 }
 
 // Version FR par défaut (catalogue products.ts) → amazon.fr, mots-clés français.
 const amazonUrl = (keywords: string) => amazonSearchUrl('www.amazon.fr', keywords)
+
+// Lien INTERNE de redirection géolocalisée : résolu par /api/go/amazon selon le
+// pays du visiteur (DE/AT → amazon.de + tag DE, sinon amazon.fr + tag FR).
+export const amazonGoHref = (id: string) => `/api/go/amazon?id=${encodeURIComponent(id)}`
 
 export const AMAZON_ASSOCIATE_TAG = AMAZON_TAG
 
