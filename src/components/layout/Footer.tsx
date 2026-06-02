@@ -26,6 +26,7 @@ const PROG_LINKS = [
 const INFO_LINKS = [
   { key: 'mentionsLegales', href: '/mentions-legales' },
   { key: 'confidentialite', href: '/confidentialite' },
+  { key: 'cgv',             href: '/conditions-generales-vente' },
   { key: 'contact',         href: '/contact' },
   { key: 'faq',             href: '/#faq' },
 ] as const

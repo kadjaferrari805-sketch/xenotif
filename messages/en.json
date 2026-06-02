@@ -23,6 +23,7 @@
       "links": {
         "mentionsLegales": "Legal notice",
         "confidentialite": "Privacy",
+        "cgv": "Terms of sale",
         "contact": "Contact",
         "debutant": "Beginner",
         "intermediaire": "Intermediate",
@@ -527,6 +528,32 @@
     "backToBlog": "Back to the Blog",
     "recommendedProduct": "Recommended product",
     "viewProduct": "View the product"
+  },
+  "contact": {
+    "badge": "Support & Contact",
+    "heroTitle": "We're here for you",
+    "heroSubtitle": "A question about your subscription, a bug, or just want to chat? Write to us.",
+    "infoTitle": "Information",
+    "emailLabel": "Email",
+    "responseLabel": "Response time",
+    "responseValue": "Within 24h on weekdays",
+    "subscriberTitle": "Already subscribed?",
+    "subscriberDesc": "Access the AI Coach from your member area for instant personalized help.",
+    "mySpace": "My space",
+    "successTitle": "Message sent!",
+    "successDesc": "We've sent you a confirmation email. We'll reply within 24h.",
+    "backHome": "Back to home",
+    "formTitle": "Send us a message",
+    "nameLabel": "First / Last name",
+    "namePlaceholder": "John Doe",
+    "emailPlaceholder": "you@email.com",
+    "subjectLabel": "Subject",
+    "messageLabel": "Message",
+    "messagePlaceholder": "Describe your request in detail…",
+    "sending": "Sending…",
+    "send": "Send message",
+    "error": "Something went wrong.",
+    "subjects": ["Question about my subscription", "Technical issue", "AI Coaching", "Partnership request", "Other"]
   },
   "dashboard": {
     "nav": {

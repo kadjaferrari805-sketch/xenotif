@@ -23,6 +23,7 @@
       "links": {
         "mentionsLegales": "Mentions légales",
         "confidentialite": "Confidentialité",
+        "cgv": "CGV",
         "contact": "Contact",
         "debutant": "Débutant",
         "intermediaire": "Intermédiaire",
@@ -527,6 +528,32 @@
     "backToBlog": "Retour au Blog",
     "recommendedProduct": "Produit recommandé",
     "viewProduct": "Voir le produit"
+  },
+  "contact": {
+    "badge": "Support & Contact",
+    "heroTitle": "On est là pour toi",
+    "heroSubtitle": "Une question sur ton abonnement, un bug, ou simplement envie d'échanger ? Écris-nous.",
+    "infoTitle": "Informations",
+    "emailLabel": "Email",
+    "responseLabel": "Délai de réponse",
+    "responseValue": "Sous 24h en semaine",
+    "subscriberTitle": "Tu es abonné ?",
+    "subscriberDesc": "Accède au Coach IA depuis ton espace membre pour obtenir une aide personnalisée instantanément.",
+    "mySpace": "Mon espace",
+    "successTitle": "Message envoyé !",
+    "successDesc": "On t'a envoyé une confirmation par email. On te répond sous 24h.",
+    "backHome": "Retour à l'accueil",
+    "formTitle": "Envoie-nous un message",
+    "nameLabel": "Prénom / Nom",
+    "namePlaceholder": "Jean Dupont",
+    "emailPlaceholder": "ton@email.com",
+    "subjectLabel": "Sujet",
+    "messageLabel": "Message",
+    "messagePlaceholder": "Décris ta demande en détail…",
+    "sending": "Envoi…",
+    "send": "Envoyer le message",
+    "error": "Une erreur est survenue.",
+    "subjects": ["Question sur mon abonnement", "Problème technique", "Coaching IA", "Demande de partenariat", "Autre"]
   },
   "dashboard": {
     "nav": {

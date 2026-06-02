@@ -4,11 +4,11 @@ import { getLegalDoc } from '@/lib/legal'
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params
-  const doc = getLegalDoc('legal', locale)
+  const doc = getLegalDoc('terms', locale)
   return { title: { absolute: doc.metaTitle }, description: doc.metaDescription }
 }
 
-export default async function MentionsLegalesPage({ params }: { params: Promise<{ locale: string }> }) {
+export default async function CGVPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params
-  return <LegalDocument {...getLegalDoc('legal', locale)} />
+  return <LegalDocument {...getLegalDoc('terms', locale)} />
 }
