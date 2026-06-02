@@ -2,7 +2,7 @@
 /* On réutilise PRODUCTS (FR) pour tout le structurel (id, slug, prix, images,
    category-clé, amazon, disciplines…) et on ne surcharge que les champs texte. */
 
-import { PRODUCTS, type Product } from './products'
+import { PRODUCTS, amazonSearchUrl, type Product } from './products'
 
 type ProductText = Pick<Product, 'name' | 'description' | 'longDescription' | 'features' | 'tags'> & {
   badge?: string | null
@@ -176,7 +176,36 @@ const TEXT_EN: Record<string, ProductText> = {
   },
 }
 
-export const PRODUCTS_EN: Product[] = PRODUCTS.map((p) => ({ ...p, ...TEXT_EN[p.id] }))
+// Mots-clés de recherche en allemand → liens affiliés amazon.de pour la locale EN
+// (le tag xenotif-21 fonctionne sur tous les marketplaces EU).
+const AMAZON_DE_KEYWORDS: Record<string, string> = {
+  e1: 'kettlebell 20kg gusseisen',
+  e2: 'widerstandsbänder fitness set',
+  e3: 'yogamatte rutschfest 10mm',
+  e4: 'springseil speed rope crossfit',
+  e5: 'verstellbare hanteln set',
+  e6: 'heimtrainer fahrrad ergometer',
+  n1: 'whey protein schokolade 1kg',
+  n2: 'kreatin monohydrat pulver',
+  n3: 'bcaa pulver',
+  r1: 'faszienrolle foam roller',
+  r2: 'massagepistole muskel',
+  t1: 'sportuhr gps pulsuhr multisport',
+  t2: 'fitness tracker armband pulsmesser',
+  t3: 'smartwatch fitness gps herzfrequenz',
+  v1: 'sport shorts herren training fitness',
+  v2: 'sport leggings damen high waist fitness',
+  v3: 'kompression leggings herren sport tights',
+}
+
+export const PRODUCTS_EN: Product[] = PRODUCTS.map((p) => {
+  const merged: Product = { ...p, ...TEXT_EN[p.id] }
+  const deKeywords = AMAZON_DE_KEYWORDS[p.id]
+  if (p.amazon && deKeywords) {
+    merged.amazon = { ...p.amazon, affiliateUrl: amazonSearchUrl('www.amazon.de', deKeywords) }
+  }
+  return merged
+})
 
 // Catalogue localisé : repli FR si la langue n'a pas de variante.
 export function getProductsLocalized(locale: string): Product[] {

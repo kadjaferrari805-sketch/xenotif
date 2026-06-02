@@ -33,16 +33,19 @@ export interface Product {
   imagePosition?: string // ex: '50% 65%' pour recadrer sur une zone précise
 }
 
-const AMAZON_TAG = 'xenotif21-21'
-const AMAZON_DOMAIN = 'www.amazon.de'
+// Tag affilié Amazon (programme EU — fonctionne sur amazon.fr ET amazon.de).
+export const AMAZON_TAG = 'xenotif-21'
 
-// Lien de recherche Amazon affilié — ne tombe jamais en 404 et conserve la commission
-function amazonUrl(keywords: string): string {
-  return `https://${AMAZON_DOMAIN}/s?k=${encodeURIComponent(keywords)}&tag=${AMAZON_TAG}`
+// Lien de recherche Amazon affilié — ne tombe jamais en 404 et conserve la commission.
+// Domaine paramétrable pour servir le bon marché selon la langue (fr→.fr, en→.de).
+export function amazonSearchUrl(domain: string, keywords: string): string {
+  return `https://${domain}/s?k=${encodeURIComponent(keywords)}&tag=${AMAZON_TAG}`
 }
 
+// Version FR par défaut (catalogue products.ts) → amazon.fr, mots-clés français.
+const amazonUrl = (keywords: string) => amazonSearchUrl('www.amazon.fr', keywords)
+
 export const AMAZON_ASSOCIATE_TAG = AMAZON_TAG
-export const AMAZON_ASSOCIATE_DOMAIN = AMAZON_DOMAIN
 
 export const PRODUCTS: Product[] = [
   // ─── ÉQUIPEMENTS ──────────────────────────────────────────────────
@@ -58,7 +61,7 @@ export const PRODUCTS: Product[] = [
     tags: ['kettlebell', 'crossfit', 'musculation', 'force'],
     disciplines: ['crossfit', 'musculation', 'hiit'],
     features: ['20 kg — idéal CrossFit & HIIT', 'Fonte 80% recyclée', 'Base caoutchouc antidérapant', 'Poignée sablée grip optimal', 'Garantie 2 ans'],
-    amazon: { asin: 'B07CWRS8BD', affiliateUrl: amazonUrl('kettlebell 20kg gusseisen') },
+    amazon: { asin: 'B07CWRS8BD', affiliateUrl: amazonUrl('kettlebell 20kg fonte') },
     isAffiliate: true,
   },
   {
@@ -73,7 +76,7 @@ export const PRODUCTS: Product[] = [
     tags: ['bandes élastiques', 'résistance', 'fitness', 'musculation'],
     disciplines: ['musculation', 'yoga', 'stretching', 'running-cardio'],
     features: ['5 niveaux : 25 à 125 lbs', 'Musculation & fitness complet', 'Anti-glisse durable', 'Idéal à la maison', 'Faciles à transporter'],
-    amazon: { asin: 'B0FP5BCCRL', affiliateUrl: 'https://www.amazon.de/dp/B0FP5BCCRL?tag=xenotif21-21' },
+    amazon: { asin: 'B0FP5BCCRL', affiliateUrl: amazonUrl('bandes élastiques musculation set') },
     isAffiliate: true,
   },
   {
@@ -88,7 +91,7 @@ export const PRODUCTS: Product[] = [
     tags: ['tapis yoga', 'pilates', 'méditation', 'stretching'],
     disciplines: ['yoga', 'stretching'],
     features: ['10mm confort premium', 'Double face antidérapant', 'TPE sans PVC ni latex', '183×61 cm', 'Sangle transport incluse'],
-    amazon: { asin: 'B003JIW3EC', affiliateUrl: amazonUrl('yogamatte rutschfest 10mm') },
+    amazon: { asin: 'B003JIW3EC', affiliateUrl: amazonUrl('tapis yoga antidérapant 10mm') },
     isAffiliate: true,
   },
   {
@@ -103,7 +106,7 @@ export const PRODUCTS: Product[] = [
     tags: ['corde à sauter', 'cardio', 'crossfit', 'boxe'],
     disciplines: ['crossfit', 'hiit', 'boxing', 'running-cardio'],
     features: ['Câble acier revêtu', 'Roulements alu précision', 'Réglable 2,5—3,5m', 'Poignées ergonomiques', 'Bag de transport'],
-    amazon: { asin: 'B07D7XR895', affiliateUrl: amazonUrl('springseil speed rope crossfit') },
+    amazon: { asin: 'B07D7XR895', affiliateUrl: amazonUrl('corde à sauter speed rope crossfit') },
     isAffiliate: true,
   },
   {
@@ -118,7 +121,7 @@ export const PRODUCTS: Product[] = [
     tags: ['haltères', 'musculation', 'home gym', 'force'],
     disciplines: ['musculation', 'hiit', 'crossfit'],
     features: ['2 à 24 kg en 2 secondes', 'Remplace 15 paires', 'Construction acier chromé', 'Revêtement antidérapant', 'Garantie 2 ans'],
-    amazon: { asin: 'B001ARYU58', affiliateUrl: amazonUrl('verstellbare hanteln set') },
+    amazon: { asin: 'B001ARYU58', affiliateUrl: amazonUrl('haltères réglables set') },
     isAffiliate: true,
   },
   {
@@ -133,7 +136,7 @@ export const PRODUCTS: Product[] = [
     tags: ['vélo', 'cardio', 'indoor cycling', 'connected'],
     disciplines: ['cyclisme', 'running-cardio', 'hiit'],
     features: ['24 niveaux magnétiques', 'Connecté Bluetooth', 'Compatible Zwift/Kinomap', 'Selle confort réglable', 'Console LCD complète'],
-    amazon: { asin: 'B086C2L1B7', affiliateUrl: amazonUrl('heimtrainer fahrrad ergometer') },
+    amazon: { asin: 'B086C2L1B7', affiliateUrl: amazonUrl('vélo appartement ergomètre') },
     isAffiliate: true,
   },
 
@@ -150,7 +153,7 @@ export const PRODUCTS: Product[] = [
     tags: ['whey', 'protéine', 'musculation', 'récupération'],
     disciplines: ['musculation', 'crossfit', 'running-cardio'],
     features: ['22g protéines / portion', '103 kcal seulement', '5g BCAAs naturels', 'Fabriquée en Europe', 'Sans sucres ajoutés'],
-    amazon: { asin: 'B000GIQT2Q', affiliateUrl: amazonUrl('whey protein schokolade 1kg') },
+    amazon: { asin: 'B000GIQT2Q', affiliateUrl: amazonUrl('whey protéine chocolat 1kg') },
     isAffiliate: true,
     imagePosition: '50% 72%',
   },
@@ -166,7 +169,7 @@ export const PRODUCTS: Product[] = [
     tags: ['créatine', 'force', 'puissance', 'musculation'],
     disciplines: ['musculation', 'crossfit', 'hiit'],
     features: ['Pureté 99,9%', '60 portions de 5g', 'Informed Sport certifiée', 'Sans goût', 'Résultats en 4 semaines'],
-    amazon: { asin: 'B000GIQT3A', affiliateUrl: amazonUrl('kreatin monohydrat pulver') },
+    amazon: { asin: 'B000GIQT3A', affiliateUrl: amazonUrl('créatine monohydrate poudre') },
     isAffiliate: true,
   },
   {
@@ -181,7 +184,7 @@ export const PRODUCTS: Product[] = [
     tags: ['bcaa', 'récupération', 'endurance', 'vegan'],
     disciplines: ['musculation', 'running-cardio', 'crossfit'],
     features: ['Ratio 2:1:1 optimal', '7g BCAAs/dose', '83 portions', 'Certifié vegan', 'Anti-catabolisme'],
-    amazon: { asin: 'B00BXZ5Y8A', affiliateUrl: amazonUrl('bcaa pulver') },
+    amazon: { asin: 'B00BXZ5Y8A', affiliateUrl: amazonUrl('bcaa poudre') },
     isAffiliate: true,
   },
 
@@ -198,7 +201,7 @@ export const PRODUCTS: Product[] = [
     tags: ['foam roller', 'récupération', 'massage', 'mobilité'],
     disciplines: ['running-cardio', 'musculation', 'yoga', 'stretching'],
     features: ['Surface GRID 3 zones', 'Simule massage pro', 'Support 160kg', 'Corps creux durable', 'Vidéos incluses'],
-    amazon: { asin: 'B0093VBBZA', affiliateUrl: amazonUrl('faszienrolle foam roller') },
+    amazon: { asin: 'B0093VBBZA', affiliateUrl: amazonUrl('rouleau massage foam roller') },
     isAffiliate: true,
   },
   {
@@ -213,7 +216,7 @@ export const PRODUCTS: Product[] = [
     tags: ['pistolet massage', 'percussion', 'récupération', 'theragun'],
     disciplines: ['musculation', 'running-cardio', 'crossfit', 'yoga'],
     features: ['2400 RPM puissants', '3 vitesses adaptées', '150min autonomie', 'Ultra-silencieux 60dB', 'Compact & voyager'],
-    amazon: { asin: 'B08F9P2BYD', affiliateUrl: amazonUrl('massagepistole muskel') },
+    amazon: { asin: 'B08F9P2BYD', affiliateUrl: amazonUrl('pistolet massage musculaire') },
     isAffiliate: true,
   },
 
@@ -230,7 +233,7 @@ export const PRODUCTS: Product[] = [
     tags: ['montre connectée', 'gps', 'cardio', 'running', 'multisport'],
     disciplines: ['running-cardio', 'cyclisme', 'natation', 'crossfit', 'hiit'],
     features: ['GPS multisport précis', 'Cardio au poignet', 'Suivi sommeil & VO2 max', '100+ modes sport', 'Compatible Strava & Apple Santé'],
-    amazon: { asin: '', affiliateUrl: amazonUrl('sportuhr gps pulsuhr multisport') },
+    amazon: { asin: '', affiliateUrl: amazonUrl('montre sport gps cardio multisport') },
     isAffiliate: true,
   },
   {
@@ -245,7 +248,7 @@ export const PRODUCTS: Product[] = [
     tags: ['bracelet connecté', 'fitness tracker', 'podomètre', 'sommeil'],
     disciplines: ['running-cardio', 'hiit', 'musculation', 'yoga'],
     features: ['Podomètre & calories', 'Cardio 24/7', 'Suivi sommeil', 'Écran AMOLED couleur', '14 jours d\'autonomie'],
-    amazon: { asin: '', affiliateUrl: amazonUrl('fitness tracker armband pulsmesser') },
+    amazon: { asin: '', affiliateUrl: amazonUrl('bracelet connecté fitness cardio') },
     isAffiliate: true,
   },
   {
@@ -260,7 +263,7 @@ export const PRODUCTS: Product[] = [
     tags: ['smartwatch', 'apple watch', 'ecg', 'running', 'cardio'],
     disciplines: ['running-cardio', 'crossfit', 'hiit', 'musculation', 'yoga'],
     features: ['Écran tactile AMOLED', 'GPS + ECG + SpO2', 'Coach running intégré', 'Appels Bluetooth', 'Compatible iOS & Android'],
-    amazon: { asin: '', affiliateUrl: amazonUrl('smartwatch fitness gps herzfrequenz') },
+    amazon: { asin: '', affiliateUrl: amazonUrl('montre connectée fitness gps cardio') },
     isAffiliate: true,
   },
 
@@ -279,7 +282,7 @@ export const PRODUCTS: Product[] = [
     tags: ['short', 'training', 'running', 'homme'],
     disciplines: ['running-cardio', 'hiit', 'crossfit', 'boxing'],
     features: ['Tissu 4-way stretch', 'Dry-Fit moisture-wicking', 'Poche zippée', 'S à XXL', '3 coloris disponibles'],
-    amazon: { asin: '', affiliateUrl: amazonUrl('sport shorts herren training fitness') },
+    amazon: { asin: '', affiliateUrl: amazonUrl('short sport homme training fitness') },
     isAffiliate: true,
   },
   {
@@ -296,7 +299,7 @@ export const PRODUCTS: Product[] = [
     tags: ['legging', 'compression', 'femme', 'yoga'],
     disciplines: ['yoga', 'running-cardio', 'crossfit', 'hiit'],
     features: ['Compression graduée', 'Taille haute plate', 'Opaque anti-UV', 'Poche téléphone', 'XS à XL · 5 coloris'],
-    amazon: { asin: '', affiliateUrl: amazonUrl('sport leggings damen high waist fitness') },
+    amazon: { asin: '', affiliateUrl: amazonUrl('legging sport femme taille haute') },
     isAffiliate: true,
   },
   {
@@ -311,7 +314,7 @@ export const PRODUCTS: Product[] = [
     tags: ['legging', 'compression', 'homme', 'running'],
     disciplines: ['running-cardio', 'musculation', 'crossfit', 'hiit'],
     features: ['Compression musculaire', 'Tissu 4-way stretch', 'Séchage rapide', 'Coutures anti-frottement', 'S à XXL'],
-    amazon: { asin: '', affiliateUrl: amazonUrl('kompression leggings herren sport tights') },
+    amazon: { asin: '', affiliateUrl: amazonUrl('legging compression homme sport') },
     isAffiliate: true,
   },
 
