@@ -1,14 +1,12 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
-import { headers } from 'next/headers'
 import Script from 'next/script'
 import { NextIntlClientProvider, hasLocale } from 'next-intl'
 import { setRequestLocale, getTranslations } from 'next-intl/server'
 import { notFound } from 'next/navigation'
 import { routing } from '@/i18n/routing'
 import '../globals.css'
-import { Nav } from '@/components/layout/Nav'
-import { Footer } from '@/components/layout/Footer'
+import { ConditionalChrome } from '@/components/layout/ConditionalChrome'
 import { Providers } from '@/providers/Providers'
 import { OrganizationSchema, WebsiteSchema } from '@/components/SchemaOrg'
 
@@ -85,31 +83,12 @@ export default async function RootLayout({
   if (!hasLocale(routing.locales, locale)) notFound()
   setRequestLocale(locale)
 
-  const headersList = await headers()
-  const currentPath = headersList.get('x-current-path') ?? '' // déjà sans préfixe locale (proxy)
-  const isAppRoute = currentPath.startsWith('/dashboard') || currentPath.startsWith('/admin')
-
-  const t = await getTranslations('common')
-
   return (
     <html lang={locale} className={inter.variable}>
       <body>
-        <a href="#contenu-principal" className="skip-link">
-          {t('skipLink')}
-        </a>
         <NextIntlClientProvider>
           <Providers>
-            {isAppRoute ? (
-              children
-            ) : (
-              <>
-                <Nav />
-                <main id="contenu-principal" tabIndex={-1}>
-                  {children}
-                </main>
-                <Footer />
-              </>
-            )}
+            <ConditionalChrome>{children}</ConditionalChrome>
           </Providers>
         </NextIntlClientProvider>
         <OrganizationSchema />
