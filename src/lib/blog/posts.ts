@@ -7,6 +7,8 @@ export interface BlogPost {
   keywords: string[]
   category: 'Musculation' | 'Nutrition' | 'Running' | 'Récupération' | 'Matériel' | 'HIIT'
   coverImage: string
+  // Cadrage de la couverture (CSS object-position). Défaut centré ('50% 50%').
+  coverPosition?: string
   author: string
   publishedAt: string // ISO date
   readingMinutes: number
@@ -193,6 +195,7 @@ const BLOG_POSTS: BlogPost[] = [
     category: 'Nutrition',
     coverImage:
       'https://images.pexels.com/photos/5236668/pexels-photo-5236668.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    coverPosition: '50% 62%',
     author: 'Dr. Sophie Laurent',
     publishedAt: '2026-01-22T08:00:00Z',
     readingMinutes: 10,

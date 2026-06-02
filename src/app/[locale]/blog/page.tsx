@@ -159,7 +159,7 @@ export default async function BlogPage({
                   className="group block overflow-hidden rounded-2xl border border-sport-border bg-sport-card hover:border-sport-orange/30 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-sport-orange/5"
                 >
                   <div className="relative h-52 overflow-hidden">
-                    <Image src={post.coverImage} alt={post.title} fill className="object-cover transition-transform duration-500 group-hover:scale-105" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" />
+                    <Image src={post.coverImage} alt={post.title} fill className="object-cover transition-transform duration-500 group-hover:scale-105" style={{ objectPosition: post.coverPosition }} sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" />
                     <div className="absolute inset-0 bg-gradient-to-t from-sport-dark/80 via-transparent to-transparent" />
                     <span className={`absolute top-3 left-3 text-xs font-bold px-2.5 py-1 rounded-full border ${colorClass}`}>
                       {t(`categories.${post.category}`)}
