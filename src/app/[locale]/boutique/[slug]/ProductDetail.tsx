@@ -116,7 +116,7 @@ export function ProductDetail({ product }: { product: Product }) {
                   rel="noopener noreferrer"
                   className="flex flex-1 items-center justify-center gap-2 rounded-2xl bg-sport-orange px-6 py-3.5 font-bold text-white hover:bg-orange-600 transition-all shadow-[0_0_20px_rgba(255,69,0,0.3)]"
                 >
-                  <ExternalLink size={16} /> {t('detail.buyAmazon', { price: formatPrice(product.price_cents) })}
+                  <ExternalLink size={16} /> {t('detail.buyAmazon')}
                 </a>
               ) : (
                 <button
@@ -128,7 +128,7 @@ export function ProductDetail({ product }: { product: Product }) {
                   {added
                     ? <><Check size={16} />{t('detail.addedToCart')}</>
                     : product.type === 'digital'
-                      ? <><Download size={16} />{t('detail.buyDigital', { price: formatPrice(product.price_cents) })}</>
+                      ? <><Download size={16} />{t('detail.buyDigital')}</>
                       : <><ShoppingCart size={16} />{t('detail.addToCart')}</>
                   }
                 </button>
