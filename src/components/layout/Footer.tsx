@@ -118,9 +118,9 @@ export function Footer() {
             </ul>
             <div className="mt-6 p-4 bg-sport-dark border border-sport-border rounded-xl">
               <p className="text-[10px] text-sport-gray leading-relaxed">
-                <strong className="text-white block mb-1">Xenotif®</strong>
-                contact@xenotif.com<br />
-                xenotif.com
+                <strong className="text-white block mb-1">Xenotif LTD</strong>
+                Company no. 17013934<br />
+                contact@xenotif.com
               </p>
             </div>
           </div>
