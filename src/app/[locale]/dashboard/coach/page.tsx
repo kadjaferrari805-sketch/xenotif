@@ -1,20 +1,14 @@
 'use client'
 
 import { useState, useRef, useEffect } from 'react'
+import { useTranslations } from 'next-intl'
 import { Send, Zap, Bot, User, Sparkles, RefreshCw } from 'lucide-react'
 
 type Message = { role: 'user' | 'assistant'; content: string }
 
-const SUGGESTIONS = [
-  'Crée-moi un plan d\'entraînement sur 4 semaines pour perdre du poids',
-  'Quels exercices pour développer mes épaules sans matériel ?',
-  'Comment améliorer mon endurance en course à pied ?',
-  'Programme nutrition pour la prise de masse',
-  'Routine d\'étirements post-entraînement',
-  'Comment progresser en HIIT débutant ?',
-]
-
 export default function CoachPage() {
+  const t = useTranslations('dashboard.coach')
+  const suggestions = t.raw('suggestions') as string[]
   const [messages, setMessages] = useState<Message[]>([])
   const [input, setInput] = useState('')
   const [streaming, setStreaming] = useState(false)
@@ -63,7 +57,7 @@ export default function CoachPage() {
         const updated = [...prev]
         updated[updated.length - 1] = {
           role: 'assistant',
-          content: 'Désolé, une erreur est survenue. Réessaie dans un moment.',
+          content: t('error'),
         }
         return updated
       })
@@ -93,13 +87,13 @@ export default function CoachPage() {
           </div>
           <div>
             <h1 className="text-base font-black text-white flex items-center gap-2">
-              Coach IA
+              {t('title')}
               <span className="inline-flex items-center gap-1 text-[9px] font-black uppercase tracking-widest bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 px-2 py-0.5 rounded-full">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                En ligne
+                {t('online')}
               </span>
             </h1>
-            <p className="text-[11px] text-sport-gray">Propulsé par Claude · Xenotif®</p>
+            <p className="text-[11px] text-sport-gray">{t('poweredBy')}</p>
           </div>
         </div>
         {messages.length > 0 && (
@@ -108,7 +102,7 @@ export default function CoachPage() {
             className="inline-flex items-center gap-1.5 text-xs text-sport-gray hover:text-white transition-colors"
           >
             <RefreshCw size={12} />
-            Nouvelle session
+            {t('newSession')}
           </button>
         )}
       </div>
@@ -121,13 +115,12 @@ export default function CoachPage() {
             <div className="w-20 h-20 rounded-2xl bg-sport-orange/10 border border-sport-orange/20 flex items-center justify-center mb-6">
               <Sparkles size={32} className="text-sport-orange" />
             </div>
-            <h2 className="text-xl font-black text-white mb-2">Ton coach sportif personnel</h2>
+            <h2 className="text-xl font-black text-white mb-2">{t('emptyTitle')}</h2>
             <p className="text-sport-gray text-sm max-w-sm mb-8">
-              Pose-moi n&apos;importe quelle question sur l&apos;entraînement, la nutrition ou la récupération.
-              Je crée des plans sur mesure pour toi.
+              {t('emptySubtitle')}
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 w-full max-w-lg">
-              {SUGGESTIONS.map((s) => (
+              {suggestions.map((s) => (
                 <button
                   key={s}
                   onClick={() => send(s)}
@@ -184,7 +177,7 @@ export default function CoachPage() {
               value={input}
               onChange={e => setInput(e.target.value)}
               onKeyDown={handleKeyDown}
-              placeholder="Pose ta question au Coach IA…"
+              placeholder={t('placeholder')}
               disabled={streaming}
               className="w-full bg-sport-card border border-sport-border rounded-2xl px-4 py-3 pr-12 text-white text-sm placeholder:text-sport-gray focus:outline-none focus:border-sport-orange transition-colors resize-none leading-relaxed disabled:opacity-60"
               style={{ maxHeight: '120px' }}
@@ -193,7 +186,7 @@ export default function CoachPage() {
           <button
             onClick={() => send(input)}
             disabled={!input.trim() || streaming}
-            aria-label="Envoyer"
+            aria-label={t('send')}
             className="w-11 h-11 bg-sport-orange rounded-2xl flex items-center justify-center hover:bg-orange-600 active:scale-95 transition-all disabled:opacity-40 shrink-0"
           >
             {streaming
@@ -204,7 +197,7 @@ export default function CoachPage() {
         </div>
         <p className="text-center text-[10px] text-sport-gray mt-2 flex items-center justify-center gap-1">
           <Zap size={10} className="text-sport-orange" />
-          Coach IA · Xenotif® — Ne remplace pas un avis médical
+          {t('disclaimer')}
         </p>
       </div>
     </div>

@@ -1,29 +1,21 @@
 'use client'
 import { useState, useMemo } from 'react'
-import Link from 'next/link'
+import { useTranslations, useLocale } from 'next-intl'
+import { Link } from '@/i18n/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Search, SlidersHorizontal, ArrowRight, Zap, ShoppingBag, Star, TrendingUp, X } from 'lucide-react'
+import { Search, SlidersHorizontal, Zap, ShoppingBag, Star, TrendingUp, X } from 'lucide-react'
 import { ProductCard } from '@/components/boutique/ProductCard'
-import { PRODUCTS, getCategories, CATEGORY_ICONS, formatPrice } from '@/lib/boutique/products'
+import { getCategories, CATEGORY_ICONS } from '@/lib/boutique/products'
+import { getProductsLocalized } from '@/lib/boutique/products.en'
 
-const DISCIPLINES = [
-  { id: 'musculation', label: '💪 Musculation' },
-  { id: 'running-cardio', label: '🏃 Running' },
-  { id: 'hiit', label: '⚡ HIIT' },
-  { id: 'yoga', label: '🧘 Yoga' },
-  { id: 'crossfit', label: '🔥 CrossFit' },
-  { id: 'boxing', label: '🥊 Boxe' },
-]
-
-const SORT_OPTIONS = [
-  { value: 'popular', label: 'Plus populaires' },
-  { value: 'price_asc', label: 'Prix croissant' },
-  { value: 'price_desc', label: 'Prix décroissant' },
-  { value: 'rating', label: 'Meilleures notes' },
-  { value: 'new', label: 'Nouveautés' },
-]
+const DISCIPLINE_IDS = ['musculation', 'running-cardio', 'hiit', 'yoga', 'crossfit', 'boxing'] as const
+const SORT_VALUES = ['popular', 'price_asc', 'price_desc', 'rating', 'new'] as const
 
 export default function BoutiquePage() {
+  const t = useTranslations('boutique')
+  const locale = useLocale()
+  const products = getProductsLocalized(locale)
+
   const [search, setSearch] = useState('')
   const [selectedCategory, setSelectedCategory] = useState<string>('all')
   const [selectedDiscipline, setSelectedDiscipline] = useState<string>('all')
@@ -34,8 +26,8 @@ export default function BoutiquePage() {
   const categories = ['all', ...getCategories()]
 
   const filtered = useMemo(() => {
-    let list = PRODUCTS
-    if (search) list = list.filter(p => p.name.toLowerCase().includes(search.toLowerCase()) || p.tags.some(t => t.toLowerCase().includes(search.toLowerCase())))
+    let list = products
+    if (search) list = list.filter(p => p.name.toLowerCase().includes(search.toLowerCase()) || p.tags.some(tag => tag.toLowerCase().includes(search.toLowerCase())))
     if (selectedCategory !== 'all') list = list.filter(p => p.category === selectedCategory)
     if (selectedDiscipline !== 'all') list = list.filter(p => p.disciplines?.includes(selectedDiscipline))
     list = list.filter(p => p.price_cents >= priceRange[0] && p.price_cents <= priceRange[1])
@@ -45,13 +37,13 @@ export default function BoutiquePage() {
       case 'rating':     return [...list].sort((a, b) => b.rating - a.rating)
       default:           return [...list].sort((a, b) => b.reviews - a.reviews)
     }
-  }, [search, selectedCategory, selectedDiscipline, sort, priceRange])
+  }, [products, search, selectedCategory, selectedDiscipline, sort, priceRange])
 
   const stats = [
-    { icon: ShoppingBag, label: 'Produits premium', value: `${PRODUCTS.length}+` },
-    { icon: Star, label: 'Note moyenne', value: '4.8/5' },
-    { icon: TrendingUp, label: 'Clients satisfaits', value: '12 000+' },
-    { icon: Zap, label: 'Livraison express', value: '24-48h' },
+    { icon: ShoppingBag, label: t('stats.products'), value: `${products.length}+` },
+    { icon: Star, label: t('stats.rating'), value: '4.8/5' },
+    { icon: TrendingUp, label: t('stats.customers'), value: t('stats.customersValue') },
+    { icon: Zap, label: t('stats.delivery'), value: '24-48h' },
   ]
 
   return (
@@ -66,16 +58,15 @@ export default function BoutiquePage() {
           <div className="text-center mb-12">
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
               className="inline-flex items-center gap-2 rounded-full border border-sport-orange/30 bg-sport-orange/10 px-4 py-1.5 text-xs font-black text-sport-orange uppercase tracking-wider mb-6">
-              🛒 Boutique Officielle XENOTIF®
+              {t('badge')}
             </motion.div>
             <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}
               className="text-5xl font-black leading-tight tracking-tight text-white sm:text-6xl lg:text-7xl mb-4">
-              Équipements <span className="text-sport-orange">&</span><br />
-              <span className="text-sport-orange">Programmes</span> Premium
+              {t.rich('heroTitle', { o: (c) => <span className="text-sport-orange">{c}</span>, br: () => <br /> })}
             </motion.h1>
             <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}
               className="text-lg text-sport-gray max-w-2xl mx-auto mb-10">
-              Des équipements pro, des suppléments éprouvés et des programmes créés par nos coachs certifiés — tout pour atteindre tes objectifs.
+              {t('heroSubtitle')}
             </motion.p>
 
             {/* Search bar */}
@@ -86,7 +77,7 @@ export default function BoutiquePage() {
                   <Search size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-sport-gray" />
                   <input
                     value={search} onChange={e => setSearch(e.target.value)}
-                    placeholder="Rechercher kettlebell, whey, programme HIIT..."
+                    placeholder={t('searchPlaceholder')}
                     className="w-full rounded-2xl border border-sport-border bg-sport-card pl-12 pr-4 py-4 text-white placeholder:text-sport-gray focus:outline-none focus:border-sport-orange transition-colors text-sm"
                   />
                   {search && (
@@ -98,7 +89,7 @@ export default function BoutiquePage() {
                 <button onClick={() => setShowFilters(f => !f)}
                   className={`flex items-center gap-2 rounded-2xl border px-5 py-4 text-sm font-bold transition-all ${showFilters ? 'border-sport-orange bg-sport-orange/15 text-sport-orange' : 'border-sport-border bg-sport-card text-sport-gray hover:text-white'}`}>
                   <SlidersHorizontal size={16} />
-                  Filtres
+                  {t('filters')}
                 </button>
               </div>
             </motion.div>
@@ -123,7 +114,7 @@ export default function BoutiquePage() {
       <div className="border-y border-sport-border bg-sport-card/30 py-4">
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
           <div className="flex flex-wrap justify-center gap-6 text-xs font-semibold text-sport-gray">
-            {['🔒 Paiement 100% sécurisé SSL', '🚚 Livraison offerte dès 50€', '📥 Téléchargement instantané', '↩️ Retours 30 jours', '✓ Produits testés & approuvés'].map(b => (
+            {(t.raw('trust') as string[]).map(b => (
               <span key={b}>{b}</span>
             ))}
           </div>
@@ -139,12 +130,12 @@ export default function BoutiquePage() {
               <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
                 {/* Catégories */}
                 <div>
-                  <p className="text-xs font-bold uppercase tracking-wider text-sport-gray mb-3">Catégorie</p>
+                  <p className="text-xs font-bold uppercase tracking-wider text-sport-gray mb-3">{t('filterCategory')}</p>
                   <div className="flex flex-wrap gap-2">
                     {categories.map(cat => (
                       <button key={cat} onClick={() => setSelectedCategory(cat)}
                         className={`rounded-full px-3 py-1.5 text-xs font-bold transition-all ${selectedCategory === cat ? 'bg-sport-orange text-white' : 'border border-sport-border text-sport-gray hover:text-white'}`}>
-                        {cat === 'all' ? '🌟 Tous' : `${CATEGORY_ICONS[cat] ?? ''} ${cat}`}
+                        {cat === 'all' ? t('allCategory') : `${CATEGORY_ICONS[cat] ?? ''} ${t(`categories.${cat}`)}`}
                       </button>
                     ))}
                   </div>
@@ -152,16 +143,16 @@ export default function BoutiquePage() {
 
                 {/* Discipline */}
                 <div>
-                  <p className="text-xs font-bold uppercase tracking-wider text-sport-gray mb-3">Discipline</p>
+                  <p className="text-xs font-bold uppercase tracking-wider text-sport-gray mb-3">{t('filterDiscipline')}</p>
                   <div className="flex flex-wrap gap-2">
                     <button onClick={() => setSelectedDiscipline('all')}
                       className={`rounded-full px-3 py-1.5 text-xs font-bold transition-all ${selectedDiscipline === 'all' ? 'bg-sport-orange text-white' : 'border border-sport-border text-sport-gray hover:text-white'}`}>
-                      Toutes
+                      {t('allDisciplines')}
                     </button>
-                    {DISCIPLINES.map(d => (
-                      <button key={d.id} onClick={() => setSelectedDiscipline(d.id)}
-                        className={`rounded-full px-3 py-1.5 text-xs font-bold transition-all ${selectedDiscipline === d.id ? 'bg-sport-orange text-white' : 'border border-sport-border text-sport-gray hover:text-white'}`}>
-                        {d.label}
+                    {DISCIPLINE_IDS.map(id => (
+                      <button key={id} onClick={() => setSelectedDiscipline(id)}
+                        className={`rounded-full px-3 py-1.5 text-xs font-bold transition-all ${selectedDiscipline === id ? 'bg-sport-orange text-white' : 'border border-sport-border text-sport-gray hover:text-white'}`}>
+                        {t(`disciplinesFilter.${id}`)}
                       </button>
                     ))}
                   </div>
@@ -169,10 +160,10 @@ export default function BoutiquePage() {
 
                 {/* Tri */}
                 <div>
-                  <p className="text-xs font-bold uppercase tracking-wider text-sport-gray mb-3">Trier par</p>
+                  <p className="text-xs font-bold uppercase tracking-wider text-sport-gray mb-3">{t('filterSort')}</p>
                   <select value={sort} onChange={e => setSort(e.target.value)}
                     className="w-full rounded-xl border border-sport-border bg-sport-card px-3 py-2 text-sm text-white focus:outline-none focus:border-sport-orange">
-                    {SORT_OPTIONS.map(o => <option key={o.value} value={o.value}>{o.label}</option>)}
+                    {SORT_VALUES.map(v => <option key={v} value={v}>{t(`sort.${v}`)}</option>)}
                   </select>
                 </div>
 
@@ -180,7 +171,7 @@ export default function BoutiquePage() {
                 <div className="flex flex-col justify-end">
                   <button onClick={() => { setSelectedCategory('all'); setSelectedDiscipline('all'); setSearch(''); setSort('popular') }}
                     className="rounded-xl border border-sport-border px-4 py-2 text-xs font-bold text-sport-gray hover:text-white transition-colors">
-                    Réinitialiser les filtres
+                    {t('reset')}
                   </button>
                 </div>
               </div>
@@ -194,20 +185,20 @@ export default function BoutiquePage() {
         {/* Count + sort mobile */}
         <div className="flex items-center justify-between mb-8">
           <p className="text-sm font-semibold text-sport-gray">
-            <span className="font-black text-white">{filtered.length}</span> produit{filtered.length !== 1 ? 's' : ''}
-            {search && <span> pour &quot;{search}&quot;</span>}
+            <span className="font-black text-white">{t('count', { count: filtered.length })}</span>
+            {search && <span> {t('forSearch', { q: search })}</span>}
           </p>
           <select value={sort} onChange={e => setSort(e.target.value)}
             className="rounded-xl border border-sport-border bg-sport-card px-3 py-2 text-xs text-white focus:outline-none sm:hidden">
-            {SORT_OPTIONS.map(o => <option key={o.value} value={o.value}>{o.label}</option>)}
+            {SORT_VALUES.map(v => <option key={v} value={v}>{t(`sort.${v}`)}</option>)}
           </select>
         </div>
 
         {filtered.length === 0 ? (
           <div className="py-24 text-center">
             <p className="text-5xl mb-4">🔍</p>
-            <h2 className="text-xl font-black text-white mb-2">Aucun produit trouvé</h2>
-            <p className="text-sport-gray">Essaie avec d&apos;autres termes ou réinitialise les filtres.</p>
+            <h2 className="text-xl font-black text-white mb-2">{t('emptyTitle')}</h2>
+            <p className="text-sport-gray">{t('emptyDesc')}</p>
           </div>
         ) : (
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
@@ -219,8 +210,7 @@ export default function BoutiquePage() {
         {filtered.some(p => p.isAffiliate) && (
           <div className="mt-12 rounded-2xl border border-sport-border bg-sport-card/30 p-4 text-center">
             <p className="text-xs text-sport-gray">
-              🔗 Certains produits sont des liens affiliés Amazon. En achetant via ces liens, tu soutiens Xenotif® sans coût supplémentaire pour toi.
-              Les prix et disponibilités peuvent varier selon Amazon.
+              {t('amazonDisclaimer')}
             </p>
           </div>
         )}

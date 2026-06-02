@@ -293,5 +293,582 @@
       "doneTitle": "Mot de passe mis à jour !",
       "doneText": "Redirection vers ton dashboard…"
     }
+  },
+  "disciplines": {
+    "back": "Retour aux disciplines",
+    "metaTitle": "{name} — Guide complet & Programmes",
+    "ratingAria": "Note 5 étoiles",
+    "heroAria": "Discipline {name}",
+    "heroAlt": "Athlète pratiquant {name}",
+    "videos": {
+      "eyebrow": "Vidéos & Tutoriels",
+      "title": "Apprends avec les meilleurs",
+      "subtitle": "Tutoriels techniques, séances guidées et conseils d'experts — clique pour lancer une vidéo.",
+      "unavailable": "Vidéo non disponible",
+      "playAria": "Lancer la vidéo : {title}"
+    },
+    "guide": {
+      "eyebrow": "Guide Expert",
+      "title": "Tout ce qu'il faut savoir"
+    },
+    "tips": {
+      "eyebrow": "Conseils d'experts",
+      "title": "Les secrets des pros"
+    },
+    "exercises": {
+      "eyebrow": "Exercices clés",
+      "title": "Maîtrise les fondamentaux",
+      "subtitle": "Les exercices essentiels à connaître — technique, muscles ciblés et conseils d'exécution pour progresser sans se blesser."
+    },
+    "levels": {
+      "title": "Niveaux disponibles",
+      "join": "Rejoindre",
+      "joinAria": "Rejoindre le programme {level}"
+    },
+    "program": {
+      "title": "Programme 8 semaines",
+      "phase": "Phase {n}",
+      "note": "* Programme personnalisé par l'IA Xenotif® selon ton profil, ton niveau et tes objectifs."
+    },
+    "cta": {
+      "title": "Rejoins la communauté",
+      "desc": "Accède aux programmes <b>{title}</b>, au coaching IA personnalisé et à des milliers d'athlètes motivés.",
+      "features": [
+        "Guide complet + vidéos HD",
+        "Programme personnalisé IA",
+        "Suivi de progression avancé",
+        "Communauté de coaches",
+        "30 j satisfait ou remboursé"
+      ],
+      "primary": "Commencer gratuitement",
+      "pricing": "Voir les tarifs →",
+      "noCard": "Sans CB requise",
+      "freeCancel": "Annulation libre"
+    },
+    "faq": {
+      "eyebrow": "Questions fréquentes",
+      "title": "Tout sur {name}"
+    },
+    "others": {
+      "title": "Explore d'autres disciplines",
+      "cardAria": "Découvrir la discipline {name}",
+      "alt": "Discipline {name}"
+    }
+  },
+  "boutique": {
+    "metaTitle": "Boutique — Équipements, Suppléments & Programmes Fitness",
+    "metaDescription": "La boutique Xenotif® : équipements de sport, suppléments éprouvés, montres connectées et programmes digitaux créés par nos coachs certifiés. Livraison rapide, paiement sécurisé.",
+    "ogTitle": "Boutique Xenotif® — Équipements, Suppléments & Programmes",
+    "ogDescription": "Équipements pro, suppléments éprouvés et programmes digitaux créés par nos coachs certifiés.",
+    "badge": "🛒 Boutique Officielle XENOTIF®",
+    "heroTitle": "Équipements <o>&</o><br></br><o>Programmes</o> Premium",
+    "heroSubtitle": "Des équipements pro, des suppléments éprouvés et des programmes créés par nos coachs certifiés — tout pour atteindre tes objectifs.",
+    "searchPlaceholder": "Rechercher kettlebell, whey, programme HIIT...",
+    "filters": "Filtres",
+    "stats": {
+      "products": "Produits premium",
+      "rating": "Note moyenne",
+      "customers": "Clients satisfaits",
+      "customersValue": "12 000+",
+      "delivery": "Livraison express"
+    },
+    "trust": [
+      "🔒 Paiement 100% sécurisé SSL",
+      "🚚 Livraison offerte dès 50€",
+      "📥 Téléchargement instantané",
+      "↩️ Retours 30 jours",
+      "✓ Produits testés & approuvés"
+    ],
+    "filterCategory": "Catégorie",
+    "allCategory": "🌟 Tous",
+    "filterDiscipline": "Discipline",
+    "allDisciplines": "Toutes",
+    "filterSort": "Trier par",
+    "reset": "Réinitialiser les filtres",
+    "count": "{count, plural, =0 {Aucun produit} one {# produit} other {# produits}}",
+    "forSearch": "pour « {q} »",
+    "emptyTitle": "Aucun produit trouvé",
+    "emptyDesc": "Essaie avec d'autres termes ou réinitialise les filtres.",
+    "amazonDisclaimer": "🔗 Certains produits sont des liens affiliés Amazon. En achetant via ces liens, tu soutiens Xenotif® sans coût supplémentaire pour toi. Les prix et disponibilités peuvent varier selon Amazon.",
+    "disciplinesFilter": {
+      "musculation": "💪 Musculation",
+      "running-cardio": "🏃 Running",
+      "hiit": "⚡ HIIT",
+      "yoga": "🧘 Yoga",
+      "crossfit": "🔥 CrossFit",
+      "boxing": "🥊 Boxe"
+    },
+    "sort": {
+      "popular": "Plus populaires",
+      "price_asc": "Prix croissant",
+      "price_desc": "Prix décroissant",
+      "rating": "Meilleures notes",
+      "new": "Nouveautés"
+    },
+    "categories": {
+      "Équipements": "Équipements",
+      "Nutrition": "Nutrition",
+      "Vêtements": "Vêtements",
+      "Programmes": "Programmes",
+      "Cardio": "Cardio",
+      "Recovery": "Récupération",
+      "Tech": "Tech"
+    },
+    "card": {
+      "amazonView": "Voir sur Amazon",
+      "detailsView": "Voir détails",
+      "add": "Ajouter",
+      "added": "Ajouté !"
+    },
+    "cart": {
+      "title": "Mon panier",
+      "remaining": "Plus que <o>{amount}</o> pour la livraison offerte 🚚",
+      "unlocked": "Livraison gratuite débloquée ! 🎉",
+      "emptyTitle": "Ton panier est vide",
+      "emptyDesc": "Ajoute des produits pour commencer",
+      "discover": "Découvrir les produits",
+      "digital": "📥 Digital",
+      "subtotal": "Sous-total",
+      "shippingNote": "Livraison calculée au checkout · Taxes incluses",
+      "checkout": "Passer commande",
+      "continueShopping": "Continuer mes achats",
+      "openAria": "Ouvrir le panier",
+      "openAriaCount": "Ouvrir le panier ({count, plural, one {# article} other {# articles}})"
+    },
+    "detail": {
+      "back": "Retour à la boutique",
+      "typeDigital": "📥 Digital",
+      "typePhysical": "📦 Physique",
+      "amazon": "🔗 Amazon",
+      "reviews": "({count} avis)",
+      "included": "Ce qui est inclus",
+      "buyAmazon": "Acheter sur Amazon — {price}",
+      "addedToCart": "Ajouté au panier !",
+      "buyDigital": "Acheter — {price}",
+      "addToCart": "Ajouter au panier",
+      "shippingAffiliate": ["🔗 Lien affilié Amazon", "📦 Expédié par Amazon", "🔒 Paiement sécurisé"],
+      "shippingPhysical": ["🚚 Livraison gratuite dès 50€", "↩️ Retours 30 jours", "🔒 Paiement sécurisé"],
+      "shippingDigital": ["⚡ Téléchargement immédiat", "📱 Compatible tous appareils", "♾️ Accès à vie"],
+      "related": "Vous aimerez aussi"
+    },
+    "panier": {
+      "emptyTitle": "Ton panier est vide",
+      "emptyDesc": "Découvre nos produits premium",
+      "seeShop": "Voir la boutique",
+      "title": "Panier",
+      "itemsCount": "({count, plural, one {# article} other {# articles}})",
+      "ownSection": "Produits XENOTIF — Paiement sécurisé",
+      "digitalImmediate": "📥 Téléchargement immédiat",
+      "physicalDelivery": "📦 Livraison 3-7 jours",
+      "affiliateSection": "🔗 Produits Amazon — Commander sur Amazon.de",
+      "affiliateNote": "Ces produits se commandent directement sur Amazon.de en cliquant sur le bouton.",
+      "summary": "Récapitulatif",
+      "total": "Total",
+      "emailPlaceholder": "Ton email (pour le reçu)",
+      "payError": "Erreur lors du paiement",
+      "connError": "Erreur de connexion. Réessaie.",
+      "redirecting": "Redirection...",
+      "payNow": "Payer maintenant",
+      "payTrust": ["🔒 SSL", "💳 Visa / MC / Amex", "↩️ 30 jours"],
+      "affiliateOnlyTitle": "Les produits Amazon se commandent directement sur Amazon.de",
+      "affiliateOnlyDesc": "Clique sur « Amazon » à côté de chaque produit.",
+      "continueShopping": "← Continuer mes achats"
+    },
+    "succes": {
+      "metaTitle": "Commande confirmée — Xenotif®",
+      "title": "Commande confirmée !",
+      "subtitle": "Merci pour ton achat. Un email de confirmation arrive dans quelques minutes.",
+      "downloadReady": "Ton téléchargement est prêt",
+      "downloadDesc": "Disponible immédiatement. Tu as aussi reçu ces liens par email.",
+      "whatNow": "Et maintenant ?",
+      "digitalAbove": "Tes <o>programmes digitaux</o> sont disponibles immédiatement ci-dessus.",
+      "digitalEmail": "Tes <o>programmes digitaux</o> sont disponibles immédiatement dans ton email.",
+      "physicalShipped": "Tes <o>produits physiques</o> seront expédiés sous 2-5 jours ouvrés.",
+      "continueShopping": "Continuer mes achats",
+      "goDashboard": "Aller au dashboard →"
+    }
+  },
+  "blog": {
+    "metaTitle": "Blog Fitness — Conseils, Guides & Comparatifs",
+    "metaDescription": "Conseils fitness experts, guides nutritionnels, comparatifs matériel et programmes d'entraînement. Tout ce qu'il faut savoir pour progresser, rédigé par des experts Xenotif®.",
+    "ogTitle": "Blog Fitness — Conseils, Guides & Comparatifs | Xenotif®",
+    "ogDescription": "Conseils fitness experts, guides nutritionnels, comparatifs matériel. Progressez plus vite avec Xenotif®.",
+    "keywords": ["blog fitness", "conseils musculation", "nutrition sportive", "programme running", "guide HIIT", "récupération musculaire", "comparatif matériel fitness"],
+    "eyebrow": "Le Blog Xenotif®",
+    "title": "Conseils Fitness <o>par des Experts</o>",
+    "subtitle": "Guides techniques, programmes d'entraînement, nutrition scientifique et comparatifs matériel. Tout ce qu'il faut pour progresser plus vite.",
+    "statsArticles": "{count} articles",
+    "statsExperts": "Experts vérifiés",
+    "statsUpdated": "Mis à jour 2026",
+    "allCategory": "Tous",
+    "categories": {
+      "Musculation": "Musculation",
+      "Nutrition": "Nutrition",
+      "Running": "Running",
+      "Récupération": "Récupération",
+      "Matériel": "Matériel",
+      "HIIT": "HIIT"
+    },
+    "categoryHeading": "{count, plural, one {# article} other {# articles}} en {category}",
+    "emptyCategory": "Aucun article dans cette catégorie.",
+    "seeAll": "Voir tous les articles",
+    "ctaTitle": "Prêt à <o>Passer à l'Action ?</o>",
+    "ctaSubtitle": "Les conseils théoriques c'est bien, un programme structuré par des experts c'est mieux. Rejoignez les 12 000+ athlètes Xenotif®.",
+    "ctaShop": "Voir la Boutique",
+    "ctaJoin": "Rejoindre Xenotif®",
+    "readingTime": "{minutes} min",
+    "readingTimeLong": "{minutes} min de lecture",
+    "breadcrumbAria": "Fil d'Ariane",
+    "breadcrumbHome": "Accueil",
+    "breadcrumbBlog": "Blog",
+    "recommendedTitle": "Produits <o>Recommandés</o>",
+    "recommendedSubtitle": "Sélectionnés par nos experts en lien avec cet article.",
+    "relatedTitle": "Articles <o>Similaires</o>",
+    "backToBlog": "Retour au Blog",
+    "recommendedProduct": "Produit recommandé",
+    "viewProduct": "Voir le produit"
+  },
+  "dashboard": {
+    "nav": {
+      "overview": "Vue d'ensemble",
+      "coach": "Coach IA",
+      "programme": "Mon Programme",
+      "progression": "Progression",
+      "smartwatch": "Montre Connectée",
+      "abonnement": "Abonnement",
+      "profil": "Mon Profil"
+    },
+    "navAria": "Navigation dashboard",
+    "signOut": "Déconnexion",
+    "athlete": "Athlète",
+    "statusShort": {
+      "trialing": "Essai gratuit",
+      "active": "Actif",
+      "canceled": "Annulé",
+      "past_due": "Paiement dû"
+    },
+    "overview": {
+      "greeting": "Bonjour, <o>{name}</o> 👋",
+      "subtitle": "Prêt à t'entraîner ? Voici ton tableau de bord.",
+      "plan": "Plan {plan}",
+      "trialDaysLeft": "{days, plural, one {# jour d'essai gratuit restant} other {# jours d'essai gratuit restants}}",
+      "renewOn": "Renouvellement le <o>{date}</o>",
+      "manage": "Gérer",
+      "statSessionsWeek": "Séances cette semaine",
+      "statModules": "Modules complétés",
+      "statActiveDays": "Jours d'activité",
+      "statBadges": "Badges obtenus",
+      "yourPrograms": "Tes programmes",
+      "seeAll": "Voir tout",
+      "disciplines": {
+        "running-cardio": "Running & Cardio",
+        "musculation": "Musculation",
+        "hiit": "HIIT",
+        "cyclisme": "Cyclisme",
+        "natation": "Natation",
+        "crossfit": "CrossFit"
+      },
+      "sessions": "{completed}/{total} séances",
+      "recentActivity": "Activité récente",
+      "noActivity": "Aucune séance enregistrée pour l'instant.",
+      "startProgram": "Commencer un programme",
+      "min": "{minutes} min"
+    },
+    "profil": {
+      "title": "Mon Profil",
+      "personalInfo": "Informations personnelles",
+      "fullName": "Nom complet",
+      "fullNamePlaceholder": "Ton prénom et nom",
+      "email": "Email",
+      "emailNote": "L'email ne peut pas être modifié ici. Contacte le support pour le changer.",
+      "saving": "Enregistrement…",
+      "saved": "Sauvegardé !",
+      "save": "Sauvegarder",
+      "security": "Sécurité",
+      "changePassword": "Changer mon mot de passe"
+    },
+    "programme": {
+      "title": "Mon Programme",
+      "disciplines": {
+        "running-cardio": "Running",
+        "musculation": "Muscu",
+        "hiit": "HIIT",
+        "cyclisme": "Cyclisme",
+        "natation": "Natation",
+        "crossfit": "CrossFit",
+        "yoga": "Yoga",
+        "boxing": "Boxing",
+        "stretching": "Stretching",
+        "nutrition": "Nutrition"
+      },
+      "weeks": "{name} — 8 semaines",
+      "sessionsCompleted": "{completed}/{total} séances complétées",
+      "done": "Programme terminé — Félicitations ! 🎉",
+      "videosAvailable": "{count} vidéos disponibles",
+      "videosSubtitle": "Tutoriels techniques & séances guidées",
+      "phase": "Phase {n}",
+      "markDone": "Marquer comme complété : {name}",
+      "markUndone": "Marquer comme non complété : {name}"
+    },
+    "coach": {
+      "title": "Coach IA",
+      "online": "En ligne",
+      "poweredBy": "Propulsé par Claude · Xenotif®",
+      "newSession": "Nouvelle session",
+      "emptyTitle": "Ton coach sportif personnel",
+      "emptySubtitle": "Pose-moi n'importe quelle question sur l'entraînement, la nutrition ou la récupération. Je crée des plans sur mesure pour toi.",
+      "suggestions": [
+        "Crée-moi un plan d'entraînement sur 4 semaines pour perdre du poids",
+        "Quels exercices pour développer mes épaules sans matériel ?",
+        "Comment améliorer mon endurance en course à pied ?",
+        "Programme nutrition pour la prise de masse",
+        "Routine d'étirements post-entraînement",
+        "Comment progresser en HIIT débutant ?"
+      ],
+      "error": "Désolé, une erreur est survenue. Réessaie dans un moment.",
+      "placeholder": "Pose ta question au Coach IA…",
+      "send": "Envoyer",
+      "disclaimer": "Coach IA · Xenotif® — Ne remplace pas un avis médical"
+    },
+    "abonnement": {
+      "title": "Mon Abonnement",
+      "noneTitle": "Aucun abonnement actif",
+      "noneDesc": "Choisis un plan pour accéder à tous les programmes.",
+      "choosePlan": "Choisir un plan",
+      "confirmCancelTitle": "Confirmer la résiliation",
+      "cancelIntro": "Tu vas résilier ton abonnement <o>Plan {plan}</o>.",
+      "accessUntilDate": "Ton accès reste actif jusqu'au <o>{date}</o>.",
+      "cancel": "Annuler",
+      "confirmCancel": "Confirmer la résiliation",
+      "cancelling": "Résiliation…",
+      "plan": "Plan {plan}",
+      "perMonth": "par mois",
+      "trialEndsIn": "Fin de l'essai gratuit dans <o>{days, plural, one {# jour} other {# jours}}</o>",
+      "accessUntilLabel": "Accès jusqu'au",
+      "nextRenewal": "Prochain renouvellement",
+      "securePayment": "Paiement sécurisé via Stripe",
+      "includedTitle": "Inclus dans ton plan",
+      "featuresPro": [
+        "Tous les programmes illimités",
+        "Coaching IA personnalisé",
+        "Statistiques & suivi avancé",
+        "Vidéos HD haute qualité",
+        "Support prioritaire 7j/7",
+        "Challenges communautaires"
+      ],
+      "featuresElite": [
+        "Tout le plan Pro inclus",
+        "Coach personnel dédié",
+        "Bilan mensuel visio 1-1",
+        "Plan nutritionnel sur mesure",
+        "Analyse biomécanique vidéo",
+        "Accès anticipé aux nouveautés"
+      ],
+      "managePayment": "Gérer le paiement & les factures",
+      "portalNotConfigured": "Le portail de paiement n'est pas encore activé. Va sur dashboard.stripe.com → Billing → Customer portal pour l'activer.",
+      "portalError": "Impossible d'ouvrir le portail de paiement.",
+      "unsubscribe": "Se désabonner",
+      "cancelConfirmed": "✓ Résiliation confirmée",
+      "cancelConfirmedDesc": "Ton accès reste actif jusqu'à la fin de la période.",
+      "questions": "Des questions ? Contacte-nous à",
+      "loading": "Chargement…",
+      "status": {
+        "trialing": "Essai gratuit en cours",
+        "active": "Actif",
+        "canceled": "Annulé",
+        "pastDue": "Paiement en attente"
+      }
+    },
+    "progression": {
+      "title": "Ma Progression",
+      "addSession": "Ajouter séance",
+      "newSession": "Nouvelle séance",
+      "discipline": "Discipline",
+      "durationMin": "Durée (minutes)",
+      "notesOptional": "Notes (optionnel)",
+      "notesPlaceholder": "Ressenti, exercices, PR…",
+      "cancel": "Annuler",
+      "saving": "Enregistrement…",
+      "save": "Enregistrer",
+      "statTotalSessions": "Séances totales",
+      "statHours": "Heures d'entraînement",
+      "statModules": "Modules complétés",
+      "statBadges": "Badges obtenus",
+      "byDiscipline": "Progression par discipline",
+      "badges": "Badges",
+      "weekActivity": "Activité cette semaine",
+      "history": "Historique des séances",
+      "noHistory": "Aucune séance enregistrée. Clique sur \"Ajouter séance\" pour commencer !",
+      "days": [
+        "Lun",
+        "Mar",
+        "Mer",
+        "Jeu",
+        "Ven",
+        "Sam",
+        "Dim"
+      ],
+      "disciplines": {
+        "running-cardio": "Running",
+        "musculation": "Musculation",
+        "hiit": "HIIT",
+        "cyclisme": "Cyclisme",
+        "natation": "Natation",
+        "crossfit": "CrossFit",
+        "yoga": "Yoga",
+        "boxing": "Boxing",
+        "stretching": "Stretching",
+        "nutrition": "Nutrition"
+      },
+      "badgeFirst": {
+        "label": "Premier pas",
+        "desc": "1ère séance enregistrée"
+      },
+      "badgeWeek": {
+        "label": "Semaine complète",
+        "desc": "7 séances enregistrées"
+      },
+      "badgeMonth": {
+        "label": "Athlète du mois",
+        "desc": "30 séances enregistrées"
+      },
+      "badgeElite": {
+        "label": "Élite",
+        "desc": "100 séances enregistrées"
+      }
+    },
+    "liveActivity": {
+      "title": "Activité du jour",
+      "moving": "En mouvement",
+      "paused": "En pause",
+      "phoneSensor": "Capteur du téléphone",
+      "steps": "Pas",
+      "calories": "Calories",
+      "distance": "Distance",
+      "activeDuration": "Durée active",
+      "stepsUnit": "pas",
+      "autoSaved": "✓ Enregistré automatiquement · La durée ne compte que pendant ton mouvement. Garde l'app ouverte pendant ton activité.",
+      "tapToStart": "Touche l'écran pour démarrer 👆",
+      "tapHint": "Ton iPhone demande une autorisation pour le capteur de mouvement. Touche n'importe où pour lancer le suivi.",
+      "denied": "Accès au mouvement refusé. Autorise-le dans les réglages de ton navigateur, puis recharge la page.",
+      "noSensor": "Aucun capteur de mouvement détecté — le suivi en direct fonctionne sur smartphone. 📱",
+      "startTracking": "Démarrer le suivi"
+    },
+    "smartwatch": {
+      "title": "Montre Connectée",
+      "subtitle": "Synchronisation fitness en temps réel",
+      "loading": "Chargement des données fitness…",
+      "tabs": {
+        "overview": "Vue d'ensemble",
+        "devices": "Appareils",
+        "history": "Historique",
+        "goals": "Objectifs"
+      },
+      "connectTitle": "Connecte ta montre",
+      "connectDesc": "Synchronise ta montre connectée pour afficher tes vraies données de santé — pas, calories, fréquence cardiaque, sommeil et bien plus.",
+      "securityTitle": "Données chiffrées & RGPD",
+      "securityDescShort": "Tes données de santé sont chiffrées et stockées sur des serveurs sécurisés en Europe. Aucune donnée n'est revendue à des tiers.",
+      "securityDescLong": "Tes données de santé sont chiffrées et stockées sur des serveurs sécurisés en Europe. Tu peux supprimer toutes tes données à tout moment depuis ton profil. Aucune donnée n'est revendue à des tiers.",
+      "synced": "Synchronisé",
+      "sync": "Synchroniser",
+      "rings": {
+        "activity": "Activité",
+        "calories": "Calories",
+        "steps": "Pas"
+      },
+      "ringsCenter": "activité",
+      "metrics": {
+        "stepsToday": "Pas aujourd'hui",
+        "caloriesBurned": "Calories brûlées",
+        "distance": "Distance",
+        "hydration": "Hydratation",
+        "sleep": "Sommeil",
+        "activeMinutes": "Minutes actives"
+      },
+      "sleepScore": "score {score}",
+      "heartRateTitle": "Fréquence cardiaque",
+      "weeklyActivity": "Activité hebdomadaire",
+      "chartToggle": {
+        "steps": "Pas",
+        "calories": "Cal",
+        "activeMinutes": "Actif"
+      },
+      "chartFull": {
+        "steps": "Pas",
+        "calories": "Cal",
+        "activeMinutes": "Min actives"
+      },
+      "chartThisWeek": "{label} cette semaine",
+      "weekDays": ["Lun", "Mar", "Mer", "Jeu", "Ven", "Sam", "Dim"],
+      "aiTitle": "Coach IA — Recommandations personnalisées",
+      "aiRecs": [
+        "Tu as atteint 84% de ton objectif de pas aujourd'hui — un sprint de 10 min suffit pour boucler ça !",
+        "Ton sommeil est légèrement en dessous de 7h. Couche-toi 30 min plus tôt ce soir pour optimiser ta récupération.",
+        "Hydratation à 87% — bois 250ml avant ta prochaine séance pour maintenir ta performance.",
+        "Ta fréquence cardiaque au repos de 58 bpm indique une excellente condition cardiovasculaire. Continue !"
+      ],
+      "supportedTitle": "Appareils supportés",
+      "supportedDesc": "Connecte ta montre pour synchroniser automatiquement tes données fitness après chaque séance.",
+      "recentSessions": "Séances récentes",
+      "sessionsCount": "{count, plural, one {# séance} other {# séances}}",
+      "noSessions": "Aucune séance enregistrée.",
+      "noSessionsHint": "Connecte ta montre pour voir ton historique.",
+      "dailyGoals": "Objectifs quotidiens",
+      "dailyGoalsDesc": "Tes objectifs sont mis à jour en temps réel depuis ta montre connectée.",
+      "goalLabels": {
+        "steps": "Pas quotidiens",
+        "calories": "Calories brûlées",
+        "activeMinutes": "Minutes actives",
+        "sleep": "Sommeil",
+        "hydration": "Hydratation",
+        "sessionsWeek": "Séances / semaine"
+      },
+      "goalUnitSteps": "pas",
+      "goalUnitSessions": "séances",
+      "goalReached": "✓ Objectif",
+      "weekSummary": "Bilan de la semaine",
+      "summary": {
+        "totalSteps": "Pas total",
+        "caloriesBurned": "Cal. brûlées",
+        "activeMinutes": "Min. actives"
+      },
+      "summaryUnitSteps": "pas",
+      "device": {
+        "connected": "Connecté",
+        "comingSoon": "Bientôt",
+        "comingSoonDesc": "Bientôt disponible",
+        "syncedOn": "Synchronisé le {date}",
+        "sync": "Synchroniser",
+        "connect": "Connecter"
+      },
+      "heart": {
+        "bpmAvg": "bpm moy.",
+        "max": "Max",
+        "resting": "Repos",
+        "zoneRest": "Repos",
+        "zoneLight": "Cardio léger",
+        "zoneModerate": "Cardio modéré",
+        "zoneIntense": "Cardio intense",
+        "zoneMax": "Zone maximale"
+      },
+      "session": {
+        "duration": "durée",
+        "bpmAvg": "bpm moy.",
+        "distance": "distance",
+        "pace": "allure"
+      },
+      "activities": {
+        "running": "Course à pied",
+        "cycling": "Cyclisme",
+        "strength_training": "Musculation",
+        "yoga": "Yoga",
+        "hiit": "HIIT",
+        "swimming": "Natation",
+        "walking": "Marche",
+        "crossfit": "CrossFit",
+        "boxing": "Boxe",
+        "stretching": "Stretching"
+      }
+    }
   }
 }

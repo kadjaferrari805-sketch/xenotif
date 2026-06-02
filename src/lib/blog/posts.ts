@@ -821,6 +821,9 @@ const BLOG_POSTS: BlogPost[] = [
   },
 ]
 
+// Source FR exposée pour la construction du catalogue localisé (posts.en.ts).
+export const BLOG_POSTS_SOURCE = BLOG_POSTS
+
 export function getAllPosts(): BlogPost[] {
   return [...BLOG_POSTS].sort(
     (a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()

@@ -1,5 +1,7 @@
 'use client'
 
+import { useTranslations } from 'next-intl'
+
 interface Ring {
   value: number
   max: number
@@ -14,6 +16,7 @@ interface ActivityRingsProps {
 }
 
 export function ActivityRings({ rings, size = 180 }: ActivityRingsProps) {
+  const t = useTranslations('dashboard.smartwatch')
   const center = size / 2
   const strokeWidth = 14
   const gap = 6
@@ -64,7 +67,7 @@ export function ActivityRings({ rings, size = 180 }: ActivityRingsProps) {
         <span className="text-2xl font-black text-white leading-none">
           {Math.round((rings[0].value / rings[0].max) * 100)}%
         </span>
-        <span className="text-[10px] text-sport-gray mt-0.5">activité</span>
+        <span className="text-[10px] text-sport-gray mt-0.5">{t('ringsCenter')}</span>
       </div>
     </div>
   )

@@ -1,15 +1,19 @@
 'use client'
 import { useState } from 'react'
 import Image from 'next/image'
-import Link from 'next/link'
+import { Link } from '@/i18n/navigation'
+import { useTranslations, useLocale } from 'next-intl'
 import { ArrowLeft, ShoppingCart, Download, Check, Star, ExternalLink } from 'lucide-react'
-import { formatPrice, PRODUCTS, type Product } from '@/lib/boutique/products'
+import { formatPrice, type Product } from '@/lib/boutique/products'
+import { getProductsLocalized } from '@/lib/boutique/products.en'
 import { useCart } from '@/lib/boutique/cart'
 import { ProductCard } from '@/components/boutique/ProductCard'
 
 // Partie interactive de la fiche produit (panier, état du bouton).
 // Le composant serveur parent (page.tsx) fournit `product` + les métadonnées SEO.
 export function ProductDetail({ product }: { product: Product }) {
+  const t = useTranslations('boutique')
+  const locale = useLocale()
   const { addItem } = useCart()
   const [added, setAdded] = useState(false)
 
@@ -21,7 +25,7 @@ export function ProductDetail({ product }: { product: Product }) {
     setTimeout(() => setAdded(false), 2000)
   }
 
-  const related = PRODUCTS.filter(p => p.category === product.category && p.id !== product.id).slice(0, 3)
+  const related = getProductsLocalized(locale).filter(p => p.category === product.category && p.id !== product.id).slice(0, 3)
   const discount = product.original_price_cents
     ? Math.round((1 - product.price_cents / product.original_price_cents) * 100)
     : null
@@ -30,7 +34,7 @@ export function ProductDetail({ product }: { product: Product }) {
     <div className="min-h-screen bg-sport-dark pt-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 py-8">
         <Link href="/boutique" className="mb-8 inline-flex items-center gap-2 text-sm font-semibold text-sport-gray hover:text-white transition-colors">
-          <ArrowLeft size={14} /> Retour à la boutique
+          <ArrowLeft size={14} /> {t('detail.back')}
         </Link>
 
         <div className="grid gap-12 lg:grid-cols-2 mb-16">
@@ -52,13 +56,13 @@ export function ProductDetail({ product }: { product: Product }) {
             {/* Marque + catégorie */}
             <div className="flex items-center gap-2 mb-3 flex-wrap">
               <span className="rounded-full border border-sport-border bg-sport-card px-3 py-1 text-xs font-bold text-sport-gray">{product.brand}</span>
-              <span className="rounded-full border border-sport-border bg-sport-card px-3 py-1 text-xs font-semibold text-sport-gray">{product.category}</span>
+              <span className="rounded-full border border-sport-border bg-sport-card px-3 py-1 text-xs font-semibold text-sport-gray">{t(`categories.${product.category}`)}</span>
               <span className="rounded-full border border-sport-border bg-sport-card px-3 py-1 text-xs font-semibold text-sport-gray">
-                {product.type === 'digital' ? '📥 Digital' : '📦 Physique'}
+                {product.type === 'digital' ? t('detail.typeDigital') : t('detail.typePhysical')}
               </span>
               {product.isAffiliate && (
                 <span className="rounded-full border border-sport-orange/40 bg-sport-orange/10 px-3 py-1 text-xs font-semibold text-sport-orange">
-                  🔗 Amazon
+                  {t('detail.amazon')}
                 </span>
               )}
             </div>
@@ -73,7 +77,7 @@ export function ProductDetail({ product }: { product: Product }) {
                 ))}
               </div>
               <span className="text-sm font-bold text-sport-orange">{product.rating}/5</span>
-              <span className="text-sm text-sport-gray">({product.reviews.toLocaleString('fr-FR')} avis)</span>
+              <span className="text-sm text-sport-gray">{t('detail.reviews', { count: product.reviews })}</span>
             </div>
 
             <p className="text-sport-gray leading-relaxed mb-8">
@@ -93,7 +97,7 @@ export function ProductDetail({ product }: { product: Product }) {
 
             {/* Features */}
             <div className="rounded-2xl border border-sport-border bg-sport-card p-4 mb-8">
-              <p className="text-xs font-bold uppercase tracking-wider text-sport-gray mb-3">Ce qui est inclus</p>
+              <p className="text-xs font-bold uppercase tracking-wider text-sport-gray mb-3">{t('detail.included')}</p>
               <ul className="space-y-2">
                 {product.features.map(f => (
                   <li key={f} className="flex items-center gap-2 text-sm text-white">
@@ -112,7 +116,7 @@ export function ProductDetail({ product }: { product: Product }) {
                   rel="noopener noreferrer"
                   className="flex flex-1 items-center justify-center gap-2 rounded-2xl bg-sport-orange px-6 py-3.5 font-bold text-white hover:bg-orange-600 transition-all shadow-[0_0_20px_rgba(255,69,0,0.3)]"
                 >
-                  <ExternalLink size={16} /> Acheter sur Amazon — {formatPrice(product.price_cents)}
+                  <ExternalLink size={16} /> {t('detail.buyAmazon', { price: formatPrice(product.price_cents) })}
                 </a>
               ) : (
                 <button
@@ -122,10 +126,10 @@ export function ProductDetail({ product }: { product: Product }) {
                   }`}
                 >
                   {added
-                    ? <><Check size={16} />Ajouté au panier !</>
+                    ? <><Check size={16} />{t('detail.addedToCart')}</>
                     : product.type === 'digital'
-                      ? <><Download size={16} />Acheter — {formatPrice(product.price_cents)}</>
-                      : <><ShoppingCart size={16} />Ajouter au panier</>
+                      ? <><Download size={16} />{t('detail.buyDigital', { price: formatPrice(product.price_cents) })}</>
+                      : <><ShoppingCart size={16} />{t('detail.addToCart')}</>
                   }
                 </button>
               )}
@@ -133,25 +137,11 @@ export function ProductDetail({ product }: { product: Product }) {
 
             {/* Livraison info */}
             <div className="mt-6 flex flex-wrap gap-3 text-xs text-sport-gray">
-              {product.isAffiliate ? (
-                <>
-                  <span>🔗 Lien affilié Amazon</span>
-                  <span>📦 Expédié par Amazon</span>
-                  <span>🔒 Paiement sécurisé</span>
-                </>
-              ) : product.type === 'physical' ? (
-                <>
-                  <span>🚚 Livraison gratuite dès 50€</span>
-                  <span>↩️ Retours 30 jours</span>
-                  <span>🔒 Paiement sécurisé</span>
-                </>
-              ) : (
-                <>
-                  <span>⚡ Téléchargement immédiat</span>
-                  <span>📱 Compatible tous appareils</span>
-                  <span>♾️ Accès à vie</span>
-                </>
-              )}
+              {(t.raw(
+                product.isAffiliate ? 'detail.shippingAffiliate'
+                  : product.type === 'physical' ? 'detail.shippingPhysical'
+                  : 'detail.shippingDigital',
+              ) as string[]).map((line) => <span key={line}>{line}</span>)}
             </div>
 
             {/* Tags */}
@@ -170,7 +160,7 @@ export function ProductDetail({ product }: { product: Product }) {
         {/* Produits liés */}
         {related.length > 0 && (
           <section className="pt-12 border-t border-sport-border">
-            <h2 className="text-2xl font-black text-white mb-8">Vous aimerez aussi</h2>
+            <h2 className="text-2xl font-black text-white mb-8">{t('detail.related')}</h2>
             <div className="grid gap-6 sm:grid-cols-3">
               {related.map(p => <ProductCard key={p.id} product={p} />)}
             </div>

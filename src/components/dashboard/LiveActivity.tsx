@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useRef, useEffect, useCallback } from 'react'
+import { useTranslations, useLocale } from 'next-intl'
 import { Footprints, Flame, MapPin, Timer, Smartphone, Play } from 'lucide-react'
 import { ActivityRing } from './ActivityRing'
 import { createClient } from '@/lib/supabase/client'
@@ -19,6 +20,9 @@ type DMEWithPermission = { requestPermission?: () => Promise<'granted' | 'denied
 const dayKey = () => 'xeno_live_' + new Date().toISOString().split('T')[0]
 
 export function LiveActivity() {
+  const t = useTranslations('dashboard.liveActivity')
+  const locale = useLocale()
+  const numLocale = locale === 'en' ? 'en-US' : 'fr-FR'
   const [status, setStatus] = useState<Status>('init')
   const [steps, setSteps] = useState(0)         // total du jour
   const [activeSec, setActiveSec] = useState(0) // temps actif total du jour
@@ -167,15 +171,15 @@ export function LiveActivity() {
       <div aria-hidden="true" className="pointer-events-none absolute -right-12 -top-12 h-52 w-52 rounded-full bg-sport-lime/10 blur-3xl" />
 
       <div className="relative flex items-center justify-between mb-5">
-        <h2 className="text-sm font-black uppercase tracking-wider text-white">Activité du jour</h2>
+        <h2 className="text-sm font-black uppercase tracking-wider text-white">{t('title')}</h2>
         {status === 'running' ? (
           <span className={`inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider ${moving ? 'border-red-500/40 bg-red-500/10 text-red-400' : 'border-sport-border bg-sport-dark/60 text-sport-gray'}`}>
             <span className={`h-1.5 w-1.5 rounded-full ${moving ? 'bg-red-500 animate-pulse' : 'bg-sport-gray'}`} />
-            {moving ? 'En mouvement' : 'En pause'}
+            {moving ? t('moving') : t('paused')}
           </span>
         ) : (
           <span className="inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider text-sport-gray">
-            <Smartphone size={12} /> Capteur du téléphone
+            <Smartphone size={12} /> {t('phoneSensor')}
           </span>
         )}
       </div>
@@ -192,16 +196,16 @@ export function LiveActivity() {
               size={172}
               strokeWidth={15}
             >
-              <span className="text-[24px] font-black text-white tabular-nums">{steps.toLocaleString('fr-FR')}</span>
-              <span className="text-[9px] font-bold uppercase tracking-[2px] text-sport-gray mt-1">pas</span>
+              <span className="text-[24px] font-black text-white tabular-nums">{steps.toLocaleString(numLocale)}</span>
+              <span className="text-[9px] font-bold uppercase tracking-[2px] text-sport-gray mt-1">{t('stepsUnit')}</span>
             </ActivityRing>
 
             <div className="flex-1 w-full space-y-4">
               {[
-                { Icon: Footprints, label: 'Pas',      value: steps.toLocaleString('fr-FR'), color: '#A3FF00' },
-                { Icon: Flame,      label: 'Calories', value: `${calories} kcal`,            color: '#FF4500' },
-                { Icon: MapPin,     label: 'Distance', value: `${distanceKm} km`,            color: '#2563EB' },
-                { Icon: Timer,      label: 'Durée active', value: `${mm}:${ss}`,             color: '#9aa2ad' },
+                { Icon: Footprints, label: t('steps'),          value: steps.toLocaleString(numLocale), color: '#A3FF00' },
+                { Icon: Flame,      label: t('calories'),       value: `${calories} kcal`,              color: '#FF4500' },
+                { Icon: MapPin,     label: t('distance'),       value: `${distanceKm} km`,              color: '#2563EB' },
+                { Icon: Timer,      label: t('activeDuration'), value: `${mm}:${ss}`,                   color: '#9aa2ad' },
               ].map(({ Icon, label, value, color }) => (
                 <div key={label} className="flex items-center gap-3">
                   <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl" style={{ background: `${color}1f`, border: `1px solid ${color}40` }}>
@@ -217,7 +221,7 @@ export function LiveActivity() {
           </div>
 
           <p className="relative mt-5 text-[10px] text-sport-gray text-center">
-            ✓ Enregistré automatiquement · La durée ne compte que pendant ton mouvement. Garde l&apos;app ouverte pendant ton activité.
+            {t('autoSaved')}
           </p>
         </>
       ) : (
@@ -228,17 +232,17 @@ export function LiveActivity() {
 
           {status === 'needtap' && (
             <>
-              <p className="text-white font-bold mb-1">Touche l&apos;écran pour démarrer 👆</p>
+              <p className="text-white font-bold mb-1">{t('tapToStart')}</p>
               <p className="text-xs text-sport-gray max-w-xs mx-auto mb-5 leading-relaxed">
-                Ton iPhone demande une autorisation pour le capteur de mouvement. Touche n&apos;importe où pour lancer le suivi.
+                {t('tapHint')}
               </p>
             </>
           )}
           {status === 'denied' && (
-            <p className="text-xs text-red-400 mb-5 max-w-xs mx-auto">Accès au mouvement refusé. Autorise-le dans les réglages de ton navigateur, puis recharge la page.</p>
+            <p className="text-xs text-red-400 mb-5 max-w-xs mx-auto">{t('denied')}</p>
           )}
           {status === 'nosensor' && (
-            <p className="text-xs text-orange-400 mb-5 max-w-xs mx-auto">Aucun capteur de mouvement détecté — le suivi en direct fonctionne sur smartphone. 📱</p>
+            <p className="text-xs text-orange-400 mb-5 max-w-xs mx-auto">{t('noSensor')}</p>
           )}
 
           {status !== 'nosensor' && (
@@ -246,7 +250,7 @@ export function LiveActivity() {
               onClick={start}
               className="inline-flex items-center justify-center gap-2 rounded-xl bg-sport-lime px-6 py-3 text-sm font-black text-sport-dark hover:brightness-110 transition-all"
             >
-              <Play size={15} fill="currentColor" /> Démarrer le suivi
+              <Play size={15} fill="currentColor" /> {t('startTracking')}
             </button>
           )}
         </div>

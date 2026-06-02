@@ -61,6 +61,7 @@ export async function GET(request: Request) {
         items: items.map(i => ({ name: i.name, price: i.price, image: i.image })),
         total,
         recoverUrl: `${BASE_URL}/boutique/panier`,
+        locale: cart.locale ?? 'fr',
       })
       await supabase
         .from('abandoned_carts')

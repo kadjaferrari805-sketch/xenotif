@@ -1,0 +1,192 @@
+/* ── Catalogue produits — version anglaise ────────────────────── */
+/* On réutilise PRODUCTS (FR) pour tout le structurel (id, slug, prix, images,
+   category-clé, amazon, disciplines…) et on ne surcharge que les champs texte. */
+
+import { PRODUCTS, type Product } from './products'
+
+type ProductText = Pick<Product, 'name' | 'description' | 'longDescription' | 'features' | 'tags'> & {
+  badge?: string | null
+}
+
+const TEXT_EN: Record<string, ProductText> = {
+  e1: {
+    name: 'Cast Iron Kettlebell Pro 20 kg — CORENGTH',
+    badge: '⭐ Bestseller',
+    description: '20 kg cast-iron kettlebell with a non-slip rubber base and a sandblasted handle for CrossFit, HIIT and functional strength.',
+    longDescription: 'Designed for demanding athletes, this 80% recycled cast-iron kettlebell offers a sandblasted grip for a perfect hold even when sweating. The rubber base protects the floor and ensures perfect stability. Ideal for swings, Turkish get-ups, clean & press and snatches.',
+    features: ['20 kg — ideal for CrossFit & HIIT', '80% recycled cast iron', 'Non-slip rubber base', 'Sandblasted handle, optimal grip', '2-year warranty'],
+    tags: ['kettlebell', 'crossfit', 'strength', 'training'],
+  },
+  e2: {
+    name: 'Resistance Band Kit × 5 — PORTENTUM',
+    badge: '🔥 Sale',
+    description: 'Set of 5 resistance bands for strength and fitness. Progressive resistance from 25 to 125 lbs. Ideal for a complete home workout.',
+    longDescription: 'The PORTENTUM kit includes 5 resistance bands in different colors (from 25-65 lbs to 50-125 lbs) for progressive, complete training. Perfect for strength, CrossFit, yoga, rehab and muscle strengthening at home or on the go. Durable, non-slip and easy to carry.',
+    features: ['5 levels: 25 to 125 lbs', 'Complete strength & fitness', 'Durable non-slip', 'Ideal at home', 'Easy to carry'],
+    tags: ['resistance bands', 'resistance', 'fitness', 'strength'],
+  },
+  e3: {
+    name: 'Premium Non-Slip Yoga Mat 10mm',
+    description: 'Double-sided 10mm eco-friendly TPE yoga mat. Perfectly non-slip, 183×61cm. Carry strap included.',
+    longDescription: 'The Gaiam premium mat offers a 10mm thickness for perfect joint cushioning. Its textured double-sided surface guarantees maximum grip on any floor. The TPE material is free of PVC, latex and phthalates — ideal for environmentally conscious practitioners.',
+    features: ['10mm premium comfort', 'Non-slip double-sided', 'TPE, PVC- and latex-free', '183×61 cm', 'Carry strap included'],
+    tags: ['yoga mat', 'pilates', 'meditation', 'stretching'],
+  },
+  e4: {
+    name: 'Speed CrossFit Jump Rope — Reebok',
+    badge: '⚡ Pro',
+    description: 'Coated steel cable jump rope, aluminum ball bearings. Adjustable 2.5—3.5m. Perfect for HIIT and boxing.',
+    longDescription: 'The Reebok Speed jump rope is designed for CrossFit athletes and boxers. Ultra-light steel cable, precision ball bearings for smooth high-speed rotation. Ergonomic brushed-aluminum handles. Ideal for double-unders and intense HIIT.',
+    features: ['Coated steel cable', 'Precision aluminum bearings', 'Adjustable 2.5—3.5m', 'Ergonomic handles', 'Carry bag'],
+    tags: ['jump rope', 'cardio', 'crossfit', 'boxing'],
+  },
+  e5: {
+    name: 'Adjustable Dumbbells 2—24 kg — Bowflex SelectTech',
+    badge: '💪 Premium',
+    description: 'Replaces 15 pairs of dumbbells. Select the weight in 2 seconds from 2 to 24 kg. Ergonomic design.',
+    longDescription: 'The Bowflex SelectTech 552i dumbbells are the world reference in adjustable dumbbells. A simple turn of the dial replaces up to 15 pairs of classic dumbbells. Huge savings in space and budget. Chromed steel structure with a non-slip coating.',
+    features: ['2 to 24 kg in 2 seconds', 'Replaces 15 pairs', 'Chromed steel build', 'Non-slip coating', '2-year warranty'],
+    tags: ['dumbbells', 'strength', 'home gym', 'training'],
+  },
+  e6: {
+    name: 'Connected Exercise Bike — DOMYOS VC500',
+    badge: '🚴 Connected',
+    description: 'Connected cardio bike with 24 levels of magnetic resistance. LCD screen. Adjustable seat and handlebars. Connects to fitness apps.',
+    longDescription: 'The DOMYOS VC500 bike is ideal for indoor cycling. Ultra-quiet magnetic resistance, 24 progressive levels. Compatible with Decathlon Coach, Zwift and Kinomap via Bluetooth. Wide comfort seat adjustable in height and depth. LCD console showing speed, distance, calories and heart rate.',
+    features: ['24 magnetic levels', 'Bluetooth connected', 'Zwift/Kinomap compatible', 'Adjustable comfort seat', 'Full LCD console'],
+    tags: ['bike', 'cardio', 'indoor cycling', 'connected'],
+  },
+  n1: {
+    name: 'Impact Whey Protein Chocolate 1 kg — MyProtein',
+    badge: '🏆 #1 in Europe',
+    description: '#1 in Europe. 22g protein, 103 kcal, 5g BCAAs per serving. From grass-fed cows. Intense chocolate flavor.',
+    longDescription: 'The best-selling whey in Europe for 15 years. Made from ultra-filtered whey from Irish grass-fed cows. Complete amino acid profile with 5g of BCAAs per serving. Mixes perfectly in water or milk. Ideal post-workout to maximize protein synthesis.',
+    features: ['22g protein / serving', 'Only 103 kcal', '5g natural BCAAs', 'Made in Europe', 'No added sugar'],
+    tags: ['whey', 'protein', 'strength', 'recovery'],
+  },
+  n2: {
+    name: 'Pure Creatine Monohydrate 300g — MyProtein',
+    description: '99.9% pure micronized creatine. 60 doses. Informed Sport certified. Strength and power in 4 weeks.',
+    longDescription: 'Creatine monohydrate is the most studied supplement in sports science, with hundreds of studies confirming its effectiveness. MyProtein\'s micronized version dissolves instantly and is absorbed faster. Informed Sport certified — anti-doping tested. Unflavored to mix into any drink.',
+    features: ['99.9% purity', '60 servings of 5g', 'Informed Sport certified', 'Unflavored', 'Results in 4 weeks'],
+    tags: ['creatine', 'strength', 'power', 'training'],
+  },
+  n3: {
+    name: 'BCAA 2:1:1 Fruit Punch 500g — MyProtein',
+    badge: '💊 Vegan',
+    description: 'BCAAs in a 2:1:1 ratio. 7g per dose, 83 servings. Vegan certified. Recovery, anti-catabolism, endurance.',
+    longDescription: 'BCAAs (branched-chain amino acids) in an optimized 2:1:1 ratio: Leucine, Isoleucine, Valine. Leucine directly stimulates protein synthesis, Isoleucine helps glucose utilization and Valine reduces central fatigue. Ideal during training to preserve muscle mass.',
+    features: ['Optimal 2:1:1 ratio', '7g BCAAs/dose', '83 servings', 'Vegan certified', 'Anti-catabolism'],
+    tags: ['bcaa', 'recovery', 'endurance', 'vegan'],
+  },
+  r1: {
+    name: 'Pro Massage Foam Roller — TriggerPoint GRID',
+    badge: '🔵 Pro',
+    description: 'Multi-zone massage roller with a patented GRID surface. Simulates a masseur\'s hands. Optimal recovery.',
+    longDescription: 'The TriggerPoint GRID is the foam roller of choice for professionals. Its 3-distinct-zone surface (hollow, tubular, flat) simulates a masseur\'s fingers, palms and thumbs. The hollow core ensures durability and supports weight up to 160kg. Includes access to the full video library.',
+    features: ['3-zone GRID surface', 'Simulates a pro massage', 'Supports 160kg', 'Durable hollow core', 'Videos included'],
+    tags: ['foam roller', 'recovery', 'massage', 'mobility'],
+  },
+  r2: {
+    name: 'Percussion Massage Gun — Theragun Mini',
+    badge: '🏅 Pro Athlete',
+    description: 'Mini percussion gun 2400 RPM, 3 speeds, quiet. 150min battery. Compact and powerful for fast recovery.',
+    longDescription: 'The Theragun Mini is the compact version of the professional massage gun favored by NBA, NFL and Olympic athletes. 2400 percussions/minute penetrating 16mm deep to boost circulation and release muscle tension. 3 adapted speeds. Ultra-quiet operation. 150-minute battery life.',
+    features: ['Powerful 2400 RPM', '3 adapted speeds', '150min battery', 'Ultra-quiet 60dB', 'Compact & travel-friendly'],
+    tags: ['massage gun', 'percussion', 'recovery', 'theragun'],
+  },
+  t1: {
+    name: 'Multisport GPS Smartwatch',
+    badge: '⌚ GPS',
+    description: 'Multisport GPS watch with wrist heart rate, sleep tracking, VO2 max and 100+ sport modes. Long battery life.',
+    longDescription: 'The ideal smartwatch for athletes: ultra-precise built-in GPS, wrist heart-rate sensor, sleep and stress tracking, VO2 max estimation and over 100 sport profiles (running, cycling, swimming, strength, HIIT). Compatible with Strava, Apple Health and Google Fit. Waterproof with several days of battery life.',
+    features: ['Precise multisport GPS', 'Wrist heart rate', 'Sleep & VO2 max tracking', '100+ sport modes', 'Strava & Apple Health compatible'],
+    tags: ['smartwatch', 'gps', 'cardio', 'running', 'multisport'],
+  },
+  t2: {
+    name: 'Fitness Activity Tracker Band',
+    badge: '🔥 Sale',
+    description: 'Lightweight connected band: pedometer, calories, heart rate, sleep and notifications. AMOLED screen. 14-day battery.',
+    longDescription: 'The perfect everyday fitness companion. This activity band automatically tracks your steps, calories burned, heart rate and sleep quality. Bright color AMOLED screen, waterproof for swimming, and up to 14 days of battery life. Get your notifications (calls, texts, apps) right on your wrist. Syncs with the Xenotif app via Apple Health / Google Fit.',
+    features: ['Pedometer & calories', '24/7 heart rate', 'Sleep tracking', 'Color AMOLED screen', '14-day battery'],
+    tags: ['fitness band', 'fitness tracker', 'pedometer', 'sleep'],
+  },
+  t3: {
+    name: 'Touchscreen Running & Cardio Smartwatch',
+    badge: '⌚ AMOLED',
+    description: 'AMOLED touchscreen smartwatch, GPS, ECG, SpO2 and built-in running coach. Bluetooth calls, contactless payment, 100+ faces.',
+    longDescription: 'A premium smartwatch to transform your training. Large AMOLED touchscreen, built-in GPS to track your routes, advanced sensors (ECG, blood oxygen SpO2, heart rate). Built-in running coach with personalized plans, heart-rate-zone alerts and recovery. Take Bluetooth calls, pay contactless, and customize from 100+ watch faces. Compatible with iOS & Android.',
+    features: ['AMOLED touchscreen', 'GPS + ECG + SpO2', 'Built-in running coach', 'Bluetooth calls', 'iOS & Android compatible'],
+    tags: ['smartwatch', 'apple watch', 'ecg', 'running', 'cardio'],
+  },
+  v1: {
+    name: 'Men\'s Performance Training Shorts',
+    description: '4-way stretch shorts, Dry-Fit moisture-wicking. Zip pocket. Sizes S-XXL. Black, gray, navy.',
+    longDescription: 'Designed for athletes who make no compromise on performance. The 4-way stretch fabric hugs the body perfectly without restricting movement. Dry-Fit technology wicks sweat 3x faster than cotton. Secure side zip pocket for a smartphone. Reinforced seams that withstand intensive washing.',
+    features: ['4-way stretch fabric', 'Dry-Fit moisture-wicking', 'Zip pocket', 'S to XXL', '3 colors available'],
+    tags: ['shorts', 'training', 'running', 'men'],
+  },
+  v2: {
+    name: 'Women\'s High-Waist Compression Leggings',
+    badge: '❤️ Best Seller',
+    description: 'Graduated compression, high waist, opaque anti-UV fabric. Phone pocket. XS-XL. 5 colors.',
+    longDescription: 'The XENOTIF compression leggings offer optimal support for every discipline. The flat high waist holds the belly without compressing. The opaque fabric (280 GSM) is anti-UV certified and resists see-through even during squats. Graduated compression improves blood circulation and reduces soreness.',
+    features: ['Graduated compression', 'Flat high waist', 'Opaque anti-UV', 'Phone pocket', 'XS to XL · 5 colors'],
+    tags: ['leggings', 'compression', 'women', 'yoga'],
+  },
+  v3: {
+    name: 'Men\'s Performance Compression Leggings',
+    badge: '🆕 New',
+    description: 'Men\'s compression leggings, breathable technical fabric. Muscle support, fast drying. Ideal for running, strength, CrossFit. S-XXL.',
+    longDescription: 'The XENOTIF men\'s compression leggings offer optimal muscle support that reduces vibration and fatigue. The 4-way stretch technical fabric wicks sweat and dries fast. Flat anti-chafe seams, comfortable elastic waist and a side pocket. Perfect worn alone or under shorts for running, strength, CrossFit or as a base layer.',
+    features: ['Muscle compression', '4-way stretch fabric', 'Fast drying', 'Anti-chafe seams', 'S to XXL'],
+    tags: ['leggings', 'compression', 'men', 'running'],
+  },
+  d1: {
+    name: 'Muscle Gain Program — Complete 12 Weeks',
+    badge: '📥 Bestseller',
+    description: '84 structured sessions, 4-day/week split, guided load progression. Nutrition plan + macros. PDF + videos.',
+    longDescription: 'The most complete muscle-gain program on the market. 84 sessions over 12 weeks with week-by-week load progression. Includes: detailed muscle split, personalized macro calculation by body type, recovery guide, 40+ exercises illustrated in HD video. Built-in progress tracking in Excel.',
+    features: ['84 sessions over 12 weeks', '4-day/week split', 'Guided load progression', 'Nutrition plan + macros', 'HD videos included'],
+    tags: ['muscle gain', 'strength', 'program', 'PDF'],
+  },
+  d2: {
+    name: 'Cutting Nutrition Plan — 8 Weeks',
+    badge: '📥 Instant PDF',
+    description: '56 days of detailed menus, 40+ fitness recipes, shopping list, macros. Vegan compatible.',
+    longDescription: 'The most downloaded cutting nutrition plan on the platform. 56 days of varied menus calculated by our certified nutritionist. Each meal is optimized to maintain satiety while creating the necessary caloric deficit. Simple, fast recipes (under 15 min). Vegan-compatible with a single selection.',
+    features: ['56 days of menus', '40+ fitness recipes', 'Weekly shopping list', 'Personalized macros', 'Vegan compatible'],
+    tags: ['nutrition', 'cutting', 'diet', 'PDF'],
+  },
+  d3: {
+    name: 'Fat-Burning HIIT Program — 6 Weeks',
+    badge: '🔥 Popular',
+    description: '24 sessions of 20-30 min, 100% bodyweight. No equipment. Beginner → advanced. Guaranteed results.',
+    longDescription: 'The XENOTIF HIIT program is designed by our CrossFit Level 2 certified coach. 4 sessions per week of 20 to 30 minutes maximum, 100% bodyweight — no equipment required. The progressive build guarantees optimal adaptation without injury risk. Each session includes a built-in timer and demonstration videos.',
+    features: ['24 sessions of 20-30 min', 'No equipment', 'Beginner → advanced', 'Built-in timer', 'HD demo videos'],
+    tags: ['HIIT', 'fat-burning', 'bodyweight', 'cardio'],
+  },
+  d4: {
+    name: 'Running Guide — From 5K to Marathon',
+    badge: '📥 120-page e-book',
+    description: '120-page e-book. 5K/10K/half/marathon plans. Race nutrition, injury prevention, competitor mindset.',
+    longDescription: 'The XENOTIF running guide covers the full spectrum of the modern runner. Written by a certified athletics coach, it includes personalized plans for 4 distances, nutrition advice before/during/after a race, a 7-point anti-injury protocol and a proven mental preparation. 120 richly illustrated pages.',
+    features: ['120 expert pages', '5K/10K/half/marathon plans', 'Race nutrition', 'Injury prevention', 'Competitor mindset'],
+    tags: ['running', 'marathon', 'running', 'e-book'],
+  },
+}
+
+export const PRODUCTS_EN: Product[] = PRODUCTS.map((p) => ({ ...p, ...TEXT_EN[p.id] }))
+
+// Catalogue localisé : repli FR si la langue n'a pas de variante.
+export function getProductsLocalized(locale: string): Product[] {
+  return locale === 'en' ? PRODUCTS_EN : PRODUCTS
+}
+
+export function getProductBySlugLocalized(slug: string, locale: string): Product | undefined {
+  return getProductsLocalized(locale).find((p) => p.slug === slug)
+}
+
+export function getProductByIdLocalized(id: string, locale: string): Product | undefined {
+  return getProductsLocalized(locale).find((p) => p.id === id)
+}

@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import { useTranslations, useLocale } from 'next-intl'
 import { CheckCircle, AlertTriangle, CreditCard, Calendar, ArrowRight, ShieldCheck, X } from 'lucide-react'
 
 type Sub = {
@@ -9,18 +10,26 @@ type Sub = {
   stripe_subscription_id: string | null;
 }
 
-function StatusBadge({ status }: { status: string }) {
-  const map: Record<string, { label: string; cls: string }> = {
-    trialing: { label: 'Essai gratuit en cours', cls: 'bg-blue-500/15 text-blue-400 border-blue-500/30' },
-    active:   { label: 'Actif',                  cls: 'bg-emerald-500/15 text-emerald-400 border-emerald-500/30' },
-    canceled: { label: 'Annulé',                 cls: 'bg-red-500/15 text-red-400 border-red-500/30' },
-    past_due: { label: 'Paiement en attente',    cls: 'bg-orange-500/15 text-orange-400 border-orange-500/30' },
-  }
-  const { label, cls } = map[status] ?? map.active
+const STATUS_CLS: Record<string, string> = {
+  trialing: 'bg-blue-500/15 text-blue-400 border-blue-500/30',
+  active:   'bg-emerald-500/15 text-emerald-400 border-emerald-500/30',
+  canceled: 'bg-red-500/15 text-red-400 border-red-500/30',
+  past_due: 'bg-orange-500/15 text-orange-400 border-orange-500/30',
+}
+
+function StatusBadge({ status, label }: { status: string; label: string }) {
+  const cls = STATUS_CLS[status] ?? STATUS_CLS.active
   return <span className={`inline-flex items-center gap-1.5 text-[11px] font-black uppercase tracking-wider px-3 py-1.5 rounded-full border ${cls}`}>{label}</span>
 }
 
 export default function AbonnementPage() {
+  const t = useTranslations('dashboard.abonnement')
+  const locale = useLocale()
+  const dateLocale = locale === 'en' ? 'en-US' : 'fr-FR'
+  const statusLabel = (s: string) => {
+    const k = s === 'past_due' ? 'pastDue' : s
+    return t.has(`status.${k}`) ? t(`status.${k}`) : t('status.active')
+  }
   const [sub, setSub] = useState<Sub | null>(null)
   const [loading, setLoading] = useState(true)
   const [cancelLoading, setCancelLoading] = useState(false)
@@ -54,8 +63,8 @@ export default function AbonnementPage() {
     } else {
       setPortalError(
         data.error === 'portal_not_configured'
-          ? 'Le portail de paiement n\'est pas encore activé. Va sur dashboard.stripe.com → Billing → Customer portal pour l\'activer.'
-          : (data.error ?? 'Impossible d\'ouvrir le portail de paiement.')
+          ? t('portalNotConfigured')
+          : (data.error ?? t('portalError'))
       )
       setPortalLoading(false)
     }
@@ -84,22 +93,24 @@ export default function AbonnementPage() {
   if (!sub) {
     return (
       <div className="p-6 md:p-8 max-w-2xl mx-auto">
-        <h1 className="text-2xl font-black text-white mb-8">Mon Abonnement</h1>
+        <h1 className="text-2xl font-black text-white mb-8">{t('title')}</h1>
         <div className="bg-sport-card border border-sport-border rounded-2xl p-8 text-center">
           <CreditCard size={32} className="text-sport-gray mx-auto mb-4" />
-          <p className="text-white font-bold mb-2">Aucun abonnement actif</p>
-          <p className="text-sport-gray text-sm mb-6">Choisis un plan pour accéder à tous les programmes.</p>
+          <p className="text-white font-bold mb-2">{t('noneTitle')}</p>
+          <p className="text-sport-gray text-sm mb-6">{t('noneDesc')}</p>
           <a href="/auth/signup?plan=pro" className="inline-flex items-center gap-2 bg-sport-orange text-white px-6 py-3 rounded-full font-bold text-sm hover:bg-orange-600 transition-all">
-            Choisir un plan <ArrowRight size={14} />
+            {t('choosePlan')} <ArrowRight size={14} />
           </a>
         </div>
       </div>
     )
   }
 
+  const planName = sub.plan === 'elite' ? (locale === 'en' ? 'Elite' : 'Élite') : 'Pro'
+
   return (
     <div className="p-6 md:p-8 max-w-2xl mx-auto pb-24 md:pb-8">
-      <h1 className="text-2xl font-black text-white mb-8">Mon Abonnement</h1>
+      <h1 className="text-2xl font-black text-white mb-8">{t('title')}</h1>
 
       {/* Cancel confirm modal */}
       {showCancel && (
@@ -107,24 +118,24 @@ export default function AbonnementPage() {
           <div className="bg-sport-card border border-red-500/30 rounded-2xl p-6 w-full max-w-md">
             <div className="flex items-center gap-3 mb-4">
               <AlertTriangle size={20} className="text-red-400 shrink-0" />
-              <h3 className="text-lg font-black text-white">Confirmer la résiliation</h3>
+              <h3 className="text-lg font-black text-white">{t('confirmCancelTitle')}</h3>
             </div>
             <p className="text-sport-gray text-sm leading-relaxed mb-2">
-              Tu vas résilier ton abonnement <strong className="text-white">Plan {sub.plan === 'elite' ? 'Élite' : 'Pro'}</strong>.
+              {t.rich('cancelIntro', { plan: planName, o: (c) => <strong className="text-white">{c}</strong> })}
             </p>
             {periodEnd && (
               <p className="text-sport-gray text-sm mb-6">
-                Ton accès reste actif jusqu&apos;au <strong className="text-white">{periodEnd.toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })}</strong>.
+                {t.rich('accessUntilDate', { date: periodEnd.toLocaleDateString(dateLocale, { day: 'numeric', month: 'long', year: 'numeric' }), o: (c) => <strong className="text-white">{c}</strong> })}
               </p>
             )}
             <div className="flex gap-3">
               <button onClick={() => setShowCancel(false)}
                 className="flex-1 border border-sport-border text-sport-gray py-2.5 rounded-full text-sm font-bold hover:text-white transition-all">
-                Annuler
+                {t('cancel')}
               </button>
               <button onClick={cancelSubscription} disabled={cancelLoading}
                 className="flex-1 bg-red-500 text-white py-2.5 rounded-full text-sm font-bold hover:bg-red-600 disabled:opacity-60 transition-all inline-flex items-center justify-center gap-2">
-                {cancelLoading ? <><span className="w-3.5 h-3.5 border-2 border-white/40 border-t-white rounded-full animate-spin" />Résiliation…</> : 'Confirmer la résiliation'}
+                {cancelLoading ? <><span className="w-3.5 h-3.5 border-2 border-white/40 border-t-white rounded-full animate-spin" />{t('cancelling')}</> : t('confirmCancel')}
               </button>
             </div>
           </div>
@@ -135,12 +146,12 @@ export default function AbonnementPage() {
       <div className="bg-sport-card border border-sport-border rounded-2xl p-6 mb-6">
         <div className="flex items-start justify-between flex-wrap gap-4 mb-5">
           <div>
-            <h2 className="text-lg font-black text-white mb-1">Plan {sub.plan === 'elite' ? 'Élite' : 'Pro'}</h2>
-            <StatusBadge status={isCanceled ? 'canceled' : sub.status} />
+            <h2 className="text-lg font-black text-white mb-1">{t('plan', { plan: planName })}</h2>
+            <StatusBadge status={isCanceled ? 'canceled' : sub.status} label={statusLabel(isCanceled ? 'canceled' : sub.status)} />
           </div>
           <div className="text-right">
             <p className="text-2xl font-black text-white">{sub.plan === 'elite' ? '24,99 €' : '9,99 €'}</p>
-            <p className="text-[11px] text-sport-gray">par mois</p>
+            <p className="text-[11px] text-sport-gray">{t('perMonth')}</p>
           </div>
         </div>
 
@@ -148,44 +159,30 @@ export default function AbonnementPage() {
           {isTrialing && daysLeft !== null && (
             <div className="flex items-center gap-3 text-sm">
               <Calendar size={15} className="text-blue-400 shrink-0" />
-              <span className="text-sport-gray">Fin de l&apos;essai gratuit dans <strong className="text-white">{daysLeft} jour{daysLeft > 1 ? 's' : ''}</strong></span>
+              <span className="text-sport-gray">{t.rich('trialEndsIn', { days: daysLeft, o: (c) => <strong className="text-white">{c}</strong> })}</span>
             </div>
           )}
           {periodEnd && (
             <div className="flex items-center gap-3 text-sm">
               <Calendar size={15} className="text-sport-orange shrink-0" />
               <span className="text-sport-gray">
-                {isCanceled ? 'Accès jusqu\'au' : 'Prochain renouvellement'} :{' '}
-                <strong className="text-white">{periodEnd.toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })}</strong>
+                {isCanceled ? t('accessUntilLabel') : t('nextRenewal')} :{' '}
+                <strong className="text-white">{periodEnd.toLocaleDateString(dateLocale, { day: 'numeric', month: 'long', year: 'numeric' })}</strong>
               </span>
             </div>
           )}
           <div className="flex items-center gap-3 text-sm">
             <ShieldCheck size={15} className="text-emerald-400 shrink-0" />
-            <span className="text-sport-gray">Paiement sécurisé via Stripe</span>
+            <span className="text-sport-gray">{t('securePayment')}</span>
           </div>
         </div>
       </div>
 
       {/* Features */}
       <div className="bg-sport-card border border-sport-border rounded-2xl p-6 mb-6">
-        <h3 className="text-sm font-black text-white mb-4">Inclus dans ton plan</h3>
+        <h3 className="text-sm font-black text-white mb-4">{t('includedTitle')}</h3>
         <ul className="space-y-2.5">
-          {(sub.plan === 'elite' ? [
-            'Tout le plan Pro inclus',
-            'Coach personnel dédié',
-            'Bilan mensuel visio 1-1',
-            'Plan nutritionnel sur mesure',
-            'Analyse biomécanique vidéo',
-            'Accès anticipé aux nouveautés',
-          ] : [
-            'Tous les programmes illimités',
-            'Coaching IA personnalisé',
-            'Statistiques & suivi avancé',
-            'Vidéos HD haute qualité',
-            'Support prioritaire 7j/7',
-            'Challenges communautaires',
-          ]).map(item => (
+          {((sub.plan === 'elite' ? t.raw('featuresElite') : t.raw('featuresPro')) as string[]).map(item => (
             <li key={item} className="flex items-center gap-2.5 text-sm text-sport-gray">
               <CheckCircle size={13} className="text-emerald-400 shrink-0" />
               {item}
@@ -201,7 +198,7 @@ export default function AbonnementPage() {
           disabled={portalLoading}
           className="w-full border border-sport-border text-white py-3.5 rounded-full font-bold text-sm hover:border-sport-orange hover:text-sport-orange transition-all inline-flex items-center justify-center gap-2 disabled:opacity-60"
         >
-          {portalLoading ? <><span className="w-4 h-4 border-2 border-white/40 border-t-white rounded-full animate-spin" />Chargement…</> : <><CreditCard size={14} /> Gérer le paiement & les factures</>}
+          {portalLoading ? <><span className="w-4 h-4 border-2 border-white/40 border-t-white rounded-full animate-spin" />{t('loading')}</> : <><CreditCard size={14} /> {t('managePayment')}</>}
         </button>
         {portalError && (
           <p className="text-xs text-orange-400 bg-orange-400/10 border border-orange-400/20 rounded-xl px-4 py-3 leading-relaxed">{portalError}</p>
@@ -212,20 +209,20 @@ export default function AbonnementPage() {
             onClick={() => setShowCancel(true)}
             className="w-full border border-red-500/30 text-red-400 py-3.5 rounded-full font-bold text-sm hover:bg-red-500/5 hover:border-red-500/50 transition-all inline-flex items-center justify-center gap-2"
           >
-            <X size={14} /> Se désabonner
+            <X size={14} /> {t('unsubscribe')}
           </button>
         )}
 
         {isCanceled && (
           <div className="text-center p-4 bg-emerald-500/5 border border-emerald-500/20 rounded-xl">
-            <p className="text-emerald-400 text-sm font-semibold">✓ Résiliation confirmée</p>
-            <p className="text-sport-gray text-xs mt-1">Ton accès reste actif jusqu&apos;à la fin de la période.</p>
+            <p className="text-emerald-400 text-sm font-semibold">{t('cancelConfirmed')}</p>
+            <p className="text-sport-gray text-xs mt-1">{t('cancelConfirmedDesc')}</p>
           </div>
         )}
       </div>
 
       <p className="text-center text-[11px] text-sport-gray mt-6">
-        Des questions ? Contacte-nous à <a href="mailto:contact@xenotif.com" className="text-sport-orange hover:underline">contact@xenotif.com</a>
+        {t('questions')} <a href="mailto:contact@xenotif.com" className="text-sport-orange hover:underline">contact@xenotif.com</a>
       </p>
     </div>
   )

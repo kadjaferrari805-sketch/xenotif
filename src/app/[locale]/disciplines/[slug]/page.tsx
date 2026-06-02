@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
-import Link from 'next/link'
+import { getTranslations } from 'next-intl/server'
+import { Link } from '@/i18n/navigation'
 import Image from 'next/image'
 import {
   ArrowLeft, ArrowRight, CheckCircle, Zap,
@@ -8,11 +9,13 @@ import {
   Play, BookOpen, Target, Layers, Leaf,
 } from 'lucide-react'
 import { FEATURES } from '@/lib/constants'
-import { DISCIPLINE_CONTENT } from '@/lib/disciplines'
+import { getDisciplineContent, getDisciplineMeta } from '@/lib/disciplines'
 import { VideoCard } from '@/components/disciplines/VideoCard'
 import { DisciplineFAQSection } from '@/components/disciplines/DisciplineFAQ'
 
 /* ── Static data ─────────────────────────────────────────────── */
+
+const SITE = 'https://xenotif.com'
 
 const DISC_PHOTOS: Record<string, string> = {
   'running-cardio': 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=1920&q=80',
@@ -49,56 +52,72 @@ export function generateStaticParams() {
   return FEATURES.map((f) => ({ slug: f.slug }))
 }
 
-export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
-  const { slug } = await params
-  const discipline = FEATURES.find((f) => f.slug === slug)
-  if (!discipline) return {}
-  // Le template du layout ajoute déjà « | Xenotif® » → ne pas le remettre dans
-  // le title (sinon double marque). On garde une description riche en mots-clés.
+export async function generateMetadata({ params }: { params: Promise<{ slug: string; locale: string }> }): Promise<Metadata> {
+  const { slug, locale } = await params
+  const meta = getDisciplineMeta(slug, locale)
+  if (!meta) return {}
+  const t = await getTranslations({ locale, namespace: 'disciplines' })
+  // Le template du layout ajoute déjà « | Xenotif® » → ne pas le remettre.
+  const title = t('metaTitle', { name: meta.title })
+  const path = `/disciplines/${slug}`
+  const languages: Record<string, string> = {
+    fr: `${SITE}${path}`,
+    en: `${SITE}/en${path}`,
+    'x-default': `${SITE}${path}`,
+  }
   return {
-    title: `${discipline.title} — Guide complet & Programmes`,
-    description: discipline.description,
-    alternates: { canonical: `https://xenotif.com/disciplines/${slug}` },
+    title,
+    description: meta.description,
+    alternates: { canonical: languages[locale] ?? languages.fr, languages },
     openGraph: {
-      title: `${discipline.title} — Guide complet & Programmes | Xenotif®`,
-      description: discipline.description,
+      title: `${title} | Xenotif®`,
+      description: meta.description,
       images: [DISC_PHOTOS[slug] ?? ''],
     },
   }
 }
 
 /* ── Page ────────────────────────────────────────────────────── */
-export default async function DisciplinePage({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = await params
-  const discipline = FEATURES.find((f) => f.slug === slug)
-  if (!discipline) notFound()
+export default async function DisciplinePage({ params }: { params: Promise<{ slug: string; locale: string }> }) {
+  const { slug, locale } = await params
+  const base = FEATURES.find((f) => f.slug === slug)
+  const meta = getDisciplineMeta(slug, locale)
+  if (!base || !meta) notFound()
 
-  const photo  = DISC_PHOTOS[slug] ?? ''
-  const others = FEATURES.filter((f) => f.slug !== slug).slice(0, 3)
-  const content = DISCIPLINE_CONTENT[slug]
-  const color   = discipline.color
+  const t = await getTranslations('disciplines')
+
+  const photo   = DISC_PHOTOS[slug] ?? ''
+  const content = getDisciplineContent(locale)[slug]
+  const color   = base.color
+  const { title, tag, description, stats, levels } = meta
+
+  // Autres disciplines (méta localisée pour les libellés affichés)
+  const others = FEATURES.filter((f) => f.slug !== slug).slice(0, 3).map((f) => {
+    const m = getDisciplineMeta(f.slug, locale) ?? { title: f.title, tag: f.tag }
+    return { slug: f.slug, title: m.title, tag: m.tag }
+  })
 
   return (
     <div className="min-h-screen bg-sport-dark text-white">
 
       {/* ── Hero ─────────────────────────────────────────────── */}
-      <section className="relative h-[75vh] min-h-[520px] overflow-hidden" aria-label={`Discipline ${discipline.title}`}>
-        <Image src={photo} alt={`Athlète pratiquant ${discipline.title}`} fill sizes="100vw" className="object-cover" priority />
+      <section className="relative h-[75vh] min-h-[520px] overflow-hidden" aria-label={t('heroAria', { name: title })}>
+        <Image src={photo} alt={t('heroAlt', { name: title })} fill sizes="100vw" className="object-cover" priority />
         <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-r from-black/92 via-black/60 to-black/20" />
         <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-sport-dark via-transparent to-transparent" />
 
         <div className="absolute inset-0 flex flex-col justify-end px-6 pb-16">
           <div className="max-w-5xl mx-auto w-full">
             <Link href="/#disciplines" className="inline-flex items-center gap-1.5 text-white/55 text-sm mb-10 hover:text-white transition-colors">
-              <ArrowLeft size={14} aria-hidden="true" /> Retour aux disciplines
+              <ArrowLeft size={14} aria-hidden="true" /> {t('back')}
             </Link>
 
             {/* Badges row */}
             <div className="flex flex-wrap items-center gap-3 mb-5">
               <span className={`text-[10px] font-bold tracking-widest uppercase px-3 py-1.5 rounded-full ${COLOR_PILL[color]}`}>
-                {discipline.tag}
+                {tag}
               </span>
-              <div className="flex gap-0.5" aria-label="Note 5 étoiles">
+              <div className="flex gap-0.5" aria-label={t('ratingAria')}>
                 {Array.from({ length: 5 }).map((_, i) => <Star key={i} size={12} aria-hidden="true" className="fill-sport-orange text-sport-orange" />)}
               </div>
               {content && (
@@ -108,7 +127,7 @@ export default async function DisciplinePage({ params }: { params: Promise<{ slu
 
             {/* Title */}
             <h1 className="text-6xl md:text-7xl font-black leading-none mb-4 tracking-tight">
-              {discipline.title}
+              {title}
             </h1>
 
             {/* Tagline */}
@@ -117,11 +136,11 @@ export default async function DisciplinePage({ params }: { params: Promise<{ slu
                 {content.tagline}
               </p>
             )}
-            <p className="text-white/65 text-sm max-w-lg leading-relaxed">{discipline.description}</p>
+            <p className="text-white/65 text-sm max-w-lg leading-relaxed">{description}</p>
 
             {/* Quick stats from discipline */}
             <div className="flex flex-wrap gap-5 mt-6">
-              {discipline.stats.map((s) => (
+              {stats.map((s) => (
                 <div key={s} className="flex items-center gap-2">
                   <CheckCircle size={14} aria-hidden="true" className={COLOR_TEXT[color]} />
                   <span className="text-sm font-semibold text-white">{s}</span>
@@ -140,13 +159,13 @@ export default async function DisciplinePage({ params }: { params: Promise<{ slu
               <div className={`w-9 h-9 rounded-xl flex items-center justify-center ${COLOR_CARD[color]}`}>
                 <Play size={16} aria-hidden="true" className={COLOR_TEXT[color]} />
               </div>
-              <p className={`text-[11px] font-bold tracking-[2px] uppercase ${COLOR_TEXT[color]}`}>Vidéos & Tutoriels</p>
+              <p className={`text-[11px] font-bold tracking-[2px] uppercase ${COLOR_TEXT[color]}`}>{t('videos.eyebrow')}</p>
             </div>
             <h2 id="videos-title" className="text-3xl md:text-4xl font-black text-white mb-2">
-              Apprends avec les meilleurs
+              {t('videos.title')}
             </h2>
             <p className="text-sport-gray text-sm mb-10 max-w-xl">
-              Tutoriels techniques, séances guidées et conseils d&apos;experts — clique pour lancer une vidéo.
+              {t('videos.subtitle')}
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -174,10 +193,10 @@ export default async function DisciplinePage({ params }: { params: Promise<{ slu
               <div className={`w-9 h-9 rounded-xl flex items-center justify-center ${COLOR_CARD[color]}`}>
                 <BookOpen size={16} aria-hidden="true" className={COLOR_TEXT[color]} />
               </div>
-              <p className={`text-[11px] font-bold tracking-[2px] uppercase ${COLOR_TEXT[color]}`}>Guide Expert</p>
+              <p className={`text-[11px] font-bold tracking-[2px] uppercase ${COLOR_TEXT[color]}`}>{t('guide.eyebrow')}</p>
             </div>
             <h2 id="guide-title" className="text-3xl md:text-4xl font-black text-white mb-10">
-              Tout ce qu&apos;il faut savoir
+              {t('guide.title')}
             </h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -210,9 +229,9 @@ export default async function DisciplinePage({ params }: { params: Promise<{ slu
         <section aria-labelledby="tips-title" className="py-20 px-6 bg-sport-card border-y border-sport-border">
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-12">
-              <p className={`text-[11px] font-bold tracking-[2px] uppercase mb-3 ${COLOR_TEXT[color]}`}>Conseils d&apos;experts</p>
+              <p className={`text-[11px] font-bold tracking-[2px] uppercase mb-3 ${COLOR_TEXT[color]}`}>{t('tips.eyebrow')}</p>
               <h2 id="tips-title" className="text-3xl md:text-4xl font-black text-white">
-                Les secrets des pros
+                {t('tips.title')}
               </h2>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
@@ -239,13 +258,13 @@ export default async function DisciplinePage({ params }: { params: Promise<{ slu
               <div className={`w-9 h-9 rounded-xl flex items-center justify-center ${COLOR_CARD[color]}`}>
                 <Layers size={16} aria-hidden="true" className={COLOR_TEXT[color]} />
               </div>
-              <p className={`text-[11px] font-bold tracking-[2px] uppercase ${COLOR_TEXT[color]}`}>Exercices clés</p>
+              <p className={`text-[11px] font-bold tracking-[2px] uppercase ${COLOR_TEXT[color]}`}>{t('exercises.eyebrow')}</p>
             </div>
             <h2 id="exercises-title" className="text-3xl md:text-4xl font-black text-white mb-2">
-              Maîtrise les fondamentaux
+              {t('exercises.title')}
             </h2>
             <p className="text-sport-gray text-sm mb-10 max-w-xl">
-              Les exercices essentiels à connaître — technique, muscles ciblés et conseils d&apos;exécution pour progresser sans se blesser.
+              {t('exercises.subtitle')}
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -283,11 +302,11 @@ export default async function DisciplinePage({ params }: { params: Promise<{ slu
             {/* Levels */}
             <div>
               <div className="flex items-center gap-3 mb-6">
-                <span aria-hidden="true" className={COLOR_TEXT[color]}>{DISC_ICONS[discipline.icon]}</span>
-                <h2 className="text-2xl font-black text-white">Niveaux disponibles</h2>
+                <span aria-hidden="true" className={COLOR_TEXT[color]}>{DISC_ICONS[base.icon]}</span>
+                <h2 className="text-2xl font-black text-white">{t('levels.title')}</h2>
               </div>
               <ul className="space-y-3">
-                {discipline.levels.map((level, i) => (
+                {levels.map((level, i) => (
                   <li key={level} className={`flex items-center justify-between border rounded-xl px-5 py-4 ${COLOR_CARD[color]}`}>
                     <div className="flex items-center gap-3">
                       <span className={`w-7 h-7 rounded-full flex items-center justify-center font-black text-xs shrink-0 ${COLOR_PILL[color]}`} aria-hidden="true">
@@ -297,10 +316,10 @@ export default async function DisciplinePage({ params }: { params: Promise<{ slu
                     </div>
                     <Link
                       href="/#newsletter"
-                      aria-label={`Rejoindre le programme ${level}`}
+                      aria-label={t('levels.joinAria', { level })}
                       className={`text-xs font-bold hover:underline flex items-center gap-1 ${COLOR_TEXT[color]}`}
                     >
-                      Rejoindre <ArrowRight size={11} aria-hidden="true" />
+                      {t('levels.join')} <ArrowRight size={11} aria-hidden="true" />
                     </Link>
                   </li>
                 ))}
@@ -312,7 +331,7 @@ export default async function DisciplinePage({ params }: { params: Promise<{ slu
               <div>
                 <div className="flex items-center gap-3 mb-6">
                   <Target size={20} aria-hidden="true" className={COLOR_TEXT[color]} />
-                  <h2 className="text-2xl font-black text-white">Programme 8 semaines</h2>
+                  <h2 className="text-2xl font-black text-white">{t('program.title')}</h2>
                 </div>
 
                 <div className="space-y-4">
@@ -325,7 +344,7 @@ export default async function DisciplinePage({ params }: { params: Promise<{ slu
                           <p className="text-sm font-bold text-white">{block.theme}</p>
                         </div>
                         <span className={`text-xs font-bold px-2.5 py-1 rounded-full ${COLOR_CARD[color]} ${COLOR_TEXT[color]}`}>
-                          Phase {bi + 1}
+                          {t('program.phase', { n: bi + 1 })}
                         </span>
                       </div>
                       {/* Sessions */}
@@ -346,32 +365,26 @@ export default async function DisciplinePage({ params }: { params: Promise<{ slu
                   ))}
                 </div>
                 <p className="text-[11px] text-sport-gray mt-4">
-                  * Programme personnalisé par l&apos;IA Xenotif® selon ton profil, ton niveau et tes objectifs.
+                  {t('program.note')}
                 </p>
               </div>
             )}
           </div>
 
           {/* Right — Sticky CTA */}
-          <aside className="md:col-span-2" aria-label="Rejoindre ce programme">
+          <aside className="md:col-span-2" aria-label={t('cta.title')}>
             <div className="sticky top-24 bg-sport-card border border-sport-border rounded-2xl p-7">
               <div className={`w-12 h-12 rounded-xl border flex items-center justify-center mb-5 ${COLOR_CARD[color]}`}>
-                <span className={COLOR_TEXT[color]} aria-hidden="true">{DISC_ICONS[discipline.icon]}</span>
+                <span className={COLOR_TEXT[color]} aria-hidden="true">{DISC_ICONS[base.icon]}</span>
               </div>
 
-              <h2 className="text-lg font-black text-white mb-2">Rejoins la communauté</h2>
+              <h2 className="text-lg font-black text-white mb-2">{t('cta.title')}</h2>
               <p className="text-sport-gray text-xs leading-relaxed mb-6">
-                Accède aux programmes <strong className="text-white">{discipline.title}</strong>, au coaching IA personnalisé et à des milliers d&apos;athlètes motivés.
+                {t.rich('cta.desc', { title, b: (c) => <strong className="text-white">{c}</strong> })}
               </p>
 
               <ul className="space-y-2.5 mb-7">
-                {[
-                  'Guide complet + vidéos HD',
-                  'Programme personnalisé IA',
-                  'Suivi de progression avancé',
-                  'Communauté de coaches',
-                  '30 j satisfait ou remboursé',
-                ].map((item) => (
+                {(t.raw('cta.features') as string[]).map((item) => (
                   <li key={item} className="flex items-center gap-2 text-xs text-sport-gray">
                     <CheckCircle size={13} aria-hidden="true" className="text-emerald-500 shrink-0" />
                     {item}
@@ -383,17 +396,17 @@ export default async function DisciplinePage({ params }: { params: Promise<{ slu
                 href="/#newsletter"
                 className="w-full inline-flex items-center justify-center gap-2 bg-sport-orange text-white px-6 py-3.5 rounded-full font-bold text-sm hover:bg-orange-600 active:scale-95 transition-all shadow-xl shadow-sport-orange/25"
               >
-                Commencer gratuitement <ArrowRight size={14} aria-hidden="true" />
+                {t('cta.primary')} <ArrowRight size={14} aria-hidden="true" />
               </Link>
 
               <Link href="/#tarifs" className="block text-center text-xs text-sport-gray hover:text-white transition-colors mt-3">
-                Voir les tarifs →
+                {t('cta.pricing')}
               </Link>
 
               {/* Trust micro */}
               <div className="mt-5 pt-5 border-t border-sport-border flex justify-center gap-4 text-[10px] text-sport-gray">
-                <span className="flex items-center gap-1"><CheckCircle size={10} className="text-emerald-500" /> Sans CB requise</span>
-                <span className="flex items-center gap-1"><CheckCircle size={10} className="text-emerald-500" /> Annulation libre</span>
+                <span className="flex items-center gap-1"><CheckCircle size={10} className="text-emerald-500" /> {t('cta.noCard')}</span>
+                <span className="flex items-center gap-1"><CheckCircle size={10} className="text-emerald-500" /> {t('cta.freeCancel')}</span>
               </div>
             </div>
           </aside>
@@ -405,9 +418,9 @@ export default async function DisciplinePage({ params }: { params: Promise<{ slu
         <section aria-labelledby="faq-disc-title" className="py-20 px-6 bg-sport-card border-t border-sport-border">
           <div className="max-w-3xl mx-auto">
             <div className="text-center mb-12">
-              <p className={`text-[11px] font-bold tracking-[2px] uppercase mb-3 ${COLOR_TEXT[color]}`}>Questions fréquentes</p>
+              <p className={`text-[11px] font-bold tracking-[2px] uppercase mb-3 ${COLOR_TEXT[color]}`}>{t('faq.eyebrow')}</p>
               <h2 id="faq-disc-title" className="text-3xl md:text-4xl font-black text-white">
-                Tout sur {discipline.title}
+                {t('faq.title', { name: title })}
               </h2>
             </div>
             <DisciplineFAQSection items={content.faq} accentColor={COLOR_TEXT[color]} />
@@ -419,19 +432,19 @@ export default async function DisciplinePage({ params }: { params: Promise<{ slu
       <section aria-labelledby="autres-disciplines-title" className="py-16 px-6 bg-sport-dark border-t border-sport-border">
         <div className="max-w-5xl mx-auto">
           <h2 id="autres-disciplines-title" className="text-2xl font-black text-white mb-8">
-            Explore d&apos;autres disciplines
+            {t('others.title')}
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             {others.map((other) => (
               <Link
                 key={other.slug}
                 href={`/disciplines/${other.slug}`}
-                aria-label={`Découvrir la discipline ${other.title}`}
+                aria-label={t('others.cardAria', { name: other.title })}
                 className="group relative h-44 rounded-2xl overflow-hidden border border-sport-border hover:border-sport-orange/50 transition-all hover:-translate-y-1"
               >
                 <Image
                   src={DISC_PHOTOS[other.slug] ?? ''}
-                  alt={`Discipline ${other.title}`}
+                  alt={t('others.alt', { name: other.title })}
                   fill
                   sizes="(max-width: 640px) 100vw, 33vw"
                   className="object-cover group-hover:scale-105 transition-transform duration-500"

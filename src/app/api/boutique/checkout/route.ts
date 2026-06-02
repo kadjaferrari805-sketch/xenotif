@@ -11,7 +11,8 @@ export async function POST(req: NextRequest) {
   }
 
   try {
-    const { items } = await req.json() as { items: { product_id: string; quantity: number }[] }
+    const { items, locale: rawLocale } = await req.json() as { items: { product_id: string; quantity: number }[]; locale?: string }
+    const locale = rawLocale === 'en' ? 'en' : 'fr'
 
     if (!items?.length) {
       return NextResponse.json({ error: 'Panier vide' }, { status: 400 })
@@ -67,9 +68,9 @@ export async function POST(req: NextRequest) {
       line_items: lineItems,
       success_url: `${req.nextUrl.origin}/boutique/succes?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${req.nextUrl.origin}/boutique/panier`,
-      locale: 'fr',
+      locale,
       billing_address_collection: 'auto',
-      metadata: { digital_ids: digitalIds.join(',') },
+      metadata: { digital_ids: digitalIds.join(','), locale },
     }
 
     // Ajouter la collecte d'adresse seulement pour les produits physiques

@@ -1,10 +1,12 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import { useTranslations } from 'next-intl'
 import { User, Mail, Save, CheckCircle, Camera } from 'lucide-react'
 import { createClient } from '@/lib/supabase/client'
 
 export default function ProfilPage() {
+  const t = useTranslations('dashboard')
   const [fullName, setFullName] = useState('')
   const [email, setEmail] = useState('')
   const [saving, setSaving] = useState(false)
@@ -49,7 +51,7 @@ export default function ProfilPage() {
 
   return (
     <div className="p-6 md:p-8 max-w-2xl mx-auto pb-24 md:pb-8">
-      <h1 className="text-2xl font-black text-white mb-8">Mon Profil</h1>
+      <h1 className="text-2xl font-black text-white mb-8">{t('profil.title')}</h1>
 
       {/* Avatar */}
       <div className="bg-sport-card border border-sport-border rounded-2xl p-6 mb-6 flex items-center gap-6">
@@ -62,19 +64,19 @@ export default function ProfilPage() {
           </div>
         </div>
         <div>
-          <p className="text-white font-bold text-lg">{fullName || 'Athlète'}</p>
+          <p className="text-white font-bold text-lg">{fullName || t('athlete')}</p>
           <p className="text-sport-gray text-sm">{email}</p>
         </div>
       </div>
 
       {/* Form */}
       <div className="bg-sport-card border border-sport-border rounded-2xl p-6 mb-6">
-        <h2 className="text-sm font-black text-white mb-5">Informations personnelles</h2>
+        <h2 className="text-sm font-black text-white mb-5">{t('profil.personalInfo')}</h2>
 
         <div className="space-y-4">
           <div>
             <label className="block text-xs font-bold text-white mb-2 uppercase tracking-wider">
-              Nom complet
+              {t('profil.fullName')}
             </label>
             <div className="relative">
               <User size={15} className="absolute left-4 top-1/2 -translate-y-1/2 text-sport-gray" />
@@ -82,7 +84,7 @@ export default function ProfilPage() {
                 type="text"
                 value={fullName}
                 onChange={e => setFullName(e.target.value)}
-                placeholder="Ton prénom et nom"
+                placeholder={t('profil.fullNamePlaceholder')}
                 className="w-full bg-sport-dark border border-sport-border rounded-xl pl-10 pr-4 py-3 text-white text-sm focus:outline-none focus:border-sport-orange placeholder:text-sport-gray transition-colors"
               />
             </div>
@@ -90,7 +92,7 @@ export default function ProfilPage() {
 
           <div>
             <label className="block text-xs font-bold text-white mb-2 uppercase tracking-wider">
-              Email
+              {t('profil.email')}
             </label>
             <div className="relative">
               <Mail size={15} className="absolute left-4 top-1/2 -translate-y-1/2 text-sport-gray" />
@@ -102,7 +104,7 @@ export default function ProfilPage() {
               />
             </div>
             <p className="text-[11px] text-sport-gray mt-1.5">
-              L&apos;email ne peut pas être modifié ici. Contacte le support pour le changer.
+              {t('profil.emailNote')}
             </p>
           </div>
         </div>
@@ -113,23 +115,23 @@ export default function ProfilPage() {
           className="mt-6 inline-flex items-center gap-2 bg-sport-orange text-white px-6 py-3 rounded-full font-bold text-sm hover:bg-orange-600 disabled:opacity-60 transition-all active:scale-95"
         >
           {saving ? (
-            <><span className="w-4 h-4 border-2 border-white/40 border-t-white rounded-full animate-spin" />Enregistrement…</>
+            <><span className="w-4 h-4 border-2 border-white/40 border-t-white rounded-full animate-spin" />{t('profil.saving')}</>
           ) : saved ? (
-            <><CheckCircle size={14} />Sauvegardé !</>
+            <><CheckCircle size={14} />{t('profil.saved')}</>
           ) : (
-            <><Save size={14} />Sauvegarder</>
+            <><Save size={14} />{t('profil.save')}</>
           )}
         </button>
       </div>
 
       {/* Security */}
       <div className="bg-sport-card border border-sport-border rounded-2xl p-6">
-        <h2 className="text-sm font-black text-white mb-5">Sécurité</h2>
+        <h2 className="text-sm font-black text-white mb-5">{t('profil.security')}</h2>
         <a
           href="/auth/forgot-password"
           className="inline-flex items-center gap-2 border border-sport-border text-sport-gray px-5 py-2.5 rounded-full text-sm font-bold hover:text-white hover:border-sport-gray transition-all"
         >
-          Changer mon mot de passe
+          {t('profil.changePassword')}
         </a>
       </div>
     </div>

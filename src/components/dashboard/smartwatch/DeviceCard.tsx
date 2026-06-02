@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { useTranslations, useLocale } from 'next-intl'
 import { CheckCircle2, Loader2, Plug, Unplug, RefreshCw, Clock } from 'lucide-react'
 import type { WatchProviderMeta, SmartWatchConnection } from '@/lib/smartwatch/types'
 
@@ -13,11 +14,13 @@ interface DeviceCardProps {
 }
 
 export function DeviceCard({ provider, connection, onConnect, onDisconnect, onSync }: DeviceCardProps) {
+  const t = useTranslations('dashboard.smartwatch.device')
+  const locale = useLocale()
   const [loading, setLoading] = useState<'connect' | 'sync' | 'disconnect' | null>(null)
   const isConnected = !!connection?.is_active
 
   const lastSync = connection?.last_sync_at
-    ? new Date(connection.last_sync_at).toLocaleString('fr-FR', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' })
+    ? new Date(connection.last_sync_at).toLocaleString(locale === 'en' ? 'en-US' : 'fr-FR', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' })
     : null
 
   async function handleConnect() {
@@ -60,14 +63,14 @@ export function DeviceCard({ provider, connection, onConnect, onDisconnect, onSy
       {isConnected && (
         <div className="absolute top-3 right-3 flex items-center gap-1.5 bg-emerald-500/15 border border-emerald-500/30 rounded-full px-2.5 py-1">
           <CheckCircle2 size={10} className="text-emerald-400" />
-          <span className="text-[10px] text-emerald-400 font-bold">Connecté</span>
+          <span className="text-[10px] text-emerald-400 font-bold">{t('connected')}</span>
         </div>
       )}
 
       {provider.comingSoon && (
         <div className="absolute top-3 right-3 flex items-center gap-1.5 bg-white/5 border border-white/10 rounded-full px-2.5 py-1">
           <Clock size={9} className="text-sport-gray" />
-          <span className="text-[10px] text-sport-gray font-bold">Bientôt</span>
+          <span className="text-[10px] text-sport-gray font-bold">{t('comingSoon')}</span>
         </div>
       )}
 
@@ -81,7 +84,7 @@ export function DeviceCard({ provider, connection, onConnect, onDisconnect, onSy
         </div>
         <div>
           <p className="text-sm font-black text-white">{provider.name}</p>
-          <p className="text-[11px] text-sport-gray">{provider.description}</p>
+          <p className="text-[11px] text-sport-gray">{provider.comingSoon ? t('comingSoonDesc') : provider.description}</p>
         </div>
       </div>
 
@@ -89,7 +92,7 @@ export function DeviceCard({ provider, connection, onConnect, onDisconnect, onSy
       {lastSync && (
         <p className="text-[10px] text-sport-gray mb-3 flex items-center gap-1">
           <RefreshCw size={9} />
-          Synchronisé le {lastSync}
+          {t('syncedOn', { date: lastSync })}
         </p>
       )}
 
@@ -105,7 +108,7 @@ export function DeviceCard({ provider, connection, onConnect, onDisconnect, onSy
                 style={{ background: `${provider.color}20`, color: provider.color, border: `1px solid ${provider.color}30` }}
               >
                 {loading === 'sync' ? <Loader2 size={12} className="animate-spin" /> : <RefreshCw size={12} />}
-                Synchroniser
+                {t('sync')}
               </button>
               <button
                 onClick={handleDisconnect}
@@ -123,7 +126,7 @@ export function DeviceCard({ provider, connection, onConnect, onDisconnect, onSy
               style={{ background: `${provider.color}20`, color: provider.color, border: `1px solid ${provider.color}40` }}
             >
               {loading === 'connect' ? <Loader2 size={12} className="animate-spin" /> : <Plug size={12} />}
-              Connecter
+              {t('connect')}
             </button>
           )}
         </div>
