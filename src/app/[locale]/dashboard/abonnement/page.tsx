@@ -40,6 +40,7 @@ export default function AbonnementPage() {
   const [portalError, setPortalError] = useState('')
   const [syncing, setSyncing] = useState(false)
   const [syncMsg, setSyncMsg] = useState('')
+  const [syncEmail, setSyncEmail] = useState('')
 
   useEffect(() => {
     fetch('/api/subscription')
@@ -89,10 +90,14 @@ export default function AbonnementPage() {
     setSyncing(true)
     setSyncMsg('')
     try {
-      const res = await fetch('/api/subscription/sync', { method: 'POST' })
+      const res = await fetch('/api/subscription/sync', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: syncEmail.trim() || undefined }),
+      })
       const data = await res.json()
       if (data.synced) { window.location.reload(); return }
-      setSyncMsg(t('syncNone'))
+      setSyncMsg(data.reason === 'already_linked' ? t('syncAlreadyLinked') : t('syncNone'))
     } catch {
       setSyncMsg(t('syncNone'))
     }
@@ -122,6 +127,13 @@ export default function AbonnementPage() {
           {/* Récupération d'un abonnement déjà payé mais non rattaché */}
           <div className="mt-6 pt-6 border-t border-sport-border">
             <p className="text-xs text-sport-gray mb-3">{t('syncHint')}</p>
+            <input
+              type="email"
+              value={syncEmail}
+              onChange={e => setSyncEmail(e.target.value)}
+              placeholder={t('syncEmailPlaceholder')}
+              className="w-full bg-sport-dark border border-sport-border rounded-xl px-4 py-2.5 text-white text-sm mb-3 focus:outline-none focus:border-sport-orange placeholder:text-sport-gray"
+            />
             <button
               onClick={syncSubscription}
               disabled={syncing}
