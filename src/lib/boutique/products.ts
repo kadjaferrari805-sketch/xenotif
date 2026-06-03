@@ -45,10 +45,6 @@ export function amazonSearchUrl(domain: string, keywords: string, tag: string = 
 // Version FR par défaut (catalogue products.ts) → amazon.fr, mots-clés français.
 const amazonUrl = (keywords: string) => amazonSearchUrl('www.amazon.fr', keywords)
 
-// Lien INTERNE de redirection géolocalisée : résolu par /api/go/amazon selon le
-// pays du visiteur (DE/AT → amazon.de + tag DE, sinon amazon.fr + tag FR).
-export const amazonGoHref = (id: string) => `/api/go/amazon?id=${encodeURIComponent(id)}`
-
 export const AMAZON_ASSOCIATE_TAG = AMAZON_TAG
 
 export const PRODUCTS: Product[] = [
