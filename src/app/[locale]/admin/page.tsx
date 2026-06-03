@@ -1,6 +1,6 @@
 import { redirect } from 'next/navigation'
 import { createClient, createServiceClient } from '@/lib/supabase/server'
-import { Users, CreditCard, TrendingUp, Euro, CheckCircle, Clock, XCircle } from 'lucide-react'
+import { Users, TrendingUp, Euro, CheckCircle, Clock, XCircle } from 'lucide-react'
 import { AdminEmailForm } from '@/components/admin/EmailForm'
 import { RevenueChart } from '@/components/admin/RevenueChart'
 import { AdminReviews } from '@/components/reviews/AdminReviews'

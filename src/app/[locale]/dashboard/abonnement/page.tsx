@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { useTranslations, useLocale } from 'next-intl'
+import { Link } from '@/i18n/navigation'
 import { CheckCircle, AlertTriangle, CreditCard, Calendar, ArrowRight, ShieldCheck, X } from 'lucide-react'
 
 type Sub = {
@@ -98,9 +99,9 @@ export default function AbonnementPage() {
           <CreditCard size={32} className="text-sport-gray mx-auto mb-4" />
           <p className="text-white font-bold mb-2">{t('noneTitle')}</p>
           <p className="text-sport-gray text-sm mb-6">{t('noneDesc')}</p>
-          <a href="/auth/signup?plan=pro" className="inline-flex items-center gap-2 bg-sport-orange text-white px-6 py-3 rounded-full font-bold text-sm hover:bg-orange-600 transition-all">
+          <Link href="/auth/signup?plan=pro" className="inline-flex items-center gap-2 bg-sport-orange text-white px-6 py-3 rounded-full font-bold text-sm hover:bg-orange-600 transition-all">
             {t('choosePlan')} <ArrowRight size={14} />
-          </a>
+          </Link>
         </div>
       </div>
     )
