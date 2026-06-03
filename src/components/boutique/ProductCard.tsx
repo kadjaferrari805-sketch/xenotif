@@ -4,7 +4,7 @@ import Image from 'next/image'
 import { useTranslations, useLocale } from 'next-intl'
 import { ShoppingCart, Download, Star, Heart, ExternalLink, Eye } from 'lucide-react'
 import { motion } from 'framer-motion'
-import { formatPrice, amazonGoHref, type Product } from '@/lib/boutique/products'
+import { formatPrice, type Product } from '@/lib/boutique/products'
 import { useCart } from '@/lib/boutique/cart'
 import { useWishlist } from '@/lib/boutique/wishlist'
 import { useState } from 'react'
@@ -38,7 +38,7 @@ export function ProductCard({ product, index = 0 }: ProductCardProps) {
   if (product.isAffiliate && product.amazon) {
     return (
       <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3, delay: index * 0.05 }}>
-        <a href={amazonGoHref(product.id)} target="_blank" rel="noopener noreferrer"
+        <a href={product.amazon.affiliateUrl} target="_blank" rel="noopener noreferrer"
           className="group block overflow-hidden rounded-2xl border border-sport-border bg-sport-card hover:-translate-y-1 transition-all duration-300">
           <div className="relative h-52 overflow-hidden bg-sport-border/20">
             <Image src={product.images[0] ?? ''} alt={product.name} fill
