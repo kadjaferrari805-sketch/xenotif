@@ -4,7 +4,7 @@ import Image from 'next/image'
 import { useTranslations, useLocale } from 'next-intl'
 import { Minus, Plus, Trash2, ArrowRight, ShoppingBag, ExternalLink, Lock } from 'lucide-react'
 import { useCart } from '@/lib/boutique/cart'
-import { formatPrice, amazonGoHref } from '@/lib/boutique/products'
+import { formatPrice } from '@/lib/boutique/products'
 import { useState } from 'react'
 
 export default function PanierPage() {
@@ -150,7 +150,7 @@ export default function PanierPage() {
                         </div>
                         <div className="flex items-center gap-2 flex-shrink-0">
                           {product.amazon && (
-                            <a href={amazonGoHref(product.id)} target="_blank" rel="noopener noreferrer"
+                            <a href={product.amazon.affiliateUrl} target="_blank" rel="noopener noreferrer"
                               className="flex items-center gap-1.5 rounded-xl bg-sport-orange px-3 py-2 text-xs font-bold text-white hover:bg-orange-600 transition-colors">
                               <ExternalLink size={11} /> Amazon
                             </a>

@@ -146,25 +146,14 @@ export function Nav() {
                   {t(link.key)}
                 </Link>
               ))}
-              {user ? (
+              {!user && (
                 <Link
-                  href="/dashboard"
+                  href="/auth/signin"
                   onClick={() => setIsOpen(false)}
-                  className="mt-4 w-full text-center bg-sport-orange text-white py-3 rounded-full text-sm font-bold hover:bg-orange-600 transition-colors flex items-center justify-center gap-2"
+                  className="text-sm font-medium text-sport-gray hover:text-white transition-colors py-3"
                 >
-                  <LayoutDashboard size={14} aria-hidden="true" />
-                  {t('monEspace')}
+                  {t('connexion')}
                 </Link>
-              ) : (
-                <>
-                  <Link
-                    href="/auth/signin"
-                    onClick={() => setIsOpen(false)}
-                    className="text-sm font-medium text-sport-gray hover:text-white transition-colors py-3"
-                  >
-                    {t('connexion')}
-                  </Link>
-                </>
               )}
               <div className="pt-4 mt-2 border-t border-sport-border">
                 <LanguageSwitcher />
