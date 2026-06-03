@@ -555,6 +555,26 @@
     "error": "Une erreur est survenue.",
     "subjects": ["Question sur mon abonnement", "Problème technique", "Coaching IA", "Demande de partenariat", "Autre"]
   },
+  "reviews": {
+    "productTitle": "Avis clients",
+    "platformTitle": "Ils ont laissé leur avis",
+    "verified": "✓ Achat vérifié",
+    "none": "Aucun avis pour l'instant.",
+    "beFirst": "Sois le premier à laisser un avis !",
+    "leaveReview": "Laisser un avis",
+    "editReview": "Modifier mon avis",
+    "ratingLabel": "Ta note",
+    "commentLabel": "Ton commentaire",
+    "commentPlaceholder": "Partage ton expérience (10 caractères min.)…",
+    "submit": "Publier mon avis",
+    "submitting": "Publication…",
+    "thanks": "Merci, ton avis est publié !",
+    "starAria": "{n} étoile(s) sur 5",
+    "mustLogin": "Connecte-toi pour laisser un avis.",
+    "mustBuy": "Réservé aux clients ayant acheté ce guide.",
+    "mustSubscribe": "Réservé aux abonnés.",
+    "error": "Une erreur est survenue. Réessaie."
+  },
   "dashboard": {
     "nav": {
       "overview": "Vue d'ensemble",

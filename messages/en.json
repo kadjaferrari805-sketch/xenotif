@@ -555,6 +555,26 @@
     "error": "Something went wrong.",
     "subjects": ["Question about my subscription", "Technical issue", "AI Coaching", "Partnership request", "Other"]
   },
+  "reviews": {
+    "productTitle": "Customer reviews",
+    "platformTitle": "What our members say",
+    "verified": "✓ Verified purchase",
+    "none": "No reviews yet.",
+    "beFirst": "Be the first to leave a review!",
+    "leaveReview": "Leave a review",
+    "editReview": "Edit my review",
+    "ratingLabel": "Your rating",
+    "commentLabel": "Your review",
+    "commentPlaceholder": "Share your experience (10 characters min.)…",
+    "submit": "Publish my review",
+    "submitting": "Publishing…",
+    "thanks": "Thanks, your review is live!",
+    "starAria": "{n} of 5 stars",
+    "mustLogin": "Log in to leave a review.",
+    "mustBuy": "Reserved for customers who purchased this guide.",
+    "mustSubscribe": "Reserved for subscribers.",
+    "error": "Something went wrong. Please try again."
+  },
   "dashboard": {
     "nav": {
       "overview": "Overview",

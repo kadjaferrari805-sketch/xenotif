@@ -8,6 +8,7 @@ import { formatPrice, type Product } from '@/lib/boutique/products'
 import { getProductsLocalized } from '@/lib/boutique/products.en'
 import { useCart } from '@/lib/boutique/cart'
 import { ProductCard } from '@/components/boutique/ProductCard'
+import { CustomerReviews } from '@/components/reviews/CustomerReviews'
 
 // Partie interactive de la fiche produit (panier, état du bouton).
 // Le composant serveur parent (page.tsx) fournit `product` + les métadonnées SEO.
@@ -156,6 +157,13 @@ export function ProductDetail({ product }: { product: Product }) {
             )}
           </div>
         </div>
+
+        {/* Avis clients — uniquement sur nos produits digitaux (achat vérifiable) */}
+        {product.type === 'digital' && (
+          <div className="pt-8 border-t border-sport-border">
+            <CustomerReviews kind="product" productId={product.id} />
+          </div>
+        )}
 
         {/* Produits liés */}
         {related.length > 0 && (
