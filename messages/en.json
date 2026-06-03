@@ -558,6 +558,10 @@
   "reviews": {
     "productTitle": "Customer reviews",
     "platformTitle": "What our members say",
+    "communityTitle": "Community reviews",
+    "communitySubtitle": "Feedback from our verified members.",
+    "inviteTitle": "Your review matters 💬",
+    "inviteSubtitle": "Share your experience with the Xenotif® community.",
     "verified": "✓ Verified purchase",
     "none": "No reviews yet.",
     "beFirst": "Be the first to leave a review!",

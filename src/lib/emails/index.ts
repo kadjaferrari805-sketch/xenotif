@@ -1,4 +1,5 @@
 import { Resend } from 'resend'
+import { getProductById } from '@/lib/boutique/products'
 
 export type EmailLocale = 'fr' | 'en'
 const norm = (l?: string): EmailLocale => (l === 'en' ? 'en' : 'fr')
@@ -535,6 +536,9 @@ export async function sendDigitalDeliveryEmail({
     intro: (hello: string) => `${hello} — your guide${plural ? 's are' : ' is'} available right away. Download ${plural ? 'them' : 'it'} below: ${plural ? 'they\'re' : 'it\'s'} yours forever.`,
     perks: '🔒 Secure link &nbsp;·&nbsp; ♾️ Lifetime access &nbsp;·&nbsp; 📱 All devices',
     note: `Keep this email: you can re-download your guide${plural ? 's' : ''} anytime via this link. A question? Just reply to this email — our team responds within 24&nbsp;h.`,
+    reviewTitle: 'Enjoyed your guide? ⭐',
+    reviewBody: 'Your honest review helps the whole community choose with confidence. It only takes a minute.',
+    reviewCta: '★&nbsp;&nbsp;Leave my review',
     subject: 'Your Xenotif® guide is ready 📘',
     preheader: `Your Xenotif® guide${plural ? 's are' : ' is'} available — download your PDF now.`,
   } : {
@@ -547,6 +551,9 @@ export async function sendDigitalDeliveryEmail({
     intro: (hello: string) => `${hello} — ${plural ? 'tes guides sont disponibles' : 'ton guide est disponible'} immédiatement. Télécharge${plural ? '-les' : '-le'} ci-dessous : ${plural ? 'ils sont' : 'il est'} à toi pour toujours.`,
     perks: '🔒 Lien sécurisé &nbsp;·&nbsp; ♾️ Accès à vie &nbsp;·&nbsp; 📱 Tous appareils',
     note: `Conserve cet email : tu peux retélécharger ${plural ? 'tes guides' : 'ton guide'} à tout moment via ce lien. Une question ? Réponds simplement à cet email — notre équipe te répond sous 24&nbsp;h.`,
+    reviewTitle: 'Ton guide te plaît ? ⭐',
+    reviewBody: 'Ton avis honnête aide toute la communauté à choisir en confiance. Ça ne te prend qu\'une minute.',
+    reviewCta: '★&nbsp;&nbsp;Donner mon avis',
     subject: 'Ton guide Xenotif® est prêt 📘',
     preheader: `${plural ? 'Tes guides Xenotif®' : 'Ton guide Xenotif®'} est disponible — télécharge ton PDF maintenant.`,
   }
@@ -568,6 +575,22 @@ export async function sendDigitalDeliveryEmail({
     `
   }).join('')
 
+  // CTA « Donne ton avis » → fiche du premier guide acheté (les avis y sont collectés)
+  const reviewSlug = getProductById(items[0].id)?.slug
+  const reviewUrl = reviewSlug ? `${BASE_URL}${en ? '/en' : ''}/boutique/${reviewSlug}` : ''
+  const reviewHtml = reviewUrl ? `
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#0f1216;border:1px solid #232a33;border-radius:16px;margin:18px 0 0;">
+        <tr><td style="padding:22px 24px;">
+          <div style="font-weight:800;font-size:16px;color:#ffffff;line-height:1.3;margin:0 0 6px;">${labels.reviewTitle}</div>
+          <div style="font-size:13px;color:#9aa2ad;line-height:1.6;margin:0 0 16px;">${labels.reviewBody}</div>
+          <a href="${reviewUrl}"
+             style="display:inline-block;background:#FF4500;color:#ffffff;padding:12px 24px;border-radius:10px;font-weight:700;font-size:14px;text-decoration:none;">
+            ${labels.reviewCta}
+          </a>
+        </td></tr>
+      </table>
+  ` : ''
+
   await resend.emails.send({
     from: FROM,
     to: email,
@@ -582,6 +605,7 @@ export async function sendDigitalDeliveryEmail({
       </p>
 
       ${itemsHtml}
+      ${reviewHtml}
 
       <table role="presentation" width="100%" style="margin:6px 0 0;"><tr>
         <td style="font-size:12px;color:#6b7280;line-height:1.7;">
