@@ -558,6 +558,10 @@
   "reviews": {
     "productTitle": "Avis clients",
     "platformTitle": "Ils ont laissé leur avis",
+    "communityTitle": "Avis de la communauté",
+    "communitySubtitle": "Les retours de nos membres vérifiés.",
+    "inviteTitle": "Ton avis compte 💬",
+    "inviteSubtitle": "Partage ton expérience avec la communauté Xenotif®.",
     "verified": "✓ Achat vérifié",
     "none": "Aucun avis pour l'instant.",
     "beFirst": "Sois le premier à laisser un avis !",

@@ -29,13 +29,22 @@ export function CustomerReviews({ kind, productId }: Props) {
 
   function onPublished() { setFormOpen(false); setDone(true); load() }
 
-  const title = kind === 'product' ? t('productTitle') : t('platformTitle')
+  const isPlatform = kind === 'platform'
 
   return (
     <section className="py-8">
-      <h2 className="text-lg font-black text-white mb-4">{title}{reviews ? ` (${reviews.length})` : ''}</h2>
+      {isPlatform ? (
+        <div className="text-center mb-6">
+          <h2 className="text-2xl font-black text-white">{t('communityTitle')}</h2>
+          <p className="text-sport-gray text-sm mt-1.5">{t('communitySubtitle')}</p>
+        </div>
+      ) : (
+        <h2 className="text-lg font-black text-white mb-4">{t('productTitle')}{reviews ? ` (${reviews.length})` : ''}</h2>
+      )}
 
-      {reviews && reviews.length === 0 && <p className="text-sport-gray text-sm mb-4">{t('none')}</p>}
+      {reviews && reviews.length === 0 && (
+        <p className={`text-sport-gray text-sm mb-4 ${isPlatform ? 'text-center' : ''}`}>{t('none')}</p>
+      )}
 
       <div className="space-y-4 mb-6">
         {(reviews ?? []).map((r) => (
@@ -51,23 +60,25 @@ export function CustomerReviews({ kind, productId }: Props) {
         ))}
       </div>
 
-      {done && <p className="text-emerald-400 text-sm font-semibold">{t('thanks')}</p>}
+      <div className={isPlatform ? 'text-center' : ''}>
+        {done && <p className="text-emerald-400 text-sm font-semibold">{t('thanks')}</p>}
 
-      {!done && elig && (
-        elig.eligible ? (
-          formOpen ? (
-            <ReviewForm type={kind} productId={productId} initial={elig.existing} onPublished={onPublished} />
+        {!done && elig && (
+          elig.eligible ? (
+            formOpen ? (
+              <ReviewForm type={kind} productId={productId} initial={elig.existing} onPublished={onPublished} />
+            ) : (
+              <button onClick={() => setFormOpen(true)} className="bg-sport-orange text-white px-6 py-2.5 rounded-full font-bold text-sm hover:bg-orange-600 transition-all">
+                {elig.existing ? t('editReview') : t('leaveReview')}
+              </button>
+            )
           ) : (
-            <button onClick={() => setFormOpen(true)} className="bg-sport-orange text-white px-6 py-2.5 rounded-full font-bold text-sm hover:bg-orange-600 transition-all">
-              {elig.existing ? t('editReview') : t('leaveReview')}
-            </button>
+            <p className="text-sport-gray text-xs">
+              {elig.reason === 'guest' ? t('mustLogin') : elig.reason === 'not_subscriber' ? t('mustSubscribe') : t('mustBuy')}
+            </p>
           )
-        ) : (
-          <p className="text-sport-gray text-xs">
-            {elig.reason === 'guest' ? t('mustLogin') : elig.reason === 'not_subscriber' ? t('mustSubscribe') : t('mustBuy')}
-          </p>
-        )
-      )}
+        )}
+      </div>
     </section>
   )
 }
