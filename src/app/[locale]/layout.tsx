@@ -9,6 +9,7 @@ import '../globals.css'
 import { ConditionalChrome } from '@/components/layout/ConditionalChrome'
 import { Providers } from '@/providers/Providers'
 import { OrganizationSchema, WebsiteSchema } from '@/components/SchemaOrg'
+import { MetaPixel } from '@/components/analytics/MetaPixel'
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 
@@ -107,6 +108,9 @@ export default async function RootLayout({
             gtag('config', 'G-3H3JTM404V');
           `}
         </Script>
+
+        {/* Meta Pixel (Facebook/Instagram Ads) — actif si NEXT_PUBLIC_META_PIXEL_ID est défini */}
+        <MetaPixel />
       </body>
     </html>
   )

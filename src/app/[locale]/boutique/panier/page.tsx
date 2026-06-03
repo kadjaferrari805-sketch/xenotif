@@ -6,6 +6,7 @@ import { Minus, Plus, Trash2, ArrowRight, ShoppingBag, ExternalLink, Lock } from
 import { useCart } from '@/lib/boutique/cart'
 import { formatPrice } from '@/lib/boutique/products'
 import { useState } from 'react'
+import { trackMeta } from '@/lib/meta-pixel'
 
 export default function PanierPage() {
   const t = useTranslations('boutique.panier')
@@ -41,6 +42,8 @@ export default function PanierPage() {
     setLoading(true)
     setError('')
     void saveCartForRecovery() // capture pour relance, non bloquant
+    // Conversion Meta Pixel : début du paiement boutique
+    trackMeta('InitiateCheckout', { value: ownTotal / 100, currency: 'EUR' })
     try {
       const res = await fetch('/api/boutique/checkout', {
         method: 'POST',

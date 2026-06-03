@@ -4,6 +4,7 @@ import { getTranslations } from 'next-intl/server'
 import Stripe from 'stripe'
 import { CheckCircle, Download, Package, ArrowRight } from 'lucide-react'
 import { getProductByIdLocalized } from '@/lib/boutique/products.en'
+import { MetaTrack } from '@/components/analytics/MetaTrack'
 
 export const dynamic = 'force-dynamic'
 
@@ -14,19 +15,31 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   return { title: { absolute: t('metaTitle') } }
 }
 
-async function getDigitalItems(locale: string, sessionId?: string) {
-  if (!sessionId || !process.env.STRIPE_SECRET_KEY) return []
+type OrderInfo = {
+  items: { id: string; name: string }[]
+  value: number      // montant payé en euros (pour le Pixel)
+  currency: string
+}
+
+async function getOrderInfo(locale: string, sessionId?: string): Promise<OrderInfo> {
+  const empty: OrderInfo = { items: [], value: 0, currency: 'EUR' }
+  if (!sessionId || !process.env.STRIPE_SECRET_KEY) return empty
   try {
     const stripe = new Stripe(process.env.STRIPE_SECRET_KEY)
     const session = await stripe.checkout.sessions.retrieve(sessionId)
-    if (session.payment_status !== 'paid') return []
+    if (session.payment_status !== 'paid') return empty
     const ids = (session.metadata?.digital_ids ?? '').split(',').map(s => s.trim()).filter(Boolean)
-    return ids
+    const items = ids
       .map(id => getProductByIdLocalized(id, locale))
       .filter((p): p is NonNullable<typeof p> => !!p)
       .map(p => ({ id: p.id, name: p.name }))
+    return {
+      items,
+      value: (session.amount_total ?? 0) / 100,
+      currency: (session.currency ?? 'eur').toUpperCase(),
+    }
   } catch {
-    return []
+    return empty
   }
 }
 
@@ -40,10 +53,14 @@ export default async function BoutiqueSuccesPage({
   const { locale } = await params
   const { session_id } = await searchParams
   const t = await getTranslations('boutique.succes')
-  const digitalItems = await getDigitalItems(locale, session_id)
+  const { items: digitalItems, value, currency } = await getOrderInfo(locale, session_id)
 
   return (
     <div className="flex min-h-screen flex-col items-center justify-center bg-sport-dark px-4 pt-20 pb-16 text-center">
+      {/* Conversion Meta Pixel : achat boutique confirmé */}
+      {value > 0 && (
+        <MetaTrack event="Purchase" value={value} currency={currency} contentIds={digitalItems.map(i => i.id)} />
+      )}
       <div className="w-full max-w-md">
         <div className="mb-8 flex justify-center">
           <div className="flex h-20 w-20 items-center justify-center rounded-full bg-emerald-500/20 border border-emerald-500/30">

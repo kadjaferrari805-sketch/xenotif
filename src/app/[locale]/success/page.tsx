@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { CheckCircle, ArrowRight, Zap } from 'lucide-react'
 import Stripe from 'stripe'
 import { createServiceClient } from '@/lib/supabase/server'
+import { MetaTrack } from '@/components/analytics/MetaTrack'
 
 export const metadata: Metadata = {
   title: 'Paiement confirmé — Xenotif®',
@@ -61,6 +62,8 @@ export default async function SuccessPage({
 
   return (
     <main className="min-h-[80vh] flex flex-col items-center justify-center px-6 py-20 bg-sport-dark">
+      {/* Conversion Meta Pixel : abonnement (essai) démarré */}
+      {session_id && <MetaTrack event="Subscribe" />}
       {/* Glow */}
       <div
         aria-hidden="true"

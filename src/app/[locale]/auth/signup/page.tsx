@@ -6,6 +6,7 @@ import { useSearchParams } from 'next/navigation'
 import { Link, useRouter } from '@/i18n/navigation'
 import { ArrowRight, CheckCircle, Zap, Eye, EyeOff } from 'lucide-react'
 import { createClient } from '@/lib/supabase/client'
+import { trackMeta } from '@/lib/meta-pixel'
 
 type PlanId = 'gratuit' | 'pro' | 'elite'
 type Period = 'monthly' | 'annual'
@@ -81,7 +82,12 @@ function SignUpForm() {
       return
     }
 
+    // Conversion Meta Pixel : inscription réussie
+    trackMeta('CompleteRegistration', { content_name: selectedPlan })
+
     if (selectedPlan !== 'gratuit') {
+      // Conversion Meta Pixel : passage au paiement
+      trackMeta('InitiateCheckout', { content_name: `${selectedPlan}-${period}` })
       const res = await fetch('/api/checkout', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
