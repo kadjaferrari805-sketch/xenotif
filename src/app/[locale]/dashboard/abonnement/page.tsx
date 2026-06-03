@@ -38,6 +38,8 @@ export default function AbonnementPage() {
   const [cancelled, setCancelled] = useState(false)
   const [portalLoading, setPortalLoading] = useState(false)
   const [portalError, setPortalError] = useState('')
+  const [syncing, setSyncing] = useState(false)
+  const [syncMsg, setSyncMsg] = useState('')
 
   useEffect(() => {
     fetch('/api/subscription')
@@ -83,6 +85,20 @@ export default function AbonnementPage() {
     setCancelLoading(false)
   }
 
+  async function syncSubscription() {
+    setSyncing(true)
+    setSyncMsg('')
+    try {
+      const res = await fetch('/api/subscription/sync', { method: 'POST' })
+      const data = await res.json()
+      if (data.synced) { window.location.reload(); return }
+      setSyncMsg(t('syncNone'))
+    } catch {
+      setSyncMsg(t('syncNone'))
+    }
+    setSyncing(false)
+  }
+
   if (loading) {
     return (
       <div className="p-8 flex items-center justify-center min-h-[50vh]">
@@ -102,6 +118,19 @@ export default function AbonnementPage() {
           <Link href="/auth/signup?plan=pro" className="inline-flex items-center gap-2 bg-sport-orange text-white px-6 py-3 rounded-full font-bold text-sm hover:bg-orange-600 transition-all">
             {t('choosePlan')} <ArrowRight size={14} />
           </Link>
+
+          {/* Récupération d'un abonnement déjà payé mais non rattaché */}
+          <div className="mt-6 pt-6 border-t border-sport-border">
+            <p className="text-xs text-sport-gray mb-3">{t('syncHint')}</p>
+            <button
+              onClick={syncSubscription}
+              disabled={syncing}
+              className="inline-flex items-center gap-2 border border-sport-border text-white px-5 py-2.5 rounded-full text-sm font-bold hover:border-sport-gray disabled:opacity-60 transition-all"
+            >
+              {syncing ? t('syncing') : t('syncCta')}
+            </button>
+            {syncMsg && <p className="text-xs text-sport-gray mt-3">{syncMsg}</p>}
+          </div>
         </div>
       </div>
     )

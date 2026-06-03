@@ -62,7 +62,7 @@ function SignUpForm() {
     setError('')
 
     const supabase = createClient()
-    const { error: signUpError } = await supabase.auth.signUp({
+    const { data: signUpData, error: signUpError } = await supabase.auth.signUp({
       email: form.email,
       password: form.password,
       options: {
@@ -91,7 +91,7 @@ function SignUpForm() {
       const res = await fetch('/api/checkout', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ plan: selectedPlan, period, locale }),
+        body: JSON.stringify({ plan: selectedPlan, period, locale, email: form.email, userId: signUpData.user?.id }),
       })
       const data = await res.json()
       if (data.url) { window.location.href = data.url; return }

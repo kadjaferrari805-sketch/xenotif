@@ -112,16 +112,26 @@ export async function POST(req: NextRequest) {
         const periodEnd = subPeriodEnd(sub)
         const status = sub.status
 
-        if (!customerEmail) break
+        // Rattachement FIABLE : on privilégie l'ID utilisateur passé au checkout
+        // (client_reference_id / metadata.user_id), puis l'email, puis la création.
+        const refUserId = session.client_reference_id || session.metadata?.user_id || ''
+        let userId: string | null = null
+        let userEmail: string | null = customerEmail ?? null
+        let isNewUser = false
 
-        // Find or create user
-        const { data: existingUsers } = await service.auth.admin.listUsers()
-        const existingUser = existingUsers?.users?.find(u => u.email === customerEmail)
-
-        let userId: string
-        if (existingUser) {
-          userId = existingUser.id
-        } else {
+        if (refUserId) {
+          const { data: byId } = await service.auth.admin.getUserById(refUserId)
+          if (byId?.user) {
+            userId = byId.user.id
+            userEmail = byId.user.email ?? userEmail
+          }
+        }
+        if (!userId && customerEmail) {
+          const { data: list } = await service.auth.admin.listUsers({ perPage: 200 })
+          const existing = list?.users?.find(u => u.email?.toLowerCase() === customerEmail.toLowerCase())
+          if (existing) { userId = existing.id; userEmail = existing.email ?? userEmail }
+        }
+        if (!userId && customerEmail) {
           const { data: newUser, error: userError } = await service.auth.admin.createUser({
             email: customerEmail,
             email_confirm: true,
@@ -132,26 +142,11 @@ export async function POST(req: NextRequest) {
             break
           }
           userId = newUser.user.id
-
-          await service.from('profiles').upsert({
-            id: userId,
-            full_name: customerName,
-            locale,
-          }, { onConflict: 'id' })
-
-          const { data: linkData } = await service.auth.admin.generateLink({
-            type: 'recovery',
-            email: customerEmail,
-          })
-
-          await sendWelcomeEmail({
-            email: customerEmail,
-            name: customerName,
-            plan,
-            setupLink: linkData?.properties?.action_link ?? `${process.env.NEXT_PUBLIC_URL}/auth/signin`,
-            locale,
-          })
+          userEmail = customerEmail
+          isNewUser = true
+          await service.from('profiles').upsert({ id: userId, full_name: customerName, locale }, { onConflict: 'id' })
         }
+        if (!userId) break
 
         await service.from('subscriptions').upsert({
           user_id: userId,
@@ -163,6 +158,16 @@ export async function POST(req: NextRequest) {
           current_period_end: periodEnd,
           cancel_at_period_end: false,
         }, { onConflict: 'user_id' })
+
+        // Email de confirmation — TOUJOURS (nouvel utilisateur OU compte existant).
+        if (userEmail) {
+          let setupLink = `${process.env.NEXT_PUBLIC_URL}/dashboard`
+          if (isNewUser) {
+            const { data: linkData } = await service.auth.admin.generateLink({ type: 'recovery', email: userEmail })
+            setupLink = linkData?.properties?.action_link ?? setupLink
+          }
+          await sendWelcomeEmail({ email: userEmail, name: customerName, plan, setupLink, locale })
+        }
 
         // API Conversions Meta — abonnement (essai) démarré (déduplication via session.id côté Pixel)
         await sendMetaConversion({
