@@ -139,6 +139,21 @@ export const PRODUCTS: Product[] = [
     amazon: { asin: 'B086C2L1B7', affiliateUrl: amazonUrl('vélo appartement ergomètre') },
     isAffiliate: true,
   },
+  {
+    id: 'e7', slug: 'roue-abdominale-pro-double',
+    name: 'Roue Abdominale Pro — Double Roue + Tapis Genoux',
+    brand: 'PROIRON',
+    description: 'Roue abdominale à double roulement avec tapis genoux. Renforce abdos, gainage et dos. Antidérapante, montage en 1 minute.',
+    longDescription: 'La roue abdominale PROIRON sollicite en profondeur toute la sangle abdominale, le dos et les épaules en un seul mouvement. Sa double roue large assure une stabilité parfaite pour un travail contrôlé, sans déséquilibre. Poignées ergonomiques antidérapantes pour un grip sûr même en sueur. Livrée avec un tapis de genoux pour protéger les articulations. Compacte, elle se range partout et se monte en moins d\'une minute — idéale pour renforcer le tronc à la maison.',
+    type: 'physical', price_cents: 1999, original_price_cents: 2999, stripe_price_id: 'price_roue_abdominale',
+    images: ['https://images.unsplash.com/photo-1598971639058-fab3c3109a00?auto=format&fit=crop&w=800&q=80'],
+    badge: '🔥 Promo', category: 'Équipements', rating: 4.7, reviews: 1340, inStock: true,
+    tags: ['roue abdominale', 'abdominaux', 'gainage', 'core'],
+    disciplines: ['musculation', 'crossfit', 'hiit'],
+    features: ['Double roue ultra-stable', 'Tapis de genoux inclus', 'Renforce abdos, dos & gainage', 'Poignées antidérapantes', 'Compacte — montage 1 min'],
+    amazon: { asin: 'B08PF38B9F', affiliateUrl: amazonUrl('roue abdominale ab wheel') },
+    isAffiliate: true,
+  },
 
   // ─── NUTRITION ────────────────────────────────────────────────────
   {

@@ -56,6 +56,14 @@ const TEXT_EN: Record<string, ProductText> = {
     features: ['24 magnetic levels', 'Bluetooth connected', 'Zwift/Kinomap compatible', 'Adjustable comfort seat', 'Full LCD console'],
     tags: ['bike', 'cardio', 'indoor cycling', 'connected'],
   },
+  e7: {
+    name: 'Pro Ab Wheel Roller — Dual Wheel + Knee Mat',
+    badge: '🔥 Sale',
+    description: 'Dual-bearing ab wheel with a knee mat. Strengthens abs, core and back. Non-slip, assembles in a minute.',
+    longDescription: 'The PROIRON ab wheel deeply works your entire core, back and shoulders in a single movement. Its wide dual wheel ensures perfect stability for controlled reps without wobble. Ergonomic non-slip handles give a secure grip even when sweating. Comes with a knee mat to protect your joints. Compact, it stores anywhere and assembles in under a minute — ideal for core training at home.',
+    features: ['Ultra-stable dual wheel', 'Knee mat included', 'Strengthens abs, back & core', 'Non-slip handles', 'Compact — 1-min assembly'],
+    tags: ['ab wheel', 'abs', 'core', 'strength'],
+  },
   n1: {
     name: 'Impact Whey Protein Chocolate 1 kg — MyProtein',
     badge: '🏆 #1 in Europe',
@@ -185,6 +193,7 @@ const AMAZON_DE_KEYWORDS: Record<string, string> = {
   e4: 'springseil speed rope crossfit',
   e5: 'verstellbare hanteln set',
   e6: 'heimtrainer fahrrad ergometer',
+  e7: 'ab roller bauchtrainer bauchroller',
   n1: 'whey protein schokolade 1kg',
   n2: 'kreatin monohydrat pulver',
   n3: 'bcaa pulver',
