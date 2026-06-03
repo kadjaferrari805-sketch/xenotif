@@ -158,11 +158,10 @@ export function ProductDetail({ product }: { product: Product }) {
           </div>
         </div>
 
-        {/* Avis clients — uniquement sur nos produits digitaux (achat vérifiable) */}
+        {/* Avis clients — uniquement sur nos produits digitaux (achat vérifiable).
+            La section porte elle-même son séparateur et disparaît s'il n'y a pas d'avis. */}
         {product.type === 'digital' && (
-          <div className="pt-8 border-t border-sport-border">
-            <CustomerReviews kind="product" productId={product.id} />
-          </div>
+          <CustomerReviews kind="product" productId={product.id} />
         )}
 
         {/* Produits liés */}

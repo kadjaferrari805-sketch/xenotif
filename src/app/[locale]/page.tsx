@@ -21,11 +21,7 @@ export default function HomePage() {
       <IntensityLevels />
       <Pricing />
       <Reviews />
-      <section className="px-6 pb-16 bg-sport-dark">
-        <div className="max-w-3xl mx-auto border-t border-sport-border pt-12">
-          <CustomerReviews kind="platform" />
-        </div>
-      </section>
+      <CustomerReviews kind="platform" />
       <FAQ />
       <Newsletter />
     </>
