@@ -70,7 +70,10 @@ export async function generateMetadata({
       follow: true,
       googleBot: { index: true, follow: true, 'max-image-preview': 'large' },
     },
-    verification: { google: '2kJvq3omakuRUmacSG5OcvKqNZCNofHayAK7f-vVA-c' },
+    verification: {
+      google: '2kJvq3omakuRUmacSG5OcvKqNZCNofHayAK7f-vVA-c',
+      other: { 'facebook-domain-verification': 'y0g2u1svmulsb3zliptibgaw8gjyj3' },
+    },
   }
 }
 
