@@ -241,6 +241,10 @@
     "signup": {
       "title": "Create your account",
       "subtitle": "Choose your plan, then complete your sign-up",
+      "monthly": "Monthly",
+      "annual": "Annual",
+      "save": "-20%",
+      "billed": "Billed <b>{total}/year</b>",
       "fullNameLabel": "First & Last name",
       "fullNamePlaceholder": "John Doe",
       "emailLabel": "Email",

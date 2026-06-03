@@ -241,6 +241,10 @@
     "signup": {
       "title": "Crée ton compte",
       "subtitle": "Choisis ton plan, puis complète ton inscription",
+      "monthly": "Mensuel",
+      "annual": "Annuel",
+      "save": "-20%",
+      "billed": "Facturé <b>{total}/an</b>",
       "fullNameLabel": "Prénom & Nom",
       "fullNamePlaceholder": "Jean Dupont",
       "emailLabel": "Email",

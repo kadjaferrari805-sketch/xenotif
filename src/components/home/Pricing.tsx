@@ -26,18 +26,20 @@ function PlanButton({
   name,
   cta,
   highlight,
+  period,
 }: {
   planId: PlanId
   name: string
   cta: string
   highlight: boolean
+  period: Period
 }) {
   const router = useRouter()
   const t = useTranslations('home.pricing')
 
   return (
     <button
-      onClick={() => router.push(`/auth/signup?plan=${planId}`)}
+      onClick={() => router.push(`/auth/signup?plan=${planId}${period === 'annual' ? '&period=annual' : ''}`)}
       aria-label={t('subscribeAria', { name })}
       className={`w-full py-3.5 px-6 rounded-full font-bold text-sm transition-all inline-flex items-center justify-center gap-2 active:scale-95 ${
         highlight
@@ -137,7 +139,7 @@ export function Pricing() {
                   ))}
                 </ul>
 
-                <PlanButton planId={plan.id} name={tr.name} cta={tr.cta} highlight={plan.highlight} />
+                <PlanButton planId={plan.id} name={tr.name} cta={tr.cta} highlight={plan.highlight} period={period} />
               </motion.div>
             )
           })}
