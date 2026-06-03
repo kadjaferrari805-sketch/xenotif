@@ -62,8 +62,8 @@ export default async function SuccessPage({
 
   return (
     <main className="min-h-[80vh] flex flex-col items-center justify-center px-6 py-20 bg-sport-dark">
-      {/* Conversion Meta Pixel : abonnement (essai) démarré */}
-      {session_id && <MetaTrack event="Subscribe" />}
+      {/* Conversion Meta Pixel : abonnement (essai) démarré — eventId partagé avec l'API Conversions */}
+      {session_id && <MetaTrack event="Subscribe" eventId={session_id} />}
       {/* Glow */}
       <div
         aria-hidden="true"

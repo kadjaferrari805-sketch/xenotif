@@ -3,6 +3,7 @@ import Stripe from 'stripe'
 import { createServiceClient } from '@/lib/supabase/server'
 import { sendWelcomeEmail, sendTrialReminderEmail, sendCancellationEmail, sendDigitalDeliveryEmail } from '@/lib/emails'
 import { getProductById } from '@/lib/boutique/products'
+import { sendMetaConversion } from '@/lib/meta-capi'
 
 export const runtime = 'nodejs'
 
@@ -83,6 +84,17 @@ export async function POST(req: NextRequest) {
               console.error('orders insert error:', insertErr)
             }
           }
+
+          // API Conversions Meta — achat boutique (déduplication via session.id côté Pixel)
+          if (buyerEmail && (session.amount_total ?? 0) > 0) {
+            await sendMetaConversion({
+              eventName: 'Purchase',
+              eventId: session.id,
+              email: buyerEmail,
+              value: (session.amount_total ?? 0) / 100,
+              currency: (session.currency ?? 'eur').toUpperCase(),
+            })
+          }
           break
         }
 
@@ -151,6 +163,13 @@ export async function POST(req: NextRequest) {
           current_period_end: periodEnd,
           cancel_at_period_end: false,
         }, { onConflict: 'user_id' })
+
+        // API Conversions Meta — abonnement (essai) démarré (déduplication via session.id côté Pixel)
+        await sendMetaConversion({
+          eventName: 'Subscribe',
+          eventId: session.id,
+          email: customerEmail,
+        })
 
         break
       }
