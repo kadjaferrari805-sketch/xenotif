@@ -8,6 +8,7 @@ import { Pricing } from '@/components/home/Pricing'
 import { Reviews } from '@/components/home/Reviews'
 import { FAQ } from '@/components/home/FAQ'
 import { Newsletter } from '@/components/home/Newsletter'
+import { CustomerReviews } from '@/components/reviews/CustomerReviews'
 
 export default function HomePage() {
   return (
@@ -20,6 +21,11 @@ export default function HomePage() {
       <IntensityLevels />
       <Pricing />
       <Reviews />
+      <section className="px-6 pb-12 bg-sport-dark">
+        <div className="max-w-3xl mx-auto">
+          <CustomerReviews kind="platform" />
+        </div>
+      </section>
       <FAQ />
       <Newsletter />
     </>
