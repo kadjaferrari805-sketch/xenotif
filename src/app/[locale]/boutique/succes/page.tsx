@@ -57,9 +57,9 @@ export default async function BoutiqueSuccesPage({
 
   return (
     <div className="flex min-h-screen flex-col items-center justify-center bg-sport-dark px-4 pt-20 pb-16 text-center">
-      {/* Conversion Meta Pixel : achat boutique confirmé */}
+      {/* Conversion Meta Pixel : achat boutique confirmé — eventId partagé avec l'API Conversions */}
       {value > 0 && (
-        <MetaTrack event="Purchase" value={value} currency={currency} contentIds={digitalItems.map(i => i.id)} />
+        <MetaTrack event="Purchase" value={value} currency={currency} contentIds={digitalItems.map(i => i.id)} eventId={session_id} />
       )}
       <div className="w-full max-w-md">
         <div className="mb-8 flex justify-center">

@@ -20,8 +20,11 @@ export type MetaEvent =
   | 'ViewContent'
   | 'AddToCart'
 
-export function trackMeta(event: MetaEvent, params?: MetaParams): void {
+// eventId : identifiant partagé avec l'API Conversions (serveur) pour la
+// déduplication Meta. On utilise l'ID de session Stripe sur les pages de succès.
+export function trackMeta(event: MetaEvent, params?: MetaParams, eventId?: string): void {
   if (typeof window === 'undefined') return
   const w = window as unknown as { fbq?: (...args: unknown[]) => void }
-  w.fbq?.('track', event, params)
+  if (eventId) w.fbq?.('track', event, params, { eventID: eventId })
+  else w.fbq?.('track', event, params)
 }
