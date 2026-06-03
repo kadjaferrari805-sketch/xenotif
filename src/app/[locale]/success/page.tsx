@@ -27,18 +27,26 @@ async function syncSubscription(sessionId: string) {
 
     const sub = session.subscription as Stripe.Subscription
     const email = session.customer_details?.email ?? session.customer_email
-    if (!email) return
 
     const service = await createServiceClient()
-    const { data: users } = await service.auth.admin.listUsers()
-    const user = users?.users?.find(u => u.email === email)
-    if (!user) return
+    // Rattachement fiable : ID utilisateur passé au checkout, sinon recherche par email.
+    const refUserId = session.client_reference_id || session.metadata?.user_id || ''
+    let userId: string | null = null
+    if (refUserId) {
+      const { data: byId } = await service.auth.admin.getUserById(refUserId)
+      if (byId?.user) userId = byId.user.id
+    }
+    if (!userId && email) {
+      const { data: users } = await service.auth.admin.listUsers({ perPage: 200 })
+      userId = users?.users?.find(u => u.email?.toLowerCase() === email.toLowerCase())?.id ?? null
+    }
+    if (!userId) return
 
     const plan = session.metadata?.plan
       ?? ((sub.items.data[0]?.price?.unit_amount ?? 0) > 1000 ? 'elite' : 'pro')
 
     await service.from('subscriptions').upsert({
-      user_id: user.id,
+      user_id: userId,
       stripe_customer_id: typeof session.customer === 'string' ? session.customer : session.customer.id,
       stripe_subscription_id: sub.id,
       plan,

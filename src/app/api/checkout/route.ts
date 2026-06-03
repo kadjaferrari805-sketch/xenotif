@@ -26,7 +26,9 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Configuration serveur manquante.' }, { status: 500 })
     }
 
-    const { plan, period = 'monthly', locale: rawLocale } = await req.json() as { plan: string; period?: string; locale?: string }
+    const { plan, period = 'monthly', locale: rawLocale, email, userId } = await req.json() as {
+      plan: string; period?: string; locale?: string; email?: string; userId?: string
+    }
     const locale = rawLocale === 'en' ? 'en' : 'fr'
 
     if (!plan || !(plan in PLAN_CONFIG)) {
@@ -45,6 +47,11 @@ export async function POST(req: NextRequest) {
     const session = await stripe.checkout.sessions.create({
       mode: 'subscription',
       locale,
+      // Rattache l'abonnement au compte : email pré-rempli (= email du compte) +
+      // ID utilisateur, pour que le webhook lie l'abonnement au bon compte (pas par
+      // recherche d'email fragile).
+      ...(email ? { customer_email: email } : {}),
+      ...(userId ? { client_reference_id: userId } : {}),
       // Méthodes de paiement automatiques (carte, Apple Pay, Google Pay…)
       line_items: priceId
         ? [{ price: priceId, quantity: 1 }]
@@ -73,9 +80,9 @@ export async function POST(req: NextRequest) {
         trial_settings: {
           end_behavior: { missing_payment_method: 'cancel' },
         },
-        metadata: { plan, period, locale },
+        metadata: { plan, period, locale, user_id: userId ?? '' },
       },
-      metadata: { plan, period, locale },
+      metadata: { plan, period, locale, user_id: userId ?? '' },
       success_url: `${baseUrl}/success?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${baseUrl}/#tarifs`,
     })
