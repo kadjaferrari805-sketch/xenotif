@@ -45,11 +45,6 @@ export function Nav() {
     return () => document.removeEventListener('keydown', handleKey)
   }, [isOpen])
 
-  useEffect(() => {
-    document.body.style.overflow = isOpen ? 'hidden' : ''
-    return () => { document.body.style.overflow = '' }
-  }, [isOpen])
-
   return (
     <motion.nav
       aria-label="Navigation principale"
@@ -126,8 +121,6 @@ export function Nav() {
         {isOpen && (
           <motion.div
             id="mobile-menu"
-            role="dialog"
-            aria-modal="true"
             aria-label="Menu de navigation"
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
