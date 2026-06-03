@@ -8,13 +8,14 @@ import { ArrowRight, CheckCircle, Zap, Eye, EyeOff } from 'lucide-react'
 import { createClient } from '@/lib/supabase/client'
 
 type PlanId = 'gratuit' | 'pro' | 'elite'
+type Period = 'monthly' | 'annual'
 
 // Données structurelles (id, prix, mise en avant). Les textes (nom, période,
 // badge, fonctionnalités) viennent de messages → auth.signup.plans.
-const PLANS: { id: PlanId; price: string; highlight: boolean }[] = [
-  { id: 'gratuit', price: '0 €',     highlight: false },
-  { id: 'pro',     price: '9,99 €',  highlight: true },
-  { id: 'elite',   price: '24,99 €', highlight: false },
+const PLANS: { id: PlanId; priceMonthly: string; priceAnnual: string; totalAnnual?: string; highlight: boolean }[] = [
+  { id: 'gratuit', priceMonthly: '0 €',     priceAnnual: '0 €',     highlight: false },
+  { id: 'pro',     priceMonthly: '9,99 €',  priceAnnual: '7,99 €',  totalAnnual: '95,88 €',  highlight: true },
+  { id: 'elite',   priceMonthly: '24,99 €', priceAnnual: '19,99 €', totalAnnual: '239,88 €', highlight: false },
 ]
 
 type PlanText = { name: string; period: string; badge: string; features: string[] }
@@ -28,6 +29,7 @@ function SignUpForm() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const [selectedPlan, setSelectedPlan] = useState<PlanId>('pro')
+  const [period, setPeriod] = useState<Period>('monthly')
   const [form, setForm] = useState({ fullName: '', email: '', password: '' })
   const [showPwd, setShowPwd] = useState(false)
   const [loading, setLoading] = useState(false)
@@ -41,6 +43,8 @@ function SignUpForm() {
     })
     const plan = searchParams.get('plan') as PlanId
     if (plan && ['gratuit', 'pro', 'elite'].includes(plan)) setSelectedPlan(plan)
+    const per = searchParams.get('period')
+    if (per === 'annual' || per === 'monthly') setPeriod(per)
     const email = searchParams.get('email')
     if (email) setForm(prev => ({ ...prev, email }))
   }, [searchParams, router])
@@ -81,7 +85,7 @@ function SignUpForm() {
       const res = await fetch('/api/checkout', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ plan: selectedPlan, period: 'monthly', locale }),
+        body: JSON.stringify({ plan: selectedPlan, period, locale }),
       })
       const data = await res.json()
       if (data.url) { window.location.href = data.url; return }
@@ -126,6 +130,25 @@ function SignUpForm() {
           <p className="text-sport-gray text-sm">{t('subtitle')}</p>
         </div>
 
+        {/* Billing toggle (mensuel / annuel) */}
+        <div className="flex items-center justify-center gap-3 mb-6">
+          <button
+            type="button"
+            onClick={() => setPeriod('monthly')}
+            className={`px-5 py-2 rounded-full text-sm font-bold transition-all ${period === 'monthly' ? 'bg-sport-orange text-white' : 'text-sport-gray hover:text-white'}`}
+          >
+            {t('monthly')}
+          </button>
+          <button
+            type="button"
+            onClick={() => setPeriod('annual')}
+            className={`px-5 py-2 rounded-full text-sm font-bold transition-all flex items-center gap-2 ${period === 'annual' ? 'bg-sport-orange text-white' : 'text-sport-gray hover:text-white'}`}
+          >
+            {t('annual')}
+            <span className="text-[10px] font-black bg-emerald-500 text-white px-2 py-0.5 rounded-full">{t('save')}</span>
+          </button>
+        </div>
+
         {/* Plan selector */}
         <div className="grid grid-cols-3 gap-3 mb-8">
           {PLANS.map((plan, i) => (
@@ -147,8 +170,13 @@ function SignUpForm() {
               <p className={`text-sm font-black mb-0.5 ${selectedPlan === plan.id ? 'text-sport-orange' : 'text-white'}`}>
                 {plans[i].name}
               </p>
-              <p className="text-sm font-black text-white leading-none">{plan.price}</p>
-              <p className="text-[10px] text-sport-gray mb-2.5">{plans[i].period}</p>
+              <p className="text-sm font-black text-white leading-none">{period === 'annual' ? plan.priceAnnual : plan.priceMonthly}</p>
+              <p className="text-[10px] text-sport-gray mb-1">{plans[i].period}</p>
+              {period === 'annual' && plan.totalAnnual && (
+                <p className="text-[9px] text-emerald-400 mb-2 leading-tight">
+                  {t.rich('billed', { total: plan.totalAnnual, b: (c) => <strong>{c}</strong> })}
+                </p>
+              )}
               <ul className="space-y-1">
                 {plans[i].features.map(f => (
                   <li key={f} className="flex items-center gap-1 text-[9px] text-sport-gray leading-tight">
