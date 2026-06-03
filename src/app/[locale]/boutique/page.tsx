@@ -1,7 +1,6 @@
 'use client'
 import { useState, useMemo } from 'react'
 import { useTranslations, useLocale } from 'next-intl'
-import { Link } from '@/i18n/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Search, SlidersHorizontal, Zap, ShoppingBag, Star, TrendingUp, X } from 'lucide-react'
 import { ProductCard } from '@/components/boutique/ProductCard'

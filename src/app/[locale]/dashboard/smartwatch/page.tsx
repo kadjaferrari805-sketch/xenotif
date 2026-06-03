@@ -4,8 +4,8 @@ import { useState, useEffect, useCallback } from 'react'
 import { useTranslations, useLocale } from 'next-intl'
 import {
   Watch, RefreshCw, Loader2, Footprints, Flame, Heart,
-  Zap, Moon, Droplets, MapPin, TrendingUp, Brain, ChevronRight,
-  Wifi, WifiOff,
+  Zap, Moon, Droplets, MapPin, TrendingUp, Brain,
+  Wifi,
 } from 'lucide-react'
 import { ActivityRings } from '@/components/dashboard/smartwatch/ActivityRings'
 import { WeeklyChart } from '@/components/dashboard/smartwatch/WeeklyChart'

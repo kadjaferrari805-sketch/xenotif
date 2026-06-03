@@ -1,4 +1,3 @@
-import type { ReactNode } from 'react'
 import { Link } from '@/i18n/navigation'
 import type { LegalSection } from '@/components/legal/LegalDocument'
 

@@ -1,5 +1,4 @@
 'use client'
-import { RefreshCw } from 'lucide-react'
 
 export default function GlobalError({ reset }: { reset: () => void }) {
   return (

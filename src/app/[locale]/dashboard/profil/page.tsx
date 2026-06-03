@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { useTranslations } from 'next-intl'
+import { Link } from '@/i18n/navigation'
 import { User, Mail, Save, CheckCircle, Camera } from 'lucide-react'
 import { createClient } from '@/lib/supabase/client'
 
@@ -127,12 +128,12 @@ export default function ProfilPage() {
       {/* Security */}
       <div className="bg-sport-card border border-sport-border rounded-2xl p-6">
         <h2 className="text-sm font-black text-white mb-5">{t('profil.security')}</h2>
-        <a
+        <Link
           href="/auth/forgot-password"
           className="inline-flex items-center gap-2 border border-sport-border text-sport-gray px-5 py-2.5 rounded-full text-sm font-bold hover:text-white hover:border-sport-gray transition-all"
         >
           {t('profil.changePassword')}
-        </a>
+        </Link>
       </div>
     </div>
   )
