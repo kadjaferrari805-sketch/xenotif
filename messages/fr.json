@@ -696,6 +696,7 @@
       "syncNone": "Aucun abonnement trouvé pour cet email. Vérifie que c'est bien l'email utilisé lors du paiement, ou écris-nous à contact@xenotif.com.",
       "syncEmailPlaceholder": "Email utilisé lors du paiement",
       "syncAlreadyLinked": "Cet abonnement est déjà rattaché à un autre compte.",
+      "cancelError": "La résiliation a échoué. Réessaie dans un instant, ou écris-nous à contact@xenotif.com.",
       "confirmCancelTitle": "Confirmer la résiliation",
       "cancelIntro": "Tu vas résilier ton abonnement <o>Plan {plan}</o>.",
       "accessUntilDate": "Ton accès reste actif jusqu'au <o>{date}</o>.",
