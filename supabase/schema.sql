@@ -15,7 +15,7 @@ create table public.profiles (
 -- Subscriptions
 create table public.subscriptions (
   id uuid default gen_random_uuid() primary key,
-  user_id uuid references public.profiles on delete cascade not null,
+  user_id uuid references public.profiles on delete cascade not null unique,
   stripe_customer_id text unique,
   stripe_subscription_id text unique,
   plan text check (plan in ('pro', 'elite')) not null,
