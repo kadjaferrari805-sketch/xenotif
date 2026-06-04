@@ -79,8 +79,11 @@ export function Hero() {
         {slides[current].tag} — {slides[current].headline} {slides[current].accent}
       </div>
 
-      {/* Background slides */}
-      <AnimatePresence mode="wait">
+      {/* Background slides.
+          `initial={false}` : la 1re diapo s'affiche immédiatement (pas de fondu
+          opacity 0→1 dépendant de l'hydratation JS) → l'image LCP est peinte dès
+          son chargement. Les transitions entre diapos suivantes restent animées. */}
+      <AnimatePresence mode="wait" initial={false}>
         <motion.div
           key={current}
           initial={{ opacity: 0, scale: 1.06 }}
