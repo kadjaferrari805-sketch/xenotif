@@ -2,7 +2,8 @@
 import { useState, useMemo } from 'react'
 import { useTranslations, useLocale } from 'next-intl'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Search, SlidersHorizontal, Zap, ShoppingBag, Star, TrendingUp, X } from 'lucide-react'
+import { Search, SlidersHorizontal, Zap, ShoppingBag, Star, TrendingUp, X, ArrowRight, LayoutGrid } from 'lucide-react'
+import { Link } from '@/i18n/navigation'
 import { ProductCard } from '@/components/boutique/ProductCard'
 import { getCategories, CATEGORY_ICONS } from '@/lib/boutique/products'
 import { getProductsLocalized } from '@/lib/boutique/products.en'
@@ -91,6 +92,14 @@ export default function BoutiquePage() {
                   {t('filters')}
                 </button>
               </div>
+
+              {/* Lien vers le catalogue complet (tous les produits, sans catégorie) */}
+              <Link href="/boutique/catalogue"
+                className="mt-4 inline-flex items-center gap-2 rounded-full border border-sport-orange/40 bg-sport-orange/10 px-5 py-2.5 text-sm font-bold text-sport-orange hover:bg-sport-orange/20 transition-all">
+                <LayoutGrid size={15} />
+                {t('catalogue.link')}
+                <ArrowRight size={14} />
+              </Link>
             </motion.div>
           </div>
 
