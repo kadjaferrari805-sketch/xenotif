@@ -8,7 +8,18 @@ import type { ContentBlock } from '@/lib/blog/posts'
 import { getPostBySlugLocalized, getRelatedPostsLocalized } from '@/lib/blog/posts.en'
 import { formatPrice } from '@/lib/boutique/products'
 import { getProductBySlugLocalized } from '@/lib/boutique/products.en'
+import { getDisciplineMeta } from '@/lib/disciplines'
 import { ProductCard } from '@/components/boutique/ProductCard'
+
+// Maillage interne : chaque catégorie d'article pointe vers la discipline la plus proche.
+const CATEGORY_DISCIPLINE: Record<string, string> = {
+  Musculation: 'musculation',
+  Running: 'running-cardio',
+  HIIT: 'hiit',
+  Nutrition: 'nutrition',
+  Récupération: 'stretching',
+  Matériel: 'musculation',
+}
 
 const SITE = 'https://xenotif.com'
 
@@ -165,6 +176,10 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
   const colorClass = CATEGORY_COLORS[post.category] ?? 'bg-sport-orange/10 text-sport-orange border-sport-orange/20'
 
+  // Lien interne contextuel vers la discipline liée à la catégorie de l'article.
+  const disciplineSlug = CATEGORY_DISCIPLINE[post.category]
+  const disciplineMeta = disciplineSlug ? getDisciplineMeta(disciplineSlug, locale) : undefined
+
   const articleSchema = {
     '@context': 'https://schema.org',
     '@type': 'Article',
@@ -236,9 +251,37 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         </div>
 
         {/* Article Content */}
-        <article className="max-w-3xl mx-auto px-6 pb-14">
+        <article className="max-w-3xl mx-auto px-6 pb-10">
           {post.content.map((block, index) => renderBlock(block, index, ctx))}
         </article>
+
+        {/* CTA conversion — essai gratuit (toutes les fiches) + lien interne discipline */}
+        <section className="px-6 pb-14">
+          <div className="max-w-3xl mx-auto rounded-3xl border border-sport-orange/30 bg-gradient-to-br from-sport-orange/15 via-sport-card to-sport-card p-8 md:p-10 text-center">
+            <h2 className="text-2xl md:text-3xl font-black text-white mb-3">{t('cta.title')}</h2>
+            <p className="text-sport-gray text-sm md:text-base leading-relaxed max-w-xl mx-auto mb-6">{t('cta.text')}</p>
+            <Link
+              href="/auth/signup"
+              className="inline-flex items-center justify-center gap-2 bg-sport-orange text-white px-7 py-3.5 rounded-full font-bold text-sm hover:bg-orange-600 active:scale-95 transition-all shadow-lg shadow-sport-orange/25"
+            >
+              {t('cta.button')}
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true">
+                <line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" />
+              </svg>
+            </Link>
+            <p className="text-[11px] text-sport-gray mt-3">{t('cta.note')}</p>
+            {disciplineMeta && disciplineSlug && (
+              <p className="mt-6 pt-6 border-t border-sport-border/60 text-sm">
+                <Link href={`/disciplines/${disciplineSlug}`} className="inline-flex items-center gap-1.5 text-sport-orange font-bold hover:underline">
+                  {t('cta.discipline', { name: disciplineMeta.title })}
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true">
+                    <line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" />
+                  </svg>
+                </Link>
+              </p>
+            )}
+          </div>
+        </section>
 
         {/* Recommended Products */}
         {recommendedProducts.length > 0 && (

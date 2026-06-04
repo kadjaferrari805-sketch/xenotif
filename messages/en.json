@@ -542,7 +542,14 @@
     "relatedTitle": "Related <o>Articles</o>",
     "backToBlog": "Back to the Blog",
     "recommendedProduct": "Recommended product",
-    "viewProduct": "View the product"
+    "viewProduct": "View the product",
+    "cta": {
+      "title": "Turn theory into practice",
+      "text": "Guided programs, personalized AI coaching and progress tracking: Xenotif® turns this advice into real results. Start today.",
+      "button": "Start your free trial",
+      "note": "€0 for 7 days · Cancel anytime",
+      "discipline": "Explore the {name} program"
+    }
   },
   "contact": {
     "badge": "Support & Contact",
