@@ -183,6 +183,17 @@ export function Hero() {
               </Link>
             </motion.div>
 
+            {/* Réassurance essai gratuit (sous les CTA) */}
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.4, delay: 0.3 }}
+              className="flex items-center gap-2 -mt-4 mb-8 text-xs text-white/70"
+            >
+              <span aria-hidden="true" className="w-1.5 h-1.5 rounded-full bg-sport-lime shrink-0" />
+              {t('ctaNote')}
+            </motion.p>
+
             {/* Trust items */}
             <motion.div
               initial={{ opacity: 0 }}

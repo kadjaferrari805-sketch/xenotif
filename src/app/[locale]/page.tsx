@@ -8,6 +8,7 @@ import { Pricing } from '@/components/home/Pricing'
 import { Reviews } from '@/components/home/Reviews'
 import { FAQ } from '@/components/home/FAQ'
 import { Newsletter } from '@/components/home/Newsletter'
+import { StickyCheckout } from '@/components/home/StickyCheckout'
 import { CustomerReviews } from '@/components/reviews/CustomerReviews'
 
 export default function HomePage() {
@@ -24,6 +25,7 @@ export default function HomePage() {
       <CustomerReviews kind="platform" />
       <FAQ />
       <Newsletter />
+      <StickyCheckout />
     </>
   )
 }

@@ -42,12 +42,23 @@
     "switch": "Changer de langue"
   },
   "home": {
+    "sticky": {
+      "lead": "Prêt à transformer ton corps ?",
+      "trial": "Essai 7 jours offert",
+      "pro": "Pro — 9,99 €/mois",
+      "elite": "Élite — 24,99 €/mois",
+      "proAria": "S'abonner au plan Pro — 9,99 euros par mois",
+      "eliteAria": "S'abonner au plan Élite — 24,99 euros par mois",
+      "ariaRegion": "Abonnement rapide",
+      "dismiss": "Fermer la barre d'abonnement"
+    },
     "metaTitle": "Xenotif® — Forge ton corps. Dépasse tes limites.",
     "metaDescription": "La plateforme fitness premium — 10 disciplines, coaching IA personnalisé, 300+ séances. Rejoins 12 000+ athlètes qui transforment leur corps avec Xenotif®.",
     "hero": {
       "eyebrow": "La Plateforme Sport Premium",
-      "ctaPrimary": "Rejoindre gratuitement",
+      "ctaPrimary": "Commence ton essai gratuit",
       "ctaSecondary": "Voir les disciplines",
+      "ctaNote": "0 € pendant 7 jours · Annulable en 1 clic",
       "scroll": "Scroll",
       "slides": [
         { "tag": "🏋️ Musculation & Force", "headline": "FORGE TON CORPS.", "accent": "DÉPASSE TES LIMITES." },
@@ -121,7 +132,7 @@
       "title": "Commence en 4 étapes",
       "subtitle": "De l'inscription à tes premiers résultats — simple, rapide, efficace",
       "cta": "Commencer maintenant",
-      "ctaNote": "Gratuit · Sans engagement · Sans carte bancaire",
+      "ctaNote": "Gratuit · Sans engagement · Annulable en 1 clic",
       "steps": [
         { "title": "Crée ton compte", "description": "Inscription en 2 minutes. Remplis ton profil sportif pour un suivi personnalisé dès le premier jour." },
         { "title": "Choisis ton programme", "description": "Notre IA analyse ton niveau, tes objectifs et ton temps disponible pour recommander le programme idéal." },
@@ -145,7 +156,7 @@
     "pricing": {
       "label": "Tarifs",
       "title": "Simple. Transparent. Sans surprise.",
-      "subtitle": "Essai gratuit 7 jours sur tous les plans payants — aucune carte bancaire requise",
+      "subtitle": "Essai gratuit 7 jours sur tous les plans payants — 0 € aujourd'hui, annulable en 1 clic avant le 1er débit",
       "monthly": "Mensuel",
       "annual": "Annuel",
       "save": "-20%",
@@ -347,7 +358,7 @@
       ],
       "primary": "Commencer gratuitement",
       "pricing": "Voir les tarifs →",
-      "noCard": "Sans CB requise",
+      "noCard": "Essai 7 jours offert",
       "freeCancel": "Annulation libre"
     },
     "faq": {
@@ -453,7 +464,7 @@
       "addToCart": "Ajouter au panier",
       "shippingAffiliate": ["🔗 Lien affilié Amazon", "📦 Expédié par Amazon", "🔒 Paiement sécurisé"],
       "shippingPhysical": ["🚚 Livraison gratuite dès 50€", "↩️ Retours 30 jours", "🔒 Paiement sécurisé"],
-      "shippingDigital": ["⚡ Téléchargement immédiat", "📱 Compatible tous appareils", "♾️ Accès à vie"],
+      "shippingDigital": ["⚡ Téléchargement immédiat", "📱 Compatible tous appareils", "♾️ Accès à vie", "🔒 Paiement sécurisé"],
       "related": "Vous aimerez aussi"
     },
     "panier": {
