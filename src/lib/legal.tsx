@@ -22,8 +22,8 @@ const mail = (
 
 // Chrome partagé (libellés répétés sur les 3 documents).
 const CHROME = {
-  fr: { back: "Retour à l'accueil", updated: 'Dernière mise à jour : juin 2025' },
-  en: { back: 'Back to home', updated: 'Last updated: June 2025' },
+  fr: { back: "Retour à l'accueil", updated: 'Dernière mise à jour : juin 2026' },
+  en: { back: 'Back to home', updated: 'Last updated: June 2026' },
 } as const
 
 const RELATED = {
@@ -137,16 +137,23 @@ const FR: Record<LegalSlug, { metaTitle: string; metaDescription: string; eyebro
       { id: 'retours', title: '9. Retours et remboursements', body: (
         <p>Les produits physiques peuvent être retournés sous 30 jours s&apos;ils sont en parfait état et dans leur emballage d&apos;origine. Le remboursement est effectué sous 14 jours après réception du retour, par le même moyen de paiement.</p>
       )},
-      { id: 'garanties', title: '10. Garanties légales', body: (
+      { id: 'satisfait-rembourse', title: '10. Garantie « satisfait ou remboursé » (30 jours)', body: (
+        <>
+          <p>Au-delà de vos droits légaux, Xenotif® vous offre une <strong className="text-white">garantie commerciale « satisfait ou remboursé » de 30 jours</strong> sur les abonnements (Pro, Élite) et les guides digitaux.</p>
+          <p className="mt-3">Si vous n&apos;êtes pas satisfait(e), écrivez-nous simplement à {mail} dans les 30 jours suivant votre paiement (pour un abonnement : le premier débit après la période d&apos;essai gratuite). Nous vous remboursons <strong className="text-white">intégralement</strong>, sans avoir à vous justifier. Le remboursement est effectué sous 14 jours, par le même moyen de paiement.</p>
+          <p className="mt-3">Cette garantie commerciale s&apos;ajoute aux garanties légales et au droit de rétractation : elle ne les remplace pas.</p>
+        </>
+      )},
+      { id: 'garanties', title: '11. Garanties légales', body: (
         <p>Tous les produits bénéficient de la garantie légale de conformité (art. L.217-3 et suivants du Code de la consommation) et de la garantie contre les vices cachés (art. 1641 et suivants du Code civil).</p>
       )},
-      { id: 'responsabilite-cgv', title: '11. Santé et responsabilité', body: (
+      { id: 'responsabilite-cgv', title: '12. Santé et responsabilité', body: (
         <p>Les programmes et conseils proposés sont fournis à titre informatif et ne remplacent pas l&apos;avis d&apos;un professionnel de santé. Consultez un médecin avant de débuter un programme sportif. Xenotif® ne saurait être tenu responsable d&apos;un usage inadapté de ses contenus.</p>
       )},
-      { id: 'donnees-cgv', title: '12. Données personnelles', body: (
+      { id: 'donnees-cgv', title: '13. Données personnelles', body: (
         <p>Le traitement de vos données est décrit dans notre <Link href="/confidentialite" className={LINK}>politique de confidentialité</Link>, conforme au RGPD.</p>
       )},
-      { id: 'litiges', title: '13. Service client, médiation et droit applicable', body: (
+      { id: 'litiges', title: '14. Service client, médiation et droit applicable', body: (
         <p>Pour toute réclamation, contactez {mail}. Conformément à l&apos;article L.612-1 du Code de la consommation, vous pouvez recourir gratuitement à un médiateur de la consommation. Les présentes CGV sont soumises au droit français ; à défaut de résolution amiable, tout litige relève des tribunaux français compétents.</p>
       )},
     ],
@@ -251,16 +258,23 @@ const EN: Record<LegalSlug, { metaTitle: string; metaDescription: string; eyebro
       { id: 'retours', title: '9. Returns and refunds', body: (
         <p>Physical products may be returned within 30 days if they are in perfect condition and in their original packaging. Refunds are issued within 14 days of receiving the return, using the same payment method.</p>
       )},
-      { id: 'garanties', title: '10. Legal guarantees', body: (
+      { id: 'satisfait-rembourse', title: '10. Money-back guarantee (30 days)', body: (
+        <>
+          <p>Beyond your legal rights, Xenotif® offers a <strong className="text-white">30-day commercial &quot;money-back&quot; guarantee</strong> on subscriptions (Pro, Elite) and digital guides.</p>
+          <p className="mt-3">If you&apos;re not satisfied, simply email us at {mail} within 30 days of your payment (for a subscription: the first charge after the free trial). We refund you <strong className="text-white">in full</strong>, no questions asked. The refund is issued within 14 days, using the same payment method.</p>
+          <p className="mt-3">This commercial guarantee is in addition to the legal guarantees and right of withdrawal — it does not replace them.</p>
+        </>
+      )},
+      { id: 'garanties', title: '11. Legal guarantees', body: (
         <p>All products benefit from the legal guarantee of conformity (art. L.217-3 et seq. of the Consumer Code) and the guarantee against hidden defects (art. 1641 et seq. of the Civil Code).</p>
       )},
-      { id: 'responsabilite-cgv', title: '11. Health and liability', body: (
+      { id: 'responsabilite-cgv', title: '12. Health and liability', body: (
         <p>The programs and advice provided are for informational purposes and do not replace the advice of a healthcare professional. Consult a doctor before starting a training program. Xenotif® cannot be held liable for improper use of its content.</p>
       )},
-      { id: 'donnees-cgv', title: '12. Personal data', body: (
+      { id: 'donnees-cgv', title: '13. Personal data', body: (
         <p>The processing of your data is described in our <Link href="/confidentialite" className={LINK}>privacy policy</Link>, which complies with the GDPR.</p>
       )},
-      { id: 'litiges', title: '13. Customer service, mediation and governing law', body: (
+      { id: 'litiges', title: '14. Customer service, mediation and governing law', body: (
         <p>For any complaint, contact {mail}. In accordance with article L.612-1 of the French Consumer Code, you may use a consumer ombudsman free of charge. These terms are governed by French law; failing an amicable resolution, any dispute falls under the competent French courts.</p>
       )},
     ],
