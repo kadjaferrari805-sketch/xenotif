@@ -34,6 +34,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const staticPaths: Array<[string, { changeFrequency: ChangeFreq; priority: number }]> = [
     ['/', { changeFrequency: 'daily', priority: 1.0 }],
     ['/boutique', { changeFrequency: 'daily', priority: 0.9 }],
+    ['/boutique/catalogue', { changeFrequency: 'daily', priority: 0.8 }],
     ['/blog', { changeFrequency: 'weekly', priority: 0.9 }],
     ['/contact', { changeFrequency: 'yearly', priority: 0.5 }],
     ['/confidentialite', { changeFrequency: 'yearly', priority: 0.3 }],

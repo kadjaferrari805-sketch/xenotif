@@ -423,6 +423,15 @@
     "emptyTitle": "Aucun produit trouvé",
     "emptyDesc": "Essaie avec d'autres termes ou réinitialise les filtres.",
     "amazonDisclaimer": "🔗 Certains produits sont des liens affiliés Amazon. En achetant via ces liens, tu soutiens Xenotif® sans coût supplémentaire pour toi. Les prix et disponibilités peuvent varier selon Amazon.",
+    "catalogue": {
+      "badge": "📖 Catalogue complet",
+      "title": "Le Catalogue <o>Complet</o>",
+      "subtitle": "Tous nos produits réunis en un seul endroit, sans séparation par catégorie : équipement, nutrition, vêtements, tech et programmes.",
+      "link": "Voir tout le catalogue",
+      "back": "Retour à la boutique",
+      "metaTitle": "Catalogue complet — Tous les produits Xenotif®",
+      "metaDescription": "Le catalogue complet Xenotif® : tous nos produits réunis en une page — équipement, nutrition, vêtements, tech et programmes."
+    },
     "disciplinesFilter": {
       "musculation": "💪 Musculation",
       "running-cardio": "🏃 Running",
