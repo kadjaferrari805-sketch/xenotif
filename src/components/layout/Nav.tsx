@@ -76,11 +76,6 @@ export function Nav() {
 
         {/* Desktop actions */}
         <div className="flex items-center gap-3">
-          {/* Télécharger l'app (desktop) : icône seule sur écran moyen, libellé complet en xl+ */}
-          <AppDownload
-            triggerClassName="hidden md:inline-flex items-center gap-1.5 border border-sport-border text-white/90 hover:text-white hover:border-white/30 px-3.5 py-2 rounded-full text-sm font-bold transition-all"
-            labelClassName="hidden xl:inline"
-          />
           <div className="hidden md:block">
             <LanguageSwitcher />
           </div>
@@ -109,6 +104,11 @@ export function Nav() {
               </Link>
             </>
           )}
+          {/* Télécharger l'app (desktop, après « Rejoindre ») : icône seule en md, libellé complet en xl+ */}
+          <AppDownload
+            triggerClassName="hidden md:inline-flex items-center gap-1.5 border border-sport-border text-white/90 hover:text-white hover:border-white/30 px-3.5 py-2 rounded-full text-sm font-bold transition-all"
+            labelClassName="hidden xl:inline"
+          />
           <button
             ref={hamburgerRef}
             onClick={() => setIsOpen((v) => !v)}
@@ -154,7 +154,6 @@ export function Nav() {
                   {t('connexion')}
                 </Link>
               )}
-              <AppDownload triggerClassName="flex w-full items-center gap-2 text-sm font-medium text-sport-gray hover:text-white transition-colors py-3 border-t border-sport-border" />
               <div className="pt-4 mt-2 border-t border-sport-border">
                 <LanguageSwitcher />
               </div>

@@ -46,6 +46,10 @@
       "iosStep": "Partager → « Sur l'écran d'accueil »",
       "androidTitle": "Android (Chrome)",
       "androidStep": "Menu ⋮ → « Installer l'application »",
+      "installedTitle": "App déjà installée 🎉",
+      "successTitle": "C'est parti ! 🎉",
+      "openApp": "Ouvrir Xenotif",
+      "desktopHint": "Tu es sur ordinateur. Scanne ce QR code avec ton téléphone pour installer l'app directement.",
       "close": "Fermer"
     }
   },

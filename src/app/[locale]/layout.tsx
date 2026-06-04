@@ -10,6 +10,7 @@ import { ConditionalChrome } from '@/components/layout/ConditionalChrome'
 import { Providers } from '@/providers/Providers'
 import { OrganizationSchema, WebsiteSchema } from '@/components/SchemaOrg'
 import { MetaPixelRouteTracker } from '@/components/analytics/MetaPixel'
+import { ServiceWorkerRegister } from '@/components/ServiceWorkerRegister'
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 
@@ -135,6 +136,7 @@ export default async function RootLayout({
           </>
         )}
         <MetaPixelRouteTracker />
+        <ServiceWorkerRegister />
       </body>
     </html>
   )
