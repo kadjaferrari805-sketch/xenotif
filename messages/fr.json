@@ -727,6 +727,7 @@
         "Accès anticipé aux nouveautés"
       ],
       "managePayment": "Gérer le paiement & les factures",
+      "manageHint": "Voir/changer ta carte, tes factures et résilier — tout se gère ici.",
       "portalNotConfigured": "Le portail de paiement n'est pas encore activé. Va sur dashboard.stripe.com → Billing → Customer portal pour l'activer.",
       "portalError": "Impossible d'ouvrir le portail de paiement.",
       "unsubscribe": "Se désabonner",

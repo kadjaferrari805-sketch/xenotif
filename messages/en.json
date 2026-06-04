@@ -727,6 +727,7 @@
         "Early access to new features"
       ],
       "managePayment": "Manage payment & invoices",
+      "manageHint": "View/update your card, your invoices and cancel — all in one place.",
       "portalNotConfigured": "The payment portal isn't enabled yet. Go to dashboard.stripe.com → Billing → Customer portal to enable it.",
       "portalError": "Unable to open the payment portal.",
       "unsubscribe": "Unsubscribe",
