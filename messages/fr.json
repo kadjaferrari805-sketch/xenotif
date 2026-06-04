@@ -542,7 +542,14 @@
     "relatedTitle": "Articles <o>Similaires</o>",
     "backToBlog": "Retour au Blog",
     "recommendedProduct": "Produit recommandé",
-    "viewProduct": "Voir le produit"
+    "viewProduct": "Voir le produit",
+    "cta": {
+      "title": "Passe de la théorie à la pratique",
+      "text": "Programmes guidés, coaching IA personnalisé et suivi de progression : Xenotif® transforme ces conseils en résultats concrets. Commence dès aujourd'hui.",
+      "button": "Commence ton essai gratuit",
+      "note": "0 € pendant 7 jours · Annulable en 1 clic",
+      "discipline": "Découvrir le programme {name}"
+    }
   },
   "contact": {
     "badge": "Support & Contact",
