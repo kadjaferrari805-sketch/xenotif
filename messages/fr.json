@@ -426,7 +426,7 @@
     "catalogue": {
       "badge": "📖 Catalogue complet",
       "title": "Le Catalogue <o>Complet</o>",
-      "subtitle": "Tous nos produits réunis en un seul endroit, sans séparation par catégorie : équipement, nutrition, vêtements, tech et programmes.",
+      "subtitle": "Tous nos produits classés par sport — musculation, running, cyclisme, natation, HIIT et plus.",
       "link": "Voir tout le catalogue",
       "back": "Retour à la boutique",
       "metaTitle": "Catalogue complet — Tous les produits Xenotif®",
@@ -438,7 +438,10 @@
       "hiit": "⚡ HIIT",
       "yoga": "🧘 Yoga",
       "crossfit": "🔥 CrossFit",
-      "boxing": "🥊 Boxe"
+      "boxing": "🥊 Boxe",
+      "cyclisme": "🚴 Cyclisme",
+      "natation": "🏊 Natation",
+      "stretching": "🤸 Stretching"
     },
     "sort": {
       "popular": "Plus populaires",

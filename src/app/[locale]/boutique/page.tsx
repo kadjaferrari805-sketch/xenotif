@@ -8,7 +8,7 @@ import { ProductCard } from '@/components/boutique/ProductCard'
 import { getCategories, CATEGORY_ICONS } from '@/lib/boutique/products'
 import { getProductsLocalized } from '@/lib/boutique/products.en'
 
-const DISCIPLINE_IDS = ['musculation', 'running-cardio', 'hiit', 'yoga', 'crossfit', 'boxing'] as const
+const DISCIPLINE_IDS = ['musculation', 'running-cardio', 'cyclisme', 'natation', 'hiit', 'crossfit', 'yoga', 'boxing'] as const
 const SORT_VALUES = ['popular', 'price_asc', 'price_desc', 'rating', 'new'] as const
 
 export default function BoutiquePage() {
