@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { Suspense } from 'react'
 import { getTranslations } from 'next-intl/server'
 import { Catalogue } from '@/components/boutique/Catalogue'
 
@@ -26,5 +27,9 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 }
 
 export default function CataloguePage() {
-  return <Catalogue />
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-sport-dark" />}>
+      <Catalogue />
+    </Suspense>
+  )
 }
