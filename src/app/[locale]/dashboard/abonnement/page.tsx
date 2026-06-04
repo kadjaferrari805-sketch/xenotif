@@ -11,6 +11,10 @@ type Sub = {
   stripe_subscription_id: string | null;
 }
 
+type Card = { brand: string; last4: string; exp_month: number; exp_year: number }
+type Invoice = { id: string; date: string; amount: number; currency: string; pdf: string | null }
+type Billing = { card: Card | null; invoices: Invoice[] }
+
 const STATUS_CLS: Record<string, string> = {
   trialing: 'bg-blue-500/15 text-blue-400 border-blue-500/30',
   active:   'bg-emerald-500/15 text-emerald-400 border-emerald-500/30',
@@ -42,11 +46,18 @@ export default function AbonnementPage() {
   const [syncing, setSyncing] = useState(false)
   const [syncMsg, setSyncMsg] = useState('')
   const [syncEmail, setSyncEmail] = useState('')
+  const [billing, setBilling] = useState<Billing | null>(null)
 
   useEffect(() => {
     fetch('/api/subscription')
       .then(r => r.json())
-      .then(data => { setSub(data); setLoading(false) })
+      .then(data => {
+        setSub(data)
+        setLoading(false)
+        if (data?.status) {
+          fetch('/api/subscription/billing').then(r => r.json()).then(setBilling).catch(() => {})
+        }
+      })
       .catch(() => setLoading(false))
   }, [])
 
@@ -244,16 +255,48 @@ export default function AbonnementPage() {
         </ul>
       </div>
 
+      {/* Paiement & factures — affichés directement sur le site */}
+      <div className="bg-sport-card border border-sport-border rounded-2xl p-6 mb-6">
+        <h3 className="text-sm font-black text-white mb-4">{t('billingTitle')}</h3>
+
+        {billing?.card ? (
+          <div className="flex items-center gap-3 text-sm mb-5">
+            <CreditCard size={16} className="text-sport-gray shrink-0" />
+            <span className="text-white capitalize">{billing.card.brand} •••• {billing.card.last4}</span>
+            <span className="text-sport-gray text-xs">{t('expires')} {String(billing.card.exp_month).padStart(2, '0')}/{billing.card.exp_year}</span>
+          </div>
+        ) : (
+          <p className="text-sport-gray text-sm mb-5">{t('noCard')}</p>
+        )}
+
+        <p className="text-[11px] font-bold text-white uppercase tracking-wider mb-3">{t('invoicesTitle')}</p>
+        {billing && billing.invoices.length > 0 ? (
+          <div className="space-y-2.5">
+            {billing.invoices.map(inv => (
+              <div key={inv.id} className="flex items-center justify-between gap-3 text-sm border-b border-sport-border pb-2.5 last:border-0">
+                <span className="text-sport-gray">{new Date(inv.date).toLocaleDateString(dateLocale, { day: 'numeric', month: 'short', year: 'numeric' })}</span>
+                <span className="flex-1 text-right text-white font-semibold">{inv.amount.toFixed(2)} {inv.currency === 'EUR' ? '€' : inv.currency}</span>
+                {inv.pdf
+                  ? <a href={inv.pdf} target="_blank" rel="noopener noreferrer" className="shrink-0 text-sport-orange text-xs font-bold hover:underline">{t('download')}</a>
+                  : <span className="shrink-0 text-sport-gray text-xs">—</span>}
+              </div>
+            ))}
+          </div>
+        ) : (
+          <p className="text-sport-gray text-sm">{t('noInvoices')}</p>
+        )}
+      </div>
+
       {/* Actions */}
       <div className="space-y-3">
         <button
           onClick={openPortal}
           disabled={portalLoading}
-          className="w-full bg-sport-orange text-white py-3.5 rounded-full font-bold text-sm hover:bg-orange-600 transition-all inline-flex items-center justify-center gap-2 disabled:opacity-60 shadow-lg shadow-sport-orange/20"
+          className="w-full border border-sport-border text-white py-3.5 rounded-full font-bold text-sm hover:border-sport-orange hover:text-sport-orange transition-all inline-flex items-center justify-center gap-2 disabled:opacity-60"
         >
-          {portalLoading ? <><span className="w-4 h-4 border-2 border-white/40 border-t-white rounded-full animate-spin" />{t('loading')}</> : <><CreditCard size={14} /> {t('managePayment')}</>}
+          {portalLoading ? <><span className="w-4 h-4 border-2 border-white/40 border-t-white rounded-full animate-spin" />{t('loading')}</> : <><CreditCard size={14} /> {t('updateCard')}</>}
         </button>
-        <p className="text-[11px] text-sport-gray text-center">{t('manageHint')}</p>
+        <p className="text-[11px] text-sport-gray text-center">{t('updateCardHint')}</p>
         {portalError && (
           <p className="text-xs text-orange-400 bg-orange-400/10 border border-orange-400/20 rounded-xl px-4 py-3 leading-relaxed">{portalError}</p>
         )}
