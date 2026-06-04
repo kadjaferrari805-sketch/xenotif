@@ -136,13 +136,17 @@ export function ProductDetail({ product }: { product: Product }) {
               )}
             </div>
 
-            {/* Livraison info */}
-            <div className="mt-6 flex flex-wrap gap-3 text-xs text-sport-gray">
+            {/* Réassurance (paiement, livraison, accès) — chips visibles sous le CTA */}
+            <div className="mt-6 flex flex-wrap gap-2">
               {(t.raw(
                 product.isAffiliate ? 'detail.shippingAffiliate'
                   : product.type === 'physical' ? 'detail.shippingPhysical'
                   : 'detail.shippingDigital',
-              ) as string[]).map((line) => <span key={line}>{line}</span>)}
+              ) as string[]).map((line) => (
+                <span key={line} className="inline-flex items-center rounded-full border border-sport-border bg-sport-card px-3 py-1.5 text-xs font-semibold text-sport-gray">
+                  {line}
+                </span>
+              ))}
             </div>
 
             {/* Tags */}

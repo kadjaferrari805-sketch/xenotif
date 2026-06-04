@@ -42,12 +42,23 @@
     "switch": "Change language"
   },
   "home": {
+    "sticky": {
+      "lead": "Ready to transform your body?",
+      "trial": "7-day free trial",
+      "pro": "Pro — €9.99/mo",
+      "elite": "Elite — €24.99/mo",
+      "proAria": "Subscribe to the Pro plan — €9.99 per month",
+      "eliteAria": "Subscribe to the Elite plan — €24.99 per month",
+      "ariaRegion": "Quick subscribe",
+      "dismiss": "Close the subscription bar"
+    },
     "metaTitle": "Xenotif® — Forge your body. Push your limits.",
     "metaDescription": "The premium fitness platform — 10 disciplines, personalized AI coaching, 300+ workouts. Join 12,000+ athletes transforming their bodies with Xenotif®.",
     "hero": {
       "eyebrow": "The Premium Sports Platform",
-      "ctaPrimary": "Join for free",
+      "ctaPrimary": "Start your free trial",
       "ctaSecondary": "Explore the disciplines",
+      "ctaNote": "€0 for 7 days · Cancel anytime",
       "scroll": "Scroll",
       "slides": [
         { "tag": "🏋️ Strength & Power", "headline": "FORGE YOUR BODY.", "accent": "PUSH YOUR LIMITS." },
@@ -121,7 +132,7 @@
       "title": "Get started in 4 steps",
       "subtitle": "From sign-up to your first results — simple, fast, effective",
       "cta": "Start now",
-      "ctaNote": "Free · No commitment · No credit card",
+      "ctaNote": "Free · No commitment · Cancel anytime",
       "steps": [
         { "title": "Create your account", "description": "Sign up in 2 minutes. Fill in your sports profile for personalized tracking from day one." },
         { "title": "Choose your program", "description": "Our AI analyzes your level, your goals and your available time to recommend the ideal program." },
@@ -145,7 +156,7 @@
     "pricing": {
       "label": "Pricing",
       "title": "Simple. Transparent. No surprises.",
-      "subtitle": "7-day free trial on all paid plans — no credit card required",
+      "subtitle": "7-day free trial on all paid plans — €0 today, cancel in one click before the first charge",
       "monthly": "Monthly",
       "annual": "Annual",
       "save": "-20%",
@@ -347,7 +358,7 @@
       ],
       "primary": "Start for free",
       "pricing": "See pricing →",
-      "noCard": "No card required",
+      "noCard": "7-day free trial",
       "freeCancel": "Cancel anytime"
     },
     "faq": {
@@ -453,7 +464,7 @@
       "addToCart": "Add to cart",
       "shippingAffiliate": ["🔗 Amazon affiliate link", "📦 Shipped by Amazon", "🔒 Secure payment"],
       "shippingPhysical": ["🚚 Free shipping over €50", "↩️ 30-day returns", "🔒 Secure payment"],
-      "shippingDigital": ["⚡ Instant download", "📱 Works on all devices", "♾️ Lifetime access"],
+      "shippingDigital": ["⚡ Instant download", "📱 Works on all devices", "♾️ Lifetime access", "🔒 Secure payment"],
       "related": "You may also like"
     },
     "panier": {

@@ -10,7 +10,7 @@ describe('Hero', () => {
 
   it('renders primary CTA link', () => {
     renderWithIntl(<Hero />)
-    expect(screen.getByRole('link', { name: /rejoindre gratuitement/i })).toBeInTheDocument()
+    expect(screen.getByRole('link', { name: /commence ton essai gratuit/i })).toBeInTheDocument()
   })
 
   it('renders secondary CTA link', () => {
