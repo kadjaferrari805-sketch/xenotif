@@ -56,12 +56,13 @@ export function Nav() {
       // de la page), y compris au scroll.
       className="sticky top-0 z-50 transition-all duration-300 bg-transparent border-b border-transparent"
     >
-      <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+      {/* Grille 3 colonnes : logo (gauche) · liens (vraiment centrés) · actions (droite) */}
+      <div className="max-w-6xl mx-auto px-6 h-16 grid grid-cols-[1fr_auto_1fr] items-center">
         {/* Logo */}
         <Logo href="/" size="sm" />
 
         {/* Desktop links */}
-        <div className="hidden md:flex gap-7 text-sm font-medium text-sport-gray">
+        <div className="hidden md:flex justify-center gap-7 text-sm font-medium text-sport-gray whitespace-nowrap">
           {NAV_LINKS.map((link) => (
             <Link
               key={link.href}
@@ -75,7 +76,7 @@ export function Nav() {
         </div>
 
         {/* Desktop actions */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center justify-end gap-3">
           <div className="hidden md:block">
             <LanguageSwitcher />
           </div>
