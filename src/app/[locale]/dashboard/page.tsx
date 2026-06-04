@@ -1,7 +1,7 @@
 import { redirect } from 'next/navigation'
 import { getTranslations, getLocale } from 'next-intl/server'
 import { Link } from '@/i18n/navigation'
-import { createClient } from '@/lib/supabase/server'
+import { createClient, createServiceClient } from '@/lib/supabase/server'
 import { CheckCircle, Flame, TrendingUp, ArrowRight, Zap, Clock, Award } from 'lucide-react'
 import { DISCIPLINE_CONTENT } from '@/lib/disciplines'
 import { LiveActivity } from '@/components/dashboard/LiveActivity'
@@ -28,9 +28,11 @@ export default async function DashboardPage() {
   const locale = await getLocale()
   const dateLocale = locale === 'en' ? 'en-US' : 'fr-FR'
 
+  // `subscriptions` est protégée par RLS (service-role) → lecture via service, filtrée par user.id.
+  const service = await createServiceClient()
   const [{ data: profile }, { data: subscription }, { data: allWorkouts }, { data: progress }] = await Promise.all([
     supabase.from('profiles').select('full_name').eq('id', user.id).maybeSingle(),
-    supabase.from('subscriptions').select('*').eq('user_id', user.id).maybeSingle(),
+    service.from('subscriptions').select('*').eq('user_id', user.id).maybeSingle(),
     supabase.from('workouts').select('*').eq('user_id', user.id).order('completed_at', { ascending: false }).limit(60),
     supabase.from('progress').select('*').eq('user_id', user.id),
   ])

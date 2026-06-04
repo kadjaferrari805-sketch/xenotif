@@ -9,12 +9,14 @@ export async function GET() {
     const { data: { user } } = await supabase.auth.getUser()
     if (!user) return NextResponse.json({ error: 'Non authentifié' }, { status: 401 })
 
-    // Try Supabase first
-    const { data: sub } = await supabase
+    // Lecture en service-role : la table `subscriptions` est protégée par RLS et
+    // n'est pas lisible par le client authentifié. On filtre par user.id (sûr).
+    const service = await createServiceClient()
+    const { data: sub } = await service
       .from('subscriptions')
       .select('*')
       .eq('user_id', user.id)
-      .single()
+      .maybeSingle()
 
     if (sub) return NextResponse.json(sub)
 
@@ -50,7 +52,6 @@ export async function GET() {
     }
 
     // Sync to Supabase so next load is instant
-    const service = await createServiceClient()
     await service.from('subscriptions').upsert(row, { onConflict: 'user_id' })
 
     return NextResponse.json(row)
