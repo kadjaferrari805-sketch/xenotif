@@ -211,7 +211,7 @@ export const PRODUCTS: Product[] = [
     description: 'Rouleau de massage multizone avec surface GRID brevetée. Simule les mains d\'un masseur. Récupération optimale.',
     longDescription: 'Le GRID de TriggerPoint est le foam roller de référence des professionnels. Sa surface à 3 zones distinctes (creux, tubulaire, plat) simule les doigts, paumes et pouces d\'un masseur. Le corps creux au centre assure la durabilité et l\'absorption de poids jusqu\'à 160kg. Inclus : accès à la bibliothèque vidéo complète.',
     type: 'physical', price_cents: 4499, stripe_price_id: 'price_foam_roller',
-    images: ['https://images.pexels.com/photos/16513603/pexels-photo-16513603.jpeg?auto=compress&cs=tinysrgb&w=800'],
+    images: ['https://images.pexels.com/photos/20890283/pexels-photo-20890283.jpeg?auto=compress&cs=tinysrgb&w=800'],
     badge: '🔵 Pro', category: 'Recovery', rating: 4.7, reviews: 8921, inStock: true,
     tags: ['foam roller', 'récupération', 'massage', 'mobilité'],
     disciplines: ['running-cardio', 'musculation', 'yoga', 'stretching'],
