@@ -423,6 +423,14 @@
     "emptyTitle": "No products found",
     "emptyDesc": "Try other terms or reset the filters.",
     "amazonDisclaimer": "🔗 Some products are Amazon affiliate links. By purchasing through them, you support Xenotif® at no extra cost to you. Prices and availability may vary on Amazon.",
+    "landing": {
+      "bySportTitle": "Shop by sport",
+      "bySportSubtitle": "Pick your discipline and find the perfect gear.",
+      "bestsellersTitle": "Our bestsellers",
+      "bestsellersSubtitle": "The Xenotif® community's favorite products.",
+      "ctaTitle": "Ready to gear up?",
+      "ctaText": "Explore our full catalogue and find exactly what you need."
+    },
     "catalogue": {
       "badge": "📖 Full catalogue",
       "title": "The Full <o>Catalogue</o>",

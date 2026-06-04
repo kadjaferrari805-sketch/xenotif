@@ -423,6 +423,14 @@
     "emptyTitle": "Aucun produit trouvé",
     "emptyDesc": "Essaie avec d'autres termes ou réinitialise les filtres.",
     "amazonDisclaimer": "🔗 Certains produits sont des liens affiliés Amazon. En achetant via ces liens, tu soutiens Xenotif® sans coût supplémentaire pour toi. Les prix et disponibilités peuvent varier selon Amazon.",
+    "landing": {
+      "bySportTitle": "Parcourir par sport",
+      "bySportSubtitle": "Choisis ta discipline et trouve l'équipement parfait pour toi.",
+      "bestsellersTitle": "Nos best-sellers",
+      "bestsellersSubtitle": "Les produits préférés de la communauté Xenotif®.",
+      "ctaTitle": "Prêt à t'équiper ?",
+      "ctaText": "Explore tout notre catalogue et trouve exactement ce qu'il te faut."
+    },
     "catalogue": {
       "badge": "📖 Catalogue complet",
       "title": "Le Catalogue <o>Complet</o>",

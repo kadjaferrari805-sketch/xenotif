@@ -1,43 +1,36 @@
 'use client'
-import { useState, useMemo } from 'react'
+
+import { useMemo } from 'react'
 import { useTranslations, useLocale } from 'next-intl'
-import { motion, AnimatePresence } from 'framer-motion'
-import { Search, SlidersHorizontal, Zap, ShoppingBag, Star, TrendingUp, X, ArrowRight, LayoutGrid } from 'lucide-react'
+import { motion } from 'framer-motion'
 import { Link } from '@/i18n/navigation'
+import { Zap, ShoppingBag, Star, TrendingUp, ArrowRight, LayoutGrid } from 'lucide-react'
 import { ProductCard } from '@/components/boutique/ProductCard'
-import { getCategories, CATEGORY_ICONS } from '@/lib/boutique/products'
 import { getProductsLocalized } from '@/lib/boutique/products.en'
 
-const DISCIPLINE_IDS = ['musculation', 'running-cardio', 'cyclisme', 'natation', 'hiit', 'crossfit', 'yoga', 'boxing'] as const
-const SORT_VALUES = ['popular', 'price_asc', 'price_desc', 'rating', 'new'] as const
+// Disciplines mises en avant (par discipline principale des produits).
+const DISCIPLINE_ORDER = ['musculation', 'running-cardio', 'cyclisme', 'natation', 'hiit', 'crossfit', 'yoga'] as const
 
 export default function BoutiquePage() {
   const t = useTranslations('boutique')
   const locale = useLocale()
   const products = getProductsLocalized(locale)
 
-  const [search, setSearch] = useState('')
-  const [selectedCategory, setSelectedCategory] = useState<string>('all')
-  const [selectedDiscipline, setSelectedDiscipline] = useState<string>('all')
-  const [sort, setSort] = useState('popular')
-  const [priceRange] = useState<[number, number]>([0, 50000])
-  const [showFilters, setShowFilters] = useState(false)
+  // Best-sellers : les 8 produits les plus notés/populaires (pas tout le catalogue).
+  const bestsellers = useMemo(
+    () => [...products].sort((a, b) => b.reviews - a.reviews).slice(0, 8),
+    [products],
+  )
 
-  const categories = ['all', ...getCategories()]
-
-  const filtered = useMemo(() => {
-    let list = products
-    if (search) list = list.filter(p => p.name.toLowerCase().includes(search.toLowerCase()) || p.tags.some(tag => tag.toLowerCase().includes(search.toLowerCase())))
-    if (selectedCategory !== 'all') list = list.filter(p => p.category === selectedCategory)
-    if (selectedDiscipline !== 'all') list = list.filter(p => p.disciplines?.includes(selectedDiscipline))
-    list = list.filter(p => p.price_cents >= priceRange[0] && p.price_cents <= priceRange[1])
-    switch (sort) {
-      case 'price_asc':  return [...list].sort((a, b) => a.price_cents - b.price_cents)
-      case 'price_desc': return [...list].sort((a, b) => b.price_cents - a.price_cents)
-      case 'rating':     return [...list].sort((a, b) => b.rating - a.rating)
-      default:           return [...list].sort((a, b) => b.reviews - a.reviews)
+  // Disciplines disponibles + nombre de produits (discipline principale).
+  const disciplines = useMemo(() => {
+    const count = new Map<string, number>()
+    for (const p of products) {
+      const d = p.disciplines?.[0]
+      if (d) count.set(d, (count.get(d) ?? 0) + 1)
     }
-  }, [products, search, selectedCategory, selectedDiscipline, sort, priceRange])
+    return DISCIPLINE_ORDER.filter(d => count.has(d)).map(d => ({ id: d, count: count.get(d)! }))
+  }, [products])
 
   const stats = [
     { icon: ShoppingBag, label: t('stats.products'), value: `${products.length}+` },
@@ -48,69 +41,48 @@ export default function BoutiquePage() {
 
   return (
     <div className="min-h-screen bg-sport-dark">
-      {/* Hero */}
-      <section className="relative overflow-hidden pt-24 pb-16">
+      {/* ─── Hero ─── */}
+      <section className="relative overflow-hidden pt-24 pb-14">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(255,69,0,0.15),transparent)]" />
         <div className="absolute top-20 right-10 h-72 w-72 rounded-full bg-sport-orange/5 blur-3xl" />
-        <div className="absolute bottom-0 left-10 h-48 w-48 rounded-full bg-sport-lime/5 blur-2xl" />
 
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6">
-          <div className="text-center mb-12">
+          <div className="text-center mb-10">
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
               className="inline-flex items-center gap-2 rounded-full border border-sport-orange/30 bg-sport-orange/10 px-4 py-1.5 text-xs font-black text-sport-orange uppercase tracking-wider mb-6">
               {t('badge')}
             </motion.div>
             <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}
-              className="text-5xl font-black leading-tight tracking-tight text-white sm:text-6xl lg:text-7xl mb-4">
+              className="text-4xl font-black leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl mb-4">
               {t.rich('heroTitle', { o: (c) => <span className="text-sport-orange">{c}</span>, br: () => <br /> })}
             </motion.h1>
             <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}
-              className="text-lg text-sport-gray max-w-2xl mx-auto mb-10">
+              className="text-base sm:text-lg text-sport-gray max-w-2xl mx-auto mb-9">
               {t('heroSubtitle')}
             </motion.p>
 
-            {/* Search bar */}
+            {/* CTA principal → catalogue complet */}
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}
-              className="mx-auto max-w-2xl">
-              <div className="relative flex items-center gap-3">
-                <div className="relative flex-1">
-                  <Search size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-sport-gray" />
-                  <input
-                    value={search} onChange={e => setSearch(e.target.value)}
-                    placeholder={t('searchPlaceholder')}
-                    className="w-full rounded-2xl border border-sport-border bg-sport-card pl-12 pr-4 py-4 text-white placeholder:text-sport-gray focus:outline-none focus:border-sport-orange transition-colors text-sm"
-                  />
-                  {search && (
-                    <button onClick={() => setSearch('')} className="absolute right-4 top-1/2 -translate-y-1/2 text-sport-gray hover:text-white">
-                      <X size={16} />
-                    </button>
-                  )}
-                </div>
-                <button onClick={() => setShowFilters(f => !f)}
-                  className={`flex items-center gap-2 rounded-2xl border px-5 py-4 text-sm font-bold transition-all ${showFilters ? 'border-sport-orange bg-sport-orange/15 text-sport-orange' : 'border-sport-border bg-sport-card text-sport-gray hover:text-white'}`}>
-                  <SlidersHorizontal size={16} />
-                  {t('filters')}
-                </button>
-              </div>
-
-              {/* Lien vers le catalogue complet (tous les produits, sans catégorie) */}
+              className="flex flex-col sm:flex-row items-center justify-center gap-3">
               <Link href="/boutique/catalogue"
-                className="mt-4 inline-flex items-center gap-2 rounded-full border border-sport-orange/40 bg-sport-orange/10 px-5 py-2.5 text-sm font-bold text-sport-orange hover:bg-sport-orange/20 transition-all">
-                <LayoutGrid size={15} />
-                {t('catalogue.link')}
-                <ArrowRight size={14} />
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full bg-sport-orange px-7 py-3.5 text-sm font-bold text-white hover:bg-orange-600 active:scale-95 transition-all shadow-lg shadow-sport-orange/25">
+                <LayoutGrid size={16} /> {t('catalogue.link')} <ArrowRight size={15} />
               </Link>
+              <a href="#bestsellers"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full border border-sport-border bg-sport-card px-7 py-3.5 text-sm font-bold text-white hover:border-white/20 transition-all">
+                {t('landing.bestsellersTitle')}
+              </a>
             </motion.div>
           </div>
 
-          {/* Stats bar */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-2">
+          {/* Stats */}
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
             {stats.map(({ icon: Icon, label, value }) => (
               <div key={label} className="flex items-center gap-3 rounded-xl border border-sport-border bg-sport-card/50 px-4 py-3">
                 <Icon size={16} className="text-sport-orange shrink-0" />
-                <div>
+                <div className="min-w-0">
                   <p className="text-sm font-black text-white">{value}</p>
-                  <p className="text-[10px] text-sport-gray">{label}</p>
+                  <p className="text-[10px] text-sport-gray truncate">{label}</p>
                 </div>
               </div>
             ))}
@@ -121,108 +93,69 @@ export default function BoutiquePage() {
       {/* Trust bar */}
       <div className="border-y border-sport-border bg-sport-card/30 py-4">
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
-          <div className="flex flex-wrap justify-center gap-6 text-xs font-semibold text-sport-gray">
-            {(t.raw('trust') as string[]).map(b => (
-              <span key={b}>{b}</span>
-            ))}
+          <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-xs font-semibold text-sport-gray">
+            {(t.raw('trust') as string[]).map(b => <span key={b}>{b}</span>)}
           </div>
         </div>
       </div>
 
-      {/* Filters panel */}
-      <AnimatePresence>
-        {showFilters && (
-          <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }}
-            className="overflow-hidden border-b border-sport-border bg-sport-card/50">
-            <div className="mx-auto max-w-7xl px-4 sm:px-6 py-6">
-              <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-                {/* Catégories */}
-                <div>
-                  <p className="text-xs font-bold uppercase tracking-wider text-sport-gray mb-3">{t('filterCategory')}</p>
-                  <div className="flex flex-wrap gap-2">
-                    {categories.map(cat => (
-                      <button key={cat} onClick={() => setSelectedCategory(cat)}
-                        className={`rounded-full px-3 py-1.5 text-xs font-bold transition-all ${selectedCategory === cat ? 'bg-sport-orange text-white' : 'border border-sport-border text-sport-gray hover:text-white'}`}>
-                        {cat === 'all' ? t('allCategory') : `${CATEGORY_ICONS[cat] ?? ''} ${t(`categories.${cat}`)}`}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Discipline */}
-                <div>
-                  <p className="text-xs font-bold uppercase tracking-wider text-sport-gray mb-3">{t('filterDiscipline')}</p>
-                  <div className="flex flex-wrap gap-2">
-                    <button onClick={() => setSelectedDiscipline('all')}
-                      className={`rounded-full px-3 py-1.5 text-xs font-bold transition-all ${selectedDiscipline === 'all' ? 'bg-sport-orange text-white' : 'border border-sport-border text-sport-gray hover:text-white'}`}>
-                      {t('allDisciplines')}
-                    </button>
-                    {DISCIPLINE_IDS.map(id => (
-                      <button key={id} onClick={() => setSelectedDiscipline(id)}
-                        className={`rounded-full px-3 py-1.5 text-xs font-bold transition-all ${selectedDiscipline === id ? 'bg-sport-orange text-white' : 'border border-sport-border text-sport-gray hover:text-white'}`}>
-                        {t(`disciplinesFilter.${id}`)}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Tri */}
-                <div>
-                  <p className="text-xs font-bold uppercase tracking-wider text-sport-gray mb-3">{t('filterSort')}</p>
-                  <select value={sort} onChange={e => setSort(e.target.value)}
-                    className="w-full rounded-xl border border-sport-border bg-sport-card px-3 py-2 text-sm text-white focus:outline-none focus:border-sport-orange">
-                    {SORT_VALUES.map(v => <option key={v} value={v}>{t(`sort.${v}`)}</option>)}
-                  </select>
-                </div>
-
-                {/* Résumé */}
-                <div className="flex flex-col justify-end">
-                  <button onClick={() => { setSelectedCategory('all'); setSelectedDiscipline('all'); setSearch(''); setSort('popular') }}
-                    className="rounded-xl border border-sport-border px-4 py-2 text-xs font-bold text-sport-gray hover:text-white transition-colors">
-                    {t('reset')}
-                  </button>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
-      {/* Main content */}
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 py-12">
-        {/* Count + sort mobile */}
-        <div className="flex items-center justify-between mb-8">
-          <p className="text-sm font-semibold text-sport-gray">
-            <span className="font-black text-white">{t('count', { count: filtered.length })}</span>
-            {search && <span> {t('forSearch', { q: search })}</span>}
-          </p>
-          <select value={sort} onChange={e => setSort(e.target.value)}
-            className="rounded-xl border border-sport-border bg-sport-card px-3 py-2 text-xs text-white focus:outline-none sm:hidden">
-            {SORT_VALUES.map(v => <option key={v} value={v}>{t(`sort.${v}`)}</option>)}
-          </select>
+      {/* ─── Parcourir par sport ─── */}
+      <section className="mx-auto max-w-7xl px-4 sm:px-6 py-14">
+        <div className="mb-8 text-center sm:text-left">
+          <h2 className="text-2xl sm:text-3xl font-black text-white mb-2">{t('landing.bySportTitle')}</h2>
+          <p className="text-sport-gray text-sm">{t('landing.bySportSubtitle')}</p>
         </div>
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
+          {disciplines.map(({ id, count }) => {
+            const label = t(`disciplinesFilter.${id}`)
+            const [emoji, ...rest] = label.split(' ')
+            const name = rest.join(' ')
+            return (
+              <Link key={id} href={`/boutique/catalogue?sport=${id}`}
+                className="group relative overflow-hidden rounded-2xl border border-sport-border bg-sport-card p-5 hover:border-sport-orange/50 hover:-translate-y-1 transition-all">
+                <div className="text-3xl mb-3" aria-hidden="true">{emoji}</div>
+                <p className="font-black text-white group-hover:text-sport-orange transition-colors">{name}</p>
+                <p className="text-xs text-sport-gray mt-0.5">{t('count', { count })}</p>
+                <ArrowRight size={16} className="absolute top-5 right-5 text-sport-gray group-hover:text-sport-orange group-hover:translate-x-0.5 transition-all" />
+              </Link>
+            )
+          })}
+        </div>
+      </section>
 
-        {filtered.length === 0 ? (
-          <div className="py-24 text-center">
-            <p className="text-5xl mb-4">🔍</p>
-            <h2 className="text-xl font-black text-white mb-2">{t('emptyTitle')}</h2>
-            <p className="text-sport-gray">{t('emptyDesc')}</p>
+      {/* ─── Best-sellers ─── */}
+      <section id="bestsellers" className="mx-auto max-w-7xl px-4 sm:px-6 pb-14 scroll-mt-20">
+        <div className="flex items-end justify-between gap-4 mb-8">
+          <div>
+            <h2 className="text-2xl sm:text-3xl font-black text-white mb-2">{t('landing.bestsellersTitle')}</h2>
+            <p className="text-sport-gray text-sm">{t('landing.bestsellersSubtitle')}</p>
           </div>
-        ) : (
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-            {filtered.map((p, i) => <ProductCard key={p.id} product={p} index={i} />)}
-          </div>
-        )}
+          <Link href="/boutique/catalogue" className="shrink-0 inline-flex items-center gap-1.5 text-sm font-bold text-sport-orange hover:underline whitespace-nowrap">
+            {t('catalogue.seeAll')}
+          </Link>
+        </div>
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          {bestsellers.map((p, i) => <ProductCard key={p.id} product={p} index={i} />)}
+        </div>
+      </section>
+
+      {/* ─── CTA final → catalogue ─── */}
+      <section className="mx-auto max-w-7xl px-4 sm:px-6 pb-16">
+        <div className="relative overflow-hidden rounded-3xl border border-sport-orange/30 bg-gradient-to-br from-sport-orange/20 via-sport-card to-sport-card p-8 sm:p-12 text-center">
+          <div aria-hidden="true" className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full bg-sport-orange/10 blur-3xl" />
+          <h2 className="relative text-2xl sm:text-3xl font-black text-white mb-3">{t('landing.ctaTitle')}</h2>
+          <p className="relative text-sport-gray text-sm sm:text-base max-w-xl mx-auto mb-7">{t('landing.ctaText')}</p>
+          <Link href="/boutique/catalogue"
+            className="relative inline-flex items-center justify-center gap-2 rounded-full bg-sport-orange px-8 py-4 text-sm font-bold text-white hover:bg-orange-600 active:scale-95 transition-all shadow-lg shadow-sport-orange/30">
+            <LayoutGrid size={16} /> {t('catalogue.link')} <ArrowRight size={15} />
+          </Link>
+        </div>
 
         {/* Amazon disclaimer */}
-        {filtered.some(p => p.isAffiliate) && (
-          <div className="mt-12 rounded-2xl border border-sport-border bg-sport-card/30 p-4 text-center">
-            <p className="text-xs text-sport-gray">
-              {t('amazonDisclaimer')}
-            </p>
-          </div>
-        )}
-      </div>
+        <div className="mt-10 rounded-2xl border border-sport-border bg-sport-card/30 p-4 text-center">
+          <p className="text-xs text-sport-gray">{t('amazonDisclaimer')}</p>
+        </div>
+      </section>
     </div>
   )
 }
