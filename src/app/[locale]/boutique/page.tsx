@@ -40,7 +40,7 @@ export default function BoutiquePage() {
   ]
 
   return (
-    <div className="min-h-screen bg-sport-dark">
+    <div className="min-h-screen bg-sport-dark overflow-x-hidden">
       {/* ─── Hero ─── */}
       <section className="relative overflow-hidden pt-24 pb-14">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(255,69,0,0.15),transparent)]" />
@@ -53,7 +53,7 @@ export default function BoutiquePage() {
               {t('badge')}
             </motion.div>
             <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}
-              className="text-4xl font-black leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl mb-4">
+              className="text-3xl font-black leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl mb-4 px-2">
               {t.rich('heroTitle', { o: (c) => <span className="text-sport-orange">{c}</span>, br: () => <br /> })}
             </motion.h1>
             <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}
