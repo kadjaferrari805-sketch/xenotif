@@ -56,13 +56,15 @@ export function Nav() {
       // de la page), y compris au scroll.
       className="sticky top-0 z-50 transition-all duration-300 bg-transparent border-b border-transparent"
     >
-      {/* Grille 3 colonnes : logo (gauche) · liens (vraiment centrés) · actions (droite) */}
-      <div className="max-w-6xl mx-auto px-6 h-16 grid grid-cols-[1fr_auto_1fr] items-center">
+      {/* Logo (gauche) · liens centrés dans l'espace dispo (flex-1) · actions (droite) */}
+      <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between gap-4">
         {/* Logo */}
-        <Logo href="/" size="sm" />
+        <div className="shrink-0">
+          <Logo href="/" size="sm" />
+        </div>
 
         {/* Desktop links */}
-        <div className="hidden md:flex justify-center gap-7 text-sm font-medium text-sport-gray whitespace-nowrap">
+        <div className="hidden md:flex flex-1 justify-center gap-7 text-sm font-medium text-sport-gray whitespace-nowrap">
           {NAV_LINKS.map((link) => (
             <Link
               key={link.href}
@@ -76,7 +78,7 @@ export function Nav() {
         </div>
 
         {/* Desktop actions */}
-        <div className="flex items-center justify-end gap-3">
+        <div className="flex items-center justify-end gap-3 shrink-0">
           <div className="hidden md:block">
             <LanguageSwitcher />
           </div>
@@ -105,10 +107,12 @@ export function Nav() {
               </Link>
             </>
           )}
-          {/* Télécharger l'app (desktop, après « Rejoindre ») : icône seule en md, libellé complet en xl+ */}
+          {/* Télécharger l'app (desktop, après « Rejoindre ») : bouton compact icône
+              pour garder la barre aérée et bien centrée. Le libellé est dans l'aria + la modale. */}
           <AppDownload
-            triggerClassName="hidden md:inline-flex items-center gap-1.5 border border-sport-border text-white/90 hover:text-white hover:border-white/30 px-3.5 py-2 rounded-full text-sm font-bold transition-all"
-            labelClassName="hidden xl:inline"
+            triggerClassName="hidden md:inline-flex items-center justify-center h-9 w-9 rounded-full border border-sport-border text-white/90 hover:text-white hover:border-white/30 transition-all"
+            labelClassName="hidden"
+            iconSize={16}
           />
           <button
             ref={hamburgerRef}
