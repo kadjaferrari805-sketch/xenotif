@@ -116,3 +116,12 @@
 .ambient-glow {
   animation: pulse-glow 4s ease-in-out infinite;
 }
+
+/* ── Masquer la barre de défilement (rangées de puces horizontales) ── */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
