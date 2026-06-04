@@ -3,7 +3,7 @@
 import { useState, useMemo } from 'react'
 import { useTranslations, useLocale } from 'next-intl'
 import { Link } from '@/i18n/navigation'
-import { Search, X, ArrowLeft, ArrowDownNarrowWide, ArrowRight } from 'lucide-react'
+import { Search, X, ArrowLeft, ArrowDownNarrowWide } from 'lucide-react'
 import { ProductCard } from '@/components/boutique/ProductCard'
 import { getProductsLocalized } from '@/lib/boutique/products.en'
 import type { Product } from '@/lib/boutique/products'
@@ -166,32 +166,8 @@ export function Catalogue() {
             <p className="text-sport-gray">{t('emptyDesc')}</p>
           </div>
         ) : discipline === 'all' ? (
-          // Mode « Tous » : tuiles « Parcourir par sport » (index) + sections par discipline
-          <>
-            <div className="mb-12">
-              <div className="mb-6">
-                <h2 className="text-2xl font-black text-white mb-1">{t('landing.bySportTitle')}</h2>
-                <p className="text-sport-gray text-sm">{t('landing.bySportSubtitle')}</p>
-              </div>
-              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
-                {sections.map(({ id, items }) => {
-                  const label = t(`disciplinesFilter.${id}`)
-                  const [emoji, ...rest] = label.split(' ')
-                  const name = rest.join(' ')
-                  return (
-                    <a key={id} href={`#disc-${id}`}
-                      className="group relative overflow-hidden rounded-2xl border border-sport-border bg-sport-card p-5 hover:border-sport-orange/50 hover:-translate-y-1 transition-all">
-                      <div className="text-3xl mb-3" aria-hidden="true">{emoji}</div>
-                      <p className="font-black text-white group-hover:text-sport-orange transition-colors">{name}</p>
-                      <p className="text-xs text-sport-gray mt-0.5">{t('count', { count: items.length })}</p>
-                      <ArrowRight size={16} className="absolute top-5 right-5 text-sport-gray group-hover:text-sport-orange group-hover:translate-x-0.5 transition-all" />
-                    </a>
-                  )
-                })}
-              </div>
-            </div>
-
-            <div className="space-y-14">
+          // Mode « Tous » : sections par discipline
+          <div className="space-y-14">
             {sections.map(({ id, items }) => (
               <section key={id} aria-labelledby={`disc-${id}`} className="scroll-mt-32">
                 <div className="flex items-baseline gap-3 mb-6 border-b border-sport-border pb-3">
@@ -206,8 +182,7 @@ export function Catalogue() {
                 </div>
               </section>
             ))}
-            </div>
-          </>
+          </div>
         ) : (
           // Mode « un sport » : grille filtrée
           <>
