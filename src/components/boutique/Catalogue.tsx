@@ -2,7 +2,6 @@
 
 import { useState, useMemo } from 'react'
 import { useTranslations, useLocale } from 'next-intl'
-import { useSearchParams } from 'next/navigation'
 import { Link } from '@/i18n/navigation'
 import { Search, X, ArrowLeft, ArrowDownNarrowWide, ArrowRight } from 'lucide-react'
 import { ProductCard } from '@/components/boutique/ProductCard'
@@ -36,14 +35,8 @@ export function Catalogue() {
   const locale = useLocale()
   const products = getProductsLocalized(locale)
 
-  // Discipline initiale depuis l'URL (?sport=cyclisme) — ouverte filtrée depuis la boutique.
-  const params = useSearchParams()
-  const initialSport = params.get('sport') ?? 'all'
-
   const [search, setSearch] = useState('')
-  const [discipline, setDiscipline] = useState(
-    (DISCIPLINE_ORDER as readonly string[]).includes(initialSport) ? initialSport : 'all',
-  )
+  const [discipline, setDiscipline] = useState('all')
   const [sort, setSort] = useState('popular')
 
   // 1. Recherche sur tout le catalogue.
