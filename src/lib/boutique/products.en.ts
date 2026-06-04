@@ -222,14 +222,6 @@ const TEXT_EN: Record<string, ProductText> = {
     features: ['Anti-shock gel', 'Non-slip palm', 'Breathable back', 'Pull-off tabs', 'Half-finger'],
     tags: ['cycling gloves', 'cycling', 'anti-shock', 'grip'],
   },
-  c6: {
-    name: 'Puncture Repair Kit + Mini Pump',
-    badge: '🔧 Essential',
-    description: 'High-pressure mini pump, tire levers, patches and a multi-tool. Everything to fix a puncture wherever you are.',
-    longDescription: 'A puncture should never ruin a ride. This compact kit brings together the essentials: a high-pressure mini pump (Presta and Schrader compatible), tire levers, a self-adhesive patch kit and a multi-tool with Allen keys. Everything fits in a discreet saddle bag. Light and complete — the guarantee of getting going again in minutes, even in the middle of nowhere.',
-    features: ['Presta/Schrader mini pump', 'Tire levers', 'Self-adhesive patches', 'Allen multi-tool', 'Saddle bag included'],
-    tags: ['repair kit', 'bike pump', 'puncture', 'cycling'],
-  },
   c7: {
     name: 'Bike Water Bottle 750 ml + Cage',
     badge: '💧 Hydration',
@@ -266,7 +258,6 @@ const AMAZON_DE_KEYWORDS: Record<string, string> = {
   c3: 'fahrradlicht led aufladbar usb set',
   c4: 'radhose herren gepolstert',
   c5: 'fahrradhandschuhe halbfinger',
-  c6: 'fahrrad reparaturset minipumpe',
   c7: 'fahrrad trinkflasche flaschenhalter',
 }
 
