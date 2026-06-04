@@ -46,6 +46,10 @@
       "iosStep": "Share → 'Add to Home Screen'",
       "androidTitle": "Android (Chrome)",
       "androidStep": "Menu ⋮ → 'Install app'",
+      "installedTitle": "App already installed 🎉",
+      "successTitle": "You're all set! 🎉",
+      "openApp": "Open Xenotif",
+      "desktopHint": "You're on a computer. Scan this QR code with your phone to install the app directly.",
       "close": "Close"
     }
   },
