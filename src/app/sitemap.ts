@@ -38,6 +38,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ['/contact', { changeFrequency: 'yearly', priority: 0.5 }],
     ['/confidentialite', { changeFrequency: 'yearly', priority: 0.3 }],
     ['/mentions-legales', { changeFrequency: 'yearly', priority: 0.3 }],
+    ['/conditions-generales-vente', { changeFrequency: 'yearly', priority: 0.3 }],
   ]
 
   return [

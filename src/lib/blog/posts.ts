@@ -822,6 +822,280 @@ const BLOG_POSTS: BlogPost[] = [
       },
     ],
   },
+
+  // ─── ARTICLE 6 ──────────────────────────────────────────────────────────────
+  {
+    slug: 'programme-musculation-debutant-full-body',
+    title: 'Programme Musculation Débutant : le Full Body 3×/Semaine pour Bien Démarrer',
+    excerpt:
+      "Tu débutes la musculation ? Voici le programme full body 3 fois par semaine le plus efficace pour construire du muscle : exercices, séries, repos et conseils de progression.",
+    metaTitle: 'Programme Musculation Débutant — Full Body 3×/Semaine (Guide Complet)',
+    metaDescription:
+      "Le programme musculation débutant idéal : full body 3 fois par semaine, exercices détaillés, séries, repos, surcharge progressive et erreurs à éviter pour progresser vite.",
+    keywords: [
+      'programme musculation débutant',
+      'full body débutant',
+      'musculation débutant maison',
+      'programme prise de masse débutant',
+      'full body 3 fois par semaine',
+      'débuter la musculation',
+    ],
+    category: 'Musculation',
+    coverImage:
+      'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1200&q=80',
+    coverPosition: '50% 35%',
+    author: 'Thomas Mercier',
+    publishedAt: '2026-06-04T08:00:00Z',
+    readingMinutes: 10,
+    productSlugs: [
+      'programme-prise-masse-12-semaines',
+      'halteres-reglables-bowflex',
+      'bandes-elastiques-portentum-5',
+    ],
+    content: [
+      {
+        type: 'paragraph',
+        text: "Tu veux te muscler mais tu ne sais pas par où commencer ? Bonne nouvelle : en tant que débutant, tu es dans la meilleure phase de ta vie d'athlète. Tes muscles répondent vite, tes gains sont rapides, et tu n'as besoin ni d'un programme compliqué ni de suppléments coûteux. Ce dont tu as besoin, c'est d'un plan simple, régulier et progressif. Le full body 3 fois par semaine est, sans débat, la meilleure structure pour débuter.",
+      },
+      { type: 'heading', text: 'Pourquoi le Full Body est Idéal pour Débuter' },
+      {
+        type: 'paragraph',
+        text: "Le full body consiste à travailler l'ensemble du corps à chaque séance, 3 fois par semaine. Pour un débutant, c'est supérieur aux programmes « split » (un muscle par jour) pour une raison simple : la fréquence. Chaque muscle est stimulé 3 fois par semaine au lieu d'une seule. Or, la synthèse des protéines musculaires d'un débutant ne reste élevée que 48 h après une séance. En t'entraînant tous les 2 jours, tu relances la construction musculaire au moment idéal, encore et encore.",
+      },
+      {
+        type: 'list',
+        items: [
+          'Fréquence optimale : chaque muscle travaillé 3×/semaine',
+          'Apprentissage technique accéléré (tu répètes les mouvements de base souvent)',
+          'Idéal si tu manques de temps : 3 séances suffisent',
+          'Excellent pour la perte de gras comme pour la prise de muscle',
+          'Récupération facile à gérer : 1 jour de repos entre chaque séance',
+        ],
+      },
+      { type: 'heading', text: 'Le Matériel Minimum pour Démarrer' },
+      {
+        type: 'paragraph',
+        text: "Pas besoin d'une salle complète. Une paire d'haltères réglables couvre 90 % des besoins d'un débutant : développés, squats, soulevés de terre, rowing, curls. Les haltères réglables évitent d'acheter 10 paires fixes et évoluent avec ta progression — un point crucial, car tu vas vite prendre en force.",
+      },
+      {
+        type: 'productCta',
+        productSlug: 'halteres-reglables-bowflex',
+        reason:
+          "Les Bowflex SelectTech (2 à 24 kg en tournant un sélecteur) sont parfaits pour débuter à la maison : elles couvrent toute ta première année de progression sans encombrer ton appartement.",
+      },
+      { type: 'heading', text: 'Le Programme Full Body 3 Jours / Semaine' },
+      {
+        type: 'paragraph',
+        text: "Entraîne-toi 3 fois par semaine, en laissant au moins un jour de repos entre chaque séance (par exemple lundi, mercredi, vendredi). Commence chaque séance par 5 minutes d'échauffement articulaire et une série légère sur le premier exercice. Voici 3 séances à alterner (A, B, C) pour varier les stimulations.",
+      },
+      { type: 'subheading', text: 'Séance A — Force de Base' },
+      {
+        type: 'list',
+        items: [
+          'Goblet Squat : 3 × 10 répétitions',
+          'Développé couché haltères (au sol ou sur banc) : 3 × 10',
+          'Rowing buste penché : 3 × 10',
+          'Soulevé de terre roumain : 3 × 12',
+          'Curl biceps : 2 × 12 · Extension triceps : 2 × 12',
+          'Gainage planche : 3 × 30 à 45 secondes',
+        ],
+      },
+      { type: 'subheading', text: 'Séance B — Volume' },
+      {
+        type: 'list',
+        items: [
+          'Fentes marchées : 3 × 10 par jambe',
+          'Développé militaire haltères (épaules) : 3 × 10',
+          'Tirage unilatéral (rowing 1 bras) : 3 × 10 par bras',
+          'Hip thrust (fessiers) : 3 × 12',
+          'Élévations latérales : 3 × 15',
+          'Relevés de jambes (abdos) : 3 × 15',
+        ],
+      },
+      { type: 'subheading', text: 'Séance C — Mixte' },
+      {
+        type: 'list',
+        items: [
+          'Squat haltères : 4 × 8',
+          'Pompes (ou développé incliné) : 3 × max',
+          'Rowing menton ou tirage bande : 3 × 12',
+          'Soulevé de terre roumain : 3 × 10',
+          'Curl marteau : 2 × 12 · Dips sur chaise : 2 × 12',
+          'Gainage latéral : 3 × 30 s par côté',
+        ],
+      },
+      { type: 'heading', text: 'La Surcharge Progressive : la Clé n°1' },
+      {
+        type: 'paragraph',
+        text: "C'est LE principe qui fait toute la différence. Pour que tes muscles grossissent, tu dois leur demander un peu plus à chaque fois. Concrètement : termine chaque série en gardant 1 à 2 répétitions « en réserve » (tu aurais pu faire 1-2 reps de plus). Dès que tu réalises facilement le haut de la fourchette de répétitions sur toutes les séries, augmente le poids de 1 à 2,5 kg à la séance suivante. Note tes performances : ce qui se mesure progresse.",
+      },
+      {
+        type: 'quote',
+        text: "Un débutant qui applique la surcharge progressive pendant 6 mois obtient de meilleurs résultats qu'un confirmé qui change de programme toutes les 3 semaines. La régularité bat l'intensité.",
+      },
+      { type: 'heading', text: 'Nutrition : 1,6 à 2,2 g de Protéines par kg' },
+      {
+        type: 'paragraph',
+        text: "Sans apport suffisant en protéines, pas de construction musculaire — même avec le meilleur programme. Vise 1,6 à 2,2 g de protéines par kilo de poids de corps et par jour (soit 112 à 154 g pour une personne de 70 kg), réparties sur la journée. Pour la prise de muscle, mange en léger surplus calorique (+ 200 à 400 kcal/jour). Pour sécher tout en te musclant (« recomposition »), reste autour de ta maintenance.",
+      },
+      {
+        type: 'productCta',
+        productSlug: 'programme-prise-masse-12-semaines',
+        reason:
+          "Si tu veux un plan clé en main (séances détaillées + nutrition semaine par semaine), notre Programme Prise de Masse 12 semaines structure toute ta progression de débutant à intermédiaire.",
+      },
+      { type: 'heading', text: 'Les 5 Erreurs de Débutant à Éviter' },
+      {
+        type: 'list',
+        items: [
+          'Changer de programme trop souvent : garde le même 8 à 12 semaines minimum',
+          'Négliger la technique au profit du poids : une mauvaise forme = blessure + muscle mal stimulé',
+          'Sauter l\'échauffement et les jambes (les plus gros muscles, donc les plus rentables)',
+          'Sous-manger les protéines : c\'est l\'erreur n°1 qui bloque les résultats',
+          'Manquer de sommeil : le muscle se construit au repos, vise 7 à 9 h par nuit',
+        ],
+      },
+      {
+        type: 'productCta',
+        productSlug: 'bandes-elastiques-portentum-5',
+        reason:
+          "Pour compléter tes séances (échauffement des épaules, assistance aux tractions, travail du dos), un kit de bandes élastiques est l'accessoire le plus rentable qui soit.",
+      },
+      {
+        type: 'paragraph',
+        text: "Retiens l'essentiel : 3 séances full body par semaine, la surcharge progressive, assez de protéines et du sommeil. Tiens ce cap 3 mois et tu ne reconnaîtras plus ton reflet. La musculation n'est pas une question de motivation ponctuelle, mais de répétition patiente. Commence aujourd'hui.",
+      },
+    ],
+  },
+
+  // ─── ARTICLE 7 ──────────────────────────────────────────────────────────────
+  {
+    slug: 'roue-abdominale-exercices-programme-abdos',
+    title: 'Roue Abdominale : le Guide Complet + 6 Exercices pour des Abdos Solides',
+    excerpt:
+      "La roue abdominale (ab wheel) est l'un des outils les plus efficaces pour renforcer la sangle abdominale. Technique, erreurs, progression et programme : tout est ici.",
+    metaTitle: 'Roue Abdominale : 6 Exercices + Programme pour des Abdos en Béton',
+    metaDescription:
+      "Comment utiliser la roue abdominale sans se blesser : technique, muscles travaillés, 6 exercices du débutant à l'avancé et programme abdos complet. Le guide expert Xenotif®.",
+    keywords: [
+      'roue abdominale',
+      'roue abdominale exercices',
+      'ab wheel',
+      'comment utiliser roue abdominale',
+      'exercices abdos gainage',
+      'programme abdos maison',
+    ],
+    category: 'Musculation',
+    coverImage:
+      'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=1200&q=80',
+    coverPosition: '50% 50%',
+    author: 'Thomas Mercier',
+    publishedAt: '2026-06-04T09:00:00Z',
+    readingMinutes: 8,
+    productSlugs: ['roue-abdominale-pro-double', 'programme-hiit-6-semaines'],
+    content: [
+      {
+        type: 'paragraph',
+        text: "Petite, peu chère, redoutablement efficace : la roue abdominale (ou « ab wheel ») est l'un des meilleurs outils pour construire un tronc solide. Mais c'est aussi l'un des plus mal utilisés — et un dos cambré sur un roll-out, c'est la blessure assurée. Ce guide t'explique comment l'utiliser correctement, quels muscles elle travaille, et te donne un programme progressif en 6 exercices.",
+      },
+      { type: 'heading', text: 'Pourquoi la Roue Abdominale est si Efficace' },
+      {
+        type: 'paragraph',
+        text: "La roue abdominale entraîne le « gainage anti-extension » : tes abdominaux doivent empêcher ton bas du dos de s'arquer pendant que tu t'étires vers l'avant. C'est exactement le rôle de la sangle abdominale dans la vie réelle et dans tous les gros mouvements (squat, soulevé de terre). Résultat : un seul exercice recrute intensément les grands droits, les obliques, le transverse, mais aussi les dorsaux, les épaules et les fessiers en stabilisateurs.",
+      },
+      {
+        type: 'list',
+        items: [
+          'Grand droit de l\'abdomen (les fameuses « tablettes »)',
+          'Obliques internes et externes',
+          'Transverse (le muscle profond qui gaine la taille)',
+          'Grand dorsal et épaules (stabilisation)',
+          'Fléchisseurs de hanche et fessiers (anti-bascule du bassin)',
+        ],
+      },
+      { type: 'heading', text: 'La Technique Correcte (et Sécuritaire)' },
+      {
+        type: 'paragraph',
+        text: "La règle d'or : ton bas du dos ne doit JAMAIS se creuser. Tout le mouvement consiste à garder le dos « neutre », légèrement enroulé, en gainant fort. Si tu sens une tension dans les lombaires, c'est que tu vas trop loin ou que tu cambres — réduis l'amplitude.",
+      },
+      {
+        type: 'list',
+        items: [
+          'À genoux, mains sur la roue, bras tendus sous les épaules',
+          'Rentre le ventre et bascule légèrement le bassin (rétroversion), comme pour « cacher » le nombril',
+          'Déroule lentement vers l\'avant en gardant le dos rond/neutre, jamais creusé',
+          'Va aussi loin que tu peux contrôler, puis reviens en tirant avec les abdos (pas les bras)',
+          'Souffle à l\'effort, garde le gainage du début à la fin',
+        ],
+      },
+      {
+        type: 'quote',
+        text: "Mieux vaut un roll-out de 40 cm parfaitement gainé qu'un roll-out complet dos cambré. L'amplitude se gagne avec le temps, jamais au prix de tes lombaires.",
+      },
+      {
+        type: 'productCta',
+        productSlug: 'roue-abdominale-pro-double',
+        reason:
+          "Privilégie une roue à double roue (plus stable, plus sûre pour les débutants) avec un tapis pour les genoux. Ce modèle Pro coche les deux cases et amortit le retour pour protéger ton dos.",
+      },
+      { type: 'heading', text: '6 Exercices, du Débutant à l\'Avancé' },
+      {
+        type: 'list',
+        items: [
+          '1. Roll-out à genoux à amplitude réduite (débutant) — déroule de 30-40 cm seulement',
+          '2. Roll-out à genoux complet (intermédiaire) — amplitude maximale contrôlée',
+          '3. Roll-out oblique à genoux — déroule en diagonale vers la gauche puis la droite (obliques)',
+          '4. Roll-out avec pause — 2 secondes d\'arrêt en position basse',
+          '5. Roll-out debout contre un mur (avancé) — debout, la roue s\'arrête au mur',
+          '6. Roll-out debout complet (expert) — sans assistance, le Graal du gainage',
+        ],
+      },
+      {
+        type: 'paragraph',
+        text: "Reste à chaque niveau jusqu'à réussir 3 séries de 10 à 12 répétitions propres avant de passer au suivant. Ne saute aucune étape : passer trop vite au roll-out debout est la première cause de blessure lombaire.",
+      },
+      { type: 'heading', text: 'Programme Abdos : la Routine 3×/Semaine' },
+      {
+        type: 'list',
+        items: [
+          'Roll-out (ton niveau actuel) : 3 à 4 séries × 8 à 12 reps',
+          'Roll-out oblique : 2 séries × 8 par côté',
+          'Gainage planche classique : 3 × 45 secondes',
+          'Repos : 60 à 90 secondes entre les séries, 48 h entre 2 séances abdos',
+        ],
+      },
+      {
+        type: 'paragraph',
+        text: "Les abdominaux récupèrent comme les autres muscles : inutile d'en faire tous les jours. Trois séances par semaine suffisent largement pour construire une sangle puissante et visible.",
+      },
+      { type: 'heading', text: 'Mais des Abdos Visibles se Font à la Cuisine' },
+      {
+        type: 'paragraph',
+        text: "Vérité importante : tu peux avoir les abdos les plus forts du monde, ils resteront invisibles sous une couche de gras. La définition abdominale dépend à 80 % de ton taux de masse grasse — donc de ton alimentation et de ta dépense calorique. Pour faire ressortir tes abdos : crée un léger déficit calorique, mange suffisamment de protéines, et ajoute du cardio à haute intensité (HIIT) qui brûle un maximum de calories en peu de temps.",
+      },
+      {
+        type: 'productCta',
+        productSlug: 'programme-hiit-6-semaines',
+        reason:
+          "Pour faire fondre la couche qui cache tes abdos, notre Programme HIIT 6 semaines combine séances brûle-graisses courtes et progression structurée — le complément parfait du travail de gainage.",
+      },
+      { type: 'heading', text: 'Les Erreurs Fréquentes à Éviter' },
+      {
+        type: 'list',
+        items: [
+          'Cambrer le bas du dos : la cause n°1 de douleur lombaire — gaine et réduis l\'amplitude',
+          'Tirer avec les bras au retour au lieu des abdominaux',
+          'Aller trop vite : le tempo lent et contrôlé est ce qui rend l\'exercice efficace',
+          'Vouloir le roll-out debout trop tôt : respecte la progression',
+          'Croire que la roue seule donne des tablettes : sans nutrition, pas de définition',
+        ],
+      },
+      {
+        type: 'paragraph',
+        text: "La roue abdominale est un investissement minuscule pour un retour énorme : un tronc solide qui améliore toutes tes performances et protège ton dos au quotidien. Maîtrise la technique, sois patient sur la progression, soigne ton alimentation — et les résultats suivront.",
+      },
+    ],
+  },
 ]
 
 // Source FR exposée pour la construction du catalogue localisé (posts.en.ts).
