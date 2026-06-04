@@ -182,6 +182,62 @@ const TEXT_EN: Record<string, ProductText> = {
     features: ['120 expert pages', '5K/10K/half/marathon plans', 'Race nutrition', 'Injury prevention', 'Competitor mindset'],
     tags: ['running', 'marathon', 'running', 'e-book'],
   },
+  c1: {
+    name: 'Aerodynamic Road Bike Helmet',
+    badge: '🚴 Safety',
+    description: 'Lightweight, ventilated bike helmet with a reinforced shell and adjustment dial. Safety and comfort on road and trail.',
+    longDescription: "A good helmet is a cyclist's first non-negotiable piece of gear. This aerodynamic model pairs a reinforced in-mold shell with an ultra-light build (~250 g) for optimal protection without discomfort. Wide vents keep your head cool on long rides, and the micro-adjustment dial ensures a perfect fit for any head shape. Water-repellent straps and a removable visor included.",
+    features: ['Reinforced in-mold shell', 'Ultra-light (~250 g)', 'Multiple vents', 'Adjustment dial', 'Removable visor'],
+    tags: ['bike helmet', 'safety', 'cycling', 'road'],
+  },
+  c2: {
+    name: 'Wireless Bike GPS Computer',
+    badge: '📡 GPS',
+    description: 'Waterproof GPS computer: speed, distance, elevation, route. Large sunlight-readable screen, 25 h battery, quick mount.',
+    longDescription: 'Track every ride accurately with this wireless GPS computer. It logs speed, distance, time, altitude, elevation gain and GPS route, and syncs with Strava and Komoot. Transflective screen perfectly readable in direct sunlight, 25-hour battery and IPX7 water resistance. The included handlebar mount installs in seconds without tools. Compatible with ANT+ sensors (heart rate, cadence, speed).',
+    features: ['GPS speed/distance/elevation', 'Strava & Komoot sync', 'Sunlight-readable screen', '25 h battery · IPX7', 'ANT+ compatible'],
+    tags: ['gps computer', 'cycling', 'strava', 'bike'],
+  },
+  c3: {
+    name: 'Rechargeable LED Bike Lights — Front + Rear',
+    badge: '🔦 Visibility',
+    description: 'Front headlight + rear light set, USB rechargeable. Powerful, waterproof, multiple modes. See and be seen safely.',
+    longDescription: 'Riding at night or in low visibility means being seen. This complete set includes a powerful front headlight and a red rear light, both USB rechargeable (no more batteries). Multiple lighting modes (steady, flashing, eco) to adapt battery life. Universal tool-free silicone mounts fit all handlebar and seatpost diameters. IPX5 waterproof housings stand up to rain.',
+    features: ['Front + rear included', 'USB rechargeable', 'Multiple modes', 'Tool-free mounting', 'IPX5 waterproof'],
+    tags: ['bike lights', 'led', 'safety', 'cycling'],
+  },
+  c4: {
+    name: '4D Padded Cycling Shorts',
+    badge: '🩳 Comfort',
+    description: 'Cycling shorts with a breathable 4D chamois pad. Compressive fabric, anti-slip grippers. Comfort over long distances.',
+    longDescription: "Comfort on the bike starts on the saddle: these shorts feature a high-density 4D chamois pad that cushions impacts and prevents chafing, even after several hours. The compressive, breathable fabric wicks sweat and supports the muscles, while silicone leg grippers keep the shorts in place. Flat anti-friction seams. The foundation of any serious cyclist's kit.",
+    features: ['4D chamois pad', 'Breathable compressive fabric', 'Anti-slip grippers', 'Flat seams', 'Long distances'],
+    tags: ['cycling shorts', 'cycling', 'apparel', 'road'],
+  },
+  c5: {
+    name: 'Half-Finger Anti-Shock Cycling Gloves',
+    badge: '🧤 Grip',
+    description: 'Half-finger cycling gloves with anti-shock gel, breathable palm and pull-off tabs. Better grip, less fatigue.',
+    longDescription: 'Gloves protect your hands from vibration and falls while improving grip on the bars. This half-finger model has gel pads at pressure points to absorb shocks and reduce numbness on long rides. Breathable mesh back, non-slip suede palm, and handy pull-off tabs. A terry zone on the thumb to wipe your brow.',
+    features: ['Anti-shock gel', 'Non-slip palm', 'Breathable back', 'Pull-off tabs', 'Half-finger'],
+    tags: ['cycling gloves', 'cycling', 'anti-shock', 'grip'],
+  },
+  c6: {
+    name: 'Puncture Repair Kit + Mini Pump',
+    badge: '🔧 Essential',
+    description: 'High-pressure mini pump, tire levers, patches and a multi-tool. Everything to fix a puncture wherever you are.',
+    longDescription: 'A puncture should never ruin a ride. This compact kit brings together the essentials: a high-pressure mini pump (Presta and Schrader compatible), tire levers, a self-adhesive patch kit and a multi-tool with Allen keys. Everything fits in a discreet saddle bag. Light and complete — the guarantee of getting going again in minutes, even in the middle of nowhere.',
+    features: ['Presta/Schrader mini pump', 'Tire levers', 'Self-adhesive patches', 'Allen multi-tool', 'Saddle bag included'],
+    tags: ['repair kit', 'bike pump', 'puncture', 'cycling'],
+  },
+  c7: {
+    name: 'Bike Water Bottle 750 ml + Cage',
+    badge: '💧 Hydration',
+    description: '750 ml BPA-free bottle + lightweight aluminum cage. Easy one-handed drinking, mounts on the frame.',
+    longDescription: 'Staying hydrated regularly is key on the bike. This set combines a 750 ml BPA-free squeeze bottle with a leak-proof, high-flow nozzle for one-handed drinking, and a lightweight aluminum cage that bolts to the frame inserts. The bottle is squeezable, easy to press and dishwasher-safe. The cage holds the bottle firmly even on rough terrain.',
+    features: ['750 ml BPA-free bottle', 'Leak-proof nozzle', 'Aluminum cage', 'One-handed drinking', 'Dishwasher-safe'],
+    tags: ['water bottle', 'bottle cage', 'hydration', 'cycling'],
+  },
 }
 
 // Mots-clés de recherche en allemand → liens affiliés amazon.de pour la locale EN
@@ -205,6 +261,13 @@ const AMAZON_DE_KEYWORDS: Record<string, string> = {
   v1: 'sport shorts herren training fitness',
   v2: 'sport leggings damen high waist fitness',
   v3: 'kompression leggings herren sport tights',
+  c1: 'fahrradhelm rennrad',
+  c2: 'fahrradcomputer gps kabellos',
+  c3: 'fahrradlicht led aufladbar usb set',
+  c4: 'radhose herren gepolstert',
+  c5: 'fahrradhandschuhe halbfinger',
+  c6: 'fahrrad reparaturset minipumpe',
+  c7: 'fahrrad trinkflasche flaschenhalter',
 }
 
 export const PRODUCTS_EN: Product[] = PRODUCTS.map((p) => {
