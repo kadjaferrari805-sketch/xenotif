@@ -36,6 +36,7 @@ export default function AbonnementPage() {
   const [cancelLoading, setCancelLoading] = useState(false)
   const [showCancel, setShowCancel] = useState(false)
   const [cancelled, setCancelled] = useState(false)
+  const [cancelError, setCancelError] = useState('')
   const [portalLoading, setPortalLoading] = useState(false)
   const [portalError, setPortalError] = useState('')
   const [syncing, setSyncing] = useState(false)
@@ -76,12 +77,19 @@ export default function AbonnementPage() {
 
   async function cancelSubscription() {
     setCancelLoading(true)
-    const res = await fetch('/api/cancel-subscription', { method: 'POST' })
-    const data = await res.json()
-    if (data.ok) {
-      setCancelled(true)
-      setShowCancel(false)
-      setSub(prev => prev ? { ...prev, cancel_at_period_end: true } : null)
+    setCancelError('')
+    try {
+      const res = await fetch('/api/cancel-subscription', { method: 'POST' })
+      const data = await res.json()
+      if (data.ok) {
+        setCancelled(true)
+        setShowCancel(false)
+        setSub(prev => prev ? { ...prev, cancel_at_period_end: true } : null)
+      } else {
+        setCancelError(t('cancelError'))
+      }
+    } catch {
+      setCancelError(t('cancelError'))
     }
     setCancelLoading(false)
   }
@@ -169,6 +177,9 @@ export default function AbonnementPage() {
               <p className="text-sport-gray text-sm mb-6">
                 {t.rich('accessUntilDate', { date: periodEnd.toLocaleDateString(dateLocale, { day: 'numeric', month: 'long', year: 'numeric' }), o: (c) => <strong className="text-white">{c}</strong> })}
               </p>
+            )}
+            {cancelError && (
+              <p role="alert" className="text-red-400 text-xs bg-red-400/10 border border-red-400/20 rounded-lg px-3 py-2 mb-4">{cancelError}</p>
             )}
             <div className="flex gap-3">
               <button onClick={() => setShowCancel(false)}

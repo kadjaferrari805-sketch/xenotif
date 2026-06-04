@@ -696,6 +696,7 @@
       "syncNone": "No subscription found for this email. Make sure it's the email used at checkout, or contact us at contact@xenotif.com.",
       "syncEmailPlaceholder": "Email used at checkout",
       "syncAlreadyLinked": "This subscription is already linked to another account.",
+      "cancelError": "Cancellation failed. Please try again shortly, or contact us at contact@xenotif.com.",
       "confirmCancelTitle": "Confirm cancellation",
       "cancelIntro": "You're about to cancel your <o>{plan} plan</o> subscription.",
       "accessUntilDate": "Your access stays active until <o>{date}</o>.",

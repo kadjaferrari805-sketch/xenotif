@@ -12,7 +12,7 @@ export async function POST() {
       .from('subscriptions')
       .select('stripe_subscription_id')
       .eq('user_id', user.id)
-      .single()
+      .maybeSingle()
 
     if (!sub?.stripe_subscription_id) {
       return NextResponse.json({ error: 'Aucun abonnement actif.' }, { status: 404 })
