@@ -41,6 +41,9 @@ export async function generateMetadata({
     metadataBase: new URL(SITE),
     title: { default: t('metaTitle'), template: '%s | Xenotif®' },
     description: t('metaDescription'),
+    // PWA : manifest + support iOS « Ajouter à l'écran d'accueil » (mode standalone).
+    manifest: '/manifest.webmanifest',
+    appleWebApp: { capable: true, title: 'Xenotif', statusBarStyle: 'black-translucent' },
     keywords: [
       'fitness', 'sport', 'coaching IA', 'running', 'musculation',
       'HIIT', 'CrossFit', 'natation', 'cyclisme', 'programme sportif',

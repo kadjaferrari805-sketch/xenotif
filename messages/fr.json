@@ -34,7 +34,20 @@
         "faq": "FAQ"
       }
     },
-    "skipLink": "Aller au contenu principal"
+    "skipLink": "Aller au contenu principal",
+    "appDownload": {
+      "trigger": "Télécharger l'app",
+      "title": "Installe l'app Xenotif",
+      "subtitle": "Retrouve tes programmes, ton coaching et ton activité directement depuis ton écran d'accueil.",
+      "scan": "Scanne ce QR code avec ton téléphone",
+      "qrAlt": "QR code pour installer l'application Xenotif sur mobile",
+      "installNow": "Installer maintenant",
+      "iosTitle": "iPhone (Safari)",
+      "iosStep": "Partager → « Sur l'écran d'accueil »",
+      "androidTitle": "Android (Chrome)",
+      "androidStep": "Menu ⋮ → « Installer l'application »",
+      "close": "Fermer"
+    }
   },
   "languages": {
     "fr": "Français",
