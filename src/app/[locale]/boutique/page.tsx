@@ -8,9 +8,6 @@ import { Zap, ShoppingBag, Star, TrendingUp, ArrowRight, LayoutGrid } from 'luci
 import { ProductCard } from '@/components/boutique/ProductCard'
 import { getProductsLocalized } from '@/lib/boutique/products.en'
 
-// Disciplines mises en avant (par discipline principale des produits).
-const DISCIPLINE_ORDER = ['musculation', 'running-cardio', 'cyclisme', 'natation', 'hiit', 'crossfit', 'yoga'] as const
-
 export default function BoutiquePage() {
   const t = useTranslations('boutique')
   const locale = useLocale()
@@ -21,16 +18,6 @@ export default function BoutiquePage() {
     () => [...products].sort((a, b) => b.reviews - a.reviews).slice(0, 8),
     [products],
   )
-
-  // Disciplines disponibles + nombre de produits (discipline principale).
-  const disciplines = useMemo(() => {
-    const count = new Map<string, number>()
-    for (const p of products) {
-      const d = p.disciplines?.[0]
-      if (d) count.set(d, (count.get(d) ?? 0) + 1)
-    }
-    return DISCIPLINE_ORDER.filter(d => count.has(d)).map(d => ({ id: d, count: count.get(d)! }))
-  }, [products])
 
   const stats = [
     { icon: ShoppingBag, label: t('stats.products'), value: `${products.length}+` },
@@ -99,32 +86,8 @@ export default function BoutiquePage() {
         </div>
       </div>
 
-      {/* ─── Parcourir par sport ─── */}
-      <section className="mx-auto max-w-7xl px-4 sm:px-6 py-14">
-        <div className="mb-8 text-center sm:text-left">
-          <h2 className="text-2xl sm:text-3xl font-black text-white mb-2">{t('landing.bySportTitle')}</h2>
-          <p className="text-sport-gray text-sm">{t('landing.bySportSubtitle')}</p>
-        </div>
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
-          {disciplines.map(({ id, count }) => {
-            const label = t(`disciplinesFilter.${id}`)
-            const [emoji, ...rest] = label.split(' ')
-            const name = rest.join(' ')
-            return (
-              <Link key={id} href={`/boutique/catalogue?sport=${id}`}
-                className="group relative overflow-hidden rounded-2xl border border-sport-border bg-sport-card p-5 hover:border-sport-orange/50 hover:-translate-y-1 transition-all">
-                <div className="text-3xl mb-3" aria-hidden="true">{emoji}</div>
-                <p className="font-black text-white group-hover:text-sport-orange transition-colors">{name}</p>
-                <p className="text-xs text-sport-gray mt-0.5">{t('count', { count })}</p>
-                <ArrowRight size={16} className="absolute top-5 right-5 text-sport-gray group-hover:text-sport-orange group-hover:translate-x-0.5 transition-all" />
-              </Link>
-            )
-          })}
-        </div>
-      </section>
-
       {/* ─── Best-sellers ─── */}
-      <section id="bestsellers" className="mx-auto max-w-7xl px-4 sm:px-6 pb-14 scroll-mt-20">
+      <section id="bestsellers" className="mx-auto max-w-7xl px-4 sm:px-6 py-14 scroll-mt-20">
         <div className="flex items-end justify-between gap-4 mb-8">
           <div>
             <h2 className="text-2xl sm:text-3xl font-black text-white mb-2">{t('landing.bestsellersTitle')}</h2>
