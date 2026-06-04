@@ -90,6 +90,13 @@ export default async function RootLayout({
 
   return (
     <html lang={locale} className={inter.variable}>
+      <head>
+        {/* Preconnect aux origines tierces chargées après hydratation (analytics)
+            → ouvre DNS/TCP/TLS en amont, ~300ms gagnés (audit Lighthouse). */}
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
+        <link rel="preconnect" href="https://connect.facebook.net" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://region1.google-analytics.com" />
+      </head>
       <body>
         <NextIntlClientProvider>
           <Providers>
