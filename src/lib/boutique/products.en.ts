@@ -198,14 +198,6 @@ const TEXT_EN: Record<string, ProductText> = {
     features: ['GPS speed/distance/elevation', 'Strava & Komoot sync', 'Sunlight-readable screen', '25 h battery · IPX7', 'ANT+ compatible'],
     tags: ['gps computer', 'cycling', 'strava', 'bike'],
   },
-  c3: {
-    name: 'Rechargeable LED Bike Lights — Front + Rear',
-    badge: '🔦 Visibility',
-    description: 'Front headlight + rear light set, USB rechargeable. Powerful, waterproof, multiple modes. See and be seen safely.',
-    longDescription: 'Riding at night or in low visibility means being seen. This complete set includes a powerful front headlight and a red rear light, both USB rechargeable (no more batteries). Multiple lighting modes (steady, flashing, eco) to adapt battery life. Universal tool-free silicone mounts fit all handlebar and seatpost diameters. IPX5 waterproof housings stand up to rain.',
-    features: ['Front + rear included', 'USB rechargeable', 'Multiple modes', 'Tool-free mounting', 'IPX5 waterproof'],
-    tags: ['bike lights', 'led', 'safety', 'cycling'],
-  },
   c4: {
     name: '4D Padded Cycling Shorts',
     badge: '🩳 Comfort',
@@ -229,6 +221,38 @@ const TEXT_EN: Record<string, ProductText> = {
     longDescription: 'Staying hydrated regularly is key on the bike. This set combines a 750 ml BPA-free squeeze bottle with a leak-proof, high-flow nozzle for one-handed drinking, and a lightweight aluminum cage that bolts to the frame inserts. The bottle is squeezable, easy to press and dishwasher-safe. The cage holds the bottle firmly even on rough terrain.',
     features: ['750 ml BPA-free bottle', 'Leak-proof nozzle', 'Aluminum cage', 'One-handed drinking', 'Dishwasher-safe'],
     tags: ['water bottle', 'bottle cage', 'hydration', 'cycling'],
+  },
+  s1: {
+    name: 'Anti-Fog Swimming Goggles',
+    badge: '🥽 Anti-fog',
+    description: 'Watertight swimming goggles with anti-fog, anti-UV lenses and soft silicone seals. Clear vision and comfort, no leaks.',
+    longDescription: 'Goggles that don\'t fog up or leak transform a swim session. This model combines a durable anti-fog coating with anti-UV protection for clear vision in the pool and open water. The soft silicone seals hug the contour of the eyes without leaving marks, and the interchangeable nose bridge (3 sizes included) fits any face. Double strap adjustable with one hand.',
+    features: ['Durable anti-fog lenses', 'Anti-UV protection', 'Soft silicone seals', '3 nose bridges included', 'One-handed strap adjust'],
+    tags: ['swimming goggles', 'anti-fog', 'swimming', 'pool'],
+  },
+  s2: {
+    name: 'Silicone Swim Cap',
+    badge: '🏊 Essential',
+    description: '100% silicone swim cap, watertight and comfortable. Reduces drag, protects hair from chlorine. Unisex, one size.',
+    longDescription: 'The silicone cap is every swimmer\'s basic accessory: it protects hair from chlorine, reduces drag in the water and keeps the head warm. This 100% silicone model is soft, durable and easy to put on without pulling hair. It stays firmly in place during laps and won\'t irritate the forehead. One size fits men, women and teens.',
+    features: ['Soft 100% silicone', 'Watertight & comfortable', 'Reduces drag', 'Protects hair', 'Unisex one size'],
+    tags: ['swim cap', 'silicone', 'swimming', 'pool'],
+  },
+  s3: {
+    name: 'Swim Kickboard',
+    badge: '🏊 Training',
+    description: 'EVA foam board to strengthen your leg kick. Lightweight, ergonomic, high buoyancy. Ideal for training.',
+    longDescription: 'The kickboard is the essential tool for working on your leg kick and body position. Made of high-density EVA foam, it offers high buoyancy while staying light and chlorine-resistant. Its ergonomic shape with hand cut-outs ensures a comfortable grip for any drill. Suitable for beginner and advanced swimmers alike for technique work and conditioning.',
+    features: ['High-density EVA foam', 'High buoyancy', 'Ergonomic hand cut-outs', 'Chlorine-resistant', 'Beginner to advanced'],
+    tags: ['kickboard', 'swim board', 'training', 'swimming'],
+  },
+  s4: {
+    name: 'Chlorine-Resistant Swimsuit',
+    badge: '🩱 Endurance',
+    description: 'Chlorine-resistant training swimsuit, quick-drying, snug fit. Lasts hundreds of pool sessions.',
+    longDescription: 'Built for intensive training, this chlorine-resistant fabric swimsuit keeps its shape and colors session after session — where a regular suit sags within weeks. The snug fit reduces drag in the water, it dries quickly and the flat seams prevent chafing. The durable choice for anyone clocking up the laps.',
+    features: ['Chlorine-resistant fabric', 'Quick-drying', 'Snug low-drag fit', 'Flat seams', 'Long-lasting'],
+    tags: ['swimsuit', 'swimming', 'chlorine-resistant', 'pool'],
   },
 }
 
@@ -255,10 +279,13 @@ const AMAZON_DE_KEYWORDS: Record<string, string> = {
   v3: 'kompression leggings herren sport tights',
   c1: 'fahrradhelm rennrad',
   c2: 'fahrradcomputer gps kabellos',
-  c3: 'fahrradlicht led aufladbar usb set',
   c4: 'radhose herren gepolstert',
   c5: 'fahrradhandschuhe halbfinger',
   c7: 'fahrrad trinkflasche flaschenhalter',
+  s1: 'schwimmbrille antibeschlag',
+  s2: 'badekappe silikon',
+  s3: 'schwimmbrett kickboard',
+  s4: 'badeanzug schwimmen chlorresistent',
 }
 
 export const PRODUCTS_EN: Product[] = PRODUCTS.map((p) => {
