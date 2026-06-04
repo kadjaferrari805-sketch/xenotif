@@ -5,8 +5,9 @@ import { createServiceClient } from '@/lib/supabase/server'
 export const runtime = 'nodejs'
 
 // ⚠️ OUTIL DE RÉPARATION PONCTUEL — protégé par un jeton, à RETIRER après usage.
-// Relie un abonnement Stripe (recherché par l'email de paiement) au compte
-// Supabase identifié par l'email de connexion. Retourne aussi un diagnostic.
+// - action par défaut : relie un abonnement Stripe (par email de paiement) au
+//   compte Supabase (par email de connexion) + diagnostic.
+// - action=cancel : annule immédiatement les abonnements Stripe listés (subs=...).
 const TOKEN = 'xeno-repair-k7Q2mZ9p'
 
 function subPeriodEnd(sub: Stripe.Subscription): string {
@@ -14,19 +15,36 @@ function subPeriodEnd(sub: Stripe.Subscription): string {
 }
 
 export async function GET(req: NextRequest) {
-  if (req.nextUrl.searchParams.get('token') !== TOKEN) {
+  const p = req.nextUrl.searchParams
+  if (p.get('token') !== TOKEN) {
     return NextResponse.json({ error: 'forbidden' }, { status: 403 })
   }
-  const account = (req.nextUrl.searchParams.get('account') ?? '').trim().toLowerCase()
-  const payment = (req.nextUrl.searchParams.get('payment') ?? account).trim().toLowerCase()
-  if (!account) return NextResponse.json({ error: 'account required' }, { status: 400 })
 
   const secretKey = process.env.STRIPE_SECRET_KEY
   if (!secretKey) return NextResponse.json({ error: 'no_stripe_key' }, { status: 500 })
-
   const stripe = new Stripe(secretKey)
-  const service = await createServiceClient()
 
+  // ── Mode annulation ──
+  if (p.get('action') === 'cancel') {
+    const ids = (p.get('subs') ?? '').split(',').map(s => s.trim()).filter(Boolean)
+    const results: Array<{ id: string; status?: string; error?: string }> = []
+    for (const sid of ids) {
+      try {
+        const c = await stripe.subscriptions.cancel(sid)
+        results.push({ id: sid, status: c.status })
+      } catch (e) {
+        results.push({ id: sid, error: e instanceof Error ? e.message : 'error' })
+      }
+    }
+    return NextResponse.json({ action: 'cancel', results })
+  }
+
+  // ── Mode rattachement (par défaut) ──
+  const account = (p.get('account') ?? '').trim().toLowerCase()
+  const payment = (p.get('payment') ?? account).trim().toLowerCase()
+  if (!account) return NextResponse.json({ error: 'account required' }, { status: 400 })
+
+  const service = await createServiceClient()
   const customersDiag: Array<{ id: string; email: string | null; subs: Array<{ id: string; status: string }> }> = []
   let found: Stripe.Subscription | null = null
 
@@ -61,13 +79,11 @@ export async function GET(req: NextRequest) {
   }
 
   return NextResponse.json({
-    account,
-    payment,
+    account, payment,
     customersFound: customersDiag.length,
     customers: customersDiag,
     userFound: !!user,
     userId: user?.id ?? null,
-    linked,
-    subscription,
+    linked, subscription,
   })
 }
