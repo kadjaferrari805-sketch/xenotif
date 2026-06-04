@@ -823,7 +823,14 @@
       "tapHint": "Ton iPhone demande une autorisation pour le capteur de mouvement. Touche n'importe où pour lancer le suivi.",
       "denied": "Accès au mouvement refusé. Autorise-le dans les réglages de ton navigateur, puis recharge la page.",
       "noSensor": "Aucun capteur de mouvement détecté — le suivi en direct fonctionne sur smartphone. 📱",
-      "startTracking": "Démarrer le suivi"
+      "startTracking": "Démarrer le suivi",
+      "move": "Mouvement",
+      "exercise": "Exercice",
+      "liveBadge": "En direct",
+      "daySaved": "Cumul du jour",
+      "openOnPhone": "Ouvre cette page sur ton téléphone pour suivre tes pas en temps réel. 📱",
+      "trendTitle": "Tendance 7 jours",
+      "trendTotal": "{steps} pas cette semaine"
     },
     "smartwatch": {
       "title": "Montre Connectée",

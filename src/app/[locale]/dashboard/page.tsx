@@ -4,7 +4,7 @@ import { Link } from '@/i18n/navigation'
 import { createClient, createServiceClient } from '@/lib/supabase/server'
 import { CheckCircle, Flame, TrendingUp, ArrowRight, Zap, Clock, Award } from 'lucide-react'
 import { DISCIPLINE_CONTENT } from '@/lib/disciplines'
-import { LiveActivity } from '@/components/dashboard/LiveActivity'
+import { TodayActivity, type TrendDay } from '@/components/dashboard/TodayActivity'
 import { ReviewInvite } from '@/components/reviews/ReviewInvite'
 
 const STATUS_CLS: Record<string, string> = {
@@ -29,12 +29,15 @@ export default async function DashboardPage() {
   const dateLocale = locale === 'en' ? 'en-US' : 'fr-FR'
 
   // `subscriptions` est protégée par RLS (service-role) → lecture via service, filtrée par user.id.
+  const now = new Date()
+  const weekAgoStr = new Date(now.getTime() - 6 * 86400000).toISOString().split('T')[0]
   const service = await createServiceClient()
-  const [{ data: profile }, { data: subscription }, { data: allWorkouts }, { data: progress }] = await Promise.all([
+  const [{ data: profile }, { data: subscription }, { data: allWorkouts }, { data: progress }, { data: healthMetrics }] = await Promise.all([
     supabase.from('profiles').select('full_name').eq('id', user.id).maybeSingle(),
     service.from('subscriptions').select('*').eq('user_id', user.id).maybeSingle(),
     supabase.from('workouts').select('*').eq('user_id', user.id).order('completed_at', { ascending: false }).limit(60),
     supabase.from('progress').select('*').eq('user_id', user.id),
+    supabase.from('health_metrics').select('date, steps, active_minutes').eq('user_id', user.id).gte('date', weekAgoStr),
   ])
 
   const firstName = (profile?.full_name ?? '').split(' ')[0] || t('athlete')
@@ -44,7 +47,7 @@ export default async function DashboardPage() {
   const workouts = allWorkouts ?? []
   const recentWorkouts = workouts.slice(0, 5)
   const progressRows = progress ?? []
-  const weekAgoMs = Date.now() - 7 * 86400000
+  const weekAgoMs = now.getTime() - 7 * 86400000
   const dayOf = (d: string | null) => (d ? d.split('T')[0] : '')
   const withinWeek = (d: string | null) => !!d && new Date(d).getTime() >= weekAgoMs
 
@@ -56,12 +59,38 @@ export default async function DashboardPage() {
     ...progWeek.map(p => dayOf(p.completed_at)),
   ]).size
 
-  const now = new Date()
   const trialEnd = subscription?.trial_end ? new Date(subscription.trial_end) : null
   const daysLeft = trialEnd ? Math.max(0, Math.ceil((trialEnd.getTime() - now.getTime()) / 86400000)) : null
   const renewDate = subscription?.current_period_end
     ? new Date(subscription.current_period_end).toLocaleDateString(dateLocale, { day: 'numeric', month: 'long', year: 'numeric' })
     : null
+
+  // ── Activité du jour + tendance 7 jours (depuis health_metrics) ──
+  // Plusieurs sources possibles par jour (live, demo, fitbit…) → on garde le max par date.
+  const todayStr = now.toISOString().split('T')[0]
+  const metricsByDate = new Map<string, { steps: number; active: number }>()
+  for (const m of healthMetrics ?? []) {
+    const prev = metricsByDate.get(m.date) ?? { steps: 0, active: 0 }
+    metricsByDate.set(m.date, {
+      steps: Math.max(prev.steps, m.steps ?? 0),
+      active: Math.max(prev.active, m.active_minutes ?? 0),
+    })
+  }
+  const weekly: TrendDay[] = Array.from({ length: 7 }, (_, idx) => {
+    const d = new Date(now.getTime() - (6 - idx) * 86400000)
+    const key = d.toISOString().split('T')[0]
+    const entry = metricsByDate.get(key)
+    const lbl = d.toLocaleDateString(dateLocale, { weekday: 'short' }).replace('.', '')
+    return {
+      label: lbl.charAt(0).toUpperCase() + lbl.slice(1),
+      steps: entry?.steps ?? 0,
+      isToday: key === todayStr,
+    }
+  })
+  const todayMetric = metricsByDate.get(todayStr)
+  const todaySteps = todayMetric?.steps ?? 0
+  const todayActiveSec = (todayMetric?.active ?? 0) * 60
+  const dateLabel = now.toLocaleDateString(dateLocale, { weekday: 'long', day: 'numeric', month: 'long' })
 
   const disciplineSlugs = ['running-cardio', 'musculation', 'hiit', 'cyclisme', 'natation', 'crossfit']
   const plan = subscription?.plan ?? 'pro'
@@ -78,6 +107,14 @@ export default async function DashboardPage() {
         </h1>
         <p className="text-sport-gray text-sm mt-1">{t('overview.subtitle')}</p>
       </div>
+
+      {/* Activité du jour — anneaux temps réel façon Apple Fitness (capteur du téléphone) */}
+      <TodayActivity
+        initialSteps={todaySteps}
+        initialActiveSec={todayActiveSec}
+        weekly={weekly}
+        dateLabel={dateLabel}
+      />
 
       {/* Subscription card */}
       <div className="bg-gradient-to-br from-sport-orange/20 via-sport-card to-sport-card border border-sport-orange/30 rounded-2xl p-6 mb-6">
@@ -106,9 +143,6 @@ export default async function DashboardPage() {
           </Link>
         </div>
       </div>
-
-      {/* Activité en direct (capteur de mouvement, démarrage auto) */}
-      <LiveActivity />
 
       {/* Stats grid */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">

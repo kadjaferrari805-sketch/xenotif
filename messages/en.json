@@ -823,7 +823,14 @@
       "tapHint": "Your iPhone asks for permission to use the motion sensor. Tap anywhere to start tracking.",
       "denied": "Motion access denied. Allow it in your browser settings, then reload the page.",
       "noSensor": "No motion sensor detected — live tracking works on a smartphone. 📱",
-      "startTracking": "Start tracking"
+      "startTracking": "Start tracking",
+      "move": "Move",
+      "exercise": "Exercise",
+      "liveBadge": "Live",
+      "daySaved": "Today's total",
+      "openOnPhone": "Open this page on your phone to track your steps in real time. 📱",
+      "trendTitle": "7-day trend",
+      "trendTotal": "{steps} steps this week"
     },
     "smartwatch": {
       "title": "Smartwatch",
