@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server'
 import Stripe from 'stripe'
-import { createClient } from '@/lib/supabase/server'
+import { createClient, createServiceClient } from '@/lib/supabase/server'
 
 export async function POST() {
   try {
@@ -8,7 +8,9 @@ export async function POST() {
     const { data: { user } } = await supabase.auth.getUser()
     if (!user) return NextResponse.json({ error: 'Non authentifié' }, { status: 401 })
 
-    const { data: sub } = await supabase
+    // Lecture/écriture en service-role (table protégée par RLS), filtré par user.id.
+    const service = await createServiceClient()
+    const { data: sub } = await service
       .from('subscriptions')
       .select('stripe_subscription_id')
       .eq('user_id', user.id)
@@ -23,7 +25,7 @@ export async function POST() {
       cancel_at_period_end: true,
     })
 
-    await supabase
+    await service
       .from('subscriptions')
       .update({ cancel_at_period_end: true })
       .eq('user_id', user.id)
