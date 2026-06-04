@@ -93,10 +93,10 @@ export function Catalogue() {
             <span className="inline-flex items-center gap-2 rounded-full border border-sport-orange/30 bg-sport-orange/10 px-4 py-1.5 text-xs font-black text-sport-orange uppercase tracking-wider mb-6">
               {t('catalogue.badge')}
             </span>
-            <h1 className="text-4xl font-black leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl mb-4">
+            <h1 className="text-3xl font-black leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl mb-4">
               {t.rich('catalogue.title', { o: (c) => <span className="text-sport-orange">{c}</span> })}
             </h1>
-            <p className="text-lg text-sport-gray max-w-2xl mx-auto">{t('catalogue.subtitle')}</p>
+            <p className="text-base sm:text-lg text-sport-gray max-w-2xl mx-auto">{t('catalogue.subtitle')}</p>
           </div>
 
           {/* Recherche */}
@@ -121,7 +121,7 @@ export function Catalogue() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
           <div className="flex items-center gap-3 py-3">
             {/* Puces de sport */}
-            <div className="flex-1 flex items-center gap-2 overflow-x-auto scrollbar-hide" role="tablist" aria-label={t('filterDiscipline')}>
+            <div className="min-w-0 flex-1 flex items-center gap-2 overflow-x-auto scrollbar-hide" role="tablist" aria-label={t('filterDiscipline')}>
               <button
                 role="tab" aria-selected={discipline === 'all'} onClick={() => setDiscipline('all')}
                 className={`shrink-0 rounded-full px-4 py-2 text-sm font-bold transition-all ${discipline === 'all' ? 'bg-sport-orange text-white shadow-lg shadow-sport-orange/20' : 'border border-sport-border text-sport-gray hover:text-white hover:border-white/20'}`}
