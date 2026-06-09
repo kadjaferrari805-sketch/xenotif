@@ -5,6 +5,7 @@ import { createClient } from '@/lib/supabase/server'
 import { LayoutDashboard, Dumbbell, TrendingUp, CreditCard, User, Bot, Watch } from 'lucide-react'
 import { DashboardSignOut } from '@/components/dashboard/SignOut'
 import { DashboardGuard } from '@/components/dashboard/DashboardGuard'
+import { NotificationBell } from '@/components/dashboard/NotificationBell'
 import { Logo } from '@/components/ui/Logo'
 
 const NAV = [
@@ -43,10 +44,11 @@ export default async function DashboardLayout({ children }: { children: React.Re
             <div className="w-10 h-10 rounded-full bg-sport-orange/20 border border-sport-orange/40 flex items-center justify-center font-black text-sport-orange text-sm">
               {initials}
             </div>
-            <div className="min-w-0">
+            <div className="min-w-0 flex-1">
               <p className="text-sm font-bold text-white truncate">{profile?.full_name ?? t('athlete')}</p>
               <p className="text-[11px] text-sport-gray truncate">{user.email}</p>
             </div>
+            <NotificationBell align="left" />
           </div>
         </div>
 
@@ -77,6 +79,7 @@ export default async function DashboardLayout({ children }: { children: React.Re
       <div className="md:hidden fixed top-0 left-0 right-0 z-50 bg-sport-card border-b border-sport-border px-4 py-3 flex items-center justify-between">
         <Logo href="/" size="sm" />
         <div className="flex items-center gap-2">
+          <NotificationBell align="right" />
           <div className="w-8 h-8 rounded-full bg-sport-orange/20 border border-sport-orange/40 flex items-center justify-center font-black text-sport-orange text-xs">
             {initials}
           </div>

@@ -1,0 +1,92 @@
+'use client'
+
+import { useState, useEffect, useRef } from 'react'
+import { useTranslations } from 'next-intl'
+import { Bell, Flame, Lightbulb, Activity, X } from 'lucide-react'
+
+const READ_KEY = 'xeno_notif_read'
+const todayStr = () => new Date().toISOString().split('T')[0]
+
+// Cloche de notifications de l'espace membre : 3 notifications par jour
+// (motivation + astuce qui tournent chaque jour + rappel d'activité).
+// État « lu » mémorisé en localStorage (point rouge tant que le jour n'est pas ouvert).
+export function NotificationBell({ align = 'right' }: { align?: 'left' | 'right' }) {
+  const t = useTranslations('dashboard.notifications')
+  const [open, setOpen] = useState(false)
+  const [unread, setUnread] = useState(false)
+  const ref = useRef<HTMLDivElement>(null)
+
+  const day = Math.floor(Date.now() / 86400000)
+  const motivations = t.raw('motivation') as string[]
+  const tips = t.raw('tip') as string[]
+  const items = [
+    { Icon: Flame, color: '#FF4500', text: motivations[day % motivations.length] },
+    { Icon: Lightbulb, color: '#A3FF00', text: tips[day % tips.length] },
+    { Icon: Activity, color: '#38bdf8', text: t('activity') },
+  ]
+
+  useEffect(() => {
+    try { setUnread(localStorage.getItem(READ_KEY) !== todayStr()) } catch { setUnread(true) }
+  }, [])
+
+  useEffect(() => {
+    if (!open) return
+    function onClick(e: MouseEvent) { if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false) }
+    function onKey(e: KeyboardEvent) { if (e.key === 'Escape') setOpen(false) }
+    document.addEventListener('mousedown', onClick)
+    document.addEventListener('keydown', onKey)
+    return () => { document.removeEventListener('mousedown', onClick); document.removeEventListener('keydown', onKey) }
+  }, [open])
+
+  function toggle() {
+    const next = !open
+    setOpen(next)
+    if (next) {
+      try { localStorage.setItem(READ_KEY, todayStr()) } catch { /* ignore */ }
+      setUnread(false)
+    }
+  }
+
+  return (
+    <div className="relative" ref={ref}>
+      <button
+        onClick={toggle}
+        aria-label={t('aria')}
+        aria-haspopup="dialog"
+        aria-expanded={open}
+        className="relative flex h-9 w-9 items-center justify-center rounded-full border border-sport-border text-sport-gray hover:text-white hover:border-white/20 transition-all"
+      >
+        <Bell size={16} aria-hidden="true" />
+        {unread && <span className="absolute top-1.5 right-1.5 h-2 w-2 rounded-full bg-sport-orange ring-2 ring-sport-card" />}
+      </button>
+
+      {open && (
+        <div
+          role="dialog"
+          aria-label={t('title')}
+          className={`absolute ${align === 'left' ? 'left-0' : 'right-0'} mt-2 w-80 max-w-[calc(100vw-2rem)] rounded-2xl border border-sport-border bg-sport-card shadow-2xl z-50 overflow-hidden`}
+        >
+          <div className="flex items-center justify-between px-4 py-3 border-b border-sport-border">
+            <p className="text-sm font-black text-white">{t('title')}</p>
+            <button onClick={() => setOpen(false)} aria-label={t('close')} className="text-sport-gray hover:text-white transition-colors">
+              <X size={15} aria-hidden="true" />
+            </button>
+          </div>
+          <div className="max-h-[60vh] overflow-y-auto p-2">
+            {items.map((n, i) => (
+              <div key={i} className="flex items-start gap-3 rounded-xl px-3 py-3 hover:bg-white/5 transition-colors">
+                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg" style={{ background: `${n.color}1f`, border: `1px solid ${n.color}40` }}>
+                  <n.Icon size={15} style={{ color: n.color }} aria-hidden="true" />
+                </div>
+                <div className="min-w-0">
+                  <p className="text-xs text-white leading-relaxed">{n.text}</p>
+                  <p className="text-[10px] text-sport-gray mt-1">{t('today')}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+    </div>
+  )
+}
