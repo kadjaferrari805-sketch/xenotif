@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server'
 import { createAdminClient } from '@/lib/supabase/admin'
 import { sendDailyMotivationEmail } from '@/lib/emails'
+import { sendPushToUser } from '@/lib/push'
 
 export const runtime = 'nodejs'
 export const dynamic = 'force-dynamic'
@@ -57,19 +58,37 @@ export async function GET(request: Request) {
   }
 
   let sent = 0
+  let pushed = 0
   const errors: string[] = []
 
   for (const userId of userIds) {
+    const locale = localeById.get(userId) ?? 'fr'
+
+    // Email (si on connaît l'adresse)
     const email = emailById.get(userId)
-    if (!email) continue
+    if (email) {
+      try {
+        await sendDailyMotivationEmail({ email, name: nameById.get(userId) ?? '', locale })
+        sent++
+      } catch (e) {
+        errors.push(`email ${email}: ${e}`)
+      }
+    }
+
+    // Push (indépendant de l'email ; ne fait rien si l'utilisateur n'a aucun appareil)
     try {
-      await sendDailyMotivationEmail({ email, name: nameById.get(userId) ?? '', locale: localeById.get(userId) ?? 'fr' })
-      sent++
+      pushed += await sendPushToUser(userId, {
+        title: locale === 'en' ? '💪 Your daily boost' : '💪 Ta dose de motivation',
+        body: locale === 'en'
+          ? 'A new day to crush your goals — open Xenotif and get moving!'
+          : 'Nouveau jour pour avancer vers tes objectifs — ouvre Xenotif et bouge !',
+        data: { type: 'daily_motivation' },
+      })
     } catch (e) {
-      errors.push(`${email}: ${e}`)
+      errors.push(`push ${userId}: ${e}`)
     }
   }
 
-  console.log(`[daily-motivation] sent=${sent} errors=${errors.length}`)
-  return NextResponse.json({ sent, errors })
+  console.log(`[daily-motivation] emails=${sent} push=${pushed} errors=${errors.length}`)
+  return NextResponse.json({ sent, pushed, errors })
 }

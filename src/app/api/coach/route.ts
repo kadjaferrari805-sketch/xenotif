@@ -28,25 +28,45 @@ export async function POST(req: NextRequest) {
 
   if (!messages?.length) return new Response('Messages requis', { status: 400 })
 
-  const stream = await anthropic.messages.create({
-    model: 'claude-opus-4-8',
-    max_tokens: 1024,
-    thinking: { type: 'adaptive' },
-    output_config: { effort: 'medium' },
-    system: SYSTEM,
-    messages,
-    stream: true,
-  })
+  let stream
+  try {
+    stream = await anthropic.messages.create({
+      model: 'claude-opus-4-8',
+      max_tokens: 8000,
+      thinking: { type: 'adaptive' },
+      output_config: { effort: 'medium' },
+      system: SYSTEM,
+      messages,
+      stream: true,
+    })
+  } catch (err) {
+    if (err instanceof Anthropic.RateLimitError) {
+      return new Response('Trop de requêtes, réessaie dans un instant.', { status: 429 })
+    }
+    if (err instanceof Anthropic.APIError) {
+      console.error('Erreur API Claude:', err.status, err.message)
+      return new Response('Le coach est momentanément indisponible.', { status: 502 })
+    }
+    console.error('Erreur inattendue côté coach:', err)
+    return new Response('Erreur interne.', { status: 500 })
+  }
 
   const encoder = new TextEncoder()
   const readable = new ReadableStream({
     async start(controller) {
-      for await (const event of stream) {
-        if (event.type === 'content_block_delta' && event.delta.type === 'text_delta') {
-          controller.enqueue(encoder.encode(event.delta.text))
+      try {
+        for await (const event of stream) {
+          if (event.type === 'content_block_delta' && event.delta.type === 'text_delta') {
+            controller.enqueue(encoder.encode(event.delta.text))
+          } else if (event.type === 'message_delta' && event.delta.stop_reason === 'max_tokens') {
+            console.warn('Réponse coach tronquée: max_tokens atteint')
+          }
         }
+        controller.close()
+      } catch (err) {
+        console.error('Erreur pendant le streaming du coach:', err)
+        controller.error(err)
       }
-      controller.close()
     },
   })
 

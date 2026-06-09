@@ -72,7 +72,7 @@ export default function SmartwatchScreen() {
           </View>
           {connected && (
             <TouchableOpacity
-              onPress={() => setSyncing(true) && setTimeout(() => setSyncing(false), 2000)}
+              onPress={() => { setSyncing(true); setTimeout(() => setSyncing(false), 2000) }}
               style={styles.syncBtn}
             >
               {syncing
