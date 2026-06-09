@@ -125,3 +125,34 @@
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }
+
+/* ── Tendance 7 jours (Mon espace) : barres lumineuses ── */
+@keyframes trend-bar-glow {
+  0%, 100% { filter: brightness(1); }
+  50%      { filter: brightness(1.35); }
+}
+@keyframes trend-bar-shine {
+  0%   { transform: translateY(110%); opacity: 0; }
+  40%  { opacity: 0.9; }
+  100% { transform: translateY(-110%); opacity: 0; }
+}
+.trend-bar {
+  position: relative;
+  overflow: hidden;
+  animation: trend-bar-glow 2.6s ease-in-out infinite;
+}
+/* Reflet lumineux qui monte le long de la barre (progression) */
+.trend-bar::after {
+  content: '';
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  height: 55%;
+  background: linear-gradient(to top, transparent, rgba(255, 255, 255, 0.55));
+  animation: trend-bar-shine 2.8s ease-in-out infinite;
+  pointer-events: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .trend-bar { animation: none; }
+  .trend-bar::after { animation: none; opacity: 0; }
+}
