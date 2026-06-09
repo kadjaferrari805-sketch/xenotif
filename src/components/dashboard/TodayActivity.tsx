@@ -45,6 +45,13 @@ export function TodayActivity({ initialSteps, initialActiveSec, weekly, dateLabe
   const [steps, setSteps] = useState(0)         // total du jour
   const [activeSec, setActiveSec] = useState(0) // temps actif total du jour
   const [moving, setMoving] = useState(false)
+  const [mounted, setMounted] = useState(false) // déclenche l'animation de montée des barres
+
+  // Animation de montée des barres de tendance au 1er rendu (0 → hauteur).
+  useEffect(() => {
+    const r = requestAnimationFrame(() => setMounted(true))
+    return () => cancelAnimationFrame(r)
+  }, [])
 
   const baseSteps = useRef(0)
   const baseActive = useRef(0)
@@ -335,6 +342,7 @@ export function TodayActivity({ initialSteps, initialActiveSec, weekly, dateLabe
         <div className="flex h-32 items-end justify-between gap-2 sm:gap-3">
           {trend.map((d, i) => {
             const pct = Math.min((d.steps / trendMax) * 100, 100)
+            const color = d.isToday ? C_EXER : C_STEP
             return (
               <div key={`${d.label}-${i}`} className="flex flex-1 flex-col items-center gap-2">
                 <span className={`text-[9px] font-bold tabular-nums ${d.isToday ? 'text-white' : 'text-sport-gray'}`}>
@@ -343,12 +351,15 @@ export function TodayActivity({ initialSteps, initialActiveSec, weekly, dateLabe
                 <div className="relative flex w-full flex-1 items-end" style={{ minHeight: 0 }}>
                   <div className="absolute bottom-0 w-full rounded-md bg-sport-dark" style={{ height: '100%' }} />
                   <div
-                    className="relative w-full rounded-md transition-all duration-1000"
+                    className="trend-bar w-full rounded-md transition-all duration-1000"
                     style={{
-                      height: `${Math.max(pct, 3)}%`,
-                      background: d.isToday ? C_EXER : C_STEP,
-                      opacity: d.isToday ? 1 : 0.55,
-                      boxShadow: d.isToday ? `0 0 10px ${C_EXER}80` : 'none',
+                      height: mounted ? `${Math.max(pct, 3)}%` : '0%',
+                      transitionDelay: `${i * 80}ms`,
+                      background: color,
+                      opacity: d.isToday ? 1 : 0.8,
+                      boxShadow: d.isToday
+                        ? `0 0 16px ${color}, 0 0 7px ${color}`
+                        : `0 0 12px ${color}73, 0 0 6px ${color}55`,
                     }}
                   />
                 </div>
