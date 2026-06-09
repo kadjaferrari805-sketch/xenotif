@@ -64,13 +64,8 @@ export async function POST(req: NextRequest) {
       locale: req.headers.get('x-next-intl-locale') ?? 'fr',
     }).select('id, type, product_id, author_name, rating, comment, locale, created_at').single()
     if (error) {
-      // Diagnostic temporaire : on remonte le code/message Postgres (non sensible :
-      // nom de contrainte/colonne) pour identifier la cause exacte de l'échec d'insert.
-      console.error(`[reviews-pg] ${error.code ?? '?'} ${error.message ?? ''} | details=${error.details ?? ''} | hint=${error.hint ?? ''}`)
-      return NextResponse.json(
-        { error: 'insert_failed', detail: `${error.code ?? '?'} ${error.message ?? ''}` },
-        { status: 500 },
-      )
+      console.error('[POST /api/reviews] insert error:', error.code, error.message)
+      return NextResponse.json({ error: 'insert_failed' }, { status: 500 })
     }
     return NextResponse.json({ review: data })
   } catch (e) {
