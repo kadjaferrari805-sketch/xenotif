@@ -22,16 +22,35 @@ export function ReviewForm({ type, productId, initial, onPublished }: Props) {
   async function submit(e: React.FormEvent) {
     e.preventDefault()
     setError('')
-    if (rating < 1 || comment.trim().length < 10) { setError(t('error')); return }
+    // Validation côté client avec message précis (sinon le client ne sait pas pourquoi ça bloque).
+    if (rating < 1) { setError(t('errorRating')); return }
+    if (comment.trim().length < 10) { setError(t('errorLength')); return }
     setLoading(true)
-    const res = await fetch('/api/reviews', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'x-next-intl-locale': locale },
-      body: JSON.stringify({ type, productId, rating, comment: comment.trim() }),
-    })
+    let res: Response
+    try {
+      res = await fetch('/api/reviews', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'x-next-intl-locale': locale },
+        body: JSON.stringify({ type, productId, rating, comment: comment.trim() }),
+      })
+    } catch {
+      setLoading(false)
+      setError(t('error'))
+      return
+    }
     setLoading(false)
-    if (res.ok) onPublished()
-    else setError(t('error'))
+    if (res.ok) { onPublished(); return }
+    // Affiche le vrai motif renvoyé par l'API plutôt qu'un message générique.
+    const data = await res.json().catch(() => null) as { error?: string } | null
+    const code = data?.error
+    setError(
+      code === 'not_subscriber' ? t('mustSubscribe')
+        : code === 'not_buyer' || code === 'invalid_product' ? t('mustBuy')
+        : code === 'guest' ? t('mustLogin')
+        : code === 'comment_too_short' ? t('errorLength')
+        : code === 'bad_rating' ? t('errorRating')
+        : t('error'),
+    )
   }
 
   return (

@@ -637,6 +637,8 @@
     "mustLogin": "Connecte-toi pour laisser un avis.",
     "mustBuy": "Réservé aux clients ayant acheté ce guide.",
     "mustSubscribe": "Réservé aux abonnés.",
+    "errorRating": "Choisis une note (1 à 5 étoiles).",
+    "errorLength": "Ton commentaire doit faire au moins 10 caractères.",
     "error": "Une erreur est survenue. Réessaie."
   },
   "dashboard": {

@@ -637,6 +637,8 @@
     "mustLogin": "Log in to leave a review.",
     "mustBuy": "Reserved for customers who purchased this guide.",
     "mustSubscribe": "Reserved for subscribers.",
+    "errorRating": "Pick a rating (1 to 5 stars).",
+    "errorLength": "Your comment must be at least 10 characters.",
     "error": "Something went wrong. Please try again."
   },
   "dashboard": {
