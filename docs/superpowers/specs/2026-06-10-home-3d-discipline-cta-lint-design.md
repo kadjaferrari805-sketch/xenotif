@@ -62,23 +62,30 @@ Confirmer à l'implémentation que `/auth/signin` lit bien un paramètre `redire
 
 ---
 
-## C. Nettoyage lint (37 erreurs → 0)
+## C. Nettoyage lint (37 erreurs → 0) — périmètre COMPLET (web + mobile)
 
-### Catégories observées
-- `react-hooks/set-state-in-effect` (majorité) — ex. `src/lib/boutique/wishlist.ts` (`useWishlist`), `src/components/reviews/CustomerReviews.tsx`.
-- `@typescript-eslint/no-require-imports` + var inutilisée — `stripe-setup.js`.
-- variables inutilisées diverses.
+Décision : corriger **toutes** les erreurs, `src/` (web) ET `mobile/`. Découpage en **plusieurs PR** recommandé (features A+B séparées du nettoyage lint) pour limiter le risque de régression sur la prod.
 
-### Stratégie
-- **Corriger proprement** les vraies :
-  - `useWishlist` : `useState<string[]>(() => load())` (init paresseuse) au lieu de `useEffect(() => setIds(load()), [])`.
-  - `CustomerReviews` : restructurer pour éviter le setState synchrone dans l'effet (dépendances/callbacks).
-  - supprimer les variables inutilisées.
-- **Préserver l'intentionnel** : `stripe-setup.js` est un script Node CommonJS autonome → l'exclure du périmètre lint (ex. `eslint.config.mjs` ignores) plutôt que de le réécrire en ESM (risque de casse).
+### Catégories (depuis `npm run lint`)
+- **React Compiler / react-hooks** (refactors réels de composants live) :
+  - `setState` synchrone dans `useEffect` (~10) : `home/Hero.tsx`, `AppInstall.tsx`, `dashboard/NotificationBell.tsx`, `dashboard/TodayActivity.tsx`, `disciplines/VideoCard.tsx`, `reviews/CustomerReviews.tsx`, `lib/boutique/wishlist.ts`, `dashboard/programme/page.tsx`, `auth/signup/page.tsx`, `mobile/app/(tabs)/index.tsx`.
+  - « Cannot create components during render » : `AppInstall.tsx`.
+  - « Cannot call impure function during render » : `NotificationBell.tsx`.
+  - « This value cannot be modified » : `boutique/panier/page.tsx`, `dashboard/coach/page.tsx`.
+  - « memoization could not be preserved » : `Hero.tsx`.
+  - « Cannot access refs during render » : `mobile/app/onboarding.tsx`.
+- **`no-explicit-any`** (surtout mobile) : signup, _layout, index, profil, programme, smartwatch, discipline/[slug], onboarding.
+- **`no-unused-vars`** (warnings) : divers.
+- **`no-require-imports`** : `stripe-setup.js`, `mobile/tailwind.config.js` → **intentionnels (configs CommonJS)** → exclure du lint, ne pas réécrire.
 
-### Garde-fou
-- `npm run lint` doit finir à **0 erreur**.
-- **Lancer la suite Jest** (`npm test`) après les refactors d'effets pour vérifier l'absence de régression comportementale.
+### Stratégie par catégorie
+- `setState`-in-effect : init paresseuse (`useState(() => …)`) si init au montage ; sinon déplacer le setState dans un callback async / restructurer les deps.
+- create-components / impure / value-modified / refs-in-render : refactor au cas par cas (hoister la définition de composant hors render ; déplacer l'appel impur dans un effet/handler ; ne pas muter une valeur dérivée).
+- `no-explicit-any` : typer correctement. `unused-vars` : supprimer. require intentionnels : ignores eslint.
+
+### Garde-fous
+- `npm run lint` = 0 erreur ; `npx tsc --noEmit` = 0 ; `npm test` (Jest) vert ; `npm run build` vert.
+- Commits petits par fichier/catégorie ; tests après chaque lot de refactor.
 
 ---
 
