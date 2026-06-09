@@ -35,14 +35,13 @@ export function ReviewForm({ type, productId, initial, onPublished }: Props) {
       })
     } catch {
       setLoading(false)
-      // Échec réseau (le fetch lui-même a échoué) : marqueur distinct pour le diagnostic.
-      setError(`${t('error')} (réseau)`)
+      setError(t('error'))
       return
     }
     setLoading(false)
     if (res.ok) { onPublished(); return }
-    // Affiche le vrai motif renvoyé par l'API plutôt qu'un message générique.
-    const data = await res.json().catch(() => null) as { error?: string; detail?: string } | null
+    // Affiche le motif précis renvoyé par l'API plutôt qu'un message générique.
+    const data = await res.json().catch(() => null) as { error?: string } | null
     const code = data?.error
     setError(
       code === 'not_subscriber' ? t('mustSubscribe')
@@ -50,12 +49,7 @@ export function ReviewForm({ type, productId, initial, onPublished }: Props) {
         : code === 'guest' ? t('mustLogin')
         : code === 'comment_too_short' ? t('errorLength')
         : code === 'bad_rating' ? t('errorRating')
-        // Échec d'insertion : on affiche le détail Postgres (diagnostic temporaire).
-        : code === 'insert_failed' ? `${t('error')} (insert_failed: ${data?.detail ?? '?'})`
-        // Cas non mappé : on affiche le code exact pour pouvoir diagnostiquer.
-        : code ? `${t('error')} (${code})`
-        // Réponse non-JSON (erreur plateforme : timeout, 500 brut…) : on affiche le statut HTTP.
-        : `${t('error')} (HTTP ${res.status})`,
+        : t('error'),
     )
   }
 
