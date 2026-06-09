@@ -16,13 +16,15 @@ export async function checkEligibility(
   const authorName = (profile?.full_name?.trim() || (user.email ?? '').split('@')[0] || 'Client')
 
   if (type === 'platform') {
-    const { data: sub } = await service
+    // limit(1) plutôt que maybeSingle() : robuste si l'utilisateur a plusieurs
+    // lignes d'abonnement (maybeSingle() lèverait une erreur dans ce cas).
+    const { data: subs } = await service
       .from('subscriptions')
       .select('status')
       .eq('user_id', user.id)
       .in('status', ['active', 'trialing'])
-      .maybeSingle()
-    return sub
+      .limit(1)
+    return subs && subs.length > 0
       ? { eligible: true, reason: 'ok', authorName }
       : { eligible: false, reason: 'not_subscriber', authorName }
   }

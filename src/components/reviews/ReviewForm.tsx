@@ -49,6 +49,8 @@ export function ReviewForm({ type, productId, initial, onPublished }: Props) {
         : code === 'guest' ? t('mustLogin')
         : code === 'comment_too_short' ? t('errorLength')
         : code === 'bad_rating' ? t('errorRating')
+        // Cas non mappé : on affiche le code exact pour pouvoir diagnostiquer.
+        : code ? `${t('error')} (${code})`
         : t('error'),
     )
   }
