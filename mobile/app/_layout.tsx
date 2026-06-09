@@ -5,13 +5,22 @@ import { StatusBar } from 'expo-status-bar'
 import * as SplashScreen from 'expo-splash-screen'
 import { GestureHandlerRootView } from 'react-native-gesture-handler'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
+import { useAuth } from '@/hooks/useAuth'
+import { registerForPushNotificationsAsync } from '@/lib/push'
 
 SplashScreen.preventAutoHideAsync()
 
 export default function RootLayout() {
+  const { user } = useAuth()
+
   useEffect(() => {
     SplashScreen.hideAsync()
   }, [])
+
+  // Enregistre le token push Expo dès qu'un utilisateur est connecté
+  useEffect(() => {
+    if (user) void registerForPushNotificationsAsync(user.id)
+  }, [user])
 
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>

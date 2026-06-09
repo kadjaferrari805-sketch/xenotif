@@ -221,3 +221,17 @@ create trigger health_metrics_updated_at before update on public.health_metrics
   for each row execute procedure public.handle_updated_at();
 create trigger fitness_goals_updated_at before update on public.fitness_goals
   for each row execute procedure public.handle_updated_at();
+
+-- ============================================
+-- Push notification tokens (Expo)
+-- ============================================
+create table public.push_tokens (
+  id uuid default gen_random_uuid() primary key,
+  user_id uuid references public.profiles on delete cascade not null,
+  token text not null unique,
+  platform text check (platform in ('ios','android')) not null,
+  created_at timestamptz default now() not null
+);
+alter table public.push_tokens enable row level security;
+create policy "Users manage own push tokens" on public.push_tokens for all using (auth.uid() = user_id);
+create policy "Service role access push tokens" on public.push_tokens for all using (auth.role() = 'service_role');
