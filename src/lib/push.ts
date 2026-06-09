@@ -10,8 +10,9 @@ type PushPayload = { title: string; body: string; data?: Record<string, unknown>
  * Lit les tokens en base (service-role), envoie via l'API Expo (qui route vers
  * FCM/APNs), puis supprime les tokens invalides (DeviceNotRegistered).
  * À appeler depuis du code serveur (cron, route admin, rappel d'entraînement…).
+ * Renvoie le nombre d'appareils ayant reçu la notification (tickets OK).
  */
-export async function sendPushToUser(userId: string, payload: PushPayload): Promise<void> {
+export async function sendPushToUser(userId: string, payload: PushPayload): Promise<number> {
   const supabase = createAdminClient()
   const { data: rows, error } = await supabase
     .from('push_tokens')
@@ -22,7 +23,7 @@ export async function sendPushToUser(userId: string, payload: PushPayload): Prom
   const tokens = (rows ?? [])
     .map((r) => r.token as string)
     .filter((t) => Expo.isExpoPushToken(t))
-  if (!tokens.length) return
+  if (!tokens.length) return 0
 
   const messages: ExpoPushMessage[] = tokens.map((to) => ({
     to,
@@ -32,7 +33,8 @@ export async function sendPushToUser(userId: string, payload: PushPayload): Prom
     data: payload.data ?? {},
   }))
 
-  // Nettoyage des tokens morts ; le curseur garde l'alignement token ↔ ticket
+  // Compte les envois OK ; nettoyage des tokens morts (curseur = alignement token ↔ ticket)
+  let okCount = 0
   const dead: string[] = []
   let cursor = 0
   for (const chunk of expo.chunkPushNotifications(messages)) {
@@ -45,9 +47,11 @@ export async function sendPushToUser(userId: string, payload: PushPayload): Prom
       continue
     }
     tickets.forEach((ticket, j) => {
-      const token = tokens[cursor + j]
-      if (token && ticket.status === 'error' && ticket.details?.error === 'DeviceNotRegistered') {
-        dead.push(token)
+      if (ticket.status === 'ok') {
+        okCount++
+      } else if (ticket.status === 'error' && ticket.details?.error === 'DeviceNotRegistered') {
+        const token = tokens[cursor + j]
+        if (token) dead.push(token)
       }
     })
     cursor += chunk.length
@@ -56,4 +60,6 @@ export async function sendPushToUser(userId: string, payload: PushPayload): Prom
   if (dead.length) {
     await supabase.from('push_tokens').delete().in('token', dead)
   }
+
+  return okCount
 }
