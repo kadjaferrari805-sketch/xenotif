@@ -29,7 +29,7 @@ export async function POST(req: NextRequest) {
   if (!messages?.length) return new Response('Messages requis', { status: 400 })
 
   const stream = await anthropic.messages.create({
-    model: 'claude-sonnet-4-6',
+    model: 'claude-opus-4-8',
     max_tokens: 1024,
     system: SYSTEM,
     messages,
