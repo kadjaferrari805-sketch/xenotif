@@ -35,7 +35,8 @@ export function ReviewForm({ type, productId, initial, onPublished }: Props) {
       })
     } catch {
       setLoading(false)
-      setError(t('error'))
+      // Échec réseau (le fetch lui-même a échoué) : marqueur distinct pour le diagnostic.
+      setError(`${t('error')} (réseau)`)
       return
     }
     setLoading(false)
@@ -51,7 +52,8 @@ export function ReviewForm({ type, productId, initial, onPublished }: Props) {
         : code === 'bad_rating' ? t('errorRating')
         // Cas non mappé : on affiche le code exact pour pouvoir diagnostiquer.
         : code ? `${t('error')} (${code})`
-        : t('error'),
+        // Réponse non-JSON (erreur plateforme : timeout, 500 brut…) : on affiche le statut HTTP.
+        : `${t('error')} (HTTP ${res.status})`,
     )
   }
 
