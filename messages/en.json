@@ -363,6 +363,12 @@
       "phase": "Phase {n}",
       "note": "* Program personalized by the Xenotif® AI based on your profile, level and goals."
     },
+    "gate": {
+      "title": "Unlock the full program",
+      "subtitle": "The detailed week-by-week program is reserved for Xenotif® subscribers.",
+      "cta": "Start your free trial",
+      "note": "€0 for 7 days · Cancel anytime"
+    },
     "cta": {
       "title": "Join the community",
       "desc": "Get access to the <b>{title}</b> programs, personalized AI coaching and thousands of motivated athletes.",
