@@ -654,6 +654,31 @@
     "navAria": "Dashboard navigation",
     "signOut": "Sign out",
     "athlete": "Athlete",
+    "notifications": {
+      "title": "Notifications",
+      "aria": "Notifications",
+      "today": "Today",
+      "close": "Close",
+      "activity": "Don't forget to log today's activity in your space.",
+      "motivation": [
+        "Every session counts. You're building the strongest version of yourself. 💪",
+        "Consistency beats motivation: a small effort today, a big step tomorrow.",
+        "Your only opponent is yesterday's you. Beat them.",
+        "The body achieves what the mind believes. Believe it.",
+        "There's no perfect workout, only workouts done. Get started.",
+        "Fatigue is temporary, pride is permanent.",
+        "You've never regretted a workout you finished. Let's go."
+      ],
+      "tip": [
+        "Aim for 7 to 9 hours of sleep: that's when muscle is built.",
+        "1.6 to 2.2 g of protein per kg of body weight to progress.",
+        "Drink water regularly: dehydration tanks your performance.",
+        "Warm up for 5 minutes before each session to avoid injuries.",
+        "Progressive overload: add a little weight or reps each week.",
+        "Stretch and use a foam roller to recover better.",
+        "Keep at least one rest day per week: rest is part of the program."
+      ]
+    },
     "statusShort": {
       "trialing": "Free trial",
       "active": "Active",

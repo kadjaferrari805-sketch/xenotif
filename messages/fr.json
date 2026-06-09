@@ -654,6 +654,31 @@
     "navAria": "Navigation dashboard",
     "signOut": "Déconnexion",
     "athlete": "Athlète",
+    "notifications": {
+      "title": "Notifications",
+      "aria": "Notifications",
+      "today": "Aujourd'hui",
+      "close": "Fermer",
+      "activity": "Pense à enregistrer ton activité du jour dans Mon espace.",
+      "motivation": [
+        "Chaque séance compte. Tu construis la version la plus forte de toi-même. 💪",
+        "La régularité bat la motivation : un petit effort aujourd'hui, un grand pas demain.",
+        "Ton seul adversaire, c'est toi d'hier. Dépasse-le.",
+        "Le corps accomplit ce que l'esprit croit. Crois-y.",
+        "Pas de séance parfaite, juste des séances faites. Lance-toi.",
+        "La fatigue est temporaire, la fierté est permanente.",
+        "Tu n'as jamais regretté un entraînement terminé. Allez, on y va."
+      ],
+      "tip": [
+        "Vise 7 à 9 h de sommeil : c'est là que le muscle se construit.",
+        "1,6 à 2,2 g de protéines par kg de poids de corps pour progresser.",
+        "Bois de l'eau régulièrement : la déshydratation fait chuter tes performances.",
+        "Échauffe-toi 5 minutes avant chaque séance pour éviter les blessures.",
+        "Surcharge progressive : ajoute un peu de charge ou de répétitions chaque semaine.",
+        "Étire-toi et utilise un foam roller pour mieux récupérer.",
+        "Garde au moins un jour de repos par semaine : le repos fait partie du programme."
+      ]
+    },
     "statusShort": {
       "trialing": "Essai gratuit",
       "active": "Actif",
