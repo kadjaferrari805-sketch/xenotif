@@ -363,6 +363,12 @@
       "phase": "Phase {n}",
       "note": "* Programme personnalisé par l'IA Xenotif® selon ton profil, ton niveau et tes objectifs."
     },
+    "gate": {
+      "title": "Débloque le programme complet",
+      "subtitle": "Le programme détaillé, semaine par semaine, est réservé aux abonnés Xenotif®.",
+      "cta": "Commence ton essai gratuit",
+      "note": "0 € pendant 7 jours · Annulable en 1 clic"
+    },
     "cta": {
       "title": "Rejoins la communauté",
       "desc": "Accède aux programmes <b>{title}</b>, au coaching IA personnalisé et à des milliers d'athlètes motivés.",

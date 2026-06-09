@@ -12,6 +12,7 @@ import { FEATURES } from '@/lib/constants'
 import { getDisciplineContent, getDisciplineMeta } from '@/lib/disciplines'
 import { VideoCard } from '@/components/disciplines/VideoCard'
 import { DisciplineFAQSection } from '@/components/disciplines/DisciplineFAQ'
+import { SubscriberGate } from '@/components/disciplines/SubscriberGate'
 
 /* ── Static data ─────────────────────────────────────────────── */
 
@@ -334,6 +335,7 @@ export default async function DisciplinePage({ params }: { params: Promise<{ slu
                   <h2 className="text-2xl font-black text-white">{t('program.title')}</h2>
                 </div>
 
+                <SubscriberGate>
                 <div className="space-y-4">
                   {content.program.map((block, bi) => (
                     <div key={block.week} className="bg-sport-card border border-sport-border rounded-xl overflow-hidden">
@@ -367,6 +369,7 @@ export default async function DisciplinePage({ params }: { params: Promise<{ slu
                 <p className="text-[11px] text-sport-gray mt-4">
                   {t('program.note')}
                 </p>
+                </SubscriberGate>
               </div>
             )}
           </div>
