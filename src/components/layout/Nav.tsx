@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useTranslations } from 'next-intl'
 import { Link } from '@/i18n/navigation'
-import { Menu, X, Zap, LayoutDashboard } from 'lucide-react'
+import { Menu, X, Zap } from 'lucide-react'
 import { Logo } from '@/components/ui/Logo'
 import { LanguageSwitcher } from './LanguageSwitcher'
 import { AppDownload } from './AppDownload'
@@ -24,13 +24,21 @@ export function Nav() {
   const t = useTranslations('common.nav')
   const [isOpen, setIsOpen] = useState(false)
   const [user, setUser] = useState<User | null>(null)
+  const [name, setName] = useState<string | null>(null)
   const hamburgerRef = useRef<HTMLButtonElement>(null)
 
   useEffect(() => {
     const supabase = createClient()
-    supabase.auth.getUser().then(({ data }) => setUser(data.user))
+    supabase.auth.getUser().then(async ({ data }) => {
+      setUser(data.user)
+      if (data.user) {
+        const { data: profile } = await supabase.from('profiles').select('full_name').eq('id', data.user.id).maybeSingle()
+        setName(profile?.full_name ?? null)
+      }
+    })
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
       setUser(session?.user ?? null)
+      if (!session?.user) setName(null)
     })
     return () => subscription.unsubscribe()
   }, [])
@@ -45,6 +53,10 @@ export function Nav() {
     document.addEventListener('keydown', handleKey)
     return () => document.removeEventListener('keydown', handleKey)
   }, [isOpen])
+
+  // Profil de l'abonné (remplace « Mon espace »).
+  const initials = (name || user?.email || 'U').slice(0, 2).toUpperCase()
+  const firstName = name?.trim().split(' ')[0] || user?.email?.split('@')[0] || ''
 
   return (
     <motion.nav
@@ -85,10 +97,13 @@ export function Nav() {
           {user ? (
             <Link
               href="/dashboard"
-              className="inline-flex items-center gap-2 bg-sport-orange text-white px-4 py-2 rounded-full text-sm font-bold hover:bg-orange-600 transition-all shadow-lg shadow-sport-orange/20 hover:shadow-sport-orange/40 active:scale-95"
+              aria-label={t('monEspace')}
+              className="inline-flex items-center gap-2 rounded-full border border-sport-border bg-sport-card/70 pl-1 pr-3.5 py-1 hover:border-sport-orange/50 transition-all active:scale-95"
             >
-              <LayoutDashboard size={13} aria-hidden="true" />
-              {t('monEspace')}
+              <span className="flex h-8 w-8 items-center justify-center rounded-full bg-sport-orange/20 border border-sport-orange/40 text-sport-orange font-black text-xs">
+                {initials}
+              </span>
+              {firstName && <span className="text-sm font-bold text-white max-w-[110px] truncate">{firstName}</span>}
             </Link>
           ) : (
             <>
