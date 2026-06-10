@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createClient } from '@/lib/supabase/server'
 import { sendWebPushToUser } from '@/lib/web-push'
+import { sendPushToUser } from '@/lib/push'
 
 export const runtime = 'nodejs'
 
@@ -23,11 +24,15 @@ export async function POST(req: NextRequest) {
   } catch { /* corps optionnel */ }
 
   const t = TEXT[locale]
-  const sent = await sendWebPushToUser(user.id, {
-    title: t.title,
-    body: t.body,
-    url: '/dashboard/notifications',
-    tag: 'test',
-  })
-  return NextResponse.json({ ok: true, sent })
+  // Envoie sur les deux canaux : Web Push (PWA) + push natif (app mobile Expo).
+  const [webSent, nativeSent] = await Promise.all([
+    sendWebPushToUser(user.id, {
+      title: t.title,
+      body: t.body,
+      url: '/dashboard/notifications',
+      tag: 'test',
+    }),
+    sendPushToUser(user.id, { title: t.title, body: t.body, data: { type: 'test' } }).catch(() => 0),
+  ])
+  return NextResponse.json({ ok: true, sent: webSent + nativeSent, web: webSent, native: nativeSent })
 }
