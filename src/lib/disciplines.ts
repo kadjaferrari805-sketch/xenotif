@@ -2,6 +2,7 @@
 
 import { FEATURES } from './constants'
 import { DISCIPLINE_CONTENT_EN, DISCIPLINE_META_EN } from './disciplines.en'
+import { DISCIPLINE_CONTENT_DE, DISCIPLINE_META_DE } from './disciplines.de'
 
 export interface DisciplineVideo {
   youtubeIds: string[]
@@ -1673,11 +1674,12 @@ const DISCIPLINE_META_FR: Record<string, DisciplineMeta> = Object.fromEntries(
 
 // Contenu localisé : repli sur le FR si la langue n'a pas de variante traduite.
 export function getDisciplineContent(locale: string): Record<string, DisciplineContent> {
-  return locale === 'en' ? DISCIPLINE_CONTENT_EN : DISCIPLINE_CONTENT
+  return locale === 'en' ? DISCIPLINE_CONTENT_EN : locale === 'de' ? DISCIPLINE_CONTENT_DE : DISCIPLINE_CONTENT
 }
 
 // Méta localisée par slug (titre/tag/description/stats/levels) : FR par défaut.
 export function getDisciplineMeta(slug: string, locale: string): DisciplineMeta | undefined {
   if (locale === 'en') return DISCIPLINE_META_EN[slug]
+  if (locale === 'de') return DISCIPLINE_META_DE[slug]
   return DISCIPLINE_META_FR[slug]
 }
