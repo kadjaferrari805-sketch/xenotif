@@ -31,7 +31,7 @@ const BADGES = [
 export default function ProfilScreen() {
   const { user, signOut } = useAuth()
   const [profile, setProfile] = useState<{ full_name: string } | null>(null)
-  const [subscription, setSubscription] = useState<any>(null)
+  const [subscription, setSubscription] = useState<{ status?: string; plan?: string } | null>(null)
   const [name, setName] = useState('')
   const [editing, setEditing] = useState(false)
   const [saving, setSaving] = useState(false)
@@ -153,10 +153,10 @@ export default function ProfilScreen() {
               <TouchableOpacity
                 key={item.label}
                 style={[styles.menuItem, i < MENU_ITEMS.length - 1 && styles.menuItemBorder]}
-                onPress={() => item.route && router.push(item.route as any)}
+                onPress={() => item.route && router.push(item.route as Parameters<typeof router.push>[0])}
               >
                 <View style={[styles.menuIcon, { backgroundColor: `${item.color}15` }]}>
-                  <Ionicons name={item.icon as any} size={18} color={item.color} />
+                  <Ionicons name={item.icon as keyof typeof Ionicons.glyphMap} size={18} color={item.color} />
                 </View>
                 <Text style={styles.menuLabel}>{item.label}</Text>
                 <Ionicons name="chevron-forward" size={16} color={COLORS.border} />

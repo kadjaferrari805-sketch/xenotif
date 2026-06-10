@@ -74,7 +74,7 @@ export default function SignUpScreen() {
                   onChangeText={f.set}
                   placeholder={f.placeholder}
                   placeholderTextColor={COLORS.gray}
-                  keyboardType={f.type as any}
+                  keyboardType={f.type as import('react-native').KeyboardTypeOptions}
                   autoCapitalize={f.type === 'email-address' ? 'none' : 'words'}
                   secureTextEntry={f.secure}
                   style={styles.input}

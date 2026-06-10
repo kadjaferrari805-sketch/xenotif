@@ -137,7 +137,7 @@ export default function SmartwatchScreen() {
                   <Text style={styles.zoneLabel}>{z.label}</Text>
                 </View>
                 <View style={styles.zoneBar}>
-                  <View style={[styles.zoneBarFill, { width: `${z.pct}%` as any, backgroundColor: z.color }]} />
+                  <View style={[styles.zoneBarFill, { width: `${z.pct}%` as import('react-native').DimensionValue, backgroundColor: z.color }]} />
                 </View>
                 <Text style={styles.zonePct}>{z.pct}%</Text>
               </View>

@@ -3,7 +3,7 @@ import { View, StyleSheet, Platform } from 'react-native'
 import { Ionicons } from '@expo/vector-icons'
 import { COLORS } from '@/constants/theme'
 
-function TabIcon({ name, color, focused }: { name: any; color: string; focused: boolean }) {
+function TabIcon({ name, focused }: { name: keyof typeof Ionicons.glyphMap; color: string; focused: boolean }) {
   return (
     <View style={[styles.iconWrap, focused && styles.iconWrapActive]}>
       <Ionicons name={name} size={22} color={focused ? COLORS.orange : COLORS.gray} />

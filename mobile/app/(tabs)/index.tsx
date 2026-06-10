@@ -25,7 +25,7 @@ export default function DashboardScreen() {
   const { user } = useAuth()
   const [profile, setProfile] = useState<{ full_name: string } | null>(null)
   const [stats, setStats] = useState<Stats>({ workouts: 0, sessions: 0, badges: 0, steps: 8432, calories: 487, heartRate: 72 })
-  const [subscription, setSubscription] = useState<any>(null)
+  const [subscription, setSubscription] = useState<{ status?: string; plan?: string } | null>(null)
   const [refreshing, setRefreshing] = useState(false)
 
   const firstName = (profile?.full_name ?? '').split(' ')[0] || 'Athlète'
@@ -50,6 +50,7 @@ export default function DashboardScreen() {
     }))
   }
 
+  // eslint-disable-next-line react-hooks/set-state-in-effect, react-hooks/exhaustive-deps -- chargement initial du dashboard au montage / changement d'utilisateur
   useEffect(() => { loadData() }, [user])
 
   async function onRefresh() {
@@ -123,7 +124,7 @@ export default function DashboardScreen() {
           {QUICK_ACTIONS.map(a => (
             <TouchableOpacity
               key={a.label}
-              onPress={() => router.push(a.route as any)}
+              onPress={() => router.push(a.route as Parameters<typeof router.push>[0])}
               style={styles.quickAction}
               activeOpacity={0.75}
             >
