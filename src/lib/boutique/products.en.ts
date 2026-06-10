@@ -3,6 +3,7 @@
    category-clé, amazon, disciplines…) et on ne surcharge que les champs texte. */
 
 import { PRODUCTS, amazonSearchUrl, AMAZON_TAG_DE, type Product } from './products'
+import { PRODUCTS_DE } from './products.de'
 
 type ProductText = Pick<Product, 'name' | 'description' | 'longDescription' | 'features' | 'tags'> & {
   badge?: string | null
@@ -299,7 +300,7 @@ export const PRODUCTS_EN: Product[] = PRODUCTS.map((p) => {
 
 // Catalogue localisé : repli FR si la langue n'a pas de variante.
 export function getProductsLocalized(locale: string): Product[] {
-  return locale === 'en' ? PRODUCTS_EN : PRODUCTS
+  return locale === 'en' ? PRODUCTS_EN : locale === 'de' ? PRODUCTS_DE : PRODUCTS
 }
 
 export function getProductBySlugLocalized(slug: string, locale: string): Product | undefined {
