@@ -24,6 +24,7 @@
     },
     "android": {
       "package": "com.xenotif.app",
+      "googleServicesFile": "./google-services.json",
       "versionCode": 1,
       "permissions": [
         "BLUETOOTH",
