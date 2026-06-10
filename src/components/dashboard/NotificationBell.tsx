@@ -2,7 +2,8 @@
 
 import { useState, useEffect, useRef } from 'react'
 import { useTranslations } from 'next-intl'
-import { Bell, Flame, Lightbulb, Activity, X } from 'lucide-react'
+import { Link } from '@/i18n/navigation'
+import { Bell, Flame, Lightbulb, Activity, X, ArrowRight } from 'lucide-react'
 
 const READ_KEY = 'xeno_notif_read'
 const todayStr = () => new Date().toISOString().split('T')[0]
@@ -20,9 +21,9 @@ export function NotificationBell({ align = 'right' }: { align?: 'left' | 'right'
   const motivations = t.raw('motivation') as string[]
   const tips = t.raw('tip') as string[]
   const items = [
-    { Icon: Flame, color: '#FF4500', text: motivations[day % motivations.length] },
-    { Icon: Lightbulb, color: '#A3FF00', text: tips[day % tips.length] },
-    { Icon: Activity, color: '#38bdf8', text: t('activity') },
+    { Icon: Flame, color: '#FF4500', text: motivations[day % motivations.length], href: '/dashboard/programme' },
+    { Icon: Lightbulb, color: '#A3FF00', text: tips[day % tips.length], href: '/dashboard/programme' },
+    { Icon: Activity, color: '#38bdf8', text: t('activity'), href: '/dashboard' },
   ]
 
   /* eslint-disable react-hooks/set-state-in-effect --
@@ -78,7 +79,12 @@ export function NotificationBell({ align = 'right' }: { align?: 'left' | 'right'
           </div>
           <div className="max-h-[60vh] overflow-y-auto p-2">
             {items.map((n, i) => (
-              <div key={i} className="flex items-start gap-3 rounded-xl px-3 py-3 hover:bg-white/5 transition-colors">
+              <Link
+                key={i}
+                href={n.href}
+                onClick={() => setOpen(false)}
+                className="flex items-start gap-3 rounded-xl px-3 py-3 hover:bg-white/5 transition-colors"
+              >
                 <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg" style={{ background: `${n.color}1f`, border: `1px solid ${n.color}40` }}>
                   <n.Icon size={15} style={{ color: n.color }} aria-hidden="true" />
                 </div>
@@ -86,9 +92,16 @@ export function NotificationBell({ align = 'right' }: { align?: 'left' | 'right'
                   <p className="text-xs text-white leading-relaxed">{n.text}</p>
                   <p className="text-[10px] text-sport-gray mt-1">{t('today')}</p>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
+          <Link
+            href="/dashboard/notifications"
+            onClick={() => setOpen(false)}
+            className="flex items-center justify-center gap-1.5 border-t border-sport-border px-4 py-3 text-xs font-bold text-sport-orange hover:bg-white/5 transition-colors"
+          >
+            {t('viewAll')} <ArrowRight size={12} aria-hidden="true" />
+          </Link>
         </div>
       )}
     </div>

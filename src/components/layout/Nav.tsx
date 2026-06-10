@@ -16,6 +16,7 @@ const NAV_LINKS = [
   { href: '/#programmes', key: 'programmes' },
   { href: '/boutique', key: 'boutique' },
   { href: '/blog', key: 'blog' },
+  { href: '/a-propos', key: 'about' },
   { href: '/#tarifs', key: 'tarifs' },
   { href: '/#faq', key: 'faq' },
 ] as const
