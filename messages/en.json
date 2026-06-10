@@ -673,6 +673,18 @@
       "allRead": "All caught up ✓",
       "viewAll": "View all notifications",
       "close": "Close",
+      "push": {
+        "title": "Notifications on this phone",
+        "enable": "Enable",
+        "enabling": "Enabling…",
+        "disable": "Disable",
+        "test": "Test",
+        "testing": "Sending…",
+        "testSent": "Sent ✓",
+        "onHint": "Enabled on this device. You get your reminders even when the site is closed.",
+        "offHint": "Get your reminders directly on this phone, even when the site is closed.",
+        "denied": "Notifications are blocked in your browser. Allow them in the site settings to receive them."
+      },
       "activity": "Don't forget to log today's activity in your space.",
       "motivation": [
         "Every session counts. You're building the strongest version of yourself. 💪",

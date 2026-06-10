@@ -673,6 +673,18 @@
       "allRead": "Alles aktuell ✓",
       "viewAll": "Alle Benachrichtigungen ansehen",
       "close": "Schließen",
+      "push": {
+        "title": "Benachrichtigungen auf diesem Handy",
+        "enable": "Aktivieren",
+        "enabling": "Wird aktiviert…",
+        "disable": "Deaktivieren",
+        "test": "Testen",
+        "testing": "Senden…",
+        "testSent": "Gesendet ✓",
+        "onHint": "Auf diesem Gerät aktiviert. Du erhältst deine Erinnerungen, auch wenn die Seite geschlossen ist.",
+        "offHint": "Erhalte deine Erinnerungen direkt auf diesem Handy, auch wenn die Seite geschlossen ist.",
+        "denied": "Benachrichtigungen sind in deinem Browser blockiert. Erlaube sie in den Seiteneinstellungen, um sie zu erhalten."
+      },
       "activity": "Denk daran, deine heutige Aktivität in Mein Bereich zu erfassen.",
       "motivation": [
         "Jede Einheit zählt. Du baust die stärkste Version deiner selbst. 💪",

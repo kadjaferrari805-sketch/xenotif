@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server'
 import { createAdminClient } from '@/lib/supabase/admin'
 import { sendDailyMotivationEmail } from '@/lib/emails'
 import { sendPushToUser } from '@/lib/push'
+import { sendWebPushToUser } from '@/lib/web-push'
 
 export const runtime = 'nodejs'
 export const dynamic = 'force-dynamic'
@@ -75,17 +76,35 @@ export async function GET(request: Request) {
       }
     }
 
-    // Push (indépendant de l'email ; ne fait rien si l'utilisateur n'a aucun appareil)
+    // Push (natif Expo + Web Push PWA ; ne fait rien si l'utilisateur n'a aucun appareil)
+    const pushTitle =
+      locale === 'de' ? '💪 Deine tägliche Motivation'
+      : locale === 'en' ? '💪 Your daily boost'
+      : '💪 Ta dose de motivation'
+    const pushBody =
+      locale === 'de'
+        ? 'Ein neuer Tag, um deine Ziele zu erreichen — öffne Xenotif und leg los!'
+        : locale === 'en'
+        ? 'A new day to crush your goals — open Xenotif and get moving!'
+        : 'Nouveau jour pour avancer vers tes objectifs — ouvre Xenotif et bouge !'
     try {
       pushed += await sendPushToUser(userId, {
-        title: locale === 'en' ? '💪 Your daily boost' : '💪 Ta dose de motivation',
-        body: locale === 'en'
-          ? 'A new day to crush your goals — open Xenotif and get moving!'
-          : 'Nouveau jour pour avancer vers tes objectifs — ouvre Xenotif et bouge !',
+        title: pushTitle,
+        body: pushBody,
         data: { type: 'daily_motivation' },
       })
     } catch (e) {
       errors.push(`push ${userId}: ${e}`)
+    }
+    try {
+      pushed += await sendWebPushToUser(userId, {
+        title: pushTitle,
+        body: pushBody,
+        url: '/dashboard/notifications',
+        tag: 'daily_motivation',
+      })
+    } catch (e) {
+      errors.push(`webpush ${userId}: ${e}`)
     }
   }
 
