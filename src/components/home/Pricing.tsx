@@ -7,6 +7,7 @@ import { useInView } from 'react-intersection-observer'
 import { CheckCircle, ArrowRight, Zap } from 'lucide-react'
 import { useRouter } from '@/i18n/navigation'
 import { SectionHeader } from '@/components/ui/SectionHeader'
+import { Tilt3D } from '@/components/premium/Tilt3D'
 
 type PlanId = 'gratuit' | 'pro' | 'elite'
 type Period = 'monthly' | 'annual'
@@ -89,12 +90,12 @@ export function Pricing() {
           {PLANS.map((plan, i) => {
             const tr = plans[i]
             return (
+              <Tilt3D key={plan.id} max={plan.highlight ? 16 : 12} className="relative h-full rounded-2xl">
               <motion.div
-                key={plan.id}
                 initial={{ opacity: 0, y: 28 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: i * 0.1, duration: 0.5, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
-                className={`relative flex flex-col rounded-2xl border p-8 transition-all ${
+                className={`relative flex h-full flex-col rounded-2xl border p-8 transition-all ${
                   plan.highlight
                     ? 'bg-sport-dark border-sport-orange shadow-2xl shadow-sport-orange/15 ring-1 ring-sport-orange/40'
                     : 'bg-sport-dark border-sport-border'
@@ -141,6 +142,7 @@ export function Pricing() {
 
                 <PlanButton planId={plan.id} name={tr.name} cta={tr.cta} highlight={plan.highlight} period={period} />
               </motion.div>
+              </Tilt3D>
             )
           })}
         </div>

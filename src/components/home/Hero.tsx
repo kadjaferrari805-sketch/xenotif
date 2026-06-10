@@ -1,14 +1,11 @@
 'use client'
 
 import { useState, useEffect, useCallback } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion, AnimatePresence, useMotionValue, useSpring } from 'framer-motion'
 import { useTranslations } from 'next-intl'
 import Image from 'next/image'
 import { Link } from '@/i18n/navigation'
 import { Users, Trophy, Zap, ArrowRight, Star } from 'lucide-react'
-import dynamic from 'next/dynamic'
-
-const Hero3D = dynamic(() => import('./Hero3D'), { ssr: false })
 
 // Style structurel par diapositive (image + couleurs d'accent). Les textes
 // (tag, headline, accent) viennent de messages → home.hero.slides.
@@ -70,12 +67,24 @@ export function Hero() {
     if (e.key === 'ArrowRight') { next(); e.preventDefault() }
   }
 
+  // Parallaxe 3D : l'image de fond suit légèrement la souris → profondeur premium.
+  const mx = useMotionValue(0)
+  const my = useMotionValue(0)
+  const px = useSpring(mx, { stiffness: 120, damping: 30 })
+  const py = useSpring(my, { stiffness: 120, damping: 30 })
+  function handleParallax(e: React.MouseEvent<HTMLElement>) {
+    const r = e.currentTarget.getBoundingClientRect()
+    mx.set(((e.clientX - r.left) / r.width - 0.5) * 28)
+    my.set(((e.clientY - r.top) / r.height - 0.5) * 28)
+  }
+
   return (
     <section
       aria-label={t('aria.welcome')}
       className="relative h-screen min-h-[600px] overflow-hidden"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
+      onMouseMove={handleParallax}
     >
       {/* Screen reader announcement */}
       <div aria-live="polite" aria-atomic="true" className="sr-only">
@@ -86,6 +95,7 @@ export function Hero() {
           `initial={false}` : la 1re diapo s'affiche immédiatement (pas de fondu
           opacity 0→1 dépendant de l'hydratation JS) → l'image LCP est peinte dès
           son chargement. Les transitions entre diapos suivantes restent animées. */}
+      <motion.div className="absolute -inset-10 z-0" style={{ x: px, y: py }}>
       <AnimatePresence mode="wait" initial={false}>
         <motion.div
           key={current}
@@ -106,16 +116,12 @@ export function Hero() {
           />
         </motion.div>
       </AnimatePresence>
+      </motion.div>
 
       {/* Gradient overlays — layered for depth */}
       <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-r from-black/92 via-black/65 to-black/20 z-[1]" />
       <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-transparent z-[1]" />
       <div aria-hidden="true" className="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-sport-dark to-transparent z-[1]" />
-
-      {/* Scène 3D décorative (côté droit, sous le texte, non bloquante) */}
-      <div aria-hidden="true" className="pointer-events-none absolute inset-y-0 right-0 z-[5] hidden md:block w-1/2 opacity-80">
-        <Hero3D />
-      </div>
 
       {/* Main content */}
       <div className="absolute inset-0 z-10 flex flex-col justify-center px-6">
@@ -156,7 +162,7 @@ export function Hero() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -16 }}
                 transition={{ duration: 0.5, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}
-                className="text-5xl md:text-7xl lg:text-8xl font-black text-white leading-[0.95] mb-2 tracking-tight"
+                className="text-3d text-5xl md:text-7xl lg:text-8xl font-black text-white leading-[0.95] mb-2 tracking-tight"
               >
                 {slides[current].headline}
               </motion.h1>
@@ -170,7 +176,7 @@ export function Hero() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -12 }}
                 transition={{ duration: 0.45, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}
-                className={`text-3xl md:text-5xl lg:text-6xl font-black mb-8 leading-tight ${SLIDE_STYLE[current].accentColor}`}
+                className={`text-3d text-3xl md:text-5xl lg:text-6xl font-black mb-8 leading-tight ${SLIDE_STYLE[current].accentColor}`}
               >
                 {slides[current].accent}
               </motion.p>

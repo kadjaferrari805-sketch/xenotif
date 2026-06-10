@@ -4,6 +4,7 @@ import Image from 'next/image'
 import { useTranslations, useLocale } from 'next-intl'
 import { ShoppingCart, Download, Star, Heart, ExternalLink, Eye } from 'lucide-react'
 import { motion } from 'framer-motion'
+import { Tilt3D } from '@/components/premium/Tilt3D'
 import { formatPrice, type Product } from '@/lib/boutique/products'
 import { useCart } from '@/lib/boutique/cart'
 import { useWishlist } from '@/lib/boutique/wishlist'
@@ -38,8 +39,9 @@ export function ProductCard({ product, index = 0 }: ProductCardProps) {
   if (product.isAffiliate && product.amazon) {
     return (
       <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3, delay: index * 0.05 }}>
+        <Tilt3D max={14} className="relative rounded-2xl">
         <a href={product.amazon.affiliateUrl} target="_blank" rel="noopener noreferrer"
-          className="group block overflow-hidden rounded-2xl border border-sport-border bg-sport-card hover:-translate-y-1 transition-all duration-300">
+          className="group block overflow-hidden rounded-2xl border border-sport-border bg-sport-card transition-all duration-300">
           <div className="relative h-52 overflow-hidden bg-sport-border/20">
             <Image src={product.images[0] ?? ''} alt={product.name} fill
               className={`${product.imageFit === 'contain' ? 'object-contain p-2' : 'object-cover'} transition-transform duration-500 group-hover:scale-105`}
@@ -73,6 +75,7 @@ export function ProductCard({ product, index = 0 }: ProductCardProps) {
             </div>
           </div>
         </a>
+        </Tilt3D>
       </motion.div>
     )
   }
@@ -80,7 +83,8 @@ export function ProductCard({ product, index = 0 }: ProductCardProps) {
   // Produit propre XENOTIF
   return (
     <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3, delay: index * 0.05 }}>
-      <div className="group overflow-hidden rounded-2xl border border-sport-border bg-sport-card hover:-translate-y-1 transition-all duration-300 flex flex-col">
+      <Tilt3D max={14} className="relative rounded-2xl">
+      <div className="group overflow-hidden rounded-2xl border border-sport-border bg-sport-card transition-all duration-300 flex flex-col">
         <Link href={`/boutique/${product.slug}`} className="relative block h-52 overflow-hidden bg-sport-border/20">
           <Image src={product.images[0] ?? ''} alt={product.name} fill className="object-cover transition-transform duration-500 group-hover:scale-105"
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw" />
@@ -121,6 +125,7 @@ export function ProductCard({ product, index = 0 }: ProductCardProps) {
           </div>
         </div>
       </div>
+      </Tilt3D>
     </motion.div>
   )
 }

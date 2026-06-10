@@ -4,6 +4,7 @@ import { getTranslations } from 'next-intl/server'
 import { Link } from '@/i18n/navigation'
 import { getAllPostsLocalized, getPostsByCategoryLocalized } from '@/lib/blog/posts.en'
 import type { BlogPost } from '@/lib/blog/posts'
+import { Tilt3D } from '@/components/premium/Tilt3D'
 
 const SITE = 'https://xenotif.com'
 
@@ -153,10 +154,10 @@ export default async function BlogPage({
             {posts.map(post => {
               const colorClass = CATEGORY_COLORS[post.category] ?? 'bg-sport-orange/10 text-sport-orange border-sport-orange/20'
               return (
+                <Tilt3D key={post.slug} max={13} className="relative h-full rounded-2xl">
                 <Link
-                  key={post.slug}
                   href={`/blog/${post.slug}`}
-                  className="group block overflow-hidden rounded-2xl border border-sport-border bg-sport-card hover:border-sport-orange/30 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-sport-orange/5"
+                  className="group block h-full overflow-hidden rounded-2xl border border-sport-border bg-sport-card hover:border-sport-orange/30 transition-all duration-300 hover:shadow-xl hover:shadow-sport-orange/5"
                 >
                   <div className="relative h-52 overflow-hidden">
                     <Image src={post.coverImage} alt={post.title} fill className="object-cover transition-transform duration-500 group-hover:scale-105" style={{ objectPosition: post.coverPosition }} sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" />
@@ -181,6 +182,7 @@ export default async function BlogPage({
                     </div>
                   </div>
                 </Link>
+                </Tilt3D>
               )
             })}
           </div>

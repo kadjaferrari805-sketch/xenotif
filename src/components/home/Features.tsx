@@ -9,6 +9,7 @@ import Image from 'next/image'
 import { Link } from '@/i18n/navigation'
 import { createClient } from '@/lib/supabase/client'
 import { SectionHeader } from '@/components/ui/SectionHeader'
+import { Tilt3D } from '@/components/premium/Tilt3D'
 import { FEATURES } from '@/lib/constants'
 
 type FeatureText = { title: string; description: string; tag: string; stats: string[] }
@@ -80,8 +81,11 @@ export function Features() {
                 initial={{ opacity: 0, y: 28 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: i * 0.08, duration: 0.5, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
-                className={`card-base overflow-hidden group transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl ${accent.glow} ${accent.border}`}
               >
+                <Tilt3D
+                  max={14}
+                  className={`card-base overflow-hidden group relative block transition-shadow duration-300 hover:shadow-2xl ${accent.glow} ${accent.border}`}
+                >
                 {/* Sport image */}
                 <div className="relative h-48 overflow-hidden">
                   <Image
@@ -129,6 +133,7 @@ export function Features() {
                     {t('discover')} <ArrowRight size={13} aria-hidden="true" />
                   </Link>
                 </div>
+                </Tilt3D>
               </motion.article>
             )
           })}
