@@ -5,6 +5,7 @@ import { useTranslations } from 'next-intl'
 import { useInView } from 'react-intersection-observer'
 import { Star, Quote, CheckCircle, TrendingUp } from 'lucide-react'
 import { SectionHeader } from '@/components/ui/SectionHeader'
+import { Tilt3D } from '@/components/premium/Tilt3D'
 import { REVIEWS } from '@/lib/constants'
 
 const AVATAR_BG: Record<string, string> = {
@@ -41,12 +42,12 @@ export function Reviews() {
 
         <div ref={ref} className="grid grid-cols-1 md:grid-cols-3 gap-5 mt-14">
           {REVIEWS.map((review, i) => (
+            <Tilt3D key={review.name} max={11} className="relative h-full rounded-2xl">
             <motion.article
-              key={review.name}
               initial={{ opacity: 0, y: 24 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: i * 0.12, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-              className={`card-base p-6 flex flex-col transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl ${BORDER_HOVER[review.color] ?? ''}`}
+              className={`card-base p-6 h-full flex flex-col transition-all duration-300 hover:shadow-2xl ${BORDER_HOVER[review.color] ?? ''}`}
             >
               {/* Stars */}
               <div className="flex gap-0.5 mb-4" aria-label={t('ratingAria', { rating: review.rating })}>
@@ -88,6 +89,7 @@ export function Reviews() {
                 </div>
               </footer>
             </motion.article>
+            </Tilt3D>
           ))}
         </div>
 

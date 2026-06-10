@@ -54,7 +54,7 @@ export function Newsletter() {
           {t('eyebrow')}
         </span>
 
-        <h2 id="newsletter-title" className="text-4xl md:text-5xl font-black text-white mb-4 leading-tight">
+        <h2 id="newsletter-title" className="text-3d text-4xl md:text-5xl font-black text-white mb-4 leading-tight">
           {t('titleTop')}
           <br />
           <span className="text-sport-orange">{t('titleBottom')}</span>
@@ -126,7 +126,7 @@ export function Newsletter() {
               <button
                 type="submit"
                 disabled={loading}
-                className="bg-sport-orange text-white px-6 py-3.5 rounded-full font-bold text-sm hover:bg-orange-600 active:scale-95 transition-all flex items-center gap-2 justify-center whitespace-nowrap disabled:opacity-60 disabled:cursor-not-allowed"
+                className="bg-sport-orange text-white px-6 py-3.5 rounded-full font-bold text-sm shadow-lg shadow-sport-orange/30 hover:bg-orange-600 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-sport-orange/40 active:translate-y-0 active:scale-95 transition-all flex items-center gap-2 justify-center whitespace-nowrap disabled:opacity-60 disabled:cursor-not-allowed"
               >
                 {loading ? t('sending') : <> {t('submit')} <ArrowRight size={14} aria-hidden="true" /></>}
               </button>

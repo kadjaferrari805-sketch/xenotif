@@ -5,6 +5,7 @@ import { motion } from 'framer-motion'
 import { useTranslations } from 'next-intl'
 import { useInView } from 'react-intersection-observer'
 import { Users, BookOpen, Layers, Star } from 'lucide-react'
+import { Tilt3D } from '@/components/premium/Tilt3D'
 
 // Données structurelles des stats (icône, valeur, couleurs). Les libellés
 // (label, sublabel) viennent de messages → home.proof.stats.
@@ -54,8 +55,8 @@ export function ProofBar() {
       <div className="max-w-6xl mx-auto relative" ref={ref}>
         <dl className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4">
           {STAT_STYLE.map((stat, i) => (
+            <Tilt3D key={labels[i].label} max={9} glare={false} className="relative">
             <motion.div
-              key={labels[i].label}
               initial={{ opacity: 0, y: 24 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: i * 0.1, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
@@ -73,6 +74,7 @@ export function ProofBar() {
               <dd className="text-xs font-bold text-white uppercase tracking-widest mt-1">{labels[i].label}</dd>
               <span className="text-[11px] text-sport-gray">{labels[i].sublabel}</span>
             </motion.div>
+            </Tilt3D>
           ))}
         </dl>
       </div>

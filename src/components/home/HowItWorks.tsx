@@ -6,6 +6,7 @@ import { useInView } from 'react-intersection-observer'
 import { Link } from '@/i18n/navigation'
 import { ArrowRight, UserPlus, Target, Dumbbell, BarChart3 } from 'lucide-react'
 import { SectionHeader } from '@/components/ui/SectionHeader'
+import { Tilt3D } from '@/components/premium/Tilt3D'
 import { STEPS } from '@/lib/constants'
 
 type StepText = { title: string; description: string }
@@ -61,7 +62,8 @@ export function HowItWorks() {
                 )}
 
                 {/* Card */}
-                <div className="bg-sport-dark border border-sport-border rounded-2xl p-6 hover:border-sport-border/80 transition-all hover:-translate-y-1 group">
+                <Tilt3D max={12} className="relative h-full rounded-2xl">
+                <div className="bg-sport-dark border border-sport-border rounded-2xl p-6 h-full hover:border-sport-border/80 transition-all group">
                   {/* Step number + icon */}
                   <div className="flex items-center gap-3 mb-5">
                     <div className={`relative w-12 h-12 rounded-full ${color.bg} flex items-center justify-center text-white font-black text-sm shrink-0 shadow-lg ring-4 ${color.ring}`}>
@@ -75,6 +77,7 @@ export function HowItWorks() {
                   <h3 className="text-sm font-bold text-white mb-2">{steps[i].title}</h3>
                   <p className="text-xs text-sport-gray leading-relaxed">{steps[i].description}</p>
                 </div>
+                </Tilt3D>
               </motion.div>
             )
           })}
