@@ -162,7 +162,7 @@ export function Hero() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -16 }}
                 transition={{ duration: 0.5, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}
-                className="text-5xl md:text-7xl lg:text-8xl font-black text-white leading-[0.95] mb-2 tracking-tight"
+                className="text-3d text-5xl md:text-7xl lg:text-8xl font-black text-white leading-[0.95] mb-2 tracking-tight"
               >
                 {slides[current].headline}
               </motion.h1>
@@ -176,7 +176,7 @@ export function Hero() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -12 }}
                 transition={{ duration: 0.45, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}
-                className={`text-3xl md:text-5xl lg:text-6xl font-black mb-8 leading-tight ${SLIDE_STYLE[current].accentColor}`}
+                className={`text-3d text-3xl md:text-5xl lg:text-6xl font-black mb-8 leading-tight ${SLIDE_STYLE[current].accentColor}`}
               >
                 {slides[current].accent}
               </motion.p>

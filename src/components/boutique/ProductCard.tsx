@@ -39,7 +39,7 @@ export function ProductCard({ product, index = 0 }: ProductCardProps) {
   if (product.isAffiliate && product.amazon) {
     return (
       <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3, delay: index * 0.05 }}>
-        <Tilt3D max={9} className="relative rounded-2xl">
+        <Tilt3D max={14} className="relative rounded-2xl">
         <a href={product.amazon.affiliateUrl} target="_blank" rel="noopener noreferrer"
           className="group block overflow-hidden rounded-2xl border border-sport-border bg-sport-card transition-all duration-300">
           <div className="relative h-52 overflow-hidden bg-sport-border/20">
@@ -83,7 +83,7 @@ export function ProductCard({ product, index = 0 }: ProductCardProps) {
   // Produit propre XENOTIF
   return (
     <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3, delay: index * 0.05 }}>
-      <Tilt3D max={9} className="relative rounded-2xl">
+      <Tilt3D max={14} className="relative rounded-2xl">
       <div className="group overflow-hidden rounded-2xl border border-sport-border bg-sport-card transition-all duration-300 flex flex-col">
         <Link href={`/boutique/${product.slug}`} className="relative block h-52 overflow-hidden bg-sport-border/20">
           <Image src={product.images[0] ?? ''} alt={product.name} fill className="object-cover transition-transform duration-500 group-hover:scale-105"

@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useTranslations } from 'next-intl'
 import { Plus, Minus } from 'lucide-react'
 import { SectionHeader } from '@/components/ui/SectionHeader'
+import { Tilt3D } from '@/components/premium/Tilt3D'
 
 type FaqItem = { q: string; a: string }
 
@@ -13,7 +14,8 @@ function FAQItem({ q, a, index }: { q: string; a: string; index: number }) {
   const answerId = `faq-answer-${index}`
 
   return (
-    <div className="border-b border-sport-border last:border-0">
+    <Tilt3D max={6} glare={false} className="relative mb-3 rounded-xl">
+    <div className="rounded-xl border border-sport-border/70 bg-sport-card/50 px-5 backdrop-blur-sm transition-colors hover:border-sport-orange/30">
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}
@@ -49,6 +51,7 @@ function FAQItem({ q, a, index }: { q: string; a: string; index: number }) {
         )}
       </AnimatePresence>
     </div>
+    </Tilt3D>
   )
 }
 

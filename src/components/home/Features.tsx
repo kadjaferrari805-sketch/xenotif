@@ -83,7 +83,7 @@ export function Features() {
                 transition={{ delay: i * 0.08, duration: 0.5, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
               >
                 <Tilt3D
-                  max={10}
+                  max={14}
                   className={`card-base overflow-hidden group relative block transition-shadow duration-300 hover:shadow-2xl ${accent.glow} ${accent.border}`}
                 >
                 {/* Sport image */}
