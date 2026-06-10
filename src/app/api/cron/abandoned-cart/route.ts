@@ -1,6 +1,8 @@
 import { NextResponse } from 'next/server'
 import { createAdminClient } from '@/lib/supabase/admin'
 import { sendAbandonedCartEmail } from '@/lib/emails'
+import { sendPushToUser } from '@/lib/push'
+import { sendWebPushToUser } from '@/lib/web-push'
 import { PRODUCTS, formatPrice } from '@/lib/boutique/products'
 
 export const runtime = 'nodejs'
@@ -8,6 +10,13 @@ export const dynamic = 'force-dynamic'
 
 const PRODUCT_BY_ID = new Map(PRODUCTS.map(p => [p.id, p]))
 const BASE_URL = process.env.NEXT_PUBLIC_URL ?? 'https://xenotif.com'
+
+// Texte court du push de relance panier, par langue.
+const CART_PUSH: Record<string, { title: string; body: string }> = {
+  fr: { title: '🛒 Ton panier t\'attend', body: 'Termine ta commande Xenotif® avant que ton panier n\'expire !' },
+  en: { title: '🛒 Your cart is waiting', body: 'Complete your Xenotif® order before your cart expires!' },
+  de: { title: '🛒 Dein Warenkorb wartet', body: 'Schließe deine Xenotif®-Bestellung ab, bevor dein Warenkorb verfällt!' },
+}
 
 export async function GET(request: Request) {
   const authHeader = request.headers.get('Authorization')
@@ -36,7 +45,24 @@ export async function GET(request: Request) {
     return NextResponse.json({ sent: 0 })
   }
 
+  // Résolution email → user_id (pour le push : la table abandoned_carts ne stocke
+  // que l'email). On ne mappe que les emails des paniers à relancer.
+  const wantedEmails = new Set(carts.map(c => (c.email as string).toLowerCase()))
+  const userIdByEmail = new Map<string, string>()
+  for (let page = 1; page <= 25; page++) {
+    const { data: list, error: listErr } = await supabase.auth.admin.listUsers({ page, perPage: 200 })
+    if (listErr) {
+      console.error('[abandoned-cart] listUsers error:', listErr)
+      break
+    }
+    for (const u of list.users) {
+      if (u.email && wantedEmails.has(u.email.toLowerCase())) userIdByEmail.set(u.email.toLowerCase(), u.id)
+    }
+    if (list.users.length < 200) break
+  }
+
   let sent = 0
+  let pushed = 0
   for (const cart of carts) {
     const items = (cart.items as { product_id: string; quantity: number }[])
       .map(i => {
@@ -71,7 +97,30 @@ export async function GET(request: Request) {
     } catch (err) {
       console.error(`[abandoned-cart] send error for ${cart.email}:`, err)
     }
+
+    // Push (web + natif) en plus de l'email, si on a retrouvé le compte utilisateur.
+    // Best-effort : n'envoie rien si l'utilisateur n'a pas d'appareil/abonnement.
+    const userId = userIdByEmail.get((cart.email as string).toLowerCase())
+    if (userId) {
+      const locale = (cart.locale as string) ?? 'fr'
+      const p = CART_PUSH[locale] ?? CART_PUSH.fr
+      try {
+        pushed += await sendWebPushToUser(userId, {
+          title: p.title,
+          body: p.body,
+          url: '/boutique/panier',
+          tag: 'abandoned_cart',
+        })
+        pushed += await sendPushToUser(userId, {
+          title: p.title,
+          body: p.body,
+          data: { type: 'abandoned_cart', url: '/boutique/panier' },
+        })
+      } catch (err) {
+        console.error(`[abandoned-cart] push error for ${cart.email}:`, err)
+      }
+    }
   }
 
-  return NextResponse.json({ sent, processed: carts.length })
+  return NextResponse.json({ sent, pushed, processed: carts.length })
 }
