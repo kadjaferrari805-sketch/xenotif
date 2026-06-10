@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect, useCallback } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion, AnimatePresence, useMotionValue, useSpring } from 'framer-motion'
 import { useTranslations } from 'next-intl'
 import Image from 'next/image'
 import { Link } from '@/i18n/navigation'
@@ -67,12 +67,24 @@ export function Hero() {
     if (e.key === 'ArrowRight') { next(); e.preventDefault() }
   }
 
+  // Parallaxe 3D : l'image de fond suit légèrement la souris → profondeur premium.
+  const mx = useMotionValue(0)
+  const my = useMotionValue(0)
+  const px = useSpring(mx, { stiffness: 120, damping: 30 })
+  const py = useSpring(my, { stiffness: 120, damping: 30 })
+  function handleParallax(e: React.MouseEvent<HTMLElement>) {
+    const r = e.currentTarget.getBoundingClientRect()
+    mx.set(((e.clientX - r.left) / r.width - 0.5) * 28)
+    my.set(((e.clientY - r.top) / r.height - 0.5) * 28)
+  }
+
   return (
     <section
       aria-label={t('aria.welcome')}
       className="relative h-screen min-h-[600px] overflow-hidden"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
+      onMouseMove={handleParallax}
     >
       {/* Screen reader announcement */}
       <div aria-live="polite" aria-atomic="true" className="sr-only">
@@ -83,6 +95,7 @@ export function Hero() {
           `initial={false}` : la 1re diapo s'affiche immédiatement (pas de fondu
           opacity 0→1 dépendant de l'hydratation JS) → l'image LCP est peinte dès
           son chargement. Les transitions entre diapos suivantes restent animées. */}
+      <motion.div className="absolute -inset-10 z-0" style={{ x: px, y: py }}>
       <AnimatePresence mode="wait" initial={false}>
         <motion.div
           key={current}
@@ -103,6 +116,7 @@ export function Hero() {
           />
         </motion.div>
       </AnimatePresence>
+      </motion.div>
 
       {/* Gradient overlays — layered for depth */}
       <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-r from-black/92 via-black/65 to-black/20 z-[1]" />
