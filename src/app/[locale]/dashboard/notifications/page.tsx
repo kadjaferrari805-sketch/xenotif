@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import { useTranslations } from 'next-intl'
 import { Link } from '@/i18n/navigation'
 import { Bell, Flame, Lightbulb, Activity, Check, ChevronRight } from 'lucide-react'
+import { PushToggle } from '@/components/dashboard/PushToggle'
 
 const READ_KEY = 'xeno_notif_read'
 const todayStr = () => new Date().toISOString().split('T')[0]
@@ -48,7 +49,9 @@ export default function NotificationsPage() {
           {read ? <><Check size={13} aria-hidden="true" /> {t('allRead')}</> : t('markAllRead')}
         </button>
       </div>
-      <p className="text-sport-gray text-sm mb-8">{t('pageSubtitle')}</p>
+      <p className="text-sport-gray text-sm mb-6">{t('pageSubtitle')}</p>
+
+      <PushToggle />
 
       <div className="space-y-3">
         {items.map((n, i) => (

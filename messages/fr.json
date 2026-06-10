@@ -673,6 +673,15 @@
       "allRead": "Tout est à jour ✓",
       "viewAll": "Voir toutes les notifications",
       "close": "Fermer",
+      "push": {
+        "title": "Notifications sur ce téléphone",
+        "enable": "Activer",
+        "enabling": "Activation…",
+        "disable": "Désactiver",
+        "onHint": "Activées sur cet appareil. Tu reçois tes rappels même quand le site est fermé.",
+        "offHint": "Reçois tes rappels directement sur ce téléphone, même quand le site est fermé.",
+        "denied": "Notifications bloquées dans ton navigateur. Autorise-les dans les réglages du site pour les recevoir."
+      },
       "activity": "Pense à enregistrer ton activité du jour dans Mon espace.",
       "motivation": [
         "Chaque séance compte. Tu construis la version la plus forte de toi-même. 💪",
