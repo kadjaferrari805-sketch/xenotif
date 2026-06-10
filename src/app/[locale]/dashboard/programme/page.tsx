@@ -148,7 +148,7 @@ function ProgrammeContent() {
                 <span className="text-xs font-bold text-sport-gray">{t('phase', { n: bi + 1 })}</span>
               </div>
               <ul className="divide-y divide-sport-border">
-                {block.sessions.map((session, si) => {
+                {block.sessions.map((session) => {
                   const key = `${bi + 1}-${session.name}`
                   const done = progress[key] ?? false
                   return (
