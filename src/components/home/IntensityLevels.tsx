@@ -6,6 +6,7 @@ import { useInView } from 'react-intersection-observer'
 import { Link } from '@/i18n/navigation'
 import { ArrowRight } from 'lucide-react'
 import { SectionHeader } from '@/components/ui/SectionHeader'
+import { Tilt3D } from '@/components/premium/Tilt3D'
 
 // Style structurel par niveau (emoji, couleurs, largeur de barre). Les textes
 // (label, desc, detail) viennent de messages → home.intensity.levels.
@@ -35,12 +36,12 @@ export function IntensityLevels() {
 
         <div ref={ref} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mt-14">
           {LEVEL_STYLE.map((level, i) => (
+            <Tilt3D key={level.id} max={12} className="relative h-full rounded-2xl">
             <motion.div
-              key={level.id}
               initial={{ opacity: 0, y: 24 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: i * 0.1, duration: 0.5 }}
-              className={`bg-sport-card border rounded-2xl p-6 flex flex-col gap-4 ${level.border}`}
+              className={`bg-sport-card border rounded-2xl p-6 h-full flex flex-col gap-4 ${level.border}`}
             >
               <div className="text-3xl" aria-hidden="true">{level.emoji}</div>
               <div>
@@ -73,6 +74,7 @@ export function IntensityLevels() {
 
               <p className={`text-[11px] font-bold ${level.text}`}>{levels[i].detail}</p>
             </motion.div>
+            </Tilt3D>
           ))}
         </div>
 

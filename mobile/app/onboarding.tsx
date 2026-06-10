@@ -45,7 +45,8 @@ const SLIDES = [
 export default function OnboardingScreen() {
   const [currentIndex, setCurrentIndex] = useState(0)
   const flatListRef = useRef<FlatList>(null)
-  const scrollX = useRef(new Animated.Value(0)).current
+  // Animated.Value créée une seule fois via l'initialiseur paresseux (pas de ref lue pendant le rendu).
+  const [scrollX] = useState(() => new Animated.Value(0))
 
   function goNext() {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light)
@@ -73,7 +74,7 @@ export default function OnboardingScreen() {
         onMomentumScrollEnd={e => setCurrentIndex(Math.round(e.nativeEvent.contentOffset.x / width))}
         keyExtractor={item => item.id}
         renderItem={({ item }) => (
-          <LinearGradient colors={[...item.bg, '#0A0B0F'] as any} style={styles.slide}>
+          <LinearGradient colors={[...item.bg, '#0A0B0F'] as unknown as import('expo-linear-gradient').LinearGradientProps['colors']} style={styles.slide}>
             <SafeAreaView style={styles.slideInner}>
               <Text style={styles.emoji}>{item.emoji}</Text>
 

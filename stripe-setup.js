@@ -14,6 +14,8 @@
  * ─────────────────────────────────────────────────────────────
  */
 
+/* eslint-disable @typescript-eslint/no-require-imports -- script Node CommonJS exécuté via `node stripe-setup.js` */
+
 const Stripe = require('stripe')
 
 const SECRET_KEY = process.argv[2] || process.env.STRIPE_SECRET_KEY

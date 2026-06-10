@@ -13,6 +13,17 @@ type BeforeInstallPromptEvent = Event & {
 
 type Platform = 'ios' | 'android' | 'desktop'
 
+// Carte d'enrobage déclarée au niveau module (pas de composant créé pendant le rendu).
+function Card({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="min-h-screen bg-sport-dark flex items-center justify-center px-4 py-16">
+      <div className="w-full max-w-sm rounded-3xl border border-sport-border bg-sport-card p-8 text-center shadow-2xl">
+        {children}
+      </div>
+    </div>
+  )
+}
+
 // Page d'installation atterrie depuis le QR code. Sur Android/Chrome : install
 // en 1 tap (invite native). Sur iPhone : guide « Ajouter à l'écran d'accueil ».
 // Sur desktop : QR à scanner. Si déjà installée : raccourci vers l'espace.
@@ -23,6 +34,8 @@ export function AppInstall() {
   const [done, setDone] = useState(false)
   const [platform, setPlatform] = useState<Platform>('desktop')
 
+  /* eslint-disable react-hooks/set-state-in-effect --
+     Détection PWA/plateforme via des APIs navigateur disponibles uniquement après le montage. */
   useEffect(() => {
     const nav = window.navigator as Navigator & { standalone?: boolean }
     const standalone =
@@ -43,6 +56,7 @@ export function AppInstall() {
       window.removeEventListener('appinstalled', onInstalled)
     }
   }, [])
+  /* eslint-enable react-hooks/set-state-in-effect */
 
   async function handleInstall() {
     if (!deferred) return
@@ -51,14 +65,6 @@ export function AppInstall() {
     if (res.outcome === 'accepted') setDone(true)
     setDeferred(null)
   }
-
-  const Card = ({ children }: { children: React.ReactNode }) => (
-    <div className="min-h-screen bg-sport-dark flex items-center justify-center px-4 py-16">
-      <div className="w-full max-w-sm rounded-3xl border border-sport-border bg-sport-card p-8 text-center shadow-2xl">
-        {children}
-      </div>
-    </div>
-  )
 
   // ── Déjà installée / installation lancée ──
   if (installed || done) {

@@ -103,7 +103,7 @@ export default function ProgrammeScreen() {
             <Text style={[styles.progressPct, { color: discipline.color }]}>{pct}%</Text>
           </View>
           <View style={styles.progressBar}>
-            <View style={[styles.progressFill, { width: `${pct}%` as any, backgroundColor: discipline.color }]} />
+            <View style={[styles.progressFill, { width: `${pct}%` as import('react-native').DimensionValue, backgroundColor: discipline.color }]} />
           </View>
           <Text style={styles.progressCount}>{completed}/{total} séances complétées</Text>
         </LinearGradient>

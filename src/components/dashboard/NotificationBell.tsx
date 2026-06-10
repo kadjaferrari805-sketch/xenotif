@@ -14,9 +14,9 @@ export function NotificationBell({ align = 'right' }: { align?: 'left' | 'right'
   const t = useTranslations('dashboard.notifications')
   const [open, setOpen] = useState(false)
   const [unread, setUnread] = useState(false)
+  const [day, setDay] = useState(0)
   const ref = useRef<HTMLDivElement>(null)
 
-  const day = Math.floor(Date.now() / 86400000)
   const motivations = t.raw('motivation') as string[]
   const tips = t.raw('tip') as string[]
   const items = [
@@ -25,9 +25,13 @@ export function NotificationBell({ align = 'right' }: { align?: 'left' | 'right'
     { Icon: Activity, color: '#38bdf8', text: t('activity') },
   ]
 
+  /* eslint-disable react-hooks/set-state-in-effect --
+     Date du jour + état « lu » (localStorage) : lecture client uniquement, une fois au montage. */
   useEffect(() => {
+    setDay(Math.floor(Date.now() / 86400000))
     try { setUnread(localStorage.getItem(READ_KEY) !== todayStr()) } catch { setUnread(true) }
   }, [])
+  /* eslint-enable react-hooks/set-state-in-effect */
 
   useEffect(() => {
     if (!open) return

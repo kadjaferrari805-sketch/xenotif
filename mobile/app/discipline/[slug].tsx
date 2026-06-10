@@ -54,7 +54,7 @@ export default function DisciplineDetail() {
               { icon: 'bar-chart-outline', text: discipline.level },
             ].map(m => (
               <View key={m.text} style={styles.metaChip}>
-                <Ionicons name={m.icon as any} size={12} color={discipline.color} />
+                <Ionicons name={m.icon as keyof typeof Ionicons.glyphMap} size={12} color={discipline.color} />
                 <Text style={[styles.metaText, { color: discipline.color }]}>{m.text}</Text>
               </View>
             ))}

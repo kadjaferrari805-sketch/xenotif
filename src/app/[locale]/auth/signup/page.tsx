@@ -37,6 +37,8 @@ function SignUpForm() {
   const [error, setError] = useState('')
   const [done, setDone] = useState(false)
 
+  /* eslint-disable react-hooks/set-state-in-effect --
+     Pré-remplit le formulaire depuis les paramètres d'URL (plan/période/email) au montage. */
   useEffect(() => {
     const supabase = createClient()
     supabase.auth.getUser().then(({ data }) => {
@@ -49,6 +51,7 @@ function SignUpForm() {
     const email = searchParams.get('email')
     if (email) setForm(prev => ({ ...prev, email }))
   }, [searchParams, router])
+  /* eslint-enable react-hooks/set-state-in-effect */
 
   function set(field: keyof typeof form) {
     return (e: React.ChangeEvent<HTMLInputElement>) =>

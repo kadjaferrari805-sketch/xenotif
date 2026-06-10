@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+/* eslint-disable @typescript-eslint/no-require-imports -- config Tailwind/NativeWind en CommonJS */
 module.exports = {
   content: [
     './app/**/*.{js,jsx,ts,tsx}',
