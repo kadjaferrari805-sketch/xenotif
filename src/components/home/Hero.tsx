@@ -6,9 +6,6 @@ import { useTranslations } from 'next-intl'
 import Image from 'next/image'
 import { Link } from '@/i18n/navigation'
 import { Users, Trophy, Zap, ArrowRight, Star } from 'lucide-react'
-import dynamic from 'next/dynamic'
-
-const Hero3D = dynamic(() => import('./Hero3D'), { ssr: false })
 
 // Style structurel par diapositive (image + couleurs d'accent). Les textes
 // (tag, headline, accent) viennent de messages → home.hero.slides.
@@ -111,11 +108,6 @@ export function Hero() {
       <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-r from-black/92 via-black/65 to-black/20 z-[1]" />
       <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-transparent z-[1]" />
       <div aria-hidden="true" className="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-sport-dark to-transparent z-[1]" />
-
-      {/* Scène 3D décorative (côté droit, sous le texte, non bloquante) */}
-      <div aria-hidden="true" className="pointer-events-none absolute inset-y-0 right-0 z-[5] hidden md:block w-1/2 opacity-80">
-        <Hero3D />
-      </div>
 
       {/* Main content */}
       <div className="absolute inset-0 z-10 flex flex-col justify-center px-6">
