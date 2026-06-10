@@ -4,6 +4,7 @@
    les champs texte (title, excerpt, méta, keywords, content). */
 
 import { BLOG_POSTS_SOURCE, type BlogPost } from './posts'
+import { BLOG_POSTS_DE } from './posts.de'
 
 type PostText = Pick<BlogPost, 'title' | 'excerpt' | 'metaTitle' | 'metaDescription' | 'keywords' | 'content'>
 
@@ -436,7 +437,7 @@ const TEXT_EN: Record<string, PostText> = {
 export const BLOG_POSTS_EN: BlogPost[] = BLOG_POSTS_SOURCE.map((p) => ({ ...p, ...TEXT_EN[p.slug] }))
 
 function postsFor(locale: string): BlogPost[] {
-  return locale === 'en' ? BLOG_POSTS_EN : BLOG_POSTS_SOURCE
+  return locale === 'en' ? BLOG_POSTS_EN : locale === 'de' ? BLOG_POSTS_DE : BLOG_POSTS_SOURCE
 }
 
 export function getAllPostsLocalized(locale: string): BlogPost[] {
