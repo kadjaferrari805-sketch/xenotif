@@ -38,6 +38,14 @@ interface Ctx {
   ital: PDFFont
   guide: Guide
   pageNo: number
+  locale: string
+}
+
+// Mention légale de couverture, localisée (fr par défaut).
+const COVER_NOTICE: Record<string, string> = {
+  fr: 'Guide officiel — © Xenotif® — Réservé à ton usage personnel.',
+  en: 'Official guide — © Xenotif® — For your personal use only.',
+  de: 'Offizieller Leitfaden — © Xenotif® — Nur für deinen persönlichen Gebrauch.',
 }
 
 const lh = (size: number) => size * 1.42
@@ -171,10 +179,10 @@ function drawCover(ctx: Ctx) {
   }
   // Pied de couverture
   p.drawText(safe(ctx.guide.author), { x: 56, y: 96, size: 10.5, font: ctx.bold, color: COL.orange })
-  p.drawText('Guide officiel — © Xenotif® — Réservé à ton usage personnel.', { x: 56, y: 74, size: 8.5, font: ctx.reg, color: rgb(0.4, 0.42, 0.46) })
+  p.drawText(safe(COVER_NOTICE[ctx.locale] ?? COVER_NOTICE.fr), { x: 56, y: 74, size: 8.5, font: ctx.reg, color: rgb(0.4, 0.42, 0.46) })
 }
 
-export async function generateGuidePdf(guide: Guide): Promise<Uint8Array> {
+export async function generateGuidePdf(guide: Guide, locale: string = 'fr'): Promise<Uint8Array> {
   const doc = await PDFDocument.create()
   doc.setTitle(safe(guide.title))
   doc.setAuthor('Xenotif')
@@ -185,7 +193,7 @@ export async function generateGuidePdf(guide: Guide): Promise<Uint8Array> {
   const ital = await doc.embedFont(StandardFonts.HelveticaOblique)
 
   const cover = doc.addPage([A4.w, A4.h])
-  const ctx: Ctx = { doc, page: cover, y: 0, reg, bold, ital, guide, pageNo: 1 }
+  const ctx: Ctx = { doc, page: cover, y: 0, reg, bold, ital, guide, pageNo: 1, locale }
   drawCover(ctx)
   newPage(ctx)
 
