@@ -39,7 +39,7 @@ export default function AbonnementPage() {
   const [loading, setLoading] = useState(true)
   const [cancelLoading, setCancelLoading] = useState(false)
   const [showCancel, setShowCancel] = useState(false)
-  const [cancelled, setCancelled] = useState(false)
+  const [, setCancelled] = useState(false)
   const [cancelError, setCancelError] = useState('')
   const [portalLoading, setPortalLoading] = useState(false)
   const [portalError, setPortalError] = useState('')

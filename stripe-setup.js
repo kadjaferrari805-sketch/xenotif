@@ -115,7 +115,6 @@ async function run() {
   console.log('  Prix annuel 249,90 EUR  : ' + eliteAnnualPrice.id)
 
   // ── Coupon de lancement ───────────────────────────────────
-  let couponCreated = false
   try {
     await stripe.coupons.create({
       id: 'XENOTIF20',
@@ -126,7 +125,6 @@ async function run() {
       max_redemptions: 500,
       metadata: { campaign: 'launch' },
     })
-    couponCreated = true
     console.log('\n  Coupon XENOTIF20 cree   : -20% pendant 3 mois')
   } catch (err) {
     if (err.code === 'resource_already_exists') {
