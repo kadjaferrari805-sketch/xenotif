@@ -678,6 +678,9 @@
         "enable": "Activer",
         "enabling": "Activation…",
         "disable": "Désactiver",
+        "test": "Tester",
+        "testing": "Envoi…",
+        "testSent": "Envoyé ✓",
         "onHint": "Activées sur cet appareil. Tu reçois tes rappels même quand le site est fermé.",
         "offHint": "Reçois tes rappels directement sur ce téléphone, même quand le site est fermé.",
         "denied": "Notifications bloquées dans ton navigateur. Autorise-les dans les réglages du site pour les recevoir."
