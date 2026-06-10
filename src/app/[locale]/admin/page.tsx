@@ -2,6 +2,7 @@ import { redirect } from 'next/navigation'
 import { createClient, createServiceClient } from '@/lib/supabase/server'
 import { Users, TrendingUp, Euro, CheckCircle, Clock, XCircle } from 'lucide-react'
 import { AdminEmailForm } from '@/components/admin/EmailForm'
+import { AdminPushForm } from '@/components/admin/PushForm'
 import { RevenueChart } from '@/components/admin/RevenueChart'
 import { AdminReviews } from '@/components/reviews/AdminReviews'
 
@@ -150,6 +151,9 @@ export default async function AdminPage() {
 
       {/* Email broadcast */}
       <AdminEmailForm />
+
+      {/* Push broadcast */}
+      <AdminPushForm />
 
       {/* Avis clients — modération */}
       <AdminReviews />
