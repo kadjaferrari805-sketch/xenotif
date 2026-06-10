@@ -64,6 +64,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const languages: Record<string, string> = {
     fr: `${SITE}${path}`,
     en: `${SITE}/en${path}`,
+    de: `${SITE}/de${path}`,
     'x-default': `${SITE}${path}`,
   }
   return {

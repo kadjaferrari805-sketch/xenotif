@@ -13,6 +13,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const languages: Record<string, string> = {
     fr: `${SITE}/boutique`,
     en: `${SITE}/en/boutique`,
+    de: `${SITE}/de/boutique`,
     'x-default': `${SITE}/boutique`,
   }
   return {

@@ -10,6 +10,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const languages: Record<string, string> = {
     fr: `${SITE}/boutique/catalogue`,
     en: `${SITE}/en/boutique/catalogue`,
+    de: `${SITE}/de/boutique/catalogue`,
     'x-default': `${SITE}/boutique/catalogue`,
   }
   return {

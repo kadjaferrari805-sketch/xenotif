@@ -1,0 +1,1078 @@
+{
+  "common": {
+    "nav": {
+      "disciplines": "Disziplinen",
+      "programmes": "Programme",
+      "boutique": "🛒 Shop",
+      "blog": "📝 Blog",
+      "tarifs": "Preise",
+      "faq": "FAQ",
+      "about": "Über uns",
+      "connexion": "Anmelden",
+      "rejoindre": "Mitmachen",
+      "monEspace": "Mein Bereich",
+      "ouvrirMenu": "Navigationsmenü öffnen",
+      "fermerMenu": "Menü schließen"
+    },
+    "footer": {
+      "tagline": "Die ultimative Sportplattform für Athleten aller Niveaus. Leistung, KI-Coaching und Community im Dienste deiner Ziele.",
+      "disciplines": "Disziplinen",
+      "programmes": "Programme",
+      "informations": "Informationen",
+      "copyright": "© 2026 Xenotif® — Alle Rechte vorbehalten",
+      "baseline": "Für Athleten gemacht · Angetrieben von KI",
+      "links": {
+        "about": "Über uns",
+        "mentionsLegales": "Impressum",
+        "confidentialite": "Datenschutz",
+        "cgv": "AGB",
+        "contact": "Kontakt",
+        "debutant": "Anfänger",
+        "intermediaire": "Fortgeschritten",
+        "avance": "Erfahren",
+        "elite": "Elite",
+        "coachingIA": "KI-Coaching",
+        "tarifs": "Preise",
+        "faq": "FAQ"
+      }
+    },
+    "skipLink": "Zum Hauptinhalt springen",
+    "appDownload": {
+      "trigger": "App herunterladen",
+      "title": "Installiere die Xenotif-App",
+      "subtitle": "Finde deine Programme, dein Coaching und deine Aktivität direkt auf deinem Startbildschirm.",
+      "scan": "Scanne diesen QR-Code mit deinem Handy",
+      "qrAlt": "QR-Code zur Installation der Xenotif-App auf dem Smartphone",
+      "installNow": "Jetzt installieren",
+      "iosTitle": "iPhone (Safari)",
+      "iosStep": "Teilen → „Zum Home-Bildschirm“",
+      "androidTitle": "Android (Chrome)",
+      "androidStep": "Menü ⋮ → „App installieren“",
+      "installedTitle": "App bereits installiert 🎉",
+      "successTitle": "Los geht's! 🎉",
+      "openApp": "Xenotif öffnen",
+      "desktopHint": "Du bist am Computer. Scanne diesen QR-Code mit deinem Handy, um die App direkt zu installieren.",
+      "close": "Schließen"
+    }
+  },
+  "languages": {
+    "fr": "Français",
+    "en": "English",
+    "de": "Deutsch",
+    "switch": "Sprache ändern"
+  },
+  "home": {
+    "sticky": {
+      "lead": "Bereit, deinen Körper zu transformieren?",
+      "trial": "7 Tage gratis testen",
+      "pro": "Pro — 9,99 €/Monat",
+      "elite": "Elite — 24,99 €/Monat",
+      "proAria": "Pro-Plan abonnieren — 9,99 Euro pro Monat",
+      "eliteAria": "Elite-Plan abonnieren — 24,99 Euro pro Monat",
+      "ariaRegion": "Schnellabonnement",
+      "dismiss": "Abonnement-Leiste schließen"
+    },
+    "metaTitle": "Xenotif® — Forme deinen Körper. Überwinde deine Grenzen.",
+    "metaDescription": "Die Premium-Fitnessplattform — 10 Disziplinen, personalisiertes KI-Coaching, 300+ Einheiten. Schließe dich 12.000+ Athleten an, die ihren Körper mit Xenotif® transformieren.",
+    "hero": {
+      "eyebrow": "Die Premium-Sportplattform",
+      "ctaPrimary": "Starte deine kostenlose Testphase",
+      "ctaSecondary": "Disziplinen ansehen",
+      "ctaNote": "0 € für 7 Tage · Mit 1 Klick kündbar",
+      "scroll": "Scrollen",
+      "slides": [
+        { "tag": "🏋️ Krafttraining & Stärke", "headline": "FORME DEINEN KÖRPER.", "accent": "ÜBERWINDE DEINE GRENZEN." },
+        { "tag": "🏃 Running & Cardio", "headline": "LAUF SCHNELLER.", "accent": "VERBRENNE STÄRKER." },
+        { "tag": "⚡ HIIT & CrossFit", "headline": "DURCHBRICH DEINE GRENZEN.", "accent": "WERDE UNBESIEGBAR." }
+      ],
+      "badges": [
+        { "label": "+12.000 Mitglieder", "sub": "aktiv" },
+        { "label": "KI-Coaching", "sub": "inklusive" },
+        { "label": "4.9 / 5", "sub": "3.200 Bewertungen" },
+        { "label": "Ergebnisse", "sub": "ab 30 Tagen" }
+      ],
+      "trust": [
+        { "label": "12K+ Athleten", "sublabel": "aktive Community" },
+        { "label": "KI-Coaching", "sublabel": "personalisiert" },
+        { "label": "Unbegrenzter Zugang", "sublabel": "alle Programme" },
+        { "label": "30 Tage", "sublabel": "Geld-zurück-Garantie" }
+      ],
+      "aria": {
+        "welcome": "Willkommen bei Xenotif",
+        "guarantees": "Unsere Garantien",
+        "carousel": "Karussell-Navigation",
+        "slides": "Folien",
+        "slide": "Folie {n} von {total}"
+      }
+    },
+    "marquee": {
+      "items": [
+        "Krafttraining",
+        "Running",
+        "HIIT",
+        "Radfahren",
+        "Schwimmen",
+        "CrossFit",
+        "KI-Coaching",
+        "12K+ Athleten",
+        "Garantierte Ergebnisse",
+        "Maßgeschneiderte Programme"
+      ]
+    },
+    "proof": {
+      "aria": "Wichtige Zahlen",
+      "stats": [
+        { "label": "Aktive Athleten", "sublabel": "weltweit" },
+        { "label": "Programme", "sublabel": "alle Niveaus" },
+        { "label": "Disziplinen", "sublabel": "Rundum-Sport" },
+        { "label": "Zufriedenheit", "sublabel": "3.200+ verifizierte Bewertungen" }
+      ]
+    },
+    "features": {
+      "label": "Disziplinen",
+      "title": "10 Disziplinen. 1 Plattform.",
+      "subtitle": "Von Cardio bis Kraft — jeder Sport, jedes Niveau, jedes Ziel",
+      "discover": "Entdecken",
+      "discoverAria": "Disziplin {name} entdecken",
+      "items": [
+        { "title": "Running & Cardio", "tag": "Cardio", "description": "Laufprogramme für alle Niveaus — vom 5-km-Lauf bis zum Marathon. Personalisierte Pläne mit GPS-Coaching und Herzfrequenz-Tracking.", "stats": ["+4.200 Läufer", "120+ Pläne", "Ø 12 Wochen"] },
+        { "title": "Krafttraining", "tag": "Kraft", "description": "Masseaufbau, Definition oder Tonisierung — unsere zertifizierten Coaches erstellen dein maßgeschneidertes Programm passend zu deiner Morphologie.", "stats": ["+3.800 Mitglieder", "90+ Programme", "Ø 8 Wochen"] },
+        { "title": "HIIT", "tag": "Fettverbrennung", "description": "Kurze, intensive Einheiten, um maximal Kalorien zu verbrennen und deinen Stoffwechsel dauerhaft in 20 bis 30 Min. anzukurbeln.", "stats": ["+2.100 Mitglieder", "60+ Circuits", "20-30 Min / Einheit"] },
+        { "title": "Radfahren", "tag": "Ausdauer", "description": "Indoor- und Outdoor-Training mit Wattmessung. Vom Sportler bis zum Bergkletterer — ein Plan für jedes Profil.", "stats": ["+1.500 Radfahrer", "45+ Pläne", "Ø 16 Wochen"] },
+        { "title": "Schwimmen", "tag": "Wasser", "description": "Schwimmtechniken, Triathlon-Vorbereitung, Open Water — verbessere dich in allen Stilen mit HD-Video-Drills.", "stats": ["+900 Schwimmer", "30+ Programme", "Ø 10 Wochen"] },
+        { "title": "CrossFit", "tag": "Funktional", "description": "Tägliche WODs, funktionelle Bewegungen und Community-Challenges, um deine Grenzen jede Woche zu erweitern.", "stats": ["+1.800 Athleten", "365 WODs/Jahr", "5× / Woche"] },
+        { "title": "Yoga", "tag": "Wohlbefinden", "description": "Flexibilität, innere Stärke und Achtsamkeit — von Anfänger-Flows bis zu fortgeschrittenem Yoga für einen ausgeglichenen Körper und Geist.", "stats": ["+2.000 Praktizierende", "40+ Sequenzen", "20-60 Min / Einheit"] },
+        { "title": "Boxen", "tag": "Kampf", "description": "Technik, Cardio und Kraft — von den Grundlagen bis zu fortgeschrittenen Kombinationen, um dich körperlich und mental zu transformieren.", "stats": ["+1.200 Boxer", "35+ Programme", "Ø 8 Wochen"] },
+        { "title": "Stretching", "tag": "Mobilität", "description": "Mobilität, Beweglichkeit und optimale Erholung — geführte Dehnroutinen, um Verletzungen vorzubeugen und Leistung zu bringen.", "stats": ["+1.600 Mitglieder", "30+ Routinen", "10-30 Min / Einheit"] },
+        { "title": "Ernährung", "tag": "Ernährung", "description": "Personalisierte Ernährungspläne, Makro-Berechnung und Ernährungsstrategien, um deine sportlichen Ziele zu erreichen.", "stats": ["+3.000 Mitglieder", "50+ Pläne", "Tägliches Tracking"] }
+      ]
+    },
+    "howItWorks": {
+      "label": "So funktioniert's",
+      "title": "Starte in 4 Schritten",
+      "subtitle": "Von der Anmeldung bis zu deinen ersten Ergebnissen — einfach, schnell, effektiv",
+      "cta": "Jetzt starten",
+      "ctaNote": "Kostenlos · Unverbindlich · Mit 1 Klick kündbar",
+      "steps": [
+        { "title": "Erstelle dein Konto", "description": "Anmeldung in 2 Minuten. Fülle dein Sportprofil aus für eine personalisierte Betreuung ab dem ersten Tag." },
+        { "title": "Wähle dein Programm", "description": "Unsere KI analysiert dein Niveau, deine Ziele und deine verfügbare Zeit, um das ideale Programm zu empfehlen." },
+        { "title": "Trainiere", "description": "Folge deinen geführten Einheiten mit Audio-Coaching, HD-Videos und Echtzeit-Feedback zu deiner Technik." },
+        { "title": "Verfolge deine Fortschritte", "description": "Umfassendes Dashboard, fortgeschrittene Statistiken und das Feiern jedes erreichten Ziels." }
+      ]
+    },
+    "intensity": {
+      "label": "Niveaus",
+      "title": "Ein Programm für jeden Athleten",
+      "subtitle": "Vom Anfänger bis zur Elite — Xenotif® passt sich dir an, nicht umgekehrt",
+      "intensityLabel": "Intensität",
+      "seePricing": "Preise ansehen",
+      "levels": [
+        { "label": "Anfänger", "desc": "Für alle, die mit Sport beginnen oder wieder einsteigen. Kurze, progressive Einheiten, die nie entmutigen.", "detail": "Ab 20 Min / Einheit" },
+        { "label": "Fortgeschritten", "desc": "6 Monate regelmäßige Praxis. Progressive Steigerung, neue persönliche Rekorde jeden Monat.", "detail": "3 bis 4× / Woche" },
+        { "label": "Erfahren", "desc": "Erfahrene Athleten. Periodisierte Programme, hohe Intensität, optimierte Erholung.", "detail": "5× / Woche" },
+        { "label": "Elite", "desc": "Wettkämpfer und Semi-Profis. Jahresplanung, individuelles Coaching, komplettes biomechanisches Tracking.", "detail": "6 bis 7× / Woche" }
+      ]
+    },
+    "pricing": {
+      "label": "Preise",
+      "title": "Einfach. Transparent. Ohne Überraschungen.",
+      "subtitle": "7 Tage kostenlos testen bei allen kostenpflichtigen Plänen — 0 € heute, mit 1 Klick vor der ersten Abbuchung kündbar",
+      "monthly": "Monatlich",
+      "annual": "Jährlich",
+      "save": "-20%",
+      "billed": "Abgerechnet <b>{total}/Jahr</b>",
+      "freeTrialNote": "✓ 7 Tage gratis · Unverbindlich",
+      "subscribeAria": "Plan {name} abonnieren",
+      "featuresAria": "Funktionen Plan {name}",
+      "footnote": "Unverbindlich · Jederzeit mit 1 Klick kündbar",
+      "plans": [
+        { "name": "Kostenlos", "period": "für immer", "badge": "", "description": "Entdecke Xenotif® und beginne deine Transformation ohne Risiko.", "cta": "Kostenlos starten", "features": ["3 verfügbare Programme", "Basis-Trainingstracking", "Zugang zur Community", "Kostenloser wöchentlicher WOD"] },
+        { "name": "Pro", "period": "pro Monat", "badge": "Am beliebtesten", "description": "Unbegrenzter Zugang zu allen Programmen und personalisiertem KI-Coaching.", "cta": "7 Tage gratis testen", "features": ["Alle Programme unbegrenzt", "Personalisiertes KI-Coaching", "Erweiterte Statistiken & Tracking", "Hochwertige HD-Videos", "Prioritäts-Support 7/7", "Community-Challenges"] },
+        { "name": "Elite", "period": "pro Monat", "badge": "", "description": "Individuelles Coaching und persönliche Betreuung durch einen zertifizierten Experten.", "cta": "Mit einem Coach sprechen", "features": ["Alles aus dem Pro-Plan", "Persönlicher dedizierter Coach", "Monatliches 1-zu-1-Videogespräch", "Maßgeschneiderter Ernährungsplan", "Biomechanische Videoanalyse", "Früher Zugang zu Neuheiten"] }
+      ]
+    },
+    "reviews": {
+      "label": "Erfahrungsberichte",
+      "title": "Sie haben ihren Körper transformiert",
+      "subtitle": "Tausende Athleten vertrauen Xenotif®, um ihre Ziele zu erreichen",
+      "verified": "Verifiziert",
+      "ratingAria": "Bewertung: {rating} von 5 Sternen",
+      "results": ["+18 Min Marathon-PR", "-12 kg in 4 Monaten", "Ironman abgeschlossen"],
+      "items": [
+        { "sport": "Running · Marathon", "date": "Vor 2 Tagen", "text": "\"In 3 Monaten Xenotif®-Programm habe ich meinen Marathon-Rekord um 18 Minuten verbessert. Das KI-Coaching ist verblüffend — jede Einheit ist perfekt auf mein Niveau abgestimmt.\"" },
+        { "sport": "HIIT · Krafttraining", "date": "Vor 5 Tagen", "text": "\"Ich habe 12 kg in 4 Monaten verloren und gleichzeitig an Kraft gewonnen. Die HIIT- und Kraft-Einheiten sind perfekt ausbalanciert. Die Xenotif®-Community motiviert mich jeden Morgen.\"" },
+        { "sport": "CrossFit · Schwimmen", "date": "Vor 1 Woche", "text": "\"Triathlon-Vorbereitung mit Xenotif® — unglaubliches Ergebnis. Dank dieser Plattform habe ich meinen ersten Ironman abgeschlossen. Danke Xenotif®!\"" }
+      ],
+      "summary": {
+        "rating": "4.9 / 5",
+        "basedOn": "basierend auf",
+        "count": "3.200+",
+        "reviews": "verifizierten Bewertungen",
+        "stats": [
+          { "value": "97%", "label": "Zufrieden" },
+          { "value": "4.2×", "label": "Schneller" },
+          { "value": "30T", "label": "Erste Ergebnisse" }
+        ]
+      }
+    },
+    "newsletter": {
+      "eyebrow": "Tritt der Community bei",
+      "titleTop": "BEREIT, DEINE",
+      "titleBottom": "GRENZEN ZU ÜBERWINDEN?",
+      "desc": "Schließe dich <b>12.000+ Athleten</b> an, die jede Woche erhalten: Programme, Ernährungstipps, Trainingstipps und exklusive WODs.",
+      "perks": [
+        "Kostenlose Programme jede Woche",
+        "WODs & Community-Challenges",
+        "Tipps zu Ernährung & Erholung"
+      ],
+      "perksAria": "Vorteile der Anmeldung",
+      "formAria": "Newsletter-Anmeldeformular",
+      "emailLabel": "E-Mail-Adresse",
+      "placeholder": "deine@email.com",
+      "submit": "Abonnieren",
+      "sending": "Wird gesendet…",
+      "successTitle": "Willkommen in der Community!",
+      "successText": "Prüfe dein Postfach — eine Bestätigungs-E-Mail wurde dir gesendet.",
+      "errorInvalid": "Ungültige E-Mail-Adresse",
+      "errorGeneric": "Ein Fehler ist aufgetreten.",
+      "errorNetwork": "Verbindung nicht möglich. Versuche es gleich noch einmal.",
+      "privacyNote": "Kein Spam · Abmeldung mit 1 Klick · Daten geschützt (DSGVO)"
+    },
+    "faq": {
+      "label": "FAQ",
+      "title": "Häufige Fragen",
+      "subtitle": "Alles, was du vor dem Start wissen musst",
+      "moreQuestions": "Weitere Fragen?",
+      "items": [
+        { "q": "Ist Xenotif® für Anfänger geeignet?", "a": "Absolut. Xenotif® bietet Programme für alle Niveaus, vom absoluten Anfänger bis zum erfahrenen Athleten. Unsere KI passt jedes Programm ab der Anmeldung an dein Profil an — Niveau, Ziele, Verfügbarkeit." },
+        { "q": "Kann ich mein Abonnement jederzeit kündigen?", "a": "Ja, ohne Bedingungen oder versteckte Kosten. Du kannst in deinem Mitgliederbereich mit 2 Klicks kündigen. Der Zugang bleibt bis zum Ende des bezahlten Zeitraums aktiv." },
+        { "q": "Wie funktioniert das KI-Coaching?", "a": "Unsere KI analysiert dein Profil (Niveau, Ziele, verfügbare Zeit, eventuelle Verletzungen) und erstellt ein maßgeschneidertes Programm. Es passt sich jede Woche an dein Feedback und deine Leistung an." },
+        { "q": "Brauche ich spezielle Ausrüstung?", "a": "Nein. Xenotif® bietet Einheiten für jede Ausstattung — im Studio, zu Hause oder draußen. Bei der Wahl deines Programms gibst du an, worüber du verfügst." },
+        { "q": "Was umfasst die Geld-zurück-Garantie?", "a": "Wenn du in den ersten 30 Tagen nicht zufrieden bist, erstatten wir dir den vollen Betrag — ohne Fragen. Kontaktiere uns einfach unter contact@xenotif.com." },
+        { "q": "Funktionieren die Programme auf dem Handy?", "a": "Ja. Xenotif® ist vollständig responsive und auf Smartphone, Tablet und Computer verfügbar. Deine Einheiten begleiten dich überall, sogar offline (Offline-Modus im Pro-Plan verfügbar)." }
+      ]
+    }
+  },
+  "auth": {
+    "signin": {
+      "title": "Anmelden",
+      "subtitle": "Greife auf deinen Mitgliederbereich zu",
+      "emailLabel": "E-Mail",
+      "passwordLabel": "Passwort",
+      "show": "Anzeigen",
+      "hide": "Verbergen",
+      "submit": "Einloggen",
+      "submitting": "Anmeldung…",
+      "forgot": "Passwort vergessen?",
+      "noAccount": "Noch kein Konto?",
+      "createAccount": "Konto erstellen →",
+      "secure": "Sichere SSL-Verbindung — Deine Daten sind geschützt",
+      "errorInvalid": "E-Mail oder Passwort falsch."
+    },
+    "signup": {
+      "title": "Erstelle dein Konto",
+      "subtitle": "Wähle deinen Plan und vervollständige deine Anmeldung",
+      "monthly": "Monatlich",
+      "annual": "Jährlich",
+      "save": "-20%",
+      "billed": "Abgerechnet <b>{total}/Jahr</b>",
+      "fullNameLabel": "Vor- & Nachname",
+      "fullNamePlaceholder": "Max Mustermann",
+      "emailLabel": "E-Mail",
+      "passwordLabel": "Passwort",
+      "passwordPlaceholder": "Mindestens 8 Zeichen",
+      "show": "Anzeigen",
+      "hide": "Verbergen",
+      "submitFree": "Mein kostenloses Konto erstellen",
+      "submitPaid": "Weiter zur Zahlung",
+      "creating": "Konto wird erstellt…",
+      "legalPrefix": "Mit der Erstellung eines Kontos akzeptierst du unser",
+      "legalNotice": "Impressum",
+      "legalAnd": "und unsere",
+      "privacyPolicy": "Datenschutzerklärung",
+      "haveAccount": "Schon ein Konto?",
+      "signinLink": "Einloggen →",
+      "secure": "Sichere SSL-Anmeldung · Unverbindlich · Frei kündbar",
+      "doneTitle": "Prüfe deine E-Mail!",
+      "doneText": "Ein Bestätigungslink wurde an <b>{email}</b> gesendet.",
+      "doneCta": "Klicke darauf, um dein Konto zu aktivieren.",
+      "backToSignin": "Zurück zur Anmeldung →",
+      "errorShortPassword": "Das Passwort muss mindestens 8 Zeichen lang sein.",
+      "errorAlreadyUsed": "Diese E-Mail wird bereits verwendet. Melde dich an.",
+      "errorCheckout": "Fehler bei der Weiterleitung zur Zahlung.",
+      "plans": [
+        { "name": "Kostenlos", "period": "für immer", "badge": "", "features": ["3 Programme", "Basis-Tracking", "Community"] },
+        { "name": "Pro", "period": "/Monat", "badge": "7 Tage gratis", "features": ["Alle Programme", "KI-Coaching", "Erweiterte Statistiken"] },
+        { "name": "Elite", "period": "/Monat", "badge": "7 Tage gratis", "features": ["Pro-Plan inklusive", "Dedizierter Coach", "Monatliches Resümee"] }
+      ]
+    },
+    "forgot": {
+      "back": "Zurück",
+      "title": "Passwort vergessen",
+      "subtitle": "Gib deine E-Mail ein, um einen Link zum Zurücksetzen zu erhalten.",
+      "emailLabel": "E-Mail",
+      "submit": "Link senden",
+      "submitting": "Wird gesendet…",
+      "doneTitle": "E-Mail gesendet!",
+      "doneText": "Ein Link zum Zurücksetzen wurde an <b>{email}</b> gesendet.",
+      "doneHint": "Prüfe deinen Spam-Ordner, falls du nach 2 Minuten nichts siehst.",
+      "backToSignin": "Zurück zur Anmeldung →"
+    },
+    "reset": {
+      "title": "Neues Passwort",
+      "subtitle": "Wähle ein sicheres Passwort.",
+      "passwordLabel": "Neues Passwort",
+      "passwordPlaceholder": "Mindestens 8 Zeichen",
+      "submit": "Aktualisieren",
+      "submitting": "Wird aktualisiert…",
+      "errorShort": "Mindestens 8 Zeichen.",
+      "doneTitle": "Passwort aktualisiert!",
+      "doneText": "Weiterleitung zu deinem Dashboard…"
+    }
+  },
+  "disciplines": {
+    "back": "Zurück zu den Disziplinen",
+    "metaTitle": "{name} — Kompletter Leitfaden & Programme",
+    "ratingAria": "5-Sterne-Bewertung",
+    "heroAria": "Disziplin {name}",
+    "heroAlt": "Athlet, der {name} ausübt",
+    "videos": {
+      "eyebrow": "Videos & Tutorials",
+      "title": "Lerne von den Besten",
+      "subtitle": "Technik-Tutorials, geführte Einheiten und Expertentipps — klicke, um ein Video zu starten.",
+      "unavailable": "Video nicht verfügbar",
+      "playAria": "Video starten: {title}"
+    },
+    "guide": {
+      "eyebrow": "Experten-Leitfaden",
+      "title": "Alles, was du wissen musst"
+    },
+    "tips": {
+      "eyebrow": "Expertentipps",
+      "title": "Die Geheimnisse der Profis"
+    },
+    "exercises": {
+      "eyebrow": "Schlüsselübungen",
+      "title": "Beherrsche die Grundlagen",
+      "subtitle": "Die wesentlichen Übungen, die du kennen musst — Technik, gezielte Muskeln und Ausführungstipps, um dich verletzungsfrei zu verbessern."
+    },
+    "levels": {
+      "title": "Verfügbare Niveaus",
+      "join": "Mitmachen",
+      "joinAria": "Dem Programm {level} beitreten"
+    },
+    "program": {
+      "title": "8-Wochen-Programm",
+      "phase": "Phase {n}",
+      "note": "* Von der Xenotif®-KI personalisiertes Programm passend zu deinem Profil, deinem Niveau und deinen Zielen."
+    },
+    "gate": {
+      "title": "Schalte das komplette Programm frei",
+      "subtitle": "Das detaillierte Programm, Woche für Woche, ist Xenotif®-Abonnenten vorbehalten.",
+      "cta": "Starte deine kostenlose Testphase",
+      "note": "0 € für 7 Tage · Mit 1 Klick kündbar"
+    },
+    "cta": {
+      "title": "Tritt der Community bei",
+      "desc": "Greife auf die <b>{title}</b>-Programme, personalisiertes KI-Coaching und Tausende motivierte Athleten zu.",
+      "features": [
+        "Kompletter Leitfaden + HD-Videos",
+        "KI-personalisiertes Programm",
+        "Erweitertes Fortschritts-Tracking",
+        "Community von Coaches",
+        "30 T Geld-zurück-Garantie"
+      ],
+      "primary": "Kostenlos starten",
+      "pricing": "Preise ansehen →",
+      "noCard": "7 Tage gratis testen",
+      "freeCancel": "Frei kündbar"
+    },
+    "faq": {
+      "eyebrow": "Häufige Fragen",
+      "title": "Alles über {name}"
+    },
+    "others": {
+      "title": "Entdecke weitere Disziplinen",
+      "cardAria": "Disziplin {name} entdecken",
+      "alt": "Disziplin {name}"
+    }
+  },
+  "boutique": {
+    "metaTitle": "Shop — Ausrüstung, Supplements & Fitnessprogramme",
+    "metaDescription": "Der Xenotif®-Shop: Sportausrüstung, bewährte Supplements, Smartwatches und digitale Programme, erstellt von unseren zertifizierten Coaches. Schnelle Lieferung, sichere Zahlung.",
+    "ogTitle": "Xenotif®-Shop — Ausrüstung, Supplements & Programme",
+    "ogDescription": "Profi-Ausrüstung, bewährte Supplements und digitale Programme, erstellt von unseren zertifizierten Coaches.",
+    "badge": "🛒 Offizieller XENOTIF®-Shop",
+    "heroTitle": "Ausrüstung <o>&</o><br></br><o>Programme</o> Premium",
+    "heroSubtitle": "Profi-Ausrüstung, bewährte Supplements und Programme, erstellt von unseren zertifizierten Coaches — alles, um deine Ziele zu erreichen.",
+    "searchPlaceholder": "Kettlebell, Whey, HIIT-Programm suchen...",
+    "filters": "Filter",
+    "stats": {
+      "products": "Premium-Produkte",
+      "rating": "Durchschnittsbewertung",
+      "customers": "Zufriedene Kunden",
+      "customersValue": "12.000+",
+      "delivery": "Express-Lieferung"
+    },
+    "trust": [
+      "🔒 100% sichere SSL-Zahlung",
+      "🚚 Kostenlose Lieferung ab 50 €",
+      "📥 Sofort-Download",
+      "↩️ 30 Tage Rückgabe",
+      "✓ Getestete & geprüfte Produkte"
+    ],
+    "filterCategory": "Kategorie",
+    "allCategory": "🌟 Alle",
+    "filterDiscipline": "Disziplin",
+    "allDisciplines": "Alle",
+    "filterSort": "Sortieren nach",
+    "reset": "Filter zurücksetzen",
+    "count": "{count, plural, =0 {Keine Produkte} one {# Produkt} other {# Produkte}}",
+    "forSearch": "für „{q}“",
+    "emptyTitle": "Keine Produkte gefunden",
+    "emptyDesc": "Versuche andere Begriffe oder setze die Filter zurück.",
+    "amazonDisclaimer": "🔗 Einige Produkte sind Amazon-Affiliate-Links. Beim Kauf über diese Links unterstützt du Xenotif® ohne Mehrkosten für dich. Preise und Verfügbarkeit können bei Amazon variieren.",
+    "landing": {
+      "bySportTitle": "Nach Sport durchsuchen",
+      "bySportSubtitle": "Wähle deine Disziplin und finde die perfekte Ausrüstung für dich.",
+      "bestsellersTitle": "Unsere Bestseller",
+      "bestsellersSubtitle": "Die Lieblingsprodukte der Xenotif®-Community.",
+      "ctaTitle": "Bereit, dich auszustatten?",
+      "ctaText": "Entdecke unseren gesamten Katalog und finde genau das, was du brauchst."
+    },
+    "catalogue": {
+      "badge": "📖 Kompletter Katalog",
+      "title": "Der <o>komplette</o> Katalog",
+      "subtitle": "Alle unsere Produkte nach Sport sortiert — Krafttraining, Running, Radfahren, Schwimmen, HIIT und mehr.",
+      "link": "Gesamten Katalog ansehen",
+      "back": "Zurück zum Shop",
+      "seeAll": "Alle ansehen →",
+      "metaTitle": "Kompletter Katalog — Alle Xenotif®-Produkte",
+      "metaDescription": "Der komplette Xenotif®-Katalog: alle unsere Produkte auf einer Seite — Ausrüstung, Ernährung, Kleidung, Tech und Programme."
+    },
+    "disciplinesFilter": {
+      "musculation": "💪 Krafttraining",
+      "running-cardio": "🏃 Running",
+      "hiit": "⚡ HIIT",
+      "yoga": "🧘 Yoga",
+      "crossfit": "🔥 CrossFit",
+      "boxing": "🥊 Boxen",
+      "cyclisme": "🚴 Radfahren",
+      "natation": "🏊 Schwimmen",
+      "stretching": "🤸 Stretching"
+    },
+    "sort": {
+      "popular": "Beliebteste",
+      "price_asc": "Preis aufsteigend",
+      "price_desc": "Preis absteigend",
+      "rating": "Beste Bewertungen",
+      "new": "Neuheiten"
+    },
+    "categories": {
+      "Équipements": "Ausrüstung",
+      "Nutrition": "Ernährung",
+      "Vêtements": "Kleidung",
+      "Programmes": "Programme",
+      "Cardio": "Cardio",
+      "Recovery": "Erholung",
+      "Tech": "Tech"
+    },
+    "card": {
+      "amazonView": "Auf Amazon ansehen",
+      "detailsView": "Details ansehen",
+      "add": "Hinzufügen",
+      "added": "Hinzugefügt!"
+    },
+    "cart": {
+      "title": "Mein Warenkorb",
+      "remaining": "Nur noch <o>{amount}</o> bis zur kostenlosen Lieferung 🚚",
+      "unlocked": "Kostenlose Lieferung freigeschaltet! 🎉",
+      "emptyTitle": "Dein Warenkorb ist leer",
+      "emptyDesc": "Füge Produkte hinzu, um zu beginnen",
+      "discover": "Produkte entdecken",
+      "digital": "📥 Digital",
+      "subtotal": "Zwischensumme",
+      "shippingNote": "Versand wird an der Kasse berechnet · inkl. Steuern",
+      "checkout": "Zur Kasse",
+      "continueShopping": "Weiter einkaufen",
+      "openAria": "Warenkorb öffnen",
+      "openAriaCount": "Warenkorb öffnen ({count, plural, one {# Artikel} other {# Artikel}})"
+    },
+    "detail": {
+      "back": "Zurück zum Shop",
+      "typeDigital": "📥 Digital",
+      "typePhysical": "📦 Physisch",
+      "amazon": "🔗 Amazon",
+      "reviews": "({count} Bewertungen)",
+      "included": "Was enthalten ist",
+      "buyAmazon": "Auf Amazon kaufen",
+      "addedToCart": "Zum Warenkorb hinzugefügt!",
+      "buyDigital": "Kaufen",
+      "addToCart": "In den Warenkorb",
+      "shippingAffiliate": ["🔗 Amazon-Affiliate-Link", "📦 Versand durch Amazon", "🔒 Sichere Zahlung"],
+      "shippingPhysical": ["🚚 Kostenlose Lieferung ab 50 €", "↩️ 30 Tage Rückgabe", "🔒 Sichere Zahlung"],
+      "shippingDigital": ["⚡ Sofort-Download", "📱 Mit allen Geräten kompatibel", "♾️ Lebenslanger Zugang", "🔒 Sichere Zahlung"],
+      "related": "Das könnte dir auch gefallen"
+    },
+    "panier": {
+      "emptyTitle": "Dein Warenkorb ist leer",
+      "emptyDesc": "Entdecke unsere Premium-Produkte",
+      "seeShop": "Shop ansehen",
+      "title": "Warenkorb",
+      "itemsCount": "({count, plural, one {# Artikel} other {# Artikel}})",
+      "ownSection": "XENOTIF-Produkte — Sichere Zahlung",
+      "digitalImmediate": "📥 Sofort-Download",
+      "physicalDelivery": "📦 Lieferung 3-7 Tage",
+      "affiliateSection": "🔗 Amazon-Produkte — Auf Amazon.de bestellen",
+      "affiliateNote": "Diese Produkte werden direkt auf Amazon.de bestellt, indem du auf den Button klickst.",
+      "summary": "Zusammenfassung",
+      "total": "Gesamt",
+      "emailPlaceholder": "Deine E-Mail (für den Beleg)",
+      "payError": "Fehler bei der Zahlung",
+      "connError": "Verbindungsfehler. Versuche es erneut.",
+      "redirecting": "Weiterleitung...",
+      "payNow": "Jetzt bezahlen",
+      "payTrust": ["🔒 SSL", "💳 Visa / MC / Amex", "↩️ 30 Tage"],
+      "affiliateOnlyTitle": "Amazon-Produkte werden direkt auf Amazon.de bestellt",
+      "affiliateOnlyDesc": "Klicke auf „Amazon“ neben jedem Produkt.",
+      "continueShopping": "← Weiter einkaufen"
+    },
+    "succes": {
+      "metaTitle": "Bestellung bestätigt — Xenotif®",
+      "title": "Bestellung bestätigt!",
+      "subtitle": "Danke für deinen Einkauf. Eine Bestätigungs-E-Mail kommt in wenigen Minuten.",
+      "downloadReady": "Dein Download ist bereit",
+      "downloadDesc": "Sofort verfügbar. Du hast diese Links auch per E-Mail erhalten.",
+      "whatNow": "Und jetzt?",
+      "digitalAbove": "Deine <o>digitalen Programme</o> sind sofort oben verfügbar.",
+      "digitalEmail": "Deine <o>digitalen Programme</o> sind sofort in deiner E-Mail verfügbar.",
+      "physicalShipped": "Deine <o>physischen Produkte</o> werden innerhalb von 2-5 Werktagen versandt.",
+      "continueShopping": "Weiter einkaufen",
+      "goDashboard": "Zum Dashboard →"
+    }
+  },
+  "blog": {
+    "metaTitle": "Fitness-Blog — Tipps, Leitfäden & Vergleiche",
+    "metaDescription": "Experten-Fitnesstipps, Ernährungs-Leitfäden, Material-Vergleiche und Trainingsprogramme. Alles, was du zum Fortschritt wissen musst, geschrieben von Xenotif®-Experten.",
+    "ogTitle": "Fitness-Blog — Tipps, Leitfäden & Vergleiche | Xenotif®",
+    "ogDescription": "Experten-Fitnesstipps, Ernährungs-Leitfäden, Material-Vergleiche. Komm schneller voran mit Xenotif®.",
+    "keywords": ["Fitness-Blog", "Krafttraining-Tipps", "Sporternährung", "Laufprogramm", "HIIT-Leitfaden", "Muskelregeneration", "Fitness-Material-Vergleich"],
+    "eyebrow": "Der Xenotif®-Blog",
+    "title": "Fitness-Tipps <o>von Experten</o>",
+    "subtitle": "Technische Leitfäden, Trainingsprogramme, wissenschaftliche Ernährung und Material-Vergleiche. Alles, um schneller voranzukommen.",
+    "statsArticles": "{count} Artikel",
+    "statsExperts": "Verifizierte Experten",
+    "statsUpdated": "Aktualisiert 2026",
+    "allCategory": "Alle",
+    "categories": {
+      "Musculation": "Krafttraining",
+      "Nutrition": "Ernährung",
+      "Running": "Running",
+      "Récupération": "Erholung",
+      "Matériel": "Material",
+      "HIIT": "HIIT"
+    },
+    "categoryHeading": "{count, plural, one {# Artikel} other {# Artikel}} in {category}",
+    "emptyCategory": "Keine Artikel in dieser Kategorie.",
+    "seeAll": "Alle Artikel ansehen",
+    "ctaTitle": "Bereit, <o>aktiv zu werden?</o>",
+    "ctaSubtitle": "Theoretische Tipps sind gut, ein von Experten strukturiertes Programm ist besser. Schließe dich den 12.000+ Xenotif®-Athleten an.",
+    "ctaShop": "Zum Shop",
+    "ctaJoin": "Xenotif® beitreten",
+    "readingTime": "{minutes} Min",
+    "readingTimeLong": "{minutes} Min Lesezeit",
+    "breadcrumbAria": "Brotkrümelnavigation",
+    "breadcrumbHome": "Startseite",
+    "breadcrumbBlog": "Blog",
+    "recommendedTitle": "<o>Empfohlene</o> Produkte",
+    "recommendedSubtitle": "Von unseren Experten passend zu diesem Artikel ausgewählt.",
+    "relatedTitle": "<o>Ähnliche</o> Artikel",
+    "backToBlog": "Zurück zum Blog",
+    "recommendedProduct": "Empfohlenes Produkt",
+    "viewProduct": "Produkt ansehen",
+    "cta": {
+      "title": "Geh von der Theorie zur Praxis",
+      "text": "Geführte Programme, personalisiertes KI-Coaching und Fortschritts-Tracking: Xenotif® verwandelt diese Tipps in konkrete Ergebnisse. Beginne noch heute.",
+      "button": "Starte deine kostenlose Testphase",
+      "note": "0 € für 7 Tage · Mit 1 Klick kündbar",
+      "discipline": "Das Programm {name} entdecken"
+    }
+  },
+  "contact": {
+    "badge": "Support & Kontakt",
+    "heroTitle": "Wir sind für dich da",
+    "heroSubtitle": "Eine Frage zu deinem Abonnement, ein Bug oder einfach Lust auf Austausch? Schreib uns.",
+    "infoTitle": "Informationen",
+    "emailLabel": "E-Mail",
+    "responseLabel": "Antwortzeit",
+    "responseValue": "Innerhalb von 24h werktags",
+    "subscriberTitle": "Bist du Abonnent?",
+    "subscriberDesc": "Greife in deinem Mitgliederbereich auf den KI-Coach zu, um sofort personalisierte Hilfe zu erhalten.",
+    "mySpace": "Mein Bereich",
+    "successTitle": "Nachricht gesendet!",
+    "successDesc": "Wir haben dir eine Bestätigung per E-Mail gesendet. Wir antworten innerhalb von 24h.",
+    "backHome": "Zurück zur Startseite",
+    "formTitle": "Sende uns eine Nachricht",
+    "nameLabel": "Vor- / Nachname",
+    "namePlaceholder": "Max Mustermann",
+    "emailPlaceholder": "deine@email.com",
+    "subjectLabel": "Betreff",
+    "messageLabel": "Nachricht",
+    "messagePlaceholder": "Beschreibe dein Anliegen im Detail…",
+    "sending": "Wird gesendet…",
+    "send": "Nachricht senden",
+    "error": "Ein Fehler ist aufgetreten.",
+    "subjects": ["Frage zu meinem Abonnement", "Technisches Problem", "KI-Coaching", "Partnerschaftsanfrage", "Sonstiges"]
+  },
+  "reviews": {
+    "productTitle": "Kundenbewertungen",
+    "platformTitle": "Sie haben ihre Bewertung abgegeben",
+    "communityTitle": "Bewertungen der Community",
+    "communitySubtitle": "Das Feedback unserer verifizierten Mitglieder.",
+    "inviteTitle": "Deine Meinung zählt 💬",
+    "inviteSubtitle": "Teile deine Erfahrung mit der Xenotif®-Community.",
+    "verified": "✓ Verifizierter Kauf",
+    "none": "Noch keine Bewertungen.",
+    "beFirst": "Sei der Erste, der eine Bewertung abgibt!",
+    "leaveReview": "Bewertung abgeben",
+    "editReview": "Meine Bewertung bearbeiten",
+    "ratingLabel": "Deine Bewertung",
+    "commentLabel": "Dein Kommentar",
+    "commentPlaceholder": "Teile deine Erfahrung (mind. 10 Zeichen)…",
+    "submit": "Bewertung veröffentlichen",
+    "submitting": "Wird veröffentlicht…",
+    "thanks": "Danke, deine Bewertung ist veröffentlicht!",
+    "starAria": "{n} Stern(e) von 5",
+    "mustLogin": "Melde dich an, um eine Bewertung abzugeben.",
+    "mustBuy": "Nur für Kunden, die diesen Leitfaden gekauft haben.",
+    "mustSubscribe": "Nur für Abonnenten.",
+    "errorRating": "Wähle eine Bewertung (1 bis 5 Sterne).",
+    "errorLength": "Dein Kommentar muss mindestens 10 Zeichen lang sein.",
+    "error": "Ein Fehler ist aufgetreten. Versuche es erneut."
+  },
+  "dashboard": {
+    "nav": {
+      "overview": "Übersicht",
+      "coach": "KI-Coach",
+      "programme": "Mein Programm",
+      "progression": "Fortschritt",
+      "smartwatch": "Smartwatch",
+      "abonnement": "Abonnement",
+      "profil": "Mein Profil"
+    },
+    "navAria": "Dashboard-Navigation",
+    "signOut": "Abmelden",
+    "athlete": "Athlet",
+    "notifications": {
+      "title": "Benachrichtigungen",
+      "aria": "Benachrichtigungen",
+      "today": "Heute",
+      "pageSubtitle": "Deine Erinnerungen und Tipps des Tages.",
+      "markAllRead": "Alle als gelesen markieren",
+      "allRead": "Alles aktuell ✓",
+      "viewAll": "Alle Benachrichtigungen ansehen",
+      "close": "Schließen",
+      "activity": "Denk daran, deine heutige Aktivität in Mein Bereich zu erfassen.",
+      "motivation": [
+        "Jede Einheit zählt. Du baust die stärkste Version deiner selbst. 💪",
+        "Beständigkeit schlägt Motivation: eine kleine Anstrengung heute, ein großer Schritt morgen.",
+        "Dein einziger Gegner bist du von gestern. Übertriff ihn.",
+        "Der Körper leistet, woran der Geist glaubt. Glaub daran.",
+        "Keine perfekte Einheit, nur gemachte Einheiten. Leg los.",
+        "Müdigkeit ist vorübergehend, Stolz ist von Dauer.",
+        "Du hast nie ein abgeschlossenes Training bereut. Los, auf geht's."
+      ],
+      "tip": [
+        "Ziele auf 7 bis 9 Stunden Schlaf: dort baut sich der Muskel auf.",
+        "1,6 bis 2,2 g Protein pro kg Körpergewicht, um voranzukommen.",
+        "Trink regelmäßig Wasser: Dehydrierung lässt deine Leistung sinken.",
+        "Wärm dich 5 Minuten vor jeder Einheit auf, um Verletzungen zu vermeiden.",
+        "Progressive Überlastung: füge jede Woche etwas Gewicht oder Wiederholungen hinzu.",
+        "Dehne dich und nutze eine Foam Roller, um besser zu regenerieren.",
+        "Gönn dir mindestens einen Ruhetag pro Woche: Erholung gehört zum Programm."
+      ]
+    },
+    "statusShort": {
+      "trialing": "Kostenlose Testphase",
+      "active": "Aktiv",
+      "canceled": "Gekündigt",
+      "past_due": "Zahlung fällig"
+    },
+    "overview": {
+      "greeting": "Hallo, <o>{name}</o> 👋",
+      "subtitle": "Bereit zu trainieren? Hier ist dein Dashboard.",
+      "plan": "Plan {plan}",
+      "trialDaysLeft": "{days, plural, one {# kostenloser Testtag übrig} other {# kostenlose Testtage übrig}}",
+      "renewOn": "Verlängerung am <o>{date}</o>",
+      "manage": "Verwalten",
+      "statSessionsWeek": "Einheiten diese Woche",
+      "statModules": "Abgeschlossene Module",
+      "statActiveDays": "Aktive Tage",
+      "statBadges": "Erhaltene Abzeichen",
+      "yourPrograms": "Deine Programme",
+      "seeAll": "Alle ansehen",
+      "disciplines": {
+        "running-cardio": "Running & Cardio",
+        "musculation": "Krafttraining",
+        "hiit": "HIIT",
+        "cyclisme": "Radfahren",
+        "natation": "Schwimmen",
+        "crossfit": "CrossFit"
+      },
+      "sessions": "{completed}/{total} Einheiten",
+      "recentActivity": "Letzte Aktivität",
+      "noActivity": "Noch keine Einheit erfasst.",
+      "startProgram": "Ein Programm starten",
+      "min": "{minutes} Min"
+    },
+    "profil": {
+      "title": "Mein Profil",
+      "personalInfo": "Persönliche Informationen",
+      "fullName": "Vollständiger Name",
+      "fullNamePlaceholder": "Dein Vor- und Nachname",
+      "email": "E-Mail",
+      "emailNote": "Die E-Mail kann hier nicht geändert werden. Kontaktiere den Support, um sie zu ändern.",
+      "saving": "Wird gespeichert…",
+      "saved": "Gespeichert!",
+      "save": "Speichern",
+      "security": "Sicherheit",
+      "changePassword": "Mein Passwort ändern"
+    },
+    "programme": {
+      "title": "Mein Programm",
+      "disciplines": {
+        "running-cardio": "Running",
+        "musculation": "Kraft",
+        "hiit": "HIIT",
+        "cyclisme": "Radfahren",
+        "natation": "Schwimmen",
+        "crossfit": "CrossFit",
+        "yoga": "Yoga",
+        "boxing": "Boxen",
+        "stretching": "Stretching",
+        "nutrition": "Ernährung"
+      },
+      "weeks": "{name} — 8 Wochen",
+      "sessionsCompleted": "{completed}/{total} Einheiten abgeschlossen",
+      "done": "Programm abgeschlossen — Glückwunsch! 🎉",
+      "videosAvailable": "{count} Videos verfügbar",
+      "videosSubtitle": "Technik-Tutorials & geführte Einheiten",
+      "phase": "Phase {n}",
+      "markDone": "Als abgeschlossen markieren: {name}",
+      "markUndone": "Als nicht abgeschlossen markieren: {name}"
+    },
+    "coach": {
+      "title": "KI-Coach",
+      "online": "Online",
+      "poweredBy": "Angetrieben von Claude · Xenotif®",
+      "newSession": "Neue Sitzung",
+      "emptyTitle": "Dein persönlicher Sport-Coach",
+      "emptySubtitle": "Stell mir jede Frage zu Training, Ernährung oder Erholung. Ich erstelle maßgeschneiderte Pläne für dich.",
+      "suggestions": [
+        "Erstelle mir einen 4-Wochen-Trainingsplan zum Abnehmen",
+        "Welche Übungen für meine Schultern ohne Ausrüstung?",
+        "Wie verbessere ich meine Ausdauer beim Laufen?",
+        "Ernährungsprogramm für den Masseaufbau",
+        "Dehnroutine nach dem Training",
+        "Wie komme ich als HIIT-Anfänger voran?"
+      ],
+      "error": "Entschuldigung, ein Fehler ist aufgetreten. Versuche es gleich erneut.",
+      "placeholder": "Stell dem KI-Coach deine Frage…",
+      "send": "Senden",
+      "disclaimer": "KI-Coach · Xenotif® — Ersetzt keine ärztliche Beratung"
+    },
+    "abonnement": {
+      "title": "Mein Abonnement",
+      "noneTitle": "Kein aktives Abonnement",
+      "noneDesc": "Wähle einen Plan, um auf alle Programme zuzugreifen.",
+      "choosePlan": "Einen Plan wählen",
+      "syncHint": "Du hast bereits bezahlt, aber dein Abonnement erscheint nicht?",
+      "syncCta": "Mein Abonnement synchronisieren",
+      "syncing": "Synchronisierung…",
+      "syncNone": "Kein Abonnement für diese E-Mail gefunden. Prüfe, ob es die bei der Zahlung verwendete E-Mail ist, oder schreib uns an contact@xenotif.com.",
+      "syncEmailPlaceholder": "Bei der Zahlung verwendete E-Mail",
+      "syncAlreadyLinked": "Dieses Abonnement ist bereits mit einem anderen Konto verknüpft.",
+      "cancelError": "Die Kündigung ist fehlgeschlagen. Versuche es gleich erneut oder schreib uns an contact@xenotif.com.",
+      "confirmCancelTitle": "Kündigung bestätigen",
+      "cancelIntro": "Du kündigst dein Abonnement <o>Plan {plan}</o>.",
+      "accessUntilDate": "Dein Zugang bleibt bis zum <o>{date}</o> aktiv.",
+      "cancel": "Abbrechen",
+      "confirmCancel": "Kündigung bestätigen",
+      "cancelling": "Kündigung…",
+      "plan": "Plan {plan}",
+      "perMonth": "pro Monat",
+      "trialEndsIn": "Ende der kostenlosen Testphase in <o>{days, plural, one {# Tag} other {# Tagen}}</o>",
+      "accessUntilLabel": "Zugang bis zum",
+      "nextRenewal": "Nächste Verlängerung",
+      "securePayment": "Sichere Zahlung über Stripe",
+      "includedTitle": "In deinem Plan enthalten",
+      "featuresPro": [
+        "Alle Programme unbegrenzt",
+        "Personalisiertes KI-Coaching",
+        "Erweiterte Statistiken & Tracking",
+        "Hochwertige HD-Videos",
+        "Prioritäts-Support 7/7",
+        "Community-Challenges"
+      ],
+      "featuresElite": [
+        "Alles aus dem Pro-Plan",
+        "Persönlicher dedizierter Coach",
+        "Monatliches 1-zu-1-Videogespräch",
+        "Maßgeschneiderter Ernährungsplan",
+        "Biomechanische Videoanalyse",
+        "Früher Zugang zu Neuheiten"
+      ],
+      "managePayment": "Zahlung & Rechnungen verwalten",
+      "manageHint": "Karte ansehen/ändern, Rechnungen und kündigen — alles wird hier verwaltet.",
+      "billingTitle": "Zahlung & Rechnungen",
+      "expires": "läuft ab",
+      "noCard": "Keine Karte gespeichert.",
+      "invoicesTitle": "Rechnungen",
+      "download": "Herunterladen",
+      "noInvoices": "Noch keine Rechnung.",
+      "updateCard": "Meine Karte ändern",
+      "updateCardHint": "Der Kartenwechsel läuft über das sichere System von Stripe (Bankvorschrift).",
+      "portalNotConfigured": "Das Zahlungsportal ist noch nicht aktiviert. Geh zu dashboard.stripe.com → Billing → Customer portal, um es zu aktivieren.",
+      "portalError": "Das Zahlungsportal konnte nicht geöffnet werden.",
+      "unsubscribe": "Abbestellen",
+      "cancelConfirmed": "✓ Kündigung bestätigt",
+      "cancelConfirmedDesc": "Dein Zugang bleibt bis zum Ende des Zeitraums aktiv.",
+      "reactivate": "Mein Abonnement reaktivieren",
+      "reactivating": "Reaktivierung…",
+      "reactivateHint": "Die automatische Abrechnung wird zum nächsten Fälligkeitstermin fortgesetzt.",
+      "reactivateError": "Das Abonnement konnte nicht reaktiviert werden. Versuche es erneut oder kontaktiere uns.",
+      "reactivateEnded": "Dieses Abonnement ist beendet. Beginne ein neues Abonnement, um fortzufahren.",
+      "resubscribe": "Ein Abonnement beginnen",
+      "questions": "Fragen? Kontaktiere uns unter",
+      "loading": "Wird geladen…",
+      "status": {
+        "trialing": "Kostenlose Testphase läuft",
+        "active": "Aktiv",
+        "canceled": "Gekündigt",
+        "pastDue": "Zahlung ausstehend"
+      }
+    },
+    "progression": {
+      "title": "Mein Fortschritt",
+      "addSession": "Einheit hinzufügen",
+      "newSession": "Neue Einheit",
+      "discipline": "Disziplin",
+      "durationMin": "Dauer (Minuten)",
+      "notesOptional": "Notizen (optional)",
+      "notesPlaceholder": "Gefühl, Übungen, PR…",
+      "cancel": "Abbrechen",
+      "saving": "Wird gespeichert…",
+      "save": "Speichern",
+      "statTotalSessions": "Einheiten insgesamt",
+      "statHours": "Trainingsstunden",
+      "statModules": "Abgeschlossene Module",
+      "statBadges": "Erhaltene Abzeichen",
+      "byDiscipline": "Fortschritt nach Disziplin",
+      "badges": "Abzeichen",
+      "weekActivity": "Aktivität diese Woche",
+      "history": "Einheiten-Verlauf",
+      "noHistory": "Keine Einheit erfasst. Klicke auf \"Einheit hinzufügen\", um zu beginnen!",
+      "days": [
+        "Mo",
+        "Di",
+        "Mi",
+        "Do",
+        "Fr",
+        "Sa",
+        "So"
+      ],
+      "disciplines": {
+        "running-cardio": "Running",
+        "musculation": "Krafttraining",
+        "hiit": "HIIT",
+        "cyclisme": "Radfahren",
+        "natation": "Schwimmen",
+        "crossfit": "CrossFit",
+        "yoga": "Yoga",
+        "boxing": "Boxen",
+        "stretching": "Stretching",
+        "nutrition": "Ernährung"
+      },
+      "badgeFirst": {
+        "label": "Erster Schritt",
+        "desc": "1. Einheit erfasst"
+      },
+      "badgeWeek": {
+        "label": "Komplette Woche",
+        "desc": "7 Einheiten erfasst"
+      },
+      "badgeMonth": {
+        "label": "Athlet des Monats",
+        "desc": "30 Einheiten erfasst"
+      },
+      "badgeElite": {
+        "label": "Elite",
+        "desc": "100 Einheiten erfasst"
+      }
+    },
+    "liveActivity": {
+      "title": "Heutige Aktivität",
+      "moving": "In Bewegung",
+      "paused": "Pausiert",
+      "phoneSensor": "Handy-Sensor",
+      "steps": "Schritte",
+      "calories": "Kalorien",
+      "distance": "Distanz",
+      "activeDuration": "Aktive Dauer",
+      "stepsUnit": "Schritte",
+      "autoSaved": "✓ Automatisch gespeichert · Die Dauer zählt nur während deiner Bewegung. Lass die App während deiner Aktivität geöffnet.",
+      "tapToStart": "Tippe auf den Bildschirm, um zu starten 👆",
+      "tapHint": "Dein iPhone fragt nach einer Berechtigung für den Bewegungssensor. Tippe irgendwo, um das Tracking zu starten.",
+      "denied": "Bewegungszugriff verweigert. Erlaube ihn in den Einstellungen deines Browsers und lade die Seite neu.",
+      "noSensor": "Kein Bewegungssensor erkannt — das Live-Tracking funktioniert auf dem Smartphone. 📱",
+      "startTracking": "Tracking starten",
+      "move": "Bewegung",
+      "exercise": "Übung",
+      "liveBadge": "Live",
+      "daySaved": "Tagessumme",
+      "openOnPhone": "Öffne diese Seite auf deinem Handy, um deine Schritte in Echtzeit zu verfolgen. 📱",
+      "trendTitle": "7-Tage-Trend",
+      "trendTotal": "{steps} Schritte diese Woche"
+    },
+    "smartwatch": {
+      "title": "Smartwatch",
+      "subtitle": "Fitness-Synchronisierung in Echtzeit",
+      "loading": "Fitnessdaten werden geladen…",
+      "tabs": {
+        "overview": "Übersicht",
+        "devices": "Geräte",
+        "history": "Verlauf",
+        "goals": "Ziele"
+      },
+      "connectTitle": "Verbinde deine Uhr",
+      "connectDesc": "Synchronisiere deine Smartwatch, um deine echten Gesundheitsdaten anzuzeigen — Schritte, Kalorien, Herzfrequenz, Schlaf und vieles mehr.",
+      "securityTitle": "Verschlüsselte Daten & DSGVO",
+      "securityDescShort": "Deine Gesundheitsdaten werden verschlüsselt und auf sicheren Servern in Europa gespeichert. Keine Daten werden an Dritte weiterverkauft.",
+      "securityDescLong": "Deine Gesundheitsdaten werden verschlüsselt und auf sicheren Servern in Europa gespeichert. Du kannst alle deine Daten jederzeit in deinem Profil löschen. Keine Daten werden an Dritte weiterverkauft.",
+      "synced": "Synchronisiert",
+      "sync": "Synchronisieren",
+      "rings": {
+        "activity": "Aktivität",
+        "calories": "Kalorien",
+        "steps": "Schritte"
+      },
+      "ringsCenter": "Aktivität",
+      "metrics": {
+        "stepsToday": "Schritte heute",
+        "caloriesBurned": "Verbrannte Kalorien",
+        "distance": "Distanz",
+        "hydration": "Hydration",
+        "sleep": "Schlaf",
+        "activeMinutes": "Aktive Minuten"
+      },
+      "sleepScore": "Score {score}",
+      "heartRateTitle": "Herzfrequenz",
+      "weeklyActivity": "Wöchentliche Aktivität",
+      "chartToggle": {
+        "steps": "Schritte",
+        "calories": "Kal",
+        "activeMinutes": "Aktiv"
+      },
+      "chartFull": {
+        "steps": "Schritte",
+        "calories": "Kal",
+        "activeMinutes": "Aktive Min"
+      },
+      "chartThisWeek": "{label} diese Woche",
+      "weekDays": ["Mo", "Di", "Mi", "Do", "Fr", "Sa", "So"],
+      "aiTitle": "KI-Coach — Personalisierte Empfehlungen",
+      "aiRecs": [
+        "Du hast heute 84% deines Schrittziels erreicht — ein 10-minütiger Sprint reicht, um das abzuschließen!",
+        "Dein Schlaf liegt leicht unter 7h. Geh heute Abend 30 Min früher ins Bett, um deine Erholung zu optimieren.",
+        "Hydration bei 87% — trink 250 ml vor deiner nächsten Einheit, um deine Leistung zu halten.",
+        "Deine Ruheherzfrequenz von 58 bpm zeigt eine ausgezeichnete kardiovaskuläre Verfassung. Mach weiter so!"
+      ],
+      "supportedTitle": "Unterstützte Geräte",
+      "supportedDesc": "Verbinde deine Uhr, um deine Fitnessdaten nach jeder Einheit automatisch zu synchronisieren.",
+      "recentSessions": "Letzte Einheiten",
+      "sessionsCount": "{count, plural, one {# Einheit} other {# Einheiten}}",
+      "noSessions": "Keine Einheit erfasst.",
+      "noSessionsHint": "Verbinde deine Uhr, um deinen Verlauf zu sehen.",
+      "dailyGoals": "Tagesziele",
+      "dailyGoalsDesc": "Deine Ziele werden in Echtzeit von deiner Smartwatch aktualisiert.",
+      "goalLabels": {
+        "steps": "Tägliche Schritte",
+        "calories": "Verbrannte Kalorien",
+        "activeMinutes": "Aktive Minuten",
+        "sleep": "Schlaf",
+        "hydration": "Hydration",
+        "sessionsWeek": "Einheiten / Woche"
+      },
+      "goalUnitSteps": "Schritte",
+      "goalUnitSessions": "Einheiten",
+      "goalReached": "✓ Ziel",
+      "weekSummary": "Wochenbilanz",
+      "summary": {
+        "totalSteps": "Schritte gesamt",
+        "caloriesBurned": "Verbr. Kal.",
+        "activeMinutes": "Aktive Min."
+      },
+      "summaryUnitSteps": "Schritte",
+      "device": {
+        "connected": "Verbunden",
+        "comingSoon": "Bald",
+        "comingSoonDesc": "Bald verfügbar",
+        "syncedOn": "Synchronisiert am {date}",
+        "sync": "Synchronisieren",
+        "connect": "Verbinden"
+      },
+      "heart": {
+        "bpmAvg": "bpm Ø",
+        "max": "Max",
+        "resting": "Ruhe",
+        "zoneRest": "Ruhe",
+        "zoneLight": "Leichtes Cardio",
+        "zoneModerate": "Moderates Cardio",
+        "zoneIntense": "Intensives Cardio",
+        "zoneMax": "Maximalzone"
+      },
+      "session": {
+        "duration": "Dauer",
+        "bpmAvg": "bpm Ø",
+        "distance": "Distanz",
+        "pace": "Tempo"
+      },
+      "activities": {
+        "running": "Laufen",
+        "cycling": "Radfahren",
+        "strength_training": "Krafttraining",
+        "yoga": "Yoga",
+        "hiit": "HIIT",
+        "swimming": "Schwimmen",
+        "walking": "Gehen",
+        "crossfit": "CrossFit",
+        "boxing": "Boxen",
+        "stretching": "Stretching"
+      }
+    }
+  },
+  "about": {
+    "metaTitle": "Über uns — Xenotif®",
+    "metaDescription": "Die Mission von Xenotif®: sportliche Leistung für alle zugänglich machen, dank strukturierter Programme, eines intelligenten Coaches und einer motivierenden Community.",
+    "eyebrow": "Über uns",
+    "title": "Leistung, <o>für alle</o>",
+    "subtitle": "Xenotif® macht Training auf hohem Niveau zugänglich: strukturierte Programme, ein intelligenter Coach und eine Community, die dich anspornt, über dich hinauszuwachsen.",
+    "missionTitle": "Unsere Mission",
+    "missionText": "Jeder verdient eine klare, motivierende und effektive sportliche Betreuung, egal auf welchem Niveau. Xenotif® vereint Programme, Tracking und Expertenrat an einem Ort, um Anstrengung in nachhaltige Ergebnisse zu verwandeln.",
+    "valuesTitle": "Unsere Werte",
+    "values": [
+      { "title": "Anspruch", "text": "Programme, die nach professionellen Coaching-Standards entwickelt wurden." },
+      { "title": "Zugänglichkeit", "text": "Hohes Niveau für alle, vom Anfänger bis zum erfahrenen Athleten." },
+      { "title": "Beständigkeit", "text": "Tools, die das Training langfristig verankern." },
+      { "title": "Community", "text": "Gemeinsam kommen wir besser voran, getragen von denselben Zielen." }
+    ],
+    "storyTitle": "Unsere Geschichte",
+    "storyText": "Aus der Überzeugung geboren, dass Technologie Leistung demokratisieren kann, verbindet Xenotif® Trainingswissenschaft mit einem Premium-Erlebnis, um dich bei jeder Einheit zu begleiten.",
+    "statsTitle": "Xenotif® in Zahlen",
+    "statsSubtitle": "Die Community, die jeden Tag Fortschritte macht.",
+    "ctaTitle": "Bereit, <o>über dich hinauszuwachsen</o>?",
+    "ctaSubtitle": "Schließe dich Tausenden von Sportlern an, die mit Xenotif® Fortschritte machen.",
+    "ctaJoin": "Xenotif® beitreten",
+    "ctaShop": "Den Shop entdecken"
+  }
+}
