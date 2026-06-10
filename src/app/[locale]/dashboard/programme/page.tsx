@@ -52,6 +52,7 @@ function ProgrammeContent() {
       setProgress(map)
       setLoading(false)
     }
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- état de chargement avant un fetch déclenché par le changement de discipline
     setLoading(true)
     load()
   }, [selected])

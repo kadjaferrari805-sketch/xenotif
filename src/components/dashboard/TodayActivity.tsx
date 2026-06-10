@@ -141,6 +141,8 @@ export function TodayActivity({ initialSteps, initialActiveSec, weekly, dateLabe
   }, [beginListening])
 
   // Démarrage AUTOMATIQUE
+  /* eslint-disable react-hooks/set-state-in-effect --
+     Détection du capteur de mouvement (API navigateur) au montage : statut mis à jour côté client. */
   useEffect(() => {
     const DME = (typeof window !== 'undefined' ? window.DeviceMotionEvent : undefined) as unknown as DMEWithPermission | undefined
     if (!DME) { setStatus('nosensor'); return }
@@ -154,6 +156,7 @@ export function TodayActivity({ initialSteps, initialActiveSec, weekly, dateLabe
     return () => window.removeEventListener('devicemotion', onMotion)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
+  /* eslint-enable react-hooks/set-state-in-effect */
 
   // Chronomètre : compte uniquement pendant le mouvement
   useEffect(() => {

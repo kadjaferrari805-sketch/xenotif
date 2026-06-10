@@ -22,7 +22,12 @@ export function CustomerReviews({ kind, productId }: Props) {
     setReviews(r.reviews ?? [])
   }, [qs])
 
-  useEffect(() => { load() }, [load])
+  useEffect(() => {
+    let cancelled = false
+    fetch(`/api/reviews?${qs}`).then(r => r.json()).catch(() => ({ reviews: [] }))
+      .then(r => { if (!cancelled) setReviews(r.reviews ?? []) })
+    return () => { cancelled = true }
+  }, [qs])
   useEffect(() => {
     fetch(`/api/reviews/eligibility?${qs}`).then(r => r.json()).then(setElig).catch(() => setElig({ eligible: false, reason: 'guest' }))
   }, [qs])

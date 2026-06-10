@@ -11,7 +11,7 @@ import { trackMeta } from '@/lib/meta-pixel'
 export default function PanierPage() {
   const t = useTranslations('boutique.panier')
   const locale = useLocale()
-  const { items, count, total, removeItem, updateQty } = useCart()
+  const { items, count, removeItem, updateQty } = useCart()
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
   const [email, setEmail] = useState('')
@@ -55,7 +55,7 @@ export default function PanierPage() {
       })
       const data = await res.json() as { url?: string; error?: string }
       if (data.url) {
-        window.location.href = data.url
+        window.location.assign(data.url)
       } else {
         setError(data.error ?? t('payError'))
       }

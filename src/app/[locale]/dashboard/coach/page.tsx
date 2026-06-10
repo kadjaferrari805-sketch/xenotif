@@ -40,15 +40,16 @@ export default function CoachPage() {
 
       const reader = res.body.getReader()
       const decoder = new TextDecoder()
-      let accumulated = ''
+      const chunks: string[] = []
 
       while (true) {
         const { done, value } = await reader.read()
         if (done) break
-        accumulated += decoder.decode(value, { stream: true })
+        chunks.push(decoder.decode(value, { stream: true }))
+        const content = chunks.join('')
         setMessages(prev => {
           const updated = [...prev]
-          updated[updated.length - 1] = { role: 'assistant', content: accumulated }
+          updated[updated.length - 1] = { role: 'assistant', content }
           return updated
         })
       }

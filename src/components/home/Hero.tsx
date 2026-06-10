@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect } from 'react'
 import { motion, AnimatePresence, useMotionValue, useSpring } from 'framer-motion'
 import { useTranslations } from 'next-intl'
 import Image from 'next/image'
@@ -33,18 +33,18 @@ export function Hero() {
   const [paused, setPaused] = useState(false)
   const [progress, setProgress] = useState(0)
 
-  const next = useCallback(() => {
+  // Fonctions simples : le React Compiler les mémoïse automatiquement.
+  const next = () => {
     setCurrent((c) => (c + 1) % slides.length)
     setProgress(0)
-  }, [slides.length])
-  const prev = useCallback(() => {
+  }
+  const prev = () => {
     setCurrent((c) => (c - 1 + slides.length) % slides.length)
     setProgress(0)
-  }, [slides.length])
+  }
 
   useEffect(() => {
     if (paused) return
-    setProgress(0)
     const start = performance.now()
     let frame: number
 
@@ -55,12 +55,14 @@ export function Hero() {
       if (elapsed < SLIDE_DURATION) {
         frame = requestAnimationFrame(tick)
       } else {
-        next()
+        // Avance automatique en ligne → évite une dépendance fonction dans l'effet.
+        setCurrent((c) => (c + 1) % slides.length)
+        setProgress(0)
       }
     }
     frame = requestAnimationFrame(tick)
     return () => cancelAnimationFrame(frame)
-  }, [current, paused, next])
+  }, [current, paused, slides.length])
 
   function handleCarouselKey(e: React.KeyboardEvent) {
     if (e.key === 'ArrowLeft') { prev(); e.preventDefault() }
