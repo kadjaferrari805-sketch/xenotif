@@ -58,6 +58,7 @@
   "languages": {
     "fr": "Français",
     "en": "English",
+    "de": "Deutsch",
     "switch": "Change language"
   },
   "home": {
@@ -542,6 +543,7 @@
       "subtitle": "Thank you for your purchase. A confirmation email will arrive in a few minutes.",
       "downloadReady": "Your download is ready",
       "downloadDesc": "Available immediately. You've also received these links by email.",
+      "downloadLang": "Download in:",
       "whatNow": "What now?",
       "digitalAbove": "Your <o>digital programs</o> are available immediately above.",
       "digitalEmail": "Your <o>digital programs</o> are available immediately in your email.",

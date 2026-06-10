@@ -79,18 +79,34 @@ export default async function BoutiqueSuccesPage({
             <p className="text-xs text-sport-gray mb-4">{t('downloadDesc')}</p>
             <div className="space-y-3">
               {digitalItems.map(item => (
-                <a
+                <div
                   key={item.id}
-                  href={`/api/boutique/download?session=${encodeURIComponent(session_id ?? '')}&p=${encodeURIComponent(item.id)}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-between gap-3 rounded-xl border border-sport-border bg-sport-dark px-4 py-3 hover:border-sport-orange/50 transition-colors group"
+                  className="rounded-xl border border-sport-border bg-sport-dark px-4 py-3"
                 >
-                  <span className="text-sm font-bold text-white line-clamp-2">📘 {item.name}</span>
-                  <span className="flex shrink-0 items-center gap-1.5 rounded-lg bg-sport-orange px-3 py-1.5 text-xs font-bold text-white group-hover:bg-orange-600 transition-colors">
-                    <Download size={12} /> PDF
-                  </span>
-                </a>
+                  <p className="text-sm font-bold text-white line-clamp-2 mb-2.5">📘 {item.name}</p>
+                  <div className="flex flex-wrap items-center gap-2">
+                    <span className="text-[11px] text-sport-gray">{t('downloadLang')}</span>
+                    {([
+                      { code: 'fr', label: '🇫🇷 FR' },
+                      { code: 'en', label: '🇬🇧 EN' },
+                      { code: 'de', label: '🇩🇪 DE' },
+                    ] as const).map(l => (
+                      <a
+                        key={l.code}
+                        href={`/api/boutique/download?session=${encodeURIComponent(session_id ?? '')}&p=${encodeURIComponent(item.id)}&lang=${l.code}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={`flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-xs font-bold transition-colors ${
+                          l.code === locale
+                            ? 'bg-sport-orange text-white hover:bg-orange-600'
+                            : 'border border-sport-border text-white hover:border-sport-orange/50'
+                        }`}
+                      >
+                        <Download size={12} /> {l.label}
+                      </a>
+                    ))}
+                  </div>
+                </div>
               ))}
             </div>
           </div>

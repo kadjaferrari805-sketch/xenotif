@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import Stripe from 'stripe'
 import { getProductById } from '@/lib/boutique/products'
-import { getGuide } from '@/lib/boutique/guides'
+import { getGuideLocalized } from '@/lib/boutique/guides.en'
 import { generateGuidePdf } from '@/lib/boutique/guide-pdf'
 
 export const runtime = 'nodejs'
@@ -22,13 +22,15 @@ export async function POST() {
 export async function GET(req: NextRequest) {
   const sessionId = req.nextUrl.searchParams.get('session') ?? ''
   const productId = req.nextUrl.searchParams.get('p') ?? ''
+  const langParam = req.nextUrl.searchParams.get('lang') ?? 'fr'
+  const lang = ['fr', 'en', 'de'].includes(langParam) ? langParam : 'fr'
 
   if (!sessionId.startsWith('cs_') || !productId) {
     return NextResponse.json({ error: 'Lien invalide.' }, { status: 400 })
   }
 
   const product = getProductById(productId)
-  const guide = getGuide(productId)
+  const guide = getGuideLocalized(productId, lang)
   if (!product || product.type !== 'digital' || !guide) {
     return NextResponse.json({ error: 'Produit introuvable.' }, { status: 404 })
   }
@@ -50,8 +52,8 @@ export async function GET(req: NextRequest) {
       return NextResponse.json({ error: 'Ce guide ne fait pas partie de ta commande.' }, { status: 403 })
     }
 
-    const bytes = await generateGuidePdf(guide)
-    const filename = `xenotif-${product.slug}.pdf`
+    const bytes = await generateGuidePdf(guide, lang)
+    const filename = `xenotif-${product.slug}-${lang}.pdf`
 
     return new NextResponse(Buffer.from(bytes), {
       status: 200,

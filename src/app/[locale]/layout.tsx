@@ -20,6 +20,7 @@ const META_PIXEL_ID = process.env.NEXT_PUBLIC_META_PIXEL_ID
 const LOCALE_OG: Record<string, string> = {
   fr: 'fr_FR',
   en: 'en_US',
+  de: 'de_DE',
 }
 
 export function generateStaticParams() {
