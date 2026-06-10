@@ -67,6 +67,7 @@ export function FAQ() {
           label={t('label')}
           title={t('title')}
           subtitle={t('subtitle')}
+          size="lg"
         />
 
         <div className="mt-12">

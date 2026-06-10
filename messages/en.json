@@ -7,6 +7,7 @@
       "blog": "📝 Blog",
       "tarifs": "Pricing",
       "faq": "FAQ",
+      "about": "About",
       "connexion": "Sign in",
       "rejoindre": "Join",
       "monEspace": "My space",
@@ -21,6 +22,7 @@
       "copyright": "© 2026 Xenotif® — All rights reserved",
       "baseline": "Built for athletes · Powered by AI",
       "links": {
+        "about": "About",
         "mentionsLegales": "Legal notice",
         "confidentialite": "Privacy",
         "cgv": "Terms of sale",
@@ -664,6 +666,10 @@
       "title": "Notifications",
       "aria": "Notifications",
       "today": "Today",
+      "pageSubtitle": "Your reminders and tips for today.",
+      "markAllRead": "Mark all as read",
+      "allRead": "All caught up ✓",
+      "viewAll": "View all notifications",
       "close": "Close",
       "activity": "Don't forget to log today's activity in your space.",
       "motivation": [
@@ -830,6 +836,12 @@
       "unsubscribe": "Unsubscribe",
       "cancelConfirmed": "✓ Cancellation confirmed",
       "cancelConfirmedDesc": "Your access stays active until the end of the period.",
+      "reactivate": "Reactivate my subscription",
+      "reactivating": "Reactivating…",
+      "reactivateHint": "Automatic billing will resume at the next renewal date.",
+      "reactivateError": "Unable to reactivate the subscription. Try again or contact us.",
+      "reactivateEnded": "This subscription has ended. Start a new subscription to continue.",
+      "resubscribe": "Start a subscription",
       "questions": "Questions? Contact us at",
       "loading": "Loading…",
       "status": {
@@ -1037,5 +1049,29 @@
         "stretching": "Stretching"
       }
     }
+  },
+  "about": {
+    "metaTitle": "About — Xenotif®",
+    "metaDescription": "Xenotif®'s mission: make athletic performance accessible to everyone through structured programs, a smart coach and a motivating community.",
+    "eyebrow": "About",
+    "title": "Performance, <o>for everyone</o>",
+    "subtitle": "Xenotif® makes high-level training accessible: structured programs, a smart coach and a community that pushes you to surpass yourself.",
+    "missionTitle": "Our mission",
+    "missionText": "Everyone deserves clear, motivating and effective coaching, whatever their level. Xenotif® brings programs, tracking and expert advice together in one place to turn effort into lasting results.",
+    "valuesTitle": "Our values",
+    "values": [
+      { "title": "Excellence", "text": "Programs built to professional coaching standards." },
+      { "title": "Accessibility", "text": "Elite training for all, from beginner to seasoned athlete." },
+      { "title": "Consistency", "text": "Tools designed to make training stick over time." },
+      { "title": "Community", "text": "We progress better together, driven by the same goals." }
+    ],
+    "storyTitle": "Our story",
+    "storyText": "Born from the belief that technology can democratize performance, Xenotif® combines training science with a premium experience to support you in every session.",
+    "statsTitle": "Xenotif® in numbers",
+    "statsSubtitle": "The community that progresses every day.",
+    "ctaTitle": "Ready to <o>surpass yourself</o>?",
+    "ctaSubtitle": "Join thousands of athletes progressing with Xenotif®.",
+    "ctaJoin": "Join Xenotif®",
+    "ctaShop": "Explore the shop"
   }
 }

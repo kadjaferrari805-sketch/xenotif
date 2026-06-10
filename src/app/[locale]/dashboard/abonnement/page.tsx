@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import { useTranslations, useLocale } from 'next-intl'
 import { Link } from '@/i18n/navigation'
-import { CheckCircle, AlertTriangle, CreditCard, Calendar, ArrowRight, ShieldCheck, X } from 'lucide-react'
+import { CheckCircle, AlertTriangle, CreditCard, Calendar, ArrowRight, ShieldCheck, X, RotateCcw } from 'lucide-react'
 
 type Sub = {
   plan: string; status: string; trial_end: string | null;
@@ -41,6 +41,8 @@ export default function AbonnementPage() {
   const [showCancel, setShowCancel] = useState(false)
   const [, setCancelled] = useState(false)
   const [cancelError, setCancelError] = useState('')
+  const [reactivateLoading, setReactivateLoading] = useState(false)
+  const [reactivateError, setReactivateError] = useState('')
   const [portalLoading, setPortalLoading] = useState(false)
   const [portalError, setPortalError] = useState('')
   const [syncing, setSyncing] = useState(false)
@@ -103,6 +105,25 @@ export default function AbonnementPage() {
       setCancelError(t('cancelError'))
     }
     setCancelLoading(false)
+  }
+
+  async function reactivateSubscription() {
+    setReactivateLoading(true)
+    setReactivateError('')
+    try {
+      const res = await fetch('/api/reactivate-subscription', { method: 'POST' })
+      const data = await res.json()
+      if (data.ok) {
+        setSub(prev => prev ? { ...prev, cancel_at_period_end: false, status: 'active' } : null)
+      } else if (data.resubscribe) {
+        setReactivateError(t('reactivateEnded'))
+      } else {
+        setReactivateError(t('reactivateError'))
+      }
+    } catch {
+      setReactivateError(t('reactivateError'))
+    }
+    setReactivateLoading(false)
   }
 
   async function syncSubscription() {
@@ -314,6 +335,27 @@ export default function AbonnementPage() {
           <div className="text-center p-4 bg-emerald-500/5 border border-emerald-500/20 rounded-xl">
             <p className="text-emerald-400 text-sm font-semibold">{t('cancelConfirmed')}</p>
             <p className="text-sport-gray text-xs mt-1">{t('cancelConfirmedDesc')}</p>
+            {sub.cancel_at_period_end && sub.status !== 'canceled' ? (
+              <>
+                <button
+                  onClick={reactivateSubscription}
+                  disabled={reactivateLoading}
+                  className="mt-4 w-full bg-sport-orange text-white py-3 rounded-full font-bold text-sm hover:bg-orange-600 disabled:opacity-60 transition-all inline-flex items-center justify-center gap-2"
+                >
+                  {reactivateLoading
+                    ? <><span className="w-3.5 h-3.5 border-2 border-white/40 border-t-white rounded-full animate-spin" />{t('reactivating')}</>
+                    : <><RotateCcw size={14} /> {t('reactivate')}</>}
+                </button>
+                <p className="text-[11px] text-sport-gray mt-2">{t('reactivateHint')}</p>
+              </>
+            ) : (
+              <Link href="/auth/signup?plan=pro" className="mt-4 inline-flex items-center justify-center gap-2 bg-sport-orange text-white px-6 py-2.5 rounded-full font-bold text-sm hover:bg-orange-600 transition-all">
+                {t('resubscribe')} <ArrowRight size={14} />
+              </Link>
+            )}
+            {reactivateError && (
+              <p role="alert" className="text-red-400 text-xs mt-3">{reactivateError}</p>
+            )}
           </div>
         )}
       </div>
