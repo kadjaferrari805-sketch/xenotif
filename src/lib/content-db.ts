@@ -56,3 +56,12 @@ export async function getDisciplineFromDb(slug: string, locale: string): Promise
   if (!disc) return null
   return assembleDiscipline(disc as DisciplineRow, (i18n ?? []) as I18nRow[], (videos ?? []) as VideoRow[], locale)
 }
+
+// Slugs des disciplines gratuites (min_plan='free'). Repli ['musculation'] si env/base absente.
+export async function getFreeDisciplineSlugs(): Promise<string[]> {
+  if (!process.env.NEXT_PUBLIC_SUPABASE_URL || !process.env.SUPABASE_SERVICE_ROLE_KEY) return ['musculation']
+  const supabase = await createServiceClient()
+  const { data } = await supabase.from('content_disciplines').select('slug').eq('min_plan', 'free')
+  const slugs = (data ?? []).map(r => r.slug as string)
+  return slugs.length ? slugs : ['musculation']
+}

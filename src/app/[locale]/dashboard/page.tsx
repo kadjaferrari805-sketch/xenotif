@@ -5,6 +5,7 @@ import { createClient, createServiceClient } from '@/lib/supabase/server'
 import { getAccess } from '@/lib/access'
 import { CheckCircle, Flame, TrendingUp, ArrowRight, Clock, Award } from 'lucide-react'
 import { DISCIPLINE_CONTENT } from '@/lib/disciplines'
+import { getDisciplineFromDb } from '@/lib/content-db'
 import { TodayActivity, type TrendDay } from '@/components/dashboard/TodayActivity'
 import { ReviewInvite } from '@/components/reviews/ReviewInvite'
 
@@ -95,6 +96,11 @@ export default async function DashboardPage() {
   const dateLabel = now.toLocaleDateString(dateLocale, { weekday: 'long', day: 'numeric', month: 'long' })
 
   const disciplineSlugs = ['running-cardio', 'musculation', 'hiit', 'cyclisme', 'natation', 'crossfit']
+  const overviewSlugs = disciplineSlugs.slice(0, 3)
+  // Contenu des 3 programmes affichés : base (repli statique si absente).
+  const overviewContents = Object.fromEntries(
+    await Promise.all(overviewSlugs.map(async (s) => [s, (await getDisciplineFromDb(s, locale))?.content ?? DISCIPLINE_CONTENT[s]] as const)),
+  )
 
   return (
     <div className="p-6 md:p-8 max-w-5xl mx-auto pb-24 md:pb-8">
@@ -168,8 +174,8 @@ export default async function DashboardPage() {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {disciplineSlugs.slice(0, 3).map((slug) => {
-            const content = DISCIPLINE_CONTENT[slug]
+          {overviewSlugs.map((slug) => {
+            const content = overviewContents[slug]
             const completed = (progress ?? []).filter(p => p.discipline === slug && p.completed).length
             const total = (content?.program ?? []).reduce((acc, w) => acc + w.sessions.length, 0)
             const pct = total > 0 ? Math.round((completed / total) * 100) : 0
