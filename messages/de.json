@@ -363,10 +363,10 @@
       "note": "* Von der Xenotif®-KI personalisiertes Programm passend zu deinem Profil, deinem Niveau und deinen Zielen."
     },
     "gate": {
-      "title": "Schalte das komplette Programm frei",
-      "subtitle": "Das detaillierte Programm, Woche für Woche, ist Xenotif®-Abonnenten vorbehalten.",
-      "cta": "Kostenlos starten",
-      "note": "Kostenlos, ohne Karte · PRO ab 9,99 €/Monat"
+      "title": "Nur für PRO-Mitglieder",
+      "subtitle": "Programm und Videos dieser Disziplin sind PRO-Mitgliedern vorbehalten. Krafttraining ist kostenlos.",
+      "cta": "Auf PRO upgraden",
+      "note": "9,99 €/Monat · ohne Verpflichtung · jederzeit kündbar"
     },
     "cta": {
       "title": "Tritt der Community bei",
