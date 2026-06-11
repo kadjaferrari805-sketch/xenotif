@@ -65,13 +65,22 @@ export async function generateMetadata({
       siteName: 'Xenotif®',
       type: 'website',
       locale: LOCALE_OG[locale] ?? 'fr_FR',
-      // L'image OG est fournie par src/app/opengraph-image.tsx (générée à la volée).
+      // Image OG servie sous /api/og (hors proxy i18n → URL absolue stable, sans redirection).
+      images: [
+        {
+          url: `${SITE}/api/og`,
+          width: 1200,
+          height: 630,
+          type: 'image/png',
+          alt: 'XENOTIF® — Coaching fitness premium',
+        },
+      ],
     },
     twitter: {
       card: 'summary_large_image',
       title: t('metaTitle'),
       description: t('metaDescription'),
-      // Pas de twitter:image explicite → X se rabat sur l'image og:image générée.
+      images: [`${SITE}/api/og`],
     },
     robots: {
       index: true,
