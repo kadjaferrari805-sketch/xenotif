@@ -337,6 +337,7 @@
       "title": "Lerne von den Besten",
       "subtitle": "Technik-Tutorials, geführte Einheiten und Expertentipps — klicke, um ein Video zu starten.",
       "unavailable": "Video nicht verfügbar",
+      "locked": "Nur für PRO-Mitglieder",
       "playAria": "Video starten: {title}"
     },
     "guide": {
