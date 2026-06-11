@@ -68,8 +68,19 @@ export async function getAccess(): Promise<Access> {
   return deriveAccess({ isAuthenticated: true, isAdmin: !!admin, sub: sub as SubRow })
 }
 
-// Pour les routes API : renvoie l'Access si PRO, sinon une Response 403 à retourner directement.
+/**
+ * Garde d'accès pour les route handlers API : renvoie l'`Access` si l'utilisateur
+ * est PRO, sinon une réponse 403 à retourner directement.
+ *
+ * Usage attendu (narrow + early-return) :
+ *   const gate = await requirePro()
+ *   if (gate instanceof Response) return gate   // 403 → on sort
+ *   // ici `gate` est un Access garanti PRO
+ */
 export async function requirePro(): Promise<Access | import('next/server').NextResponse> {
+  // Import dynamique : `next/server` casse l'environnement jsdom de Jest
+  // (« Request is not defined »). requirePro n'est appelé que depuis des route
+  // handlers (runtime Node.js/Edge) où l'import est résolu normalement.
   const { NextResponse } = await import('next/server')
   const access = await getAccess()
   if (!access.isPro) {

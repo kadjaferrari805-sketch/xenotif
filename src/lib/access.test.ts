@@ -30,6 +30,14 @@ describe('deriveAccess', () => {
     const a = deriveAccess({ isAuthenticated: true, isAdmin: false, sub: sub({ status: 'past_due' }) })
     expect(a.isPro).toBe(false)
   })
+  it('non-pro si incomplete', () => {
+    const a = deriveAccess({ isAuthenticated: true, isAdmin: false, sub: sub({ status: 'incomplete' }) })
+    expect(a.role).toBe('free'); expect(a.isPro).toBe(false)
+  })
+  it('non-pro si unpaid', () => {
+    const a = deriveAccess({ isAuthenticated: true, isAdmin: false, sub: sub({ status: 'unpaid' }) })
+    expect(a.isPro).toBe(false)
+  })
   it('admin → accès total même sans abonnement', () => {
     const a = deriveAccess({ isAuthenticated: true, isAdmin: true, sub: null })
     expect(a.role).toBe('admin'); expect(a.isPro).toBe(true)
