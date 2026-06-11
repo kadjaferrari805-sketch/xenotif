@@ -37,8 +37,7 @@ export async function GET() {
     const stripeSub = subs.data[0]
     if (!stripeSub) return NextResponse.json(null)
 
-    const plan = stripeSub.metadata?.plan
-      ?? ((stripeSub.items.data[0]?.price?.unit_amount ?? 0) > 1000 ? 'elite' : 'pro')
+    const plan = 'pro' // palier unique
 
     const row = {
       user_id: user.id,
