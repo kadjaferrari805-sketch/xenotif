@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Inter, Orbitron } from 'next/font/google'
 import Script from 'next/script'
 import { NextIntlClientProvider, hasLocale } from 'next-intl'
 import { setRequestLocale, getTranslations } from 'next-intl/server'
@@ -14,6 +14,8 @@ import { ServiceWorkerRegister } from '@/components/ServiceWorkerRegister'
 import { SmoothScroll } from '@/components/premium/SmoothScroll'
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
+// Orbitron = wordmark/identité de marque uniquement (police variable → pas de `weight`).
+const orbitron = Orbitron({ subsets: ['latin'], variable: '--font-orbitron', display: 'swap' })
 
 const SITE = 'https://xenotif.com'
 const META_PIXEL_ID = process.env.NEXT_PUBLIC_META_PIXEL_ID
@@ -95,7 +97,7 @@ export default async function RootLayout({
   setRequestLocale(locale)
 
   return (
-    <html lang={locale} className={inter.variable}>
+    <html lang={locale} className={`${inter.variable} ${orbitron.variable}`}>
       <head>
         {/* Preconnect aux origines tierces chargées après hydratation (analytics)
             → ouvre DNS/TCP/TLS en amont, ~300ms gagnés (audit Lighthouse). */}

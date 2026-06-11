@@ -5,15 +5,32 @@ interface LogoProps {
   size?: 'sm' | 'md' | 'lg'
   className?: string
   showText?: boolean
+  animated?: boolean
 }
 
 const sizes = {
-  sm: { mark: 28, text: 'text-base',  gap: 'gap-2' },
-  md: { mark: 36, text: 'text-xl',    gap: 'gap-2.5' },
-  lg: { mark: 48, text: 'text-2xl',   gap: 'gap-3' },
+  sm: { mark: 28, text: 'text-base', gap: 'gap-2' },
+  md: { mark: 36, text: 'text-xl', gap: 'gap-2.5' },
+  lg: { mark: 48, text: 'text-2xl', gap: 'gap-3' },
 }
 
-export function XenotifMark({ size = 36 }: { size?: number }) {
+type MarkVariant = 'biton' | 'mono-white' | 'mono-titane'
+
+// Marque « Hexa-Tech » : hexagone (contour titane) + X orange.
+// SVG pur + CSS → reste rendable côté serveur (pas de 'use client').
+export function XenotifMark({
+  size = 36,
+  variant = 'biton',
+  animated = false,
+}: {
+  size?: number
+  variant?: MarkVariant
+  animated?: boolean
+}) {
+  const hexStroke = variant === 'mono-white' ? '#ffffff' : 'url(#xeno-titane)'
+  const xStroke =
+    variant === 'biton' ? '#FF4500' : variant === 'mono-white' ? '#ffffff' : 'url(#xeno-titane)'
+
   return (
     <svg
       width={size}
@@ -22,52 +39,60 @@ export function XenotifMark({ size = 36 }: { size?: number }) {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       aria-hidden="true"
+      className={`xeno-mark${animated ? ' xeno-mark--animated' : ''}`}
     >
       <defs>
-        <linearGradient id="xeno-grad" x1="0" y1="0" x2="48" y2="48" gradientUnits="userSpaceOnUse">
-          <stop offset="0%" stopColor="#FF8C3A" />
-          <stop offset="100%" stopColor="#F97316" />
-        </linearGradient>
-        <linearGradient id="xeno-shine" x1="0" y1="0" x2="0" y2="48" gradientUnits="userSpaceOnUse">
-          <stop offset="0%" stopColor="#ffffff" stopOpacity="0.18" />
-          <stop offset="100%" stopColor="#ffffff" stopOpacity="0" />
+        {/* Dégradé titane/argent. Id stable : plusieurs instances partagent la même def. */}
+        <linearGradient id="xeno-titane" x1="6" y1="3" x2="42" y2="45" gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stopColor="#ffffff" />
+          <stop offset="50%" stopColor="#9ca3af" />
+          <stop offset="100%" stopColor="#e5e7eb" />
         </linearGradient>
       </defs>
 
-      {/* Background rounded square */}
-      <rect width="48" height="48" rx="12" fill="url(#xeno-grad)" />
-
-      {/* Shine overlay */}
-      <rect width="48" height="24" rx="12" fill="url(#xeno-shine)" />
-      <rect x="0" y="12" width="48" height="12" fill="url(#xeno-shine)" />
-
-      {/* Bold X — two crossing bars with cut angles for a sharp athletic look */}
-      {/* Top-left to bottom-right bar */}
-      <path
-        d="M10 10 L22 24 L10 38 L16 38 L24 27 L32 38 L38 38 L26 24 L38 10 L32 10 L24 21 L16 10 Z"
-        fill="white"
+      {/* Hexagone */}
+      <polygon
+        points="24,3 42,13.5 42,34.5 24,45 6,34.5 6,13.5"
+        fill="none"
+        stroke={hexStroke}
+        strokeWidth="2.4"
+        strokeLinejoin="round"
       />
+      {/* X (deux segments) — la classe .xeno-x sert de cible à l'animation de tracé */}
+      <g className="xeno-x" stroke={xStroke} strokeWidth="4.6" strokeLinecap="round">
+        <line x1="17.5" y1="17.5" x2="30.5" y2="30.5" />
+        <line x1="30.5" y1="17.5" x2="17.5" y2="30.5" />
+      </g>
     </svg>
   )
 }
 
+// Wordmark : XENOTIF en Orbitron, ® orange. « XENOTIF » reste un nœud texte distinct.
 export function XenotifWordmark({ className = '' }: { className?: string }) {
   return (
-    <span className={`font-black tracking-widest uppercase text-white ${className}`}>
-      XENOTIF<span className="text-sport-orange">®</span>
+    <span
+      className={`font-[family-name:var(--font-orbitron)] font-extrabold tracking-[0.02em] uppercase text-white ${className}`}
+    >
+      XENOTIF
+      <sup className="align-super text-[0.5em] text-sport-orange ml-[0.06em]">®</sup>
     </span>
   )
 }
 
-export function Logo({ href = '/', size = 'md', className = '', showText = true }: LogoProps) {
+// Lockup horizontal (header, footer, dashboard, auth).
+export function Logo({
+  href = '/',
+  size = 'md',
+  className = '',
+  showText = true,
+  animated = false,
+}: LogoProps) {
   const { mark, text, gap } = sizes[size]
 
   const inner = (
     <span className={`flex items-center ${gap} ${className}`}>
-      <XenotifMark size={mark} />
-      {showText && (
-        <XenotifWordmark className={text} />
-      )}
+      <XenotifMark size={mark} animated={animated} />
+      {showText && <XenotifWordmark className={text} />}
     </span>
   )
 
@@ -75,5 +100,31 @@ export function Logo({ href = '/', size = 'md', className = '', showText = true 
     <Link href={href} className="inline-flex items-center">
       {inner}
     </Link>
-  ) : inner
+  ) : (
+    inner
+  )
+}
+
+// Lockup vertical (splash / checkout) : marque au-dessus, wordmark dessous.
+export function LogoVertical({
+  href = '/',
+  size = 'md',
+  className = '',
+}: Omit<LogoProps, 'showText' | 'animated'>) {
+  const { mark, text } = sizes[size]
+
+  const inner = (
+    <span className={`inline-flex flex-col items-center gap-2 ${className}`}>
+      <XenotifMark size={mark} />
+      <XenotifWordmark className={text} />
+    </span>
+  )
+
+  return href ? (
+    <Link href={href} className="inline-flex">
+      {inner}
+    </Link>
+  ) : (
+    inner
+  )
 }

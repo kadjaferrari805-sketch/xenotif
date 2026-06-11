@@ -72,7 +72,7 @@ export function Nav() {
       <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between gap-4">
         {/* Logo */}
         <div className="shrink-0">
-          <Logo href="/" size="sm" />
+          <Logo href="/" size="sm" animated />
         </div>
 
         {/* Desktop links */}
