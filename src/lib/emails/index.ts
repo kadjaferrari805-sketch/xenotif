@@ -91,17 +91,17 @@ export async function sendWelcomeEmail({
     '📊 Suivi & statistiques de progression', '🎥 Vidéos d\'entraînement HD', '🔔 Rappels & motivation quotidienne',
   ]
   const c = en ? {
-    subject: `Welcome to Xenotif® — your ${planLabel} trial starts now!`,
+    subject: `Welcome to Xenotif® — your ${planLabel} membership is active!`,
     h1: `Welcome${first ? `, ${first}` : ''}! 💪`,
-    intro: `Your <strong style="color:#fff;">7-day</strong> free trial on the <strong style="color:#F97316;">${planLabel} plan</strong> has just begun. No charge until the trial period ends.`,
+    intro: `Your <strong style="color:#F97316;">${planLabel} membership</strong> is now active. Welcome aboard — let's get to work!`,
     createTitle: 'Create your access in 1 click:',
     cta: 'Go to my dashboard →',
     linkNote: `This link expires in 24h. If clicking doesn't work, copy-paste the URL into your browser.`,
     includedTitle: `Included in your ${planLabel} plan:`,
   } : {
-    subject: `Bienvenue sur Xenotif® — ton essai ${planLabel} commence !`,
+    subject: `Bienvenue sur Xenotif® — ton abonnement ${planLabel} est actif !`,
     h1: `Bienvenue${first ? `, ${first}` : ''} ! 💪`,
-    intro: `Ton essai gratuit de <strong style="color:#fff;">7 jours</strong> sur le <strong style="color:#F97316;">Plan ${planLabel}</strong> vient de commencer. Aucun débit avant la fin de la période d'essai.`,
+    intro: `Ton <strong style="color:#F97316;">abonnement ${planLabel}</strong> est maintenant actif. Bienvenue — au travail !`,
     createTitle: 'Crée ton accès en 1 clic :',
     cta: 'Accéder à mon espace →',
     linkNote: `Ce lien expire dans 24h. Si tu as du mal à cliquer, copie-colle l'URL dans ton navigateur.`,

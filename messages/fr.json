@@ -64,7 +64,7 @@
   "home": {
     "sticky": {
       "lead": "Prêt à transformer ton corps ?",
-      "trial": "Essai 7 jours offert",
+      "trial": "Sans engagement",
       "pro": "Pro — 9,99 €/mois",
       "proAria": "S'abonner au plan Pro — 9,99 euros par mois",
       "ariaRegion": "Abonnement rapide",
@@ -74,9 +74,9 @@
     "metaDescription": "La plateforme fitness premium — 10 disciplines, coaching IA personnalisé, 300+ séances. Rejoins 12 000+ athlètes qui transforment leur corps avec Xenotif®.",
     "hero": {
       "eyebrow": "La Plateforme Sport Premium",
-      "ctaPrimary": "Commence ton essai gratuit",
+      "ctaPrimary": "Commencer gratuitement",
       "ctaSecondary": "Voir les disciplines",
-      "ctaNote": "0 € pendant 7 jours · Annulable en 1 clic",
+      "ctaNote": "Gratuit, sans carte · PRO dès 9,99 €/mois",
       "scroll": "Scroll",
       "slides": [
         { "tag": "🏋️ Musculation & Force", "headline": "FORGE TON CORPS.", "accent": "DÉPASSE TES LIMITES." },
@@ -174,18 +174,18 @@
     "pricing": {
       "label": "Tarifs",
       "title": "Simple. Transparent. Sans surprise.",
-      "subtitle": "Essai gratuit 7 jours sur tous les plans payants — 0 € aujourd'hui, annulable en 1 clic avant le 1er débit",
+      "subtitle": "Commence gratuitement, passe à PRO quand tu veux. Sans engagement, annulable en 1 clic.",
       "monthly": "Mensuel",
       "annual": "Annuel",
       "save": "-20%",
       "billed": "Facturé <b>{total}/an</b>",
-      "freeTrialNote": "✓ 7 jours gratuits · Sans engagement",
+      "freeTrialNote": "✓ Sans engagement · annulable en 1 clic",
       "subscribeAria": "S'abonner au plan {name}",
       "featuresAria": "Fonctionnalités plan {name}",
       "footnote": "Sans engagement · Annulation à tout moment en 1 clic",
       "plans": [
-        { "name": "Gratuit", "period": "pour toujours", "badge": "", "description": "Crée ton compte gratuitement, sans carte. Passe à PRO pour tout débloquer.", "cta": "Commencer gratuitement", "features": ["Création de compte gratuite", "Aucune carte requise", "Passe à PRO quand tu veux"] },
-        { "name": "Pro", "period": "par mois", "badge": "Le plus populaire", "description": "Accès illimité à tous les programmes et au coaching IA personnalisé.", "cta": "Essai gratuit 7 jours", "features": ["Accès illimité aux 10 disciplines & programmes", "Coach IA personnalisé", "Suivi & statistiques de progression", "Vidéos d'entraînement HD", "Rappels & motivation quotidienne", "Support par email"] }
+        { "name": "Gratuit", "period": "pour toujours", "badge": "", "description": "Commence gratuitement avec la Musculation. Passe à PRO pour tout débloquer.", "cta": "Commencer gratuitement", "features": ["Discipline Musculation (programme + 1 vidéo)", "Suivi de progression", "Rappels & notifications", "Sans carte"] },
+        { "name": "Pro", "period": "par mois", "badge": "Le plus populaire", "description": "Accès illimité à tous les programmes et au coaching IA personnalisé.", "cta": "S'abonner", "features": ["Accès illimité aux 10 disciplines & programmes", "Coach IA personnalisé", "Suivi & statistiques de progression", "Vidéos d'entraînement HD", "Rappels & motivation quotidienne", "Support par email"] }
       ]
     },
     "reviews": {
@@ -298,8 +298,8 @@
       "errorAlreadyUsed": "Cet email est déjà utilisé. Connecte-toi.",
       "errorCheckout": "Erreur lors de la redirection vers le paiement.",
       "plans": [
-        { "name": "Gratuit", "period": "pour toujours", "badge": "", "features": ["Compte gratuit", "Sans carte requise", "Upgrade quand tu veux"] },
-        { "name": "Pro", "period": "/mois", "badge": "7j gratuits", "features": ["Tous les programmes", "Coaching IA", "Stats avancées"] }
+        { "name": "Gratuit", "period": "pour toujours", "badge": "", "features": ["Musculation", "Suivi de progression", "Sans carte"] },
+        { "name": "Pro", "period": "/mois", "badge": "Populaire", "features": ["Tous les programmes", "Coaching IA", "Stats avancées"] }
       ]
     },
     "forgot": {
@@ -365,8 +365,8 @@
     "gate": {
       "title": "Débloque le programme complet",
       "subtitle": "Le programme détaillé, semaine par semaine, est réservé aux abonnés Xenotif®.",
-      "cta": "Commence ton essai gratuit",
-      "note": "0 € pendant 7 jours · Annulable en 1 clic"
+      "cta": "Commencer gratuitement",
+      "note": "Gratuit, sans carte · PRO dès 9,99 €/mois"
     },
     "cta": {
       "title": "Rejoins la communauté",
@@ -380,7 +380,7 @@
       ],
       "primary": "Commencer gratuitement",
       "pricing": "Voir les tarifs →",
-      "noCard": "Essai 7 jours offert",
+      "noCard": "Compte gratuit, sans carte",
       "freeCancel": "Annulation libre"
     },
     "faq": {
@@ -590,8 +590,8 @@
     "cta": {
       "title": "Passe de la théorie à la pratique",
       "text": "Programmes guidés, coaching IA personnalisé et suivi de progression : Xenotif® transforme ces conseils en résultats concrets. Commence dès aujourd'hui.",
-      "button": "Commence ton essai gratuit",
-      "note": "0 € pendant 7 jours · Annulable en 1 clic",
+      "button": "Commencer gratuitement",
+      "note": "Gratuit, sans carte · PRO dès 9,99 €/mois",
       "discipline": "Découvrir le programme {name}"
     }
   },
@@ -714,6 +714,9 @@
       "trialDaysLeft": "{days, plural, one {# jour d'essai gratuit restant} other {# jours d'essai gratuit restants}}",
       "renewOn": "Renouvellement le <o>{date}</o>",
       "manage": "Gérer",
+      "freeBadge": "Gratuit",
+      "freePlan": "Gratuit",
+      "freeUpsell": "Passe à PRO pour débloquer toutes les disciplines, le coach IA et la montre connectée.",
       "statSessionsWeek": "Séances cette semaine",
       "statModules": "Modules complétés",
       "statActiveDays": "Jours d'activité",
@@ -768,7 +771,11 @@
       "videosSubtitle": "Tutoriels techniques & séances guidées",
       "phase": "Phase {n}",
       "markDone": "Marquer comme complété : {name}",
-      "markUndone": "Marquer comme non complété : {name}"
+      "markUndone": "Marquer comme non complété : {name}",
+      "lockedTitle": "Réservé aux abonnés PRO",
+      "lockedSubtitle": "{name} fait partie des disciplines PRO. Passe à PRO pour débloquer les 10 disciplines.",
+      "lockedCta": "Passer à PRO",
+      "videosFreeHint": "Aperçu gratuit · plus de vidéos avec PRO"
     },
     "coach": {
       "title": "Coach IA",
@@ -1054,7 +1061,7 @@
     },
     "paywall": {
       "title": "Passe à PRO pour tout débloquer",
-      "subtitle": "Cette section est réservée aux abonnés. Commence ton essai gratuit de 7 jours et accède à l'intégralité de Xenotif®.",
+      "subtitle": "Cette section est réservée aux abonnés PRO. Passe à PRO pour débloquer le coach IA, la montre connectée et les 10 disciplines.",
       "features": [
         "Accès illimité aux 10 disciplines & programmes",
         "Coach IA personnalisé",
@@ -1063,8 +1070,8 @@
         "Rappels & motivation quotidienne",
         "Synchronisation montre / Apple Fitness"
       ],
-      "cta": "Démarrer mon essai gratuit",
-      "trialNote": "7 jours gratuits · Sans engagement · Annulable en 1 clic"
+      "cta": "Passer à PRO",
+      "trialNote": "9,99 €/mois · sans engagement · annulable en 1 clic"
     }
   },
   "about": {

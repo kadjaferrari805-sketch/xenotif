@@ -64,7 +64,7 @@
   "home": {
     "sticky": {
       "lead": "Bereit, deinen Körper zu transformieren?",
-      "trial": "7 Tage gratis testen",
+      "trial": "Unverbindlich",
       "pro": "Pro — 9,99 €/Monat",
       "proAria": "Pro-Plan abonnieren — 9,99 Euro pro Monat",
       "ariaRegion": "Schnellabonnement",
@@ -74,9 +74,9 @@
     "metaDescription": "Die Premium-Fitnessplattform — 10 Disziplinen, personalisiertes KI-Coaching, 300+ Einheiten. Schließe dich 12.000+ Athleten an, die ihren Körper mit Xenotif® transformieren.",
     "hero": {
       "eyebrow": "Die Premium-Sportplattform",
-      "ctaPrimary": "Starte deine kostenlose Testphase",
+      "ctaPrimary": "Kostenlos starten",
       "ctaSecondary": "Disziplinen ansehen",
-      "ctaNote": "0 € für 7 Tage · Mit 1 Klick kündbar",
+      "ctaNote": "Kostenlos, ohne Karte · PRO ab 9,99 €/Monat",
       "scroll": "Scrollen",
       "slides": [
         { "tag": "🏋️ Krafttraining & Stärke", "headline": "FORME DEINEN KÖRPER.", "accent": "ÜBERWINDE DEINE GRENZEN." },
@@ -174,18 +174,18 @@
     "pricing": {
       "label": "Preise",
       "title": "Einfach. Transparent. Ohne Überraschungen.",
-      "subtitle": "7 Tage kostenlos testen bei allen kostenpflichtigen Plänen — 0 € heute, mit 1 Klick vor der ersten Abbuchung kündbar",
+      "subtitle": "Starte kostenlos, wechsle jederzeit zu PRO. Ohne Verpflichtung, jederzeit kündbar.",
       "monthly": "Monatlich",
       "annual": "Jährlich",
       "save": "-20%",
       "billed": "Abgerechnet <b>{total}/Jahr</b>",
-      "freeTrialNote": "✓ 7 Tage gratis · Unverbindlich",
+      "freeTrialNote": "✓ Ohne Verpflichtung · jederzeit kündbar",
       "subscribeAria": "Plan {name} abonnieren",
       "featuresAria": "Funktionen Plan {name}",
       "footnote": "Unverbindlich · Jederzeit mit 1 Klick kündbar",
       "plans": [
-        { "name": "Kostenlos", "period": "für immer", "badge": "", "description": "Erstelle dein kostenloses Konto, ohne Karte. Wechsle zu PRO, um alles freizuschalten.", "cta": "Kostenlos starten", "features": ["Kostenloses Konto", "Keine Karte nötig", "Jederzeit zu PRO wechseln"] },
-        { "name": "Pro", "period": "pro Monat", "badge": "Am beliebtesten", "description": "Unbegrenzter Zugang zu allen Programmen und personalisiertem KI-Coaching.", "cta": "7 Tage gratis testen", "features": ["Unbegrenzter Zugang zu allen 10 Disziplinen & Programmen", "Personalisierter KI-Coach", "Fortschritt & Statistiken", "HD-Trainingsvideos", "Tägliche Erinnerungen & Motivation", "E-Mail-Support"] }
+        { "name": "Kostenlos", "period": "für immer", "badge": "", "description": "Starte kostenlos mit Krafttraining. Hol dir PRO, um alles freizuschalten.", "cta": "Kostenlos starten", "features": ["Krafttraining (Programm + 1 Video)", "Fortschritts-Tracking", "Erinnerungen & Benachrichtigungen", "Ohne Karte"] },
+        { "name": "Pro", "period": "pro Monat", "badge": "Am beliebtesten", "description": "Unbegrenzter Zugang zu allen Programmen und personalisiertem KI-Coaching.", "cta": "Abonnieren", "features": ["Unbegrenzter Zugang zu allen 10 Disziplinen & Programmen", "Personalisierter KI-Coach", "Fortschritt & Statistiken", "HD-Trainingsvideos", "Tägliche Erinnerungen & Motivation", "E-Mail-Support"] }
       ]
     },
     "reviews": {
@@ -298,8 +298,8 @@
       "errorAlreadyUsed": "Diese E-Mail wird bereits verwendet. Melde dich an.",
       "errorCheckout": "Fehler bei der Weiterleitung zur Zahlung.",
       "plans": [
-        { "name": "Kostenlos", "period": "für immer", "badge": "", "features": ["Kostenloses Konto", "Ohne Karte", "Jederzeit upgraden"] },
-        { "name": "Pro", "period": "/Monat", "badge": "7 Tage gratis", "features": ["Alle Programme", "KI-Coaching", "Erweiterte Statistiken"] }
+        { "name": "Kostenlos", "period": "für immer", "badge": "", "features": ["Krafttraining", "Fortschritts-Tracking", "Ohne Karte"] },
+        { "name": "Pro", "period": "/Monat", "badge": "Beliebt", "features": ["Alle Programme", "KI-Coaching", "Erweiterte Statistiken"] }
       ]
     },
     "forgot": {
@@ -365,8 +365,8 @@
     "gate": {
       "title": "Schalte das komplette Programm frei",
       "subtitle": "Das detaillierte Programm, Woche für Woche, ist Xenotif®-Abonnenten vorbehalten.",
-      "cta": "Starte deine kostenlose Testphase",
-      "note": "0 € für 7 Tage · Mit 1 Klick kündbar"
+      "cta": "Kostenlos starten",
+      "note": "Kostenlos, ohne Karte · PRO ab 9,99 €/Monat"
     },
     "cta": {
       "title": "Tritt der Community bei",
@@ -380,7 +380,7 @@
       ],
       "primary": "Kostenlos starten",
       "pricing": "Preise ansehen →",
-      "noCard": "7 Tage gratis testen",
+      "noCard": "Kostenloses Konto, ohne Karte",
       "freeCancel": "Frei kündbar"
     },
     "faq": {
@@ -590,8 +590,8 @@
     "cta": {
       "title": "Geh von der Theorie zur Praxis",
       "text": "Geführte Programme, personalisiertes KI-Coaching und Fortschritts-Tracking: Xenotif® verwandelt diese Tipps in konkrete Ergebnisse. Beginne noch heute.",
-      "button": "Starte deine kostenlose Testphase",
-      "note": "0 € für 7 Tage · Mit 1 Klick kündbar",
+      "button": "Kostenlos starten",
+      "note": "Kostenlos, ohne Karte · PRO ab 9,99 €/Monat",
       "discipline": "Das Programm {name} entdecken"
     }
   },
@@ -714,6 +714,9 @@
       "trialDaysLeft": "{days, plural, one {# kostenloser Testtag übrig} other {# kostenlose Testtage übrig}}",
       "renewOn": "Verlängerung am <o>{date}</o>",
       "manage": "Verwalten",
+      "freeBadge": "Kostenlos",
+      "freePlan": "Kostenlos",
+      "freeUpsell": "Hol dir PRO für alle Disziplinen, den KI-Coach und die Smartwatch-Synchronisierung.",
       "statSessionsWeek": "Einheiten diese Woche",
       "statModules": "Abgeschlossene Module",
       "statActiveDays": "Aktive Tage",
@@ -768,7 +771,11 @@
       "videosSubtitle": "Technik-Tutorials & geführte Einheiten",
       "phase": "Phase {n}",
       "markDone": "Als abgeschlossen markieren: {name}",
-      "markUndone": "Als nicht abgeschlossen markieren: {name}"
+      "markUndone": "Als nicht abgeschlossen markieren: {name}",
+      "lockedTitle": "Nur für PRO-Mitglieder",
+      "lockedSubtitle": "{name} ist eine PRO-Disziplin. Hol dir PRO, um alle 10 Disziplinen freizuschalten.",
+      "lockedCta": "Auf PRO upgraden",
+      "videosFreeHint": "Kostenlose Vorschau · mehr Videos mit PRO"
     },
     "coach": {
       "title": "KI-Coach",
@@ -1054,7 +1061,7 @@
     },
     "paywall": {
       "title": "Hol dir PRO und schalte alles frei",
-      "subtitle": "Dieser Bereich ist Abonnenten vorbehalten. Starte deine 7-tägige Testphase und nutze Xenotif® komplett.",
+      "subtitle": "Dieser Bereich ist PRO-Mitgliedern vorbehalten. Hol dir PRO für den KI-Coach, die Smartwatch-Synchronisierung und alle 10 Disziplinen.",
       "features": [
         "Unbegrenzter Zugang zu allen 10 Disziplinen & Programmen",
         "Personalisierter KI-Coach",
@@ -1063,8 +1070,8 @@
         "Tägliche Erinnerungen & Motivation",
         "Smartwatch-/Apple-Fitness-Synchronisierung"
       ],
-      "cta": "Kostenlose Testphase starten",
-      "trialNote": "7 Tage gratis · Ohne Verpflichtung · Jederzeit kündbar"
+      "cta": "Auf PRO upgraden",
+      "trialNote": "9,99 €/Monat · ohne Verpflichtung · jederzeit kündbar"
     }
   },
   "about": {

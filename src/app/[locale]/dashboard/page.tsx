@@ -3,8 +3,7 @@ import { getTranslations, getLocale } from 'next-intl/server'
 import { Link } from '@/i18n/navigation'
 import { createClient, createServiceClient } from '@/lib/supabase/server'
 import { getAccess } from '@/lib/access'
-import { Paywall } from '@/components/dashboard/Paywall'
-import { CheckCircle, Flame, TrendingUp, ArrowRight, Zap, Clock, Award } from 'lucide-react'
+import { CheckCircle, Flame, TrendingUp, ArrowRight, Clock, Award } from 'lucide-react'
 import { DISCIPLINE_CONTENT } from '@/lib/disciplines'
 import { TodayActivity, type TrendDay } from '@/components/dashboard/TodayActivity'
 import { ReviewInvite } from '@/components/reviews/ReviewInvite'
@@ -14,6 +13,7 @@ const STATUS_CLS: Record<string, string> = {
   active:   'bg-emerald-500/15 text-emerald-400 border-emerald-500/30',
   canceled: 'bg-red-500/15 text-red-400 border-red-500/30',
   past_due: 'bg-orange-500/15 text-orange-400 border-orange-500/30',
+  free:     'bg-white/10 text-sport-gray border-sport-border',
 }
 
 function StatusBadge({ status, label }: { status: string; label: string }) {
@@ -26,9 +26,7 @@ export default async function DashboardPage() {
   const { data: { user } } = await supabase.auth.getUser()
   if (!user) redirect('/auth/signin')
 
-  // Contenu réservé aux abonnés (essai/actif) ; les non-abonnés voient le paywall.
   const access = await getAccess()
-  if (!access.isPro) return <Paywall />
 
   const t = await getTranslations('dashboard')
   const locale = await getLocale()
@@ -65,8 +63,6 @@ export default async function DashboardPage() {
     ...progWeek.map(p => dayOf(p.completed_at)),
   ]).size
 
-  const trialEnd = subscription?.trial_end ? new Date(subscription.trial_end) : null
-  const daysLeft = trialEnd ? Math.max(0, Math.ceil((trialEnd.getTime() - now.getTime()) / 86400000)) : null
   const renewDate = subscription?.current_period_end
     ? new Date(subscription.current_period_end).toLocaleDateString(dateLocale, { day: 'numeric', month: 'long', year: 'numeric' })
     : null
@@ -99,8 +95,6 @@ export default async function DashboardPage() {
   const dateLabel = now.toLocaleDateString(dateLocale, { weekday: 'long', day: 'numeric', month: 'long' })
 
   const disciplineSlugs = ['running-cardio', 'musculation', 'hiit', 'cyclisme', 'natation', 'crossfit']
-  const planLabel = 'Pro'
-  const status = subscription?.status ?? 'trialing'
 
   return (
     <div className="p-6 md:p-8 max-w-5xl mx-auto pb-24 md:pb-8">
@@ -113,34 +107,33 @@ export default async function DashboardPage() {
         <p className="text-sport-gray text-sm mt-1">{t('overview.subtitle')}</p>
       </div>
 
-      {/* Activité du jour — anneaux temps réel façon Apple Fitness (capteur du téléphone) */}
-      <TodayActivity
-        initialSteps={todaySteps}
-        initialActiveSec={todayActiveSec}
-        weekly={weekly}
-        dateLabel={dateLabel}
-      />
+      {/* Activité du jour — anneaux temps réel façon Apple Fitness (capteur) — PRO */}
+      {access.isPro && (
+        <TodayActivity
+          initialSteps={todaySteps}
+          initialActiveSec={todayActiveSec}
+          weekly={weekly}
+          dateLabel={dateLabel}
+        />
+      )}
 
       {/* Subscription card */}
       <div className="bg-gradient-to-br from-sport-orange/20 via-sport-card to-sport-card border border-sport-orange/30 rounded-2xl p-6 mb-6">
         <div className="flex items-start justify-between flex-wrap gap-4">
           <div>
             <div className="flex items-center gap-3 mb-3">
-              <StatusBadge status={status} label={t(`statusShort.${status}`)} />
+              <StatusBadge status={access.isPro ? 'active' : 'free'} label={access.isPro ? t('statusShort.active') : t('overview.freeBadge')} />
               <span className="text-[11px] text-sport-gray font-semibold uppercase tracking-wider">
-                {t('overview.plan', { plan: planLabel })}
+                {t('overview.plan', { plan: access.isPro ? 'Pro' : t('overview.freePlan') })}
               </span>
             </div>
-            {daysLeft !== null && status === 'trialing' && (
-              <p className="text-sm text-white font-semibold">
-                <Zap size={14} className="inline text-sport-orange mr-1" />
-                {t('overview.trialDaysLeft', { days: daysLeft })}
-              </p>
-            )}
-            {renewDate && status === 'active' && (
+            {access.isPro && renewDate && (
               <p className="text-sm text-sport-gray">
                 {t.rich('overview.renewOn', { date: renewDate, o: (c) => <strong className="text-white">{c}</strong> })}
               </p>
+            )}
+            {!access.isPro && (
+              <p className="text-sm text-white font-semibold">{t('overview.freeUpsell')}</p>
             )}
           </div>
           <Link href="/dashboard/abonnement" className="inline-flex items-center gap-2 text-sport-orange text-xs font-bold hover:underline">
