@@ -170,6 +170,7 @@ export default async function DisciplinePage({ params }: { params: Promise<{ slu
               {t('videos.subtitle')}
             </p>
 
+            <SubscriberGate slug={slug}>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
               {content.videos.map((video) => (
                 <VideoCard
@@ -183,6 +184,7 @@ export default async function DisciplinePage({ params }: { params: Promise<{ slu
                 />
               ))}
             </div>
+            </SubscriberGate>
           </div>
         </section>
       )}
@@ -336,7 +338,7 @@ export default async function DisciplinePage({ params }: { params: Promise<{ slu
                   <h2 className="text-2xl font-black text-white">{t('program.title')}</h2>
                 </div>
 
-                <SubscriberGate>
+                <SubscriberGate slug={slug}>
                 <div className="space-y-4">
                   {content.program.map((block, bi) => (
                     <div key={block.week} className="bg-sport-card border border-sport-border rounded-xl overflow-hidden">
