@@ -611,3 +611,39 @@ export async function sendDigitalDeliveryEmail({
     `, locale, labels.preheader),
   })
 }
+
+// Email envoyé à la création d'un compte gratuit (confirmation Supabase désactivée).
+// Confirme au client que son compte est créé et qu'il est connecté.
+export async function sendAccountCreatedEmail({
+  email, name, locale: rawLocale,
+}: {
+  email: string; name: string; locale?: string
+}) {
+  const locale = norm(rawLocale)
+  const en = locale === 'en'
+  const first = name ? name.split(' ')[0] : ''
+  const c = en ? {
+    subject: 'Welcome to Xenotif® — your account is ready!',
+    h1: `Welcome${first ? `, ${first}` : ''}! 💪`,
+    intro: `Your Xenotif® account is created and you're signed in. Start free with <strong style="color:#F97316;">Strength Training</strong> — go PRO anytime to unlock all 10 disciplines, the AI coach and smartwatch sync.`,
+    cta: 'Go to my dashboard →',
+    note: 'See you inside!',
+  } : {
+    subject: 'Bienvenue sur Xenotif® — ton compte est prêt !',
+    h1: `Bienvenue${first ? `, ${first}` : ''} ! 💪`,
+    intro: `Ton compte Xenotif® est créé et tu es connecté(e). Commence gratuitement avec la <strong style="color:#F97316;">Musculation</strong> — passe à PRO quand tu veux pour débloquer les 10 disciplines, le coach IA et la montre connectée.`,
+    cta: 'Accéder à mon espace →',
+    note: 'À tout de suite !',
+  }
+  await resend.emails.send({
+    from: FROM,
+    to: email,
+    subject: c.subject,
+    html: wrap(`
+      <h1 style="font-size:26px;font-weight:900;margin:0 0 8px;">${c.h1}</h1>
+      <p style="color:#9CA3AF;font-size:15px;line-height:1.6;margin:0 0 24px;">${c.intro}</p>
+      <a href="${BASE_URL}/dashboard" style="display:inline-block;background:#F97316;color:#fff;padding:14px 28px;border-radius:50px;font-weight:700;font-size:14px;text-decoration:none;">${c.cta}</a>
+      <p style="color:#6B7280;font-size:12px;margin:20px 0 0;">${c.note}</p>
+    `, locale),
+  })
+}
