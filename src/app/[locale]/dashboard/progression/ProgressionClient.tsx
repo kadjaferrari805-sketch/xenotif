@@ -12,7 +12,7 @@ const BADGES = [
   { id: 'first', tkey: 'badgeFirst', icon: '🏃', req: (w: number) => w >= 1 },
   { id: 'week',  tkey: 'badgeWeek',  icon: '📅', req: (w: number) => w >= 7 },
   { id: 'month', tkey: 'badgeMonth', icon: '🏆', req: (w: number) => w >= 30 },
-  { id: 'champion', tkey: 'badgeElite', icon: '⚡', req: (w: number) => w >= 100 },
+  { id: 'elite', tkey: 'badgeElite', icon: '⚡', req: (w: number) => w >= 100 },
 ]
 
 export function ProgressionClient() {
