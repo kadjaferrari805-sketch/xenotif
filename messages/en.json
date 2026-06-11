@@ -184,7 +184,7 @@
       "featuresAria": "{name} plan features",
       "footnote": "No commitment · Cancel anytime in 1 click",
       "plans": [
-        { "name": "Free", "period": "forever", "badge": "", "description": "Discover Xenotif® and start your transformation risk-free.", "cta": "Start for free", "features": ["3 starter programs", "Basic session tracking", "Community access", "Free weekly WOD"] },
+        { "name": "Free", "period": "forever", "badge": "", "description": "Create your free account, no card. Go PRO to unlock everything.", "cta": "Start for free", "features": ["Free account", "No card required", "Upgrade to PRO anytime"] },
         { "name": "Pro", "period": "per month", "badge": "Most popular", "description": "Unlimited access to all programs and personalized AI coaching.", "cta": "7-day free trial", "features": ["Unlimited access to all 10 disciplines & programs", "Personalized AI coach", "Progress tracking & statistics", "HD training videos", "Daily reminders & motivation", "Email support"] }
       ]
     },
@@ -298,7 +298,7 @@
       "errorAlreadyUsed": "This email is already in use. Please sign in.",
       "errorCheckout": "Error while redirecting to payment.",
       "plans": [
-        { "name": "Free", "period": "forever", "badge": "", "features": ["3 programs", "Basic tracking", "Community"] },
+        { "name": "Free", "period": "forever", "badge": "", "features": ["Free account", "No card", "Upgrade anytime"] },
         { "name": "Pro", "period": "/month", "badge": "7 days free", "features": ["All programs", "AI Coaching", "Advanced stats"] }
       ]
     },

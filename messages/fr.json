@@ -184,7 +184,7 @@
       "featuresAria": "Fonctionnalités plan {name}",
       "footnote": "Sans engagement · Annulation à tout moment en 1 clic",
       "plans": [
-        { "name": "Gratuit", "period": "pour toujours", "badge": "", "description": "Découvre Xenotif® et commence ta transformation sans risque.", "cta": "Commencer gratuitement", "features": ["3 programmes d'accès", "Suivi de séances basique", "Accès à la communauté", "WOD hebdomadaire gratuit"] },
+        { "name": "Gratuit", "period": "pour toujours", "badge": "", "description": "Crée ton compte gratuitement, sans carte. Passe à PRO pour tout débloquer.", "cta": "Commencer gratuitement", "features": ["Création de compte gratuite", "Aucune carte requise", "Passe à PRO quand tu veux"] },
         { "name": "Pro", "period": "par mois", "badge": "Le plus populaire", "description": "Accès illimité à tous les programmes et au coaching IA personnalisé.", "cta": "Essai gratuit 7 jours", "features": ["Accès illimité aux 10 disciplines & programmes", "Coach IA personnalisé", "Suivi & statistiques de progression", "Vidéos d'entraînement HD", "Rappels & motivation quotidienne", "Support par email"] }
       ]
     },
@@ -298,7 +298,7 @@
       "errorAlreadyUsed": "Cet email est déjà utilisé. Connecte-toi.",
       "errorCheckout": "Erreur lors de la redirection vers le paiement.",
       "plans": [
-        { "name": "Gratuit", "period": "pour toujours", "badge": "", "features": ["3 programmes", "Suivi basique", "Communauté"] },
+        { "name": "Gratuit", "period": "pour toujours", "badge": "", "features": ["Compte gratuit", "Sans carte requise", "Upgrade quand tu veux"] },
         { "name": "Pro", "period": "/mois", "badge": "7j gratuits", "features": ["Tous les programmes", "Coaching IA", "Stats avancées"] }
       ]
     },

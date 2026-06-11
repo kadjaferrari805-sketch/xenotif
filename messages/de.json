@@ -184,7 +184,7 @@
       "featuresAria": "Funktionen Plan {name}",
       "footnote": "Unverbindlich · Jederzeit mit 1 Klick kündbar",
       "plans": [
-        { "name": "Kostenlos", "period": "für immer", "badge": "", "description": "Entdecke Xenotif® und beginne deine Transformation ohne Risiko.", "cta": "Kostenlos starten", "features": ["3 verfügbare Programme", "Basis-Trainingstracking", "Zugang zur Community", "Kostenloser wöchentlicher WOD"] },
+        { "name": "Kostenlos", "period": "für immer", "badge": "", "description": "Erstelle dein kostenloses Konto, ohne Karte. Wechsle zu PRO, um alles freizuschalten.", "cta": "Kostenlos starten", "features": ["Kostenloses Konto", "Keine Karte nötig", "Jederzeit zu PRO wechseln"] },
         { "name": "Pro", "period": "pro Monat", "badge": "Am beliebtesten", "description": "Unbegrenzter Zugang zu allen Programmen und personalisiertem KI-Coaching.", "cta": "7 Tage gratis testen", "features": ["Unbegrenzter Zugang zu allen 10 Disziplinen & Programmen", "Personalisierter KI-Coach", "Fortschritt & Statistiken", "HD-Trainingsvideos", "Tägliche Erinnerungen & Motivation", "E-Mail-Support"] }
       ]
     },
@@ -298,7 +298,7 @@
       "errorAlreadyUsed": "Diese E-Mail wird bereits verwendet. Melde dich an.",
       "errorCheckout": "Fehler bei der Weiterleitung zur Zahlung.",
       "plans": [
-        { "name": "Kostenlos", "period": "für immer", "badge": "", "features": ["3 Programme", "Basis-Tracking", "Community"] },
+        { "name": "Kostenlos", "period": "für immer", "badge": "", "features": ["Kostenloses Konto", "Ohne Karte", "Jederzeit upgraden"] },
         { "name": "Pro", "period": "/Monat", "badge": "7 Tage gratis", "features": ["Alle Programme", "KI-Coaching", "Erweiterte Statistiken"] }
       ]
     },
