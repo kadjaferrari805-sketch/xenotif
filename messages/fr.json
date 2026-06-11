@@ -66,9 +66,7 @@
       "lead": "Prêt à transformer ton corps ?",
       "trial": "Essai 7 jours offert",
       "pro": "Pro — 9,99 €/mois",
-      "elite": "Élite — 24,99 €/mois",
       "proAria": "S'abonner au plan Pro — 9,99 euros par mois",
-      "eliteAria": "S'abonner au plan Élite — 24,99 euros par mois",
       "ariaRegion": "Abonnement rapide",
       "dismiss": "Fermer la barre d'abonnement"
     },
@@ -187,8 +185,7 @@
       "footnote": "Sans engagement · Annulation à tout moment en 1 clic",
       "plans": [
         { "name": "Gratuit", "period": "pour toujours", "badge": "", "description": "Découvre Xenotif® et commence ta transformation sans risque.", "cta": "Commencer gratuitement", "features": ["3 programmes d'accès", "Suivi de séances basique", "Accès à la communauté", "WOD hebdomadaire gratuit"] },
-        { "name": "Pro", "period": "par mois", "badge": "Le plus populaire", "description": "Accès illimité à tous les programmes et au coaching IA personnalisé.", "cta": "Essai gratuit 7 jours", "features": ["Tous les programmes illimités", "Coaching IA personnalisé", "Statistiques & suivi avancé", "Vidéos HD haute qualité", "Support prioritaire 7j/7", "Challenges communautaires"] },
-        { "name": "Élite", "period": "par mois", "badge": "", "description": "Coaching individuel et suivi personnalisé par un expert certifié.", "cta": "Parler à un coach", "features": ["Tout le plan Pro inclus", "Coach personnel dédié", "Bilan mensuel visio 1-1", "Plan nutritionnel sur mesure", "Analyse biomécanique vidéo", "Accès anticipé aux nouveautés"] }
+        { "name": "Pro", "period": "par mois", "badge": "Le plus populaire", "description": "Accès illimité à tous les programmes et au coaching IA personnalisé.", "cta": "Essai gratuit 7 jours", "features": ["Accès illimité aux 10 disciplines & programmes", "Coach IA personnalisé", "Suivi & statistiques de progression", "Vidéos d'entraînement HD", "Rappels & motivation quotidienne", "Support par email"] }
       ]
     },
     "reviews": {
@@ -302,8 +299,7 @@
       "errorCheckout": "Erreur lors de la redirection vers le paiement.",
       "plans": [
         { "name": "Gratuit", "period": "pour toujours", "badge": "", "features": ["3 programmes", "Suivi basique", "Communauté"] },
-        { "name": "Pro", "period": "/mois", "badge": "7j gratuits", "features": ["Tous les programmes", "Coaching IA", "Stats avancées"] },
-        { "name": "Élite", "period": "/mois", "badge": "7j gratuits", "features": ["Plan Pro inclus", "Coach dédié", "Bilan mensuel"] }
+        { "name": "Pro", "period": "/mois", "badge": "7j gratuits", "features": ["Tous les programmes", "Coaching IA", "Stats avancées"] }
       ]
     },
     "forgot": {
@@ -820,20 +816,13 @@
       "securePayment": "Paiement sécurisé via Stripe",
       "includedTitle": "Inclus dans ton plan",
       "featuresPro": [
-        "Tous les programmes illimités",
-        "Coaching IA personnalisé",
-        "Statistiques & suivi avancé",
-        "Vidéos HD haute qualité",
-        "Support prioritaire 7j/7",
-        "Challenges communautaires"
-      ],
-      "featuresElite": [
-        "Tout le plan Pro inclus",
-        "Coach personnel dédié",
-        "Bilan mensuel visio 1-1",
-        "Plan nutritionnel sur mesure",
-        "Analyse biomécanique vidéo",
-        "Accès anticipé aux nouveautés"
+        "Accès illimité aux 10 disciplines & programmes",
+        "Coach IA personnalisé",
+        "Suivi & statistiques de progression",
+        "Vidéos d'entraînement HD",
+        "Rappels & motivation quotidienne",
+        "Synchronisation montre / Apple Fitness",
+        "Support par email"
       ],
       "managePayment": "Gérer le paiement & les factures",
       "manageHint": "Voir/changer ta carte, tes factures et résilier — tout se gère ici.",

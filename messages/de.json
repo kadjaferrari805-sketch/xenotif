@@ -66,9 +66,7 @@
       "lead": "Bereit, deinen Körper zu transformieren?",
       "trial": "7 Tage gratis testen",
       "pro": "Pro — 9,99 €/Monat",
-      "elite": "Elite — 24,99 €/Monat",
       "proAria": "Pro-Plan abonnieren — 9,99 Euro pro Monat",
-      "eliteAria": "Elite-Plan abonnieren — 24,99 Euro pro Monat",
       "ariaRegion": "Schnellabonnement",
       "dismiss": "Abonnement-Leiste schließen"
     },
@@ -187,8 +185,7 @@
       "footnote": "Unverbindlich · Jederzeit mit 1 Klick kündbar",
       "plans": [
         { "name": "Kostenlos", "period": "für immer", "badge": "", "description": "Entdecke Xenotif® und beginne deine Transformation ohne Risiko.", "cta": "Kostenlos starten", "features": ["3 verfügbare Programme", "Basis-Trainingstracking", "Zugang zur Community", "Kostenloser wöchentlicher WOD"] },
-        { "name": "Pro", "period": "pro Monat", "badge": "Am beliebtesten", "description": "Unbegrenzter Zugang zu allen Programmen und personalisiertem KI-Coaching.", "cta": "7 Tage gratis testen", "features": ["Alle Programme unbegrenzt", "Personalisiertes KI-Coaching", "Erweiterte Statistiken & Tracking", "Hochwertige HD-Videos", "Prioritäts-Support 7/7", "Community-Challenges"] },
-        { "name": "Elite", "period": "pro Monat", "badge": "", "description": "Individuelles Coaching und persönliche Betreuung durch einen zertifizierten Experten.", "cta": "Mit einem Coach sprechen", "features": ["Alles aus dem Pro-Plan", "Persönlicher dedizierter Coach", "Monatliches 1-zu-1-Videogespräch", "Maßgeschneiderter Ernährungsplan", "Biomechanische Videoanalyse", "Früher Zugang zu Neuheiten"] }
+        { "name": "Pro", "period": "pro Monat", "badge": "Am beliebtesten", "description": "Unbegrenzter Zugang zu allen Programmen und personalisiertem KI-Coaching.", "cta": "7 Tage gratis testen", "features": ["Unbegrenzter Zugang zu allen 10 Disziplinen & Programmen", "Personalisierter KI-Coach", "Fortschritt & Statistiken", "HD-Trainingsvideos", "Tägliche Erinnerungen & Motivation", "E-Mail-Support"] }
       ]
     },
     "reviews": {
@@ -302,8 +299,7 @@
       "errorCheckout": "Fehler bei der Weiterleitung zur Zahlung.",
       "plans": [
         { "name": "Kostenlos", "period": "für immer", "badge": "", "features": ["3 Programme", "Basis-Tracking", "Community"] },
-        { "name": "Pro", "period": "/Monat", "badge": "7 Tage gratis", "features": ["Alle Programme", "KI-Coaching", "Erweiterte Statistiken"] },
-        { "name": "Elite", "period": "/Monat", "badge": "7 Tage gratis", "features": ["Pro-Plan inklusive", "Dedizierter Coach", "Monatliches Resümee"] }
+        { "name": "Pro", "period": "/Monat", "badge": "7 Tage gratis", "features": ["Alle Programme", "KI-Coaching", "Erweiterte Statistiken"] }
       ]
     },
     "forgot": {
@@ -820,20 +816,13 @@
       "securePayment": "Sichere Zahlung über Stripe",
       "includedTitle": "In deinem Plan enthalten",
       "featuresPro": [
-        "Alle Programme unbegrenzt",
-        "Personalisiertes KI-Coaching",
-        "Erweiterte Statistiken & Tracking",
-        "Hochwertige HD-Videos",
-        "Prioritäts-Support 7/7",
-        "Community-Challenges"
-      ],
-      "featuresElite": [
-        "Alles aus dem Pro-Plan",
-        "Persönlicher dedizierter Coach",
-        "Monatliches 1-zu-1-Videogespräch",
-        "Maßgeschneiderter Ernährungsplan",
-        "Biomechanische Videoanalyse",
-        "Früher Zugang zu Neuheiten"
+        "Unbegrenzter Zugang zu allen 10 Disziplinen & Programmen",
+        "Personalisierter KI-Coach",
+        "Fortschritt & Statistiken",
+        "HD-Trainingsvideos",
+        "Tägliche Erinnerungen & Motivation",
+        "Smartwatch-/Apple-Fitness-Synchronisierung",
+        "E-Mail-Support"
       ],
       "managePayment": "Zahlung & Rechnungen verwalten",
       "manageHint": "Karte ansehen/ändern, Rechnungen und kündigen — alles wird hier verwaltet.",
