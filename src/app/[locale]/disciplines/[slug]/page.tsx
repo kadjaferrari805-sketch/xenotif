@@ -84,8 +84,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 export default async function DisciplinePage({ params }: { params: Promise<{ slug: string; locale: string }> }) {
   const { slug, locale } = await params
   const base = FEATURES.find((f) => f.slug === slug)
-  // B2 : Musculation est servie depuis la base (repli sur le statique si la base est vide).
-  const db = slug === 'musculation' ? await getDisciplineFromDb(slug, locale) : null
+  // B2 : contenu servi depuis la base pour toutes les disciplines (repli statique si absent).
+  const db = await getDisciplineFromDb(slug, locale)
   const meta = db?.meta ?? getDisciplineMeta(slug, locale)
   if (!base || !meta) notFound()
 
@@ -93,6 +93,7 @@ export default async function DisciplinePage({ params }: { params: Promise<{ slu
 
   const photo   = DISC_PHOTOS[slug] ?? ''
   const content = db?.content ?? getDisciplineContent(locale)[slug]
+  const minPlan = db?.minPlan ?? (slug === 'musculation' ? 'free' : 'pro')
   const color   = base.color
   const { title, tag, description, stats, levels } = meta
 
@@ -173,7 +174,7 @@ export default async function DisciplinePage({ params }: { params: Promise<{ slu
               {t('videos.subtitle')}
             </p>
 
-            <SubscriberGate slug={slug}>
+            <SubscriberGate minPlan={minPlan}>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
               {content.videos.map((video) => (
                 <VideoCard
@@ -341,7 +342,7 @@ export default async function DisciplinePage({ params }: { params: Promise<{ slu
                   <h2 className="text-2xl font-black text-white">{t('program.title')}</h2>
                 </div>
 
-                <SubscriberGate slug={slug}>
+                <SubscriberGate minPlan={minPlan}>
                 <div className="space-y-4">
                   {content.program.map((block, bi) => (
                     <div key={block.week} className="bg-sport-card border border-sport-border rounded-xl overflow-hidden">

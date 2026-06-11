@@ -4,16 +4,15 @@ import { useState, useEffect } from 'react'
 import { useTranslations } from 'next-intl'
 import { Link } from '@/i18n/navigation'
 import { Lock, ArrowRight } from 'lucide-react'
-import { FREE_DISCIPLINE } from '@/lib/content-access'
 
 // Soft-paywall : le contenu reste dans le DOM (indexable pour le SEO) mais est
 // tronqué + estompé pour les non-abonnés, avec un appel à l'abonnement.
-// La discipline gratuite (Musculation) n'est jamais verrouillée ; les abonnés
-// actifs/en essai voient tout. Les autres disciplines exigent PRO.
-export function SubscriberGate({ slug, children }: { slug?: string; children: React.ReactNode }) {
+// Le contenu `min_plan === 'free'` n'est jamais verrouillé ; sinon, réservé aux
+// abonnés actifs/en essai (PRO).
+export function SubscriberGate({ minPlan, children }: { minPlan?: string; children: React.ReactNode }) {
   const t = useTranslations('disciplines.gate')
-  const isFree = slug === FREE_DISCIPLINE
-  const [locked, setLocked] = useState(!isFree) // discipline gratuite → jamais verrouillée
+  const isFree = minPlan === 'free'
+  const [locked, setLocked] = useState(!isFree)
 
   useEffect(() => {
     if (isFree) return
