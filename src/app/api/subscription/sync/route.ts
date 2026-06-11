@@ -42,8 +42,7 @@ export async function POST(req: Request) {
 
     if (!found) return NextResponse.json({ synced: false, reason: 'no_subscription' })
 
-    const plan = found.metadata?.plan
-      ?? ((found.items.data[0]?.price?.unit_amount ?? 0) > 1000 ? 'elite' : 'pro')
+    const plan = 'pro' // palier unique
 
     const service = await createServiceClient()
 

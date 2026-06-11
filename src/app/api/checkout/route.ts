@@ -4,15 +4,9 @@ import Stripe from 'stripe'
 const PLAN_CONFIG = {
   pro: {
     name: 'Xenotif® — Plan Pro',
-    description: 'Accès illimité à tous les programmes, coaching IA personnalisé, statistiques avancées, vidéos HD, support prioritaire 7j/7.',
+    description: 'Accès illimité à toutes les disciplines & programmes, coach IA personnalisé, suivi & statistiques, vidéos HD, rappels quotidiens, synchronisation montre.',
     unit_monthly: 999,
     unit_annual: 9588,
-  },
-  elite: {
-    name: 'Xenotif® — Plan Élite',
-    description: 'Tout le plan Pro + coach personnel dédié, bilan mensuel visio 1-1, plan nutritionnel sur mesure, analyse biomécanique vidéo.',
-    unit_monthly: 2499,
-    unit_annual: 23988,
   },
 } as const
 
@@ -40,9 +34,7 @@ export async function POST(req: NextRequest) {
     const baseUrl = process.env.NEXT_PUBLIC_URL ?? 'https://xenotif.com'
     const isAnnual = period === 'annual'
 
-    const priceId = isAnnual
-      ? (plan === 'pro' ? process.env.STRIPE_PRICE_PRO_ANNUAL : process.env.STRIPE_PRICE_ELITE_ANNUAL)
-      : (plan === 'pro' ? process.env.STRIPE_PRICE_PRO : process.env.STRIPE_PRICE_ELITE)
+    const priceId = isAnnual ? process.env.STRIPE_PRICE_PRO_ANNUAL : process.env.STRIPE_PRICE_PRO
 
     const session = await stripe.checkout.sessions.create({
       mode: 'subscription',

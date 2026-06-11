@@ -46,14 +46,6 @@ export function StickyCheckout() {
             >
               {t('pro')} <ArrowRight size={12} aria-hidden="true" />
             </Link>
-
-            <Link
-              href="/auth/signup?plan=elite"
-              aria-label={t('eliteAria')}
-              className="hidden sm:inline-flex items-center justify-center gap-1.5 border border-sport-border text-white px-4 py-2.5 rounded-full font-bold text-xs hover:border-sport-gray hover:bg-white/5 active:scale-95 transition-all whitespace-nowrap"
-            >
-              {t('elite')} <ArrowRight size={12} aria-hidden="true" />
-            </Link>
           </div>
 
           {/* Dismiss */}

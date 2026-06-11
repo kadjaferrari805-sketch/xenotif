@@ -8,7 +8,7 @@ import { ArrowRight, CheckCircle, Zap, Eye, EyeOff } from 'lucide-react'
 import { createClient } from '@/lib/supabase/client'
 import { trackMeta } from '@/lib/meta-pixel'
 
-type PlanId = 'gratuit' | 'pro' | 'elite'
+type PlanId = 'gratuit' | 'pro'
 type Period = 'monthly' | 'annual'
 
 // Données structurelles (id, prix, mise en avant). Les textes (nom, période,
@@ -16,7 +16,6 @@ type Period = 'monthly' | 'annual'
 const PLANS: { id: PlanId; priceMonthly: string; priceAnnual: string; totalAnnual?: string; highlight: boolean }[] = [
   { id: 'gratuit', priceMonthly: '0 €',     priceAnnual: '0 €',     highlight: false },
   { id: 'pro',     priceMonthly: '9,99 €',  priceAnnual: '7,99 €',  totalAnnual: '95,88 €',  highlight: true },
-  { id: 'elite',   priceMonthly: '24,99 €', priceAnnual: '19,99 €', totalAnnual: '239,88 €', highlight: false },
 ]
 
 type PlanText = { name: string; period: string; badge: string; features: string[] }
@@ -45,7 +44,7 @@ function SignUpForm() {
       if (data.user) router.replace('/dashboard')
     })
     const plan = searchParams.get('plan') as PlanId
-    if (plan && ['gratuit', 'pro', 'elite'].includes(plan)) setSelectedPlan(plan)
+    if (plan && ['gratuit', 'pro'].includes(plan)) setSelectedPlan(plan)
     const per = searchParams.get('period')
     if (per === 'annual' || per === 'monthly') setPeriod(per)
     const email = searchParams.get('email')
@@ -159,7 +158,7 @@ function SignUpForm() {
         </div>
 
         {/* Plan selector */}
-        <div className="grid grid-cols-3 gap-3 mb-8">
+        <div className="grid grid-cols-2 gap-3 mb-8">
           {PLANS.map((plan, i) => (
             <button
               key={plan.id}

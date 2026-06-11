@@ -104,7 +104,7 @@ export async function POST(req: NextRequest) {
         const subscriptionId = session.subscription as string
         const customerEmail = session.customer_details?.email ?? session.customer_email
         const customerName = session.customer_details?.name ?? ''
-        const plan = session.metadata?.plan ?? 'pro'
+        const plan = 'pro' // palier unique
         const locale = session.metadata?.locale ?? 'fr'
 
         const sub = await stripe.subscriptions.retrieve(subscriptionId)
@@ -189,8 +189,7 @@ export async function POST(req: NextRequest) {
 
         if (!existing) break
 
-        const plan = sub.metadata?.plan
-          ?? ((sub.items.data[0]?.price?.unit_amount ?? 0) > 1000 ? 'elite' : 'pro')
+        const plan = 'pro' // palier unique
 
         await service.from('subscriptions').update({
           status: sub.status,

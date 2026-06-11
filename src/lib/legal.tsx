@@ -104,7 +104,7 @@ const FR: Record<LegalSlug, { metaTitle: string; metaDescription: string; eyebro
     intro: 'Les présentes conditions régissent les ventes d’abonnements et de produits réalisées sur xenotif.com.',
     sections: [
       { id: 'objet', title: '1. Objet', body: (
-        <p>Les présentes Conditions Générales de Vente (CGV) régissent toute commande passée sur le site xenotif.com : abonnements (Pro, Élite), guides et programmes digitaux, et produits physiques. Toute commande implique l&apos;acceptation pleine et entière des présentes CGV.</p>
+        <p>Les présentes Conditions Générales de Vente (CGV) régissent toute commande passée sur le site xenotif.com : abonnement (Pro), guides et programmes digitaux, et produits physiques. Toute commande implique l&apos;acceptation pleine et entière des présentes CGV.</p>
       )},
       { id: 'vendeur', title: '2. Vendeur', body: (
         <p>Les produits et services sont vendus par <strong className="text-white">Xenotif LTD</strong> (société immatriculée en Angleterre et au Pays de Galles, n° 17013934). Les coordonnées complètes figurent dans les <Link href="/mentions-legales" className={LINK}>mentions légales</Link>. Contact : {mail}.</p>
@@ -112,7 +112,7 @@ const FR: Record<LegalSlug, { metaTitle: string; metaDescription: string; eyebro
       { id: 'produits', title: '3. Produits et services', body: (
         <>
           <p className="mb-2">Xenotif® propose :</p>
-          <p>— des <strong className="text-white">abonnements</strong> donnant accès aux programmes, au coaching IA et au suivi (Plan Pro et Plan Élite), facturés mensuellement ou annuellement ;<br />— des <strong className="text-white">guides et programmes digitaux</strong> (PDF), à accès immédiat après paiement ;<br />— des <strong className="text-white">produits physiques</strong> (équipement, accessoires).</p>
+          <p>— des <strong className="text-white">abonnements</strong> donnant accès aux programmes, au coaching IA et au suivi (Plan Pro), facturés mensuellement ou annuellement ;<br />— des <strong className="text-white">guides et programmes digitaux</strong> (PDF), à accès immédiat après paiement ;<br />— des <strong className="text-white">produits physiques</strong> (équipement, accessoires).</p>
         </>
       )},
       { id: 'prix', title: '4. Prix', body: (
@@ -139,7 +139,7 @@ const FR: Record<LegalSlug, { metaTitle: string; metaDescription: string; eyebro
       )},
       { id: 'satisfait-rembourse', title: '10. Garantie « satisfait ou remboursé » (30 jours)', body: (
         <>
-          <p>Au-delà de vos droits légaux, Xenotif® vous offre une <strong className="text-white">garantie commerciale « satisfait ou remboursé » de 30 jours</strong> sur les abonnements (Pro, Élite) et les guides digitaux.</p>
+          <p>Au-delà de vos droits légaux, Xenotif® vous offre une <strong className="text-white">garantie commerciale « satisfait ou remboursé » de 30 jours</strong> sur l&apos;abonnement (Pro) et les guides digitaux.</p>
           <p className="mt-3">Si vous n&apos;êtes pas satisfait(e), écrivez-nous simplement à {mail} dans les 30 jours suivant votre paiement (pour un abonnement : le premier débit après la période d&apos;essai gratuite). Nous vous remboursons <strong className="text-white">intégralement</strong>, sans avoir à vous justifier. Le remboursement est effectué sous 14 jours, par le même moyen de paiement.</p>
           <p className="mt-3">Cette garantie commerciale s&apos;ajoute aux garanties légales et au droit de rétractation : elle ne les remplace pas.</p>
         </>
@@ -225,7 +225,7 @@ const EN: Record<LegalSlug, { metaTitle: string; metaDescription: string; eyebro
     intro: 'These terms govern subscription and product sales made on xenotif.com.',
     sections: [
       { id: 'objet', title: '1. Purpose', body: (
-        <p>These Terms of Sale govern any order placed on xenotif.com: subscriptions (Pro, Elite), digital guides and programs, and physical products. Any order implies full acceptance of these terms.</p>
+        <p>These Terms of Sale govern any order placed on xenotif.com: subscription (Pro), digital guides and programs, and physical products. Any order implies full acceptance of these terms.</p>
       )},
       { id: 'vendeur', title: '2. Seller', body: (
         <p>Products and services are sold by <strong className="text-white">Xenotif LTD</strong> (a company registered in England and Wales, no. 17013934). Full details are in the <Link href="/mentions-legales" className={LINK}>legal notice</Link>. Contact: {mail}.</p>
@@ -233,7 +233,7 @@ const EN: Record<LegalSlug, { metaTitle: string; metaDescription: string; eyebro
       { id: 'produits', title: '3. Products and services', body: (
         <>
           <p className="mb-2">Xenotif® offers:</p>
-          <p>— <strong className="text-white">subscriptions</strong> giving access to programs, AI coaching and tracking (Pro and Elite plans), billed monthly or annually;<br />— <strong className="text-white">digital guides and programs</strong> (PDF), available immediately after payment;<br />— <strong className="text-white">physical products</strong> (equipment, accessories).</p>
+          <p>— <strong className="text-white">subscriptions</strong> giving access to programs, AI coaching and tracking (Pro plan), billed monthly or annually;<br />— <strong className="text-white">digital guides and programs</strong> (PDF), available immediately after payment;<br />— <strong className="text-white">physical products</strong> (equipment, accessories).</p>
         </>
       )},
       { id: 'prix', title: '4. Prices', body: (
@@ -260,7 +260,7 @@ const EN: Record<LegalSlug, { metaTitle: string; metaDescription: string; eyebro
       )},
       { id: 'satisfait-rembourse', title: '10. Money-back guarantee (30 days)', body: (
         <>
-          <p>Beyond your legal rights, Xenotif® offers a <strong className="text-white">30-day commercial &quot;money-back&quot; guarantee</strong> on subscriptions (Pro, Elite) and digital guides.</p>
+          <p>Beyond your legal rights, Xenotif® offers a <strong className="text-white">30-day commercial &quot;money-back&quot; guarantee</strong> on subscription (Pro) and digital guides.</p>
           <p className="mt-3">If you&apos;re not satisfied, simply email us at {mail} within 30 days of your payment (for a subscription: the first charge after the free trial). We refund you <strong className="text-white">in full</strong>, no questions asked. The refund is issued within 14 days, using the same payment method.</p>
           <p className="mt-3">This commercial guarantee is in addition to the legal guarantees and right of withdrawal — it does not replace them.</p>
         </>

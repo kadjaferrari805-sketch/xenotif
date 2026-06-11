@@ -66,9 +66,7 @@
       "lead": "Ready to transform your body?",
       "trial": "7-day free trial",
       "pro": "Pro — €9.99/mo",
-      "elite": "Elite — €24.99/mo",
       "proAria": "Subscribe to the Pro plan — €9.99 per month",
-      "eliteAria": "Subscribe to the Elite plan — €24.99 per month",
       "ariaRegion": "Quick subscribe",
       "dismiss": "Close the subscription bar"
     },
@@ -186,9 +184,8 @@
       "featuresAria": "{name} plan features",
       "footnote": "No commitment · Cancel anytime in 1 click",
       "plans": [
-        { "name": "Free", "period": "forever", "badge": "", "description": "Discover Xenotif® and start your transformation risk-free.", "cta": "Start for free", "features": ["3 starter programs", "Basic session tracking", "Community access", "Free weekly WOD"] },
-        { "name": "Pro", "period": "per month", "badge": "Most popular", "description": "Unlimited access to all programs and personalized AI coaching.", "cta": "7-day free trial", "features": ["All programs unlimited", "Personalized AI coaching", "Advanced stats & tracking", "High-quality HD videos", "Priority support 7/7", "Community challenges"] },
-        { "name": "Elite", "period": "per month", "badge": "", "description": "One-on-one coaching and personalized tracking by a certified expert.", "cta": "Talk to a coach", "features": ["Everything in Pro included", "Dedicated personal coach", "Monthly 1-on-1 video review", "Custom nutrition plan", "Video biomechanical analysis", "Early access to new features"] }
+        { "name": "Free", "period": "forever", "badge": "", "description": "Create your free account, no card. Go PRO to unlock everything.", "cta": "Start for free", "features": ["Free account", "No card required", "Upgrade to PRO anytime"] },
+        { "name": "Pro", "period": "per month", "badge": "Most popular", "description": "Unlimited access to all programs and personalized AI coaching.", "cta": "7-day free trial", "features": ["Unlimited access to all 10 disciplines & programs", "Personalized AI coach", "Progress tracking & statistics", "HD training videos", "Daily reminders & motivation", "Email support"] }
       ]
     },
     "reviews": {
@@ -301,9 +298,8 @@
       "errorAlreadyUsed": "This email is already in use. Please sign in.",
       "errorCheckout": "Error while redirecting to payment.",
       "plans": [
-        { "name": "Free", "period": "forever", "badge": "", "features": ["3 programs", "Basic tracking", "Community"] },
-        { "name": "Pro", "period": "/month", "badge": "7 days free", "features": ["All programs", "AI Coaching", "Advanced stats"] },
-        { "name": "Elite", "period": "/month", "badge": "7 days free", "features": ["Pro plan included", "Dedicated coach", "Monthly review"] }
+        { "name": "Free", "period": "forever", "badge": "", "features": ["Free account", "No card", "Upgrade anytime"] },
+        { "name": "Pro", "period": "/month", "badge": "7 days free", "features": ["All programs", "AI Coaching", "Advanced stats"] }
       ]
     },
     "forgot": {
@@ -820,20 +816,13 @@
       "securePayment": "Secure payment via Stripe",
       "includedTitle": "Included in your plan",
       "featuresPro": [
-        "All programs unlimited",
-        "Personalized AI coaching",
-        "Advanced stats & tracking",
-        "High-quality HD videos",
-        "Priority support 7/7",
-        "Community challenges"
-      ],
-      "featuresElite": [
-        "Everything in Pro included",
-        "Dedicated personal coach",
-        "Monthly 1-on-1 video review",
-        "Custom nutrition plan",
-        "Video biomechanical analysis",
-        "Early access to new features"
+        "Unlimited access to all 10 disciplines & programs",
+        "Personalized AI coach",
+        "Progress tracking & statistics",
+        "HD training videos",
+        "Daily reminders & motivation",
+        "Smartwatch / Apple Fitness sync",
+        "Email support"
       ],
       "managePayment": "Manage payment & invoices",
       "manageHint": "View/update your card, your invoices and cancel — all in one place.",
@@ -1062,6 +1051,20 @@
         "boxing": "Boxing",
         "stretching": "Stretching"
       }
+    },
+    "paywall": {
+      "title": "Go PRO to unlock everything",
+      "subtitle": "This section is for subscribers. Start your 7-day free trial and unlock all of Xenotif®.",
+      "features": [
+        "Unlimited access to all 10 disciplines & programs",
+        "Personalized AI coach",
+        "Progress tracking & statistics",
+        "HD training videos",
+        "Daily reminders & motivation",
+        "Smartwatch / Apple Fitness sync"
+      ],
+      "cta": "Start my free trial",
+      "trialNote": "7 days free · No commitment · Cancel in 1 click"
     }
   },
   "about": {

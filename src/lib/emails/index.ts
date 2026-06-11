@@ -75,29 +75,21 @@ function wrap(content: string, locale: EmailLocale, preheader?: string) {
 }
 
 export async function sendWelcomeEmail({
-  email, name, plan, setupLink, locale: rawLocale,
+  email, name, setupLink, locale: rawLocale,
 }: {
-  email: string; name: string; plan: string; setupLink: string; locale?: string
+  email: string; name: string; plan?: string; setupLink: string; locale?: string
 }) {
   const locale = norm(rawLocale)
   const en = locale === 'en'
-  const planLabel = plan === 'elite' ? (en ? 'Elite' : 'Élite') : 'Pro'
+  const planLabel = 'Pro'
   const first = name ? name.split(' ')[0] : ''
-  const features = plan === 'elite'
-    ? (en ? [
-        '⚡ Dedicated personal coach', '📹 Monthly 1-on-1 video review', '🥗 Custom nutrition plan',
-        '🎯 Video biomechanical analysis', '✅ Everything in Pro included',
-      ] : [
-        '⚡ Coach personnel dédié', '📹 Bilan mensuel visio 1-1', '🥗 Plan nutritionnel sur mesure',
-        '🎯 Analyse biomécanique vidéo', '✅ Tout le Plan Pro inclus',
-      ])
-    : (en ? [
-        '✅ All programs unlimited', '🤖 Personalized AI coaching', '📊 Advanced stats & tracking',
-        '🎥 High-quality HD videos', '💬 Priority support 7/7',
-      ] : [
-        '✅ Tous les programmes illimités', '🤖 Coaching IA personnalisé', '📊 Statistiques & suivi avancé',
-        '🎥 Vidéos HD haute qualité', '💬 Support prioritaire 7j/7',
-      ])
+  const features = en ? [
+    '✅ Unlimited access to all 10 disciplines & programs', '🤖 Personalized AI coach',
+    '📊 Progress tracking & statistics', '🎥 HD training videos', '🔔 Daily reminders & motivation',
+  ] : [
+    '✅ Accès illimité aux 10 disciplines & programmes', '🤖 Coach IA personnalisé',
+    '📊 Suivi & statistiques de progression', '🎥 Vidéos d\'entraînement HD', '🔔 Rappels & motivation quotidienne',
+  ]
   const c = en ? {
     subject: `Welcome to Xenotif® — your ${planLabel} trial starts now!`,
     h1: `Welcome${first ? `, ${first}` : ''}! 💪`,

@@ -1,6 +1,7 @@
 import { NextRequest } from 'next/server'
 import Anthropic from '@anthropic-ai/sdk'
 import { createClient } from '@/lib/supabase/server'
+import { requirePro } from '@/lib/access'
 
 const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY! })
 
@@ -21,6 +22,10 @@ export async function POST(req: NextRequest) {
   const supabase = await createClient()
   const { data: { user } } = await supabase.auth.getUser()
   if (!user) return new Response('Non authentifié', { status: 401 })
+
+  // Le coach IA est réservé aux abonnés (essai ou actif).
+  const gate = await requirePro()
+  if (gate instanceof Response) return gate
 
   const { messages } = await req.json() as {
     messages: { role: 'user' | 'assistant'; content: string }[]
