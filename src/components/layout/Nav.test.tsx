@@ -14,9 +14,9 @@ describe('Nav', () => {
     expect(screen.getByRole('link', { name: /blog/i })).toBeInTheDocument()
   })
 
-  it('renders join link', () => {
+  it('renders the sign-in link for guests', () => {
     renderWithIntl(<Nav />)
-    expect(screen.getByRole('link', { name: /rejoindre/i })).toBeInTheDocument()
+    expect(screen.getByRole('link', { name: /connexion/i })).toBeInTheDocument()
   })
 
   it('renders the language switcher', () => {

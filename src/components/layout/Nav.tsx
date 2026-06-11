@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useTranslations } from 'next-intl'
 import { Link } from '@/i18n/navigation'
-import { Menu, X, Zap } from 'lucide-react'
+import { Menu, X } from 'lucide-react'
 import { Logo } from '@/components/ui/Logo'
 import { LanguageSwitcher } from './LanguageSwitcher'
 import { AppDownload } from './AppDownload'
@@ -57,7 +57,6 @@ export function Nav() {
 
   // Profil de l'abonné (remplace « Mon espace »).
   const initials = (name || user?.email || 'U').slice(0, 2).toUpperCase()
-  const firstName = name?.trim().split(' ')[0] || user?.email?.split('@')[0] || ''
 
   return (
     <motion.nav
@@ -99,29 +98,19 @@ export function Nav() {
             <Link
               href="/dashboard"
               aria-label={t('monEspace')}
-              className="inline-flex items-center gap-2 rounded-full border border-sport-border bg-sport-card/70 pl-1 pr-3.5 py-1 hover:border-sport-orange/50 transition-all active:scale-95"
+              className="inline-flex items-center justify-center rounded-full border border-sport-border bg-sport-card/70 p-1 hover:border-sport-orange/50 transition-all active:scale-95"
             >
               <span className="flex h-8 w-8 items-center justify-center rounded-full bg-sport-orange/20 border border-sport-orange/40 text-sport-orange font-black text-xs">
                 {initials}
               </span>
-              {firstName && <span className="text-sm font-bold text-white max-w-[110px] truncate">{firstName}</span>}
             </Link>
           ) : (
-            <>
-              <Link
-                href="/auth/signin"
-                className="text-sm text-sport-gray hover:text-white transition-colors hidden sm:block"
-              >
-                {t('connexion')}
-              </Link>
-              <Link
-                href="/auth/signup"
-                className="inline-flex items-center gap-1.5 bg-sport-orange text-white px-4 py-2 rounded-full text-sm font-bold hover:bg-orange-600 transition-all shadow-lg shadow-sport-orange/20 hover:shadow-sport-orange/40 active:scale-95"
-              >
-                <Zap size={13} aria-hidden="true" />
-                {t('rejoindre')}
-              </Link>
-            </>
+            <Link
+              href="/auth/signin"
+              className="text-sm text-sport-gray hover:text-white transition-colors"
+            >
+              {t('connexion')}
+            </Link>
           )}
           {/* Télécharger l'app (desktop, après « Rejoindre ») : bouton compact icône
               pour garder la barre aérée et bien centrée. Le libellé est dans l'aria + la modale. */}
