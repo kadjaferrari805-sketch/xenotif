@@ -121,8 +121,8 @@ const FR: Record<LegalSlug, { metaTitle: string; metaDescription: string; eyebro
       { id: 'paiement', title: '5. Commande et paiement', body: (
         <p>Le paiement s&apos;effectue en ligne, de manière sécurisée, via notre prestataire <strong className="text-white">Stripe</strong> (carte bancaire, Apple Pay, Google Pay selon disponibilité). Aucune donnée bancaire n&apos;est conservée par Xenotif®. La commande est validée après confirmation du paiement.</p>
       )},
-      { id: 'abonnement', title: '6. Essai gratuit, abonnement et résiliation', body: (
-        <p>Les abonnements peuvent débuter par une période d&apos;essai gratuite de 7 jours, sans débit avant la fin de l&apos;essai. À l&apos;issue de l&apos;essai, l&apos;abonnement est reconduit automatiquement par période (mensuelle ou annuelle) jusqu&apos;à résiliation. Vous pouvez résilier à tout moment depuis votre espace membre (rubrique « Abonnement ») ; l&apos;accès reste actif jusqu&apos;à la fin de la période déjà payée, sans reconduction ultérieure.</p>
+      { id: 'abonnement', title: '6. Abonnement et résiliation', body: (
+        <p>Les abonnements sont reconduits automatiquement par période (mensuelle ou annuelle) jusqu&apos;à résiliation. Vous pouvez résilier à tout moment depuis votre espace membre (rubrique « Abonnement ») ; l&apos;accès reste actif jusqu&apos;à la fin de la période déjà payée, sans reconduction ultérieure.</p>
       )},
       { id: 'livraison', title: '7. Livraison', body: (
         <p>Les produits digitaux sont livrés immédiatement après paiement, par email et via un lien de téléchargement sécurisé (accès à vie). Les produits physiques sont expédiés sous 3 à 7 jours ouvrés ; la livraison est offerte dès 50&nbsp;€ d&apos;achat.</p>
@@ -140,7 +140,7 @@ const FR: Record<LegalSlug, { metaTitle: string; metaDescription: string; eyebro
       { id: 'satisfait-rembourse', title: '10. Garantie « satisfait ou remboursé » (30 jours)', body: (
         <>
           <p>Au-delà de vos droits légaux, Xenotif® vous offre une <strong className="text-white">garantie commerciale « satisfait ou remboursé » de 30 jours</strong> sur l&apos;abonnement (Pro) et les guides digitaux.</p>
-          <p className="mt-3">Si vous n&apos;êtes pas satisfait(e), écrivez-nous simplement à {mail} dans les 30 jours suivant votre paiement (pour un abonnement : le premier débit après la période d&apos;essai gratuite). Nous vous remboursons <strong className="text-white">intégralement</strong>, sans avoir à vous justifier. Le remboursement est effectué sous 14 jours, par le même moyen de paiement.</p>
+          <p className="mt-3">Si vous n&apos;êtes pas satisfait(e), écrivez-nous simplement à {mail} dans les 30 jours suivant votre paiement (pour un abonnement : ton premier paiement). Nous vous remboursons <strong className="text-white">intégralement</strong>, sans avoir à vous justifier. Le remboursement est effectué sous 14 jours, par le même moyen de paiement.</p>
           <p className="mt-3">Cette garantie commerciale s&apos;ajoute aux garanties légales et au droit de rétractation : elle ne les remplace pas.</p>
         </>
       )},
@@ -242,8 +242,8 @@ const EN: Record<LegalSlug, { metaTitle: string; metaDescription: string; eyebro
       { id: 'paiement', title: '5. Order and payment', body: (
         <p>Payment is made online, securely, through our provider <strong className="text-white">Stripe</strong> (credit card, Apple Pay, Google Pay where available). No banking data is stored by Xenotif®. The order is confirmed once payment is approved.</p>
       )},
-      { id: 'abonnement', title: '6. Free trial, subscription and cancellation', body: (
-        <p>Subscriptions may start with a 7-day free trial, with no charge before the trial ends. After the trial, the subscription renews automatically per period (monthly or annual) until cancelled. You can cancel anytime from your member area (&quot;Subscription&quot; section); access stays active until the end of the period already paid, with no further renewal.</p>
+      { id: 'abonnement', title: '6. Subscription and cancellation', body: (
+        <p>Subscriptions renew automatically per period (monthly or annual) until cancelled. You can cancel anytime from your member area (&quot;Subscription&quot; section); access stays active until the end of the period already paid, with no further renewal.</p>
       )},
       { id: 'livraison', title: '7. Delivery', body: (
         <p>Digital products are delivered immediately after payment, by email and via a secure download link (lifetime access). Physical products ship within 3 to 7 business days; shipping is free for orders over €50.</p>
@@ -261,7 +261,7 @@ const EN: Record<LegalSlug, { metaTitle: string; metaDescription: string; eyebro
       { id: 'satisfait-rembourse', title: '10. Money-back guarantee (30 days)', body: (
         <>
           <p>Beyond your legal rights, Xenotif® offers a <strong className="text-white">30-day commercial &quot;money-back&quot; guarantee</strong> on subscription (Pro) and digital guides.</p>
-          <p className="mt-3">If you&apos;re not satisfied, simply email us at {mail} within 30 days of your payment (for a subscription: the first charge after the free trial). We refund you <strong className="text-white">in full</strong>, no questions asked. The refund is issued within 14 days, using the same payment method.</p>
+          <p className="mt-3">If you&apos;re not satisfied, simply email us at {mail} within 30 days of your payment (for a subscription: your first payment). We refund you <strong className="text-white">in full</strong>, no questions asked. The refund is issued within 14 days, using the same payment method.</p>
           <p className="mt-3">This commercial guarantee is in addition to the legal guarantees and right of withdrawal — it does not replace them.</p>
         </>
       )},

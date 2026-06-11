@@ -64,7 +64,7 @@
   "home": {
     "sticky": {
       "lead": "Ready to transform your body?",
-      "trial": "7-day free trial",
+      "trial": "No commitment",
       "pro": "Pro — €9.99/mo",
       "proAria": "Subscribe to the Pro plan — €9.99 per month",
       "ariaRegion": "Quick subscribe",
@@ -74,9 +74,9 @@
     "metaDescription": "The premium fitness platform — 10 disciplines, personalized AI coaching, 300+ workouts. Join 12,000+ athletes transforming their bodies with Xenotif®.",
     "hero": {
       "eyebrow": "The Premium Sports Platform",
-      "ctaPrimary": "Start your free trial",
+      "ctaPrimary": "Start for free",
       "ctaSecondary": "Explore the disciplines",
-      "ctaNote": "€0 for 7 days · Cancel anytime",
+      "ctaNote": "Free, no card · PRO from €9.99/mo",
       "scroll": "Scroll",
       "slides": [
         { "tag": "🏋️ Strength & Power", "headline": "FORGE YOUR BODY.", "accent": "PUSH YOUR LIMITS." },
@@ -174,18 +174,18 @@
     "pricing": {
       "label": "Pricing",
       "title": "Simple. Transparent. No surprises.",
-      "subtitle": "7-day free trial on all paid plans — €0 today, cancel in one click before the first charge",
+      "subtitle": "Start free, go PRO anytime. No commitment, cancel in 1 click.",
       "monthly": "Monthly",
       "annual": "Annual",
       "save": "-20%",
       "billed": "Billed <b>{total}/year</b>",
-      "freeTrialNote": "✓ 7 days free · No commitment",
+      "freeTrialNote": "✓ No commitment · cancel in 1 click",
       "subscribeAria": "Subscribe to the {name} plan",
       "featuresAria": "{name} plan features",
       "footnote": "No commitment · Cancel anytime in 1 click",
       "plans": [
-        { "name": "Free", "period": "forever", "badge": "", "description": "Create your free account, no card. Go PRO to unlock everything.", "cta": "Start for free", "features": ["Free account", "No card required", "Upgrade to PRO anytime"] },
-        { "name": "Pro", "period": "per month", "badge": "Most popular", "description": "Unlimited access to all programs and personalized AI coaching.", "cta": "7-day free trial", "features": ["Unlimited access to all 10 disciplines & programs", "Personalized AI coach", "Progress tracking & statistics", "HD training videos", "Daily reminders & motivation", "Email support"] }
+        { "name": "Free", "period": "forever", "badge": "", "description": "Start free with Strength Training. Go PRO to unlock everything.", "cta": "Start for free", "features": ["Strength Training (program + 1 video)", "Progress tracking", "Reminders & notifications", "No card"] },
+        { "name": "Pro", "period": "per month", "badge": "Most popular", "description": "Unlimited access to all programs and personalized AI coaching.", "cta": "Subscribe", "features": ["Unlimited access to all 10 disciplines & programs", "Personalized AI coach", "Progress tracking & statistics", "HD training videos", "Daily reminders & motivation", "Email support"] }
       ]
     },
     "reviews": {
@@ -298,8 +298,8 @@
       "errorAlreadyUsed": "This email is already in use. Please sign in.",
       "errorCheckout": "Error while redirecting to payment.",
       "plans": [
-        { "name": "Free", "period": "forever", "badge": "", "features": ["Free account", "No card", "Upgrade anytime"] },
-        { "name": "Pro", "period": "/month", "badge": "7 days free", "features": ["All programs", "AI Coaching", "Advanced stats"] }
+        { "name": "Free", "period": "forever", "badge": "", "features": ["Strength Training", "Progress tracking", "No card"] },
+        { "name": "Pro", "period": "/month", "badge": "Popular", "features": ["All programs", "AI Coaching", "Advanced stats"] }
       ]
     },
     "forgot": {
@@ -365,8 +365,8 @@
     "gate": {
       "title": "Unlock the full program",
       "subtitle": "The detailed week-by-week program is reserved for Xenotif® subscribers.",
-      "cta": "Start your free trial",
-      "note": "€0 for 7 days · Cancel anytime"
+      "cta": "Start for free",
+      "note": "Free, no card · PRO from €9.99/mo"
     },
     "cta": {
       "title": "Join the community",
@@ -380,7 +380,7 @@
       ],
       "primary": "Start for free",
       "pricing": "See pricing →",
-      "noCard": "7-day free trial",
+      "noCard": "Free account, no card",
       "freeCancel": "Cancel anytime"
     },
     "faq": {
@@ -590,8 +590,8 @@
     "cta": {
       "title": "Turn theory into practice",
       "text": "Guided programs, personalized AI coaching and progress tracking: Xenotif® turns this advice into real results. Start today.",
-      "button": "Start your free trial",
-      "note": "€0 for 7 days · Cancel anytime",
+      "button": "Start for free",
+      "note": "Free, no card · PRO from €9.99/mo",
       "discipline": "Explore the {name} program"
     }
   },
@@ -1061,7 +1061,7 @@
     },
     "paywall": {
       "title": "Go PRO to unlock everything",
-      "subtitle": "This section is for subscribers. Start your 7-day free trial and unlock all of Xenotif®.",
+      "subtitle": "This section is for PRO members. Go PRO to unlock the AI coach, smartwatch sync and all 10 disciplines.",
       "features": [
         "Unlimited access to all 10 disciplines & programs",
         "Personalized AI coach",
@@ -1070,8 +1070,8 @@
         "Daily reminders & motivation",
         "Smartwatch / Apple Fitness sync"
       ],
-      "cta": "Start my free trial",
-      "trialNote": "7 days free · No commitment · Cancel in 1 click"
+      "cta": "Go PRO",
+      "trialNote": "€9.99/mo · no commitment · cancel in 1 click"
     }
   },
   "about": {
