@@ -1,14 +1,12 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, Suspense } from 'react'
 import { useSearchParams } from 'next/navigation'
-import { useTranslations } from 'next-intl'
+import { useTranslations, useLocale } from 'next-intl'
 import { CheckCircle, Circle, Play, ArrowRight, Lock } from 'lucide-react'
 import { createClient } from '@/lib/supabase/client'
-import { DISCIPLINE_CONTENT } from '@/lib/disciplines'
-import { FREE_DISCIPLINE, FREE_VIDEO_COUNT } from '@/lib/content-access'
+import { DISCIPLINE_CONTENT, type DisciplineContent } from '@/lib/disciplines'
 import { Link } from '@/i18n/navigation'
-import { Suspense } from 'react'
 
 const DISCIPLINES = [
   { slug: 'running-cardio', color: 'orange' },
@@ -29,8 +27,9 @@ const COLOR: Record<string, string> = {
   lime: 'bg-sport-lime text-[#0A0B0F] border-sport-lime',
 }
 
-function ProgrammeContent({ isPro }: { isPro: boolean }) {
+function ProgrammeContent({ isPro, freeSlugs }: { isPro: boolean; freeSlugs: string[] }) {
   const t = useTranslations('dashboard.programme')
+  const locale = useLocale()
   const searchParams = useSearchParams()
   const initialSlug = searchParams.get('discipline') ?? 'running-cardio'
 
@@ -38,17 +37,18 @@ function ProgrammeContent({ isPro }: { isPro: boolean }) {
   const [progress, setProgress] = useState<Record<string, boolean>>({})
   const [userId, setUserId] = useState<string | null>(null)
   const [loading, setLoading] = useState(true)
+  const [content, setContent] = useState<DisciplineContent>(DISCIPLINE_CONTENT[initialSlug])
+  const [videoMinPlans, setVideoMinPlans] = useState<string[]>([])
 
-  const content = DISCIPLINE_CONTENT[selected]
-
-  const unlocked = (slug: string) => isPro || slug === FREE_DISCIPLINE
+  const unlocked = (slug: string) => isPro || freeSlugs.includes(slug)
   const selectedUnlocked = unlocked(selected)
 
+  // Progression de l'utilisateur pour la discipline sélectionnée.
   useEffect(() => {
     async function load() {
       const supabase = createClient()
       const { data: { user } } = await supabase.auth.getUser()
-      if (!user) return
+      if (!user) { setLoading(false); return }
       setUserId(user.id)
       const { data } = await supabase.from('progress').select('*').eq('user_id', user.id).eq('discipline', selected)
       const map: Record<string, boolean> = {}
@@ -56,10 +56,23 @@ function ProgrammeContent({ isPro }: { isPro: boolean }) {
       setProgress(map)
       setLoading(false)
     }
-    // eslint-disable-next-line react-hooks/set-state-in-effect -- état de chargement avant un fetch déclenché par le changement de discipline
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- état de chargement avant fetch déclenché par le changement de discipline
     setLoading(true)
     load()
   }, [selected])
+
+  // Contenu : repli statique immédiat, puis base via l'API (repli si null/échec).
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- repli statique immédiat au changement d'onglet
+    setContent(DISCIPLINE_CONTENT[selected])
+    setVideoMinPlans([])
+    let alive = true
+    fetch(`/api/disciplines/${selected}?locale=${locale}`)
+      .then(r => (r.ok ? r.json() : null))
+      .then(d => { if (alive && d?.content) { setContent(d.content as DisciplineContent); setVideoMinPlans((d.videoMinPlans ?? []) as string[]) } })
+      .catch(() => { /* repli statique déjà en place */ })
+    return () => { alive = false }
+  }, [selected, locale])
 
   async function toggleSession(week: number, sessionName: string, completed: boolean) {
     if (!userId) return
@@ -75,6 +88,8 @@ function ProgrammeContent({ isPro }: { isPro: boolean }) {
   const totalSessions = (content?.program ?? []).reduce((a, w) => a + w.sessions.length, 0)
   const completedCount = Object.values(progress).filter(Boolean).length
   const pct = totalSessions > 0 ? Math.round((completedCount / totalSessions) * 100) : 0
+  // Nombre de vidéos visibles pour un non-PRO (depuis la base ; repli 1 pour une discipline gratuite).
+  const freeVideoCount = videoMinPlans.length > 0 ? videoMinPlans.filter(p => p === 'free').length : 1
 
   return (
     <div className="p-6 md:p-8 max-w-4xl mx-auto pb-24 md:pb-8">
@@ -145,7 +160,7 @@ function ProgrammeContent({ isPro }: { isPro: boolean }) {
               <Play size={14} className="text-sport-orange ml-0.5" />
             </div>
             <div>
-              <p className="text-sm font-bold text-white">{t('videosAvailable', { count: isPro ? content.videos.length : FREE_VIDEO_COUNT })}</p>
+              <p className="text-sm font-bold text-white">{t('videosAvailable', { count: isPro ? content.videos.length : freeVideoCount })}</p>
               <p className="text-[11px] text-sport-gray">{isPro ? t('videosSubtitle') : t('videosFreeHint')}</p>
             </div>
           </div>
@@ -202,6 +217,6 @@ function ProgrammeContent({ isPro }: { isPro: boolean }) {
   )
 }
 
-export function ProgrammeClient({ isPro }: { isPro: boolean }) {
-  return <Suspense fallback={<div className="p-8 text-sport-gray text-sm" />}><ProgrammeContent isPro={isPro} /></Suspense>
+export function ProgrammeClient({ isPro, freeSlugs }: { isPro: boolean; freeSlugs: string[] }) {
+  return <Suspense fallback={<div className="p-8 text-sport-gray text-sm" />}><ProgrammeContent isPro={isPro} freeSlugs={freeSlugs} /></Suspense>
 }
