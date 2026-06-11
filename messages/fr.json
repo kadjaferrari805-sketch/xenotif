@@ -768,7 +768,11 @@
       "videosSubtitle": "Tutoriels techniques & séances guidées",
       "phase": "Phase {n}",
       "markDone": "Marquer comme complété : {name}",
-      "markUndone": "Marquer comme non complété : {name}"
+      "markUndone": "Marquer comme non complété : {name}",
+      "lockedTitle": "Réservé aux abonnés PRO",
+      "lockedSubtitle": "{name} fait partie des disciplines PRO. Passe à PRO pour débloquer les 10 disciplines.",
+      "lockedCta": "Passer à PRO",
+      "videosFreeHint": "Aperçu gratuit · plus de vidéos avec PRO"
     },
     "coach": {
       "title": "Coach IA",

@@ -768,7 +768,11 @@
       "videosSubtitle": "Technik-Tutorials & geführte Einheiten",
       "phase": "Phase {n}",
       "markDone": "Als abgeschlossen markieren: {name}",
-      "markUndone": "Als nicht abgeschlossen markieren: {name}"
+      "markUndone": "Als nicht abgeschlossen markieren: {name}",
+      "lockedTitle": "Nur für PRO-Mitglieder",
+      "lockedSubtitle": "{name} ist eine PRO-Disziplin. Hol dir PRO, um alle 10 Disziplinen freizuschalten.",
+      "lockedCta": "Auf PRO upgraden",
+      "videosFreeHint": "Kostenlose Vorschau · mehr Videos mit PRO"
     },
     "coach": {
       "title": "KI-Coach",

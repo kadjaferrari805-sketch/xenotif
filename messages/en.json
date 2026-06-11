@@ -768,7 +768,11 @@
       "videosSubtitle": "Technical tutorials & guided sessions",
       "phase": "Phase {n}",
       "markDone": "Mark as done: {name}",
-      "markUndone": "Mark as not done: {name}"
+      "markUndone": "Mark as not done: {name}",
+      "lockedTitle": "PRO members only",
+      "lockedSubtitle": "{name} is a PRO discipline. Go PRO to unlock all 10 disciplines.",
+      "lockedCta": "Upgrade to PRO",
+      "videosFreeHint": "Free preview · more videos with PRO"
     },
     "coach": {
       "title": "AI Coach",

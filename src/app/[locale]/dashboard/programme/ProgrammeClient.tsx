@@ -3,9 +3,10 @@
 import { useState, useEffect } from 'react'
 import { useSearchParams } from 'next/navigation'
 import { useTranslations } from 'next-intl'
-import { CheckCircle, Circle, Play, ArrowRight } from 'lucide-react'
+import { CheckCircle, Circle, Play, ArrowRight, Lock } from 'lucide-react'
 import { createClient } from '@/lib/supabase/client'
 import { DISCIPLINE_CONTENT } from '@/lib/disciplines'
+import { FREE_DISCIPLINE, FREE_VIDEO_COUNT } from '@/lib/content-access'
 import { Link } from '@/i18n/navigation'
 import { Suspense } from 'react'
 
@@ -28,7 +29,7 @@ const COLOR: Record<string, string> = {
   lime: 'bg-sport-lime text-[#0A0B0F] border-sport-lime',
 }
 
-function ProgrammeContent() {
+function ProgrammeContent({ isPro }: { isPro: boolean }) {
   const t = useTranslations('dashboard.programme')
   const searchParams = useSearchParams()
   const initialSlug = searchParams.get('discipline') ?? 'running-cardio'
@@ -39,6 +40,9 @@ function ProgrammeContent() {
   const [loading, setLoading] = useState(true)
 
   const content = DISCIPLINE_CONTENT[selected]
+
+  const unlocked = (slug: string) => isPro || slug === FREE_DISCIPLINE
+  const selectedUnlocked = unlocked(selected)
 
   useEffect(() => {
     async function load() {
@@ -78,21 +82,39 @@ function ProgrammeContent() {
 
       {/* Discipline tabs */}
       <div className="flex gap-2 flex-wrap mb-8">
-        {DISCIPLINES.map(d => (
-          <button
-            key={d.slug}
-            onClick={() => setSelected(d.slug)}
-            className={`px-4 py-2 rounded-full text-xs font-bold transition-all border ${
-              selected === d.slug
-                ? COLOR[d.color]
-                : 'border-sport-border text-sport-gray hover:text-white hover:border-sport-gray bg-transparent'
-            }`}
-          >
-            {t(`disciplines.${d.slug}`)}
-          </button>
-        ))}
+        {DISCIPLINES.map(d => {
+          const locked = !unlocked(d.slug)
+          return (
+            <button
+              key={d.slug}
+              onClick={() => setSelected(d.slug)}
+              className={`px-4 py-2 rounded-full text-xs font-bold transition-all border inline-flex items-center gap-1.5 ${
+                selected === d.slug
+                  ? COLOR[d.color]
+                  : 'border-sport-border text-sport-gray hover:text-white hover:border-sport-gray bg-transparent'
+              }`}
+            >
+              {locked && <Lock size={11} aria-hidden="true" />}
+              {t(`disciplines.${d.slug}`)}
+            </button>
+          )
+        })}
       </div>
 
+      {!selectedUnlocked && (
+        <div className="rounded-2xl border border-sport-border bg-sport-card p-8 text-center">
+          <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-sport-orange/15 border border-sport-orange/30">
+            <Lock size={20} className="text-sport-orange" aria-hidden="true" />
+          </div>
+          <p className="text-lg font-black text-white mb-1">{t('lockedTitle')}</p>
+          <p className="text-sport-gray text-sm mb-5">{t('lockedSubtitle', { name: t(`disciplines.${selected}`) })}</p>
+          <Link href="/dashboard/abonnement" className="inline-flex items-center gap-2 rounded-full bg-sport-orange px-5 py-3 text-sm font-bold text-white hover:bg-orange-600 transition-all">
+            {t('lockedCta')} <ArrowRight size={14} aria-hidden="true" />
+          </Link>
+        </div>
+      )}
+
+      {selectedUnlocked && (<>
       {/* Progress bar */}
       <div className="bg-sport-card border border-sport-border rounded-2xl p-5 mb-8">
         <div className="flex items-center justify-between mb-3">
@@ -123,8 +145,8 @@ function ProgrammeContent() {
               <Play size={14} className="text-sport-orange ml-0.5" />
             </div>
             <div>
-              <p className="text-sm font-bold text-white">{t('videosAvailable', { count: content.videos.length })}</p>
-              <p className="text-[11px] text-sport-gray">{t('videosSubtitle')}</p>
+              <p className="text-sm font-bold text-white">{t('videosAvailable', { count: isPro ? content.videos.length : FREE_VIDEO_COUNT })}</p>
+              <p className="text-[11px] text-sport-gray">{isPro ? t('videosSubtitle') : t('videosFreeHint')}</p>
             </div>
           </div>
           <ArrowRight size={14} className="text-sport-gray group-hover:text-sport-orange transition-colors" />
@@ -175,10 +197,11 @@ function ProgrammeContent() {
           ))}
         </div>
       )}
+      </>)}
     </div>
   )
 }
 
-export function ProgrammeClient() {
-  return <Suspense fallback={<div className="p-8 text-sport-gray text-sm" />}><ProgrammeContent /></Suspense>
+export function ProgrammeClient({ isPro }: { isPro: boolean }) {
+  return <Suspense fallback={<div className="p-8 text-sport-gray text-sm" />}><ProgrammeContent isPro={isPro} /></Suspense>
 }
