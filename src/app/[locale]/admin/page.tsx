@@ -1,4 +1,5 @@
 import { redirect } from 'next/navigation'
+import { Link } from '@/i18n/navigation'
 import { createClient, createServiceClient } from '@/lib/supabase/server'
 import { Users, TrendingUp, Euro, CheckCircle, Clock, XCircle } from 'lucide-react'
 import { AdminEmailForm } from '@/components/admin/EmailForm'
@@ -147,6 +148,12 @@ export default async function AdminPage() {
           )}
         </div>
       </div>
+
+      {/* Édition du contenu (CMS) */}
+      <Link href="/admin/content" className="mt-10 flex items-center justify-between rounded-2xl border border-sport-border bg-sport-card px-6 py-5 hover:border-sport-orange/40 transition-all">
+        <span className="text-sm font-black text-white">Éditer le contenu des disciplines</span>
+        <span className="text-xs text-sport-orange font-bold">Ouvrir →</span>
+      </Link>
 
       {/* Email broadcast */}
       <AdminEmailForm />
