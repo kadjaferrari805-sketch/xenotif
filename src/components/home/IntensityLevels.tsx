@@ -14,7 +14,7 @@ const LEVEL_STYLE = [
   { id: 'debutant',      emoji: '🌱', border: 'border-emerald-500/30',  text: 'text-emerald-400', bar: 'bg-emerald-500',  width: '25%' },
   { id: 'intermediaire', emoji: '⚡', border: 'border-sport-blue/30',   text: 'text-sport-blue',  bar: 'bg-sport-blue',   width: '55%' },
   { id: 'avance',        emoji: '🔥', border: 'border-sport-orange/30', text: 'text-sport-orange', bar: 'bg-sport-orange', width: '80%' },
-  { id: 'elite',         emoji: '🏆', border: 'border-sport-lime/30',   text: 'text-sport-lime',  bar: 'bg-sport-lime',   width: '100%' },
+  { id: 'champion',      emoji: '🏆', border: 'border-sport-lime/30',   text: 'text-sport-lime',  bar: 'bg-sport-lime',   width: '100%' },
 ]
 
 type LevelText = { label: string; desc: string; detail: string }

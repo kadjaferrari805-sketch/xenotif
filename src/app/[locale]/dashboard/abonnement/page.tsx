@@ -188,7 +188,7 @@ export default function AbonnementPage() {
     )
   }
 
-  const planName = sub.plan === 'elite' ? (locale === 'en' ? 'Elite' : 'Élite') : 'Pro'
+  const planName = 'Pro'
 
   return (
     <div className="p-6 md:p-8 max-w-2xl mx-auto pb-24 md:pb-8">
@@ -235,7 +235,7 @@ export default function AbonnementPage() {
             <StatusBadge status={isCanceled ? 'canceled' : sub.status} label={statusLabel(isCanceled ? 'canceled' : sub.status)} />
           </div>
           <div className="text-right">
-            <p className="text-2xl font-black text-white">{sub.plan === 'elite' ? '24,99 €' : '9,99 €'}</p>
+            <p className="text-2xl font-black text-white">{'9,99 €'}</p>
             <p className="text-[11px] text-sport-gray">{t('perMonth')}</p>
           </div>
         </div>
@@ -267,7 +267,7 @@ export default function AbonnementPage() {
       <div className="bg-sport-card border border-sport-border rounded-2xl p-6 mb-6">
         <h3 className="text-sm font-black text-white mb-4">{t('includedTitle')}</h3>
         <ul className="space-y-2.5">
-          {((sub.plan === 'elite' ? t.raw('featuresElite') : t.raw('featuresPro')) as string[]).map(item => (
+          {(t.raw('featuresPro') as string[]).map(item => (
             <li key={item} className="flex items-center gap-2.5 text-sm text-sport-gray">
               <CheckCircle size={13} className="text-emerald-400 shrink-0" />
               {item}

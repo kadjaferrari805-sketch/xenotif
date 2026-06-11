@@ -9,7 +9,7 @@ import { useRouter } from '@/i18n/navigation'
 import { SectionHeader } from '@/components/ui/SectionHeader'
 import { Tilt3D } from '@/components/premium/Tilt3D'
 
-type PlanId = 'gratuit' | 'pro' | 'elite'
+type PlanId = 'gratuit' | 'pro'
 type Period = 'monthly' | 'annual'
 
 // Données structurelles (id, prix, mise en avant). Les textes (nom, période,
@@ -17,7 +17,6 @@ type Period = 'monthly' | 'annual'
 const PLANS: { id: PlanId; priceMonthly: string; priceAnnual: string; totalAnnual?: string; highlight: boolean }[] = [
   { id: 'gratuit', priceMonthly: '0 €',     priceAnnual: '0 €',     highlight: false },
   { id: 'pro',     priceMonthly: '9,99 €',  priceAnnual: '7,99 €',  totalAnnual: '95,88 €',  highlight: true },
-  { id: 'elite',   priceMonthly: '24,99 €', priceAnnual: '19,99 €', totalAnnual: '239,88 €', highlight: false },
 ]
 
 type PlanText = { name: string; period: string; badge: string; description: string; cta: string; features: string[] }
@@ -86,7 +85,7 @@ export function Pricing() {
           </button>
         </div>
 
-        <div ref={ref} className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10">
+        <div ref={ref} className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-10">
           {PLANS.map((plan, i) => {
             const tr = plans[i]
             return (

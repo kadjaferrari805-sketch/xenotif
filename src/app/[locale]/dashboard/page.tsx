@@ -99,8 +99,7 @@ export default async function DashboardPage() {
   const dateLabel = now.toLocaleDateString(dateLocale, { weekday: 'long', day: 'numeric', month: 'long' })
 
   const disciplineSlugs = ['running-cardio', 'musculation', 'hiit', 'cyclisme', 'natation', 'crossfit']
-  const plan = subscription?.plan ?? 'pro'
-  const planLabel = plan === 'elite' ? (locale === 'en' ? 'Elite' : 'Élite') : 'Pro'
+  const planLabel = 'Pro'
   const status = subscription?.status ?? 'trialing'
 
   return (

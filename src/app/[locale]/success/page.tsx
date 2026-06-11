@@ -42,8 +42,7 @@ async function syncSubscription(sessionId: string) {
     }
     if (!userId) return
 
-    const plan = session.metadata?.plan
-      ?? ((sub.items.data[0]?.price?.unit_amount ?? 0) > 1000 ? 'elite' : 'pro')
+    const plan = session.metadata?.plan ?? 'pro'
 
     await service.from('subscriptions').upsert({
       user_id: userId,
@@ -91,7 +90,7 @@ export default async function SuccessPage({
         <h1 className="text-4xl md:text-5xl font-black text-white mb-4 leading-tight">
           Bienvenue dans
           <br />
-          <span className="text-sport-orange">l&apos;élite Xenotif® !</span>
+          <span className="text-sport-orange">la communauté Xenotif® !</span>
         </h1>
 
         <p className="text-sport-gray text-sm leading-relaxed mb-12 max-w-sm mx-auto">

@@ -22,7 +22,7 @@ export default async function AdminPage() {
   ])
 
   const subs = subscriptions ?? []
-  const totalRevenue = subs.filter(s => s.status === 'active').reduce((acc, s) => acc + (s.plan === 'elite' ? 24.99 : 9.99), 0)
+  const totalRevenue = subs.filter(s => s.status === 'active').reduce((acc) => acc + 9.99, 0)
   const activeCount  = subs.filter(s => s.status === 'active').length
   const trialCount   = subs.filter(s => s.status === 'trialing').length
   const cancelCount  = subs.filter(s => s.status === 'canceled').length
@@ -75,7 +75,6 @@ export default async function AdminPage() {
       <div className="grid md:grid-cols-3 gap-5 mb-10">
         {[
           { label: 'Plan Pro', count: subs.filter(s => s.plan === 'pro').length, revenue: subs.filter(s => s.plan === 'pro' && s.status === 'active').length * 9.99 },
-          { label: 'Plan Élite', count: subs.filter(s => s.plan === 'elite').length, revenue: subs.filter(s => s.plan === 'elite' && s.status === 'active').length * 24.99 },
           { label: 'Résiliations', count: cancelCount, revenue: 0 },
         ].map(({ label, count, revenue }) => (
           <div key={label} className="bg-sport-card border border-sport-border rounded-2xl p-5">
