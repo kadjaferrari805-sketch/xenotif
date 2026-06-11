@@ -2,6 +2,8 @@ import { redirect } from 'next/navigation'
 import { getTranslations, getLocale } from 'next-intl/server'
 import { Link } from '@/i18n/navigation'
 import { createClient, createServiceClient } from '@/lib/supabase/server'
+import { getAccess } from '@/lib/access'
+import { Paywall } from '@/components/dashboard/Paywall'
 import { CheckCircle, Flame, TrendingUp, ArrowRight, Zap, Clock, Award } from 'lucide-react'
 import { DISCIPLINE_CONTENT } from '@/lib/disciplines'
 import { TodayActivity, type TrendDay } from '@/components/dashboard/TodayActivity'
@@ -23,6 +25,10 @@ export default async function DashboardPage() {
   const supabase = await createClient()
   const { data: { user } } = await supabase.auth.getUser()
   if (!user) redirect('/auth/signin')
+
+  // Contenu réservé aux abonnés (essai/actif) ; les non-abonnés voient le paywall.
+  const access = await getAccess()
+  if (!access.isPro) return <Paywall />
 
   const t = await getTranslations('dashboard')
   const locale = await getLocale()
