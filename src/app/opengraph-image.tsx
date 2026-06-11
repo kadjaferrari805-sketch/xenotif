@@ -35,7 +35,6 @@ export default function OpengraphImage() {
           background: '#0A0B0F',
         }}
       >
-        {/* eslint-disable-next-line @next/next/no-img-element */}
         <img width={180} height={180} src={markSrc} alt="" />
         <div
           style={{
