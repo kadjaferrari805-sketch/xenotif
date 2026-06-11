@@ -102,6 +102,20 @@ function SignUpForm() {
       return
     }
 
+    // Plan gratuit : la confirmation email étant désactivée, l'utilisateur est connecté
+    // immédiatement (session présente). On envoie l'email de bienvenue puis on l'emmène
+    // sur son espace. Si la confirmation est encore active (pas de session), on garde
+    // l'écran « vérifie ta boîte mail ».
+    if (signUpData.session) {
+      await fetch('/api/welcome', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ locale }),
+      }).catch(() => {})
+      router.replace('/dashboard')
+      return
+    }
+
     setDone(true)
   }
 
