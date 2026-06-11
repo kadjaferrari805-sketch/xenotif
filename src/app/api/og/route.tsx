@@ -2,10 +2,10 @@ import { ImageResponse } from 'next/og'
 import { readFileSync } from 'node:fs'
 import { join } from 'node:path'
 
-// Image OG générée à la compilation (aucune API request-time → statiquement optimisée).
-export const alt = 'XENOTIF® — Coaching fitness premium'
-export const size = { width: 1200, height: 630 }
-export const contentType = 'image/png'
+// Image OG/Twitter servie sous /api/og : hors du proxy next-intl (matcher exclut /api),
+// donc URL stable, 200 direct, sans préfixe de locale ni redirection (partage 100 % propre).
+export const runtime = 'nodejs'
+export const dynamic = 'force-static'
 
 // Orbitron ExtraBold — TTF statique (les polices variables font planter le parseur de @vercel/og).
 const orbitron = readFileSync(join(process.cwd(), 'src/app/_assets/Orbitron-ExtraBold.ttf'))
@@ -21,7 +21,7 @@ const MARK =
   '<line x1="17.5" y1="17.5" x2="30.5" y2="30.5"/><line x1="30.5" y1="17.5" x2="17.5" y2="30.5"/></g></svg>'
 const markSrc = `data:image/svg+xml;base64,${Buffer.from(MARK).toString('base64')}`
 
-export default function OpengraphImage() {
+export function GET() {
   return new ImageResponse(
     (
       <div
@@ -35,6 +35,7 @@ export default function OpengraphImage() {
           background: '#0A0B0F',
         }}
       >
+        {/* eslint-disable-next-line @next/next/no-img-element */}
         <img width={180} height={180} src={markSrc} alt="" />
         <div
           style={{
@@ -66,7 +67,8 @@ export default function OpengraphImage() {
       </div>
     ),
     {
-      ...size,
+      width: 1200,
+      height: 630,
       fonts: [{ name: 'Orbitron', data: orbitron, weight: 800, style: 'normal' }],
     },
   )
