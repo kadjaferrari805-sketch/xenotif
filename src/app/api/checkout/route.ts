@@ -60,18 +60,9 @@ export async function POST(req: NextRequest) {
             },
           }],
       allow_promotion_codes: true,
-      // La carte est OBLIGATOIRE dès l'inscription (même pendant l'essai gratuit),
-      // pour que Stripe puisse débiter automatiquement à la fin des 7 jours.
+      // Pas d'essai : la carte est requise et débitée immédiatement à l'abonnement.
       payment_method_collection: 'always',
       subscription_data: {
-        trial_period_days: 7,
-        // Comportement à la fin de l'essai : l'abonnement étant en
-        // `charge_automatically` (défaut), Stripe débite automatiquement la carte
-        // enregistrée. Si jamais aucune carte n'est disponible, on annule plutôt
-        // que de laisser une facture impayée traîner.
-        trial_settings: {
-          end_behavior: { missing_payment_method: 'cancel' },
-        },
         metadata: { plan, period, locale, user_id: userId ?? '' },
       },
       metadata: { plan, period, locale, user_id: userId ?? '' },
