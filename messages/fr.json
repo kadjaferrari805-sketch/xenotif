@@ -337,6 +337,7 @@
       "title": "Apprends avec les meilleurs",
       "subtitle": "Tutoriels techniques, séances guidées et conseils d'experts — clique pour lancer une vidéo.",
       "unavailable": "Vidéo non disponible",
+      "locked": "Réservé aux abonnés PRO",
       "playAria": "Lancer la vidéo : {title}"
     },
     "guide": {

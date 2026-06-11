@@ -337,6 +337,7 @@
       "title": "Learn from the best",
       "subtitle": "Technical tutorials, guided sessions and expert tips — click to play a video.",
       "unavailable": "Video unavailable",
+      "locked": "PRO members only",
       "playAria": "Play the video: {title}"
     },
     "guide": {

@@ -10,7 +10,7 @@ import {
 } from 'lucide-react'
 import { FEATURES } from '@/lib/constants'
 import { getDisciplineContent, getDisciplineMeta } from '@/lib/disciplines'
-import { VideoCard } from '@/components/disciplines/VideoCard'
+import { VideoGallery } from '@/components/disciplines/VideoGallery'
 import { DisciplineFAQSection } from '@/components/disciplines/DisciplineFAQ'
 import { SubscriberGate } from '@/components/disciplines/SubscriberGate'
 import { getDisciplineFromDb } from '@/lib/content-db'
@@ -94,6 +94,8 @@ export default async function DisciplinePage({ params }: { params: Promise<{ slu
   const photo   = DISC_PHOTOS[slug] ?? ''
   const content = db?.content ?? getDisciplineContent(locale)[slug]
   const minPlan = db?.minPlan ?? (slug === 'musculation' ? 'free' : 'pro')
+  // min_plan par vidéo (base) ; repli : 1ʳᵉ vidéo gratuite si la discipline est gratuite, sinon tout PRO.
+  const videoMinPlans = db?.videoMinPlans ?? (content?.videos ?? []).map((_, i) => (minPlan === 'free' && i === 0 ? 'free' : 'pro'))
   const color   = base.color
   const { title, tag, description, stats, levels } = meta
 
@@ -174,21 +176,7 @@ export default async function DisciplinePage({ params }: { params: Promise<{ slu
               {t('videos.subtitle')}
             </p>
 
-            <SubscriberGate minPlan={minPlan}>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-              {content.videos.map((video) => (
-                <VideoCard
-                  key={video.youtubeIds[0]}
-                  youtubeIds={video.youtubeIds}
-                  title={video.title}
-                  description={video.description}
-                  duration={video.duration}
-                  level={video.level}
-                  accentColor={COLOR_VIDEO[color]}
-                />
-              ))}
-            </div>
-            </SubscriberGate>
+            <VideoGallery videos={content.videos} videoMinPlans={videoMinPlans} accentColor={COLOR_VIDEO[color]} />
           </div>
         </section>
       )}
