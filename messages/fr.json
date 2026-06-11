@@ -1062,6 +1062,20 @@
         "boxing": "Boxe",
         "stretching": "Stretching"
       }
+    },
+    "paywall": {
+      "title": "Passe à PRO pour tout débloquer",
+      "subtitle": "Cette section est réservée aux abonnés. Commence ton essai gratuit de 7 jours et accède à l'intégralité de Xenotif®.",
+      "features": [
+        "Accès illimité aux 10 disciplines & programmes",
+        "Coach IA personnalisé",
+        "Suivi & statistiques de progression",
+        "Vidéos d'entraînement HD",
+        "Rappels & motivation quotidienne",
+        "Synchronisation montre / Apple Fitness"
+      ],
+      "cta": "Démarrer mon essai gratuit",
+      "trialNote": "7 jours gratuits · Sans engagement · Annulable en 1 clic"
     }
   },
   "about": {

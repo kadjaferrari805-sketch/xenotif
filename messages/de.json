@@ -1062,6 +1062,20 @@
         "boxing": "Boxen",
         "stretching": "Stretching"
       }
+    },
+    "paywall": {
+      "title": "Hol dir PRO und schalte alles frei",
+      "subtitle": "Dieser Bereich ist Abonnenten vorbehalten. Starte deine 7-tägige Testphase und nutze Xenotif® komplett.",
+      "features": [
+        "Unbegrenzter Zugang zu allen 10 Disziplinen & Programmen",
+        "Personalisierter KI-Coach",
+        "Fortschritt & Statistiken",
+        "HD-Trainingsvideos",
+        "Tägliche Erinnerungen & Motivation",
+        "Smartwatch-/Apple-Fitness-Synchronisierung"
+      ],
+      "cta": "Kostenlose Testphase starten",
+      "trialNote": "7 Tage gratis · Ohne Verpflichtung · Jederzeit kündbar"
     }
   },
   "about": {

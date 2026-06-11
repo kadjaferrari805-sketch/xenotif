@@ -1062,6 +1062,20 @@
         "boxing": "Boxing",
         "stretching": "Stretching"
       }
+    },
+    "paywall": {
+      "title": "Go PRO to unlock everything",
+      "subtitle": "This section is for subscribers. Start your 7-day free trial and unlock all of Xenotif®.",
+      "features": [
+        "Unlimited access to all 10 disciplines & programs",
+        "Personalized AI coach",
+        "Progress tracking & statistics",
+        "HD training videos",
+        "Daily reminders & motivation",
+        "Smartwatch / Apple Fitness sync"
+      ],
+      "cta": "Start my free trial",
+      "trialNote": "7 days free · No commitment · Cancel in 1 click"
     }
   },
   "about": {
