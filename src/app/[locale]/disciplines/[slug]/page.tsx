@@ -13,6 +13,7 @@ import { getDisciplineContent, getDisciplineMeta } from '@/lib/disciplines'
 import { VideoCard } from '@/components/disciplines/VideoCard'
 import { DisciplineFAQSection } from '@/components/disciplines/DisciplineFAQ'
 import { SubscriberGate } from '@/components/disciplines/SubscriberGate'
+import { getDisciplineFromDb } from '@/lib/content-db'
 
 /* ── Static data ─────────────────────────────────────────────── */
 
@@ -83,13 +84,15 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 export default async function DisciplinePage({ params }: { params: Promise<{ slug: string; locale: string }> }) {
   const { slug, locale } = await params
   const base = FEATURES.find((f) => f.slug === slug)
-  const meta = getDisciplineMeta(slug, locale)
+  // B2 : Musculation est servie depuis la base (repli sur le statique si la base est vide).
+  const db = slug === 'musculation' ? await getDisciplineFromDb(slug, locale) : null
+  const meta = db?.meta ?? getDisciplineMeta(slug, locale)
   if (!base || !meta) notFound()
 
   const t = await getTranslations('disciplines')
 
   const photo   = DISC_PHOTOS[slug] ?? ''
-  const content = getDisciplineContent(locale)[slug]
+  const content = db?.content ?? getDisciplineContent(locale)[slug]
   const color   = base.color
   const { title, tag, description, stats, levels } = meta
 

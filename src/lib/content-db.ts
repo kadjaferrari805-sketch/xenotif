@@ -44,7 +44,9 @@ export function assembleDiscipline(
 }
 
 // I/O : lit les 3 tables (service-role, fonctionne au build SSG) puis assemble.
+// Repli sûr : si l'env Supabase manque (build local sans clés), renvoie null → contenu statique.
 export async function getDisciplineFromDb(slug: string, locale: string): Promise<DbDiscipline | null> {
+  if (!process.env.NEXT_PUBLIC_SUPABASE_URL || !process.env.SUPABASE_SERVICE_ROLE_KEY) return null
   const supabase = await createServiceClient()
   const [{ data: disc }, { data: i18n }, { data: videos }] = await Promise.all([
     supabase.from('content_disciplines').select('slug,min_plan,color,icon,sort_order').eq('slug', slug).maybeSingle(),
