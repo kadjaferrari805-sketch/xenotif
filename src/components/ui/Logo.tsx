@@ -22,39 +22,44 @@ export function XenotifMark({ size = 36 }: { size?: number }) {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       aria-hidden="true"
+      className="drop-shadow-[0_2px_12px_rgba(249,115,22,0.40)]"
     >
       <defs>
-        <linearGradient id="xeno-grad" x1="0" y1="0" x2="48" y2="48" gradientUnits="userSpaceOnUse">
-          <stop offset="0%" stopColor="#FF8C3A" />
-          <stop offset="100%" stopColor="#F97316" />
+        {/* Dégradé riche à 3 teintes pour la profondeur */}
+        <linearGradient id="xeno-grad" x1="2" y1="0" x2="46" y2="48" gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stopColor="#FFB266" />
+          <stop offset="52%" stopColor="#F97316" />
+          <stop offset="100%" stopColor="#EA580C" />
         </linearGradient>
-        <linearGradient id="xeno-shine" x1="0" y1="0" x2="0" y2="48" gradientUnits="userSpaceOnUse">
-          <stop offset="0%" stopColor="#ffffff" stopOpacity="0.18" />
+        {/* Brillance haute, douce */}
+        <linearGradient id="xeno-shine" x1="0" y1="0" x2="0" y2="30" gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stopColor="#ffffff" stopOpacity="0.22" />
           <stop offset="100%" stopColor="#ffffff" stopOpacity="0" />
         </linearGradient>
       </defs>
 
-      {/* Background rounded square */}
-      <rect width="48" height="48" rx="12" fill="url(#xeno-grad)" />
+      {/* Carré arrondi */}
+      <rect width="48" height="48" rx="13" fill="url(#xeno-grad)" />
+      {/* Reflet supérieur */}
+      <rect width="48" height="26" rx="13" fill="url(#xeno-shine)" />
+      {/* Liseré interne subtil pour la définition */}
+      <rect x="1" y="1" width="46" height="46" rx="12" fill="none" stroke="#ffffff" strokeOpacity="0.20" strokeWidth="1" />
 
-      {/* Shine overlay */}
-      <rect width="48" height="24" rx="12" fill="url(#xeno-shine)" />
-      <rect x="0" y="12" width="48" height="12" fill="url(#xeno-shine)" />
-
-      {/* Bold X — two crossing bars with cut angles for a sharp athletic look */}
-      {/* Top-left to bottom-right bar */}
-      <path
-        d="M10 10 L22 24 L10 38 L16 38 L24 27 L32 38 L38 38 L26 24 L38 10 L32 10 L24 21 L16 10 Z"
-        fill="white"
-      />
+      {/* X géométrique : deux barres diagonales nettes, croisées au centre */}
+      <g>
+        <rect x="20.4" y="9" width="7.2" height="30" rx="1.6" transform="rotate(45 24 24)" fill="#ffffff" />
+        <rect x="20.4" y="9" width="7.2" height="30" rx="1.6" transform="rotate(-45 24 24)" fill="#ffffff" />
+      </g>
     </svg>
   )
 }
 
 export function XenotifWordmark({ className = '' }: { className?: string }) {
   return (
-    <span className={`font-black tracking-widest uppercase text-white ${className}`}>
-      XENOTIF<span className="text-sport-orange">®</span>
+    <span
+      className={`font-black tracking-[0.16em] uppercase bg-gradient-to-b from-white via-white to-orange-100/90 bg-clip-text text-transparent ${className}`}
+    >
+      XENOTIF<sup className="align-super text-[0.5em] text-sport-orange ml-[0.08em]">®</sup>
     </span>
   )
 }
