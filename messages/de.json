@@ -9,6 +9,34 @@
     "support": "Schneller Support",
     "supportSub": "Ein Team, das zuhört"
   },
+  "coachDemo": {
+    "badge": "KI-Coach",
+    "title": "Entdecke deinen KI-Coach",
+    "subtitle": "Ein persönlicher Coach, der Training, Ernährung und Fortschritt in Echtzeit anpasst.",
+    "replay": "Demo erneut",
+    "you": "Du",
+    "coach": "KI-Coach",
+    "ctaTry": "Coach testen",
+    "intro": "Hallo 👋 Ich bin dein KI-Coach. Was ist heute dein Ziel?",
+    "chips": [
+      {
+        "q": "Ich will abnehmen",
+        "a": "Perfekt. Ich schlage 3 HIIT-Einheiten/Woche (20–30 Min) + 2 Krafteinheiten mit leichtem Kaloriendefizit vor. Die Intensität passe ich an deine Tagesform an."
+      },
+      {
+        "q": "Was nach dem Training essen?",
+        "a": "Innerhalb von 30 Min: ~25 g Protein + Kohlenhydrate (z. B. Whey-Shake + Banane). Ich berechne deine Makros nach Gewicht und Ziel."
+      },
+      {
+        "q": "Diese Woche kein Fortschritt",
+        "a": "Keine Sorge. Ich passe an: +5 % Last bei deinen Hauptübungen und eine aktive Erholungseinheit. Der Fortschritt kommt in 2 Wochen zurück."
+      },
+      {
+        "q": "Pass mein Programm an",
+        "a": "Erledigt: Ich habe deine Woche um deine 3 Slots und die Erholung herum neu organisiert. Du siehst sie in deinem Bereich."
+      }
+    ]
+  },
   "common": {
     "nav": {
       "disciplines": "Disziplinen",

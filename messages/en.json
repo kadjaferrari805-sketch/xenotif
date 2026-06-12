@@ -9,6 +9,34 @@
     "support": "Responsive support",
     "supportSub": "A team that listens"
   },
+  "coachDemo": {
+    "badge": "AI Coach",
+    "title": "Meet your AI Coach",
+    "subtitle": "A personal coach that adapts your workouts, nutrition and progress — in real time.",
+    "replay": "Replay demo",
+    "you": "You",
+    "coach": "AI Coach",
+    "ctaTry": "Try my coach",
+    "intro": "Hi 👋 I'm your AI coach. What's your goal today?",
+    "chips": [
+      {
+        "q": "I want to lose weight",
+        "a": "Great. I suggest 3 HIIT sessions/week (20–30 min) + 2 strength sessions, with a slight calorie deficit. I tune intensity to how you feel each day."
+      },
+      {
+        "q": "What should I eat after training?",
+        "a": "Within 30 min: ~25 g protein + carbs (e.g. whey shake + banana). I compute your macros from your weight and goal."
+      },
+      {
+        "q": "I didn't progress this week",
+        "a": "No worries. I'm adjusting: +5% load on your key lifts and one active-recovery session. Progress returns within 2 weeks."
+      },
+      {
+        "q": "Adapt my program",
+        "a": "Done: I reorganized your week around your 3 slots and recovery. You can see it in your space."
+      }
+    ]
+  },
   "common": {
     "nav": {
       "disciplines": "Disciplines",

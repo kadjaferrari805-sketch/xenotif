@@ -9,6 +9,34 @@
     "support": "Support réactif",
     "supportSub": "Une équipe à l'écoute"
   },
+  "coachDemo": {
+    "badge": "Coach IA",
+    "title": "Découvrez votre Coach IA",
+    "subtitle": "Un coach personnel qui adapte vos séances, votre nutrition et votre progression — en temps réel.",
+    "replay": "Rejouer la démo",
+    "you": "Vous",
+    "coach": "Coach IA",
+    "ctaTry": "Essayer mon coach",
+    "intro": "Salut 👋 Je suis ton coach IA. Quel est ton objectif aujourd'hui ?",
+    "chips": [
+      {
+        "q": "Je veux perdre du poids",
+        "a": "Parfait. Je te propose 3 séances HIIT/semaine (20–30 min) + 2 séances de renforcement, avec un léger déficit calorique. Je règle l'intensité selon ta forme du jour."
+      },
+      {
+        "q": "Que manger après l'effort ?",
+        "a": "Dans les 30 min : ~25 g de protéines + glucides (ex. shaker whey + banane). Je calcule tes macros selon ton poids et ton objectif."
+      },
+      {
+        "q": "Je n'ai pas progressé cette semaine",
+        "a": "Pas d'inquiétude. J'ajuste : +5 % de charge sur tes exercices clés et une séance de récupération active. La progression revient sur 2 semaines."
+      },
+      {
+        "q": "Adapte mon programme",
+        "a": "C'est fait : j'ai réorganisé ta semaine autour de tes 3 créneaux et de ta récupération. Tu peux la voir dans ton espace."
+      }
+    ]
+  },
   "common": {
     "nav": {
       "disciplines": "Disciplines",
