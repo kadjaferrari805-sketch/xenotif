@@ -23,7 +23,7 @@ export default function BoutiquePage() {
     { icon: ShoppingBag, label: t('stats.products'), value: `${products.length}+` },
     { icon: Star, label: t('stats.rating'), value: '4.8/5' },
     { icon: TrendingUp, label: t('stats.customers'), value: t('stats.customersValue') },
-    { icon: Zap, label: t('stats.delivery'), value: '24-48h' },
+    { icon: Zap, label: t('stats.delivery'), value: '24–48h' },
   ]
 
   return (

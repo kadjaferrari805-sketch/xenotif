@@ -7,6 +7,7 @@ import { Link, useRouter } from '@/i18n/navigation'
 import { ArrowRight, CheckCircle, Zap, Eye, EyeOff } from 'lucide-react'
 import { createClient } from '@/lib/supabase/client'
 import { trackMeta } from '@/lib/meta-pixel'
+import { Logo } from '@/components/ui/Logo'
 
 type PlanId = 'gratuit' | 'pro'
 type Period = 'monthly' | 'annual'
@@ -142,10 +143,7 @@ function SignUpForm() {
       <div className="max-w-xl mx-auto">
 
         {/* Logo */}
-        <Link href="/" className="flex items-center justify-center gap-2 mb-10">
-          <span className="w-9 h-9 bg-sport-orange rounded-lg flex items-center justify-center font-black text-white text-sm">X</span>
-          <span className="font-black text-white text-xl tracking-wider">XENOTIF®</span>
-        </Link>
+        <div className="flex justify-center mb-10"><Logo href="/" size="md" /></div>
 
         <div className="text-center mb-8">
           <h1 className="text-3xl font-black text-white mb-2">{t('title')}</h1>
