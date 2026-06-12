@@ -74,7 +74,7 @@ export default async function DashboardLayout({ children }: { children: React.Re
       </aside>
 
       {/* Mobile header */}
-      <div className="md:hidden fixed top-0 left-0 right-0 z-50 bg-sport-card border-b border-sport-border px-4 pb-3 pt-[calc(0.75rem_+_env(safe-area-inset-top))] flex items-center justify-between">
+      <div className="md:hidden fixed top-0 left-0 right-0 z-50 bg-sport-card border-b border-sport-border px-4 pb-3 dash-header-safe flex items-center justify-between">
         <Logo href="/" size="sm" />
         <div className="flex items-center gap-2">
           <NotificationBell align="right" />
@@ -86,12 +86,12 @@ export default async function DashboardLayout({ children }: { children: React.Re
       </div>
 
       {/* Main */}
-      <main className="flex-1 min-w-0 md:pt-0 pt-[calc(3.5rem_+_env(safe-area-inset-top))]">
+      <main className="flex-1 min-w-0 dash-main">
         {children}
       </main>
 
       {/* Mobile bottom nav */}
-      <nav className="md:hidden fixed bottom-0 left-0 right-0 bg-sport-card border-t border-sport-border px-2 pt-2 pb-[calc(0.5rem_+_env(safe-area-inset-bottom))] flex justify-around z-50">
+      <nav className="md:hidden fixed bottom-0 left-0 right-0 bg-sport-card border-t border-sport-border px-2 pt-2 dash-nav-safe flex justify-around z-50">
         {NAV.map(({ href, key, Icon }) => (
           <Link key={href} href={href} className="flex flex-col items-center gap-1 px-3 py-1.5 text-sport-gray hover:text-sport-orange transition-colors">
             <Icon size={18} aria-hidden="true" />

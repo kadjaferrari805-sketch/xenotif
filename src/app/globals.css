@@ -192,3 +192,12 @@
   40%  { filter: drop-shadow(0 0 10px rgba(255, 69, 0, 0.55)); }
   100% { filter: drop-shadow(0 0 0 rgba(255, 69, 0, 0)); }
 }
+
+/* ===== Safe-area (PWA edge-to-edge, viewport-fit=cover) =====
+   env(safe-area-inset-*) vaut 0 hors encoche → aucun effet sur écran normal. */
+.pt-safe { padding-top: env(safe-area-inset-top); }
+.pb-safe { padding-bottom: env(safe-area-inset-bottom); }
+.dash-header-safe { padding-top: calc(0.75rem + env(safe-area-inset-top)); }
+.dash-nav-safe { padding-bottom: calc(0.5rem + env(safe-area-inset-bottom)); }
+.dash-main { padding-top: calc(3.5rem + env(safe-area-inset-top)); }
+@media (min-width: 768px) { .dash-main { padding-top: 0; } }
