@@ -8,6 +8,8 @@ import { ActivityRings } from '@/components/dashboard/smartwatch/ActivityRings'
 import { WeeklyChart } from '@/components/dashboard/smartwatch/WeeklyChart'
 import { PreviewWeightChart } from './PreviewWeightChart'
 import { PreviewNutrition } from './PreviewNutrition'
+import { XpLevelBar } from '@/components/gamification/XpLevelBar'
+import { ChallengesCard } from '@/components/gamification/ChallengesCard'
 import { PREVIEW } from '@/lib/preview-data'
 
 const reveal = {
@@ -38,6 +40,10 @@ export function PreviewDashboard() {
         <motion.div {...reveal} className="mb-8">
           <h1 className="text-2xl md:text-3xl font-black">{t('greeting', { name: PREVIEW.name })}</h1>
           <p className="text-sport-gray text-sm mt-1">{t('subtitle')}</p>
+        </motion.div>
+
+        <motion.div {...reveal} className="mb-8">
+          <XpLevelBar xp={PREVIEW.gamification.xp} levelKey={PREVIEW.gamification.levelKey} xpInLevel={PREVIEW.gamification.xpInLevel} xpForNext={PREVIEW.gamification.xpForNext} />
         </motion.div>
 
         <motion.div {...reveal} className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
@@ -92,6 +98,10 @@ export function PreviewDashboard() {
               </div>
             ))}
           </div>
+        </motion.div>
+
+        <motion.div {...reveal} className="mb-8">
+          <ChallengesCard titleKey="weeklyTitle" challenges={[...PREVIEW.gamification.weekly]} />
         </motion.div>
 
         <motion.div {...reveal} className="bg-gradient-to-br from-sport-orange/20 via-sport-card to-sport-card border border-sport-orange/30 rounded-2xl p-6 text-center">
