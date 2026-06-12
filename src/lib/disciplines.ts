@@ -1336,7 +1336,7 @@ const boxingContent: DisciplineContent = {
 /* ── Stretching ────────────────────────────────────────────────── */
 const stretchingContent: DisciplineContent = {
   tagline: 'Libère ton corps, récupère mieux et bougez sans douleur.',
-  heroStat: '3 200+ pratiquants actifs',
+  heroStat: 'Souplesse, mobilité & récupération',
   guide: {
     technique: {
       emoji: '🤸',
