@@ -20,18 +20,17 @@ describe('Hero', () => {
 
   it('renders all 4 trust items', () => {
     renderWithIntl(<Hero />)
-    expect(screen.getByText(/12K\+ athlètes/i)).toBeInTheDocument()
-    // « Coaching IA » apparaît aussi dans les badges flottants
+    // « 10 disciplines » figure dans le trust ET dans un badge flottant
+    expect(screen.getAllByText(/10 disciplines/i).length).toBeGreaterThanOrEqual(1)
     expect(screen.getAllByText(/coaching ia/i).length).toBeGreaterThanOrEqual(1)
     expect(screen.getByText(/accès illimité/i)).toBeInTheDocument()
-    // « 30 jours » figure dans le trust item ET dans un badge (« dès 30 jours »)
     expect(screen.getAllByText(/30 jours/i).length).toBeGreaterThanOrEqual(1)
   })
 
   it('renders the floating stat badges', () => {
     renderWithIntl(<Hero />)
-    expect(screen.getByText(/\+12 000 membres/i)).toBeInTheDocument()
-    expect(screen.getByText(/4\.9 \/ 5/i)).toBeInTheDocument()
+    expect(screen.getAllByText(/10 disciplines/i).length).toBeGreaterThanOrEqual(1)
+    expect(screen.getByText(/avis vérifiés/i)).toBeInTheDocument()
     expect(screen.getAllByText(/Coaching IA/i).length).toBeGreaterThanOrEqual(1)
   })
 })

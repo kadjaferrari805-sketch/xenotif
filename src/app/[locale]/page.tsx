@@ -1,8 +1,10 @@
 import { Hero } from '@/components/home/Hero'
+import { TrustRow } from '@/components/home/TrustRow'
 import { MarqueeStrip } from '@/components/home/MarqueeStrip'
 import { ProofBar } from '@/components/home/ProofBar'
 import { Features } from '@/components/home/Features'
 import { HowItWorks } from '@/components/home/HowItWorks'
+import { CoachDemo } from '@/components/home/CoachDemo'
 import { IntensityLevels } from '@/components/home/IntensityLevels'
 import { Pricing } from '@/components/home/Pricing'
 import { Reviews } from '@/components/home/Reviews'
@@ -15,10 +17,12 @@ export default function HomePage() {
   return (
     <>
       <Hero />
+      <TrustRow />
       <MarqueeStrip />
       <ProofBar />
       <Features />
       <HowItWorks />
+      <CoachDemo />
       <IntensityLevels />
       <Pricing />
       <Reviews />

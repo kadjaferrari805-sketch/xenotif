@@ -1,7 +1,63 @@
 {
+  "trust": {
+    "securePayment": "Sichere Zahlung",
+    "securePaymentSub": "Stripe · 3D Secure",
+    "guarantee": "30 Tage Garantie",
+    "guaranteeSub": "Geld-zurück",
+    "cancel": "1-Klick-Kündigung",
+    "cancelSub": "Ohne Bindung",
+    "support": "Schneller Support",
+    "supportSub": "Ein Team, das zuhört"
+  },
+  "coachDemo": {
+    "badge": "KI-Coach",
+    "title": "Entdecke deinen KI-Coach",
+    "subtitle": "Ein persönlicher Coach, der Training, Ernährung und Fortschritt in Echtzeit anpasst.",
+    "replay": "Demo erneut",
+    "you": "Du",
+    "coach": "KI-Coach",
+    "ctaTry": "Coach testen",
+    "intro": "Hallo 👋 Ich bin dein KI-Coach. Was ist heute dein Ziel?",
+    "chips": [
+      {
+        "q": "Ich will abnehmen",
+        "a": "Perfekt. Ich schlage 3 HIIT-Einheiten/Woche (20–30 Min) + 2 Krafteinheiten mit leichtem Kaloriendefizit vor. Die Intensität passe ich an deine Tagesform an."
+      },
+      {
+        "q": "Was nach dem Training essen?",
+        "a": "Innerhalb von 30 Min: ~25 g Protein + Kohlenhydrate (z. B. Whey-Shake + Banane). Ich berechne deine Makros nach Gewicht und Ziel."
+      },
+      {
+        "q": "Diese Woche kein Fortschritt",
+        "a": "Keine Sorge. Ich passe an: +5 % Last bei deinen Hauptübungen und eine aktive Erholungseinheit. Der Fortschritt kommt in 2 Wochen zurück."
+      },
+      {
+        "q": "Pass mein Programm an",
+        "a": "Erledigt: Ich habe deine Woche um deine 3 Slots und die Erholung herum neu organisiert. Du siehst sie in deinem Bereich."
+      }
+    ]
+  },
+  "dashboardPreview": {
+    "metaTitle": "Vorschau deines Mitgliederbereichs",
+    "metaDescription": "Eine Vorschau deines künftigen XENOTIF®-Bereichs: Fortschritt, Aktivität, Gewicht, Ernährung, Abzeichen und KI-Coach.",
+    "demoBanner": "Vorschau — Demodaten",
+    "greeting": "Hallo {name} 👋",
+    "subtitle": "Hier ist eine Vorschau deines Mitgliederbereichs.",
+    "weekActivity": "Aktivität dieser Woche",
+    "statSessions": "Einheiten / Woche",
+    "statHours": "Gesamtstunden",
+    "statActiveDays": "Aktive Tage",
+    "statBadges": "Abzeichen",
+    "byDiscipline": "Fortschritt nach Disziplin",
+    "badges": "Freigeschaltete Abzeichen",
+    "ctaTitle": "Und viel mehr mit deinem KI-Coach",
+    "ctaSubtitle": "Personalisierte Programme, Echtzeit-Tracking, angepasste Ernährung. Erstelle dein kostenloses Konto.",
+    "ctaButton": "Kostenloses Konto erstellen"
+  },
   "common": {
     "nav": {
       "disciplines": "Disziplinen",
+      "preview": "Vorschau",
       "programmes": "Programme",
       "boutique": "🛒 Shop",
       "blog": "📝 Blog",
@@ -32,6 +88,7 @@
         "avance": "Erfahren",
         "elite": "Elite",
         "coachingIA": "KI-Coaching",
+        "preview": "Bereich-Vorschau",
         "tarifs": "Preise",
         "faq": "FAQ"
       }
@@ -71,7 +128,7 @@
       "dismiss": "Abonnement-Leiste schließen"
     },
     "metaTitle": "Xenotif® — Forme deinen Körper. Überwinde deine Grenzen.",
-    "metaDescription": "Die Premium-Fitnessplattform — 10 Disziplinen, personalisiertes KI-Coaching, 300+ Einheiten. Schließe dich 12.000+ Athleten an, die ihren Körper mit Xenotif® transformieren.",
+    "metaDescription": "Die Premium-Fitnessplattform — 10 Disziplinen, personalisiertes KI-Coaching, geführte Programme, 30 Tage Garantie. Verwandle deinen Körper mit Xenotif®.",
     "hero": {
       "eyebrow": "Die Premium-Sportplattform",
       "ctaPrimary": "Kostenlos starten",
@@ -84,13 +141,13 @@
         { "tag": "⚡ HIIT & CrossFit", "headline": "DURCHBRICH DEINE GRENZEN.", "accent": "WERDE UNBESIEGBAR." }
       ],
       "badges": [
-        { "label": "+12.000 Mitglieder", "sub": "aktiv" },
+        { "label": "10 Disziplinen", "sub": "zur Wahl" },
         { "label": "KI-Coaching", "sub": "inklusive" },
-        { "label": "4.9 / 5", "sub": "3.200 Bewertungen" },
+        { "label": "Verifizierte Bewertungen", "sub": "100% echt" },
         { "label": "Ergebnisse", "sub": "ab 30 Tagen" }
       ],
       "trust": [
-        { "label": "12K+ Athleten", "sublabel": "aktive Community" },
+        { "label": "10 Disziplinen", "sublabel": "komplettes Training" },
         { "label": "KI-Coaching", "sublabel": "personalisiert" },
         { "label": "Unbegrenzter Zugang", "sublabel": "alle Programme" },
         { "label": "30 Tage", "sublabel": "Geld-zurück-Garantie" }
@@ -112,7 +169,7 @@
         "Schwimmen",
         "CrossFit",
         "KI-Coaching",
-        "12K+ Athleten",
+        "30 Tage Garantie",
         "Garantierte Ergebnisse",
         "Maßgeschneiderte Programme"
       ]
@@ -120,10 +177,10 @@
     "proof": {
       "aria": "Wichtige Zahlen",
       "stats": [
-        { "label": "Aktive Athleten", "sublabel": "weltweit" },
-        { "label": "Programme", "sublabel": "alle Niveaus" },
-        { "label": "Disziplinen", "sublabel": "Rundum-Sport" },
-        { "label": "Zufriedenheit", "sublabel": "3.200+ verifizierte Bewertungen" }
+        { "label": "Disziplinen", "sublabel": "komplettes Training" },
+        { "label": "KI-Coaching", "sublabel": "rund um die Uhr" },
+        { "label": "Garantie", "sublabel": "Geld-zurück" },
+        { "label": "Sichere Zahlung", "sublabel": "Stripe · 3D Secure" }
       ]
     },
     "features": {
@@ -133,16 +190,16 @@
       "discover": "Entdecken",
       "discoverAria": "Disziplin {name} entdecken",
       "items": [
-        { "title": "Running & Cardio", "tag": "Cardio", "description": "Laufprogramme für alle Niveaus — vom 5-km-Lauf bis zum Marathon. Personalisierte Pläne mit GPS-Coaching und Herzfrequenz-Tracking.", "stats": ["+4.200 Läufer", "120+ Pläne", "Ø 12 Wochen"] },
-        { "title": "Krafttraining", "tag": "Kraft", "description": "Masseaufbau, Definition oder Tonisierung — unsere zertifizierten Coaches erstellen dein maßgeschneidertes Programm passend zu deiner Morphologie.", "stats": ["+3.800 Mitglieder", "90+ Programme", "Ø 8 Wochen"] },
-        { "title": "HIIT", "tag": "Fettverbrennung", "description": "Kurze, intensive Einheiten, um maximal Kalorien zu verbrennen und deinen Stoffwechsel dauerhaft in 20 bis 30 Min. anzukurbeln.", "stats": ["+2.100 Mitglieder", "60+ Circuits", "20–30 Min / Einheit"] },
-        { "title": "Radfahren", "tag": "Ausdauer", "description": "Indoor- und Outdoor-Training mit Wattmessung. Vom Sportler bis zum Bergkletterer — ein Plan für jedes Profil.", "stats": ["+1.500 Radfahrer", "45+ Pläne", "Ø 16 Wochen"] },
-        { "title": "Schwimmen", "tag": "Wasser", "description": "Schwimmtechniken, Triathlon-Vorbereitung, Open Water — verbessere dich in allen Stilen mit HD-Video-Drills.", "stats": ["+900 Schwimmer", "30+ Programme", "Ø 10 Wochen"] },
-        { "title": "CrossFit", "tag": "Funktional", "description": "Tägliche WODs, funktionelle Bewegungen und Community-Challenges, um deine Grenzen jede Woche zu erweitern.", "stats": ["+1.800 Athleten", "365 WODs/Jahr", "5× / Woche"] },
-        { "title": "Yoga", "tag": "Wohlbefinden", "description": "Flexibilität, innere Stärke und Achtsamkeit — von Anfänger-Flows bis zu fortgeschrittenem Yoga für einen ausgeglichenen Körper und Geist.", "stats": ["+2.000 Praktizierende", "40+ Sequenzen", "20–60 Min / Einheit"] },
-        { "title": "Boxen", "tag": "Kampf", "description": "Technik, Cardio und Kraft — von den Grundlagen bis zu fortgeschrittenen Kombinationen, um dich körperlich und mental zu transformieren.", "stats": ["+1.200 Boxer", "35+ Programme", "Ø 8 Wochen"] },
-        { "title": "Stretching", "tag": "Mobilität", "description": "Mobilität, Beweglichkeit und optimale Erholung — geführte Dehnroutinen, um Verletzungen vorzubeugen und Leistung zu bringen.", "stats": ["+1.600 Mitglieder", "30+ Routinen", "10–30 Min / Einheit"] },
-        { "title": "Ernährung", "tag": "Ernährung", "description": "Personalisierte Ernährungspläne, Makro-Berechnung und Ernährungsstrategien, um deine sportlichen Ziele zu erreichen.", "stats": ["+3.000 Mitglieder", "50+ Pläne", "Tägliches Tracking"] }
+        { "title": "Running & Cardio", "tag": "Cardio", "description": "Laufprogramme für alle Niveaus — vom 5-km-Lauf bis zum Marathon. Personalisierte Pläne mit GPS-Coaching und Herzfrequenz-Tracking.", "stats": [ "120+ Pläne", "Ø 12 Wochen"] },
+        { "title": "Krafttraining", "tag": "Kraft", "description": "Masseaufbau, Definition oder Tonisierung — unsere zertifizierten Coaches erstellen dein maßgeschneidertes Programm passend zu deiner Morphologie.", "stats": [ "90+ Programme", "Ø 8 Wochen"] },
+        { "title": "HIIT", "tag": "Fettverbrennung", "description": "Kurze, intensive Einheiten, um maximal Kalorien zu verbrennen und deinen Stoffwechsel dauerhaft in 20 bis 30 Min. anzukurbeln.", "stats": [ "60+ Circuits", "20–30 Min / Einheit"] },
+        { "title": "Radfahren", "tag": "Ausdauer", "description": "Indoor- und Outdoor-Training mit Wattmessung. Vom Sportler bis zum Bergkletterer — ein Plan für jedes Profil.", "stats": [ "45+ Pläne", "Ø 16 Wochen"] },
+        { "title": "Schwimmen", "tag": "Wasser", "description": "Schwimmtechniken, Triathlon-Vorbereitung, Open Water — verbessere dich in allen Stilen mit HD-Video-Drills.", "stats": [ "30+ Programme", "Ø 10 Wochen"] },
+        { "title": "CrossFit", "tag": "Funktional", "description": "Tägliche WODs, funktionelle Bewegungen und Community-Challenges, um deine Grenzen jede Woche zu erweitern.", "stats": [ "365 WODs/Jahr", "5× / Woche"] },
+        { "title": "Yoga", "tag": "Wohlbefinden", "description": "Flexibilität, innere Stärke und Achtsamkeit — von Anfänger-Flows bis zu fortgeschrittenem Yoga für einen ausgeglichenen Körper und Geist.", "stats": [ "40+ Sequenzen", "20–60 Min / Einheit"] },
+        { "title": "Boxen", "tag": "Kampf", "description": "Technik, Cardio und Kraft — von den Grundlagen bis zu fortgeschrittenen Kombinationen, um dich körperlich und mental zu transformieren.", "stats": [ "35+ Programme", "Ø 8 Wochen"] },
+        { "title": "Stretching", "tag": "Mobilität", "description": "Mobilität, Beweglichkeit und optimale Erholung — geführte Dehnroutinen, um Verletzungen vorzubeugen und Leistung zu bringen.", "stats": [ "30+ Routinen", "10–30 Min / Einheit"] },
+        { "title": "Ernährung", "tag": "Ernährung", "description": "Personalisierte Ernährungspläne, Makro-Berechnung und Ernährungsstrategien, um deine sportlichen Ziele zu erreichen.", "stats": [ "50+ Pläne", "Tägliches Tracking"] }
       ]
     },
     "howItWorks": {
@@ -203,7 +260,7 @@
       "summary": {
         "rating": "4.9 / 5",
         "basedOn": "basierend auf",
-        "count": "3.200+",
+        "count": "unseren",
         "reviews": "verifizierten Bewertungen",
         "stats": [
           { "value": "97%", "label": "Zufrieden" },
@@ -216,7 +273,7 @@
       "eyebrow": "Tritt der Community bei",
       "titleTop": "BEREIT, DEINE",
       "titleBottom": "GRENZEN ZU ÜBERWINDEN?",
-      "desc": "Schließe dich <b>12.000+ Athleten</b> an, die jede Woche erhalten: Programme, Ernährungstipps, Trainingstipps und exklusive WODs.",
+      "desc": "Schließe dich <b>der Community</b> an, die jede Woche erhält: Programme, Ernährungstipps, Trainingstipps und exklusive WODs.",
       "perks": [
         "Kostenlose Programme jede Woche",
         "WODs & Community-Challenges",
@@ -407,8 +464,8 @@
     "stats": {
       "products": "Premium-Produkte",
       "rating": "Durchschnittsbewertung",
-      "customers": "Zufriedene Kunden",
-      "customersValue": "12.000+",
+      "customers": "Geld-zurück",
+      "customersValue": "30 Tage",
       "delivery": "Express-Lieferung"
     },
     "trust": [
@@ -574,7 +631,7 @@
     "emptyCategory": "Keine Artikel in dieser Kategorie.",
     "seeAll": "Alle Artikel ansehen",
     "ctaTitle": "Bereit, <o>aktiv zu werden?</o>",
-    "ctaSubtitle": "Theoretische Tipps sind gut, ein von Experten strukturiertes Programm ist besser. Schließe dich den 12.000+ Xenotif®-Athleten an.",
+    "ctaSubtitle": "Theoretische Tipps sind gut, ein von Experten strukturiertes Programm ist besser. Schließe dich der Xenotif®-Community an.",
     "ctaShop": "Zum Shop",
     "ctaJoin": "Xenotif® beitreten",
     "readingTime": "{minutes} Min",

@@ -20,6 +20,7 @@ const PROG_LINKS = [
   { key: 'avance',        href: '/#programmes' },
   { key: 'elite',         href: '/#programmes' },
   { key: 'coachingIA',    href: '/dashboard/coach' },
+  { key: 'preview',       href: '/dashboard-preview' },
   { key: 'tarifs',        href: '/#tarifs' },
 ] as const
 
