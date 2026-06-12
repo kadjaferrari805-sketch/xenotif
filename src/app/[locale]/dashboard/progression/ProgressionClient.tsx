@@ -9,6 +9,7 @@ import { computeGamification } from '@/lib/gamification'
 import { XpLevelBar } from '@/components/gamification/XpLevelBar'
 import { ChallengesCard } from '@/components/gamification/ChallengesCard'
 import { BadgesGrid } from '@/components/gamification/BadgesGrid'
+import { TransformationForm } from '@/components/transformations/TransformationForm'
 
 type Workout = { discipline: string; duration_minutes: number; completed_at: string }
 type ProgressRow = { discipline: string; completed: boolean }
@@ -221,6 +222,10 @@ export function ProgressionClient({ userId, initialWorkouts, initialProgress }: 
             ))}
           </div>
         )}
+      </div>
+
+      <div className="mt-8">
+        <TransformationForm />
       </div>
     </div>
   )
