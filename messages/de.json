@@ -54,6 +54,39 @@
     "ctaSubtitle": "Personalisierte Programme, Echtzeit-Tracking, angepasste Ernährung. Erstelle dein kostenloses Konto.",
     "ctaButton": "Kostenloses Konto erstellen"
   },
+  "gamification": {
+    "level": "Stufe",
+    "xp": "XP",
+    "nextLevel": "Nächste Stufe",
+    "weeklyTitle": "Wöchentliche Challenges",
+    "monthlyTitle": "Monatliche Challenges",
+    "badgesTitle": "Abzeichen",
+    "done": "Geschafft",
+    "levels": {
+      "recrue": "Rekrut",
+      "athlete": "Athlet",
+      "competiteur": "Wettkämpfer",
+      "elite": "Elite",
+      "champion": "Champion",
+      "legende": "Legende"
+    },
+    "badges": {
+      "first": "Erste Einheit",
+      "week": "7 Einheiten",
+      "month": "30 Einheiten",
+      "century": "100 Einheiten",
+      "tenHours": "10 Std. gesamt",
+      "fiveDisciplines": "5 Disziplinen",
+      "streak7": "7 Tage in Folge"
+    },
+    "challenges": {
+      "weekSessions": "{current}/{target} Einheiten",
+      "weekMinutes": "{current}/{target} aktive Min.",
+      "weekDisciplines": "{current}/{target} Disziplinen",
+      "monthSessions": "{current}/{target} Einheiten",
+      "monthMinutes": "{current}/{target} aktive Min."
+    }
+  },
   "common": {
     "nav": {
       "disciplines": "Disziplinen",

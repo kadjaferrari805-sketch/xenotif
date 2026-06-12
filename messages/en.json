@@ -54,6 +54,39 @@
     "ctaSubtitle": "Personalized programs, real-time tracking, adapted nutrition. Create your free account.",
     "ctaButton": "Create my free account"
   },
+  "gamification": {
+    "level": "Level",
+    "xp": "XP",
+    "nextLevel": "Next level",
+    "weeklyTitle": "Weekly challenges",
+    "monthlyTitle": "Monthly challenges",
+    "badgesTitle": "Badges",
+    "done": "Done",
+    "levels": {
+      "recrue": "Rookie",
+      "athlete": "Athlete",
+      "competiteur": "Competitor",
+      "elite": "Elite",
+      "champion": "Champion",
+      "legende": "Legend"
+    },
+    "badges": {
+      "first": "First session",
+      "week": "7 sessions",
+      "month": "30 sessions",
+      "century": "100 sessions",
+      "tenHours": "10h total",
+      "fiveDisciplines": "5 disciplines",
+      "streak7": "7-day streak"
+    },
+    "challenges": {
+      "weekSessions": "{current}/{target} sessions",
+      "weekMinutes": "{current}/{target} active min",
+      "weekDisciplines": "{current}/{target} disciplines",
+      "monthSessions": "{current}/{target} sessions",
+      "monthMinutes": "{current}/{target} active min"
+    }
+  },
   "common": {
     "nav": {
       "disciplines": "Disciplines",
