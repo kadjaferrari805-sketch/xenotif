@@ -118,6 +118,32 @@
     "soonTitle": "Watch compatibility — coming soon",
     "soonTag": "Soon"
   },
+  "transformations": {
+    "galleryTitle": "They did it",
+    "gallerySubtitle": "Real transformations from Xenotif® members.",
+    "before": "Before",
+    "after": "After",
+    "weeks": "{weeks} weeks",
+    "defaultName": "Xenotif® member",
+    "shareTitle": "Share your transformation",
+    "shareSubtitle": "Inspire the community with your before/after.",
+    "beforeLabel": "Before photo",
+    "afterLabel": "After photo",
+    "captionLabel": "Caption (optional)",
+    "weeksLabel": "Duration (weeks)",
+    "nameLabel": "Display name (optional)",
+    "consentLabel": "I allow XENOTIF® to publish my photos (after moderation).",
+    "submit": "Submit",
+    "sending": "Sending…",
+    "success": "Thanks! Your transformation is pending review.",
+    "errConsent": "Consent is required.",
+    "errImage": "Add two photos (image, max 5 MB).",
+    "errServer": "Error. Try again.",
+    "adminTitle": "Transformations — moderation",
+    "approve": "Approve",
+    "reject": "Reject",
+    "adminEmpty": "No pending transformations."
+  },
   "common": {
     "nav": {
       "disciplines": "Disciplines",

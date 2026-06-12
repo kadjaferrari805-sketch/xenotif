@@ -118,6 +118,32 @@
     "soonTitle": "Uhren-Kompatibilität — bald",
     "soonTag": "Bald"
   },
+  "transformations": {
+    "galleryTitle": "Sie haben es geschafft",
+    "gallerySubtitle": "Echte Transformationen von Xenotif®-Mitgliedern.",
+    "before": "Vorher",
+    "after": "Nachher",
+    "weeks": "{weeks} Wochen",
+    "defaultName": "Xenotif®-Mitglied",
+    "shareTitle": "Teile deine Transformation",
+    "shareSubtitle": "Inspiriere die Community mit deinem Vorher/Nachher.",
+    "beforeLabel": "Vorher-Foto",
+    "afterLabel": "Nachher-Foto",
+    "captionLabel": "Beschriftung (optional)",
+    "weeksLabel": "Dauer (Wochen)",
+    "nameLabel": "Anzeigename (optional)",
+    "consentLabel": "Ich erlaube XENOTIF®, meine Fotos zu veröffentlichen (nach Prüfung).",
+    "submit": "Senden",
+    "sending": "Senden…",
+    "success": "Danke! Deine Transformation wird geprüft.",
+    "errConsent": "Zustimmung erforderlich.",
+    "errImage": "Füge zwei Fotos hinzu (Bild, max. 5 MB).",
+    "errServer": "Fehler. Erneut versuchen.",
+    "adminTitle": "Transformationen — Moderation",
+    "approve": "Freigeben",
+    "reject": "Ablehnen",
+    "adminEmpty": "Keine ausstehenden Transformationen."
+  },
   "common": {
     "nav": {
       "disciplines": "Disziplinen",

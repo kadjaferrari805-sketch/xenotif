@@ -6,6 +6,7 @@ import { AdminEmailForm } from '@/components/admin/EmailForm'
 import { AdminPushForm } from '@/components/admin/PushForm'
 import { RevenueChart } from '@/components/admin/RevenueChart'
 import { AdminReviews } from '@/components/reviews/AdminReviews'
+import { AdminTransformations } from '@/components/transformations/AdminTransformations'
 
 export default async function AdminPage() {
   const supabase = await createClient()
@@ -163,6 +164,9 @@ export default async function AdminPage() {
 
       {/* Avis clients — modération */}
       <AdminReviews />
+
+      {/* Transformations — modération */}
+      <AdminTransformations />
     </div>
   )
 }

@@ -118,6 +118,32 @@
     "soonTitle": "Compatibilité montres — bientôt",
     "soonTag": "Bientôt"
   },
+  "transformations": {
+    "galleryTitle": "Ils l'ont fait",
+    "gallerySubtitle": "De vraies transformations de membres Xenotif®.",
+    "before": "Avant",
+    "after": "Après",
+    "weeks": "{weeks} semaines",
+    "defaultName": "Membre Xenotif®",
+    "shareTitle": "Partage ta transformation",
+    "shareSubtitle": "Inspire la communauté avec ton avant/après.",
+    "beforeLabel": "Photo avant",
+    "afterLabel": "Photo après",
+    "captionLabel": "Légende (optionnel)",
+    "weeksLabel": "Durée (semaines)",
+    "nameLabel": "Pseudo affiché (optionnel)",
+    "consentLabel": "J'autorise XENOTIF® à publier mes photos (après modération).",
+    "submit": "Envoyer",
+    "sending": "Envoi…",
+    "success": "Merci ! Ta transformation est en attente de validation.",
+    "errConsent": "Le consentement est requis.",
+    "errImage": "Ajoute deux photos (image, max 5 Mo).",
+    "errServer": "Erreur. Réessaie.",
+    "adminTitle": "Transformations — modération",
+    "approve": "Approuver",
+    "reject": "Rejeter",
+    "adminEmpty": "Aucune transformation en attente."
+  },
   "common": {
     "nav": {
       "disciplines": "Disciplines",
