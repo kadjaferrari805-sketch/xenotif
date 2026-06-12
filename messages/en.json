@@ -135,13 +135,13 @@
       "items": [
         { "title": "Running & Cardio", "tag": "Cardio", "description": "Running programs for every level — from 5K to marathon. Personalized plans with GPS coaching and heart-rate tracking.", "stats": ["+4,200 runners", "120+ plans", "12 weeks avg."] },
         { "title": "Strength training", "tag": "Strength", "description": "Bulking, cutting or toning — our certified coaches build a custom program tailored to your body type.", "stats": ["+3,800 members", "90+ programs", "8 weeks avg."] },
-        { "title": "HIIT", "tag": "Fat Burn", "description": "Short, intense sessions to burn maximum calories and boost your metabolism for the long run in 20 to 30 min.", "stats": ["+2,100 members", "60+ circuits", "20-30 min / session"] },
+        { "title": "HIIT", "tag": "Fat Burn", "description": "Short, intense sessions to burn maximum calories and boost your metabolism for the long run in 20 to 30 min.", "stats": ["+2,100 members", "60+ circuits", "20–30 min / session"] },
         { "title": "Cycling", "tag": "Endurance", "description": "Indoor and outdoor training with a power meter. From road racer to climber, a plan tailored to every profile.", "stats": ["+1,500 cyclists", "45+ plans", "16 weeks avg."] },
         { "title": "Swimming", "tag": "Aquatic", "description": "Stroke technique, triathlon prep, open water — progress in every style with HD video drills.", "stats": ["+900 swimmers", "30+ programs", "10 weeks avg."] },
         { "title": "CrossFit", "tag": "Functional", "description": "Daily WODs, functional movements and community challenges to push your limits every week.", "stats": ["+1,800 athletes", "365 WODs/yr", "5× / week"] },
-        { "title": "Yoga", "tag": "Wellness", "description": "Flexibility, inner strength and mindfulness — from beginner flows to advanced yoga for a balanced body and mind.", "stats": ["+2,000 practitioners", "40+ sequences", "20-60 min / session"] },
+        { "title": "Yoga", "tag": "Wellness", "description": "Flexibility, inner strength and mindfulness — from beginner flows to advanced yoga for a balanced body and mind.", "stats": ["+2,000 practitioners", "40+ sequences", "20–60 min / session"] },
         { "title": "Boxing", "tag": "Combat", "description": "Technique, cardio and power — from the basics to advanced combinations to transform you physically and mentally.", "stats": ["+1,200 boxers", "35+ programs", "8 weeks avg."] },
-        { "title": "Stretching", "tag": "Mobility", "description": "Mobility, flexibility and optimal recovery — guided stretching routines to prevent injuries and perform.", "stats": ["+1,600 members", "30+ routines", "10-30 min / session"] },
+        { "title": "Stretching", "tag": "Mobility", "description": "Mobility, flexibility and optimal recovery — guided stretching routines to prevent injuries and perform.", "stats": ["+1,600 members", "30+ routines", "10–30 min / session"] },
         { "title": "Nutrition", "tag": "Diet", "description": "Personalized meal plans, macro tracking and nutrition strategies to reach your athletic goals.", "stats": ["+3,000 members", "50+ plans", "Daily tracking"] }
       ]
     },
@@ -519,7 +519,7 @@
       "itemsCount": "({count, plural, one {# item} other {# items}})",
       "ownSection": "XENOTIF products — Secure payment",
       "digitalImmediate": "📥 Instant download",
-      "physicalDelivery": "📦 Delivery 3-7 days",
+      "physicalDelivery": "📦 Delivery 3–7 days",
       "affiliateSection": "🔗 Amazon products — Order on Amazon.de",
       "affiliateNote": "These products are ordered directly on Amazon.de by clicking the button.",
       "summary": "Summary",

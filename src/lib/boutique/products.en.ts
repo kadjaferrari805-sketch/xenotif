@@ -22,7 +22,7 @@ const TEXT_EN: Record<string, ProductText> = {
     name: 'Resistance Band Kit × 5 — PORTENTUM',
     badge: '🔥 Sale',
     description: 'Set of 5 resistance bands for strength and fitness. Progressive resistance from 25 to 125 lbs. Ideal for a complete home workout.',
-    longDescription: 'The PORTENTUM kit includes 5 resistance bands in different colors (from 25-65 lbs to 50-125 lbs) for progressive, complete training. Perfect for strength, CrossFit, yoga, rehab and muscle strengthening at home or on the go. Durable, non-slip and easy to carry.',
+    longDescription: 'The PORTENTUM kit includes 5 resistance bands in different colors (from 25–65 lbs to 50–125 lbs) for progressive, complete training. Perfect for strength, CrossFit, yoga, rehab and muscle strengthening at home or on the go. Durable, non-slip and easy to carry.',
     features: ['5 levels: 25 to 125 lbs', 'Complete strength & fitness', 'Durable non-slip', 'Ideal at home', 'Easy to carry'],
     tags: ['resistance bands', 'resistance', 'fitness', 'strength'],
   },
@@ -170,9 +170,9 @@ const TEXT_EN: Record<string, ProductText> = {
   d3: {
     name: 'Fat-Burning HIIT Program — 6 Weeks',
     badge: '🔥 Popular',
-    description: '24 sessions of 20-30 min, 100% bodyweight. No equipment. Beginner → advanced. Guaranteed results.',
+    description: '24 sessions of 20–30 min, 100% bodyweight. No equipment. Beginner → advanced. Guaranteed results.',
     longDescription: 'The XENOTIF HIIT program is designed by our CrossFit Level 2 certified coach. 4 sessions per week of 20 to 30 minutes maximum, 100% bodyweight — no equipment required. The progressive build guarantees optimal adaptation without injury risk. Each session includes a built-in timer and demonstration videos.',
-    features: ['24 sessions of 20-30 min', 'No equipment', 'Beginner → advanced', 'Built-in timer', 'HD demo videos'],
+    features: ['24 sessions of 20–30 min', 'No equipment', 'Beginner → advanced', 'Built-in timer', 'HD demo videos'],
     tags: ['HIIT', 'fat-burning', 'bodyweight', 'cardio'],
   },
   d4: {

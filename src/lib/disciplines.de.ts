@@ -1620,7 +1620,7 @@ export const DISCIPLINE_META_DE: Record<string, DisciplineMeta> = {
     title: 'HIIT',
     tag: 'Fettverbrennung',
     description: 'Kurze, intensive Einheiten, um maximal Kalorien zu verbrennen und deinen Stoffwechsel dauerhaft in 20 bis 30 Min anzukurbeln.',
-    stats: ['+2.100 Mitglieder', '60+ Circuits', '20-30 Min / Einheit'],
+    stats: ['+2.100 Mitglieder', '60+ Circuits', '20–30 Min / Einheit'],
     levels: ['Anfänger', 'Fortgeschritten', 'Erfahren'],
   },
   cyclisme: {
@@ -1648,7 +1648,7 @@ export const DISCIPLINE_META_DE: Record<string, DisciplineMeta> = {
     title: 'Yoga',
     tag: 'Wohlbefinden',
     description: 'Flexibilität, innere Stärke und Achtsamkeit — von Anfänger-Flows bis zu fortgeschrittenem Yoga für einen ausgeglichenen Körper und Geist.',
-    stats: ['+2.000 Praktizierende', '40+ Sequenzen', '20-60 Min / Einheit'],
+    stats: ['+2.000 Praktizierende', '40+ Sequenzen', '20–60 Min / Einheit'],
     levels: ['Anfänger', 'Fortgeschritten', 'Erfahren', 'Alle Niveaus'],
   },
   boxing: {
@@ -1662,7 +1662,7 @@ export const DISCIPLINE_META_DE: Record<string, DisciplineMeta> = {
     title: 'Stretching',
     tag: 'Mobilität',
     description: 'Mobilität, Beweglichkeit und optimale Erholung — geführte Dehnroutinen, um Verletzungen vorzubeugen und Leistung zu bringen.',
-    stats: ['+1.600 Mitglieder', '30+ Routinen', '10-30 Min / Einheit'],
+    stats: ['+1.600 Mitglieder', '30+ Routinen', '10–30 Min / Einheit'],
     levels: ['Anfänger', 'Fortgeschritten', 'Erfahren', 'Alle Niveaus'],
   },
   nutrition: {

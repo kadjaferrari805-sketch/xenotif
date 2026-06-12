@@ -135,13 +135,13 @@
       "items": [
         { "title": "Running & Cardio", "tag": "Cardio", "description": "Programmes de course adaptés à tous les niveaux — du 5K au marathon. Plans personnalisés avec coaching GPS et suivi de fréquence cardiaque.", "stats": ["+4 200 coureurs", "120+ plans", "12 semaines moy."] },
         { "title": "Musculation", "tag": "Strength", "description": "Prise de masse, sèche ou tonification — nos coaches certifiés construisent ton programme sur mesure selon ta morphologie.", "stats": ["+3 800 membres", "90+ programmes", "8 semaines moy."] },
-        { "title": "HIIT", "tag": "Fat Burn", "description": "Séances courtes et intenses pour brûler un maximum de calories et booster ton métabolisme durablement en 20 à 30 min.", "stats": ["+2 100 membres", "60+ circuits", "20-30 min / séance"] },
+        { "title": "HIIT", "tag": "Fat Burn", "description": "Séances courtes et intenses pour brûler un maximum de calories et booster ton métabolisme durablement en 20 à 30 min.", "stats": ["+2 100 membres", "60+ circuits", "20–30 min / séance"] },
         { "title": "Cyclisme", "tag": "Endurance", "description": "Entraînements indoor et outdoor avec puissance-mètre. De la sportive au grimpeur de cols, un plan adapté à chaque profil.", "stats": ["+1 500 cyclistes", "45+ plans", "16 semaines moy."] },
         { "title": "Natation", "tag": "Aquatique", "description": "Techniques de nage, préparation triathlon, open water — progressez dans tous les styles avec des drills vidéo HD.", "stats": ["+900 nageurs", "30+ programmes", "10 semaines moy."] },
         { "title": "CrossFit", "tag": "Functional", "description": "WODs quotidiens, mouvements fonctionnels et challenges communautaires pour repousser tes limites chaque semaine.", "stats": ["+1 800 athlètes", "365 WODs/an", "5× / semaine"] },
-        { "title": "Yoga", "tag": "Bien-être", "description": "Flexibilité, force intérieure et pleine conscience — des flows débutants au yoga avancé pour un corps et un esprit équilibrés.", "stats": ["+2 000 pratiquants", "40+ séquences", "20-60 min / séance"] },
+        { "title": "Yoga", "tag": "Bien-être", "description": "Flexibilité, force intérieure et pleine conscience — des flows débutants au yoga avancé pour un corps et un esprit équilibrés.", "stats": ["+2 000 pratiquants", "40+ séquences", "20–60 min / séance"] },
         { "title": "Boxe", "tag": "Combat", "description": "Technique, cardio et puissance — des bases aux combinaisons avancées pour te transformer physiquement et mentalement.", "stats": ["+1 200 boxeurs", "35+ programmes", "8 semaines moy."] },
-        { "title": "Stretching", "tag": "Mobilité", "description": "Mobilité, souplesse et récupération optimale — des routines d'étirements guidées pour prévenir les blessures et performer.", "stats": ["+1 600 membres", "30+ routines", "10-30 min / séance"] },
+        { "title": "Stretching", "tag": "Mobilité", "description": "Mobilité, souplesse et récupération optimale — des routines d'étirements guidées pour prévenir les blessures et performer.", "stats": ["+1 600 membres", "30+ routines", "10–30 min / séance"] },
         { "title": "Nutrition", "tag": "Alimentation", "description": "Plans alimentaires personnalisés, calcul des macros et stratégies nutritionnelles pour atteindre tes objectifs sportifs.", "stats": ["+3 000 membres", "50+ plans", "Suivi quotidien"] }
       ]
     },
@@ -519,7 +519,7 @@
       "itemsCount": "({count, plural, one {# article} other {# articles}})",
       "ownSection": "Produits XENOTIF — Paiement sécurisé",
       "digitalImmediate": "📥 Téléchargement immédiat",
-      "physicalDelivery": "📦 Livraison 3-7 jours",
+      "physicalDelivery": "📦 Livraison 3–7 jours",
       "affiliateSection": "🔗 Produits Amazon — Commander sur Amazon.de",
       "affiliateNote": "Ces produits se commandent directement sur Amazon.de en cliquant sur le bouton.",
       "summary": "Récapitulatif",
@@ -544,7 +544,7 @@
       "whatNow": "Et maintenant ?",
       "digitalAbove": "Tes <o>programmes digitaux</o> sont disponibles immédiatement ci-dessus.",
       "digitalEmail": "Tes <o>programmes digitaux</o> sont disponibles immédiatement dans ton email.",
-      "physicalShipped": "Tes <o>produits physiques</o> seront expédiés sous 2-5 jours ouvrés.",
+      "physicalShipped": "Tes <o>produits physiques</o> seront expédiés sous 2–5 jours ouvrés.",
       "continueShopping": "Continuer mes achats",
       "goDashboard": "Aller au dashboard →"
     }
