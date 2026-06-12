@@ -2,21 +2,18 @@
 
 import { useState } from 'react'
 import { useTranslations, useLocale } from 'next-intl'
-import { Flame, Clock, Award, TrendingUp, Plus, CheckCircle } from 'lucide-react'
+import { Flame, Clock, Award, TrendingUp, Plus } from 'lucide-react'
 import { createClient } from '@/lib/supabase/client'
 import { DISCIPLINE_CONTENT } from '@/lib/disciplines'
+import { computeGamification } from '@/lib/gamification'
+import { XpLevelBar } from '@/components/gamification/XpLevelBar'
+import { ChallengesCard } from '@/components/gamification/ChallengesCard'
+import { BadgesGrid } from '@/components/gamification/BadgesGrid'
 
 type Workout = { discipline: string; duration_minutes: number; completed_at: string }
 type ProgressRow = { discipline: string; completed: boolean }
 
 const DISCIPLINES = ['running-cardio', 'musculation', 'hiit', 'cyclisme', 'natation', 'crossfit', 'yoga', 'boxing', 'stretching', 'nutrition']
-
-const BADGES = [
-  { id: 'first', tkey: 'badgeFirst', icon: '🏃', req: (w: number) => w >= 1 },
-  { id: 'week',  tkey: 'badgeWeek',  icon: '📅', req: (w: number) => w >= 7 },
-  { id: 'month', tkey: 'badgeMonth', icon: '🏆', req: (w: number) => w >= 30 },
-  { id: 'elite', tkey: 'badgeElite', icon: '⚡', req: (w: number) => w >= 100 },
-]
 
 export function ProgressionClient({ userId, initialWorkouts, initialProgress }: { userId: string; initialWorkouts: Workout[]; initialProgress: ProgressRow[] }) {
   const t = useTranslations('dashboard.progression')
@@ -47,6 +44,11 @@ export function ProgressionClient({ userId, initialWorkouts, initialProgress }: 
   const totalMinutes = workouts.reduce((a, w) => a + (w.duration_minutes ?? 0), 0)
   const totalHours = Math.floor(totalMinutes / 60)
 
+  const gam = computeGamification({
+    workouts,
+    programSessionsCompleted: progress.filter(p => p.completed).length,
+  })
+
   const disciplineProgress = DISCIPLINES.map(slug => {
     const content = DISCIPLINE_CONTENT[slug]
     const total = (content?.program ?? []).reduce((a, b) => a + b.sessions.length, 0)
@@ -65,6 +67,10 @@ export function ProgressionClient({ userId, initialWorkouts, initialProgress }: 
         >
           <Plus size={13} /> {t('addSession')}
         </button>
+      </div>
+
+      <div className="mb-8">
+        <XpLevelBar xp={gam.xp} levelKey={gam.levelKey} xpInLevel={gam.xpInLevel} xpForNext={gam.xpForNext} />
       </div>
 
       {/* Add workout modal */}
@@ -113,7 +119,7 @@ export function ProgressionClient({ userId, initialWorkouts, initialProgress }: 
           { Icon: Flame, label: t('statTotalSessions'), value: workouts.length.toString(), color: 'text-sport-orange' },
           { Icon: Clock, label: t('statHours'), value: `${totalHours}h`, color: 'text-sport-blue' },
           { Icon: TrendingUp, label: t('statModules'), value: progress.filter(p => p.completed).length.toString(), color: 'text-emerald-400' },
-          { Icon: Award, label: t('statBadges'), value: BADGES.filter(b => b.req(workouts.length)).length.toString(), color: 'text-yellow-400' },
+          { Icon: Award, label: t('statBadges'), value: gam.badges.filter(b => b.earned).length.toString(), color: 'text-yellow-400' },
         ].map(({ Icon, label, value, color }) => (
           <div key={label} className="bg-sport-card border border-sport-border rounded-xl p-4">
             <Icon size={18} className={`${color} mb-2`} />
@@ -141,22 +147,13 @@ export function ProgressionClient({ userId, initialWorkouts, initialProgress }: 
         </div>
       </div>
 
-      {/* Badges */}
-      <div className="bg-sport-card border border-sport-border rounded-2xl p-6 mb-8">
-        <h2 className="text-base font-black text-white mb-5">{t('badges')}</h2>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          {BADGES.map(badge => {
-            const earned = badge.req(workouts.length)
-            return (
-              <div key={badge.id} className={`rounded-xl p-4 text-center border transition-all ${earned ? 'bg-yellow-400/10 border-yellow-400/30' : 'bg-sport-dark border-sport-border opacity-50'}`}>
-                <span className="text-3xl block mb-2">{badge.icon}</span>
-                <p className={`text-xs font-black ${earned ? 'text-yellow-400' : 'text-sport-gray'}`}>{t(`${badge.tkey}.label`)}</p>
-                <p className="text-[10px] text-sport-gray mt-1 leading-tight">{t(`${badge.tkey}.desc`)}</p>
-                {earned && <CheckCircle size={12} className="text-emerald-400 mx-auto mt-2" />}
-              </div>
-            )
-          })}
-        </div>
+      {/* Défis + badges (gamification) */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+        <ChallengesCard titleKey="weeklyTitle" challenges={gam.weekly} />
+        <ChallengesCard titleKey="monthlyTitle" challenges={gam.monthly} />
+      </div>
+      <div className="mb-8">
+        <BadgesGrid badges={gam.badges} />
       </div>
 
       {/* Weekly chart */}
