@@ -1,7 +1,7 @@
 import { redirect } from 'next/navigation'
 import { getTranslations } from 'next-intl/server'
 import { Link } from '@/i18n/navigation'
-import { createClient } from '@/lib/supabase/server'
+import { getCurrentUser, getProfileName } from '@/lib/supabase/session'
 import { LayoutDashboard, Dumbbell, TrendingUp, CreditCard, User, Bot, Watch } from 'lucide-react'
 import { DashboardSignOut } from '@/components/dashboard/SignOut'
 import { DashboardGuard } from '@/components/dashboard/DashboardGuard'
@@ -19,13 +19,11 @@ const NAV = [
 ] as const
 
 export default async function DashboardLayout({ children }: { children: React.ReactNode }) {
-  const supabase = await createClient()
-  const { data: { user } } = await supabase.auth.getUser()
+  const user = await getCurrentUser()
   if (!user) redirect('/auth/signin')
 
-  const t = await getTranslations('dashboard')
-  const { data: profile } = await supabase.from('profiles').select('full_name').eq('id', user.id).maybeSingle()
-  const initials = (profile?.full_name ?? user.email ?? 'U').slice(0, 2).toUpperCase()
+  const [t, fullName] = await Promise.all([getTranslations('dashboard'), getProfileName()])
+  const initials = (fullName ?? user.email ?? 'U').slice(0, 2).toUpperCase()
 
   return (
     <div className="min-h-screen bg-sport-dark text-white flex">
@@ -45,7 +43,7 @@ export default async function DashboardLayout({ children }: { children: React.Re
               {initials}
             </div>
             <div className="min-w-0 flex-1">
-              <p className="text-sm font-bold text-white truncate">{profile?.full_name ?? t('athlete')}</p>
+              <p className="text-sm font-bold text-white truncate">{fullName ?? t('athlete')}</p>
               <p className="text-[11px] text-sport-gray truncate">{user.email}</p>
             </div>
             <NotificationBell align="left" />

@@ -1,8 +1,9 @@
 import { redirect } from 'next/navigation'
 import { getTranslations, getLocale } from 'next-intl/server'
 import { Link } from '@/i18n/navigation'
-import { createClient, createServiceClient } from '@/lib/supabase/server'
+import { createClient } from '@/lib/supabase/server'
 import { getAccess } from '@/lib/access'
+import { getCurrentUser, getProfileName } from '@/lib/supabase/session'
 import { CheckCircle, Flame, TrendingUp, ArrowRight, Clock, Award } from 'lucide-react'
 import { DISCIPLINE_CONTENT } from '@/lib/disciplines'
 import { getDisciplineFromDb } from '@/lib/content-db'
@@ -23,29 +24,30 @@ function StatusBadge({ status, label }: { status: string; label: string }) {
 }
 
 export default async function DashboardPage() {
-  const supabase = await createClient()
-  const { data: { user } } = await supabase.auth.getUser()
+  const user = await getCurrentUser()
   if (!user) redirect('/auth/signin')
-
-  const access = await getAccess()
 
   const t = await getTranslations('dashboard')
   const locale = await getLocale()
   const dateLocale = locale === 'en' ? 'en-US' : 'fr-FR'
 
-  // `subscriptions` est protégée par RLS (service-role) → lecture via service, filtrée par user.id.
   const now = new Date()
   const weekAgoStr = new Date(now.getTime() - 6 * 86400000).toISOString().split('T')[0]
-  const service = await createServiceClient()
-  const [{ data: profile }, { data: subscription }, { data: allWorkouts }, { data: progress }, { data: healthMetrics }] = await Promise.all([
-    supabase.from('profiles').select('full_name').eq('id', user.id).maybeSingle(),
-    service.from('subscriptions').select('*').eq('user_id', user.id).maybeSingle(),
+  const supabase = await createClient()
+  const overviewSlugs = ['running-cardio', 'musculation', 'hiit'] as const
+
+  // Une seule vague parallèle : accès, profil, activité (RLS user) et contenu des 3 programmes.
+  const [access, fullName, { data: allWorkouts }, { data: progress }, { data: healthMetrics }, overviewPairs] = await Promise.all([
+    getAccess(),
+    getProfileName(),
     supabase.from('workouts').select('*').eq('user_id', user.id).order('completed_at', { ascending: false }).limit(60),
     supabase.from('progress').select('*').eq('user_id', user.id),
     supabase.from('health_metrics').select('date, steps, active_minutes').eq('user_id', user.id).gte('date', weekAgoStr),
+    Promise.all(overviewSlugs.map(async (s) => [s, (await getDisciplineFromDb(s, locale))?.content ?? DISCIPLINE_CONTENT[s]] as const)),
   ])
+  const overviewContents = Object.fromEntries(overviewPairs)
 
-  const firstName = (profile?.full_name ?? '').split(' ')[0] || t('athlete')
+  const firstName = (fullName ?? '').split(' ')[0] || t('athlete')
   const totalSessions = (progress ?? []).filter(p => p.completed).length
 
   // ── Activité de la semaine : séances loggées + modules de programme ──
@@ -64,8 +66,8 @@ export default async function DashboardPage() {
     ...progWeek.map(p => dayOf(p.completed_at)),
   ]).size
 
-  const renewDate = subscription?.current_period_end
-    ? new Date(subscription.current_period_end).toLocaleDateString(dateLocale, { day: 'numeric', month: 'long', year: 'numeric' })
+  const renewDate = access.renewDate
+    ? access.renewDate.toLocaleDateString(dateLocale, { day: 'numeric', month: 'long', year: 'numeric' })
     : null
 
   // ── Activité du jour + tendance 7 jours (depuis health_metrics) ──
@@ -94,13 +96,6 @@ export default async function DashboardPage() {
   const todaySteps = todayMetric?.steps ?? 0
   const todayActiveSec = (todayMetric?.active ?? 0) * 60
   const dateLabel = now.toLocaleDateString(dateLocale, { weekday: 'long', day: 'numeric', month: 'long' })
-
-  const disciplineSlugs = ['running-cardio', 'musculation', 'hiit', 'cyclisme', 'natation', 'crossfit']
-  const overviewSlugs = disciplineSlugs.slice(0, 3)
-  // Contenu des 3 programmes affichés : base (repli statique si absente).
-  const overviewContents = Object.fromEntries(
-    await Promise.all(overviewSlugs.map(async (s) => [s, (await getDisciplineFromDb(s, locale))?.content ?? DISCIPLINE_CONTENT[s]] as const)),
-  )
 
   return (
     <div className="p-6 md:p-8 max-w-5xl mx-auto pb-24 md:pb-8">
