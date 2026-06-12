@@ -1,4 +1,6 @@
-import { createClient, createServiceClient } from '@/lib/supabase/server'
+import { cache } from 'react'
+import { createServiceClient } from '@/lib/supabase/server'
+import { getCurrentUser } from '@/lib/supabase/session'
 
 export type Role = 'guest' | 'free' | 'pro' | 'admin'
 
@@ -51,9 +53,9 @@ export function deriveAccess(opts: {
 }
 
 // Source de vérité serveur : auth user + subscriptions (service-role) + admin_users.
-export async function getAccess(): Promise<Access> {
-  const supabase = await createClient()
-  const { data: { user } } = await supabase.auth.getUser()
+// Mémoïsé par requête : plusieurs appels (page + requirePro…) → un seul fetch.
+export const getAccess = cache(async (): Promise<Access> => {
+  const user = await getCurrentUser()
   if (!user) return deriveAccess({ isAuthenticated: false, isAdmin: false, sub: null })
 
   const service = await createServiceClient()
@@ -66,7 +68,7 @@ export async function getAccess(): Promise<Access> {
     service.from('admin_users').select('id').eq('id', user.id).maybeSingle(),
   ])
   return deriveAccess({ isAuthenticated: true, isAdmin: !!admin, sub: sub as SubRow })
-}
+})
 
 /**
  * Garde d'accès pour les route handlers API : renvoie l'`Access` si l'utilisateur
