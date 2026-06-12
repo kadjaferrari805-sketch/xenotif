@@ -7,6 +7,8 @@ import { getCurrentUser, getProfileName } from '@/lib/supabase/session'
 import { CheckCircle, Flame, TrendingUp, ArrowRight, Clock, Award } from 'lucide-react'
 import { DISCIPLINE_CONTENT } from '@/lib/disciplines'
 import { getDisciplineFromDb } from '@/lib/content-db'
+import { computeXp, xpToLevel } from '@/lib/gamification'
+import { XpLevelBar } from '@/components/gamification/XpLevelBar'
 import { TodayActivity, type TrendDay } from '@/components/dashboard/TodayActivity'
 import { ReviewInvite } from '@/components/reviews/ReviewInvite'
 
@@ -37,10 +39,11 @@ export default async function DashboardPage() {
   const overviewSlugs = ['running-cardio', 'musculation', 'hiit'] as const
 
   // Une seule vague parallèle : accès, profil, activité (RLS user) et contenu des 3 programmes.
-  const [access, fullName, { data: allWorkouts }, { data: progress }, { data: healthMetrics }, overviewPairs] = await Promise.all([
+  const [access, fullName, { data: allWorkouts }, { count: workoutCount }, { data: progress }, { data: healthMetrics }, overviewPairs] = await Promise.all([
     getAccess(),
     getProfileName(),
     supabase.from('workouts').select('*').eq('user_id', user.id).order('completed_at', { ascending: false }).limit(60),
+    supabase.from('workouts').select('id', { count: 'exact', head: true }).eq('user_id', user.id),
     supabase.from('progress').select('*').eq('user_id', user.id),
     supabase.from('health_metrics').select('date, steps, active_minutes').eq('user_id', user.id).gte('date', weekAgoStr),
     Promise.all(overviewSlugs.map(async (s) => [s, (await getDisciplineFromDb(s, locale))?.content ?? DISCIPLINE_CONTENT[s]] as const)),
@@ -49,6 +52,8 @@ export default async function DashboardPage() {
 
   const firstName = (fullName ?? '').split(' ')[0] || t('athlete')
   const totalSessions = (progress ?? []).filter(p => p.completed).length
+  const gamXp = computeXp(workoutCount ?? 0, totalSessions)
+  const gamLevel = xpToLevel(gamXp)
 
   // ── Activité de la semaine : séances loggées + modules de programme ──
   const workouts = allWorkouts ?? []
@@ -106,6 +111,11 @@ export default async function DashboardPage() {
           {t.rich('overview.greeting', { name: firstName, o: (c) => <span className="text-sport-orange">{c}</span> })}
         </h1>
         <p className="text-sport-gray text-sm mt-1">{t('overview.subtitle')}</p>
+      </div>
+
+      {/* Niveau / XP (gamification) */}
+      <div className="mb-6">
+        <XpLevelBar xp={gamXp} levelKey={gamLevel.levelKey} xpInLevel={gamLevel.xpInLevel} xpForNext={gamLevel.xpForNext} compact />
       </div>
 
       {/* Activité du jour — anneaux temps réel façon Apple Fitness (capteur) — PRO */}

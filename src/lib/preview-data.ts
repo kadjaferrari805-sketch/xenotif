@@ -30,4 +30,15 @@ export const PREVIEW = {
     { icon: '🏃', label: '100 km' },
     { icon: '⚡', label: 'HIIT x20' },
   ],
+  gamification: {
+    xp: 920,
+    levelKey: 'competiteur',
+    xpInLevel: 120,
+    xpForNext: 800,
+    weekly: [
+      { id: 'weekSessions', target: 3, current: 2 },
+      { id: 'weekMinutes', target: 120, current: 95 },
+      { id: 'weekDisciplines', target: 2, current: 2 },
+    ],
+  },
 } as const
