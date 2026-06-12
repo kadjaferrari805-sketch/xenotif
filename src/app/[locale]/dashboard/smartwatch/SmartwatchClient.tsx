@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useCallback } from 'react'
 import { useTranslations, useLocale } from 'next-intl'
 import {
   Watch, RefreshCw, Loader2, Footprints, Flame, Heart,
@@ -45,13 +45,13 @@ function formatSleep(minutes: number): string {
   return m > 0 ? `${h}h${m.toString().padStart(2, '0')}` : `${h}h`
 }
 
-export function SmartwatchClient() {
+export function SmartwatchClient({ initialData }: { initialData: DashboardData }) {
   const t = useTranslations('dashboard.smartwatch')
   const locale = useLocale()
   const numLocale = locale === 'en' ? 'en-US' : 'fr-FR'
   const [tab, setTab] = useState<Tab>('overview')
-  const [data, setData] = useState<DashboardData | null>(null)
-  const [loading, setLoading] = useState(true)
+  const [data, setData] = useState<DashboardData | null>(initialData)
+  const [loading, setLoading] = useState(false)
   const [syncing, setSyncing] = useState(false)
   const [chartMetric, setChartMetric] = useState<'steps' | 'calories' | 'activeMinutes'>('steps')
 
@@ -64,7 +64,6 @@ export function SmartwatchClient() {
     }
   }, [])
 
-  useEffect(() => { fetchData() }, [fetchData])
 
   async function handleConnect(provider: string) {
     const res = await fetch('/api/smartwatch/connect', {
