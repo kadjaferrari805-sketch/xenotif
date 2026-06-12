@@ -1,4 +1,5 @@
 import { Hero } from '@/components/home/Hero'
+import { TrustRow } from '@/components/home/TrustRow'
 import { MarqueeStrip } from '@/components/home/MarqueeStrip'
 import { ProofBar } from '@/components/home/ProofBar'
 import { Features } from '@/components/home/Features'
@@ -15,6 +16,7 @@ export default function HomePage() {
   return (
     <>
       <Hero />
+      <TrustRow />
       <MarqueeStrip />
       <ProofBar />
       <Features />

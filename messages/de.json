@@ -1,4 +1,14 @@
 {
+  "trust": {
+    "securePayment": "Sichere Zahlung",
+    "securePaymentSub": "Stripe · 3D Secure",
+    "guarantee": "30 Tage Garantie",
+    "guaranteeSub": "Geld-zurück",
+    "cancel": "1-Klick-Kündigung",
+    "cancelSub": "Ohne Bindung",
+    "support": "Schneller Support",
+    "supportSub": "Ein Team, das zuhört"
+  },
   "common": {
     "nav": {
       "disciplines": "Disziplinen",
