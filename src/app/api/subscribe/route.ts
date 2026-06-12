@@ -45,7 +45,7 @@ export async function POST(req: NextRequest) {
 
               <h1 style="font-size:28px;font-weight:900;margin:0 0 8px;">Bienvenue dans la communauté ! 💪</h1>
               <p style="color:#9CA3AF;font-size:15px;line-height:1.6;margin:0 0 24px;">
-                Tu fais maintenant partie des <strong style="color:#fff;">12 000+ athlètes</strong> qui transforment leur corps avec Xenotif®.
+                Tu fais maintenant partie de la <strong style="color:#fff;">communauté Xenotif®</strong> qui transforme son corps avec un coaching IA personnalisé.
               </p>
 
               <div style="background:#111218;border:1px solid #1F2937;border-radius:16px;padding:24px;margin-bottom:24px;">
