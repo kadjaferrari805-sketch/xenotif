@@ -69,7 +69,7 @@ export function ProofBar() {
                 <stat.Icon size={20} className={stat.color} />
               </div>
               <dt className={`text-4xl font-black ${stat.color} tabular-nums`}>
-                <Counter end={stat.end} suffix={stat.suffix} decimal={stat.decimal} active={inView} />
+                <Counter end={stat.end} suffix={stat.suffix} active={inView} />
               </dt>
               <dd className="text-xs font-bold text-white uppercase tracking-widest mt-1">{labels[i].label}</dd>
               <span className="text-[11px] text-sport-gray">{labels[i].sublabel}</span>

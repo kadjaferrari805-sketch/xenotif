@@ -37,6 +37,23 @@
       }
     ]
   },
+  "dashboardPreview": {
+    "metaTitle": "Vorschau deines Mitgliederbereichs",
+    "metaDescription": "Eine Vorschau deines künftigen XENOTIF®-Bereichs: Fortschritt, Aktivität, Gewicht, Ernährung, Abzeichen und KI-Coach.",
+    "demoBanner": "Vorschau — Demodaten",
+    "greeting": "Hallo {name} 👋",
+    "subtitle": "Hier ist eine Vorschau deines Mitgliederbereichs.",
+    "weekActivity": "Aktivität dieser Woche",
+    "statSessions": "Einheiten / Woche",
+    "statHours": "Gesamtstunden",
+    "statActiveDays": "Aktive Tage",
+    "statBadges": "Abzeichen",
+    "byDiscipline": "Fortschritt nach Disziplin",
+    "badges": "Freigeschaltete Abzeichen",
+    "ctaTitle": "Und viel mehr mit deinem KI-Coach",
+    "ctaSubtitle": "Personalisierte Programme, Echtzeit-Tracking, angepasste Ernährung. Erstelle dein kostenloses Konto.",
+    "ctaButton": "Kostenloses Konto erstellen"
+  },
   "common": {
     "nav": {
       "disciplines": "Disziplinen",

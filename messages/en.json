@@ -37,6 +37,23 @@
       }
     ]
   },
+  "dashboardPreview": {
+    "metaTitle": "Preview your member space",
+    "metaDescription": "Get a preview of your future XENOTIF® space: progress, activity, weight tracking, nutrition, badges and AI coach.",
+    "demoBanner": "Preview — demo data",
+    "greeting": "Hi {name} 👋",
+    "subtitle": "Here's a preview of your member space.",
+    "weekActivity": "This week's activity",
+    "statSessions": "Sessions / week",
+    "statHours": "Total hours",
+    "statActiveDays": "Active days",
+    "statBadges": "Badges",
+    "byDiscipline": "Progress by discipline",
+    "badges": "Unlocked badges",
+    "ctaTitle": "And much more with your AI Coach",
+    "ctaSubtitle": "Personalized programs, real-time tracking, adapted nutrition. Create your free account.",
+    "ctaButton": "Create my free account"
+  },
   "common": {
     "nav": {
       "disciplines": "Disciplines",
