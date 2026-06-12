@@ -1,10 +1,13 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { useTranslations, useLocale } from 'next-intl'
 import { Flame, Clock, Award, TrendingUp, Plus, CheckCircle } from 'lucide-react'
 import { createClient } from '@/lib/supabase/client'
 import { DISCIPLINE_CONTENT } from '@/lib/disciplines'
+
+type Workout = { discipline: string; duration_minutes: number; completed_at: string }
+type ProgressRow = { discipline: string; completed: boolean }
 
 const DISCIPLINES = ['running-cardio', 'musculation', 'hiit', 'cyclisme', 'natation', 'crossfit', 'yoga', 'boxing', 'stretching', 'nutrition']
 
@@ -15,36 +18,18 @@ const BADGES = [
   { id: 'elite', tkey: 'badgeElite', icon: '⚡', req: (w: number) => w >= 100 },
 ]
 
-export function ProgressionClient() {
+export function ProgressionClient({ userId, initialWorkouts, initialProgress }: { userId: string; initialWorkouts: Workout[]; initialProgress: ProgressRow[] }) {
   const t = useTranslations('dashboard.progression')
   const locale = useLocale()
   const dateLocale = locale === 'en' ? 'en-US' : 'fr-FR'
   const discName = (slug: string) => (t.has(`disciplines.${slug}`) ? t(`disciplines.${slug}`) : slug)
-  const [workouts, setWorkouts] = useState<{ discipline: string; duration_minutes: number; completed_at: string }[]>([])
-  const [progress, setProgress] = useState<{ discipline: string; completed: boolean }[]>([])
+  const [workouts, setWorkouts] = useState<Workout[]>(initialWorkouts)
+  const progress = initialProgress
   const [adding, setAdding] = useState(false)
   const [form, setForm] = useState({ discipline: 'running-cardio', duration: '45', notes: '' })
   const [saving, setSaving] = useState(false)
-  const [userId, setUserId] = useState<string | null>(null)
-
-  useEffect(() => {
-    async function load() {
-      const supabase = createClient()
-      const { data: { user } } = await supabase.auth.getUser()
-      if (!user) return
-      setUserId(user.id)
-      const [{ data: w }, { data: p }] = await Promise.all([
-        supabase.from('workouts').select('*').eq('user_id', user.id).order('completed_at', { ascending: false }),
-        supabase.from('progress').select('discipline, completed').eq('user_id', user.id),
-      ])
-      setWorkouts(w ?? [])
-      setProgress(p ?? [])
-    }
-    load()
-  }, [])
 
   async function addWorkout() {
-    if (!userId) return
     setSaving(true)
     const supabase = createClient()
     const { data } = await supabase.from('workouts').insert({

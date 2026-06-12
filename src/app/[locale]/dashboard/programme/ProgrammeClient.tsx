@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, Suspense } from 'react'
+import { useState, useEffect, useRef, Suspense } from 'react'
 import { useSearchParams } from 'next/navigation'
 import { useTranslations, useLocale } from 'next-intl'
 import { CheckCircle, Circle, Play, ArrowRight, Lock } from 'lucide-react'
@@ -27,39 +27,39 @@ const COLOR: Record<string, string> = {
   lime: 'bg-sport-lime text-[#0A0B0F] border-sport-lime',
 }
 
-function ProgrammeContent({ isPro, freeSlugs }: { isPro: boolean; freeSlugs: string[] }) {
+function ProgrammeContent({ isPro, freeSlugs, userId, initialProgress }: { isPro: boolean; freeSlugs: string[]; userId: string; initialProgress: Record<string, boolean> }) {
   const t = useTranslations('dashboard.programme')
   const locale = useLocale()
   const searchParams = useSearchParams()
   const initialSlug = searchParams.get('discipline') ?? 'running-cardio'
 
   const [selected, setSelected] = useState(initialSlug)
-  const [progress, setProgress] = useState<Record<string, boolean>>({})
-  const [userId, setUserId] = useState<string | null>(null)
-  const [loading, setLoading] = useState(true)
+  const [progress, setProgress] = useState<Record<string, boolean>>(initialProgress)
+  const [loading, setLoading] = useState(false)
   const [content, setContent] = useState<DisciplineContent>(DISCIPLINE_CONTENT[initialSlug])
   const [videoMinPlans, setVideoMinPlans] = useState<string[]>([])
+  const skipInitialProgressFetch = useRef(true)
 
   const unlocked = (slug: string) => isPro || freeSlugs.includes(slug)
   const selectedUnlocked = unlocked(selected)
 
-  // Progression de l'utilisateur pour la discipline sélectionnée.
+  // Progression de l'utilisateur pour la discipline sélectionnée. La discipline
+  // initiale est déjà pré-chargée côté serveur → on ne refetch qu'au changement d'onglet.
   useEffect(() => {
+    if (skipInitialProgressFetch.current) { skipInitialProgressFetch.current = false; return }
+    if (!userId) return
     async function load() {
       const supabase = createClient()
-      const { data: { user } } = await supabase.auth.getUser()
-      if (!user) { setLoading(false); return }
-      setUserId(user.id)
-      const { data } = await supabase.from('progress').select('*').eq('user_id', user.id).eq('discipline', selected)
+      const { data } = await supabase.from('progress').select('*').eq('user_id', userId).eq('discipline', selected)
       const map: Record<string, boolean> = {}
       ;(data ?? []).forEach(p => { map[`${p.week}-${p.session_name}`] = p.completed })
       setProgress(map)
       setLoading(false)
     }
-    // eslint-disable-next-line react-hooks/set-state-in-effect -- état de chargement avant fetch déclenché par le changement de discipline
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- état de chargement avant fetch au changement d'onglet
     setLoading(true)
     load()
-  }, [selected])
+  }, [selected, userId])
 
   // Contenu : repli statique immédiat, puis base via l'API (repli si null/échec).
   useEffect(() => {
@@ -217,6 +217,6 @@ function ProgrammeContent({ isPro, freeSlugs }: { isPro: boolean; freeSlugs: str
   )
 }
 
-export function ProgrammeClient({ isPro, freeSlugs }: { isPro: boolean; freeSlugs: string[] }) {
-  return <Suspense fallback={<div className="p-8 text-sport-gray text-sm" />}><ProgrammeContent isPro={isPro} freeSlugs={freeSlugs} /></Suspense>
+export function ProgrammeClient({ isPro, freeSlugs, userId, initialProgress }: { isPro: boolean; freeSlugs: string[]; userId: string; initialProgress: Record<string, boolean> }) {
+  return <Suspense fallback={<div className="p-8 text-sport-gray text-sm" />}><ProgrammeContent isPro={isPro} freeSlugs={freeSlugs} userId={userId} initialProgress={initialProgress} /></Suspense>
 }
