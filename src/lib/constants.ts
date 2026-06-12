@@ -47,7 +47,7 @@ export const FEATURES = [
       'Séances courtes et intenses pour brûler un maximum de calories et booster ton métabolisme durablement en 20 à 30 min.',
     tag: 'Fat Burn',
     levels: ['Débutant', 'Intermédiaire', 'Avancé'],
-    stats: ['+2 100 membres', '60+ circuits', '20-30 min / séance'],
+    stats: ['+2 100 membres', '60+ circuits', '20–30 min / séance'],
   },
   {
     icon: 'bike',
@@ -91,7 +91,7 @@ export const FEATURES = [
       'Flexibilité, force intérieure et pleine conscience — des flows débutants au yoga avancé pour un corps et un esprit équilibrés.',
     tag: 'Bien-être',
     levels: ['Débutant', 'Intermédiaire', 'Avancé', 'Tous niveaux'],
-    stats: ['+2 000 pratiquants', '40+ séquences', '20-60 min / séance'],
+    stats: ['+2 000 pratiquants', '40+ séquences', '20–60 min / séance'],
   },
   {
     icon: 'target',
@@ -113,7 +113,7 @@ export const FEATURES = [
       'Mobilité, souplesse et récupération optimale — des routines d\'étirements guidées pour prévenir les blessures et performer.',
     tag: 'Mobilité',
     levels: ['Débutant', 'Intermédiaire', 'Avancé', 'Tous niveaux'],
-    stats: ['+1 600 membres', '30+ routines', '10-30 min / séance'],
+    stats: ['+1 600 membres', '30+ routines', '10–30 min / séance'],
   },
   {
     icon: 'zap',

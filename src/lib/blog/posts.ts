@@ -90,7 +90,7 @@ const BLOG_POSTS: BlogPost[] = [
       },
       {
         type: 'paragraph',
-        text: "C'est l'erreur la plus commune : acheter trop léger. Un débutant homme démarrera typiquement avec des curls à 8-10 kg, mais atteindra facilement 16-20 kg en 6 mois d'entraînement régulier. Pour une femme, la progression va de 4-6 kg à 10-14 kg sur la même période. Optez toujours pour une plage couvrant au moins le double de votre poids de départ. Les haltères réglables type Bowflex (2-24 kg) sont ici imbattables : ils évoluent avec vous.",
+        text: "C'est l'erreur la plus commune : acheter trop léger. Un débutant homme démarrera typiquement avec des curls à 8–10 kg, mais atteindra facilement 16–20 kg en 6 mois d'entraînement régulier. Pour une femme, la progression va de 4–6 kg à 10–14 kg sur la même période. Optez toujours pour une plage couvrant au moins le double de votre poids de départ. Les haltères réglables type Bowflex (2–24 kg) sont ici imbattables : ils évoluent avec vous.",
       },
       {
         type: 'subheading',
@@ -106,7 +106,7 @@ const BLOG_POSTS: BlogPost[] = [
       },
       {
         type: 'paragraph',
-        text: "Une poignée de 28-29 mm de diamètre convient à la majorité des mains. Le knurling (rainurage) doit être suffisant pour assurer le grip sans écorcher. Trop lisse et vous échapperez l'haltère en fin de série ; trop agressif et vous vous blesserez les paumes. Les meilleurs modèles proposent un knurling medium au centre et plus doux sur les extrémités.",
+        text: "Une poignée de 28–29 mm de diamètre convient à la majorité des mains. Le knurling (rainurage) doit être suffisant pour assurer le grip sans écorcher. Trop lisse et vous échapperez l'haltère en fin de série ; trop agressif et vous vous blesserez les paumes. Les meilleurs modèles proposent un knurling medium au centre et plus doux sur les extrémités.",
       },
       {
         type: 'productCta',
@@ -128,7 +128,7 @@ const BLOG_POSTS: BlogPost[] = [
       },
       {
         type: 'paragraph',
-        text: "Les kettlebells ne remplacent pas les haltères mais les complètent parfaitement. Leur centre de gravité déporté les rend idéaux pour les mouvements balistiques (swings, snatches, cleans) qui travaillent la chaîne postérieure — fessiers, ischio-jambiers, dos — d'une manière impossible avec des haltères classiques. Un kettlebell 16 kg (pour femme) ou 20-24 kg (pour homme) est la porte d'entrée idéale.",
+        text: "Les kettlebells ne remplacent pas les haltères mais les complètent parfaitement. Leur centre de gravité déporté les rend idéaux pour les mouvements balistiques (swings, snatches, cleans) qui travaillent la chaîne postérieure — fessiers, ischio-jambiers, dos — d'une manière impossible avec des haltères classiques. Un kettlebell 16 kg (pour femme) ou 20–24 kg (pour homme) est la porte d'entrée idéale.",
       },
       {
         type: 'productCta',
@@ -158,7 +158,7 @@ const BLOG_POSTS: BlogPost[] = [
       },
       {
         type: 'paragraph',
-        text: "Repos entre les séries : 60-90 secondes pour les supersets A et B, 45 secondes pour C et D. Augmentez le poids dès que vous réalisez toutes les répétitions avec 2 répétitions en réserve (RIR 2). C'est la surcharge progressive — le principe fondamental de toute progression musculaire.",
+        text: "Repos entre les séries : 60–90 secondes pour les supersets A et B, 45 secondes pour C et D. Augmentez le poids dès que vous réalisez toutes les répétitions avec 2 répétitions en réserve (RIR 2). C'est la surcharge progressive — le principe fondamental de toute progression musculaire.",
       },
       {
         type: 'quote',
@@ -224,8 +224,8 @@ const BLOG_POSTS: BlogPost[] = [
       {
         type: 'list',
         items: [
-          'Whey Concentrate (WPC) : 70-80% de protéines, contient lactose et graisses. La plus abordable, idéale pour débuter.',
-          'Whey Isolate (WPI) : 90-95% de protéines, quasi sans lactose ni graisses. Plus pure, digestion plus rapide.',
+          'Whey Concentrate (WPC) : 70–80% de protéines, contient lactose et graisses. La plus abordable, idéale pour débuter.',
+          'Whey Isolate (WPI) : 90–95% de protéines, quasi sans lactose ni graisses. Plus pure, digestion plus rapide.',
           'Whey Hydrolysat : protéines pré-digérées, absorption ultra-rapide. Plus chère, avantage marginal sauf post-effort intense.',
         ],
       },
@@ -254,8 +254,8 @@ const BLOG_POSTS: BlogPost[] = [
       {
         type: 'list',
         items: [
-          'Niveau débutant (0-6 mois) : 1,6 g/kg — synthèse protéique élevée, progression rapide',
-          'Niveau intermédiaire (6-24 mois) : 1,8 g/kg — progression plus lente, besoins stables',
+          'Niveau débutant (0–6 mois) : 1,6 g/kg — synthèse protéique élevée, progression rapide',
+          'Niveau intermédiaire (6–24 mois) : 1,8 g/kg — progression plus lente, besoins stables',
           'Niveau avancé (2+ ans) : 2,0-2,2 g/kg — muscles difficiles à développer, besoins maximaux',
           'Phases de sèche (déficit calorique) : montez à 2,2-2,5 g/kg pour préserver la masse musculaire',
         ],
@@ -283,7 +283,7 @@ const BLOG_POSTS: BlogPost[] = [
       {
         type: 'list',
         items: [
-          'Post-entraînement (30-60 min) : digestion rapide, idéal si plus de 4h depuis le dernier repas protéiné',
+          'Post-entraînement (30–60 min) : digestion rapide, idéal si plus de 4h depuis le dernier repas protéiné',
           'Au réveil : après le jeûne nocturne, une dose de 30g relance rapidement la synthèse protéique',
           'Entre les repas : shake protéiné pour atteindre vos objectifs journaliers sans excès de calories',
         ],
@@ -298,7 +298,7 @@ const BLOG_POSTS: BlogPost[] = [
       },
       {
         type: 'paragraph',
-        text: "Si vous deviez ne prendre qu'un seul complément en plus de la whey, ce serait la créatine monohydrate. C'est le supplément le plus étudié de l'histoire sportive, avec des centaines d'études confirmant son efficacité pour augmenter la force (+5-15% sur les mouvements de base) et accélérer la récupération. Dose : 3-5g par jour, peu importe le timing.",
+        text: "Si vous deviez ne prendre qu'un seul complément en plus de la whey, ce serait la créatine monohydrate. C'est le supplément le plus étudié de l'histoire sportive, avec des centaines d'études confirmant son efficacité pour augmenter la force (+5–15% sur les mouvements de base) et accélérer la récupération. Dose : 3–5g par jour, peu importe le timing.",
       },
       {
         type: 'productCta',
@@ -321,16 +321,16 @@ const BLOG_POSTS: BlogPost[] = [
       {
         type: 'list',
         items: [
-          '300-350 ml de lait écrémé ou lait végétal pour une texture crémeuse',
+          '300–350 ml de lait écrémé ou lait végétal pour une texture crémeuse',
           '30g de poudre de whey (environ 1 mesurette)',
           'Optionnel : 1 banane pour les glucides post-entraînement',
           'Optionnel : 1 cuillère à soupe de beurre de cacahuète pour les lipides',
-          'Mixer 20-30 secondes ou shaker vigoureusement 30 secondes',
+          'Mixer 20–30 secondes ou shaker vigoureusement 30 secondes',
         ],
       },
       {
         type: 'paragraph',
-        text: "Ce shake apporte environ 35-40g de protéines, 50-60g de glucides (avec banane), 10-15g de lipides — un repas post-entraînement complet pour moins de 5 minutes de préparation et moins de 2 € par dose.",
+        text: "Ce shake apporte environ 35–40g de protéines, 50–60g de glucides (avec banane), 10–15g de lipides — un repas post-entraînement complet pour moins de 5 minutes de préparation et moins de 2 € par dose.",
       },
     ],
   },
@@ -366,7 +366,7 @@ const BLOG_POSTS: BlogPost[] = [
     content: [
       {
         type: 'paragraph',
-        text: "Le HIIT — High Intensity Interval Training — a révolutionné la façon dont nous abordons la perte de masse grasse. Là où le cardio traditionnel vous demande 45-60 minutes de jogging modéré, le HIIT obtient des résultats supérieurs en 20-25 minutes. Ce n'est pas une promesse marketing : c'est ce que montrent des dizaines d'études scientifiques randomisées.",
+        text: "Le HIIT — High Intensity Interval Training — a révolutionné la façon dont nous abordons la perte de masse grasse. Là où le cardio traditionnel vous demande 45–60 minutes de jogging modéré, le HIIT obtient des résultats supérieurs en 20–25 minutes. Ce n'est pas une promesse marketing : c'est ce que montrent des dizaines d'études scientifiques randomisées.",
       },
       {
         type: 'heading',
@@ -374,7 +374,7 @@ const BLOG_POSTS: BlogPost[] = [
       },
       {
         type: 'paragraph',
-        text: "Le secret du HIIT se nomme EPOC — Excess Post-exercise Oxygen Consumption, ou «effet afterburn». Après une séance de cardio modéré, votre métabolisme revient à la normale en 30 à 60 minutes. Après un HIIT intense, votre corps continue de brûler des calories supplémentaires pendant 24 à 48 heures pour compenser la dette en oxygène accumulée. Cet effet peut représenter jusqu'à 10-15% de dépense calorique supplémentaire sur 24h.",
+        text: "Le secret du HIIT se nomme EPOC — Excess Post-exercise Oxygen Consumption, ou «effet afterburn». Après une séance de cardio modéré, votre métabolisme revient à la normale en 30 à 60 minutes. Après un HIIT intense, votre corps continue de brûler des calories supplémentaires pendant 24 à 48 heures pour compenser la dette en oxygène accumulée. Cet effet peut représenter jusqu'à 10–15% de dépense calorique supplémentaire sur 24h.",
       },
       {
         type: 'subheading',
@@ -387,7 +387,7 @@ const BLOG_POSTS: BlogPost[] = [
           'Augmentation de la sensibilité à l\'insuline — les cellules musculaires captent mieux le glucose',
           'Stimulation de l\'hormone de croissance (GH) jusqu\'à 450% au-dessus du niveau basal',
           'Préservation et développement de la masse musculaire contrairement au cardio longue durée',
-          'EPOC de 24-48h versus 30-60 min pour le cardio classique',
+          'EPOC de 24–48h versus 30–60 min pour le cardio classique',
         ],
       },
       {
@@ -396,7 +396,7 @@ const BLOG_POSTS: BlogPost[] = [
       },
       {
         type: 'paragraph',
-        text: "Un protocole HIIT efficace alterne phases d'effort maximal (85-95% de la FCmax) et phases de récupération active (50-60% de la FCmax). Les deux protocols les plus étudiés : le Tabata (20s effort / 10s repos × 8 rounds = 4 minutes) et le protocole 30/30 (30 secondes d'effort / 30 secondes de récupération × 10-12 rounds). Pour les débutants, commencez avec du 20/40 (20 secondes d'effort, 40 secondes de récupération).",
+        text: "Un protocole HIIT efficace alterne phases d'effort maximal (85–95% de la FCmax) et phases de récupération active (50–60% de la FCmax). Les deux protocols les plus étudiés : le Tabata (20s effort / 10s repos × 8 rounds = 4 minutes) et le protocole 30/30 (30 secondes d'effort / 30 secondes de récupération × 10–12 rounds). Pour les débutants, commencez avec du 20/40 (20 secondes d'effort, 40 secondes de récupération).",
       },
       {
         type: 'subheading',
@@ -455,7 +455,7 @@ const BLOG_POSTS: BlogPost[] = [
         type: 'productCta',
         productSlug: 'corde-sauter-crossfit-reebok',
         reason:
-          'La corde à sauter est l\'outil HIIT par excellence : 10 minutes de corde intense brûlent 130-150 calories. La corde Reebok Speed CrossFit avec roulements à billes permet d\'atteindre une cadence maximale.',
+          'La corde à sauter est l\'outil HIIT par excellence : 10 minutes de corde intense brûlent 130–150 calories. La corde Reebok Speed CrossFit avec roulements à billes permet d\'atteindre une cadence maximale.',
       },
       {
         type: 'subheading',
@@ -490,7 +490,7 @@ const BLOG_POSTS: BlogPost[] = [
       },
       {
         type: 'paragraph',
-        text: "Pour maximiser la combustion des graisses, certains pratiquants font leur HIIT à jeun (le matin). Cette approche peut fonctionner mais augmente le risque de fonte musculaire si elle n'est pas gérée correctement. Si vous optez pour le HIIT à jeun : consommez des BCAA avant la séance (5g) pour protéger vos muscles. Post-HIIT, un repas riche en protéines (30-40g) et glucides à index glycémique moyen dans les 60 minutes maximise la récupération.",
+        text: "Pour maximiser la combustion des graisses, certains pratiquants font leur HIIT à jeun (le matin). Cette approche peut fonctionner mais augmente le risque de fonte musculaire si elle n'est pas gérée correctement. Si vous optez pour le HIIT à jeun : consommez des BCAA avant la séance (5g) pour protéger vos muscles. Post-HIIT, un repas riche en protéines (30–40g) et glucides à index glycémique moyen dans les 60 minutes maximise la récupération.",
       },
       {
         type: 'paragraph',
@@ -554,7 +554,7 @@ const BLOG_POSTS: BlogPost[] = [
       },
       {
         type: 'paragraph',
-        text: "Le foam roller (rouleau de massage) exerce une pression directe sur le tissu myofascial. Le mécanisme exact reste débattu, mais les études confirment : 10-15 minutes de foam rolling post-entraînement réduisent les DOMS de 40% à 72 heures, et améliorent la mobilité articulaire sans perte de force. Protocole : travaillez chaque groupe musculaire 60-90 secondes en pression continue, en insistant sur les points douloureux (trigger points).",
+        text: "Le foam roller (rouleau de massage) exerce une pression directe sur le tissu myofascial. Le mécanisme exact reste débattu, mais les études confirment : 10–15 minutes de foam rolling post-entraînement réduisent les DOMS de 40% à 72 heures, et améliorent la mobilité articulaire sans perte de force. Protocole : travaillez chaque groupe musculaire 60–90 secondes en pression continue, en insistant sur les points douloureux (trigger points).",
       },
       {
         type: 'productCta',
@@ -586,7 +586,7 @@ const BLOG_POSTS: BlogPost[] = [
       },
       {
         type: 'paragraph',
-        text: "Dans les 30 à 60 minutes suivant l'effort, vos muscles sont particulièrement réceptifs aux nutriments. La priorité : protéines + glucides. Les protéines (30-40g) fournissent les acides aminés pour reconstruire les fibres endommagées. Les glucides (60-80g) rechargent le glycogène musculaire et stimulent l'insuline, hormone anabolisante. Un ratio de 3:1 glucides/protéines est optimal en endurance, 2:1 en musculation.",
+        text: "Dans les 30 à 60 minutes suivant l'effort, vos muscles sont particulièrement réceptifs aux nutriments. La priorité : protéines + glucides. Les protéines (30–40g) fournissent les acides aminés pour reconstruire les fibres endommagées. Les glucides (60–80g) rechargent le glycogène musculaire et stimulent l'insuline, hormone anabolisante. Un ratio de 3:1 glucides/protéines est optimal en endurance, 2:1 en musculation.",
       },
       {
         type: 'subheading',
@@ -594,7 +594,7 @@ const BLOG_POSTS: BlogPost[] = [
       },
       {
         type: 'paragraph',
-        text: "Les acides aminés branchés — Leucine, Isoleucine, Valine — sont catabolisés directement dans le muscle, contrairement aux autres acides aminés traités par le foie. La Leucine, en particulier, active directement le complexe mTOR, déclencheur principal de la synthèse protéique. 5-10g de BCAA autour de l'entraînement réduit les marqueurs de dommages musculaires (créatine kinase) de 15 à 25%.",
+        text: "Les acides aminés branchés — Leucine, Isoleucine, Valine — sont catabolisés directement dans le muscle, contrairement aux autres acides aminés traités par le foie. La Leucine, en particulier, active directement le complexe mTOR, déclencheur principal de la synthèse protéique. 5–10g de BCAA autour de l'entraînement réduit les marqueurs de dommages musculaires (créatine kinase) de 15 à 25%.",
       },
       {
         type: 'heading',
@@ -603,9 +603,9 @@ const BLOG_POSTS: BlogPost[] = [
       {
         type: 'list',
         items: [
-          'Bain froid (10-15°C pendant 10-15 min) : vasoconstiction, réduction de l\'inflammation aiguë',
-          'Douche alternée (30s froid / 30s chaud × 5-10 répétitions) : pompage vasculaire, drainage des déchets métaboliques',
-          'Sauna post-entraînement (20-30 min à 80°C) : GH × 200-300%, détente neuromusculaire',
+          'Bain froid (10-15°C pendant 10–15 min) : vasoconstiction, réduction de l\'inflammation aiguë',
+          'Douche alternée (30s froid / 30s chaud × 5–10 répétitions) : pompage vasculaire, drainage des déchets métaboliques',
+          'Sauna post-entraînement (20–30 min à 80°C) : GH × 200–300%, détente neuromusculaire',
           'Bain contrasté (plongées alternées 2 min froid / 2 min chaud × 5) : préféré des athlètes pro',
         ],
       },
@@ -615,7 +615,7 @@ const BLOG_POSTS: BlogPost[] = [
       },
       {
         type: 'paragraph',
-        text: "Contrairement à une idée reçue tenace, les étirements statiques juste après l'entraînement ne réduisent pas les courbatures (les études le confirment). Leur intérêt est ailleurs : maintien de la mobilité articulaire, prévention des déséquilibres posturaux, détente psychologique. La méthode la plus efficace pour la souplesse : le PNF (Proprioceptive Neuromuscular Facilitation) — contraction 6 secondes + relâchement + étirement 30 secondes. À pratiquer 3-4 heures après la séance, jamais immédiatement après.",
+        text: "Contrairement à une idée reçue tenace, les étirements statiques juste après l'entraînement ne réduisent pas les courbatures (les études le confirment). Leur intérêt est ailleurs : maintien de la mobilité articulaire, prévention des déséquilibres posturaux, détente psychologique. La méthode la plus efficace pour la souplesse : le PNF (Proprioceptive Neuromuscular Facilitation) — contraction 6 secondes + relâchement + étirement 30 secondes. À pratiquer 3–4 heures après la séance, jamais immédiatement après.",
       },
       {
         type: 'heading',
@@ -623,7 +623,7 @@ const BLOG_POSTS: BlogPost[] = [
       },
       {
         type: 'paragraph',
-        text: "Une marche légère, du vélo à très faible résistance ou 20-30 minutes de natation douce le lendemain d'une séance intense accélèrent la récupération de 15-20% par rapport au repos total. La circulation sanguine légèrement élevée favorise l'acheminement des nutriments vers les muscles endommagés et l'évacuation des déchets métaboliques (lactate, H+). À intensité faible (50-60% FCmax max), cela n'ajoute pas de stress supplémentaire.",
+        text: "Une marche légère, du vélo à très faible résistance ou 20–30 minutes de natation douce le lendemain d'une séance intense accélèrent la récupération de 15–20% par rapport au repos total. La circulation sanguine légèrement élevée favorise l'acheminement des nutriments vers les muscles endommagés et l'évacuation des déchets métaboliques (lactate, H+). À intensité faible (50–60% FCmax max), cela n'ajoute pas de stress supplémentaire.",
       },
       {
         type: 'quote',
@@ -638,7 +638,7 @@ const BLOG_POSTS: BlogPost[] = [
         items: [
           'Immédiatement post-séance : shake protéiné + BCAA + pistolet de massage 5 min',
           'Soir : repas complet protéiné, étirements PNF 20 min, 8h de sommeil minimum',
-          'Lendemain matin : foam roller 15 min, récupération active 20-30 min',
+          'Lendemain matin : foam roller 15 min, récupération active 20–30 min',
           '48h après : retour à l\'entraînement si les courbatures ont disparu ou sont très légères',
         ],
       },
@@ -680,7 +680,7 @@ const BLOG_POSTS: BlogPost[] = [
       },
       {
         type: 'paragraph',
-        text: "Quand vous débutez la course à pied, votre cardio-respiratoire n'est pas encore adapté à l'effort soutenu. Votre cœur (un muscle !) n'est pas entraîné à maintenir un débit élevé, vos poumons n'ont pas optimisé leur capacité de diffusion de l'oxygène, et vos muscles ne savent pas encore utiliser l'oxygène efficacement (VO2max faible). Bonne nouvelle : ces trois systèmes s'adaptent remarquablement vite avec un entraînement régulier. Les premières améliorations cardiovasculaires apparaissent dès 2-3 semaines.",
+        text: "Quand vous débutez la course à pied, votre cardio-respiratoire n'est pas encore adapté à l'effort soutenu. Votre cœur (un muscle !) n'est pas entraîné à maintenir un débit élevé, vos poumons n'ont pas optimisé leur capacité de diffusion de l'oxygène, et vos muscles ne savent pas encore utiliser l'oxygène efficacement (VO2max faible). Bonne nouvelle : ces trois systèmes s'adaptent remarquablement vite avec un entraînement régulier. Les premières améliorations cardiovasculaires apparaissent dès 2–3 semaines.",
       },
       {
         type: 'heading',
@@ -688,7 +688,7 @@ const BLOG_POSTS: BlogPost[] = [
       },
       {
         type: 'paragraph',
-        text: "L'erreur n°1 du débutant : partir trop vite. Si vous pouvez tenir une conversation en courant («test de la parole»), votre allure est correcte. Si vous haletez et ne pouvez pas former de phrases complètes, vous courez trop vite et vous allez devoir vous arrêter. La majorité de vos sorties running (80%) doit se faire en zone 2 (50-70% de la FCmax), une allure qui semble presque trop facile. C'est là que se construisent les fondations aérobies.",
+        text: "L'erreur n°1 du débutant : partir trop vite. Si vous pouvez tenir une conversation en courant («test de la parole»), votre allure est correcte. Si vous haletez et ne pouvez pas former de phrases complètes, vous courez trop vite et vous allez devoir vous arrêter. La majorité de vos sorties running (80%) doit se faire en zone 2 (50–70% de la FCmax), une allure qui semble presque trop facile. C'est là que se construisent les fondations aérobies.",
       },
       {
         type: 'subheading',
@@ -698,10 +698,10 @@ const BLOG_POSTS: BlogPost[] = [
         type: 'list',
         items: [
           'Formule classique : FCmax = 220 - âge (approximative mais suffisante pour débuter)',
-          'Zone 1 (récupération) : 50-60% FCmax — marche rapide',
-          'Zone 2 (endurance fondamentale) : 60-70% FCmax — running débutant idéal',
-          'Zone 3 (tempo) : 70-80% FCmax — effort perçu modéré à élevé',
-          'Zone 4 (seuil lactique) : 80-90% FCmax — inconfortable, difficile de parler',
+          'Zone 1 (récupération) : 50–60% FCmax — marche rapide',
+          'Zone 2 (endurance fondamentale) : 60–70% FCmax — running débutant idéal',
+          'Zone 3 (tempo) : 70–80% FCmax — effort perçu modéré à élevé',
+          'Zone 4 (seuil lactique) : 80–90% FCmax — inconfortable, difficile de parler',
         ],
       },
       {
@@ -753,7 +753,7 @@ const BLOG_POSTS: BlogPost[] = [
         type: 'list',
         items: [
           'Séance 1 : 25 min course continue',
-          'Séance 2 : 28-30 min course continue',
+          'Séance 2 : 28–30 min course continue',
           'Séance 3 de la semaine 8 : 5 km COMPLETS — votre premier 5 km !',
         ],
       },
@@ -781,7 +781,7 @@ const BLOG_POSTS: BlogPost[] = [
       },
       {
         type: 'paragraph',
-        text: "Les chaussures sont votre investissement numéro un. Une bonne paire de running (100-150 €) dure 500-800 km selon votre gabarit et le terrain. Faites-vous analyser la foulée en boutique spécialisée pour choisir entre pronateur, supinateur et neutre. Pour le reste : un short léger anti-frottement, un t-shirt respirant, des chaussettes running (sans couture au bout). La montre cardio est un plus, mais pas une priorité en début.",
+        text: "Les chaussures sont votre investissement numéro un. Une bonne paire de running (100-150 €) dure 500–800 km selon votre gabarit et le terrain. Faites-vous analyser la foulée en boutique spécialisée pour choisir entre pronateur, supinateur et neutre. Pour le reste : un short léger anti-frottement, un t-shirt respirant, des chaussettes running (sans couture au bout). La montre cardio est un plus, mais pas une priorité en début.",
       },
       {
         type: 'productCta',
@@ -795,7 +795,7 @@ const BLOG_POSTS: BlogPost[] = [
       },
       {
         type: 'paragraph',
-        text: "Les coureurs qui intègrent 2 séances de renforcement musculaire par semaine améliorent leur économie de course de 2 à 8% et réduisent leur risque de blessure de 30-50%. Focus sur les points faibles des coureurs : mollets (raises unilatéraux), quadriceps et ischio (squats bulgares), fessiers (hip thrust), gainage. Ces exercices créent la stabilité qui vous permet de courir longtemps sans compensation posturale douloureuse.",
+        text: "Les coureurs qui intègrent 2 séances de renforcement musculaire par semaine améliorent leur économie de course de 2 à 8% et réduisent leur risque de blessure de 30–50%. Focus sur les points faibles des coureurs : mollets (raises unilatéraux), quadriceps et ischio (squats bulgares), fessiers (hip thrust), gainage. Ces exercices créent la stabilité qui vous permet de courir longtemps sans compensation posturale douloureuse.",
       },
       {
         type: 'productCta',
@@ -809,15 +809,15 @@ const BLOG_POSTS: BlogPost[] = [
       },
       {
         type: 'paragraph',
-        text: "Pour des sorties de moins de 45-60 minutes, vous n'avez pas besoin de vous soucier de nutrition spécifique pendant la course. Assurez-vous simplement d'être correctement hydraté avant (500 ml dans les 2 heures précédentes) et de ne pas courir le ventre vide depuis plus de 3-4 heures. Après la sortie : une collation mixte protéines+glucides dans les 30-60 minutes accélère la récupération. À partir de 60-90 minutes de course, les gels ou boissons d'effort deviennent utiles.",
+        text: "Pour des sorties de moins de 45–60 minutes, vous n'avez pas besoin de vous soucier de nutrition spécifique pendant la course. Assurez-vous simplement d'être correctement hydraté avant (500 ml dans les 2 heures précédentes) et de ne pas courir le ventre vide depuis plus de 3–4 heures. Après la sortie : une collation mixte protéines+glucides dans les 30–60 minutes accélère la récupération. À partir de 60–90 minutes de course, les gels ou boissons d'effort deviennent utiles.",
       },
       {
         type: 'list',
         items: [
-          'Avant (1-2h) : flocons d\'avoine + banane, ou riz au lait',
-          'Pendant (si +60 min) : gels glucidiques ou dattes, 30-45g de glucides/heure',
-          'Après : protéines 20-30g + glucides 40-60g dans les 60 minutes',
-          'Hydratation : 400-600 ml/heure selon température, urine claire = bonne hydratation',
+          'Avant (1–2h) : flocons d\'avoine + banane, ou riz au lait',
+          'Pendant (si +60 min) : gels glucidiques ou dattes, 30–45g de glucides/heure',
+          'Après : protéines 20–30g + glucides 40–60g dans les 60 minutes',
+          'Hydratation : 400–600 ml/heure selon température, urine claire = bonne hydratation',
         ],
       },
     ],
@@ -927,7 +927,7 @@ const BLOG_POSTS: BlogPost[] = [
       { type: 'heading', text: 'La Surcharge Progressive : la Clé n°1' },
       {
         type: 'paragraph',
-        text: "C'est LE principe qui fait toute la différence. Pour que tes muscles grossissent, tu dois leur demander un peu plus à chaque fois. Concrètement : termine chaque série en gardant 1 à 2 répétitions « en réserve » (tu aurais pu faire 1-2 reps de plus). Dès que tu réalises facilement le haut de la fourchette de répétitions sur toutes les séries, augmente le poids de 1 à 2,5 kg à la séance suivante. Note tes performances : ce qui se mesure progresse.",
+        text: "C'est LE principe qui fait toute la différence. Pour que tes muscles grossissent, tu dois leur demander un peu plus à chaque fois. Concrètement : termine chaque série en gardant 1 à 2 répétitions « en réserve » (tu aurais pu faire 1–2 reps de plus). Dès que tu réalises facilement le haut de la fourchette de répétitions sur toutes les séries, augmente le poids de 1 à 2,5 kg à la séance suivante. Note tes performances : ce qui se mesure progresse.",
       },
       {
         type: 'quote',
@@ -1042,7 +1042,7 @@ const BLOG_POSTS: BlogPost[] = [
       {
         type: 'list',
         items: [
-          '1. Roll-out à genoux à amplitude réduite (débutant) — déroule de 30-40 cm seulement',
+          '1. Roll-out à genoux à amplitude réduite (débutant) — déroule de 30–40 cm seulement',
           '2. Roll-out à genoux complet (intermédiaire) — amplitude maximale contrôlée',
           '3. Roll-out oblique à genoux — déroule en diagonale vers la gauche puis la droite (obliques)',
           '4. Roll-out avec pause — 2 secondes d\'arrêt en position basse',

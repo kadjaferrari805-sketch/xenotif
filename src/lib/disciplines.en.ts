@@ -1620,7 +1620,7 @@ export const DISCIPLINE_META_EN: Record<string, DisciplineMeta> = {
     title: 'HIIT',
     tag: 'Fat Burn',
     description: 'Short, intense sessions to burn maximum calories and boost your metabolism for the long run in 20 to 30 min.',
-    stats: ['+2,100 members', '60+ circuits', '20-30 min / session'],
+    stats: ['+2,100 members', '60+ circuits', '20–30 min / session'],
     levels: ['Beginner', 'Intermediate', 'Advanced'],
   },
   cyclisme: {
@@ -1648,7 +1648,7 @@ export const DISCIPLINE_META_EN: Record<string, DisciplineMeta> = {
     title: 'Yoga',
     tag: 'Wellness',
     description: 'Flexibility, inner strength and mindfulness — from beginner flows to advanced yoga for a balanced body and mind.',
-    stats: ['+2,000 practitioners', '40+ sequences', '20-60 min / session'],
+    stats: ['+2,000 practitioners', '40+ sequences', '20–60 min / session'],
     levels: ['Beginner', 'Intermediate', 'Advanced', 'All levels'],
   },
   boxing: {
@@ -1662,7 +1662,7 @@ export const DISCIPLINE_META_EN: Record<string, DisciplineMeta> = {
     title: 'Stretching',
     tag: 'Mobility',
     description: 'Mobility, flexibility and optimal recovery — guided stretching routines to prevent injuries and perform.',
-    stats: ['+1,600 members', '30+ routines', '10-30 min / session'],
+    stats: ['+1,600 members', '30+ routines', '10–30 min / session'],
     levels: ['Beginner', 'Intermediate', 'Advanced', 'All levels'],
   },
   nutrition: {

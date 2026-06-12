@@ -21,7 +21,7 @@ const TEXT_DE: Record<string, ProductText> = {
     name: 'Widerstandsband-Set × 5 — PORTENTUM',
     badge: '🔥 Sale',
     description: 'Set aus 5 Widerstandsbändern für Kraft und Fitness. Progressiver Widerstand von 25 bis 125 lbs. Ideal für ein komplettes Heimtraining.',
-    longDescription: 'Das PORTENTUM-Set umfasst 5 Widerstandsbänder in verschiedenen Farben (von 25-65 lbs bis 50-125 lbs) für ein progressives, komplettes Training. Perfekt für Kraft, CrossFit, Yoga, Reha und Muskelkräftigung zu Hause oder unterwegs. Langlebig, rutschfest und leicht zu transportieren.',
+    longDescription: 'Das PORTENTUM-Set umfasst 5 Widerstandsbänder in verschiedenen Farben (von 25–65 lbs bis 50–125 lbs) für ein progressives, komplettes Training. Perfekt für Kraft, CrossFit, Yoga, Reha und Muskelkräftigung zu Hause oder unterwegs. Langlebig, rutschfest und leicht zu transportieren.',
     features: ['5 Stufen: 25 bis 125 lbs', 'Komplett Kraft & Fitness', 'Langlebig rutschfest', 'Ideal für zu Hause', 'Leicht zu transportieren'],
     tags: ['widerstandsbänder', 'widerstand', 'fitness', 'kraft'],
   },
@@ -169,9 +169,9 @@ const TEXT_DE: Record<string, ProductText> = {
   d3: {
     name: 'Fettverbrennungs-HIIT-Programm — 6 Wochen',
     badge: '🔥 Beliebt',
-    description: '24 Einheiten à 20-30 Min, 100% Körpergewicht. Keine Ausrüstung. Anfänger → Fortgeschritten. Garantierte Ergebnisse.',
+    description: '24 Einheiten à 20–30 Min, 100% Körpergewicht. Keine Ausrüstung. Anfänger → Fortgeschritten. Garantierte Ergebnisse.',
     longDescription: 'Das XENOTIF-HIIT-Programm ist von unserem CrossFit-Level-2-zertifizierten Coach entwickelt. 4 Einheiten pro Woche à 20 bis maximal 30 Minuten, 100% Körpergewicht — keine Ausrüstung erforderlich. Der progressive Aufbau garantiert optimale Anpassung ohne Verletzungsrisiko. Jede Einheit enthält einen integrierten Timer und Demonstrationsvideos.',
-    features: ['24 Einheiten à 20-30 Min', 'Keine Ausrüstung', 'Anfänger → Fortgeschritten', 'Integrierter Timer', 'HD-Demovideos'],
+    features: ['24 Einheiten à 20–30 Min', 'Keine Ausrüstung', 'Anfänger → Fortgeschritten', 'Integrierter Timer', 'HD-Demovideos'],
     tags: ['HIIT', 'fettverbrennung', 'körpergewicht', 'cardio'],
   },
   d4: {
