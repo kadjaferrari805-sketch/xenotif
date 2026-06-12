@@ -57,6 +57,7 @@
   "common": {
     "nav": {
       "disciplines": "Disziplinen",
+      "preview": "Vorschau",
       "programmes": "Programme",
       "boutique": "🛒 Shop",
       "blog": "📝 Blog",
@@ -87,6 +88,7 @@
         "avance": "Erfahren",
         "elite": "Elite",
         "coachingIA": "KI-Coaching",
+        "preview": "Bereich-Vorschau",
         "tarifs": "Preise",
         "faq": "FAQ"
       }

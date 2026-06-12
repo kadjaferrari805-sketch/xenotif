@@ -57,6 +57,7 @@
   "common": {
     "nav": {
       "disciplines": "Disciplines",
+      "preview": "Aperçu",
       "programmes": "Programmes",
       "boutique": "🛒 Boutique",
       "blog": "📝 Blog",
@@ -87,6 +88,7 @@
         "avance": "Avancé",
         "elite": "Élite",
         "coachingIA": "Coaching IA",
+        "preview": "Aperçu de l'espace",
         "tarifs": "Tarifs",
         "faq": "FAQ"
       }
