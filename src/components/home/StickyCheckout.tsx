@@ -22,7 +22,7 @@ export function StickyCheckout() {
     <div
       role="region"
       aria-label={t('ariaRegion')}
-      className="fixed bottom-0 left-0 right-0 z-40 bg-sport-card/96 backdrop-blur-md border-t border-sport-border shadow-2xl"
+      className="fixed bottom-0 left-0 right-0 z-40 bg-sport-card/96 backdrop-blur-md border-t border-sport-border shadow-2xl pb-[env(safe-area-inset-bottom)]"
     >
       <div className="max-w-6xl mx-auto px-4 py-3">
         <div className="flex items-center gap-3">

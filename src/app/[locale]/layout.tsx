@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import { Inter, Orbitron } from 'next/font/google'
 import Script from 'next/script'
 import { NextIntlClientProvider, hasLocale } from 'next-intl'
@@ -27,6 +27,13 @@ const LOCALE_OG: Record<string, string> = {
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }))
+}
+
+// viewport-fit=cover : PWA edge-to-edge ; les barres fixes gèrent les safe-areas via env().
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  viewportFit: 'cover',
 }
 
 export async function generateMetadata({
