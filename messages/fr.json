@@ -128,7 +128,7 @@
       "dismiss": "Fermer la barre d'abonnement"
     },
     "metaTitle": "Xenotif® — Forge ton corps. Dépasse tes limites.",
-    "metaDescription": "La plateforme fitness premium — 10 disciplines, coaching IA personnalisé, programmes guidés, garantie 30 jours. Transforme ton corps avec Xenotif®.",
+    "metaDescription": "La plateforme fitness premium — 10 disciplines, coaching IA personnalisé, 300+ séances. Rejoins 12 000+ athlètes qui transforment leur corps avec Xenotif®.",
     "hero": {
       "eyebrow": "La Plateforme Sport Premium",
       "ctaPrimary": "Commencer gratuitement",
@@ -141,13 +141,13 @@
         { "tag": "⚡ HIIT & CrossFit", "headline": "BRISE TES LIMITES.", "accent": "DEVIENS IMBATTABLE." }
       ],
       "badges": [
-        { "label": "10 disciplines", "sub": "au choix" },
+        { "label": "+12 000 membres", "sub": "actifs" },
         { "label": "Coaching IA", "sub": "inclus" },
-        { "label": "Avis vérifiés", "sub": "100% authentiques" },
+        { "label": "4.9 / 5", "sub": "3 200 avis" },
         { "label": "Résultats", "sub": "dès 30 jours" }
       ],
       "trust": [
-        { "label": "10 disciplines", "sublabel": "sport complet" },
+        { "label": "12K+ athlètes", "sublabel": "communauté active" },
         { "label": "Coaching IA", "sublabel": "personnalisé" },
         { "label": "Accès illimité", "sublabel": "tous programmes" },
         { "label": "30 jours", "sublabel": "satisfait ou remboursé" }
@@ -169,7 +169,7 @@
         "Natation",
         "CrossFit",
         "Coaching IA",
-        "Garantie 30 jours",
+        "12K+ Athlètes",
         "Résultats garantis",
         "Programmes sur mesure"
       ]
@@ -177,10 +177,10 @@
     "proof": {
       "aria": "Chiffres clés",
       "stats": [
+        { "label": "Athlètes actifs", "sublabel": "dans le monde entier" },
+        { "label": "Programmes", "sublabel": "tous niveaux" },
         { "label": "Disciplines", "sublabel": "sport complet" },
-        { "label": "Coaching IA", "sublabel": "disponible 24/7" },
-        { "label": "Garantie", "sublabel": "satisfait ou remboursé" },
-        { "label": "Paiement sécurisé", "sublabel": "Stripe · 3D Secure" }
+        { "label": "Satisfaction", "sublabel": "3 200+ avis vérifiés" }
       ]
     },
     "features": {
@@ -190,16 +190,16 @@
       "discover": "Découvrir",
       "discoverAria": "Découvrir la discipline {name}",
       "items": [
-        { "title": "Running & Cardio", "tag": "Cardio", "description": "Programmes de course adaptés à tous les niveaux — du 5K au marathon. Plans personnalisés avec coaching GPS et suivi de fréquence cardiaque.", "stats": [ "120+ plans", "12 semaines moy."] },
-        { "title": "Musculation", "tag": "Strength", "description": "Prise de masse, sèche ou tonification — nos coaches certifiés construisent ton programme sur mesure selon ta morphologie.", "stats": [ "90+ programmes", "8 semaines moy."] },
-        { "title": "HIIT", "tag": "Fat Burn", "description": "Séances courtes et intenses pour brûler un maximum de calories et booster ton métabolisme durablement en 20 à 30 min.", "stats": [ "60+ circuits", "20–30 min / séance"] },
-        { "title": "Cyclisme", "tag": "Endurance", "description": "Entraînements indoor et outdoor avec puissance-mètre. De la sportive au grimpeur de cols, un plan adapté à chaque profil.", "stats": [ "45+ plans", "16 semaines moy."] },
-        { "title": "Natation", "tag": "Aquatique", "description": "Techniques de nage, préparation triathlon, open water — progressez dans tous les styles avec des drills vidéo HD.", "stats": [ "30+ programmes", "10 semaines moy."] },
-        { "title": "CrossFit", "tag": "Functional", "description": "WODs quotidiens, mouvements fonctionnels et challenges communautaires pour repousser tes limites chaque semaine.", "stats": [ "365 WODs/an", "5× / semaine"] },
-        { "title": "Yoga", "tag": "Bien-être", "description": "Flexibilité, force intérieure et pleine conscience — des flows débutants au yoga avancé pour un corps et un esprit équilibrés.", "stats": [ "40+ séquences", "20–60 min / séance"] },
-        { "title": "Boxe", "tag": "Combat", "description": "Technique, cardio et puissance — des bases aux combinaisons avancées pour te transformer physiquement et mentalement.", "stats": [ "35+ programmes", "8 semaines moy."] },
-        { "title": "Stretching", "tag": "Mobilité", "description": "Mobilité, souplesse et récupération optimale — des routines d'étirements guidées pour prévenir les blessures et performer.", "stats": [ "30+ routines", "10–30 min / séance"] },
-        { "title": "Nutrition", "tag": "Alimentation", "description": "Plans alimentaires personnalisés, calcul des macros et stratégies nutritionnelles pour atteindre tes objectifs sportifs.", "stats": [ "50+ plans", "Suivi quotidien"] }
+        { "title": "Running & Cardio", "tag": "Cardio", "description": "Programmes de course adaptés à tous les niveaux — du 5K au marathon. Plans personnalisés avec coaching GPS et suivi de fréquence cardiaque.", "stats": [ "+4 200 coureurs", "120+ plans", "12 semaines moy."] },
+        { "title": "Musculation", "tag": "Strength", "description": "Prise de masse, sèche ou tonification — nos coaches certifiés construisent ton programme sur mesure selon ta morphologie.", "stats": [ "+3 800 membres", "90+ programmes", "8 semaines moy."] },
+        { "title": "HIIT", "tag": "Fat Burn", "description": "Séances courtes et intenses pour brûler un maximum de calories et booster ton métabolisme durablement en 20 à 30 min.", "stats": [ "+2 100 membres", "60+ circuits", "20–30 min / séance"] },
+        { "title": "Cyclisme", "tag": "Endurance", "description": "Entraînements indoor et outdoor avec puissance-mètre. De la sportive au grimpeur de cols, un plan adapté à chaque profil.", "stats": [ "+1 500 cyclistes", "45+ plans", "16 semaines moy."] },
+        { "title": "Natation", "tag": "Aquatique", "description": "Techniques de nage, préparation triathlon, open water — progressez dans tous les styles avec des drills vidéo HD.", "stats": [ "+900 nageurs", "30+ programmes", "10 semaines moy."] },
+        { "title": "CrossFit", "tag": "Functional", "description": "WODs quotidiens, mouvements fonctionnels et challenges communautaires pour repousser tes limites chaque semaine.", "stats": [ "+1 800 athlètes", "365 WODs/an", "5× / semaine"] },
+        { "title": "Yoga", "tag": "Bien-être", "description": "Flexibilité, force intérieure et pleine conscience — des flows débutants au yoga avancé pour un corps et un esprit équilibrés.", "stats": [ "+2 000 pratiquants", "40+ séquences", "20–60 min / séance"] },
+        { "title": "Boxe", "tag": "Combat", "description": "Technique, cardio et puissance — des bases aux combinaisons avancées pour te transformer physiquement et mentalement.", "stats": [ "+1 200 boxeurs", "35+ programmes", "8 semaines moy."] },
+        { "title": "Stretching", "tag": "Mobilité", "description": "Mobilité, souplesse et récupération optimale — des routines d'étirements guidées pour prévenir les blessures et performer.", "stats": [ "+1 600 membres", "30+ routines", "10–30 min / séance"] },
+        { "title": "Nutrition", "tag": "Alimentation", "description": "Plans alimentaires personnalisés, calcul des macros et stratégies nutritionnelles pour atteindre tes objectifs sportifs.", "stats": [ "+3 000 membres", "50+ plans", "Suivi quotidien"] }
       ]
     },
     "howItWorks": {
@@ -260,7 +260,7 @@
       "summary": {
         "rating": "4.9 / 5",
         "basedOn": "basé sur",
-        "count": "nos",
+        "count": "3 200+",
         "reviews": "avis vérifiés",
         "stats": [
           { "value": "97%", "label": "Satisfaits" },
@@ -273,7 +273,7 @@
       "eyebrow": "Rejoins la communauté",
       "titleTop": "PRÊT À DÉPASSER",
       "titleBottom": "TES LIMITES ?",
-      "desc": "Rejoins <b>la communauté</b> qui reçoit chaque semaine : programmes, conseils nutrition, tips d'entraînement et WODs exclusifs.",
+      "desc": "Rejoins <b>12 000+ athlètes</b> qui reçoivent chaque semaine : programmes, conseils nutrition, tips d'entraînement et WODs exclusifs.",
       "perks": [
         "Programmes gratuits chaque semaine",
         "WODs & défis communautaires",
@@ -464,8 +464,8 @@
     "stats": {
       "products": "Produits premium",
       "rating": "Note moyenne",
-      "customers": "Garantie satisfait",
-      "customersValue": "30 jours",
+      "customers": "Clients satisfaits",
+      "customersValue": "12 000+",
       "delivery": "Livraison express"
     },
     "trust": [
@@ -631,7 +631,7 @@
     "emptyCategory": "Aucun article dans cette catégorie.",
     "seeAll": "Voir tous les articles",
     "ctaTitle": "Prêt à <o>Passer à l'Action ?</o>",
-    "ctaSubtitle": "Les conseils théoriques c'est bien, un programme structuré par des experts c'est mieux. Rejoignez la communauté Xenotif®.",
+    "ctaSubtitle": "Les conseils théoriques c'est bien, un programme structuré par des experts c'est mieux. Rejoignez les 12 000+ athlètes Xenotif®.",
     "ctaShop": "Voir la Boutique",
     "ctaJoin": "Rejoindre Xenotif®",
     "readingTime": "{minutes} min",
