@@ -14,6 +14,7 @@ import { FAQ } from '@/components/home/FAQ'
 import { Newsletter } from '@/components/home/Newsletter'
 import { StickyCheckout } from '@/components/home/StickyCheckout'
 import { CustomerReviews } from '@/components/reviews/CustomerReviews'
+import { TransformationsGallery } from '@/components/transformations/TransformationsGallery'
 
 export default function HomePage() {
   return (
@@ -31,6 +32,7 @@ export default function HomePage() {
       <Pricing />
       <Reviews />
       <CustomerReviews kind="platform" />
+      <TransformationsGallery />
       <FAQ />
       <Newsletter />
       <StickyCheckout />
