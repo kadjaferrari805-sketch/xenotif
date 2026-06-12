@@ -5,7 +5,6 @@ import { ProofBar } from '@/components/home/ProofBar'
 import { Features } from '@/components/home/Features'
 import { HowItWorks } from '@/components/home/HowItWorks'
 import { CoachDemo } from '@/components/home/CoachDemo'
-import { PreviewDashboard } from '@/components/preview/PreviewDashboard'
 import { IntensityLevels } from '@/components/home/IntensityLevels'
 import { Pricing } from '@/components/home/Pricing'
 import { Reviews } from '@/components/home/Reviews'
@@ -24,7 +23,6 @@ export default function HomePage() {
       <Features />
       <HowItWorks />
       <CoachDemo />
-      <PreviewDashboard />
       <IntensityLevels />
       <Pricing />
       <Reviews />
