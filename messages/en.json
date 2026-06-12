@@ -87,6 +87,37 @@
       "monthMinutes": "{current}/{target} active min"
     }
   },
+  "appShowcase": {
+    "badge": "App",
+    "title": "The XENOTIF app in your pocket",
+    "subtitle": "Your workouts, nutrition and progress — everywhere, even offline. Install in one click, no store.",
+    "features": [
+      "Guided video workouts",
+      "Nutrition & macro tracking",
+      "Progress, XP & badges",
+      "Personalized AI coach",
+      "Works offline"
+    ],
+    "cta": "Install the app",
+    "mockSessions": "Sessions / wk",
+    "mockLevel": "Level",
+    "mockProgress": "Program"
+  },
+  "devicesSync": {
+    "title": "Sync your performance",
+    "subtitle": "XENOTIF tracks your activity in real time from your phone — and soon from your watch.",
+    "liveBadge": "Live",
+    "liveSource": "Phone sensor · Apple Fitness",
+    "metrics": [
+      "Heart rate",
+      "Calories",
+      "Steps",
+      "Sleep",
+      "Recovery"
+    ],
+    "soonTitle": "Watch compatibility — coming soon",
+    "soonTag": "Soon"
+  },
   "common": {
     "nav": {
       "disciplines": "Disciplines",
