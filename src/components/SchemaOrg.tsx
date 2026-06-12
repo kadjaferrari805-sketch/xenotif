@@ -13,7 +13,7 @@ export function OrganizationSchema() {
       height: 630,
     },
     description:
-      'La plateforme fitness premium — 10 disciplines, coaching IA personnalisé, programmes guidés et garantie 30 jours.',
+      'La plateforme fitness premium — 10 disciplines, coaching IA personnalisé, 300+ séances. Rejoins 12 000+ athlètes qui transforment leur corps avec Xenotif®.',
     sameAs: [
       'https://www.instagram.com/xenotif',
       'https://www.youtube.com/@xenotif',

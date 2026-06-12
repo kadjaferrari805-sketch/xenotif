@@ -4,16 +4,16 @@ import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { useTranslations } from 'next-intl'
 import { useInView } from 'react-intersection-observer'
-import { Layers, Bot, ShieldCheck, Lock } from 'lucide-react'
+import { Users, BookOpen, Layers, Star } from 'lucide-react'
 import { Tilt3D } from '@/components/premium/Tilt3D'
 
-// Stats 100 % vérifiables (aucun compte d'utilisateurs inventé). Les libellés
+// Données structurelles des stats (icône, valeur, couleurs). Les libellés
 // (label, sublabel) viennent de messages → home.proof.stats.
 const STAT_STYLE = [
-  { Icon: Layers,      end: 10,  suffix: '',   color: 'text-sport-lime',   bg: 'bg-sport-lime/10 border-sport-lime/20' },
-  { Icon: Bot,         end: 24,  suffix: '/7', color: 'text-sport-blue',   bg: 'bg-sport-blue/10 border-sport-blue/20' },
-  { Icon: ShieldCheck, end: 30,  suffix: 'j',  color: 'text-sport-orange', bg: 'bg-sport-orange/10 border-sport-orange/20' },
-  { Icon: Lock,        end: 100, suffix: '%',  color: 'text-emerald-400',  bg: 'bg-emerald-400/10 border-emerald-400/20' },
+  { Icon: Users,    end: 12000, suffix: '+',  color: 'text-sport-orange', bg: 'bg-sport-orange/10 border-sport-orange/20' },
+  { Icon: BookOpen, end: 50,    suffix: '+',  color: 'text-sport-blue',   bg: 'bg-sport-blue/10 border-sport-blue/20' },
+  { Icon: Layers,   end: 10,    suffix: '',   color: 'text-sport-lime',   bg: 'bg-sport-lime/10 border-sport-lime/20' },
+  { Icon: Star,     end: 49,    suffix: '/5', color: 'text-sport-orange', bg: 'bg-sport-orange/10 border-sport-orange/20', decimal: true },
 ]
 
 function Counter({ end, suffix, decimal, active }: { end: number; suffix: string; decimal?: boolean; active: boolean }) {
@@ -69,7 +69,7 @@ export function ProofBar() {
                 <stat.Icon size={20} className={stat.color} />
               </div>
               <dt className={`text-4xl font-black ${stat.color} tabular-nums`}>
-                <Counter end={stat.end} suffix={stat.suffix} active={inView} />
+                <Counter end={stat.end} suffix={stat.suffix} decimal={stat.decimal} active={inView} />
               </dt>
               <dd className="text-xs font-bold text-white uppercase tracking-widest mt-1">{labels[i].label}</dd>
               <span className="text-[11px] text-sport-gray">{labels[i].sublabel}</span>
