@@ -3,20 +3,17 @@ import { renderWithIntl } from '@/test/intl'
 import { ProofBar } from './ProofBar'
 
 describe('ProofBar', () => {
-  it('renders 4 stat values with their suffixes', () => {
+  it('rend les libellés des 4 stats vérifiables', () => {
     renderWithIntl(<ProofBar />)
-    // Les nombres s'animent de 0 → cible via IntersectionObserver, non déclenché
-    // en jsdom — donc on vérifie les suffixes statiques toujours rendus :
-    // deux « + » (athlètes, programmes) et un « /5 » (satisfaction).
-    expect(screen.getAllByText(/\+$/).length).toBeGreaterThanOrEqual(2)
-    expect(screen.getByText(/\/5$/)).toBeInTheDocument()
+    expect(screen.getByText(/^disciplines$/i)).toBeInTheDocument()
+    expect(screen.getByText(/coaching ia/i)).toBeInTheDocument()
+    expect(screen.getByText(/^garantie$/i)).toBeInTheDocument()
+    expect(screen.getByText(/paiement sécurisé/i)).toBeInTheDocument()
   })
 
-  it('renders stat labels', () => {
+  it('rend des sous-libellés vérifiables (sans compte d’utilisateurs inventé)', () => {
     renderWithIntl(<ProofBar />)
-    expect(screen.getByText(/athlètes actifs/i)).toBeInTheDocument()
-    expect(screen.getByText(/programmes/i)).toBeInTheDocument()
-    expect(screen.getByText(/disciplines/i)).toBeInTheDocument()
-    expect(screen.getByText(/satisfaction/i)).toBeInTheDocument()
+    expect(screen.getByText(/disponible 24\/7/i)).toBeInTheDocument()
+    expect(screen.getByText(/satisfait ou remboursé/i)).toBeInTheDocument()
   })
 })
