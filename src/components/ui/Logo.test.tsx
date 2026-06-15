@@ -3,20 +3,19 @@ import { renderWithIntl } from '@/test/intl'
 import { XenotifMark, XenotifWordmark, Logo, LogoVertical } from './Logo'
 
 describe('XenotifMark', () => {
-  it('rend un hexagone et les deux segments du X', () => {
+  it('rend les 4 segments du X', () => {
     const { container } = render(<XenotifMark />)
-    expect(container.querySelector('polygon')).toBeInTheDocument()
-    expect(container.querySelectorAll('.xeno-x line')).toHaveLength(2)
+    expect(container.querySelectorAll('polygon')).toHaveLength(4)
   })
 
-  it('utilise l’orange de marque (#FF4500) pour le X en bi-ton', () => {
+  it('utilise l’orange de marque (#FF6A00) pour les segments droite en bi-ton', () => {
     const { container } = render(<XenotifMark variant="biton" />)
-    expect(container.querySelector('.xeno-x')?.getAttribute('stroke')).toBe('#FF4500')
+    expect(container.innerHTML).toContain('#FF6A00')
   })
 
   it('n’utilise pas d’orange en mono-white', () => {
     const { container } = render(<XenotifMark variant="mono-white" />)
-    expect(container.innerHTML).not.toContain('#FF4500')
+    expect(container.innerHTML).not.toContain('#FF6A00')
   })
 
   it('ajoute la classe d’animation quand animated', () => {

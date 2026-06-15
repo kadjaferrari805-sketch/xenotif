@@ -14,10 +14,11 @@ const sizes = {
   lg: { mark: 48, text: 'text-2xl', gap: 'gap-3' },
 }
 
-type MarkVariant = 'biton' | 'mono-white' | 'mono-titane'
+type MarkVariant = 'biton' | 'mono-white'
 
-// Marque « Hexa-Tech » : hexagone (contour titane) + X orange.
-// SVG pur + CSS → reste rendable côté serveur (pas de 'use client').
+// Marque « X » : 4 segments épais et angulaires (bouts coupés nets), espace négatif au
+// centre. Bi-ton : segments gauche blancs, segments droite orange (#FF6A00).
+// SVG pur → reste rendable côté serveur (pas de 'use client').
 export function XenotifMark({
   size = 36,
   variant = 'biton',
@@ -27,42 +28,25 @@ export function XenotifMark({
   variant?: MarkVariant
   animated?: boolean
 }) {
-  const hexStroke = variant === 'mono-white' ? '#ffffff' : 'url(#xeno-titane)'
-  const xStroke =
-    variant === 'biton' ? '#FF4500' : variant === 'mono-white' ? '#ffffff' : 'url(#xeno-titane)'
+  const left = '#ffffff'
+  const right = variant === 'mono-white' ? '#ffffff' : '#FF6A00'
 
   return (
     <svg
       width={size}
       height={size}
-      viewBox="0 0 48 48"
+      viewBox="0 0 100 100"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       aria-hidden="true"
       className={`xeno-mark${animated ? ' xeno-mark--animated' : ''}`}
     >
-      <defs>
-        {/* Dégradé titane/argent. Id stable : plusieurs instances partagent la même def. */}
-        <linearGradient id="xeno-titane" x1="6" y1="3" x2="42" y2="45" gradientUnits="userSpaceOnUse">
-          <stop offset="0%" stopColor="#ffffff" />
-          <stop offset="50%" stopColor="#9ca3af" />
-          <stop offset="100%" stopColor="#e5e7eb" />
-        </linearGradient>
-      </defs>
-
-      {/* Hexagone */}
-      <polygon
-        points="24,3 42,13.5 42,34.5 24,45 6,34.5 6,13.5"
-        fill="none"
-        stroke={hexStroke}
-        strokeWidth="2.4"
-        strokeLinejoin="round"
-      />
-      {/* X (deux segments) — la classe .xeno-x sert de cible à l'animation de tracé */}
-      <g className="xeno-x" stroke={xStroke} strokeWidth="4.6" strokeLinecap="round">
-        <line x1="17.5" y1="17.5" x2="30.5" y2="30.5" />
-        <line x1="30.5" y1="17.5" x2="17.5" y2="30.5" />
-      </g>
+      {/* 2 segments gauche */}
+      <polygon points="48.73,38.54 14.43,4.25 4.25,14.43 38.54,48.73" fill={left} />
+      <polygon points="38.54,51.27 4.25,85.57 14.43,95.75 48.73,61.46" fill={left} />
+      {/* 2 segments droite */}
+      <polygon points="61.46,48.73 95.75,14.43 85.57,4.25 51.27,38.54" fill={right} />
+      <polygon points="51.27,61.46 85.57,95.75 95.75,85.57 61.46,51.27" fill={right} />
     </svg>
   )
 }
