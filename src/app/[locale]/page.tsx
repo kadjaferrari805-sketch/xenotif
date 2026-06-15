@@ -6,8 +6,6 @@ import { Features } from '@/components/home/Features'
 import { HowItWorks } from '@/components/home/HowItWorks'
 import { CoachDemo } from '@/components/home/CoachDemo'
 import { IntensityLevels } from '@/components/home/IntensityLevels'
-import { AppShowcase } from '@/components/home/AppShowcase'
-import { DevicesSync } from '@/components/home/DevicesSync'
 import { Pricing } from '@/components/home/Pricing'
 import { Reviews } from '@/components/home/Reviews'
 import { FAQ } from '@/components/home/FAQ'
@@ -27,8 +25,6 @@ export default function HomePage() {
       <HowItWorks />
       <CoachDemo />
       <IntensityLevels />
-      <AppShowcase />
-      <DevicesSync />
       <Pricing />
       <Reviews />
       <CustomerReviews kind="platform" />
