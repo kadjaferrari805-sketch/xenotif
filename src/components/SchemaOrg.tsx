@@ -8,9 +8,9 @@ export function OrganizationSchema() {
     url: 'https://xenotif.com',
     logo: {
       '@type': 'ImageObject',
-      url: 'https://xenotif.com/og-image.jpg',
-      width: 1200,
-      height: 630,
+      url: 'https://xenotif.com/icon-512.png',
+      width: 512,
+      height: 512,
     },
     description:
       'La plateforme fitness premium — 10 disciplines, coaching IA personnalisé, 300+ séances. Rejoins 12 000+ athlètes qui transforment leur corps avec Xenotif®.',

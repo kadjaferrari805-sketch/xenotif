@@ -52,7 +52,8 @@ await writeText('public/brand/xenotif-mark-mono.svg', plainSvg('currentColor', '
 await writeText('src/app/icon.svg', tileSvg(100, 0.16, 0.22))
 
 // Favicon raster + icônes d'app (tuile sombre)
-await writePng('src/app/icon.png', tileSvg(128, 0.14, 0.22), 32)
+// 96px = multiple de 48 (recommandation favicon Google Search).
+await writePng('src/app/icon.png', tileSvg(256, 0.14, 0.22), 96)
 await writePng('src/app/apple-icon.png', tileSvg(180, 0.19, 0.22), 180)
 await writePng('public/icon-192.png', tileSvg(192, 0.19, 0.22), 192)
 await writePng('public/icon-512.png', tileSvg(512, 0.19, 0.22), 512)
