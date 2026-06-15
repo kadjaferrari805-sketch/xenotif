@@ -9,8 +9,6 @@ import { DISCIPLINE_CONTENT } from '@/lib/disciplines'
 import { getDisciplineFromDb } from '@/lib/content-db'
 import { computeXp, xpToLevel } from '@/lib/gamification'
 import { XpLevelBar } from '@/components/gamification/XpLevelBar'
-import { AppShowcase } from '@/components/home/AppShowcase'
-import { DevicesSync } from '@/components/home/DevicesSync'
 import { TodayActivity, type TrendDay } from '@/components/dashboard/TodayActivity'
 import { ReviewInvite } from '@/components/reviews/ReviewInvite'
 
@@ -105,7 +103,6 @@ export default async function DashboardPage() {
   const dateLabel = now.toLocaleDateString(dateLocale, { weekday: 'long', day: 'numeric', month: 'long' })
 
   return (
-    <>
     <div className="p-6 md:p-8 max-w-5xl mx-auto pb-24 md:pb-8">
 
       {/* Header */}
@@ -239,9 +236,5 @@ export default async function DashboardPage() {
         <ReviewInvite />
       </div>
     </div>
-
-    <AppShowcase />
-    <DevicesSync />
-    </>
   )
 }
