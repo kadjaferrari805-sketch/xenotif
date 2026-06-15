@@ -10,15 +10,13 @@ export const dynamic = 'force-static'
 // Orbitron ExtraBold — TTF statique (les polices variables font planter le parseur de @vercel/og).
 const orbitron = readFileSync(join(process.cwd(), 'src/app/_assets/Orbitron-ExtraBold.ttf'))
 
-// Marque embarquée en data-URI (formes + dégradé, sans texte → rendu fiable).
+// Marque embarquée en data-URI (symbole X, 4 segments, sans texte → rendu fiable).
 const MARK =
-  '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="180" height="180">' +
-  '<defs><linearGradient id="t" x1="6" y1="3" x2="42" y2="45" gradientUnits="userSpaceOnUse">' +
-  '<stop offset="0%" stop-color="#ffffff"/><stop offset="50%" stop-color="#9ca3af"/>' +
-  '<stop offset="100%" stop-color="#e5e7eb"/></linearGradient></defs>' +
-  '<polygon points="24,3 42,13.5 42,34.5 24,45 6,34.5 6,13.5" fill="none" stroke="url(#t)" stroke-width="2.4" stroke-linejoin="round"/>' +
-  '<g stroke="#FF4500" stroke-width="4.6" stroke-linecap="round">' +
-  '<line x1="17.5" y1="17.5" x2="30.5" y2="30.5"/><line x1="30.5" y1="17.5" x2="17.5" y2="30.5"/></g></svg>'
+  '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="180" height="180">' +
+  '<polygon points="48.73,38.54 14.43,4.25 4.25,14.43 38.54,48.73" fill="#ffffff"/>' +
+  '<polygon points="38.54,51.27 4.25,85.57 14.43,95.75 48.73,61.46" fill="#ffffff"/>' +
+  '<polygon points="61.46,48.73 95.75,14.43 85.57,4.25 51.27,38.54" fill="#FF6A00"/>' +
+  '<polygon points="51.27,61.46 85.57,95.75 95.75,85.57 61.46,51.27" fill="#FF6A00"/></svg>'
 const markSrc = `data:image/svg+xml;base64,${Buffer.from(MARK).toString('base64')}`
 
 export function GET() {
