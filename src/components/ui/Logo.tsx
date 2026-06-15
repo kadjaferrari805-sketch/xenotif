@@ -42,11 +42,11 @@ export function XenotifMark({
       className={`xeno-mark${animated ? ' xeno-mark--animated' : ''}`}
     >
       {/* 2 segments gauche */}
-      <polygon points="48.73,38.54 14.43,4.25 4.25,14.43 38.54,48.73" fill={left} />
-      <polygon points="38.54,51.27 4.25,85.57 14.43,95.75 48.73,61.46" fill={left} />
+      <polygon points="49.65,37.63 15.35,3.33 3.33,15.35 37.63,49.65" fill={left} />
+      <polygon points="37.63,50.35 3.33,84.65 15.35,96.67 49.65,62.37" fill={left} />
       {/* 2 segments droite */}
-      <polygon points="61.46,48.73 95.75,14.43 85.57,4.25 51.27,38.54" fill={right} />
-      <polygon points="51.27,61.46 85.57,95.75 95.75,85.57 61.46,51.27" fill={right} />
+      <polygon points="62.37,49.65 96.67,15.35 84.65,3.33 50.35,37.63" fill={right} />
+      <polygon points="50.35,62.37 84.65,96.67 96.67,84.65 62.37,50.35" fill={right} />
     </svg>
   )
 }
