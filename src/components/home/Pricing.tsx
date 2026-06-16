@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { useTranslations } from 'next-intl'
 import { useInView } from 'react-intersection-observer'
-import { CheckCircle, ArrowRight, Zap } from 'lucide-react'
+import { CheckCircle, ArrowRight, Zap, Lock, ShieldCheck } from 'lucide-react'
 import { useRouter } from '@/i18n/navigation'
 import { SectionHeader } from '@/components/ui/SectionHeader'
 import { Tilt3D } from '@/components/premium/Tilt3D'
@@ -54,6 +54,7 @@ function PlanButton({
 
 export function Pricing() {
   const t = useTranslations('home.pricing')
+  const tt = useTranslations('trust')
   const plans = t.raw('plans') as PlanText[]
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 })
   const [period, setPeriod] = useState<Period>('monthly')
@@ -140,6 +141,21 @@ export function Pricing() {
                 </ul>
 
                 <PlanButton planId={plan.id} name={tr.name} cta={tr.cta} highlight={plan.highlight} period={period} />
+
+                {/* Réassurance au point de décision (plan mis en avant) */}
+                {plan.highlight && (
+                  <div className="mt-4 flex flex-wrap items-center justify-center gap-x-4 gap-y-1.5 text-[10px] text-sport-gray">
+                    <span className="inline-flex items-center gap-1">
+                      <Lock size={11} aria-hidden="true" className="text-sport-orange" /> {tt('securePayment')}
+                    </span>
+                    <span className="inline-flex items-center gap-1">
+                      <ShieldCheck size={11} aria-hidden="true" className="text-sport-orange" /> {tt('guarantee')}
+                    </span>
+                    <span className="inline-flex items-center gap-1">
+                      <CheckCircle size={11} aria-hidden="true" className="text-sport-orange" /> {tt('cancel')}
+                    </span>
+                  </div>
+                )}
               </motion.div>
               </Tilt3D>
             )
