@@ -184,6 +184,23 @@ export function Hero() {
               </motion.p>
             </AnimatePresence>
 
+            {/* Preuve sociale (note + nombre d'athlètes) — au-dessus des CTA */}
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: 0.2 }}
+              className="flex items-center gap-2.5 mb-5"
+            >
+              <span className="flex gap-0.5" aria-hidden="true">
+                {[0, 1, 2, 3, 4].map((i) => (
+                  <Star key={i} size={15} className="text-sport-orange" fill="currentColor" />
+                ))}
+              </span>
+              <span className="text-xs text-white/80">
+                {t.rich('socialProof', { b: (c) => <strong className="font-bold text-white">{c}</strong> })}
+              </span>
+            </motion.div>
+
             {/* CTAs */}
             <motion.div
               initial={{ opacity: 0, y: 12 }}
