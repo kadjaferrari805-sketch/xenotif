@@ -32,13 +32,13 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   // Recommandés : promos d'abord, puis meilleures notes.
   const recommended = [...affiliate]
     .sort((a, b) => (b.original_price_cents ? 1 : 0) - (a.original_price_cents ? 1 : 0) || b.rating - a.rating)
-    .slice(0, 4)
+    .slice(0, 8)
   // Best sellers : plus d'avis.
-  const bestsellers = [...affiliate].sort((a, b) => b.reviews - a.reviews).slice(0, 4)
+  const bestsellers = [...affiliate].sort((a, b) => b.reviews - a.reviews).slice(0, 8)
   // Sélections : un produit par catégorie (diversité).
   const byCat = new Map<string, Product>()
   for (const p of affiliate) if (!byCat.has(p.category)) byCat.set(p.category, p)
-  const selections = [...byCat.values()].slice(0, 4)
+  const selections = [...byCat.values()].slice(0, 8)
 
   // Bannières promo : meilleure promo, plus populaire, plus premium (prix élevé).
   const disc = (p: Product) => (p.original_price_cents ? 1 - p.price_cents / p.original_price_cents : 0)
