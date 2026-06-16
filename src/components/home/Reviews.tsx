@@ -7,7 +7,7 @@ import { Star, Quote, CheckCircle, TrendingUp } from 'lucide-react'
 import { SectionHeader } from '@/components/ui/SectionHeader'
 import { Tilt3D } from '@/components/premium/Tilt3D'
 import { REVIEWS } from '@/lib/constants'
-import { Marquee } from '@/components/ui/Marquee'
+import { Carousel } from '@/components/ui/Carousel'
 
 const AVATAR_BG: Record<string, string> = {
   orange: 'bg-gradient-to-br from-sport-orange to-orange-700',
@@ -42,7 +42,7 @@ export function Reviews() {
         />
 
         <div ref={ref} className="mt-14">
-          <Marquee durationSec={48}>
+          <Carousel>
           {REVIEWS.map((review, i) => (
             <Tilt3D key={review.name} max={11} className="relative h-full rounded-2xl shrink-0 w-[330px] mr-5">
             <motion.article
@@ -93,7 +93,7 @@ export function Reviews() {
             </motion.article>
             </Tilt3D>
           ))}
-          </Marquee>
+          </Carousel>
         </div>
 
         {/* Global rating summary */}

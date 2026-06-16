@@ -3,7 +3,7 @@ import { useEffect, useState, useCallback } from 'react'
 import { useTranslations, useLocale } from 'next-intl'
 import { StarRating } from './StarRating'
 import { ReviewForm } from './ReviewForm'
-import { Marquee } from '@/components/ui/Marquee'
+import { Carousel } from '@/components/ui/Carousel'
 import type { Review, ReviewType, Eligibility } from '@/lib/reviews/types'
 
 interface Props { kind: ReviewType; productId?: string }
@@ -75,7 +75,7 @@ export function CustomerReviews({ kind, productId }: Props) {
         ))
         // Accueil (plateforme) : carrousel continu. Fiche produit : liste verticale.
         return isPlatform
-          ? <div className="mb-6"><Marquee durationSec={42}>{cards}</Marquee></div>
+          ? <div className="mb-6"><Carousel>{cards}</Carousel></div>
           : <div className="space-y-4 mb-6">{cards}</div>
       })()}
 
