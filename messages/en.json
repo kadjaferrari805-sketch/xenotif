@@ -9,6 +9,14 @@
     "support": "Responsive support",
     "supportSub": "A team that listens"
   },
+  "coachAd": {
+    "badge": "App",
+    "title": "All your coaching in one app",
+    "subtitle": "Personalized programs, guided video workouts, real-time tracking and tailored nutrition. Your coach with you everywhere, even offline.",
+    "cta": "Get started",
+    "note": "Install the app in one click, no store.",
+    "imageAlt": "XENOTIF app — your coach in your pocket"
+  },
   "coachDemo": {
     "badge": "AI Coach",
     "title": "Meet your AI Coach",
