@@ -654,7 +654,8 @@
       "shippingAffiliate": ["🔗 Amazon-Affiliate-Link", "📦 Versand durch Amazon", "🔒 Sichere Zahlung"],
       "shippingPhysical": ["🚚 Kostenlose Lieferung ab 50 €", "↩️ 30 Tage Rückgabe", "🔒 Sichere Zahlung"],
       "shippingDigital": ["⚡ Sofort-Download", "📱 Mit allen Geräten kompatibel", "♾️ Lebenslanger Zugang", "🔒 Sichere Zahlung"],
-      "related": "Das könnte dir auch gefallen"
+      "related": "Das könnte dir auch gefallen",
+      "complementary": "Vervollständige deine Ausrüstung"
     },
     "panier": {
       "emptyTitle": "Dein Warenkorb ist leer",

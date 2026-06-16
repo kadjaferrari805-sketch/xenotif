@@ -654,7 +654,8 @@
       "shippingAffiliate": ["🔗 Lien affilié Amazon", "📦 Expédié par Amazon", "🔒 Paiement sécurisé"],
       "shippingPhysical": ["🚚 Livraison gratuite dès 50€", "↩️ Retours 30 jours", "🔒 Paiement sécurisé"],
       "shippingDigital": ["⚡ Téléchargement immédiat", "📱 Compatible tous appareils", "♾️ Accès à vie", "🔒 Paiement sécurisé"],
-      "related": "Vous aimerez aussi"
+      "related": "Vous aimerez aussi",
+      "complementary": "Complétez votre équipement"
     },
     "panier": {
       "emptyTitle": "Ton panier est vide",

@@ -654,7 +654,8 @@
       "shippingAffiliate": ["🔗 Amazon affiliate link", "📦 Shipped by Amazon", "🔒 Secure payment"],
       "shippingPhysical": ["🚚 Free shipping over €50", "↩️ 30-day returns", "🔒 Secure payment"],
       "shippingDigital": ["⚡ Instant download", "📱 Works on all devices", "♾️ Lifetime access", "🔒 Secure payment"],
-      "related": "You may also like"
+      "related": "You may also like",
+      "complementary": "Complete your setup"
     },
     "panier": {
       "emptyTitle": "Your cart is empty",
