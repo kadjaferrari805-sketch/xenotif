@@ -1119,7 +1119,7 @@ const BLOG_POSTS: BlogPost[] = [
     author: 'Camille Laurent',
     publishedAt: '2026-06-09T08:00:00Z',
     readingMinutes: 8,
-    productSlugs: [],
+    productSlugs: ['whey-myprotein-chocolat-1kg', 'creatine-monohydrate-myprotein-300g', 'bcaa-myprotein-500g-fruit'],
     content: [
       { type: 'paragraph', text: "« Mange tes protéines ! » Tu l'entends partout, mais combien exactement ? Trop peu, et tes muscles ne récupèrent pas. Trop, et tu gaspilles ton argent pour rien. Voici, chiffres à l'appui, la quantité de protéines dont tu as réellement besoin chaque jour pour prendre du muscle en 2026." },
       { type: 'heading', text: 'De combien de protéines as-tu réellement besoin ?' },
@@ -1175,7 +1175,7 @@ const BLOG_POSTS: BlogPost[] = [
     author: 'Julie Moreau',
     publishedAt: '2026-06-07T08:00:00Z',
     readingMinutes: 7,
-    productSlugs: [],
+    productSlugs: ['pistolet-massage-theragun', 'foam-roller-trigger-point', 'montre-connectee-sport-gps'],
     content: [
       { type: 'paragraph', text: "Tu t'entraînes dur, tu surveilles ton alimentation… mais tu dors 5 h par nuit ? Tu sabotes tes propres résultats. Le sommeil est le levier de progression le plus sous-estimé du sport — et le seul qui soit totalement gratuit. Voici pourquoi bien dormir te fait littéralement progresser plus vite." },
       { type: 'heading', text: 'Ce qui se passe quand tu dors (et que tes muscles grandissent)' },
@@ -1227,7 +1227,7 @@ const BLOG_POSTS: BlogPost[] = [
     author: 'Thomas Mercier',
     publishedAt: '2026-06-05T08:00:00Z',
     readingMinutes: 9,
-    productSlugs: [],
+    productSlugs: ['whey-myprotein-chocolat-1kg', 'bracelet-fitness-tracker', 'bcaa-myprotein-500g-fruit'],
     content: [
       { type: 'paragraph', text: "Perdre du gras tout en gardant — voire en construisant — du muscle : c'est le Graal de la sèche. Exigeant, mais loin d'être impossible si tu respectes quelques principes non négociables. Voici comment sécher intelligemment, sans fondre comme neige au soleil." },
       { type: 'heading', text: 'Sécher : de quoi parle-t-on vraiment ?' },
