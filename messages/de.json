@@ -257,6 +257,8 @@
       "subtitle": "Von Cardio bis Kraft — jeder Sport, jedes Niveau, jedes Ziel",
       "discover": "Entdecken",
       "discoverAria": "Disziplin {name} entdecken",
+      "prevAria": "Vorherige Disziplinen",
+      "nextAria": "Nächste Disziplinen",
       "items": [
         { "title": "Running & Cardio", "tag": "Cardio", "description": "Laufprogramme für alle Niveaus — vom 5-km-Lauf bis zum Marathon. Personalisierte Pläne mit GPS-Coaching und Herzfrequenz-Tracking.", "stats": [ "+4.200 Läufer", "120+ Pläne", "Ø 12 Wochen"] },
         { "title": "Krafttraining", "tag": "Kraft", "description": "Masseaufbau, Definition oder Tonisierung — unsere zertifizierten Coaches erstellen dein maßgeschneidertes Programm passend zu deiner Morphologie.", "stats": [ "+3.800 Mitglieder", "90+ Programme", "Ø 8 Wochen"] },

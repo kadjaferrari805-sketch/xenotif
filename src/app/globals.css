@@ -210,6 +210,10 @@
   50%      { translate: 0 -12px; }
 }
 
+/* ===== Carrousel disciplines (accueil) — défilement horizontal sans scrollbar ===== */
+.disc-scroll { scrollbar-width: none; -ms-overflow-style: none; }
+.disc-scroll::-webkit-scrollbar { display: none; }
+
 /* ===== Safe-area (PWA edge-to-edge, viewport-fit=cover) =====
    env(safe-area-inset-*) vaut 0 hors encoche → aucun effet sur écran normal. */
 .pt-safe { padding-top: env(safe-area-inset-top); }

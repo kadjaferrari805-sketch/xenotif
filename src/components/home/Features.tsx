@@ -1,10 +1,10 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 import { useTranslations } from 'next-intl'
 import { useInView } from 'react-intersection-observer'
-import { Activity, Dumbbell, Zap, Bike, Waves, Flame, ArrowRight, Leaf, Target, Layers } from 'lucide-react'
+import { Activity, Dumbbell, Zap, Bike, Waves, Flame, ArrowRight, Leaf, Target, Layers, ChevronLeft, ChevronRight } from 'lucide-react'
 import Image from 'next/image'
 import { Link } from '@/i18n/navigation'
 import { createClient } from '@/lib/supabase/client'
@@ -50,6 +50,12 @@ export function Features() {
   const items = t.raw('items') as FeatureText[]
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.05 })
 
+  // Carrousel horizontal : flèches desktop (swipe natif sur mobile).
+  const scrollRef = useRef<HTMLDivElement>(null)
+  const scrollByDir = (dir: 1 | -1) => {
+    scrollRef.current?.scrollBy({ left: dir * 320, behavior: 'smooth' })
+  }
+
   // Découvrir → connexion tant que l'utilisateur n'est pas authentifié.
   // setState en callback (promesse / abonnement) → pas de violation set-state-in-effect.
   const [authed, setAuthed] = useState<boolean | null>(null)
@@ -64,14 +70,35 @@ export function Features() {
 
   return (
     <section id="disciplines" aria-labelledby="disciplines-title" className="py-24 px-6 bg-sport-dark">
-      <div className="max-w-6xl mx-auto">
+      <div ref={ref} className="max-w-6xl mx-auto">
         <SectionHeader
           id="disciplines-title"
           label={t('label')}
           title={t('title')}
           subtitle={t('subtitle')}
         />
-        <div ref={ref} className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 mt-14">
+
+        <div className="relative mt-14">
+          {/* Flèches de navigation (desktop) */}
+          <button
+            type="button"
+            onClick={() => scrollByDir(-1)}
+            aria-label={t('prevAria')}
+            className="hidden md:flex absolute -left-4 top-1/2 -translate-y-1/2 z-10 h-10 w-10 items-center justify-center rounded-full bg-sport-card border border-sport-border text-white shadow-lg transition-all hover:border-sport-orange/60 hover:text-sport-orange active:scale-95"
+          >
+            <ChevronLeft size={20} aria-hidden="true" />
+          </button>
+          <button
+            type="button"
+            onClick={() => scrollByDir(1)}
+            aria-label={t('nextAria')}
+            className="hidden md:flex absolute -right-4 top-1/2 -translate-y-1/2 z-10 h-10 w-10 items-center justify-center rounded-full bg-sport-card border border-sport-border text-white shadow-lg transition-all hover:border-sport-orange/60 hover:text-sport-orange active:scale-95"
+          >
+            <ChevronRight size={20} aria-hidden="true" />
+          </button>
+
+          {/* Piste défilante horizontale (swipe mobile · flèches desktop) */}
+          <div ref={scrollRef} className="disc-scroll flex snap-x snap-mandatory gap-5 overflow-x-auto scroll-smooth pb-4">
           {FEATURES.map((feat, i) => {
             const accent = ACCENT[feat.color]
             const tr = items[i]
@@ -80,7 +107,8 @@ export function Features() {
                 key={feat.title}
                 initial={{ opacity: 0, y: 28 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ delay: i * 0.08, duration: 0.5, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
+                transition={{ delay: i * 0.06, duration: 0.5, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
+                className="snap-start shrink-0 w-[280px] sm:w-[300px]"
               >
                 <Tilt3D
                   max={14}
@@ -137,6 +165,7 @@ export function Features() {
               </motion.article>
             )
           })}
+          </div>
         </div>
       </div>
     </section>

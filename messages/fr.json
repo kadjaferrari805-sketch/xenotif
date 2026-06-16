@@ -257,6 +257,8 @@
       "subtitle": "Du cardio à la force — chaque sport, chaque niveau, chaque objectif",
       "discover": "Découvrir",
       "discoverAria": "Découvrir la discipline {name}",
+      "prevAria": "Disciplines précédentes",
+      "nextAria": "Disciplines suivantes",
       "items": [
         { "title": "Running & Cardio", "tag": "Cardio", "description": "Programmes de course adaptés à tous les niveaux — du 5K au marathon. Plans personnalisés avec coaching GPS et suivi de fréquence cardiaque.", "stats": [ "+4 200 coureurs", "120+ plans", "12 semaines moy."] },
         { "title": "Musculation", "tag": "Strength", "description": "Prise de masse, sèche ou tonification — nos coaches certifiés construisent ton programme sur mesure selon ta morphologie.", "stats": [ "+3 800 membres", "90+ programmes", "8 semaines moy."] },
