@@ -51,7 +51,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       {/* Bandeau pub — Rejoins le mouvement (+ CTA) */}
       <AdBanner
         id="movement"
-        image="https://images.pexels.com/photos/4753993/pexels-photo-4753993.jpeg?auto=compress&cs=tinysrgb&w=1920"
+        image="https://images.pexels.com/photos/2261485/pexels-photo-2261485.jpeg?auto=compress&cs=tinysrgb&w=1920"
         ctaHref="/auth/signup"
       />
       <TransformationsGallery />
