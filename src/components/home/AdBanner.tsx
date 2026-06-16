@@ -34,16 +34,15 @@ export function AdBanner({
           aria-hidden="true"
           fill
           sizes="100vw"
+          quality={90}
           priority={priority}
           className={`object-cover ${imgClass}`}
         />
 
-        {/* Dégradé bas (texte lisible, haut de l'image visible) — valable mobile + desktop */}
-        <div aria-hidden="true" className="absolute inset-0 z-[1] bg-gradient-to-t from-black/90 via-black/35 to-black/10" />
-        {/* Renfort à gauche (desktop, texte aligné à gauche) */}
-        <div aria-hidden="true" className="absolute inset-0 z-[1] hidden md:block bg-gradient-to-r from-black/80 via-black/30 to-transparent" />
-        {/* Lueur orange premium */}
-        <div aria-hidden="true" className="absolute -left-1/4 bottom-0 z-[1] h-[70%] w-[55%] rounded-full bg-sport-orange/15 blur-[120px]" />
+        {/* Dégradé bas (texte lisible) — allégé pour une image nette et claire. */}
+        <div aria-hidden="true" className="absolute inset-0 z-[1] bg-gradient-to-t from-black/78 via-black/18 to-transparent" />
+        {/* Renfort léger à gauche (desktop, texte aligné à gauche) */}
+        <div aria-hidden="true" className="absolute inset-0 z-[1] hidden md:block bg-gradient-to-r from-black/62 via-black/12 to-transparent" />
 
         <div className="relative z-10 mx-auto w-full max-w-6xl px-6 pb-12 md:pb-0">
           <div className="max-w-2xl [text-shadow:0_2px_18px_rgba(0,0,0,0.65)]">
