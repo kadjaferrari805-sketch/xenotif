@@ -4,6 +4,7 @@ import { useTranslations } from 'next-intl'
 import { Link } from '@/i18n/navigation'
 import { ArrowRight, Lock, Truck, RotateCcw } from 'lucide-react'
 import { SectionHeader } from '@/components/ui/SectionHeader'
+import { Carousel } from '@/components/ui/Carousel'
 import { ProductCard } from '@/components/boutique/ProductCard'
 import type { Product } from '@/lib/boutique/products'
 
@@ -33,11 +34,13 @@ export function ProductShowcase({
           title={t(`${section}.title`)}
           subtitle={t(`${section}.subtitle`)}
         />
-        <div className="mt-12 grid grid-cols-2 gap-4 lg:grid-cols-4">
+        <Carousel className="mt-12">
           {products.map((p, i) => (
-            <ProductCard key={p.id} product={p} index={i} source={`home_${section}`} />
+            <div key={p.id} className="mr-4 w-[260px] shrink-0 sm:w-[280px]">
+              <ProductCard product={p} index={i} source={`home_${section}`} />
+            </div>
           ))}
-        </div>
+        </Carousel>
 
         {/* Badges de confiance (achat via Amazon) */}
         <div className="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs text-sport-gray">
