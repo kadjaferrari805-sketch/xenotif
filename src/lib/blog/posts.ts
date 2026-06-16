@@ -1115,7 +1115,7 @@ const BLOG_POSTS: BlogPost[] = [
     ],
     category: 'Nutrition',
     coverImage:
-      'https://images.pexels.com/photos/5236668/pexels-photo-5236668.jpeg?auto=compress&cs=tinysrgb&w=1200',
+      'https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=1200&q=80',
     author: 'Camille Laurent',
     publishedAt: '2026-06-09T08:00:00Z',
     readingMinutes: 8,
@@ -1171,7 +1171,7 @@ const BLOG_POSTS: BlogPost[] = [
     ],
     category: 'Récupération',
     coverImage:
-      'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=1200&q=80',
+      'https://images.pexels.com/photos/3771069/pexels-photo-3771069.jpeg?auto=compress&cs=tinysrgb&w=1200',
     author: 'Julie Moreau',
     publishedAt: '2026-06-07T08:00:00Z',
     readingMinutes: 7,
@@ -1223,7 +1223,7 @@ const BLOG_POSTS: BlogPost[] = [
     ],
     category: 'Musculation',
     coverImage:
-      'https://images.unsplash.com/photo-1571008887538-b36bb32f4571?auto=format&fit=crop&w=1200&q=80',
+      'https://images.pexels.com/photos/4720236/pexels-photo-4720236.jpeg?auto=compress&cs=tinysrgb&w=1200',
     author: 'Thomas Mercier',
     publishedAt: '2026-06-05T08:00:00Z',
     readingMinutes: 9,

@@ -257,6 +257,8 @@
       "subtitle": "From cardio to strength — every sport, every level, every goal",
       "discover": "Discover",
       "discoverAria": "Discover the {name} discipline",
+      "prevAria": "Previous disciplines",
+      "nextAria": "Next disciplines",
       "items": [
         { "title": "Running & Cardio", "tag": "Cardio", "description": "Running programs for every level — from 5K to marathon. Personalized plans with GPS coaching and heart-rate tracking.", "stats": [ "+4,200 runners", "120+ plans", "12 weeks avg."] },
         { "title": "Strength training", "tag": "Strength", "description": "Bulking, cutting or toning — our certified coaches build a custom program tailored to your body type.", "stats": [ "+3,800 members", "90+ programs", "8 weeks avg."] },
