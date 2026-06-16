@@ -188,6 +188,28 @@
   100% { filter: drop-shadow(0 0 0 rgba(255, 106, 0, 0)); }
 }
 
+/* ===== Visuel pub Coach — rendu 3D (perspective + profondeur) ===== */
+.coach-3d-wrap { perspective: 1300px; }
+.coach-3d {
+  transform: rotateY(-16deg) rotateX(6deg);
+  transform-style: preserve-3d;
+  transition: transform .6s cubic-bezier(.2,.7,.2,1), box-shadow .6s ease;
+  box-shadow: -34px 30px 60px -22px rgba(0, 0, 0, .75);
+}
+/* Flottement (translate séparé du transform → pas de conflit avec l'inclinaison). */
+@media (prefers-reduced-motion: no-preference) {
+  .coach-3d { animation: coach-float 6s ease-in-out infinite; }
+}
+/* Au survol : l'image se redresse et avance vers le visiteur. */
+.coach-3d-wrap:hover .coach-3d {
+  transform: rotateY(-6deg) rotateX(2deg) scale(1.02);
+  box-shadow: -20px 24px 70px -20px rgba(255, 106, 0, .35);
+}
+@keyframes coach-float {
+  0%, 100% { translate: 0 0; }
+  50%      { translate: 0 -12px; }
+}
+
 /* ===== Safe-area (PWA edge-to-edge, viewport-fit=cover) =====
    env(safe-area-inset-*) vaut 0 hors encoche → aucun effet sur écran normal. */
 .pt-safe { padding-top: env(safe-area-inset-top); }
