@@ -64,9 +64,8 @@ export function Nav() {
       initial={{ y: -64, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-      // Barre d'en-tête toujours transparente (logo + liens flottent au-dessus
-      // de la page), y compris au scroll.
-      className="sticky top-0 z-50 transition-all duration-300 bg-transparent border-b border-transparent pt-safe"
+      // Barre d'en-tête au fond solide (sport-dark) — masque le contenu au scroll.
+      className="sticky top-0 z-50 transition-all duration-300 bg-sport-dark border-b border-white/10 pt-safe"
     >
       {/* Logo (gauche) · liens centrés dans l'espace dispo (flex-1) · actions (droite) */}
       <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between gap-4">
