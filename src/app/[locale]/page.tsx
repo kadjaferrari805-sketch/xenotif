@@ -43,7 +43,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       {/* Bandeau pub — Entraîne-toi comme jamais */}
       <AdBanner
         id="train"
-        image="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=1920&q=80"
+        image="https://images.pexels.com/photos/1229356/pexels-photo-1229356.jpeg?auto=compress&cs=tinysrgb&w=1920"
       />
       <Pricing />
       <Reviews />
@@ -51,7 +51,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       {/* Bandeau pub — Rejoins le mouvement (+ CTA) */}
       <AdBanner
         id="movement"
-        image="https://images.pexels.com/photos/1552242/pexels-photo-1552242.jpeg?auto=compress&cs=tinysrgb&w=1920"
+        image="https://images.pexels.com/photos/416809/pexels-photo-416809.jpeg?auto=compress&cs=tinysrgb&w=1920"
         ctaHref="/auth/signup"
       />
       <TransformationsGallery />
