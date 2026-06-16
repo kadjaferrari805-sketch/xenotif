@@ -188,6 +188,15 @@
     "switch": "Changer de langue"
   },
   "home": {
+    "adBanners": {
+      "proof": "4,9/5 · déjà 12 000+ athlètes",
+      "transform": { "title": "Transforme ton corps.", "accent": "Libère ton potentiel.", "cta": "Commencer gratuitement" },
+      "train": { "title": "Entraîne-toi comme", "accent": "jamais auparavant." },
+      "movement": { "title": "Rejoins le", "accent": "mouvement XENOTIF.", "cta": "Commencer gratuitement" },
+      "discipline": { "title": "La discipline forge", "accent": "les champions." },
+      "results": { "title": "Des résultats,", "accent": "pas des excuses.", "cta": "Commencer gratuitement" },
+      "coach": { "title": "Ton coach. Ta méthode.", "accent": "Tes résultats." }
+    },
     "sticky": {
       "lead": "Prêt à transformer ton corps ?",
       "trial": "Sans engagement",
