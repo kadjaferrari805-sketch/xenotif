@@ -197,6 +197,12 @@
       "results": { "title": "Ergebnisse,", "accent": "keine Ausreden.", "cta": "Jetzt kostenlos starten" },
       "coach": { "title": "Dein Coach. Deine Methode.", "accent": "Deine Ergebnisse." }
     },
+    "productShowcase": {
+      "viewAll": "Zum ganzen Shop",
+      "recommended": { "label": "Auswahl", "title": "Empfohlene Fitness-Ausrüstung", "subtitle": "Unsere Lieblingsausrüstung, um schneller voranzukommen." },
+      "bestsellers": { "label": "Bestseller", "title": "Fitness-Bestseller", "subtitle": "Die beliebtesten und bestbewerteten Produkte." },
+      "selections": { "label": "Highlights", "title": "XENOTIF-Auswahl", "subtitle": "Hanteln, Cardio, Recovery, Tech, Ernährung — das Beste pro Kategorie." }
+    },
     "sticky": {
       "lead": "Bereit, deinen Körper zu transformieren?",
       "trial": "Unverbindlich",
