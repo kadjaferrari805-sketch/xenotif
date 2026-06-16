@@ -1096,6 +1096,158 @@ const BLOG_POSTS: BlogPost[] = [
       },
     ],
   },
+  // ─── ARTICLE — Protéines / jour ──────────────────────────────────────────────
+  {
+    slug: 'combien-proteines-par-jour-prise-de-muscle',
+    title: 'Combien de protéines par jour pour prendre du muscle ? (Guide 2026)',
+    excerpt:
+      "Combien de grammes de protéines faut-il vraiment chaque jour pour gagner du muscle ? Doses précises selon ton poids, meilleures sources et erreurs à éviter.",
+    metaTitle: 'Combien de Protéines par Jour pour Prendre du Muscle ? Guide 2026',
+    metaDescription:
+      "Guide complet 2026 : combien de protéines par jour pour la prise de muscle (g/kg), timing, meilleures sources et erreurs courantes. Conseils d'experts Xenotif®.",
+    keywords: [
+      'combien de protéines par jour',
+      'apport protéines musculation',
+      'protéines prise de masse',
+      'grammes de protéines par kilo',
+      'besoin en protéines sportif',
+      'protéines prise de muscle',
+    ],
+    category: 'Nutrition',
+    coverImage:
+      'https://images.pexels.com/photos/5236668/pexels-photo-5236668.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    author: 'Camille Laurent',
+    publishedAt: '2026-06-09T08:00:00Z',
+    readingMinutes: 8,
+    productSlugs: [],
+    content: [
+      { type: 'paragraph', text: "« Mange tes protéines ! » Tu l'entends partout, mais combien exactement ? Trop peu, et tes muscles ne récupèrent pas. Trop, et tu gaspilles ton argent pour rien. Voici, chiffres à l'appui, la quantité de protéines dont tu as réellement besoin chaque jour pour prendre du muscle en 2026." },
+      { type: 'heading', text: 'De combien de protéines as-tu réellement besoin ?' },
+      { type: 'paragraph', text: "La recherche est aujourd'hui très claire. Pour une personne sédentaire, 0,8 g de protéines par kilo de poids de corps suffisent. Mais dès que tu t'entraînes pour prendre du muscle, ce besoin grimpe nettement. Les méta-analyses récentes convergent vers une fourchette de 1,6 à 2,2 g par kilo et par jour pour maximiser la construction musculaire." },
+      { type: 'list', items: [
+        'Prise de muscle (objectif principal) : 1,6 à 2,2 g/kg/jour',
+        'Sèche (perte de gras en préservant le muscle) : 2,0 à 2,4 g/kg/jour',
+        'Entretien / sportif occasionnel : 1,2 à 1,6 g/kg/jour',
+        "Au-delà de ~2,4 g/kg, aucun bénéfice supplémentaire démontré sur la prise de muscle",
+      ] },
+      { type: 'subheading', text: 'Exemple concret pour 75 kg' },
+      { type: 'paragraph', text: "Une personne de 75 kg qui cherche à prendre du muscle vise environ 120 à 165 g de protéines par jour (75 × 1,6 à 2,2). Le plus simple : répartir cette quantité sur 3 à 4 repas de 30 à 40 g, plutôt que tout avaler en une fois — la synthèse protéique est mieux stimulée par des apports réguliers." },
+      { type: 'heading', text: 'Les meilleures sources de protéines' },
+      { type: 'list', items: [
+        'Animales (profil complet) : poulet, dinde, œufs, poisson, bœuf maigre, produits laitiers',
+        'Végétales : lentilles, pois chiches, tofu, tempeh, seitan, edamame',
+        'Compléments pratiques : whey (rapide, post-entraînement), caséine (lente, le soir), protéine végétale',
+        "Astuce : combine plusieurs sources végétales pour obtenir tous les acides aminés essentiels",
+      ] },
+      { type: 'heading', text: 'Timing : quand consommer ses protéines ?' },
+      { type: 'paragraph', text: "La fameuse « fenêtre anabolique » de 30 minutes après l'entraînement a été largement exagérée. Ce qui compte avant tout, c'est ton total quotidien. Cela dit, un apport de 30 à 40 g dans les deux heures autour de ta séance et un repas riche en protéines le soir optimisent la récupération. La régularité bat le timing parfait." },
+      { type: 'heading', text: 'Les erreurs qui sabotent tes résultats' },
+      { type: 'list', items: [
+        'Sous-estimer ses portions : 100 g de poulet cuit apportent environ 30 g de protéines seulement',
+        'Tout miser sur les shakers en négligeant les vrais repas',
+        "Oublier les calories totales : sans surplus, pas de prise de muscle, même avec assez de protéines",
+        "Se focaliser uniquement sur les protéines en négligeant fibres et micronutriments",
+      ] },
+      { type: 'quote', text: "Les protéines construisent le muscle, mais c'est l'entraînement qui en donne l'ordre. Sans surcharge progressive, aucun gramme ne servira à grand-chose." },
+      { type: 'paragraph', text: "En résumé : vise 1,6 à 2,2 g/kg/jour, répartis sur la journée, à partir de sources variées, le tout couplé à un entraînement progressif et un sommeil suffisant. C'est la combinaison — et pas un seul facteur — qui construit le muscle." },
+    ],
+  },
+  // ─── ARTICLE — Sommeil & performance ─────────────────────────────────────────
+  {
+    slug: 'sommeil-performance-sportive-recuperation',
+    title: 'Sommeil et performance sportive : pourquoi bien dormir te fait progresser',
+    excerpt:
+      "Le sommeil est le levier de progression le plus sous-estimé du sport. Voici pourquoi bien dormir te fait progresser plus vite — et 7 habitudes pour mieux dormir.",
+    metaTitle: 'Sommeil et Performance Sportive : Pourquoi Bien Dormir Fait Progresser',
+    metaDescription:
+      "Sommeil et sport : pourquoi bien dormir construit du muscle, accélère la récupération et booste la performance. Combien d'heures viser et 7 habitudes concrètes.",
+    keywords: [
+      'sommeil et sport',
+      'sommeil performance sportive',
+      'récupération musculaire sommeil',
+      'combien d\'heures de sommeil sportif',
+      'bien dormir musculation',
+      'sommeil et récupération',
+    ],
+    category: 'Récupération',
+    coverImage:
+      'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=1200&q=80',
+    author: 'Julie Moreau',
+    publishedAt: '2026-06-07T08:00:00Z',
+    readingMinutes: 7,
+    productSlugs: [],
+    content: [
+      { type: 'paragraph', text: "Tu t'entraînes dur, tu surveilles ton alimentation… mais tu dors 5 h par nuit ? Tu sabotes tes propres résultats. Le sommeil est le levier de progression le plus sous-estimé du sport — et le seul qui soit totalement gratuit. Voici pourquoi bien dormir te fait littéralement progresser plus vite." },
+      { type: 'heading', text: 'Ce qui se passe quand tu dors (et que tes muscles grandissent)' },
+      { type: 'paragraph', text: "C'est pendant le sommeil profond que ton corps libère l'essentiel de son hormone de croissance, répare les fibres musculaires endommagées à l'entraînement et reconstitue tes réserves d'énergie. En clair : tu ne construis pas du muscle à la salle, tu le construis dans ton lit. La séance ne fait que déclencher le signal." },
+      { type: 'heading', text: 'Manquer de sommeil : les dégâts concrets' },
+      { type: 'list', items: [
+        "Moins de force et d'endurance dès la première nuit écourtée",
+        'Récupération ralentie et risque de blessure accru',
+        'Cortisol (hormone du stress) en hausse, ce qui favorise le stockage de graisse',
+        'Faim dérégulée : plus d\'envies de sucre et de gras le lendemain',
+        'Perte musculaire accélérée pendant une sèche',
+      ] },
+      { type: 'subheading', text: "Combien d'heures viser ?" },
+      { type: 'paragraph', text: "Pour un sportif, la fourchette idéale se situe entre 7 et 9 heures par nuit, les athlètes qui s'entraînent intensément se rapprochant souvent du haut de cette fourchette. La qualité compte autant que la quantité : un sommeil fragmenté de 8 h vaut moins qu'un sommeil profond et continu de 7 h." },
+      { type: 'heading', text: '7 habitudes pour mieux dormir (et mieux progresser)' },
+      { type: 'list', items: [
+        "Couche-toi et lève-toi à des horaires réguliers, même le week-end",
+        'Coupe les écrans 30 à 60 minutes avant le coucher (lumière bleue)',
+        'Garde une chambre fraîche (18-19 °C), sombre et silencieuse',
+        'Évite la caféine après 14 h et les gros repas tardifs',
+        "Limite l'alcool : il fragmente le sommeil profond",
+        'Expose-toi à la lumière du jour le matin pour caler ton horloge interne',
+        'Place tes séances intenses en journée plutôt qu\'en toute fin de soirée',
+      ] },
+      { type: 'quote', text: "Aucun complément, aucun programme ne compensera un manque chronique de sommeil. C'est la base sur laquelle tout le reste se construit." },
+      { type: 'paragraph', text: "Avant d'acheter un énième complément, pose-toi simplement la question : est-ce que je dors assez ? Améliore d'abord tes nuits — c'est souvent le « secret » qui débloque des semaines de stagnation." },
+    ],
+  },
+  // ─── ARTICLE — Sèche ─────────────────────────────────────────────────────────
+  {
+    slug: 'seche-perdre-graisse-sans-perdre-muscle',
+    title: 'Sèche : comment perdre de la graisse sans perdre de muscle',
+    excerpt:
+      "Perdre du gras en gardant tes muscles : le Graal de la sèche. Déficit, protéines, cardio, cheat meal — la méthode complète pour sécher intelligemment.",
+    metaTitle: 'Sèche : Perdre de la Graisse sans Perdre de Muscle (Méthode 2026)',
+    metaDescription:
+      "Comment réussir sa sèche : déficit calorique modéré, protéines élevées, musculation maintenue et cardio dosé pour perdre du gras sans fondre. Guide Xenotif®.",
+    keywords: [
+      'sèche musculation',
+      'perdre du gras sans perdre de muscle',
+      'programme sèche',
+      'déficit calorique sèche',
+      'sécher sans perdre de muscle',
+      'définition musculaire',
+    ],
+    category: 'Musculation',
+    coverImage:
+      'https://images.unsplash.com/photo-1571008887538-b36bb32f4571?auto=format&fit=crop&w=1200&q=80',
+    author: 'Thomas Mercier',
+    publishedAt: '2026-06-05T08:00:00Z',
+    readingMinutes: 9,
+    productSlugs: [],
+    content: [
+      { type: 'paragraph', text: "Perdre du gras tout en gardant — voire en construisant — du muscle : c'est le Graal de la sèche. Exigeant, mais loin d'être impossible si tu respectes quelques principes non négociables. Voici comment sécher intelligemment, sans fondre comme neige au soleil." },
+      { type: 'heading', text: 'Sécher : de quoi parle-t-on vraiment ?' },
+      { type: 'paragraph', text: "Sécher, c'est perdre de la masse grasse tout en préservant un maximum de masse musculaire, pour révéler la définition de tes muscles. La différence avec un simple régime ? L'objectif n'est pas de peser moins, mais de changer ta composition corporelle. La balance ment souvent ; le miroir et le mètre ruban sont de bien meilleurs juges." },
+      { type: 'heading', text: 'La règle n°1 : un déficit calorique modéré' },
+      { type: 'paragraph', text: "Pas de perte de gras sans déficit calorique : tu dois consommer moins d'énergie que tu n'en dépenses. Mais un déficit trop agressif fait fondre le muscle. Vise un déficit modéré d'environ 300 à 500 kcal par jour, pour perdre 0,5 à 1 % de ton poids de corps par semaine. Lent mais durable bat rapide avec reprise." },
+      { type: 'heading', text: 'Préserver le muscle : les 3 piliers' },
+      { type: 'list', items: [
+        'Protéines élevées : 2,0 à 2,4 g/kg/jour pour protéger ta masse musculaire',
+        "Musculation lourde maintenue : continue de soulever lourd, ne passe pas tout en « léger + cardio »",
+        'Déficit progressif : ajuste les calories au fil des semaines plutôt que de tout couper d\'un coup',
+      ] },
+      { type: 'heading', text: 'Le rôle du cardio (sans en abuser)' },
+      { type: 'paragraph', text: "Le cardio aide à creuser le déficit, mais il n'est pas magique — et en excès, il peut grignoter ton muscle et ton énergie. Privilégie la marche quotidienne (autour de 10 000 pas) et 2 à 3 séances de HIIT courtes par semaine, plutôt que des heures de course à jeun. Le gros du déficit doit venir de l'assiette." },
+      { type: 'subheading', text: "Et le fameux « cheat meal » ?" },
+      { type: 'paragraph', text: "Un repas plaisir occasionnel n'annulera pas une semaine de discipline et peut même t'aider à tenir sur la durée. Le piège, c'est le « cheat day » qui se transforme en week-end entier et efface ton déficit. Reste flexible, pas anarchique." },
+      { type: 'quote', text: "Une bonne sèche ne se voit pas seulement sur la balance : elle se voit dans le miroir, et se ressent par une énergie qui reste stable." },
+      { type: 'paragraph', text: "Sois patient et constant : une sèche réussie prend des semaines, pas des jours. Protéines hautes, musculation maintenue, déficit modéré et sommeil de qualité — c'est ce quatuor qui te fera perdre du gras tout en gardant tes muscles durement gagnés." },
+    ],
+  },
 ]
 
 // Source FR exposée pour la construction du catalogue localisé (posts.en.ts).
