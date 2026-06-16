@@ -14,8 +14,14 @@ import { StickyCheckout } from '@/components/home/StickyCheckout'
 import { CustomerReviews } from '@/components/reviews/CustomerReviews'
 import { TransformationsGallery } from '@/components/transformations/TransformationsGallery'
 import { FaqSchema } from '@/components/FaqSchema'
+import { setRequestLocale } from 'next-intl/server'
 
-export default function HomePage() {
+// setRequestLocale → autorise le rendu statique (sinon next-intl bascule en
+// dynamique via headers()). L'accueil devient prérendu/CDN (TTFB ~50ms).
+export default async function HomePage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  setRequestLocale(locale)
+
   return (
     <>
       <FaqSchema />
