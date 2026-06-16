@@ -204,6 +204,11 @@
       "bestsellers": { "label": "Bestseller", "title": "Fitness-Bestseller", "subtitle": "Die beliebtesten und bestbewerteten Produkte." },
       "selections": { "label": "Highlights", "title": "XENOTIF-Auswahl", "subtitle": "Hanteln, Cardio, Recovery, Tech, Ernährung — das Beste pro Kategorie." }
     },
+    "promoBanners": {
+      "promo": { "label": "Limitiertes Angebot", "title": "Aktuelle Angebote", "cta": "Angebot ansehen" },
+      "popular": { "label": "Beliebt", "title": "Der aktuelle Bestseller", "cta": "Produkt ansehen" },
+      "premium": { "label": "Premium", "title": "Premium-Ausrüstung", "cta": "Entdecken" }
+    },
     "sticky": {
       "lead": "Bereit, deinen Körper zu transformieren?",
       "trial": "Unverbindlich",

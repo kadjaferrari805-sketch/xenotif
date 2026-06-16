@@ -204,6 +204,11 @@
       "bestsellers": { "label": "Top ventes", "title": "Best Sellers Fitness", "subtitle": "Les produits les plus populaires et les mieux notés." },
       "selections": { "label": "Vedettes", "title": "Nos Sélections XENOTIF", "subtitle": "Haltères, cardio, récupération, tech, nutrition — le meilleur par catégorie." }
     },
+    "promoBanners": {
+      "promo": { "label": "Offre limitée", "title": "Promotions du moment", "cta": "Voir l'offre" },
+      "popular": { "label": "Populaire", "title": "Le best-seller du moment", "cta": "Voir le produit" },
+      "premium": { "label": "Premium", "title": "L'équipement premium", "cta": "Découvrir" }
+    },
     "sticky": {
       "lead": "Prêt à transformer ton corps ?",
       "trial": "Sans engagement",

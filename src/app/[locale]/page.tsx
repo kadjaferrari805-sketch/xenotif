@@ -16,6 +16,7 @@ import { TransformationsGallery } from '@/components/transformations/Transformat
 import { FaqSchema } from '@/components/FaqSchema'
 import { AdBanner } from '@/components/home/AdBanner'
 import { ProductShowcase } from '@/components/home/ProductShowcase'
+import { PromoBanner } from '@/components/home/PromoBanner'
 import { getProductsLocalized } from '@/lib/boutique/products.en'
 import type { Product } from '@/lib/boutique/products'
 import { setRequestLocale } from 'next-intl/server'
@@ -39,6 +40,12 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   for (const p of affiliate) if (!byCat.has(p.category)) byCat.set(p.category, p)
   const selections = [...byCat.values()].slice(0, 4)
 
+  // Bannières promo : meilleure promo, plus populaire, plus premium (prix élevé).
+  const disc = (p: Product) => (p.original_price_cents ? 1 - p.price_cents / p.original_price_cents : 0)
+  const promoProduct = [...affiliate].filter((p) => p.original_price_cents).sort((a, b) => disc(b) - disc(a))[0]
+  const popularProduct = bestsellers[0]
+  const premiumProduct = [...affiliate].sort((a, b) => b.price_cents - a.price_cents)[0]
+
   return (
     <>
       <FaqSchema />
@@ -57,6 +64,8 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       <Features />
       <ProductShowcase section="bestsellers" products={bestsellers} />
       <HowItWorks />
+      {/* Bannière promo — Promotions du moment */}
+      <PromoBanner variant="promo" product={promoProduct} />
       <CoachAd />
       <IntensityLevels />
       {/* Bandeau pub — Entraîne-toi comme jamais */}
@@ -64,6 +73,8 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         id="train"
         image="https://images.pexels.com/photos/1229356/pexels-photo-1229356.jpeg?auto=compress&cs=tinysrgb&w=1920"
       />
+      {/* Bannière promo — Best-seller populaire */}
+      <PromoBanner variant="popular" product={popularProduct} />
       <Pricing />
       <ProductShowcase section="selections" products={selections} dark />
       <Reviews />
@@ -75,6 +86,8 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         ctaHref="/auth/signup"
       />
       <TransformationsGallery />
+      {/* Bannière promo — Équipement premium */}
+      <PromoBanner variant="premium" product={premiumProduct} />
       <FAQ />
       <Newsletter />
       <StickyCheckout />
