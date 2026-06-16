@@ -188,6 +188,15 @@
     "switch": "Change language"
   },
   "home": {
+    "adBanners": {
+      "proof": "4.9/5 · 12,000+ athletes",
+      "transform": { "title": "Transform Your Body.", "accent": "Unlock Your Potential.", "cta": "Start Free Today" },
+      "train": { "title": "Train Like", "accent": "Never Before." },
+      "movement": { "title": "Join The", "accent": "XENOTIF Movement.", "cta": "Start Free Today" },
+      "discipline": { "title": "Discipline Builds", "accent": "Champions." },
+      "results": { "title": "Results,", "accent": "Not Excuses.", "cta": "Start Free Today" },
+      "coach": { "title": "Your Coach. Your Method.", "accent": "Your Results." }
+    },
     "sticky": {
       "lead": "Ready to transform your body?",
       "trial": "No commitment",

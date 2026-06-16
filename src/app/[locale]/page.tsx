@@ -30,40 +30,47 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       <TrustRow />
       <MarqueeStrip />
       <ProofBar />
-      <Features />
-      {/* Bandeau pub #1 — Hero performance + CTA */}
+      {/* Bandeau pub — Transforme ton corps (+ CTA) */}
       <AdBanner
-        ariaLabel="Transform Your Body. Unlock Your Potential."
+        id="transform"
         image="https://images.unsplash.com/photo-1574680096145-d05b474e2155?auto=format&fit=crop&w=1920&q=80"
-        title="Transform Your Body."
-        accent="Unlock Your Potential."
-        cta={{ label: 'Start Free Today', href: '/auth/signup' }}
-        logo="visible"
+        ctaHref="/auth/signup"
+      />
+      <Features />
+      {/* Bandeau pub — Discipline */}
+      <AdBanner
+        id="discipline"
+        image="https://images.unsplash.com/photo-1534258936925-c58bed479fcb?auto=format&fit=crop&w=1920&q=80"
       />
       <HowItWorks />
       <CoachAd />
       <IntensityLevels />
-      {/* Bandeau pub #2 — Performance & discipline */}
+      {/* Bandeau pub — Entraîne-toi comme jamais */}
       <AdBanner
-        ariaLabel="Train Like Never Before"
+        id="train"
         image="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=1920&q=80"
-        title="Train Like"
-        accent="Never Before."
-        logo="visible"
       />
       <Pricing />
+      {/* Bandeau pub — Résultats, pas d'excuses (+ CTA) */}
+      <AdBanner
+        id="results"
+        image="https://images.pexels.com/photos/2204196/pexels-photo-2204196.jpeg?auto=compress&cs=tinysrgb&w=1920"
+        ctaHref="/auth/signup"
+      />
       <Reviews />
       <CustomerReviews kind="platform" />
-      {/* Bandeau pub #3 — Communauté & résultats */}
+      {/* Bandeau pub — Rejoins le mouvement (+ CTA) */}
       <AdBanner
-        ariaLabel="Join The XENOTIF Movement"
+        id="movement"
         image="https://images.pexels.com/photos/1552242/pexels-photo-1552242.jpeg?auto=compress&cs=tinysrgb&w=1920"
-        title="Join The"
-        accent="XENOTIF Movement."
-        cta={{ label: 'Start Free Today', href: '/auth/signup' }}
-        logo="discreet"
+        ctaHref="/auth/signup"
       />
       <TransformationsGallery />
+      {/* Bandeau pub — Ton coach, ta méthode */}
+      <AdBanner
+        id="coach"
+        image="https://images.pexels.com/photos/4164761/pexels-photo-4164761.jpeg?auto=compress&cs=tinysrgb&w=1920"
+      />
       <FAQ />
       <Newsletter />
       <StickyCheckout />

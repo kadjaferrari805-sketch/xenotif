@@ -1,32 +1,33 @@
 'use client'
 
 import Image from 'next/image'
+import { useTranslations } from 'next-intl'
 import { Link } from '@/i18n/navigation'
-import { ArrowRight } from 'lucide-react'
-import { XenotifMark, XenotifWordmark } from '@/components/ui/Logo'
+import { ArrowRight, Star } from 'lucide-react'
 
-// Bandeau publicitaire plein écran : photographie sportive pro + dégradé cinéma
-// (noir + lueur orange) + logo XENOTIF® + accroche + CTA. Responsive.
+// Bandeau publicitaire plein écran : photographie sportive pro + dégradés cinéma
+// (noir + lueur orange) + accroche localisée + CTA. PAS de logo.
+// Mobile : texte en bas + dégradé bas → le haut de l'image reste bien visible.
 export function AdBanner({
+  id,
   image,
-  title,
-  accent,
-  cta,
-  logo = 'visible',
+  ctaHref,
   priority = false,
-  ariaLabel,
+  imgClass = 'object-[center_28%] md:object-center',
 }: {
+  id: string
   image: string
-  title: string
-  accent?: string
-  cta?: { label: string; href: string }
-  logo?: 'visible' | 'discreet'
+  ctaHref?: string
   priority?: boolean
-  ariaLabel: string
+  imgClass?: string
 }) {
+  const t = useTranslations('home.adBanners')
+  const title = t(`${id}.title`)
+  const accent = t(`${id}.accent`)
+
   return (
-    <section aria-label={ariaLabel} className="relative w-full overflow-hidden bg-black">
-      <div className="relative flex min-h-[62vh] items-center md:min-h-[74vh]">
+    <section aria-label={`${title} ${accent}`} className="relative w-full overflow-hidden bg-black">
+      <div className="relative flex min-h-[60vh] items-end md:min-h-[74vh] md:items-center">
         <Image
           src={image}
           alt=""
@@ -34,42 +35,36 @@ export function AdBanner({
           fill
           sizes="100vw"
           priority={priority}
-          // Mobile : focal un peu plus haut ; desktop : centré.
-          className="object-cover object-[center_32%] md:object-center"
+          className={`object-cover ${imgClass}`}
         />
 
-        {/* Dégradés cinéma : noir à gauche + base sombre + lueur orange premium */}
-        <div aria-hidden="true" className="absolute inset-0 z-[1] bg-gradient-to-r from-black/88 via-black/45 to-black/15" />
-        <div aria-hidden="true" className="absolute inset-0 z-[1] bg-gradient-to-t from-black/70 via-transparent to-black/25" />
+        {/* Dégradé bas (texte lisible, haut de l'image visible) — valable mobile + desktop */}
+        <div aria-hidden="true" className="absolute inset-0 z-[1] bg-gradient-to-t from-black/90 via-black/35 to-black/10" />
+        {/* Renfort à gauche (desktop, texte aligné à gauche) */}
+        <div aria-hidden="true" className="absolute inset-0 z-[1] hidden md:block bg-gradient-to-r from-black/80 via-black/30 to-transparent" />
+        {/* Lueur orange premium */}
         <div aria-hidden="true" className="absolute -left-1/4 bottom-0 z-[1] h-[70%] w-[55%] rounded-full bg-sport-orange/15 blur-[120px]" />
 
-        <div className="relative z-10 mx-auto w-full max-w-6xl px-6">
-          <div className="max-w-2xl [text-shadow:0_2px_18px_rgba(0,0,0,0.6)]">
-            {logo === 'visible' ? (
-              <span className="mb-6 inline-flex items-center gap-2.5">
-                <XenotifMark size={34} />
-                <XenotifWordmark className="text-xl" />
-              </span>
-            ) : (
-              <span className="mb-6 inline-flex opacity-90">
-                <XenotifMark size={30} />
-              </span>
-            )}
-
+        <div className="relative z-10 mx-auto w-full max-w-6xl px-6 pb-12 md:pb-0">
+          <div className="max-w-2xl [text-shadow:0_2px_18px_rgba(0,0,0,0.65)]">
             <h2 className="text-4xl font-black leading-[1.05] tracking-tight text-white md:text-6xl">
-              {title}
-              {accent && (
-                <>
-                  {' '}
-                  <span className="text-sport-orange">{accent}</span>
-                </>
-              )}
+              {title} <span className="text-sport-orange">{accent}</span>
             </h2>
 
-            {cta && (
-              <div className="mt-8">
-                <Link href={cta.href} className="btn-primary inline-flex items-center gap-2 text-base">
-                  {cta.label} <ArrowRight size={18} aria-hidden="true" />
+            {/* Crédibilité : note + nombre d'athlètes (preuve sociale) */}
+            <div className="mt-5 flex items-center gap-2.5">
+              <span className="flex gap-0.5" aria-hidden="true">
+                {[0, 1, 2, 3, 4].map((i) => (
+                  <Star key={i} size={15} className="text-sport-orange" fill="currentColor" />
+                ))}
+              </span>
+              <span className="text-sm font-semibold text-white/90">{t('proof')}</span>
+            </div>
+
+            {ctaHref && (
+              <div className="mt-7">
+                <Link href={ctaHref} className="btn-primary inline-flex items-center gap-2 text-base">
+                  {t(`${id}.cta`)} <ArrowRight size={18} aria-hidden="true" />
                 </Link>
               </div>
             )}

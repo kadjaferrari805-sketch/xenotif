@@ -188,6 +188,15 @@
     "switch": "Sprache ändern"
   },
   "home": {
+    "adBanners": {
+      "proof": "4,9/5 · 12.000+ Athleten",
+      "transform": { "title": "Verändere deinen Körper.", "accent": "Entfalte dein Potenzial.", "cta": "Jetzt kostenlos starten" },
+      "train": { "title": "Trainiere wie", "accent": "nie zuvor." },
+      "movement": { "title": "Werde Teil der", "accent": "XENOTIF-Bewegung.", "cta": "Jetzt kostenlos starten" },
+      "discipline": { "title": "Disziplin formt", "accent": "Champions." },
+      "results": { "title": "Ergebnisse,", "accent": "keine Ausreden.", "cta": "Jetzt kostenlos starten" },
+      "coach": { "title": "Dein Coach. Deine Methode.", "accent": "Deine Ergebnisse." }
+    },
     "sticky": {
       "lead": "Bereit, deinen Körper zu transformieren?",
       "trial": "Unverbindlich",
