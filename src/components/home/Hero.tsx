@@ -113,22 +113,25 @@ export function Hero() {
             aria-hidden="true"
             fill
             sizes="100vw"
-            className="object-cover"
+            // Mobile : focal un peu plus haut (sujet/équipement visible) ; desktop : centré.
+            className="object-cover object-[center_30%] md:object-center"
             priority
           />
         </motion.div>
       </AnimatePresence>
       </motion.div>
 
-      {/* Gradient overlays — layered for depth */}
-      <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-r from-black/92 via-black/65 to-black/20 z-[1]" />
-      <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-transparent z-[1]" />
-      <div aria-hidden="true" className="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-sport-dark to-transparent z-[1]" />
+      {/* Dégradés — assombrissement réduit pour laisser voir l'image, renforcé
+          uniquement à gauche/bas (zone du texte). */}
+      <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/35 to-transparent z-[1]" />
+      <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent z-[1]" />
+      <div aria-hidden="true" className="absolute bottom-0 left-0 right-0 h-1/4 bg-gradient-to-t from-sport-dark to-transparent z-[1]" />
 
       {/* Main content */}
       <div className="absolute inset-0 z-10 flex flex-col justify-center px-6">
         <div className="max-w-6xl mx-auto w-full">
-          <div className="max-w-xl">
+          {/* Ombre de texte : lisibilité préservée malgré l'image plus claire. */}
+          <div className="max-w-xl [text-shadow:0_1px_12px_rgba(0,0,0,0.55)]">
 
             {/* Brand label */}
             <motion.div
