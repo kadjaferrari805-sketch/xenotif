@@ -536,6 +536,73 @@ const TEXT_EN: Record<string, PostText> = {
       { type: 'paragraph', text: "Be patient and consistent: a successful cut takes weeks, not days. High protein, maintained training, a moderate deficit and quality sleep — that's the quartet that lets you lose fat while keeping your hard-earned muscle." },
     ],
   },
+  'meilleure-whey-proteine-2026-comparatif': {
+    title: 'Best Whey Protein 2026: Comparison & Buying Guide',
+    excerpt:
+      "Which whey to choose in 2026? Concentrate or isolate, dosage, price: our comparison to pick the right protein and speed up muscle gain.",
+    metaTitle: 'Best Whey Protein 2026 — Comparison & Buying Guide',
+    metaDescription:
+      "Comparison of the best whey proteins 2026: concentrate vs isolate, how to choose, dosage and mistakes to avoid. The complete Xenotif® buying guide.",
+    keywords: ['best whey protein', 'whey comparison 2026', 'whey isolate vs concentrate', 'which whey to choose', 'whey buying guide', 'whey for muscle gain'],
+    content: [
+      { type: 'paragraph', text: "'Which whey should I choose?' It's THE question when you want to speed up muscle gain. Concentrate or isolate, dosage, price per kilo, taste… the choice can quickly become a headache. Here is our 2026 comparison to pick the right protein, with confidence." },
+      { type: 'heading', text: 'How to choose your whey protein' },
+      { type: 'list', items: [
+        'Protein content: aim for 20 to 25 g per serving (at least 70% protein in the product)',
+        'Type: concentrate (best value) or isolate (purer, low in lactose)',
+        'Price per kilo: compare the real cost, not the bag price',
+        'Taste and mixability: crucial to drink it every day without forcing it',
+        'Brand and transparency: labels, quality testing, verified reviews',
+      ] },
+      { type: 'productCta', productSlug: 'whey-myprotein-chocolat-1kg', reason: 'Our top pick: great value, high protein, tens of thousands of reviews.' },
+      { type: 'subheading', text: 'Concentrate or isolate?' },
+      { type: 'paragraph', text: "For most lifters, whey concentrate is more than enough: same amount of protein, lower price. Isolate only really matters if you're lactose intolerant or in a very strict cut. Don't pay more for a benefit you won't use." },
+      { type: 'heading', text: 'Should you add creatine?' },
+      { type: 'paragraph', text: "Yes — it's the most studied and most effective supplement for strength and muscle gain. 3 to 5 g of creatine monohydrate per day, every day (timing doesn't matter). Paired with a quality whey and progressive training, it's the winning duo." },
+      { type: 'productCta', productSlug: 'creatine-monohydrate-myprotein-300g', reason: 'The #1 proven supplement: 3-5 g/day for more strength and size.' },
+      { type: 'heading', text: 'Mistakes to avoid' },
+      { type: 'list', items: [
+        'Choosing only on the bag price (look at price per kilo and protein content)',
+        'Rushing to isolate without needing it',
+        'Ignoring taste: an undrinkable whey ends up in the cupboard',
+        "Believing whey replaces real meals: it's a supplement, not a substitute",
+      ] },
+      { type: 'paragraph', text: "In short: a good whey concentrate, 20-25 g of protein per serving, a taste you enjoy, plus creatine — that's all you need to support your muscle gain. The rest is training and consistency." },
+    ],
+  },
+  'meilleure-montre-connectee-fitness-2026': {
+    title: 'Best Fitness Smartwatch 2026: Comparison',
+    excerpt:
+      "GPS, battery life, heart-rate and sleep tracking: our comparison of the best sport smartwatches 2026 to track your performance.",
+    metaTitle: 'Best Fitness Smartwatch 2026 — Comparison',
+    metaDescription:
+      "Comparison of the best fitness smartwatches 2026: GPS, battery, heart rate, sleep. Buying guide to choose your sport watch. Xenotif®.",
+    keywords: ['best fitness smartwatch', 'sport watch comparison 2026', 'gps running watch', 'heart rate sleep watch', 'which sport smartwatch', 'fitness tracker vs watch'],
+    content: [
+      { type: 'paragraph', text: "Tracking your heart rate, runs, sleep and calories on your wrist: a good smartwatch is a game-changer for progress. But between GPS, battery and sensors, how do you choose in 2026? Here is our comparison to find the watch that fits your sport." },
+      { type: 'heading', text: 'The criteria that really matter' },
+      { type: 'list', items: [
+        'Built-in GPS: essential for outdoor running/cycling (accurate distance and pace)',
+        'Battery life: from 1 day (high-end AMOLED) to several weeks depending on the model',
+        'Heart-rate + SpO2 sensor: for effort zones and recovery',
+        'Sleep tracking: an often underrated lever for progress',
+        'Screen: AMOLED (readable, premium) vs LCD (better battery)',
+        'Water resistance: for swimming, aim for at least 5 ATM',
+      ] },
+      { type: 'productCta', productSlug: 'montre-connectee-sport-gps', reason: 'Our versatile pick: built-in GPS, heart rate and multisport tracking, great value.' },
+      { type: 'subheading', text: 'Smartwatch or fitness tracker?' },
+      { type: 'paragraph', text: "A fitness tracker is lighter, cheaper and has excellent battery life — perfect for daily steps, sleep and heart rate. A smartwatch adds accurate GPS, a rich screen and advanced sport features. Beginner or tight budget → tracker; regular runner/cyclist → GPS watch." },
+      { type: 'productCta', productSlug: 'bracelet-fitness-tracker', reason: 'Budget-friendly: activity, sleep and heart-rate tracking with long battery life.' },
+      { type: 'heading', text: 'For which athlete?' },
+      { type: 'list', items: [
+        'Runner / cyclist: GPS watch with good battery life',
+        'Gym / fitness: heart-rate watch or tracker, depending on budget',
+        'Daily health tracking: lightweight fitness tracker',
+        'Triathlete / multisport: waterproof AMOLED multisport watch',
+      ] },
+      { type: 'paragraph', text: "The best watch is the one you'll wear every day. Define your main sport, your budget and the battery life you want — then trust the data: it's what turns effort into measurable progress." },
+    ],
+  },
 }
 
 export const BLOG_POSTS_EN: BlogPost[] = BLOG_POSTS_SOURCE.map((p) => ({ ...p, ...TEXT_EN[p.slug] }))
