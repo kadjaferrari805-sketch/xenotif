@@ -15,6 +15,9 @@ import { CustomerReviews } from '@/components/reviews/CustomerReviews'
 import { TransformationsGallery } from '@/components/transformations/TransformationsGallery'
 import { FaqSchema } from '@/components/FaqSchema'
 import { AdBanner } from '@/components/home/AdBanner'
+import { ProductShowcase } from '@/components/home/ProductShowcase'
+import { getProductsLocalized } from '@/lib/boutique/products.en'
+import type { Product } from '@/lib/boutique/products'
 import { setRequestLocale } from 'next-intl/server'
 
 // setRequestLocale → autorise le rendu statique (sinon next-intl bascule en
@@ -23,6 +26,19 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   const { locale } = await params
   setRequestLocale(locale)
 
+  // Vitrine produits affiliés (liens Amazon localisés par langue).
+  const affiliate = getProductsLocalized(locale).filter((p) => p.isAffiliate)
+  // Recommandés : promos d'abord, puis meilleures notes.
+  const recommended = [...affiliate]
+    .sort((a, b) => (b.original_price_cents ? 1 : 0) - (a.original_price_cents ? 1 : 0) || b.rating - a.rating)
+    .slice(0, 4)
+  // Best sellers : plus d'avis.
+  const bestsellers = [...affiliate].sort((a, b) => b.reviews - a.reviews).slice(0, 4)
+  // Sélections : un produit par catégorie (diversité).
+  const byCat = new Map<string, Product>()
+  for (const p of affiliate) if (!byCat.has(p.category)) byCat.set(p.category, p)
+  const selections = [...byCat.values()].slice(0, 4)
+
   return (
     <>
       <FaqSchema />
@@ -30,6 +46,8 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       <TrustRow />
       <MarqueeStrip />
       <ProofBar />
+      {/* Vitrine produits affiliés — visible dès le haut de page */}
+      <ProductShowcase section="recommended" products={recommended} dark />
       {/* Bandeau pub — Transforme ton corps (+ CTA) */}
       <AdBanner
         id="transform"
@@ -37,6 +55,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         ctaHref="/auth/signup"
       />
       <Features />
+      <ProductShowcase section="bestsellers" products={bestsellers} />
       <HowItWorks />
       <CoachAd />
       <IntensityLevels />
@@ -46,6 +65,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         image="https://images.pexels.com/photos/1229356/pexels-photo-1229356.jpeg?auto=compress&cs=tinysrgb&w=1920"
       />
       <Pricing />
+      <ProductShowcase section="selections" products={selections} dark />
       <Reviews />
       <CustomerReviews kind="platform" />
       {/* Bandeau pub — Rejoins le mouvement (+ CTA) */}
