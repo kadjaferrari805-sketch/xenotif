@@ -13,7 +13,7 @@ export function AdBanner({
   image,
   ctaHref,
   priority = false,
-  imgClass = 'object-[center_28%] md:object-center',
+  imgClass = 'object-center',
 }: {
   id: string
   image: string
