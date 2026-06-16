@@ -7,6 +7,7 @@ import { Link } from '@/i18n/navigation'
 import { ArrowRight } from 'lucide-react'
 import { SectionHeader } from '@/components/ui/SectionHeader'
 import { Tilt3D } from '@/components/premium/Tilt3D'
+import { Marquee } from '@/components/ui/Marquee'
 
 // Style structurel par niveau (emoji, couleurs, largeur de barre). Les textes
 // (label, desc, detail) viennent de messages → home.intensity.levels.
@@ -34,9 +35,10 @@ export function IntensityLevels() {
           subtitle={t('subtitle')}
         />
 
-        <div ref={ref} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mt-14">
+        <div ref={ref} className="mt-14">
+          <Marquee durationSec={34}>
           {LEVEL_STYLE.map((level, i) => (
-            <Tilt3D key={level.id} max={12} className="relative h-full rounded-2xl">
+            <Tilt3D key={level.id} max={12} className="relative h-full rounded-2xl shrink-0 w-[280px] mr-5">
             <motion.div
               initial={{ opacity: 0, y: 24 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -76,6 +78,7 @@ export function IntensityLevels() {
             </motion.div>
             </Tilt3D>
           ))}
+          </Marquee>
         </div>
 
         <motion.div

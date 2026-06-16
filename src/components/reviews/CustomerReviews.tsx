@@ -3,6 +3,7 @@ import { useEffect, useState, useCallback } from 'react'
 import { useTranslations, useLocale } from 'next-intl'
 import { StarRating } from './StarRating'
 import { ReviewForm } from './ReviewForm'
+import { Marquee } from '@/components/ui/Marquee'
 import type { Review, ReviewType, Eligibility } from '@/lib/reviews/types'
 
 interface Props { kind: ReviewType; productId?: string }
@@ -60,21 +61,23 @@ export function CustomerReviews({ kind, productId }: Props) {
         <h2 className="text-lg font-black text-white mb-4">{t('productTitle')} ({reviews.length})</h2>
       )}
 
-      {!empty && (
-        <div className="space-y-4 mb-6">
-          {reviews.map((r) => (
-            <div key={r.id} className="bg-sport-card border border-sport-border rounded-xl p-4">
-              <div className="flex items-center justify-between mb-1.5">
-                <span className="text-sm font-bold text-white">{r.author_name}</span>
-                <span className="text-[10px] font-bold text-emerald-400">{t('verified')}</span>
-              </div>
-              <StarRating value={r.rating} />
-              <p className="text-sm text-sport-gray mt-2 leading-relaxed whitespace-pre-wrap">{r.comment}</p>
-              <p className="text-[10px] text-sport-gray mt-2">{new Date(r.created_at).toLocaleDateString(locale === 'en' ? 'en-US' : 'fr-FR')}</p>
+      {!empty && (() => {
+        const cards = reviews.map((r) => (
+          <div key={r.id} className={`bg-sport-card border border-sport-border rounded-xl p-4${isPlatform ? ' shrink-0 w-[300px] mr-4 self-stretch' : ''}`}>
+            <div className="flex items-center justify-between mb-1.5">
+              <span className="text-sm font-bold text-white">{r.author_name}</span>
+              <span className="text-[10px] font-bold text-emerald-400">{t('verified')}</span>
             </div>
-          ))}
-        </div>
-      )}
+            <StarRating value={r.rating} />
+            <p className="text-sm text-sport-gray mt-2 leading-relaxed whitespace-pre-wrap">{r.comment}</p>
+            <p className="text-[10px] text-sport-gray mt-2">{new Date(r.created_at).toLocaleDateString(locale === 'en' ? 'en-US' : 'fr-FR')}</p>
+          </div>
+        ))
+        // Accueil (plateforme) : carrousel continu. Fiche produit : liste verticale.
+        return isPlatform
+          ? <div className="mb-6"><Marquee durationSec={42}>{cards}</Marquee></div>
+          : <div className="space-y-4 mb-6">{cards}</div>
+      })()}
 
       <div className={isPlatform ? 'text-center' : ''}>
         {done && <p className="text-emerald-400 text-sm font-semibold">{t('thanks')}</p>}
