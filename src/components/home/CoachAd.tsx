@@ -1,13 +1,18 @@
 'use client'
 
 import Image from 'next/image'
-import { useTranslations } from 'next-intl'
+import { useTranslations, useLocale } from 'next-intl'
 import { Link } from '@/i18n/navigation'
 import { ArrowRight, Sparkles } from 'lucide-react'
 
+const AD_LOCALES = ['fr', 'en', 'de']
+
 // Visuel publicitaire « Ton coach dans ta poche » + CTA. Remplace la démo Coach IA sur l'accueil.
+// L'affiche existe par langue (texte localisé) → on sélectionne selon la locale active.
 export function CoachAd() {
   const t = useTranslations('coachAd')
+  const locale = useLocale()
+  const adSrc = `/pub/coach-poche-${AD_LOCALES.includes(locale) ? locale : 'fr'}.webp`
 
   return (
     <section className="px-6 py-20 bg-sport-dark" aria-label={t('title')}>
@@ -19,7 +24,7 @@ export function CoachAd() {
             aria-hidden="true"
           />
           <Image
-            src="/pub/coach-poche.webp"
+            src={adSrc}
             alt={t('imageAlt')}
             width={1080}
             height={1080}
