@@ -204,6 +204,11 @@
       "bestsellers": { "label": "Top sellers", "title": "Fitness Best Sellers", "subtitle": "The most popular and highest-rated products." },
       "selections": { "label": "Featured", "title": "XENOTIF Selections", "subtitle": "Dumbbells, cardio, recovery, tech, nutrition — the best by category." }
     },
+    "promoBanners": {
+      "promo": { "label": "Limited offer", "title": "Deals of the moment", "cta": "See the offer" },
+      "popular": { "label": "Popular", "title": "The current best-seller", "cta": "See product" },
+      "premium": { "label": "Premium", "title": "Premium equipment", "cta": "Discover" }
+    },
     "sticky": {
       "lead": "Ready to transform your body?",
       "trial": "No commitment",
