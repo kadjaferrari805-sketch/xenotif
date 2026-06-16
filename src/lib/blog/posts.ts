@@ -1248,6 +1248,89 @@ const BLOG_POSTS: BlogPost[] = [
       { type: 'paragraph', text: "Sois patient et constant : une sèche réussie prend des semaines, pas des jours. Protéines hautes, musculation maintenue, déficit modéré et sommeil de qualité — c'est ce quatuor qui te fera perdre du gras tout en gardant tes muscles durement gagnés." },
     ],
   },
+  // ─── GUIDE D'ACHAT — Meilleure whey 2026 (affiliation) ───────────────────────
+  {
+    slug: 'meilleure-whey-proteine-2026-comparatif',
+    title: 'Meilleure Whey Protéine 2026 : Comparatif & Guide d\'Achat',
+    excerpt:
+      "Quelle whey choisir en 2026 ? Concentrée ou isolate, dosage, prix : notre comparatif pour bien choisir ta protéine et accélérer ta prise de muscle.",
+    metaTitle: 'Meilleure Whey Protéine 2026 — Comparatif & Guide d\'Achat',
+    metaDescription:
+      "Comparatif des meilleures whey protéines 2026 : concentrée vs isolate, critères de choix, dosage et erreurs à éviter. Le guide d'achat complet Xenotif®.",
+    keywords: ['meilleure whey protéine', 'comparatif whey 2026', 'whey isolate ou concentrée', 'quelle whey choisir', 'guide achat whey', 'whey prise de masse'],
+    category: 'Nutrition',
+    coverImage: 'https://images.pexels.com/photos/5236668/pexels-photo-5236668.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    author: 'Camille Laurent',
+    publishedAt: '2026-06-14T08:00:00Z',
+    readingMinutes: 7,
+    productSlugs: ['whey-myprotein-chocolat-1kg', 'creatine-monohydrate-myprotein-300g', 'bcaa-myprotein-500g-fruit'],
+    content: [
+      { type: 'paragraph', text: "« Quelle whey choisir ? » C'est LA question quand on veut accélérer sa prise de muscle. Concentrée ou isolate, dosage, prix au kilo, goût… le choix peut vite devenir un casse-tête. Voici notre comparatif 2026 pour choisir la bonne protéine, sans te tromper." },
+      { type: 'heading', text: 'Comment choisir sa whey protéine ?' },
+      { type: 'list', items: [
+        'Teneur en protéines : vise 20 à 25 g par dose (au moins 70 % de protéines sur le produit)',
+        'Type : concentrée (meilleur rapport qualité/prix) ou isolate (plus pure, pauvre en lactose)',
+        'Prix au kilo : compare le coût réel, pas le prix du paquet',
+        'Goût et solubilité : crucial pour en boire tous les jours sans forcer',
+        'Marque et transparence : labels, tests qualité, avis vérifiés',
+      ] },
+      { type: 'productCta', productSlug: 'whey-myprotein-chocolat-1kg', reason: "Notre référence : excellent rapport qualité/prix, riche en protéines, des dizaines de milliers d'avis." },
+      { type: 'subheading', text: 'Whey concentrée ou isolate ?' },
+      { type: 'paragraph', text: "Pour la plupart des sportifs, la whey concentrée suffit largement : même quantité de protéines, prix plus bas. L'isolate n'a d'intérêt réel que si tu es intolérant au lactose ou en sèche très stricte. Ne paie pas plus cher pour un bénéfice que tu n'utiliseras pas." },
+      { type: 'heading', text: 'Faut-il y ajouter de la créatine ?' },
+      { type: 'paragraph', text: "Oui — c'est le complément le plus étudié et le plus efficace pour la force et la prise de muscle. 3 à 5 g de créatine monohydrate par jour, tous les jours (peu importe le timing). Couplée à une whey de qualité et à un entraînement progressif, c'est le duo gagnant." },
+      { type: 'productCta', productSlug: 'creatine-monohydrate-myprotein-300g', reason: "Le complément n°1 prouvé : 3-5 g/jour pour plus de force et de volume." },
+      { type: 'heading', text: 'Les erreurs à éviter' },
+      { type: 'list', items: [
+        'Choisir uniquement sur le prix du paquet (regarde le prix au kilo et la teneur en protéines)',
+        "Se ruer sur l'isolate sans en avoir besoin",
+        'Négliger le goût : une whey imbuvable finit au placard',
+        "Croire que la whey remplace les vrais repas : c'est un complément, pas un substitut",
+      ] },
+      { type: 'paragraph', text: "En résumé : une bonne whey concentrée, 20-25 g de protéines par dose, un goût que tu aimes, complétée de créatine — c'est tout ce dont tu as besoin pour soutenir ta prise de muscle. Le reste, c'est l'entraînement et la régularité." },
+    ],
+  },
+  // ─── GUIDE D'ACHAT — Meilleure montre connectée 2026 (affiliation) ───────────
+  {
+    slug: 'meilleure-montre-connectee-fitness-2026',
+    title: 'Meilleure Montre Connectée Fitness 2026 : Comparatif',
+    excerpt:
+      "GPS, autonomie, suivi cardio et sommeil : notre comparatif des meilleures montres connectées sport 2026 pour suivre tes performances.",
+    metaTitle: 'Meilleure Montre Connectée Fitness 2026 — Comparatif',
+    metaDescription:
+      "Comparatif des meilleures montres connectées fitness 2026 : GPS, autonomie, cardio, sommeil. Guide d'achat pour choisir ta montre sport. Xenotif®.",
+    keywords: ['meilleure montre connectée fitness', 'comparatif montre sport 2026', 'montre gps running', 'montre cardio sommeil', 'quelle montre connectée sport', 'bracelet fitness ou montre'],
+    category: 'Matériel',
+    coverImage: 'https://images.unsplash.com/photo-1579586337278-3befd40fd17a?auto=format&fit=crop&w=1200&q=80',
+    author: 'Thomas Mercier',
+    publishedAt: '2026-06-12T08:00:00Z',
+    readingMinutes: 8,
+    productSlugs: ['montre-connectee-sport-gps', 'montre-connectee-tactile-running', 'bracelet-fitness-tracker'],
+    content: [
+      { type: 'paragraph', text: "Suivre ton cardio, ta course, ton sommeil et tes calories au poignet : une bonne montre connectée change la donne pour progresser. Mais entre GPS, autonomie et capteurs, comment choisir en 2026 ? Voici notre comparatif pour trouver la montre adaptée à ton sport." },
+      { type: 'heading', text: 'Les critères qui comptent vraiment' },
+      { type: 'list', items: [
+        'GPS intégré : indispensable pour la course/vélo en extérieur (distance et allure précises)',
+        'Autonomie : de 1 jour (AMOLED haut de gamme) à plusieurs semaines selon les modèles',
+        "Capteur cardio + SpO2 : pour les zones d'effort et la récupération",
+        'Suivi du sommeil : un levier de progression souvent sous-estimé',
+        'Écran : AMOLED (lisible, premium) vs LCD (meilleure autonomie)',
+        'Étanchéité : pour la natation, vise au moins 5 ATM',
+      ] },
+      { type: 'productCta', productSlug: 'montre-connectee-sport-gps', reason: "Notre choix polyvalent : GPS intégré, cardio et suivi multisport, bon rapport qualité/prix." },
+      { type: 'subheading', text: 'Montre connectée ou bracelet fitness ?' },
+      { type: 'paragraph', text: "Le bracelet fitness est plus léger, moins cher et offre une excellente autonomie — parfait pour suivre pas, sommeil et fréquence cardiaque au quotidien. La montre connectée ajoute GPS précis, écran riche et fonctions sportives avancées. Débutant ou petit budget → bracelet ; coureur/cycliste régulier → montre GPS." },
+      { type: 'productCta', productSlug: 'bracelet-fitness-tracker', reason: "Idéal budget : suivi activité, sommeil et cardio, autonomie longue." },
+      { type: 'heading', text: 'Pour quel sportif ?' },
+      { type: 'list', items: [
+        'Coureur / cycliste : montre GPS avec bonne autonomie',
+        'Salle / fitness : montre cardio ou bracelet, selon le budget',
+        'Suivi santé au quotidien : bracelet fitness léger',
+        'Triathlète / multisport : montre AMOLED étanche multisport',
+      ] },
+      { type: 'paragraph', text: "La meilleure montre, c'est celle que tu porteras tous les jours. Définis ton sport principal, ton budget et l'autonomie souhaitée — puis fie-toi aux données : ce sont elles qui transforment l'effort en progression mesurable." },
+    ],
+  },
 ]
 
 // Source FR exposée pour la construction du catalogue localisé (posts.en.ts).

@@ -535,6 +535,73 @@ const TEXT_DE: Record<string, PostText> = {
       { type: 'paragraph', text: "Sei geduldig und beständig: eine erfolgreiche Definitionsphase dauert Wochen, nicht Tage. Viel Protein, beibehaltenes Training, ein moderates Defizit und guter Schlaf — dieses Quartett lässt dich Fett verlieren und deine hart erarbeiteten Muskeln behalten." },
     ],
   },
+  'meilleure-whey-proteine-2026-comparatif': {
+    title: 'Bestes Whey-Protein 2026: Vergleich & Kaufratgeber',
+    excerpt:
+      "Welches Whey 2026 wählen? Konzentrat oder Isolat, Dosierung, Preis: unser Vergleich, um das richtige Protein zu wählen und schneller Muskeln aufzubauen.",
+    metaTitle: 'Bestes Whey-Protein 2026 — Vergleich & Kaufratgeber',
+    metaDescription:
+      "Vergleich der besten Whey-Proteine 2026: Konzentrat vs. Isolat, Auswahlkriterien, Dosierung und Fehler. Der komplette Kaufratgeber von Xenotif®.",
+    keywords: ['bestes whey protein', 'whey vergleich 2026', 'whey isolat oder konzentrat', 'welches whey wählen', 'whey kaufratgeber', 'whey muskelaufbau'],
+    content: [
+      { type: 'paragraph', text: "'Welches Whey soll ich wählen?' Das ist DIE Frage, wenn man den Muskelaufbau beschleunigen will. Konzentrat oder Isolat, Dosierung, Preis pro Kilo, Geschmack… die Wahl kann schnell kompliziert werden. Hier ist unser Vergleich 2026, um das richtige Protein sicher zu wählen." },
+      { type: 'heading', text: 'Wie wählst du dein Whey-Protein?' },
+      { type: 'list', items: [
+        'Proteingehalt: ziele auf 20 bis 25 g pro Portion (mindestens 70 % Protein im Produkt)',
+        'Typ: Konzentrat (bestes Preis-Leistungs-Verhältnis) oder Isolat (reiner, laktosearm)',
+        'Preis pro Kilo: vergleiche die echten Kosten, nicht den Beutelpreis',
+        'Geschmack und Löslichkeit: entscheidend, um es täglich ohne Mühe zu trinken',
+        'Marke und Transparenz: Siegel, Qualitätstests, verifizierte Bewertungen',
+      ] },
+      { type: 'productCta', productSlug: 'whey-myprotein-chocolat-1kg', reason: 'Unsere Empfehlung: top Preis-Leistung, proteinreich, Zehntausende Bewertungen.' },
+      { type: 'subheading', text: 'Konzentrat oder Isolat?' },
+      { type: 'paragraph', text: "Für die meisten reicht Whey-Konzentrat völlig: gleiche Proteinmenge, niedrigerer Preis. Isolat lohnt sich nur, wenn du laktoseintolerant bist oder in einer sehr strengen Definitionsphase. Zahl nicht mehr für einen Vorteil, den du nicht nutzt." },
+      { type: 'heading', text: 'Solltest du Kreatin ergänzen?' },
+      { type: 'paragraph', text: "Ja — es ist das am besten erforschte und wirksamste Supplement für Kraft und Muskelaufbau. 3 bis 5 g Kreatin-Monohydrat pro Tag, täglich (Timing egal). Kombiniert mit einem guten Whey und progressivem Training ist das das Gewinner-Duo." },
+      { type: 'productCta', productSlug: 'creatine-monohydrate-myprotein-300g', reason: 'Das bewiesene Nr.-1-Supplement: 3-5 g/Tag für mehr Kraft und Volumen.' },
+      { type: 'heading', text: 'Fehler, die du vermeiden solltest' },
+      { type: 'list', items: [
+        'Nur nach dem Beutelpreis wählen (achte auf Preis pro Kilo und Proteingehalt)',
+        'Zum Isolat greifen, ohne es zu brauchen',
+        'Den Geschmack ignorieren: ein untrinkbares Whey landet im Schrank',
+        'Glauben, Whey ersetze echte Mahlzeiten: es ist eine Ergänzung, kein Ersatz',
+      ] },
+      { type: 'paragraph', text: "Kurz gesagt: ein gutes Whey-Konzentrat, 20-25 g Protein pro Portion, ein Geschmack, den du magst, plus Kreatin — mehr brauchst du nicht für deinen Muskelaufbau. Der Rest ist Training und Beständigkeit." },
+    ],
+  },
+  'meilleure-montre-connectee-fitness-2026': {
+    title: 'Beste Fitness-Smartwatch 2026: Vergleich',
+    excerpt:
+      "GPS, Akkulaufzeit, Herzfrequenz- und Schlaf-Tracking: unser Vergleich der besten Sport-Smartwatches 2026, um deine Leistung zu verfolgen.",
+    metaTitle: 'Beste Fitness-Smartwatch 2026 — Vergleich',
+    metaDescription:
+      "Vergleich der besten Fitness-Smartwatches 2026: GPS, Akku, Herzfrequenz, Schlaf. Kaufratgeber für deine Sportuhr. Xenotif®.",
+    keywords: ['beste fitness smartwatch', 'sportuhr vergleich 2026', 'gps laufuhr', 'herzfrequenz schlaf uhr', 'welche sport smartwatch', 'fitness tracker oder uhr'],
+    content: [
+      { type: 'paragraph', text: "Herzfrequenz, Läufe, Schlaf und Kalorien am Handgelenk verfolgen: eine gute Smartwatch verändert deinen Fortschritt. Aber zwischen GPS, Akku und Sensoren — wie wählst du 2026? Hier ist unser Vergleich, um die passende Uhr für deinen Sport zu finden." },
+      { type: 'heading', text: 'Die Kriterien, die wirklich zählen' },
+      { type: 'list', items: [
+        'Integriertes GPS: unverzichtbar für Laufen/Radfahren draußen (genaue Distanz und Pace)',
+        'Akkulaufzeit: von 1 Tag (High-End-AMOLED) bis mehrere Wochen je nach Modell',
+        'Herzfrequenz- + SpO2-Sensor: für Belastungszonen und Erholung',
+        'Schlaf-Tracking: ein oft unterschätzter Hebel für Fortschritt',
+        'Display: AMOLED (lesbar, premium) vs. LCD (bessere Akkulaufzeit)',
+        'Wasserdichtigkeit: zum Schwimmen mindestens 5 ATM',
+      ] },
+      { type: 'productCta', productSlug: 'montre-connectee-sport-gps', reason: 'Unsere vielseitige Wahl: integriertes GPS, Herzfrequenz und Multisport-Tracking, top Preis-Leistung.' },
+      { type: 'subheading', text: 'Smartwatch oder Fitness-Tracker?' },
+      { type: 'paragraph', text: "Ein Fitness-Tracker ist leichter, günstiger und hat eine exzellente Akkulaufzeit — perfekt für Schritte, Schlaf und Herzfrequenz im Alltag. Eine Smartwatch bietet genaues GPS, ein reiches Display und erweiterte Sportfunktionen. Anfänger oder kleines Budget → Tracker; regelmäßiger Läufer/Radfahrer → GPS-Uhr." },
+      { type: 'productCta', productSlug: 'bracelet-fitness-tracker', reason: 'Budgetfreundlich: Aktivitäts-, Schlaf- und Herzfrequenz-Tracking mit langer Akkulaufzeit.' },
+      { type: 'heading', text: 'Für welchen Sportler?' },
+      { type: 'list', items: [
+        'Läufer / Radfahrer: GPS-Uhr mit guter Akkulaufzeit',
+        'Gym / Fitness: Herzfrequenz-Uhr oder Tracker, je nach Budget',
+        'Tägliches Gesundheits-Tracking: leichter Fitness-Tracker',
+        'Triathlet / Multisport: wasserdichte AMOLED-Multisport-Uhr',
+      ] },
+      { type: 'paragraph', text: "Die beste Uhr ist die, die du jeden Tag trägst. Definiere deinen Hauptsport, dein Budget und die gewünschte Akkulaufzeit — und vertraue dann den Daten: sie verwandeln Anstrengung in messbaren Fortschritt." },
+    ],
+  },
 }
 
 export const BLOG_POSTS_DE: BlogPost[] = BLOG_POSTS_SOURCE.map((p) => ({ ...p, ...TEXT_DE[p.slug] }))
