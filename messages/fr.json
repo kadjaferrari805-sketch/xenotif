@@ -199,6 +199,7 @@
     },
     "productShowcase": {
       "viewAll": "Voir toute la boutique",
+      "trust": { "secure": "Paiement sécurisé", "delivery": "Livraison rapide", "returns": "Retours faciles" },
       "recommended": { "label": "Sélection", "title": "Produits Fitness Recommandés", "subtitle": "Notre matériel coup de cœur pour t'équiper et progresser plus vite." },
       "bestsellers": { "label": "Top ventes", "title": "Best Sellers Fitness", "subtitle": "Les produits les plus populaires et les mieux notés." },
       "selections": { "label": "Vedettes", "title": "Nos Sélections XENOTIF", "subtitle": "Haltères, cardio, récupération, tech, nutrition — le meilleur par catégorie." }

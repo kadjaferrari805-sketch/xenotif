@@ -2,7 +2,7 @@
 
 import { useTranslations } from 'next-intl'
 import { Link } from '@/i18n/navigation'
-import { ArrowRight } from 'lucide-react'
+import { ArrowRight, Lock, Truck, RotateCcw } from 'lucide-react'
 import { SectionHeader } from '@/components/ui/SectionHeader'
 import { ProductCard } from '@/components/boutique/ProductCard'
 import type { Product } from '@/lib/boutique/products'
@@ -35,10 +35,18 @@ export function ProductShowcase({
         />
         <div className="mt-12 grid grid-cols-2 gap-4 lg:grid-cols-4">
           {products.map((p, i) => (
-            <ProductCard key={p.id} product={p} index={i} />
+            <ProductCard key={p.id} product={p} index={i} source={`home_${section}`} />
           ))}
         </div>
-        <div className="mt-10 text-center">
+
+        {/* Badges de confiance (achat via Amazon) */}
+        <div className="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs text-sport-gray">
+          <span className="inline-flex items-center gap-1.5"><Lock size={13} aria-hidden="true" className="text-sport-orange" /> {t('trust.secure')}</span>
+          <span className="inline-flex items-center gap-1.5"><Truck size={13} aria-hidden="true" className="text-sport-orange" /> {t('trust.delivery')}</span>
+          <span className="inline-flex items-center gap-1.5"><RotateCcw size={13} aria-hidden="true" className="text-sport-orange" /> {t('trust.returns')}</span>
+        </div>
+
+        <div className="mt-8 text-center">
           <Link href="/boutique" className="btn-primary inline-flex items-center gap-2">
             {t('viewAll')} <ArrowRight size={16} aria-hidden="true" />
           </Link>
