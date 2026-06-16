@@ -10,9 +10,10 @@ describe('HowItWorks', () => {
 
   it('renders 4 numbered steps', () => {
     renderWithIntl(<HowItWorks />)
-    expect(screen.getByText('1')).toBeInTheDocument()
-    expect(screen.getByText('2')).toBeInTheDocument()
-    expect(screen.getByText('3')).toBeInTheDocument()
-    expect(screen.getByText('4')).toBeInTheDocument()
+    // Carrousel continu : le contenu est dupliqué (copie aria-hidden) → getAllByText.
+    expect(screen.getAllByText('1')[0]).toBeInTheDocument()
+    expect(screen.getAllByText('2')[0]).toBeInTheDocument()
+    expect(screen.getAllByText('3')[0]).toBeInTheDocument()
+    expect(screen.getAllByText('4')[0]).toBeInTheDocument()
   })
 })

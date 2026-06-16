@@ -7,6 +7,7 @@ import { Star, Quote, CheckCircle, TrendingUp } from 'lucide-react'
 import { SectionHeader } from '@/components/ui/SectionHeader'
 import { Tilt3D } from '@/components/premium/Tilt3D'
 import { REVIEWS } from '@/lib/constants'
+import { Marquee } from '@/components/ui/Marquee'
 
 const AVATAR_BG: Record<string, string> = {
   orange: 'bg-gradient-to-br from-sport-orange to-orange-700',
@@ -40,9 +41,10 @@ export function Reviews() {
           subtitle={t('subtitle')}
         />
 
-        <div ref={ref} className="grid grid-cols-1 md:grid-cols-3 gap-5 mt-14">
+        <div ref={ref} className="mt-14">
+          <Marquee durationSec={48}>
           {REVIEWS.map((review, i) => (
-            <Tilt3D key={review.name} max={11} className="relative h-full rounded-2xl">
+            <Tilt3D key={review.name} max={11} className="relative h-full rounded-2xl shrink-0 w-[330px] mr-5">
             <motion.article
               initial={{ opacity: 0, y: 24 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -91,6 +93,7 @@ export function Reviews() {
             </motion.article>
             </Tilt3D>
           ))}
+          </Marquee>
         </div>
 
         {/* Global rating summary */}
