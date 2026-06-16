@@ -122,6 +122,8 @@
     "adminEmpty": "Aucune transformation en attente."
   },
   "common": {
+    "scrollPrev": "Précédent",
+    "scrollNext": "Suivant",
     "nav": {
       "disciplines": "Disciplines",
       "preview": "Aperçu",

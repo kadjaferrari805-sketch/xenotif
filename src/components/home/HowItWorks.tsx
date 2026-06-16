@@ -8,7 +8,7 @@ import { ArrowRight, UserPlus, Target, Dumbbell, BarChart3 } from 'lucide-react'
 import { SectionHeader } from '@/components/ui/SectionHeader'
 import { Tilt3D } from '@/components/premium/Tilt3D'
 import { STEPS } from '@/lib/constants'
-import { Marquee } from '@/components/ui/Marquee'
+import { Carousel } from '@/components/ui/Carousel'
 
 type StepText = { title: string; description: string }
 
@@ -39,7 +39,7 @@ export function HowItWorks() {
         />
 
         <div ref={ref} className="mt-14">
-          <Marquee durationSec={34}>
+          <Carousel>
           {STEPS.map((step, i) => {
             const color = STEP_COLORS[i]
             const StepIcon = STEP_ICONS[i]
@@ -71,7 +71,7 @@ export function HowItWorks() {
               </motion.div>
             )
           })}
-          </Marquee>
+          </Carousel>
         </div>
 
         <motion.div

@@ -122,6 +122,8 @@
     "adminEmpty": "No pending transformations."
   },
   "common": {
+    "scrollPrev": "Previous",
+    "scrollNext": "Next",
     "nav": {
       "disciplines": "Disciplines",
       "preview": "Preview",

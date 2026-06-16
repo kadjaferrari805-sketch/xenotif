@@ -122,6 +122,8 @@
     "adminEmpty": "Keine ausstehenden Transformationen."
   },
   "common": {
+    "scrollPrev": "Zurück",
+    "scrollNext": "Weiter",
     "nav": {
       "disciplines": "Disziplinen",
       "preview": "Vorschau",
