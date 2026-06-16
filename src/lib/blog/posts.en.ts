@@ -432,6 +432,110 @@ const TEXT_EN: Record<string, PostText> = {
       { type: 'paragraph', text: "The ab wheel is a tiny investment for a huge return: a solid core that improves all your performances and protects your back every day. Master the technique, be patient with the progression, dial in your nutrition — and the results will follow." },
     ],
   },
+  'combien-proteines-par-jour-prise-de-muscle': {
+    title: 'How Much Protein per Day to Build Muscle? (2026 Guide)',
+    excerpt:
+      "How many grams of protein do you really need each day to gain muscle? Precise doses based on your weight, the best sources, and mistakes to avoid.",
+    metaTitle: 'How Much Protein per Day to Build Muscle? 2026 Guide',
+    metaDescription:
+      "Complete 2026 guide: how much protein per day for muscle gain (g/kg), timing, best sources and common mistakes. Expert advice from Xenotif®.",
+    keywords: ['how much protein per day', 'protein intake muscle', 'protein for muscle gain', 'grams of protein per kg', 'protein needs athlete', 'protein to build muscle'],
+    content: [
+      { type: 'paragraph', text: "'Eat your protein!' You hear it everywhere, but how much exactly? Too little, and your muscles don't recover. Too much, and you waste your money for nothing. Here, backed by numbers, is how much protein you actually need each day to build muscle in 2026." },
+      { type: 'heading', text: 'How much protein do you really need?' },
+      { type: 'paragraph', text: "The research is now very clear. For a sedentary person, 0.8 g of protein per kilo of body weight is enough. But as soon as you train to build muscle, that need rises sharply. Recent meta-analyses converge on a range of 1.6 to 2.2 g per kilo per day to maximize muscle building." },
+      { type: 'list', items: [
+        'Muscle gain (main goal): 1.6 to 2.2 g/kg/day',
+        'Cutting (fat loss while preserving muscle): 2.0 to 2.4 g/kg/day',
+        'Maintenance / occasional athlete: 1.2 to 1.6 g/kg/day',
+        'Beyond ~2.4 g/kg, no additional benefit for muscle gain has been demonstrated',
+      ] },
+      { type: 'subheading', text: 'A concrete example for 75 kg' },
+      { type: 'paragraph', text: "A 75 kg person aiming to build muscle targets around 120 to 165 g of protein per day (75 × 1.6 to 2.2). The simplest approach: spread that amount across 3 to 4 meals of 30 to 40 g rather than eating it all at once — protein synthesis is better stimulated by regular intake." },
+      { type: 'heading', text: 'The best protein sources' },
+      { type: 'list', items: [
+        'Animal (complete profile): chicken, turkey, eggs, fish, lean beef, dairy',
+        'Plant-based: lentils, chickpeas, tofu, tempeh, seitan, edamame',
+        'Convenient supplements: whey (fast, post-workout), casein (slow, at night), plant protein',
+        'Tip: combine several plant sources to get all essential amino acids',
+      ] },
+      { type: 'heading', text: 'Timing: when should you eat protein?' },
+      { type: 'paragraph', text: "The famous 30-minute 'anabolic window' after training has been greatly exaggerated. What matters most is your daily total. That said, 30 to 40 g within two hours around your session and a protein-rich evening meal do optimize recovery. Consistency beats perfect timing." },
+      { type: 'heading', text: 'The mistakes that sabotage your results' },
+      { type: 'list', items: [
+        'Underestimating portions: 100 g of cooked chicken provides only about 30 g of protein',
+        'Relying entirely on shakes while neglecting real meals',
+        'Forgetting total calories: without a surplus, no muscle gain, even with enough protein',
+        'Focusing only on protein while neglecting fiber and micronutrients',
+      ] },
+      { type: 'quote', text: "Protein builds muscle, but it's training that gives the order. Without progressive overload, not a single gram will do much." },
+      { type: 'paragraph', text: "In short: aim for 1.6 to 2.2 g/kg/day, spread across the day, from varied sources, combined with progressive training and enough sleep. It's the combination — not any single factor — that builds muscle." },
+    ],
+  },
+  'sommeil-performance-sportive-recuperation': {
+    title: 'Sleep and Athletic Performance: Why Sleeping Well Makes You Progress',
+    excerpt:
+      "Sleep is the most underrated lever for progress in sport. Here's why sleeping well makes you progress faster — plus 7 habits to sleep better.",
+    metaTitle: 'Sleep and Athletic Performance: Why Good Sleep Drives Progress',
+    metaDescription:
+      "Sleep and sport: why good sleep builds muscle, speeds recovery and boosts performance. How many hours to aim for and 7 concrete habits.",
+    keywords: ['sleep and sport', 'sleep athletic performance', 'muscle recovery sleep', 'how many hours sleep athlete', 'sleep for muscle growth', 'sleep and recovery'],
+    content: [
+      { type: 'paragraph', text: "You train hard, you watch your diet… but you sleep 5 hours a night? You're sabotaging your own results. Sleep is the most underrated lever for progress in sport — and the only one that's completely free. Here's why sleeping well literally makes you progress faster." },
+      { type: 'heading', text: 'What happens while you sleep (and your muscles grow)' },
+      { type: 'paragraph', text: "It's during deep sleep that your body releases most of its growth hormone, repairs the muscle fibers damaged in training and replenishes your energy stores. In short: you don't build muscle at the gym, you build it in bed. The workout only triggers the signal." },
+      { type: 'heading', text: 'Lack of sleep: the concrete damage' },
+      { type: 'list', items: [
+        'Less strength and endurance from the very first shortened night',
+        'Slower recovery and increased injury risk',
+        'Higher cortisol (the stress hormone), which favors fat storage',
+        'Dysregulated hunger: more sugar and fat cravings the next day',
+        'Accelerated muscle loss during a cut',
+      ] },
+      { type: 'subheading', text: 'How many hours should you aim for?' },
+      { type: 'paragraph', text: "For an athlete, the ideal range is between 7 and 9 hours per night, with those training intensely often closer to the top of that range. Quality matters as much as quantity: a fragmented 8 hours is worth less than a deep, continuous 7 hours." },
+      { type: 'heading', text: '7 habits to sleep better (and progress faster)' },
+      { type: 'list', items: [
+        'Go to bed and wake up at regular times, even on weekends',
+        'Cut screens 30 to 60 minutes before bed (blue light)',
+        'Keep your room cool (18-19 °C), dark and quiet',
+        'Avoid caffeine after 2 p.m. and large late meals',
+        'Limit alcohol: it fragments deep sleep',
+        'Get daylight exposure in the morning to set your internal clock',
+        'Schedule intense sessions during the day rather than late in the evening',
+      ] },
+      { type: 'quote', text: "No supplement, no program will make up for chronic lack of sleep. It's the foundation everything else is built on." },
+      { type: 'paragraph', text: "Before buying yet another supplement, just ask yourself: am I sleeping enough? Improve your nights first — it's often the 'secret' that unlocks weeks of stagnation." },
+    ],
+  },
+  'seche-perdre-graisse-sans-perdre-muscle': {
+    title: 'Cutting: How to Lose Fat Without Losing Muscle',
+    excerpt:
+      "Losing fat while keeping your muscle: the holy grail of cutting. Deficit, protein, cardio, cheat meal — the complete method to cut smart.",
+    metaTitle: 'Cutting: Lose Fat Without Losing Muscle (2026 Method)',
+    metaDescription:
+      "How to succeed at cutting: moderate calorie deficit, high protein, maintained strength training and dosed cardio to lose fat without melting. Xenotif® guide.",
+    keywords: ['cutting bodybuilding', 'lose fat without losing muscle', 'cutting program', 'calorie deficit cutting', 'cut without losing muscle', 'muscle definition'],
+    content: [
+      { type: 'paragraph', text: "Losing fat while keeping — or even building — muscle: that's the holy grail of cutting. Demanding, but far from impossible if you follow a few non-negotiable principles. Here's how to cut smart, without melting away." },
+      { type: 'heading', text: 'Cutting: what are we really talking about?' },
+      { type: 'paragraph', text: "Cutting means losing fat mass while preserving as much muscle mass as possible, to reveal your muscle definition. The difference from a simple diet? The goal isn't to weigh less, but to change your body composition. The scale often lies; the mirror and the tape measure are far better judges." },
+      { type: 'heading', text: 'Rule #1: a moderate calorie deficit' },
+      { type: 'paragraph', text: "No fat loss without a calorie deficit: you must consume less energy than you burn. But too aggressive a deficit melts muscle. Aim for a moderate deficit of around 300 to 500 kcal per day, to lose 0.5 to 1% of your body weight per week. Slow but lasting beats fast with rebound." },
+      { type: 'heading', text: 'Preserving muscle: the 3 pillars' },
+      { type: 'list', items: [
+        'High protein: 2.0 to 2.4 g/kg/day to protect your muscle mass',
+        'Maintained heavy training: keep lifting heavy, don\'t switch everything to light + cardio',
+        'Progressive deficit: adjust calories over the weeks rather than cutting everything at once',
+      ] },
+      { type: 'heading', text: 'The role of cardio (without overdoing it)' },
+      { type: 'paragraph', text: "Cardio helps widen the deficit, but it's not magic — and in excess it can eat into your muscle and energy. Favor daily walking (around 10,000 steps) and 2 to 3 short HIIT sessions per week rather than hours of fasted running. The bulk of the deficit should come from your plate." },
+      { type: 'subheading', text: "And the famous 'cheat meal'?" },
+      { type: 'paragraph', text: "An occasional treat meal won't undo a week of discipline and can even help you stick with it. The trap is the 'cheat day' that turns into a whole weekend and erases your deficit. Stay flexible, not anarchic." },
+      { type: 'quote', text: "A good cut isn't only visible on the scale: it shows in the mirror, and it feels like energy that stays stable." },
+      { type: 'paragraph', text: "Be patient and consistent: a successful cut takes weeks, not days. High protein, maintained training, a moderate deficit and quality sleep — that's the quartet that lets you lose fat while keeping your hard-earned muscle." },
+    ],
+  },
 }
 
 export const BLOG_POSTS_EN: BlogPost[] = BLOG_POSTS_SOURCE.map((p) => ({ ...p, ...TEXT_EN[p.slug] }))

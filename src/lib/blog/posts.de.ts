@@ -431,6 +431,110 @@ const TEXT_DE: Record<string, PostText> = {
       { type: 'paragraph', text: 'Der Bauchroller ist eine winzige Investition für einen riesigen Ertrag: ein solider Rumpf, der all deine Leistungen verbessert und deinen Rücken jeden Tag schützt. Beherrsche die Technik, sei geduldig mit der Progression, stelle deine Ernährung ein — und die Ergebnisse folgen.' },
     ],
   },
+  'combien-proteines-par-jour-prise-de-muscle': {
+    title: 'Wie viel Protein pro Tag für Muskelaufbau? (Guide 2026)',
+    excerpt:
+      "Wie viele Gramm Protein brauchst du wirklich pro Tag, um Muskeln aufzubauen? Genaue Mengen nach Körpergewicht, beste Quellen und Fehler, die du vermeiden solltest.",
+    metaTitle: 'Wie viel Protein pro Tag für Muskelaufbau? Guide 2026',
+    metaDescription:
+      "Kompletter Guide 2026: wie viel Protein pro Tag für Muskelaufbau (g/kg), Timing, beste Quellen und häufige Fehler. Expertentipps von Xenotif®.",
+    keywords: ['wie viel protein pro tag', 'proteinzufuhr muskelaufbau', 'protein für muskelaufbau', 'gramm protein pro kilo', 'proteinbedarf sportler', 'protein muskelaufbau'],
+    content: [
+      { type: 'paragraph', text: "'Iss dein Protein!' Du hörst es überall, aber wie viel genau? Zu wenig, und deine Muskeln erholen sich nicht. Zu viel, und du verschwendest dein Geld für nichts. Hier ist — mit Zahlen belegt — wie viel Protein du tatsächlich pro Tag brauchst, um 2026 Muskeln aufzubauen." },
+      { type: 'heading', text: 'Wie viel Protein brauchst du wirklich?' },
+      { type: 'paragraph', text: "Die Forschung ist heute sehr eindeutig. Für eine sitzende Person reichen 0,8 g Protein pro Kilo Körpergewicht. Doch sobald du für Muskelaufbau trainierst, steigt dieser Bedarf deutlich. Aktuelle Meta-Analysen konvergieren auf einen Bereich von 1,6 bis 2,2 g pro Kilo und Tag, um den Muskelaufbau zu maximieren." },
+      { type: 'list', items: [
+        'Muskelaufbau (Hauptziel): 1,6 bis 2,2 g/kg/Tag',
+        'Definitionsphase (Fettabbau bei Muskelerhalt): 2,0 bis 2,4 g/kg/Tag',
+        'Erhaltung / gelegentlicher Sportler: 1,2 bis 1,6 g/kg/Tag',
+        'Über ~2,4 g/kg hinaus ist kein zusätzlicher Nutzen für den Muskelaufbau belegt',
+      ] },
+      { type: 'subheading', text: 'Ein konkretes Beispiel für 75 kg' },
+      { type: 'paragraph', text: "Eine 75 kg schwere Person, die Muskeln aufbauen will, zielt auf etwa 120 bis 165 g Protein pro Tag (75 × 1,6 bis 2,2). Am einfachsten: diese Menge auf 3 bis 4 Mahlzeiten à 30 bis 40 g verteilen statt alles auf einmal — die Proteinsynthese wird durch regelmäßige Zufuhr besser stimuliert." },
+      { type: 'heading', text: 'Die besten Proteinquellen' },
+      { type: 'list', items: [
+        'Tierisch (vollständiges Profil): Hähnchen, Pute, Eier, Fisch, mageres Rind, Milchprodukte',
+        'Pflanzlich: Linsen, Kichererbsen, Tofu, Tempeh, Seitan, Edamame',
+        'Praktische Supplemente: Whey (schnell, nach dem Training), Casein (langsam, abends), pflanzliches Protein',
+        'Tipp: kombiniere mehrere pflanzliche Quellen, um alle essenziellen Aminosäuren zu erhalten',
+      ] },
+      { type: 'heading', text: 'Timing: wann solltest du Protein essen?' },
+      { type: 'paragraph', text: "Das berühmte 'anabole Fenster' von 30 Minuten nach dem Training wurde stark übertrieben. Was am meisten zählt, ist deine Tagesgesamtmenge. Dennoch optimieren 30 bis 40 g innerhalb von zwei Stunden rund um deine Einheit und eine proteinreiche Abendmahlzeit die Erholung. Beständigkeit schlägt perfektes Timing." },
+      { type: 'heading', text: 'Die Fehler, die deine Ergebnisse sabotieren' },
+      { type: 'list', items: [
+        'Portionen unterschätzen: 100 g gekochtes Hähnchen liefern nur rund 30 g Protein',
+        'Sich ganz auf Shakes verlassen und echte Mahlzeiten vernachlässigen',
+        'Die Gesamtkalorien vergessen: ohne Überschuss kein Muskelaufbau, selbst mit genug Protein',
+        'Sich nur auf Protein konzentrieren und Ballaststoffe sowie Mikronährstoffe vernachlässigen',
+      ] },
+      { type: 'quote', text: "Protein baut Muskeln auf, aber es ist das Training, das den Befehl gibt. Ohne progressive Überlastung wird kein einziges Gramm viel bewirken." },
+      { type: 'paragraph', text: "Kurz gesagt: ziele auf 1,6 bis 2,2 g/kg/Tag, über den Tag verteilt, aus abwechslungsreichen Quellen, kombiniert mit progressivem Training und ausreichend Schlaf. Es ist die Kombination — nicht ein einzelner Faktor — die Muskeln aufbaut." },
+    ],
+  },
+  'sommeil-performance-sportive-recuperation': {
+    title: 'Schlaf und sportliche Leistung: Warum guter Schlaf dich besser macht',
+    excerpt:
+      "Schlaf ist der am meisten unterschätzte Hebel für Fortschritt im Sport. Hier ist, warum guter Schlaf dich schneller voranbringt — plus 7 Gewohnheiten für besseren Schlaf.",
+    metaTitle: 'Schlaf und sportliche Leistung: Warum guter Schlaf Fortschritt bringt',
+    metaDescription:
+      "Schlaf und Sport: warum guter Schlaf Muskeln aufbaut, die Erholung beschleunigt und die Leistung steigert. Wie viele Stunden anzustreben sind und 7 konkrete Gewohnheiten.",
+    keywords: ['schlaf und sport', 'schlaf sportliche leistung', 'muskelregeneration schlaf', 'wie viele stunden schlaf sportler', 'gut schlafen muskelaufbau', 'schlaf und erholung'],
+    content: [
+      { type: 'paragraph', text: "Du trainierst hart, achtest auf deine Ernährung… aber schläfst 5 Stunden pro Nacht? Du sabotierst deine eigenen Ergebnisse. Schlaf ist der am meisten unterschätzte Hebel für Fortschritt im Sport — und der einzige, der völlig kostenlos ist. Hier ist, warum guter Schlaf dich buchstäblich schneller voranbringt." },
+      { type: 'heading', text: 'Was passiert, während du schläfst (und deine Muskeln wachsen)' },
+      { type: 'paragraph', text: "Im Tiefschlaf schüttet dein Körper den Großteil seines Wachstumshormons aus, repariert die beim Training beschädigten Muskelfasern und füllt deine Energiespeicher wieder auf. Kurz gesagt: du baust keine Muskeln im Fitnessstudio auf, du baust sie im Bett auf. Das Training löst nur das Signal aus." },
+      { type: 'heading', text: 'Schlafmangel: die konkreten Schäden' },
+      { type: 'list', items: [
+        'Weniger Kraft und Ausdauer schon nach der ersten verkürzten Nacht',
+        'Langsamere Erholung und erhöhtes Verletzungsrisiko',
+        'Höheres Cortisol (das Stresshormon), was die Fetteinlagerung begünstigt',
+        'Gestörter Hunger: mehr Heißhunger auf Zucker und Fett am nächsten Tag',
+        'Beschleunigter Muskelverlust während einer Definitionsphase',
+      ] },
+      { type: 'subheading', text: 'Wie viele Stunden solltest du anstreben?' },
+      { type: 'paragraph', text: "Für einen Sportler liegt der ideale Bereich zwischen 7 und 9 Stunden pro Nacht, wobei intensiv Trainierende oft näher am oberen Ende liegen. Qualität zählt genauso wie Quantität: zerstückelte 8 Stunden sind weniger wert als tiefe, durchgehende 7 Stunden." },
+      { type: 'heading', text: '7 Gewohnheiten für besseren Schlaf (und schnelleren Fortschritt)' },
+      { type: 'list', items: [
+        'Gehe zu regelmäßigen Zeiten ins Bett und stehe auf, auch am Wochenende',
+        'Schalte Bildschirme 30 bis 60 Minuten vor dem Schlafen aus (Blaulicht)',
+        'Halte dein Zimmer kühl (18-19 °C), dunkel und ruhig',
+        'Vermeide Koffein nach 14 Uhr und große späte Mahlzeiten',
+        'Begrenze Alkohol: er zerstückelt den Tiefschlaf',
+        'Hol dir morgens Tageslicht, um deine innere Uhr zu stellen',
+        'Lege intensive Einheiten eher in den Tag als spät am Abend',
+      ] },
+      { type: 'quote', text: "Kein Supplement, kein Programm wird chronischen Schlafmangel ausgleichen. Es ist das Fundament, auf dem alles andere aufbaut." },
+      { type: 'paragraph', text: "Bevor du noch ein weiteres Supplement kaufst, frag dich einfach: schlafe ich genug? Verbessere zuerst deine Nächte — oft ist das das 'Geheimnis', das Wochen der Stagnation löst." },
+    ],
+  },
+  'seche-perdre-graisse-sans-perdre-muscle': {
+    title: 'Definitionsphase: Fett verlieren, ohne Muskeln zu verlieren',
+    excerpt:
+      "Fett verlieren und dabei Muskeln behalten: der heilige Gral der Definitionsphase. Defizit, Protein, Cardio, Cheat Meal — die komplette Methode, um klug zu definieren.",
+    metaTitle: 'Definitionsphase: Fett verlieren ohne Muskelverlust (Methode 2026)',
+    metaDescription:
+      "Wie deine Definitionsphase gelingt: moderates Kaloriendefizit, viel Protein, beibehaltenes Krafttraining und dosiertes Cardio, um Fett zu verlieren ohne zu schmelzen. Xenotif®-Guide.",
+    keywords: ['definitionsphase', 'fett verlieren ohne muskelverlust', 'definitionsphase ernährung', 'kaloriendefizit definition', 'definieren ohne muskelverlust', 'muskeldefinition'],
+    content: [
+      { type: 'paragraph', text: "Fett verlieren und dabei Muskeln behalten — oder sogar aufbauen: das ist der heilige Gral der Definitionsphase. Anspruchsvoll, aber alles andere als unmöglich, wenn du einige nicht verhandelbare Prinzipien befolgst. Hier ist, wie du klug definierst, ohne dahinzuschmelzen." },
+      { type: 'heading', text: 'Definieren: worum geht es wirklich?' },
+      { type: 'paragraph', text: "Definieren heißt, Fettmasse zu verlieren und dabei so viel Muskelmasse wie möglich zu erhalten, um deine Muskeldefinition sichtbar zu machen. Der Unterschied zu einer einfachen Diät? Das Ziel ist nicht, weniger zu wiegen, sondern deine Körperzusammensetzung zu verändern. Die Waage lügt oft; der Spiegel und das Maßband sind weit bessere Richter." },
+      { type: 'heading', text: 'Regel Nr. 1: ein moderates Kaloriendefizit' },
+      { type: 'paragraph', text: "Kein Fettabbau ohne Kaloriendefizit: du musst weniger Energie aufnehmen, als du verbrauchst. Doch ein zu aggressives Defizit lässt Muskeln schmelzen. Ziele auf ein moderates Defizit von etwa 300 bis 500 kcal pro Tag, um 0,5 bis 1 % deines Körpergewichts pro Woche zu verlieren. Langsam, aber nachhaltig schlägt schnell mit Jojo-Effekt." },
+      { type: 'heading', text: 'Muskeln erhalten: die 3 Säulen' },
+      { type: 'list', items: [
+        'Viel Protein: 2,0 bis 2,4 g/kg/Tag, um deine Muskelmasse zu schützen',
+        'Schweres Training beibehalten: heb weiter schwer, stell nicht alles auf leicht + Cardio um',
+        'Progressives Defizit: passe die Kalorien über die Wochen an, statt alles auf einmal zu kürzen',
+      ] },
+      { type: 'heading', text: 'Die Rolle von Cardio (ohne zu übertreiben)' },
+      { type: 'paragraph', text: "Cardio hilft, das Defizit zu vergrößern, ist aber kein Wundermittel — und im Übermaß kann es an deinen Muskeln und deiner Energie zehren. Bevorzuge tägliches Gehen (rund 10 000 Schritte) und 2 bis 3 kurze HIIT-Einheiten pro Woche statt stundenlangem Nüchtern-Laufen. Der Großteil des Defizits sollte vom Teller kommen." },
+      { type: 'subheading', text: "Und das berühmte 'Cheat Meal'?" },
+      { type: 'paragraph', text: "Eine gelegentliche Genuss-Mahlzeit macht eine Woche Disziplin nicht zunichte und kann dir sogar helfen, durchzuhalten. Die Falle ist der 'Cheat Day', der zu einem ganzen Wochenende wird und dein Defizit auslöscht. Bleib flexibel, nicht chaotisch." },
+      { type: 'quote', text: "Eine gute Definitionsphase sieht man nicht nur auf der Waage: man sieht sie im Spiegel, und man spürt sie an einer Energie, die stabil bleibt." },
+      { type: 'paragraph', text: "Sei geduldig und beständig: eine erfolgreiche Definitionsphase dauert Wochen, nicht Tage. Viel Protein, beibehaltenes Training, ein moderates Defizit und guter Schlaf — dieses Quartett lässt dich Fett verlieren und deine hart erarbeiteten Muskeln behalten." },
+    ],
+  },
 }
 
 export const BLOG_POSTS_DE: BlogPost[] = BLOG_POSTS_SOURCE.map((p) => ({ ...p, ...TEXT_DE[p.slug] }))
