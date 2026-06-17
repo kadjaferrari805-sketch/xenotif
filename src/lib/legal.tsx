@@ -24,6 +24,7 @@ const mail = (
 const CHROME = {
   fr: { back: "Retour à l'accueil", updated: 'Dernière mise à jour : juin 2026' },
   en: { back: 'Back to home', updated: 'Last updated: June 2026' },
+  de: { back: 'Zurück zur Startseite', updated: 'Zuletzt aktualisiert: Juni 2026' },
 } as const
 
 const RELATED = {
@@ -36,6 +37,11 @@ const RELATED = {
     privacy: { href: '/mentions-legales', label: 'Legal notice' },
     legal: { href: '/conditions-generales-vente', label: 'Terms of sale' },
     terms: { href: '/confidentialite', label: 'Privacy policy' },
+  },
+  de: {
+    privacy: { href: '/mentions-legales', label: 'Impressum' },
+    legal: { href: '/conditions-generales-vente', label: 'Allgemeine Geschäftsbedingungen' },
+    terms: { href: '/confidentialite', label: 'Datenschutzerklärung' },
   },
 } as const
 
@@ -281,9 +287,130 @@ const EN: Record<LegalSlug, { metaTitle: string; metaDescription: string; eyebro
   },
 }
 
+// ─── Contenu DE ──────────────────────────────────────────────
+const DE: Record<LegalSlug, { metaTitle: string; metaDescription: string; eyebrow: string; title: string; intro: string; sections: LegalSection[] }> = {
+  privacy: {
+    metaTitle: 'Datenschutzerklärung — Xenotif®',
+    metaDescription: 'Datenschutzerklärung und Datenschutz (DSGVO) von Xenotif®.',
+    eyebrow: 'DSGVO',
+    title: 'Datenschutzerklärung',
+    intro: 'Xenotif® verpflichtet sich, deine personenbezogenen Daten zu schützen und deine Privatsphäre zu respektieren.',
+    sections: [
+      { id: 'donnees', title: 'Erhobene Daten', body: (
+        <p>Wir erheben deine E-Mail-Adresse bei deiner Anmeldung (Newsletter oder Konto) sowie die zur Verwaltung deines Abonnements und deiner Bestellungen erforderlichen Informationen (Name, E-Mail, von dir eingegebene Trainingshistorie). Auf unseren Servern werden keine Zahlungsdaten gespeichert: Zahlungen werden von Stripe abgewickelt.</p>
+      )},
+      { id: 'utilisation', title: 'Verwendung der Daten', body: (
+        <>
+          <p className="mb-2">Deine Daten werden verwendet, um:</p>
+          <p>— dein Konto, dein Abonnement und deine Bestellungen zu verwalten;<br />— dir unsere wöchentlichen Programme, Tipps und Challenges zu senden;<br />— dich über Neuigkeiten von Xenotif® zu informieren.</p>
+          <p className="mt-3">Wir verkaufen oder teilen deine Daten niemals zu kommerziellen Zwecken mit Dritten.</p>
+        </>
+      )},
+      { id: 'cookies', title: 'Cookies', body: (
+        <p>Diese Website verwendet ausschließlich technisch notwendige Cookies (Sitzung, Sprachpräferenz). Es werden keine Werbe-, Tracking- oder Profiling-Cookies eingesetzt. Du kannst Cookies in den Einstellungen deines Browsers blockieren, ohne dass dies deine Navigation beeinträchtigt.</p>
+      )},
+      { id: 'droits', title: 'Deine Rechte (DSGVO)', body: (
+        <p>Gemäß der Datenschutz-Grundverordnung (DSGVO) hast du das Recht auf Auskunft, Berichtigung, Löschung und Übertragbarkeit deiner Daten. Um diese Rechte auszuüben, kontaktiere uns unter: {mail}<br /><br />Du hast außerdem das Recht, eine Beschwerde bei der <a href="https://www.cnil.fr" className={LINK} target="_blank" rel="noopener noreferrer">CNIL</a> (französische Datenschutzbehörde) einzureichen.</p>
+      )},
+      { id: 'desabonnement', title: 'Abmeldung', body: (
+        <p>Du kannst dich jederzeit abmelden, indem du auf den Abmeldelink in einer unserer E-Mails klickst oder uns direkt unter {mail} kontaktierst. Deine Anfrage wird innerhalb von 48 Stunden bearbeitet.</p>
+      )},
+      { id: 'conservation', title: 'Aufbewahrung der Daten', body: (
+        <p>Deine Daten werden gespeichert, solange dein Konto aktiv ist, und anschließend 3 Jahre nach Beendigung der Geschäftsbeziehung gemäß den gesetzlichen Pflichten. Nach diesem Zeitraum werden sie endgültig gelöscht.</p>
+      )},
+    ],
+  },
+  legal: {
+    metaTitle: 'Impressum — Xenotif®',
+    metaDescription: 'Impressum der Sportplattform Xenotif®.',
+    eyebrow: 'Rechtliches',
+    title: 'Impressum',
+    intro: 'Informationen über den Betreiber und den Hoster der Website xenotif.com.',
+    sections: [
+      { id: 'editeur', title: 'Betreiber der Website', body: (
+        <p><strong className="text-white">Xenotif LTD</strong> — eine in England und Wales eingetragene Gesellschaft mit beschränkter Haftung (private limited company).<br />Handelsregisternummer (Companies House): 17013934<br />Eingetragener Sitz: 20 Wenlock Road, London N1 7GU, Vereinigtes Königreich<br />Verantwortlich für den Inhalt: Dave Ferrari<br />E-Mail: {mail}<br />Website: <a href="https://xenotif.com" className={LINK} target="_blank" rel="noopener noreferrer">xenotif.com</a></p>
+      )},
+      { id: 'hebergement', title: 'Hosting', body: (
+        <p><strong className="text-white">Vercel Inc.</strong><br />440 N Barranca Ave #4133, Covina, CA 91723, USA<br /><a href="https://vercel.com" className={LINK} target="_blank" rel="noopener noreferrer">vercel.com</a></p>
+      )},
+      { id: 'propriete', title: 'Geistiges Eigentum', body: (
+        <p>Sämtliche Inhalte dieser Website (Texte, Bilder, Logos, Symbole, Programme) sind ausschließliches Eigentum von Xenotif®. Jede auch nur teilweise Vervielfältigung ist ohne vorherige schriftliche Genehmigung untersagt.</p>
+      )},
+      { id: 'responsabilite', title: 'Haftungsbeschränkung', body: (
+        <p>Xenotif® bemüht sich, genaue und aktuelle Informationen bereitzustellen. Wir können jedoch die Richtigkeit, Vollständigkeit oder Aktualität der veröffentlichten Informationen nicht garantieren. Die angebotenen Sportprogramme dienen der Information und ersetzen nicht den Rat einer medizinischen Fachkraft.</p>
+      )},
+      { id: 'droit', title: 'Anwendbares Recht', body: (
+        <p>Diese Website unterliegt französischem Recht. Für alle Streitigkeiten sind die französischen Gerichte zuständig.</p>
+      )},
+    ],
+  },
+  terms: {
+    metaTitle: 'Allgemeine Geschäftsbedingungen — Xenotif®',
+    metaDescription: 'Allgemeine Geschäftsbedingungen für Abonnements und Produkte von Xenotif® (Abonnements, digitale Guides, physische Produkte).',
+    eyebrow: 'AGB',
+    title: 'Allgemeine Geschäftsbedingungen',
+    intro: 'Diese Bedingungen regeln den Verkauf von Abonnements und Produkten auf xenotif.com.',
+    sections: [
+      { id: 'objet', title: '1. Gegenstand', body: (
+        <p>Diese Allgemeinen Geschäftsbedingungen (AGB) regeln jede auf xenotif.com aufgegebene Bestellung: Abonnement (Pro), digitale Guides und Programme sowie physische Produkte. Jede Bestellung setzt die vollständige Annahme dieser AGB voraus.</p>
+      )},
+      { id: 'vendeur', title: '2. Verkäufer', body: (
+        <p>Die Produkte und Dienstleistungen werden von <strong className="text-white">Xenotif LTD</strong> (in England und Wales eingetragene Gesellschaft, Nr. 17013934) verkauft. Die vollständigen Angaben findest du im <Link href="/mentions-legales" className={LINK}>Impressum</Link>. Kontakt: {mail}.</p>
+      )},
+      { id: 'produits', title: '3. Produkte und Dienstleistungen', body: (
+        <>
+          <p className="mb-2">Xenotif® bietet:</p>
+          <p>— <strong className="text-white">Abonnements</strong>, die Zugang zu Programmen, KI-Coaching und Tracking bieten (Pro-Plan), monatlich oder jährlich abgerechnet;<br />— <strong className="text-white">digitale Guides und Programme</strong> (PDF), sofort nach Zahlung verfügbar;<br />— <strong className="text-white">physische Produkte</strong> (Ausrüstung, Zubehör).</p>
+        </>
+      )},
+      { id: 'prix', title: '4. Preise', body: (
+        <p>Die Preise sind in Euro (€) inklusive aller Steuern angegeben. Xenotif® behält sich das Recht vor, seine Preise jederzeit zu ändern; die Produkte werden auf Grundlage der zum Zeitpunkt der Bestellbestätigung gültigen Preise abgerechnet.</p>
+      )},
+      { id: 'paiement', title: '5. Bestellung und Zahlung', body: (
+        <p>Die Zahlung erfolgt online und sicher über unseren Dienstleister <strong className="text-white">Stripe</strong> (Kreditkarte, Apple Pay, Google Pay, sofern verfügbar). Es werden keine Bankdaten von Xenotif® gespeichert. Die Bestellung wird nach Bestätigung der Zahlung wirksam.</p>
+      )},
+      { id: 'abonnement', title: '6. Abonnement und Kündigung', body: (
+        <p>Abonnements verlängern sich automatisch pro Zeitraum (monatlich oder jährlich) bis zur Kündigung. Du kannst jederzeit über deinen Mitgliederbereich (Bereich „Abonnement“) kündigen; der Zugang bleibt bis zum Ende des bereits bezahlten Zeitraums aktiv, ohne weitere Verlängerung.</p>
+      )},
+      { id: 'livraison', title: '7. Lieferung', body: (
+        <p>Digitale Produkte werden sofort nach Zahlung per E-Mail und über einen sicheren Download-Link geliefert (lebenslanger Zugang). Physische Produkte werden innerhalb von 3 bis 7 Werktagen versandt; ab 50&nbsp;€ Bestellwert ist der Versand kostenlos.</p>
+      )},
+      { id: 'retractation', title: '8. Widerrufsrecht', body: (
+        <>
+          <p>Gemäß Artikel L.221-18 des französischen Verbrauchergesetzbuchs hast du bei physischen Produkten ab Erhalt 14 Tage Zeit, dein Widerrufsrecht ohne Angabe von Gründen auszuüben.</p>
+          <p className="mt-3"><strong className="text-white">Ausnahme (digitale Inhalte)</strong>: Bei sofort bereitgestellten digitalen Guides und Programmen verzichtest du gemäß Artikel L.221-28 13° ausdrücklich auf dein Widerrufsrecht, sobald der Download beginnt. Das Widerrufsrecht gilt daher nicht mehr, sobald der Inhalt heruntergeladen wurde.</p>
+          <p className="mt-3">Um dieses Recht auszuüben (physische Produkte), kontaktiere uns unter {mail}.</p>
+        </>
+      )},
+      { id: 'retours', title: '9. Rückgaben und Erstattungen', body: (
+        <p>Physische Produkte können innerhalb von 30 Tagen zurückgegeben werden, sofern sie in einwandfreiem Zustand und in der Originalverpackung sind. Die Erstattung erfolgt innerhalb von 14 Tagen nach Erhalt der Rückgabe über dasselbe Zahlungsmittel.</p>
+      )},
+      { id: 'satisfait-rembourse', title: '10. „Geld-zurück“-Garantie (30 Tage)', body: (
+        <>
+          <p>Über deine gesetzlichen Rechte hinaus bietet dir Xenotif® eine <strong className="text-white">30-tägige kommerzielle „Geld-zurück“-Garantie</strong> auf das Abonnement (Pro) und die digitalen Guides.</p>
+          <p className="mt-3">Wenn du nicht zufrieden bist, schreib uns innerhalb von 30 Tagen nach deiner Zahlung einfach an {mail} (bei einem Abonnement: deine erste Zahlung). Wir erstatten dir <strong className="text-white">den vollen Betrag</strong>, ohne Nachfragen. Die Erstattung erfolgt innerhalb von 14 Tagen über dasselbe Zahlungsmittel.</p>
+          <p className="mt-3">Diese kommerzielle Garantie besteht zusätzlich zu den gesetzlichen Gewährleistungen und dem Widerrufsrecht — sie ersetzt sie nicht.</p>
+        </>
+      )},
+      { id: 'garanties', title: '11. Gesetzliche Gewährleistung', body: (
+        <p>Alle Produkte unterliegen der gesetzlichen Konformitätsgewährleistung (Art. L.217-3 ff. des Verbrauchergesetzbuchs) und der Gewährleistung für versteckte Mängel (Art. 1641 ff. des Zivilgesetzbuchs).</p>
+      )},
+      { id: 'responsabilite-cgv', title: '12. Gesundheit und Haftung', body: (
+        <p>Die bereitgestellten Programme und Ratschläge dienen Informationszwecken und ersetzen nicht den Rat einer medizinischen Fachkraft. Konsultiere einen Arzt, bevor du ein Sportprogramm beginnst. Xenotif® haftet nicht für eine unsachgemäße Nutzung seiner Inhalte.</p>
+      )},
+      { id: 'donnees-cgv', title: '13. Personenbezogene Daten', body: (
+        <p>Die Verarbeitung deiner Daten ist in unserer <Link href="/confidentialite" className={LINK}>Datenschutzerklärung</Link> beschrieben, die der DSGVO entspricht.</p>
+      )},
+      { id: 'litiges', title: '14. Kundenservice, Schlichtung und anwendbares Recht', body: (
+        <p>Für jede Reklamation kontaktiere {mail}. Gemäß Artikel L.612-1 des französischen Verbrauchergesetzbuchs kannst du kostenlos eine Verbraucherschlichtungsstelle in Anspruch nehmen. Diese AGB unterliegen französischem Recht; sollte keine gütliche Einigung erzielt werden, sind die zuständigen französischen Gerichte zuständig.</p>
+      )},
+    ],
+  },
+}
+
 export function getLegalDoc(slug: LegalSlug, locale: string): LegalDoc {
-  const lang: 'fr' | 'en' = locale === 'en' ? 'en' : 'fr'
-  const base = (lang === 'en' ? EN : FR)[slug]
+  const lang: 'fr' | 'en' | 'de' = locale === 'en' ? 'en' : locale === 'de' ? 'de' : 'fr'
+  const base = (lang === 'en' ? EN : lang === 'de' ? DE : FR)[slug]
   return {
     ...base,
     updatedLabel: CHROME[lang].updated,
