@@ -1259,7 +1259,7 @@ const BLOG_POSTS: BlogPost[] = [
       "Comparatif des meilleures whey protéines 2026 : concentrée vs isolate, critères de choix, dosage et erreurs à éviter. Le guide d'achat complet Xenotif®.",
     keywords: ['meilleure whey protéine', 'comparatif whey 2026', 'whey isolate ou concentrée', 'quelle whey choisir', 'guide achat whey', 'whey prise de masse'],
     category: 'Nutrition',
-    coverImage: 'https://images.pexels.com/photos/5236668/pexels-photo-5236668.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    coverImage: 'https://images.unsplash.com/photo-1593095948071-474c5cc2989d?auto=format&fit=crop&w=1200&q=80',
     author: 'Camille Laurent',
     publishedAt: '2026-06-14T08:00:00Z',
     readingMinutes: 7,
