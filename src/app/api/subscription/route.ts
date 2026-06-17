@@ -7,7 +7,10 @@ export async function GET() {
   try {
     const supabase = await createClient()
     const { data: { user } } = await supabase.auth.getUser()
-    if (!user) return NextResponse.json({ error: 'Non authentifié' }, { status: 401 })
+    // Visiteur anonyme = simplement « pas d'abonnement » (200 null), pas une erreur.
+    // Évite une erreur console 401 sur les pages publiques (gating disciplines/vidéos)
+    // qui interrogent ce statut. Les consommateurs traitent déjà null = non-abonné.
+    if (!user) return NextResponse.json(null)
 
     // Lecture en service-role : la table `subscriptions` est protégée par RLS et
     // n'est pas lisible par le client authentifié. On filtre par user.id (sûr).
