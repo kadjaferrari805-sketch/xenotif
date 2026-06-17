@@ -206,6 +206,21 @@
       "promo": { "label": "Limitiertes Angebot", "title": "Aktuelle Angebote", "cta": "Angebot ansehen" },
       "popular": { "label": "Beliebt", "title": "Der aktuelle Bestseller", "cta": "Produkt ansehen" }
     },
+    "experience": {
+      "eyebrow": "Mitgliederbereich",
+      "title": "Entdecke deinen XENOTIF-Bereich",
+      "subtitle": "Dashboard, messbarer Fortschritt, Belohnungen und ein KI-Coach — alles, was du mit der Anmeldung freischaltest. Teste die Demo, ganz ohne Konto.",
+      "previewLabel": "Vorschau deines Bereichs",
+      "ctaDemo": "Demo ansehen (ohne Konto)",
+      "ctaSignup": "Kostenloses Konto erstellen",
+      "note": "Interaktive Demo · keine Karte nötig",
+      "pillars": [
+        { "title": "Echtzeit-Dashboard", "desc": "Kalorien, aktive Minuten, Schritte und Sessions der Woche auf einen Blick." },
+        { "title": "Messbarer Fortschritt", "desc": "Gewichtskurve, Statistiken pro Disziplin und Ziele, die mit dir wachsen." },
+        { "title": "Belohnungen & Challenges", "desc": "XP, Level, Abzeichen und Wochen-Challenges für maximale Motivation." },
+        { "title": "KI-Coach & Programme", "desc": "Strukturierte Programme und ein KI-Coach, der sich deinen Zielen anpasst." }
+      ]
+    },
     "sticky": {
       "lead": "Bereit, deinen Körper zu transformieren?",
       "trial": "Unverbindlich",

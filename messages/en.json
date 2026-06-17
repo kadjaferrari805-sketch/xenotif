@@ -206,6 +206,21 @@
       "promo": { "label": "Limited offer", "title": "Deals of the moment", "cta": "See the offer" },
       "popular": { "label": "Popular", "title": "The current best-seller", "cta": "See product" }
     },
+    "experience": {
+      "eyebrow": "Member area",
+      "title": "Discover your XENOTIF space",
+      "subtitle": "Dashboard, measurable progress, rewards and an AI coach — everything you unlock when you sign up. Try the live demo, no account needed.",
+      "previewLabel": "Preview of your space",
+      "ctaDemo": "See the demo (no account)",
+      "ctaSignup": "Create my free account",
+      "note": "Interactive demo · no card required",
+      "pillars": [
+        { "title": "Real-time dashboard", "desc": "Calories, active minutes, steps and weekly sessions at a glance." },
+        { "title": "Measurable progress", "desc": "Weight curve, stats by discipline and goals that move with you." },
+        { "title": "Rewards & challenges", "desc": "XP, levels, badges and weekly challenges to keep your motivation high." },
+        { "title": "AI coach & programs", "desc": "Structured programs and an AI coach that adapts to your goals." }
+      ]
+    },
     "sticky": {
       "lead": "Ready to transform your body?",
       "trial": "No commitment",

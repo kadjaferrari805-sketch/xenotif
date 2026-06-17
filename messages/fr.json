@@ -206,6 +206,21 @@
       "promo": { "label": "Offre limitée", "title": "Promotions du moment", "cta": "Voir l'offre" },
       "popular": { "label": "Populaire", "title": "Le best-seller du moment", "cta": "Voir le produit" }
     },
+    "experience": {
+      "eyebrow": "Espace membre",
+      "title": "Découvre ton espace XENOTIF",
+      "subtitle": "Tableau de bord, progression mesurée, récompenses et coach IA : tout ce que tu débloques en t'inscrivant. Visite la démo, sans compte.",
+      "previewLabel": "Aperçu de ton espace",
+      "ctaDemo": "Voir la démo (sans compte)",
+      "ctaSignup": "Créer mon compte gratuit",
+      "note": "Démo interactive · aucune carte requise",
+      "pillars": [
+        { "title": "Tableau de bord temps réel", "desc": "Calories, minutes actives, pas et séances de la semaine, en un coup d'œil." },
+        { "title": "Progression mesurée", "desc": "Courbe de poids, stats par discipline et objectifs qui avancent avec toi." },
+        { "title": "Récompenses & défis", "desc": "XP, niveaux, badges et défis hebdo pour garder la motivation au max." },
+        { "title": "Coach IA & programmes", "desc": "Des programmes structurés et un coach IA qui s'adapte à tes objectifs." }
+      ]
+    },
     "sticky": {
       "lead": "Prêt à transformer ton corps ?",
       "trial": "Sans engagement",

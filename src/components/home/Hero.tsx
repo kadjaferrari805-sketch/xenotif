@@ -1,18 +1,18 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence, useMotionValue, useSpring } from 'framer-motion'
 import { useTranslations } from 'next-intl'
 import Image from 'next/image'
 import { Link } from '@/i18n/navigation'
 import { Users, Trophy, Zap, ArrowRight, Star } from 'lucide-react'
 
-// Style structurel par diapositive (image + couleurs d'accent). Les textes
-// (tag, headline, accent) viennent de messages → home.hero.slides.
+// Couleur d'accent par diapositive. Le fond est désormais une vidéo cinématique
+// constante ; seuls les textes (tag, headline, accent) tournent → home.hero.slides.
 const SLIDE_STYLE = [
-  { image: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1920&q=80', accentColor: 'text-sport-lime',   accentGlow: 'shadow-sport-lime/20' },
-  { image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=1920&q=80', accentColor: 'text-sport-orange', accentGlow: 'shadow-sport-orange/20' },
-  { image: 'https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=1920&q=80', accentColor: 'text-sport-blue',   accentGlow: 'shadow-sport-blue/20' },
+  { accentColor: 'text-sport-lime' },
+  { accentColor: 'text-sport-orange' },
+  { accentColor: 'text-sport-blue' },
 ]
 
 const BADGE_ICONS = [Users, Trophy, Star, Zap]
@@ -32,6 +32,22 @@ export function Hero() {
   const [current, setCurrent] = useState(0)
   const [paused, setPaused] = useState(false)
   const [progress, setProgress] = useState(0)
+
+  // Vidéo de fond : poster optimisé peint immédiatement (LCP), la vidéo se fond
+  // par-dessus une fois lue. Respecte prefers-reduced-motion (poster figé).
+  const videoRef = useRef<HTMLVideoElement>(null)
+  const [videoReady, setVideoReady] = useState(false)
+  useEffect(() => {
+    const v = videoRef.current
+    if (!v) return
+    try {
+      if (window.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches) return
+      const p = v.play()
+      if (p && typeof p.catch === 'function') p.catch(() => {})
+    } catch {
+      /* autoplay bloqué / jsdom → le poster reste affiché */
+    }
+  }, [])
 
   // Fonctions simples : le React Compiler les mémoïse automatiquement.
   const next = () => {
@@ -93,32 +109,35 @@ export function Hero() {
         {slides[current].tag} — {slides[current].headline} {slides[current].accent}
       </div>
 
-      {/* Background slides.
-          `initial={false}` : la 1re diapo s'affiche immédiatement (pas de fondu
-          opacity 0→1 dépendant de l'hydratation JS) → l'image LCP est peinte dès
-          son chargement. Les transitions entre diapos suivantes restent animées. */}
+      {/* Fond vidéo cinématique (boucle muette) avec parallaxe légère.
+          Le poster optimisé est peint immédiatement (LCP) ; la vidéo se fond
+          par-dessus dès qu'elle joue. Si l'autoplay est bloqué ou que
+          prefers-reduced-motion est actif, le poster reste affiché. */}
       <motion.div className="absolute -inset-10 z-0" style={{ x: px, y: py }}>
-      <AnimatePresence mode="wait" initial={false}>
-        <motion.div
-          key={current}
-          initial={{ opacity: 0, scale: 1.06 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
-          className="absolute inset-0"
+        <Image
+          src="/video/hero-poster.jpg"
+          alt=""
+          aria-hidden="true"
+          fill
+          sizes="100vw"
+          // Mobile : focal un peu plus haut (sujet visible) ; desktop : centré.
+          className="object-cover object-[center_30%] md:object-center"
+          priority
+        />
+        <video
+          ref={videoRef}
+          poster="/video/hero-poster.jpg"
+          muted
+          loop
+          playsInline
+          preload="auto"
+          aria-hidden="true"
+          onPlaying={() => setVideoReady(true)}
+          className={`absolute inset-0 h-full w-full object-cover object-[center_30%] md:object-center transition-opacity duration-700 ${videoReady ? 'opacity-100' : 'opacity-0'}`}
         >
-          <Image
-            src={SLIDE_STYLE[current].image}
-            alt=""
-            aria-hidden="true"
-            fill
-            sizes="100vw"
-            // Mobile : focal un peu plus haut (sujet/équipement visible) ; desktop : centré.
-            className="object-cover object-[center_30%] md:object-center"
-            priority
-          />
-        </motion.div>
-      </AnimatePresence>
+          <source src="/video/hero.webm" type="video/webm" />
+          <source src="/video/hero.mp4" type="video/mp4" />
+        </video>
       </motion.div>
 
       {/* Dégradés — assombrissement réduit pour laisser voir l'image, renforcé
