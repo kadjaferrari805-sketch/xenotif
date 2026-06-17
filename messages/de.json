@@ -349,7 +349,7 @@
       "featuresAria": "Funktionen Plan {name}",
       "footnote": "Unverbindlich · Jederzeit mit 1 Klick kündbar",
       "plans": [
-        { "name": "Kostenlos", "period": "für immer", "badge": "", "description": "Starte kostenlos mit Krafttraining. Hol dir PRO, um alles freizuschalten.", "cta": "Kostenlos starten", "features": ["Krafttraining (Programm + 1 Video)", "Fortschritts-Tracking", "Erinnerungen & Benachrichtigungen", "Ohne Karte"] },
+        { "name": "Kostenlos", "period": "7 Tage PRO gratis", "badge": "Ohne Karte", "description": "Schalte 7 Tage lang ALLES von PRO frei, ohne Kreditkarte. Danach behältst du das Krafttraining kostenlos.", "cta": "Kostenlos starten", "features": ["Voller PRO-Zugang für 7 Tage", "Alle Disziplinen & KI-Coach", "Fortschritts-Tracking & Statistiken", "Keine Kreditkarte erforderlich"] },
         { "name": "Pro", "period": "pro Monat", "badge": "Am beliebtesten", "description": "Unbegrenzter Zugang zu allen Programmen und personalisiertem KI-Coaching.", "cta": "Abonnieren", "features": ["Unbegrenzter Zugang zu allen 10 Disziplinen & Programmen", "Personalisierter KI-Coach", "Fortschritt & Statistiken", "HD-Trainingsvideos", "Tägliche Erinnerungen & Motivation", "E-Mail-Support"] }
       ]
     },
@@ -465,7 +465,7 @@
       "errorAlreadyUsed": "Diese E-Mail wird bereits verwendet. Melde dich an.",
       "errorCheckout": "Fehler bei der Weiterleitung zur Zahlung.",
       "plans": [
-        { "name": "Kostenlos", "period": "für immer", "badge": "", "features": ["Krafttraining", "Fortschritts-Tracking", "Ohne Karte"] },
+        { "name": "Kostenlos", "period": "7 Tage PRO gratis", "badge": "Ohne Karte", "features": ["7 Tage voller PRO-Zugang", "Alle Disziplinen & KI-Coach", "Ohne Kreditkarte"] },
         { "name": "Pro", "period": "/Monat", "badge": "Beliebt", "features": ["Alle Programme", "KI-Coaching", "Erweiterte Statistiken"] }
       ]
     },

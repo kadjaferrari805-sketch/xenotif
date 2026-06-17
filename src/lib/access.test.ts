@@ -50,4 +50,25 @@ describe('deriveAccess', () => {
     const a = deriveAccess({ isAuthenticated: true, isAdmin: false, sub: sub({ status: 'active', cancel_at_period_end: true }) })
     expect(a.isPro).toBe(true); expect(a.cancelAtPeriodEnd).toBe(true)
   })
+
+  it('essai gratuit : compte récent sans abonnement → pro (trialing)', () => {
+    const created = new Date('2026-06-15T00:00:00Z')
+    const now = new Date('2026-06-18T00:00:00Z') // J+3
+    const a = deriveAccess({ isAuthenticated: true, isAdmin: false, sub: null, accountCreatedAt: created, now })
+    expect(a.role).toBe('pro'); expect(a.isPro).toBe(true)
+    expect(a.status).toBe('trialing'); expect(a.plan).toBe('pro')
+    expect(a.trialEnd?.toISOString()).toBe('2026-06-22T00:00:00.000Z')
+  })
+  it('essai expiré : compte de plus de 7 jours sans abonnement → free', () => {
+    const created = new Date('2026-06-01T00:00:00Z')
+    const now = new Date('2026-06-18T00:00:00Z') // J+17
+    const a = deriveAccess({ isAuthenticated: true, isAdmin: false, sub: null, accountCreatedAt: created, now })
+    expect(a.role).toBe('free'); expect(a.isPro).toBe(false); expect(a.trialEnd).toBeNull()
+  })
+  it("pas d'essai si déjà un abonnement (même résilié)", () => {
+    const created = new Date('2026-06-17T00:00:00Z')
+    const now = new Date('2026-06-18T00:00:00Z')
+    const a = deriveAccess({ isAuthenticated: true, isAdmin: false, sub: sub({ status: 'canceled' }), accountCreatedAt: created, now })
+    expect(a.isPro).toBe(false); expect(a.role).toBe('free')
+  })
 })

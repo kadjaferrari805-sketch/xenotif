@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server'
 import Stripe from 'stripe'
 import { createClient } from '@/lib/supabase/server'
 import { createServiceClient } from '@/lib/supabase/server'
+import { isInAppTrial, appTrialEnd } from '@/lib/access'
 
 export async function GET() {
   try {
@@ -22,6 +23,20 @@ export async function GET() {
       .maybeSingle()
 
     if (sub) return NextResponse.json(sub)
+
+    // Essai gratuit 7 jours (sans carte) : compte sans abonnement créé il y a < 7 jours
+    // → statut « trialing » synthétique pour que le gating client (disciplines/vidéos)
+    // débloque l'accès PRO, en cohérence avec deriveAccess côté serveur.
+    const createdAt = user.created_at ? new Date(user.created_at) : null
+    if (isInAppTrial(createdAt)) {
+      return NextResponse.json({
+        plan: 'pro',
+        status: 'trialing',
+        trial_end: appTrialEnd(createdAt)!.toISOString(),
+        current_period_end: null,
+        cancel_at_period_end: false,
+      })
+    }
 
     // Not in DB — fetch from Stripe by email and sync
     const secretKey = process.env.STRIPE_SECRET_KEY
