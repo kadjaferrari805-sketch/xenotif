@@ -200,14 +200,11 @@
     "productShowcase": {
       "viewAll": "Voir toute la boutique",
       "trust": { "secure": "Paiement sécurisé", "delivery": "Livraison rapide", "returns": "Retours faciles" },
-      "recommended": { "label": "Sélection", "title": "Produits Fitness Recommandés", "subtitle": "Notre matériel coup de cœur pour t'équiper et progresser plus vite." },
-      "bestsellers": { "label": "Top ventes", "title": "Best Sellers Fitness", "subtitle": "Les produits les plus populaires et les mieux notés." },
-      "selections": { "label": "Vedettes", "title": "Nos Sélections XENOTIF", "subtitle": "Haltères, cardio, récupération, tech, nutrition — le meilleur par catégorie." }
+      "recommended": { "label": "Sélection", "title": "Produits Fitness Recommandés", "subtitle": "Notre matériel coup de cœur pour t'équiper et progresser plus vite." }
     },
     "promoBanners": {
       "promo": { "label": "Offre limitée", "title": "Promotions du moment", "cta": "Voir l'offre" },
-      "popular": { "label": "Populaire", "title": "Le best-seller du moment", "cta": "Voir le produit" },
-      "premium": { "label": "Premium", "title": "L'équipement premium", "cta": "Découvrir" }
+      "popular": { "label": "Populaire", "title": "Le best-seller du moment", "cta": "Voir le produit" }
     },
     "sticky": {
       "lead": "Prêt à transformer ton corps ?",
@@ -659,8 +656,7 @@
       "shippingAffiliate": ["🔗 Lien affilié Amazon", "📦 Expédié par Amazon", "🔒 Paiement sécurisé"],
       "shippingPhysical": ["🚚 Livraison gratuite dès 50€", "↩️ Retours 30 jours", "🔒 Paiement sécurisé"],
       "shippingDigital": ["⚡ Téléchargement immédiat", "📱 Compatible tous appareils", "♾️ Accès à vie", "🔒 Paiement sécurisé"],
-      "related": "Vous aimerez aussi",
-      "complementary": "Complétez votre équipement"
+      "related": "Vous aimerez aussi"
     },
     "panier": {
       "emptyTitle": "Ton panier est vide",

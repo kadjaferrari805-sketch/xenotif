@@ -3,18 +3,18 @@
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
 import { Link } from '@/i18n/navigation'
-import { ArrowRight, Flame, Star, Crown } from 'lucide-react'
+import { ArrowRight, Flame, Star } from 'lucide-react'
 import { trackProductClick } from '@/lib/analytics'
 import { formatPrice, type Product } from '@/lib/boutique/products'
 
-const ICON = { promo: Flame, popular: Star, premium: Crown }
+const ICON = { promo: Flame, popular: Star }
 
 // Bannière promo produit (cross-sell affilié) : image produit + offre + prix/-% + CTA.
 export function PromoBanner({
   variant,
   product,
 }: {
-  variant: 'promo' | 'popular' | 'premium'
+  variant: 'promo' | 'popular'
   product?: Product
 }) {
   const t = useTranslations('home.promoBanners')
