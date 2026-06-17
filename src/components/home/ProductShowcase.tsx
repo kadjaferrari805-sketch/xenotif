@@ -15,7 +15,7 @@ export function ProductShowcase({
   products,
   dark = false,
 }: {
-  section: 'recommended' | 'bestsellers' | 'selections'
+  section: 'recommended'
   products: Product[]
   dark?: boolean
 }) {

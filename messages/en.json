@@ -200,14 +200,11 @@
     "productShowcase": {
       "viewAll": "View the full shop",
       "trust": { "secure": "Secure payment", "delivery": "Fast delivery", "returns": "Easy returns" },
-      "recommended": { "label": "Picks", "title": "Recommended Fitness Gear", "subtitle": "Our favorite equipment to gear up and progress faster." },
-      "bestsellers": { "label": "Top sellers", "title": "Fitness Best Sellers", "subtitle": "The most popular and highest-rated products." },
-      "selections": { "label": "Featured", "title": "XENOTIF Selections", "subtitle": "Dumbbells, cardio, recovery, tech, nutrition — the best by category." }
+      "recommended": { "label": "Picks", "title": "Recommended Fitness Gear", "subtitle": "Our favorite equipment to gear up and progress faster." }
     },
     "promoBanners": {
       "promo": { "label": "Limited offer", "title": "Deals of the moment", "cta": "See the offer" },
-      "popular": { "label": "Popular", "title": "The current best-seller", "cta": "See product" },
-      "premium": { "label": "Premium", "title": "Premium equipment", "cta": "Discover" }
+      "popular": { "label": "Popular", "title": "The current best-seller", "cta": "See product" }
     },
     "sticky": {
       "lead": "Ready to transform your body?",
@@ -659,8 +656,7 @@
       "shippingAffiliate": ["🔗 Amazon affiliate link", "📦 Shipped by Amazon", "🔒 Secure payment"],
       "shippingPhysical": ["🚚 Free shipping over €50", "↩️ 30-day returns", "🔒 Secure payment"],
       "shippingDigital": ["⚡ Instant download", "📱 Works on all devices", "♾️ Lifetime access", "🔒 Secure payment"],
-      "related": "You may also like",
-      "complementary": "Complete your setup"
+      "related": "You may also like"
     },
     "panier": {
       "emptyTitle": "Your cart is empty",

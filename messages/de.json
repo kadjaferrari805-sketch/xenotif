@@ -200,14 +200,11 @@
     "productShowcase": {
       "viewAll": "Zum ganzen Shop",
       "trust": { "secure": "Sichere Zahlung", "delivery": "Schnelle Lieferung", "returns": "Einfache Rückgabe" },
-      "recommended": { "label": "Auswahl", "title": "Empfohlene Fitness-Ausrüstung", "subtitle": "Unsere Lieblingsausrüstung, um schneller voranzukommen." },
-      "bestsellers": { "label": "Bestseller", "title": "Fitness-Bestseller", "subtitle": "Die beliebtesten und bestbewerteten Produkte." },
-      "selections": { "label": "Highlights", "title": "XENOTIF-Auswahl", "subtitle": "Hanteln, Cardio, Recovery, Tech, Ernährung — das Beste pro Kategorie." }
+      "recommended": { "label": "Auswahl", "title": "Empfohlene Fitness-Ausrüstung", "subtitle": "Unsere Lieblingsausrüstung, um schneller voranzukommen." }
     },
     "promoBanners": {
       "promo": { "label": "Limitiertes Angebot", "title": "Aktuelle Angebote", "cta": "Angebot ansehen" },
-      "popular": { "label": "Beliebt", "title": "Der aktuelle Bestseller", "cta": "Produkt ansehen" },
-      "premium": { "label": "Premium", "title": "Premium-Ausrüstung", "cta": "Entdecken" }
+      "popular": { "label": "Beliebt", "title": "Der aktuelle Bestseller", "cta": "Produkt ansehen" }
     },
     "sticky": {
       "lead": "Bereit, deinen Körper zu transformieren?",
@@ -659,8 +656,7 @@
       "shippingAffiliate": ["🔗 Amazon-Affiliate-Link", "📦 Versand durch Amazon", "🔒 Sichere Zahlung"],
       "shippingPhysical": ["🚚 Kostenlose Lieferung ab 50 €", "↩️ 30 Tage Rückgabe", "🔒 Sichere Zahlung"],
       "shippingDigital": ["⚡ Sofort-Download", "📱 Mit allen Geräten kompatibel", "♾️ Lebenslanger Zugang", "🔒 Sichere Zahlung"],
-      "related": "Das könnte dir auch gefallen",
-      "complementary": "Vervollständige deine Ausrüstung"
+      "related": "Das könnte dir auch gefallen"
     },
     "panier": {
       "emptyTitle": "Dein Warenkorb ist leer",
