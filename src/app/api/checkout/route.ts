@@ -23,7 +23,8 @@ export async function POST(req: NextRequest) {
     const { plan, period = 'monthly', locale: rawLocale, email, userId } = await req.json() as {
       plan: string; period?: string; locale?: string; email?: string; userId?: string
     }
-    const locale = rawLocale === 'en' ? 'en' : 'fr'
+    // Stripe Checkout supporte fr/en/de → on garde la langue du site (avant : de tombait en fr).
+    const locale = rawLocale === 'en' ? 'en' : rawLocale === 'de' ? 'de' : 'fr'
 
     if (!plan || !(plan in PLAN_CONFIG)) {
       return NextResponse.json({ error: 'Plan invalide.' }, { status: 400 })
