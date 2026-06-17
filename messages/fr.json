@@ -349,7 +349,7 @@
       "featuresAria": "Fonctionnalités plan {name}",
       "footnote": "Sans engagement · Annulation à tout moment en 1 clic",
       "plans": [
-        { "name": "Gratuit", "period": "pour toujours", "badge": "", "description": "Commence gratuitement avec la Musculation. Passe à PRO pour tout débloquer.", "cta": "Commencer gratuitement", "features": ["Discipline Musculation (programme + 1 vidéo)", "Suivi de progression", "Rappels & notifications", "Sans carte"] },
+        { "name": "Gratuit", "period": "7 jours PRO offerts", "badge": "Sans carte", "description": "Débloque TOUT le PRO pendant 7 jours, sans carte bancaire. Ensuite, tu gardes la Musculation gratuitement.", "cta": "Commencer gratuitement", "features": ["Accès PRO complet pendant 7 jours", "Toutes les disciplines & le coach IA", "Suivi & statistiques de progression", "Aucune carte bancaire requise"] },
         { "name": "Pro", "period": "par mois", "badge": "Le plus populaire", "description": "Accès illimité à tous les programmes et au coaching IA personnalisé.", "cta": "S'abonner", "features": ["Accès illimité aux 10 disciplines & programmes", "Coach IA personnalisé", "Suivi & statistiques de progression", "Vidéos d'entraînement HD", "Rappels & motivation quotidienne", "Support par email"] }
       ]
     },
@@ -465,7 +465,7 @@
       "errorAlreadyUsed": "Cet email est déjà utilisé. Connecte-toi.",
       "errorCheckout": "Erreur lors de la redirection vers le paiement.",
       "plans": [
-        { "name": "Gratuit", "period": "pour toujours", "badge": "", "features": ["Musculation", "Suivi de progression", "Sans carte"] },
+        { "name": "Gratuit", "period": "7 jours PRO offerts", "badge": "Sans carte", "features": ["7 jours d'accès PRO complet", "Toutes les disciplines & coach IA", "Sans carte bancaire"] },
         { "name": "Pro", "period": "/mois", "badge": "Populaire", "features": ["Tous les programmes", "Coaching IA", "Stats avancées"] }
       ]
     },

@@ -25,28 +25,50 @@ type SubRow = {
 
 const PRO_STATUSES = new Set(['active', 'trialing'])
 
+// Essai gratuit (sans carte) accordé à tout nouveau compte tant qu'il n'a aucun
+// abonnement : accès PRO complet pendant TRIAL_DAYS jours après la création.
+export const TRIAL_DAYS = 7
+
+export function appTrialEnd(accountCreatedAt: Date | null): Date | null {
+  return accountCreatedAt ? new Date(accountCreatedAt.getTime() + TRIAL_DAYS * 86_400_000) : null
+}
+
+export function isInAppTrial(accountCreatedAt: Date | null, now: Date = new Date()): boolean {
+  const end = appTrialEnd(accountCreatedAt)
+  return !!end && now.getTime() < end.getTime()
+}
+
 // Déduction pure (testable sans I/O) du niveau d'accès.
 export function deriveAccess(opts: {
   isAuthenticated: boolean
   isAdmin: boolean
   sub: SubRow
+  accountCreatedAt?: Date | null
+  now?: Date
 }): Access {
-  const { isAuthenticated, isAdmin, sub } = opts
+  const { isAuthenticated, isAdmin, sub, accountCreatedAt = null, now = new Date() } = opts
   const status = sub?.status ?? null
   // Plan unique : toute valeur héritée 'elite' est normalisée en 'pro'.
   const plan = sub?.plan ? (sub.plan === 'elite' ? 'pro' : sub.plan) : null
   const isProSub = !!status && PRO_STATUSES.has(status)
 
+  // Essai 7 jours : compte authentifié, non-admin, SANS aucun abonnement, créé il y
+  // a moins de 7 jours → accès PRO complet (sans carte). Ensuite, retombe en free.
+  const inTrial = isAuthenticated && !isAdmin && !sub && isInAppTrial(accountCreatedAt, now)
+  const trialEndDate = inTrial ? appTrialEnd(accountCreatedAt) : null
+
+  const isPro = isAdmin || isProSub || inTrial
+
   let role: Role = 'guest'
-  if (isAuthenticated) role = isAdmin ? 'admin' : isProSub ? 'pro' : 'free'
+  if (isAuthenticated) role = isAdmin ? 'admin' : isPro ? 'pro' : 'free'
 
   return {
     role,
-    isPro: isAdmin || isProSub,
+    isPro,
     isAdmin,
-    status,
-    plan,
-    trialEnd: sub?.trial_end ? new Date(sub.trial_end) : null,
+    status: status ?? (inTrial ? 'trialing' : null),
+    plan: plan ?? (inTrial ? 'pro' : null),
+    trialEnd: sub?.trial_end ? new Date(sub.trial_end) : trialEndDate,
     renewDate: sub?.current_period_end ? new Date(sub.current_period_end) : null,
     cancelAtPeriodEnd: !!sub?.cancel_at_period_end,
   }
@@ -67,7 +89,12 @@ export const getAccess = cache(async (): Promise<Access> => {
       .maybeSingle(),
     service.from('admin_users').select('id').eq('id', user.id).maybeSingle(),
   ])
-  return deriveAccess({ isAuthenticated: true, isAdmin: !!admin, sub: sub as SubRow })
+  return deriveAccess({
+    isAuthenticated: true,
+    isAdmin: !!admin,
+    sub: sub as SubRow,
+    accountCreatedAt: user.created_at ? new Date(user.created_at) : null,
+  })
 })
 
 /**
