@@ -238,7 +238,7 @@
       "eyebrow": "The Premium Sports Platform",
       "ctaPrimary": "Start for free",
       "ctaSecondary": "Explore the disciplines",
-      "ctaNote": "Free, no card · PRO from €9.99/mo",
+      "ctaNote": "7 days of PRO free, no card · then €9.99/mo",
       "socialProof": "<b>4.9/5</b> · joined by <b>12,000+ athletes</b>",
       "scroll": "Scroll",
       "slides": [
@@ -315,7 +315,7 @@
       "title": "Get started in 4 steps",
       "subtitle": "From sign-up to your first results — simple, fast, effective",
       "cta": "Start now",
-      "ctaNote": "Free · No commitment · Cancel anytime",
+      "ctaNote": "7-day PRO trial free · No card · No commitment",
       "steps": [
         { "title": "Create your account", "description": "Sign up in 2 minutes. Fill in your sports profile for personalized tracking from day one." },
         { "title": "Choose your program", "description": "Our AI analyzes your level, your goals and your available time to recommend the ideal program." },
