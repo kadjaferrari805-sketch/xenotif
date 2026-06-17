@@ -36,7 +36,10 @@ export function CoachClient() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ messages: next }),
       })
-      if (!res.body) throw new Error('No stream')
+      // Toute réponse non-200 (free user 403, rate-limit 429, API 502…) porte un
+      // corps de texte d'erreur : sans ce garde, il serait streamé comme une réponse
+      // du coach. On bascule plutôt sur le message d'erreur convivial (catch).
+      if (!res.ok || !res.body) throw new Error('Coach request failed')
 
       const reader = res.body.getReader()
       const decoder = new TextDecoder()
