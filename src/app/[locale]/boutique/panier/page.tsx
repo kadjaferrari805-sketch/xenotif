@@ -124,7 +124,7 @@ export default function PanierPage() {
                                 <Plus size={12} />
                               </button>
                             </div>
-                          ) : <span className="text-xs text-sport-lime font-semibold">📥 Digital</span>}{/* libellé neutre */}
+                          ) : <span className="text-xs text-sport-lime font-semibold">{t('digitalTag')}</span>}
                           <span className="font-black text-white">{formatPrice(product.price_cents * quantity)}</span>
                         </div>
                       </div>
