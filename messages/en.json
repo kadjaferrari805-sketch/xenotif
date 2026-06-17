@@ -376,9 +376,10 @@
     },
     "newsletter": {
       "eyebrow": "Join the community",
+      "giftBadge": "FREE 7-day program",
       "titleTop": "READY TO PUSH",
       "titleBottom": "YOUR LIMITS?",
-      "desc": "Join <b>12,000+ athletes</b> who get every week: workout programs, nutrition advice, training tips and exclusive WODs.",
+      "desc": "Get your <b>7-day starter program</b> (PDF) — then every week: nutrition advice, training tips and exclusive WODs.",
       "perks": [
         "Free programs every week",
         "WODs & community challenges",
@@ -391,7 +392,8 @@
       "submit": "Subscribe",
       "sending": "Sending…",
       "successTitle": "Welcome to the community!",
-      "successText": "Check your inbox — a confirmation email has been sent to you.",
+      "successText": "Your program is waiting below. A welcome email is also on its way to your inbox.",
+      "download": "Download my program (PDF)",
       "errorInvalid": "Invalid email address",
       "errorGeneric": "Something went wrong.",
       "errorNetwork": "Connection failed. Please try again in a few moments.",

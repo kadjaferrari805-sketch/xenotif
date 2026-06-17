@@ -12,4 +12,9 @@ describe('Newsletter', () => {
     renderWithIntl(<Newsletter />)
     expect(screen.getByRole('button', { name: /abonne/i })).toBeInTheDocument()
   })
+
+  it('advertises the free 7-day program lead magnet', () => {
+    renderWithIntl(<Newsletter />)
+    expect(screen.getByText(/programme 7 jours offert/i)).toBeInTheDocument()
+  })
 })
