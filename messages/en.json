@@ -683,6 +683,7 @@
       "itemsCount": "({count, plural, one {# item} other {# items}})",
       "ownSection": "XENOTIF products — Secure payment",
       "digitalImmediate": "📥 Instant download",
+      "digitalTag": "📥 Digital",
       "physicalDelivery": "📦 Delivery 3–7 days",
       "affiliateSection": "🔗 Amazon products — Order on Amazon.de",
       "affiliateNote": "These products are ordered directly on Amazon.de by clicking the button.",
