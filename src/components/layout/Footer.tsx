@@ -43,7 +43,7 @@ export function Footer() {
   const t = useTranslations('common.footer')
 
   return (
-    <footer aria-label="Pied de page">
+    <footer aria-label={t('ariaFooter')}>
       {/* ── Main grid ───────────────────────────────────────── */}
       <div className="bg-sport-card border-t border-sport-border py-16 px-6">
         <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
@@ -55,7 +55,7 @@ export function Footer() {
             <p className="text-xs text-sport-gray leading-relaxed mb-6">
               {t('tagline')}
             </p>
-            <div className="flex gap-3" aria-label="Réseaux sociaux">
+            <div className="flex gap-3" aria-label={t('ariaSocial')}>
               {SOCIAL.map(({ Icon, label, href }) => (
                 <a
                   key={label}
@@ -70,7 +70,7 @@ export function Footer() {
               ))}
               <a
                 href="mailto:contact@xenotif.com"
-                aria-label="Contacter Xenotif par email"
+                aria-label={t('ariaEmail')}
                 className="w-9 h-9 rounded-lg bg-sport-dark border border-sport-border flex items-center justify-center text-sport-gray hover:text-sport-orange hover:border-sport-orange/50 transition-colors"
               >
                 <Mail size={15} aria-hidden="true" />

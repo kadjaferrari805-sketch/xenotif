@@ -140,6 +140,9 @@
       "fermerMenu": "Fermer le menu"
     },
     "footer": {
+      "ariaFooter": "Pied de page",
+      "ariaSocial": "Réseaux sociaux",
+      "ariaEmail": "Contacter Xenotif par email",
       "tagline": "La plateforme sport ultime pour athlètes de tous niveaux. Performance, coaching IA et communauté au service de tes objectifs.",
       "disciplines": "Disciplines",
       "programmes": "Programmes",

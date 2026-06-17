@@ -140,6 +140,9 @@
       "fermerMenu": "Close menu"
     },
     "footer": {
+      "ariaFooter": "Footer",
+      "ariaSocial": "Social media",
+      "ariaEmail": "Contact Xenotif by email",
       "tagline": "The ultimate sports platform for athletes of all levels. Performance, AI coaching and community to serve your goals.",
       "disciplines": "Disciplines",
       "programmes": "Programs",
