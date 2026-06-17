@@ -38,6 +38,11 @@ const nextConfig: NextConfig = {
     '@formatjs/intl-localematcher',
   ],
   images: {
+    // AVIF (plus léger que WebP) → meilleur LCP. Next sert WebP en repli.
+    formats: ['image/avif', 'image/webp'],
+    // Next 16 : la liste par défaut est [75]. Sans 90, le quality={90} des bandeaux
+    // serait ramené à 75 (bandeaux moins nets). On autorise explicitement 90.
+    qualities: [75, 90],
     remotePatterns: [
       { protocol: 'https', hostname: 'images.unsplash.com' },
       { protocol: 'https', hostname: 'images.pexels.com' },

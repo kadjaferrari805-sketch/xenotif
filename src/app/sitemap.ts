@@ -33,6 +33,8 @@ function entry(
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticPaths: Array<[string, { changeFrequency: ChangeFreq; priority: number }]> = [
     ['/', { changeFrequency: 'daily', priority: 1.0 }],
+    ['/a-propos', { changeFrequency: 'monthly', priority: 0.6 }],
+    ['/dashboard-preview', { changeFrequency: 'monthly', priority: 0.7 }],
     ['/boutique', { changeFrequency: 'daily', priority: 0.9 }],
     ['/boutique/catalogue', { changeFrequency: 'daily', priority: 0.8 }],
     ['/blog', { changeFrequency: 'weekly', priority: 0.9 }],
