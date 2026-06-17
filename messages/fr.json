@@ -376,9 +376,10 @@
     },
     "newsletter": {
       "eyebrow": "Rejoins la communauté",
+      "giftBadge": "Programme 7 jours OFFERT",
       "titleTop": "PRÊT À DÉPASSER",
       "titleBottom": "TES LIMITES ?",
-      "desc": "Rejoins <b>12 000+ athlètes</b> qui reçoivent chaque semaine : programmes, conseils nutrition, tips d'entraînement et WODs exclusifs.",
+      "desc": "Reçois ton <b>programme découverte 7 jours</b> (PDF) — puis chaque semaine : conseils nutrition, tips d'entraînement et WODs exclusifs.",
       "perks": [
         "Programmes gratuits chaque semaine",
         "WODs & défis communautaires",
@@ -391,7 +392,8 @@
       "submit": "S'abonner",
       "sending": "Envoi…",
       "successTitle": "Bienvenue dans la communauté !",
-      "successText": "Vérifie ta boîte mail — un email de confirmation t'a été envoyé.",
+      "successText": "Ton programme t'attend ci-dessous. Un email de bienvenue arrive aussi dans ta boîte.",
+      "download": "Télécharger mon programme (PDF)",
       "errorInvalid": "Adresse email invalide",
       "errorGeneric": "Une erreur est survenue.",
       "errorNetwork": "Connexion impossible. Réessaie dans quelques instants.",

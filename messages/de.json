@@ -376,9 +376,10 @@
     },
     "newsletter": {
       "eyebrow": "Tritt der Community bei",
+      "giftBadge": "GRATIS 7-Tage-Programm",
       "titleTop": "BEREIT, DEINE",
       "titleBottom": "GRENZEN ZU ÜBERWINDEN?",
-      "desc": "Schließe dich <b>12.000+ Athleten</b> an, die jede Woche erhalten: Programme, Ernährungstipps, Trainingstipps und exklusive WODs.",
+      "desc": "Erhalte dein <b>7-Tage-Einsteiger-Programm</b> (PDF) — danach jede Woche: Ernährungstipps, Trainingstipps und exklusive WODs.",
       "perks": [
         "Kostenlose Programme jede Woche",
         "WODs & Community-Challenges",
@@ -391,7 +392,8 @@
       "submit": "Abonnieren",
       "sending": "Wird gesendet…",
       "successTitle": "Willkommen in der Community!",
-      "successText": "Prüfe dein Postfach — eine Bestätigungs-E-Mail wurde dir gesendet.",
+      "successText": "Dein Programm wartet unten auf dich. Eine Willkommens-E-Mail ist ebenfalls unterwegs.",
+      "download": "Mein Programm herunterladen (PDF)",
       "errorInvalid": "Ungültige E-Mail-Adresse",
       "errorGeneric": "Ein Fehler ist aufgetreten.",
       "errorNetwork": "Verbindung nicht möglich. Versuche es gleich noch einmal.",
