@@ -33,18 +33,10 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   const recommended = [...affiliate]
     .sort((a, b) => (b.original_price_cents ? 1 : 0) - (a.original_price_cents ? 1 : 0) || b.rating - a.rating)
     .slice(0, 8)
-  // Best sellers : plus d'avis.
-  const bestsellers = [...affiliate].sort((a, b) => b.reviews - a.reviews).slice(0, 8)
-  // Sélections : un produit par catégorie (diversité).
-  const byCat = new Map<string, Product>()
-  for (const p of affiliate) if (!byCat.has(p.category)) byCat.set(p.category, p)
-  const selections = [...byCat.values()].slice(0, 8)
-
-  // Bannières promo : meilleure promo, plus populaire, plus premium (prix élevé).
+  // Bannières promo : meilleure remise + best-seller (le plus d'avis).
   const disc = (p: Product) => (p.original_price_cents ? 1 - p.price_cents / p.original_price_cents : 0)
   const promoProduct = [...affiliate].filter((p) => p.original_price_cents).sort((a, b) => disc(b) - disc(a))[0]
-  const popularProduct = bestsellers[0]
-  const premiumProduct = [...affiliate].sort((a, b) => b.price_cents - a.price_cents)[0]
+  const popularProduct = [...affiliate].sort((a, b) => b.reviews - a.reviews)[0]
 
   return (
     <>
@@ -62,7 +54,6 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         ctaHref="/auth/signup"
       />
       <Features />
-      <ProductShowcase section="bestsellers" products={bestsellers} />
       <HowItWorks />
       {/* Bannière promo — Promotions du moment */}
       <PromoBanner variant="promo" product={promoProduct} />
@@ -76,18 +67,9 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       {/* Bannière promo — Best-seller populaire */}
       <PromoBanner variant="popular" product={popularProduct} />
       <Pricing />
-      <ProductShowcase section="selections" products={selections} dark />
       <Reviews />
       <CustomerReviews kind="platform" />
-      {/* Bandeau pub — Rejoins le mouvement (+ CTA) */}
-      <AdBanner
-        id="movement"
-        image="https://images.pexels.com/photos/2261485/pexels-photo-2261485.jpeg?auto=compress&cs=tinysrgb&w=1920"
-        ctaHref="/auth/signup"
-      />
       <TransformationsGallery />
-      {/* Bannière promo — Équipement premium */}
-      <PromoBanner variant="premium" product={premiumProduct} />
       <FAQ />
       <Newsletter />
       <StickyCheckout />

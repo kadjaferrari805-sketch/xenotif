@@ -26,25 +26,8 @@ export function ProductDetail({ product }: { product: Product }) {
     setTimeout(() => setAdded(false), 2000)
   }
 
-  const all = getProductsLocalized(locale)
   // Similaires : même catégorie.
-  const related = all.filter(p => p.category === product.category && p.id !== product.id).slice(0, 3)
-  // Complémentaires : catégories qui vont AVEC celle du produit (cross-sell).
-  const COMPLEMENT: Record<string, string[]> = {
-    'Équipements': ['Recovery', 'Nutrition', 'Tech'],
-    'Cardio': ['Tech', 'Vêtements', 'Recovery'],
-    'Recovery': ['Équipements', 'Nutrition'],
-    'Nutrition': ['Équipements', 'Tech'],
-    'Tech': ['Vêtements', 'Cardio'],
-    'Vêtements': ['Équipements', 'Tech'],
-    'Programmes': ['Nutrition', 'Équipements'],
-  }
-  const compCats = COMPLEMENT[product.category] ?? []
-  const relatedIds = new Set(related.map(p => p.id))
-  const complementary = all
-    .filter(p => compCats.includes(p.category) && p.id !== product.id && !relatedIds.has(p.id))
-    .sort((a, b) => b.rating - a.rating)
-    .slice(0, 3)
+  const related = getProductsLocalized(locale).filter(p => p.category === product.category && p.id !== product.id).slice(0, 3)
   const discount = product.original_price_cents
     ? Math.round((1 - product.price_cents / product.original_price_cents) * 100)
     : null
@@ -192,16 +175,6 @@ export function ProductDetail({ product }: { product: Product }) {
             <h2 className="text-2xl font-black text-white mb-8">{t('detail.related')}</h2>
             <div className="grid gap-6 sm:grid-cols-3">
               {related.map(p => <ProductCard key={p.id} product={p} source="product_related" />)}
-            </div>
-          </section>
-        )}
-
-        {/* Produits complémentaires (cross-sell) */}
-        {complementary.length > 0 && (
-          <section className="pt-12 border-t border-sport-border">
-            <h2 className="text-2xl font-black text-white mb-8">{t('detail.complementary')}</h2>
-            <div className="grid gap-6 sm:grid-cols-3">
-              {complementary.map(p => <ProductCard key={p.id} product={p} source="product_complementary" />)}
             </div>
           </section>
         )}
