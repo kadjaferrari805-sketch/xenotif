@@ -4,6 +4,7 @@ import { MarqueeStrip } from '@/components/home/MarqueeStrip'
 import { ProofBar } from '@/components/home/ProofBar'
 import { Features } from '@/components/home/Features'
 import { HowItWorks } from '@/components/home/HowItWorks'
+import { ExperiencePreview } from '@/components/home/ExperiencePreview'
 import { CoachAd } from '@/components/home/CoachAd'
 import { IntensityLevels } from '@/components/home/IntensityLevels'
 import { Pricing } from '@/components/home/Pricing'
@@ -55,6 +56,8 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       />
       <Features />
       <HowItWorks />
+      {/* Aperçu de l'espace membre — confiance avant inscription (→ /dashboard-preview) */}
+      <ExperiencePreview />
       {/* Bannière promo — Promotions du moment */}
       <PromoBanner variant="promo" product={promoProduct} />
       <CoachAd />
