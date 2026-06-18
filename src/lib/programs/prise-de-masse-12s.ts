@@ -6,13 +6,13 @@ const D = 'https://xenotif.com/disciplines'
 // couverture photo, photos de section, QR vidéo par exercice, plan nutrition,
 // calendrier, séances détaillées, suivi. ≈ 30 pages.
 export const priseDeMasse12s: Guide = {
-  id: 'prise-de-masse-12s',
-  title: 'Programme Prise de Masse',
-  subtitle: '12 semaines pour construire du muscle de qualité, sans gras superflu',
+  id: 'd1',
+  title: 'Programme Prise de Masse — 12 Semaines',
+  subtitle: 'Split 4 jours/semaine, progression de charge guidée, plan nutrition + macros',
   author: 'XENOTIF Coach — Préparation physique & nutrition certifiées',
   level: 'Débutant - Intermédiaire',
-  duration: '12 semaines · 4 séances/sem',
-  coverImage: 'cover.jpg',
+  duration: '12 semaines · 4 séances/sem · 84 séances',
+  coverImage: 'masse-cover.jpg',
   blocks: [
     { type: 'h1', text: 'Bienvenue dans ta prise de masse' },
     { type: 'p', text: `12 semaines pour transformer ton physique : plus de muscle, plus de force, une silhouette plus dense. Pas de prise de masse « sale » qui te fait gonfler de gras — ici, on construit du muscle de qualité grâce à trois leviers : un léger surplus calorique, une surcharge progressive à l’entraînement, et une récupération soignée.` },
@@ -64,7 +64,7 @@ export const priseDeMasse12s: Guide = {
       ['Séries d’approche', '2 séries légères du 1er exercice', '1 min'],
     ] },
 
-    { type: 'photo', src: 'nutrition.jpg', caption: 'Manger pour construire : le carburant du muscle.' },
+    { type: 'photo', src: 'seche-1.jpg', caption: 'Manger pour construire : le carburant du muscle.' },
     { type: 'h1', text: 'Plan nutrition prise de masse' },
     { type: 'p', text: `Le muscle se construit avec un surplus calorique modéré et beaucoup de protéines. L’objectif : prendre du muscle en limitant le gras. Mieux vaut +0,25 kg/semaine propre que +1 kg sale.` },
     { type: 'meta', items: [
@@ -139,7 +139,7 @@ export const priseDeMasse12s: Guide = {
       `Une semaine « deload » (charges −40 %) toutes les 6 semaines évite la stagnation.`,
     ] },
 
-    { type: 'photo', src: 'training.jpg', caption: 'Surcharge progressive : la clé de la croissance.' },
+    { type: 'photo', src: 'masse-1.jpg', caption: 'Surcharge progressive : la clé de la croissance.' },
     { type: 'h1', text: 'Plan sur 12 semaines (3 phases)' },
     { type: 'p', text: `Le programme progresse en 3 phases. Respecte l’ordre : volume d’abord, intensité ensuite.` },
     { type: 'table', headers: ['Phase', 'Semaines', 'Focus', 'Répétitions'], rows: [
