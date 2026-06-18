@@ -1,6 +1,7 @@
 import type { Guide } from '@/lib/boutique/guides'
 import { priseDeMasse12s } from './prise-de-masse-12s'
 import { musculationDebutant } from './musculation-debutant'
+import { musculationIntermediaire } from './musculation-intermediaire'
 
 // Bibliothèque de programmes fitness premium XENOTIF® (FR).
 // Rendu en PDF premium via guide-pdf.ts : couverture photo pleine page, photos
@@ -505,6 +506,7 @@ export const PROGRAMS: Record<string, Guide> = {
   'perte-de-poids-30j': perteDePoids30j,
   'prise-de-masse-12s': priseDeMasse12s,
   'musculation-debutant': musculationDebutant,
+  'musculation-intermediaire': musculationIntermediaire,
 }
 
 export function getProgram(slug: string): Guide | undefined {
