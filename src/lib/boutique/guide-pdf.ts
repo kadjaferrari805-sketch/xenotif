@@ -128,8 +128,9 @@ function drawLines(ctx: Ctx, lines: string[], font: PDFFont, size: number, color
 }
 
 function drawH1(ctx: Ctx, text: string) {
-  // Chaque chapitre démarre sur une nouvelle page (convention ebook),
-  // sauf si la page courante est encore vierge.
+  // Chaque chapitre démarre sur une nouvelle page (structure premium type ebook),
+  // sauf si la page courante est encore vierge. Les sections étant longues et
+  // riches, les pages se remplissent sans grands vides.
   if (ctx.y < A4.h - M.top - 1) newPage(ctx)
   const size = 20
   drawLines(ctx, wrap(text, ctx.bold, size, CONTENT_W), ctx.bold, size, COL.orange)
