@@ -3,6 +3,7 @@
 // Objectif : au moins 10 pages structurées par guide.
 
 import { priseDeMasse12s } from '@/lib/programs/prise-de-masse-12s'
+import { nutritionSeche } from '@/lib/programs/nutrition-seche'
 
 export type GuideBlock =
   | { type: 'h1'; text: string }
@@ -38,149 +39,7 @@ const masse: Guide = priseDeMasse12s
 // ──────────────────────────────────────────────────────────────────────
 // d2 — Plan Nutrition Sèche 8 semaines
 // ──────────────────────────────────────────────────────────────────────
-const seche: Guide = {
-  id: 'd2',
-  title: 'Plan Nutrition Sèche',
-  subtitle: '8 semaines pour perdre du gras sans perdre de muscle',
-  author: 'XENOTIF Coach — Nutrition du sport',
-  blocks: [
-    { type: 'h1', text: 'Bienvenue dans ta sèche' },
-    { type: 'p', text: `Ce plan de 8 semaines va t'aider à révéler ta définition musculaire en perdant la masse grasse, sans sacrifier le muscle durement gagné. Ici, pas de régime extrême ni de privation absurde : une méthode progressive, tenable, et basée sur la science.` },
-    { type: 'p', text: `Tu y trouveras le calcul de tes besoins, une structure de journée type, un plan d'ajustement semaine par semaine, plus de 20 recettes, une version vegan et toutes les stratégies pour ne jamais craquer.` },
-    { type: 'note', text: `La sèche est un marathon, pas un sprint. Une perte régulière de 0,5 à 0,8 % de ton poids par semaine préserve le muscle. Aller plus vite = fondre du muscle et casser le métabolisme.` },
-
-    { type: 'h1', text: 'Le principe de la sèche' },
-    { type: 'p', text: `Sécher, c'est perdre de la masse grasse en préservant le muscle. Cela exige trois choses simultanément.` },
-    { type: 'list', items: [
-      `Un déficit calorique modéré : 15 à 20 % sous ta maintenance, pas plus.`,
-      `Des protéines élevées : 2 à 2,4 g par kg pour protéger la masse maigre.`,
-      `Le maintien de l'entraînement en force : c'est le signal qui dit au corps de garder le muscle.`,
-    ] },
-
-    { type: 'h1', text: 'Comprendre tes dépenses' },
-    { type: 'p', text: `Ton corps brûle des calories de quatre façons. Les connaître aide à comprendre pourquoi bouger plus au quotidien compte autant que le sport.` },
-    { type: 'list', items: [
-      `Métabolisme de base : l'énergie pour vivre au repos (60 à 70 % du total).`,
-      `NEAT : toute l'activité non sportive (marche, ménage, escaliers). Très sous-estimé.`,
-      `Activité sportive : tes séances.`,
-      `Effet thermique des aliments : l'énergie pour digérer (les protéines en demandent le plus).`,
-    ] },
-
-    { type: 'h1', text: 'Calculer tes besoins' },
-    { type: 'p', text: `Étape 1 : estime ta maintenance. Étape 2 : retire le déficit. Étape 3 : répartis les macros.` },
-    { type: 'list', items: [
-      `Maintenance approximative : poids (kg) × 33 (sédentaire) à 38 (actif).`,
-      `Calories de sèche : maintenance − 20 % (ex. 2 500 → 2 000 kcal).`,
-      `Protéines : poids × 2,2 g. Lipides : poids × 0,8 g. Le reste des calories en glucides.`,
-    ] },
-    { type: 'note', text: `Pèse-toi 3 fois par semaine à jeun et fais la moyenne hebdomadaire. Si le poids ne bouge pas pendant 10 jours, retire 100 à 150 kcal de glucides ou ajoute du cardio léger.` },
-
-    { type: 'h1', text: 'Structure d\'une journée type' },
-    { type: 'p', text: `Répartis tes protéines sur 4 repas pour maximiser la satiété et la synthèse musculaire.` },
-    { type: 'h2', text: 'Petit-déjeuner' },
-    { type: 'list', items: [
-      `Omelette 3 œufs + 100 g de blanc d'œuf`,
-      `40 g de flocons d'avoine`,
-      `1 fruit (pomme ou poignée de fruits rouges)`,
-    ] },
-    { type: 'h2', text: 'Déjeuner' },
-    { type: 'list', items: [
-      `150 g de poulet ou dinde (poids cuit)`,
-      `60 g de riz basmati (poids cru) ou 200 g de patate douce`,
-      `Légumes verts à volonté + 1 c. à soupe d'huile d'olive`,
-    ] },
-    { type: 'h2', text: 'Collation' },
-    { type: 'list', items: [
-      `1 dose de whey ou 200 g de fromage blanc 0 %`,
-      `20 g d'amandes`,
-    ] },
-    { type: 'h2', text: 'Dîner' },
-    { type: 'list', items: [
-      `150 g de poisson blanc ou saumon`,
-      `Grande portion de légumes (brocoli, courgette, haricots verts)`,
-      `1 c. à soupe d'huile d'olive ou 1/4 d'avocat`,
-    ] },
-
-    { type: 'h1', text: 'Progression sur 8 semaines' },
-    { type: 'list', items: [
-      `Semaines 1-2 : installe les habitudes, déficit léger (−15 %). Le corps s'adapte en douceur.`,
-      `Semaines 3-4 : déficit complet (−20 %). Ajoute 20 min de marche rapide les jours off.`,
-      `Semaines 5-6 : si plateau, retire 100 kcal de glucides et ajoute 2 séances de cardio léger.`,
-      `Semaine 7 : refeed contrôlé un jour (+300 kcal de glucides) pour relancer le métabolisme.`,
-      `Semaine 8 : dernière ligne droite, garde le cap, hydrate-toi bien et photographie tes progrès.`,
-    ] },
-
-    { type: 'h1', text: 'Cardio & entraînement pendant la sèche' },
-    { type: 'list', items: [
-      `Garde la musculation en force : c'est ELLE qui préserve le muscle pendant le déficit.`,
-      `Cardio doux (marche, vélo) : excellent pour creuser le déficit sans épuiser.`,
-      `Vise 8 000 à 10 000 pas par jour : le NEAT est ton meilleur allié.`,
-      `Évite le cardio à jeun extrême : il ne fait pas fondre plus vite et fatigue inutilement.`,
-    ] },
-
-    { type: 'h1', text: 'Recettes — petits-déjeuners & collations' },
-    { type: 'list', items: [
-      `Pancakes protéinés : 1 banane, 2 œufs, 1 dose de whey, flocons d'avoine.`,
-      `Fromage blanc 0 %, fruits rouges et 15 g d'amandes.`,
-      `Omelette épinards-feta légère : 3 œufs, poignée d'épinards, 30 g de feta.`,
-      `Toast complet, œuf poché et avocat écrasé.`,
-      `Skyr, cannelle et quelques flocons d'avoine.`,
-    ] },
-
-    { type: 'h1', text: 'Recettes — déjeuners & dîners' },
-    { type: 'list', items: [
-      `Bowl poulet-riz-avocat : 150 g poulet, 60 g riz, 1/4 avocat, citron.`,
-      `Saumon-patate douce au four : 150 g saumon, 200 g patate douce, herbes.`,
-      `Wrap thon-crudités : galette complète, 1 boîte de thon, crudités, fromage blanc.`,
-      `Curry de poulet light : poulet, lait de coco allégé, curry, légumes.`,
-      `Steak haché 5 %-quinoa : 150 g steak, 60 g quinoa, ratatouille.`,
-      `Salade de lentilles-œuf : lentilles, 2 œufs durs, tomates, vinaigrette légère.`,
-      `Cabillaud vapeur, brocoli et riz complet.`,
-      `Chili con carne maigre : bœuf 5 %, haricots rouges, tomates, épices.`,
-    ] },
-
-    { type: 'h1', text: 'Version vegan' },
-    { type: 'p', text: `Remplace les protéines animales par ces sources et complète avec une protéine végétale en poudre.` },
-    { type: 'list', items: [
-      `Tofu ferme, tempeh, seitan (riches en protéines).`,
-      `Légumineuses : lentilles, pois chiches, haricots rouges.`,
-      `Edamame, quinoa, protéine de pois ou de riz en poudre.`,
-      `Pense à la vitamine B12 et aux oméga-3 (graines de lin, noix).`,
-    ] },
-
-    { type: 'h1', text: 'Gérer les fringales & les plateaux' },
-    { type: 'list', items: [
-      `Bois un grand verre d'eau avant chaque repas : la satiété grimpe.`,
-      `Privilégie les aliments volumineux et peu caloriques (légumes, soupes).`,
-      `Garde 1 ou 2 aliments « plaisir » dans tes macros plutôt que d'interdire.`,
-      `Plateau de plus de 10 jours : applique un « diet break » de 5 à 7 jours à la maintenance.`,
-      `Dors suffisamment : le manque de sommeil augmente la faim et les pulsions sucrées.`,
-    ] },
-
-    { type: 'h1', text: 'Compléments & hydratation' },
-    { type: 'list', items: [
-      `Whey ou protéine végétale : pour atteindre tes protéines facilement.`,
-      `Caféine : coupe-faim léger et booste l'énergie à l'entraînement.`,
-      `Électrolytes et 35 ml d'eau par kg et par jour : l'hydratation aide à gérer la faim.`,
-      `Aucun « brûleur de graisse » ne remplace le déficit calorique. Garde ton argent.`,
-    ] },
-
-    { type: 'h1', text: 'Liste de courses hebdomadaire' },
-    { type: 'list', items: [
-      `Protéines : poulet, dinde, poisson blanc, saumon, œufs, whey, fromage blanc 0 %, skyr.`,
-      `Glucides : riz basmati, patate douce, flocons d'avoine, quinoa, fruits, pain complet.`,
-      `Lipides : huile d'olive, avocat, amandes, noix, graines.`,
-      `Légumes : brocoli, épinards, courgette, haricots verts, tomates, salade, poivrons.`,
-      `Extras : épices, citron, vinaigre balsamique, moutarde, herbes fraîches.`,
-    ] },
-
-    { type: 'h1', text: 'FAQ & après la sèche' },
-    { type: 'p', text: `Vais-je perdre du muscle ? Pas si tu manges assez de protéines et que tu gardes la musculation. C'est tout l'objet de ce plan.` },
-    { type: 'p', text: `Combien de poids vais-je perdre ? Environ 0,5 à 0,8 % de ton poids par semaine, soit 3 à 5 kg sur 8 semaines selon ton point de départ.` },
-    { type: 'p', text: `Et après ? Remonte tes calories progressivement (+100 kcal par semaine) jusqu'à ta maintenance : c'est la « reverse diet », qui évite de tout reprendre.` },
-    { type: 'note', text: `Prépare tes repas à l'avance (batch cooking) 2 fois par semaine. C'est le secret n°1 pour tenir une sèche sans craquer. Tu vas y arriver.` },
-  ],
-}
+const seche: Guide = nutritionSeche
 
 // ──────────────────────────────────────────────────────────────────────
 // d3 — Programme HIIT 6 semaines
