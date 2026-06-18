@@ -3,6 +3,7 @@ import { priseDeMasse12s } from './prise-de-masse-12s'
 import { musculationDebutant } from './musculation-debutant'
 import { musculationIntermediaire } from './musculation-intermediaire'
 import { musculationAvance } from './musculation-avance'
+import { fitnessMaison } from './fitness-maison'
 
 // Bibliothèque de programmes fitness premium XENOTIF® (FR).
 // Rendu en PDF premium via guide-pdf.ts : couverture photo pleine page, photos
@@ -509,6 +510,7 @@ export const PROGRAMS: Record<string, Guide> = {
   'musculation-debutant': musculationDebutant,
   'musculation-intermediaire': musculationIntermediaire,
   'musculation-avance': musculationAvance,
+  'fitness-maison': fitnessMaison,
 }
 
 export function getProgram(slug: string): Guide | undefined {
