@@ -162,7 +162,7 @@ export const hiit6s: Guide = {
       ['Mountain climber', 'Plus lent', 'Cross-body rapide'],
     ] },
 
-    { type: 'chapter', title: 'Nutrition pour brûler', src: 'hiit-1.jpg', intro: `Le HIIT accélère la perte de gras, mais l’assiette reste reine. Pas besoin de régime compliqué : applique ces repères et la définition apparaîtra plus vite.` },
+    { type: 'chapter', title: 'Nutrition pour brûler', src: 'nutrition.jpg', intro: `Le HIIT accélère la perte de gras, mais l’assiette reste reine. Pas besoin de régime compliqué : applique ces repères et la définition apparaîtra plus vite.` },
     { type: 'meta', items: [
       { label: 'Déficit', value: '300 à 500 kcal / jour' },
       { label: 'Protéines', value: '1,8 à 2 g par kg' },
