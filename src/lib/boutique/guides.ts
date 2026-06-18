@@ -4,6 +4,7 @@
 
 import { priseDeMasse12s } from '@/lib/programs/prise-de-masse-12s'
 import { nutritionSeche } from '@/lib/programs/nutrition-seche'
+import { hiit6s } from '@/lib/programs/hiit-6s'
 
 export type GuideBlock =
   | { type: 'h1'; text: string }
@@ -44,133 +45,7 @@ const seche: Guide = nutritionSeche
 // ──────────────────────────────────────────────────────────────────────
 // d3 — Programme HIIT 6 semaines
 // ──────────────────────────────────────────────────────────────────────
-const hiit: Guide = {
-  id: 'd3',
-  title: 'Programme HIIT Brûle-Graisses',
-  subtitle: '6 semaines, 100 % au poids du corps, sans matériel',
-  author: 'XENOTIF Coach — Certifié CrossFit Level 2',
-  blocks: [
-    { type: 'h1', text: 'Bienvenue dans ton programme HIIT' },
-    { type: 'p', text: `En 6 semaines, ce programme va transformer ta condition physique et faire fondre la graisse — sans salle, sans matériel, où que tu sois. Tout se fait au poids du corps, en séances courtes mais intenses de 20 à 30 minutes.` },
-    { type: 'p', text: `Tu y trouveras les 4 séances de chaque semaine détaillées, la technique de chaque mouvement, les protocoles d'échauffement et de récupération, et les conseils nutrition pour accélérer tes résultats.` },
-    { type: 'note', text: `Intensité = clé. Sur les phases d'effort, tu dois être incapable de tenir une conversation. Sur la récupération, tu reprends ton souffle activement (marche sur place, respiration profonde).` },
-
-    { type: 'h1', text: 'Pourquoi le HIIT fonctionne' },
-    { type: 'p', text: `Le HIIT alterne efforts intenses et récupérations courtes. Résultat : tu brûles des calories pendant ET après la séance grâce à l'effet EPOC (surconsommation d'oxygène post-effort).` },
-    { type: 'list', items: [
-      `Une séance de 20 min peut brûler autant qu'un footing de 45 min.`,
-      `Le corps continue de brûler des calories jusqu'à 24 h après l'effort.`,
-      `Le HIIT préserve le muscle mieux que le cardio long et monotone.`,
-      `Aucun matériel : tu peux t'entraîner partout, n'importe quand.`,
-    ] },
-
-    { type: 'h1', text: 'Comprendre l\'intensité' },
-    { type: 'p', text: `Pour que le HIIT marche, il faut atteindre une vraie haute intensité. Voici comment la repérer sans capteur.` },
-    { type: 'list', items: [
-      `Test de la parole : à fond, tu ne peux dire que 2 ou 3 mots à la fois.`,
-      `Ressenti sur 10 : les phases d'effort doivent être à 8-9/10.`,
-      `Si tu peux chanter, ce n'est pas du HIIT — pousse davantage.`,
-      `Si tu es au bord de la nausée, c'est trop : ralentis légèrement.`,
-    ] },
-
-    { type: 'h1', text: 'Les formats utilisés' },
-    { type: 'list', items: [
-      `Tabata : 20 s d'effort max / 10 s de repos, 8 tours (4 min par exercice).`,
-      `EMOM : « Every Minute On the Minute » — un nombre de répétitions à faire au début de chaque minute, le reste est repos.`,
-      `AMRAP : « As Many Rounds As Possible » — maximum de tours sur un temps donné.`,
-      `30/30 : 30 s d'effort / 30 s de repos, idéal pour débuter.`,
-    ] },
-
-    { type: 'h1', text: 'Échauffement & retour au calme' },
-    { type: 'h2', text: 'Échauffement (5 min, avant chaque séance)' },
-    { type: 'list', items: [
-      `30 s de jumping jacks`,
-      `30 s de rotations des bras + cercles de hanches`,
-      `30 s de montées de genoux lentes`,
-      `30 s de squats au poids du corps`,
-      `Répète le circuit 2 fois`,
-    ] },
-    { type: 'h2', text: 'Retour au calme (5 min, après chaque séance)' },
-    { type: 'list', items: [
-      `1 à 2 min de marche pour faire redescendre le cœur.`,
-      `Étirement des quadriceps, ischios, mollets et épaules (20 s chacun).`,
-      `Respiration profonde : inspire 4 s, expire 6 s, ×10.`,
-    ] },
-
-    { type: 'h1', text: 'Technique des 8 mouvements de base' },
-    { type: 'h2', text: 'Burpees & Squats sautés' },
-    { type: 'list', items: [
-      `Burpee : descends en squat, mains au sol, saute en planche, pompe, ramène les pieds, saute. Garde le dos gainé.`,
-      `Squat sauté : descends en squat contrôlé, explose vers le haut, atterris en fléchissant les genoux en douceur.`,
-    ] },
-    { type: 'h2', text: 'Mountain climbers & Montées de genoux' },
-    { type: 'list', items: [
-      `Mountain climbers : en planche, ramène les genoux vers la poitrine en alternance, bassin stable.`,
-      `Montées de genoux : course sur place, genoux à hauteur des hanches, bras en rythme.`,
-    ] },
-    { type: 'h2', text: 'Pompes, Fentes sautées, Gainage, Jumping jacks' },
-    { type: 'list', items: [
-      `Pompes : corps gainé en planche, descends coudes à 45°, pousse. Sur les genoux si besoin.`,
-      `Fentes sautées : alterne les jambes en sautant, genou avant dans l'axe du pied.`,
-      `Gainage : avant-bras au sol, corps droit, abdos et fessiers contractés.`,
-      `Jumping jacks : écarte bras et jambes en sautant — parfait pour échauffer et récupérer.`,
-    ] },
-    { type: 'note', text: `Mieux vaut 8 burpees parfaits que 15 brouillons. Adapte le nombre de répétitions, jamais la qualité d'exécution.` },
-
-    { type: 'h1', text: 'Semaines 1 & 2 — Adaptation (format 30/30)' },
-    { type: 'p', text: `4 séances par semaine. Pour chaque exercice : 30 s d'effort / 30 s de repos. 3 tours du circuit, 1 min de récupération entre les tours. Objectif : apprendre les mouvements proprement.` },
-    { type: 'list', items: [
-      `Séance A : jumping jacks → squats → pompes → mountain climbers → gainage.`,
-      `Séance B : montées de genoux → fentes alternées → pompes genoux → planche → squats.`,
-      `Séances C et D : reprends A et B en cherchant une exécution plus nette.`,
-      `Durée totale : environ 20 min, échauffement compris.`,
-    ] },
-
-    { type: 'h1', text: 'Semaines 3 & 4 — Intensification (EMOM + AMRAP)' },
-    { type: 'p', text: `On augmente la densité de travail. 4 séances par semaine, 25 min. Note tes scores pour mesurer ta progression.` },
-    { type: 'list', items: [
-      `Séance A — EMOM 16 min : min 1 : 12 squats sautés / min 2 : 10 burpees / min 3 : 14 montées de genoux / min 4 : 30 s gainage. Répète 4 fois.`,
-      `Séance B — AMRAP 12 min : 8 burpees + 12 fentes sautées + 16 mountain climbers, max de tours.`,
-      `Séance C — EMOM 15 min : alterne pompes, squats sautés, mountain climbers.`,
-      `Séance D — AMRAP 10 min : 10 squats + 10 pompes + 10 jumping jacks.`,
-    ] },
-
-    { type: 'h1', text: 'Semaines 5 & 6 — Performance (Tabata)' },
-    { type: 'p', text: `Le pic du programme. 4 séances de 25 à 30 min, format Tabata sur les mouvements explosifs. 2 min de récupération entre chaque bloc.` },
-    { type: 'list', items: [
-      `Bloc 1 — Tabata burpees : 20 s max / 10 s repos × 8.`,
-      `Bloc 2 — Tabata squats sautés : 20 s / 10 s × 8.`,
-      `Bloc 3 — Tabata mountain climbers : 20 s / 10 s × 8.`,
-      `Bloc 4 — Tabata gainage dynamique : 20 s / 10 s × 8.`,
-      `Les séances suivantes : varie l'ordre des blocs et vise plus de répétitions qu'au tour précédent.`,
-    ] },
-
-    { type: 'h1', text: 'Nutrition pour accélérer les résultats' },
-    { type: 'list', items: [
-      `Le HIIT est un accélérateur, pas un substitut à une bonne alimentation.`,
-      `Mange une source de protéines + glucides dans l'heure qui suit la séance.`,
-      `Crée un léger déficit calorique si ton objectif est la perte de gras.`,
-      `Hydrate-toi avant, pendant et après chaque séance.`,
-    ] },
-
-    { type: 'h1', text: 'Adapter le programme & sécurité' },
-    { type: 'list', items: [
-      `Débutant : réduis le nombre de tours et allonge les récupérations.`,
-      `Sans impact (articulations sensibles) : remplace les sauts par des versions au sol (squats normaux, step-back au lieu des burpees sautés).`,
-      `Garde au moins 1 jour de repos complet entre deux séances intenses.`,
-      `Arrête immédiatement en cas de douleur articulaire vive (différente de la fatigue musculaire).`,
-    ] },
-
-    { type: 'h1', text: 'Suivi & FAQ' },
-    { type: 'list', items: [
-      `Note tes scores (tours, répétitions) à chaque séance pour voir ta progression.`,
-      `Prends une photo toutes les 2 semaines.`,
-      `Combien de fois par semaine ? 4 séances, avec au moins 1 jour de repos entre les plus dures.`,
-      `Et après 6 semaines ? Recommence un cycle en visant plus de répétitions, ou combine avec de la musculation.`,
-    ] },
-    { type: 'note', text: `Progresse à ton rythme : chaque séance terminée est une victoire. Dans 6 semaines, tu seras plus rapide, plus endurant et plus affûté. Au travail.` },
-  ],
-}
+const hiit: Guide = hiit6s
 
 // ──────────────────────────────────────────────────────────────────────
 // d4 — Guide Running : du 5K au Marathon
