@@ -1,4 +1,5 @@
 import type { Guide } from '@/lib/boutique/guides'
+import { priseDeMasse12s } from './prise-de-masse-12s'
 
 // Bibliothèque de programmes fitness premium XENOTIF® (FR).
 // Rendu en PDF premium via guide-pdf.ts : couverture photo pleine page, photos
@@ -501,6 +502,7 @@ const perteDePoids30j: Guide = {
 
 export const PROGRAMS: Record<string, Guide> = {
   'perte-de-poids-30j': perteDePoids30j,
+  'prise-de-masse-12s': priseDeMasse12s,
 }
 
 export function getProgram(slug: string): Guide | undefined {
