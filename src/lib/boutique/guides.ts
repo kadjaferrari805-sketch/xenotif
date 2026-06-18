@@ -11,17 +11,19 @@ export type GuideBlock =
   // Composants premium (programmes) :
   | { type: 'meta'; items: { label: string; value: string }[] }                 // cartes info (Niveau, Durée, Matériel…)
   | { type: 'table'; headers: string[]; rows: string[][] }                       // planning semaine / jour
-  | { type: 'exercise'; name: string; muscles: string; level: string; technique: string; mistakes: string } // fiche exercice
+  | { type: 'exercise'; name: string; muscles: string; level: string; technique: string; mistakes: string; video?: string } // fiche exercice (+ QR vidéo)
   | { type: 'checklist'; items: string[] }                                       // checklist hebdo (cases à cocher)
   | { type: 'tracker'; columns: string[]; rows: number }                         // grille de suivi vide (poids, mensurations, perfs)
+  | { type: 'photo'; src: string; caption?: string }                             // bandeau photo d'ambiance (fichier dans public/program-assets)
 
 export interface Guide {
   id: string
   title: string
   subtitle: string
   author: string
-  level?: string       // affiché en badge sur la couverture
-  duration?: string    // affiché en badge sur la couverture
+  level?: string         // affiché en badge sur la couverture
+  duration?: string      // affiché en badge sur la couverture
+  coverImage?: string    // photo pleine page de couverture (fichier dans public/program-assets)
   blocks: GuideBlock[]
 }
 

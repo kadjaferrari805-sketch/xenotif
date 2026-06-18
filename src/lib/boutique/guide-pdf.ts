@@ -1,5 +1,22 @@
-import { PDFDocument, StandardFonts, rgb, type PDFFont, type PDFPage } from 'pdf-lib'
+import { PDFDocument, StandardFonts, rgb, type PDFFont, type PDFPage, type PDFImage } from 'pdf-lib'
+import QRCode from 'qrcode'
 import type { Guide } from './guides'
+
+// Charge un asset image (public/program-assets) pour l'embarquer dans le PDF.
+// fs en local / runtime Node ; fetch depuis le site en repli (déploiement).
+async function loadAssetBytes(name: string): Promise<Uint8Array | null> {
+  try {
+    const { readFile } = await import('node:fs/promises')
+    const { join } = await import('node:path')
+    return new Uint8Array(await readFile(join(process.cwd(), 'public', 'program-assets', name)))
+  } catch {
+    try {
+      const res = await fetch(`https://xenotif.com/program-assets/${name}`)
+      if (res.ok) return new Uint8Array(await res.arrayBuffer())
+    } catch { /* ignore */ }
+    return null
+  }
+}
 
 const A4 = { w: 595.28, h: 841.89 }
 const M = { left: 56, right: 56, top: 72, bottom: 64 }
@@ -52,6 +69,8 @@ interface Ctx {
   guide: Guide
   pageNo: number
   locale: string
+  images: Map<string, PDFImage>   // photos d'ambiance embarquées (par nom de fichier)
+  qr: Map<string, PDFImage>       // QR codes embarqués (par URL)
 }
 
 // Mention légale de couverture, localisée (fr par défaut).
@@ -168,10 +187,10 @@ function drawNote(ctx: Ctx, text: string) {
 }
 
 // Libellés internes localisés (fiches exercices).
-const EX_LBL: Record<string, { muscles: string; technique: string; mistakes: string }> = {
-  fr: { muscles: 'Muscles', technique: 'TECHNIQUE', mistakes: 'ERREURS À ÉVITER' },
-  en: { muscles: 'Muscles', technique: 'TECHNIQUE', mistakes: 'COMMON MISTAKES' },
-  de: { muscles: 'Muskeln', technique: 'TECHNIK', mistakes: 'HÄUFIGE FEHLER' },
+const EX_LBL: Record<string, { muscles: string; technique: string; mistakes: string; video: string }> = {
+  fr: { muscles: 'Muscles', technique: 'TECHNIQUE', mistakes: 'ERREURS À ÉVITER', video: 'Vidéo démo' },
+  en: { muscles: 'Muscles', technique: 'TECHNIQUE', mistakes: 'COMMON MISTAKES', video: 'Demo video' },
+  de: { muscles: 'Muskeln', technique: 'TECHNIK', mistakes: 'HÄUFIGE FEHLER', video: 'Demo-Video' },
 }
 
 // Cartes info (Niveau / Durée / Matériel / Objectif…) en grille 2 colonnes.
@@ -229,14 +248,18 @@ function drawTable(ctx: Ctx, headers: string[], rows: string[][]) {
   ctx.y -= 8
 }
 
-// Fiche exercice : nom + badge difficulté + muscles + technique + erreurs.
-function drawExercise(ctx: Ctx, ex: { name: string; muscles: string; level: string; technique: string; mistakes: string }) {
+// Fiche exercice : nom + badge difficulté + muscles + technique + erreurs (+ QR vidéo).
+function drawExercise(ctx: Ctx, ex: { name: string; muscles: string; level: string; technique: string; mistakes: string; video?: string }) {
   const padX = 14, padY = 12, size = 9.5
-  const innerW = CONTENT_W - padX * 2
   const lbl = EX_LBL[ctx.locale] ?? EX_LBL.fr
+  const qrImg = ex.video ? ctx.qr.get(ex.video) : undefined
+  const qrW = qrImg ? 62 : 0
+  const innerW = CONTENT_W - padX * 2 - (qrW ? qrW + 16 : 0)
   const techLines = wrap(ex.technique, ctx.reg, size, innerW)
   const errLines = wrap(ex.mistakes, ctx.reg, size, innerW)
-  const h = padY + 16 + 16 + 14 + techLines.length * lh(size) + 14 + errLines.length * lh(size) + padY
+  const textH = padY + 16 + 16 + 14 + techLines.length * lh(size) + 14 + errLines.length * lh(size) + padY
+  const qrH = qrImg ? padY + 18 + qrW + 12 + padY : 0
+  const h = Math.max(textH, qrH)
   ctx.y -= 4
   if (ctx.y - h < M.bottom) newPage(ctx)
   const top = ctx.y
@@ -247,8 +270,18 @@ function drawExercise(ctx: Ctx, ex: { name: string; muscles: string; level: stri
   const bl = safe(ex.level)
   const blw = ctx.bold.widthOfTextAtSize(bl, 7.5) + 14
   const lc = levelColor(ex.level)
-  ctx.page.drawRectangle({ x: A4.w - M.right - padX - blw, y: yy - 4, width: blw, height: 15, color: lc, opacity: 0.16, borderColor: lc, borderWidth: 0.8 })
-  ctx.page.drawText(bl, { x: A4.w - M.right - padX - blw + 7, y: yy, size: 7.5, font: ctx.bold, color: lc })
+  const badgeX = A4.w - M.right - padX - blw - (qrW ? qrW + 16 : 0)
+  ctx.page.drawRectangle({ x: badgeX, y: yy - 4, width: blw, height: 15, color: lc, opacity: 0.16, borderColor: lc, borderWidth: 0.8 })
+  ctx.page.drawText(bl, { x: badgeX + 7, y: yy, size: 7.5, font: ctx.bold, color: lc })
+  // QR vidéo (colonne droite)
+  if (qrImg) {
+    const qx = A4.w - M.right - padX - qrW
+    const qy = top - padY - qrW
+    ctx.page.drawImage(qrImg, { x: qx, y: qy, width: qrW, height: qrW })
+    const cap = lbl.video
+    const cw = ctx.bold.widthOfTextAtSize(cap, 6.5)
+    ctx.page.drawText(cap, { x: qx + (qrW - cw) / 2, y: qy - 9, size: 6.5, font: ctx.bold, color: COL.orange })
+  }
   yy -= 18
   ctx.page.drawText(safe(`${lbl.muscles} : ${ex.muscles}`), { x: M.left + padX, y: yy, size: 8.5, font: ctx.ital, color: COL.grey })
   yy -= 16
@@ -260,6 +293,25 @@ function drawExercise(ctx: Ctx, ex: { name: string; muscles: string; level: stri
   yy -= 12
   for (const ln of errLines) { ctx.page.drawText(ln, { x: M.left + padX, y: yy, size, font: ctx.reg, color: COL.ink }); yy -= lh(size) }
   ctx.y = top - h - 10
+}
+
+// Bandeau photo d'ambiance (image embarquée depuis public/program-assets).
+function drawPhoto(ctx: Ctx, src: string, caption?: string) {
+  const img = ctx.images.get(src)
+  if (!img) return
+  const w = CONTENT_W
+  const h = Math.min(150, w * (img.height / img.width))
+  ctx.y -= 8
+  if (ctx.y - h - (caption ? 16 : 0) < M.bottom) newPage(ctx)
+  const top = ctx.y
+  ctx.page.drawImage(img, { x: M.left, y: top - h, width: w, height: h })
+  ctx.y = top - h
+  if (caption) {
+    ctx.y -= 12
+    ctx.page.drawText(safe(caption), { x: M.left, y: ctx.y, size: 8, font: ctx.ital, color: COL.grey })
+    ctx.y -= 4
+  }
+  ctx.y -= 8
 }
 
 // Checklist à cocher (cases vides).
@@ -308,7 +360,15 @@ function drawTracker(ctx: Ctx, columns: string[], rows: number) {
 
 function drawCover(ctx: Ctx) {
   const p = ctx.page
-  p.drawRectangle({ x: 0, y: 0, width: A4.w, height: A4.h, color: COL.dark })
+  const cover = ctx.guide.coverImage ? ctx.images.get(ctx.guide.coverImage) : undefined
+  if (cover) {
+    p.drawImage(cover, { x: 0, y: 0, width: A4.w, height: A4.h })
+    // Voiles sombres pour la lisibilité du texte blanc (dégradé simulé).
+    p.drawRectangle({ x: 0, y: 0, width: A4.w, height: A4.h, color: COL.dark, opacity: 0.5 })
+    p.drawRectangle({ x: 0, y: 0, width: A4.w, height: A4.h * 0.46, color: COL.dark, opacity: 0.55 })
+  } else {
+    p.drawRectangle({ x: 0, y: 0, width: A4.w, height: A4.h, color: COL.dark })
+  }
   // Logo + marque
   p.drawRectangle({ x: 56, y: A4.h - 96, width: 32, height: 32, color: COL.orange })
   p.drawText('X', { x: 66, y: A4.h - 88, size: 19, font: ctx.bold, color: COL.white })
@@ -357,8 +417,28 @@ export async function generateGuidePdf(guide: Guide, locale: string = 'fr'): Pro
   const bold = await doc.embedFont(StandardFonts.HelveticaBold)
   const ital = await doc.embedFont(StandardFonts.HelveticaOblique)
 
+  // Préchargement des photos (couverture + bandeaux) et des QR codes.
+  const images = new Map<string, PDFImage>()
+  const qr = new Map<string, PDFImage>()
+  const assetNames = new Set<string>()
+  if (guide.coverImage) assetNames.add(guide.coverImage)
+  for (const b of guide.blocks) if (b.type === 'photo') assetNames.add(b.src)
+  for (const name of assetNames) {
+    const bytes = await loadAssetBytes(name)
+    if (!bytes) continue
+    try { images.set(name, await doc.embedJpg(bytes)) } catch { /* format non-jpg ignoré */ }
+  }
+  const qrUrls = new Set<string>()
+  for (const b of guide.blocks) if (b.type === 'exercise' && b.video) qrUrls.add(b.video)
+  for (const url of qrUrls) {
+    try {
+      const png = await QRCode.toBuffer(url, { type: 'png', margin: 1, width: 180, color: { dark: '#0A0B0F', light: '#FFFFFF' } })
+      qr.set(url, await doc.embedPng(new Uint8Array(png)))
+    } catch { /* QR optionnel */ }
+  }
+
   const cover = doc.addPage([A4.w, A4.h])
-  const ctx: Ctx = { doc, page: cover, y: 0, reg, bold, ital, guide, pageNo: 1, locale }
+  const ctx: Ctx = { doc, page: cover, y: 0, reg, bold, ital, guide, pageNo: 1, locale, images, qr }
   drawCover(ctx)
   newPage(ctx)
 
@@ -374,6 +454,7 @@ export async function generateGuidePdf(guide: Guide, locale: string = 'fr'): Pro
       case 'exercise': drawExercise(ctx, block); break
       case 'checklist': drawChecklist(ctx, block.items); break
       case 'tracker': drawTracker(ctx, block.columns, block.rows); break
+      case 'photo': drawPhoto(ctx, block.src, block.caption); break
     }
   }
 
