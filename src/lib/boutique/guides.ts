@@ -17,6 +17,7 @@ export type GuideBlock =
   | { type: 'checklist'; items: string[] }                                       // checklist hebdo (cases à cocher)
   | { type: 'tracker'; columns: string[]; rows: number }                         // grille de suivi vide (poids, mensurations, perfs)
   | { type: 'photo'; src: string; caption?: string }                             // bandeau photo d'ambiance (fichier dans public/program-assets)
+  | { type: 'chapter'; title: string; src?: string; intro?: string }             // ouverture de chapitre (nouvelle page A4) : image + titre intégrés
 
 export interface Guide {
   id: string

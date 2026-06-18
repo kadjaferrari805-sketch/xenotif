@@ -64,8 +64,7 @@ export const priseDeMasse12s: Guide = {
       ['Séries d’approche', '2 séries légères du 1er exercice', '1 min'],
     ] },
 
-    { type: 'photo', src: 'seche-1.jpg', caption: 'Manger pour construire : le carburant du muscle.' },
-    { type: 'h1', text: 'Plan nutrition prise de masse' },
+    { type: 'chapter', title: 'Plan nutrition prise de masse', src: 'seche-1.jpg' },
     { type: 'p', text: `Le muscle se construit avec un surplus calorique modéré et beaucoup de protéines. L’objectif : prendre du muscle en limitant le gras. Mieux vaut +0,25 kg/semaine propre que +1 kg sale.` },
     { type: 'meta', items: [
       { label: 'Surplus visé', value: '200 à 400 kcal / jour' },
@@ -130,8 +129,7 @@ export const priseDeMasse12s: Guide = {
     { type: 'list', items: [`4 œufs + 2 blancs`, `200 g de patate douce`, `Épinards, fromage`, `Huile d’olive`] },
     { type: 'p', text: `Préparation : cuis la patate douce au four/micro-ondes, prépare l’omelette aux épinards et fromage. Repas complet et rassasiant.` },
 
-    { type: 'photo', src: 'recovery.jpg', caption: 'Le muscle se construit pendant le repos, pas à la salle.' },
-    { type: 'h1', text: 'Récupération' },
+    { type: 'chapter', title: 'Récupération', src: 'recovery.jpg' },
     { type: 'list', items: [
       `Dors 7 à 9 h : c’est pendant le sommeil que la synthèse musculaire est maximale.`,
       `Laisse 48 h à un muscle avant de le retravailler (d’où le split Haut/Bas).`,
@@ -139,8 +137,7 @@ export const priseDeMasse12s: Guide = {
       `Une semaine « deload » (charges −40 %) toutes les 6 semaines évite la stagnation.`,
     ] },
 
-    { type: 'photo', src: 'masse-1.jpg', caption: 'Surcharge progressive : la clé de la croissance.' },
-    { type: 'h1', text: 'Plan sur 12 semaines (3 phases)' },
+    { type: 'chapter', title: 'Plan sur 12 semaines (3 phases)', src: 'masse-1.jpg' },
     { type: 'p', text: `Le programme progresse en 3 phases. Respecte l’ordre : volume d’abord, intensité ensuite.` },
     { type: 'table', headers: ['Phase', 'Semaines', 'Focus', 'Répétitions'], rows: [
       ['Phase 1', 'S1 à S4', 'Adaptation & volume', '12 à 15'],

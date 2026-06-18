@@ -315,6 +315,40 @@ function drawPhoto(ctx: Ctx, src: string, caption?: string) {
   ctx.y -= 8
 }
 
+// Ouverture de chapitre : nouvelle page A4 + en-tête image avec le TITRE intégré
+// dessus (ou titre stylé si pas d'image). Structure « image + texte » par chapitre.
+function drawChapter(ctx: Ctx, title: string, src?: string, intro?: string) {
+  if (ctx.y < A4.h - M.top - 1) newPage(ctx) // chaque chapitre sur sa propre page A4
+  const img = src ? ctx.images.get(src) : undefined
+  if (img) {
+    const w = CONTENT_W
+    const h = 210
+    const top = ctx.y
+    ctx.page.drawImage(img, { x: M.left, y: top - h, width: w, height: h })
+    // Voiles sombres pour la lisibilité du titre en bas de l'image.
+    ctx.page.drawRectangle({ x: M.left, y: top - h, width: w, height: h, color: COL.dark, opacity: 0.32 })
+    ctx.page.drawRectangle({ x: M.left, y: top - h, width: w, height: 92, color: COL.dark, opacity: 0.5 })
+    // Titre blanc + accent, ancrés en bas-gauche de l'image.
+    const size = 22
+    const x = M.left + 22
+    const lines = wrap(title, ctx.bold, size, w - 44)
+    let y = top - h + 24 // baseline de la dernière ligne
+    for (let i = lines.length - 1; i >= 0; i--) {
+      ctx.page.drawText(lines[i], { x, y, size, font: ctx.bold, color: COL.white })
+      y += lh(size)
+    }
+    ctx.page.drawRectangle({ x, y: y + 3, width: 44, height: 4, color: COL.orange })
+    ctx.y = top - h - 18
+  } else {
+    const size = 20
+    drawLines(ctx, wrap(title, ctx.bold, size, CONTENT_W), ctx.bold, size, COL.orange)
+    ctx.y -= 5
+    ctx.page.drawRectangle({ x: M.left, y: ctx.y, width: 48, height: 3, color: COL.orange })
+    ctx.y -= 20
+  }
+  if (intro) drawParagraph(ctx, intro)
+}
+
 // Checklist à cocher (cases vides).
 function drawChecklist(ctx: Ctx, items: string[]) {
   const size = 10.5, box = 10, indent = 26
@@ -423,7 +457,10 @@ export async function generateGuidePdf(guide: Guide, locale: string = 'fr'): Pro
   const qr = new Map<string, PDFImage>()
   const assetNames = new Set<string>()
   if (guide.coverImage) assetNames.add(guide.coverImage)
-  for (const b of guide.blocks) if (b.type === 'photo') assetNames.add(b.src)
+  for (const b of guide.blocks) {
+    if (b.type === 'photo') assetNames.add(b.src)
+    if (b.type === 'chapter' && b.src) assetNames.add(b.src)
+  }
   for (const name of assetNames) {
     const bytes = await loadAssetBytes(name)
     if (!bytes) continue
@@ -456,6 +493,7 @@ export async function generateGuidePdf(guide: Guide, locale: string = 'fr'): Pro
       case 'checklist': drawChecklist(ctx, block.items); break
       case 'tracker': drawTracker(ctx, block.columns, block.rows); break
       case 'photo': drawPhoto(ctx, block.src, block.caption); break
+      case 'chapter': drawChapter(ctx, block.title, block.src, block.intro); break
     }
   }
 
