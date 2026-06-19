@@ -31,6 +31,8 @@ export interface Product {
   isAffiliate: boolean
   imageFit?: 'cover' | 'contain'
   imagePosition?: string // ex: '50% 65%' pour recadrer sur une zone précise
+  level?: string         // programmes digitaux : niveau affiché (ex. « Tous niveaux »)
+  duration?: string      // programmes digitaux : durée affichée (ex. « 12 semaines »)
 }
 
 // Tags affiliés Amazon (programme Associates EU) — un tag par marketplace.
@@ -348,6 +350,7 @@ export const PRODUCTS: Product[] = [
     tags: ['prise de masse', 'musculation', 'programme', 'PDF'],
     disciplines: ['musculation'],
     features: ['84 séances sur 12 semaines', 'Split 4j/semaine', 'Progression charge guidée', 'Plan nutrition + macros', 'Vidéos HD incluses'],
+    level: 'Intermédiaire', duration: '12 semaines',
     download_url: '/downloads/programme-prise-masse.pdf',
     isAffiliate: false,
   },
@@ -365,6 +368,7 @@ export const PRODUCTS: Product[] = [
     tags: ['nutrition', 'sèche', 'régime', 'PDF'],
     disciplines: ['musculation', 'running-cardio', 'hiit'],
     features: ['56 jours de menus', '40+ recettes fitness', 'Liste courses hebdo', 'Macros personnalisés', 'Compatible vegan'],
+    level: 'Tous niveaux', duration: '8 semaines',
     download_url: '/downloads/plan-nutrition-seche.pdf',
     isAffiliate: false,
   },
@@ -382,6 +386,7 @@ export const PRODUCTS: Product[] = [
     tags: ['HIIT', 'brûle-graisses', 'poids du corps', 'cardio'],
     disciplines: ['hiit', 'running-cardio'],
     features: ['24 séances 20–30 min', 'Sans matériel', 'Débutant → avancé', 'Timer intégré', 'Vidéos démo HD'],
+    level: 'Débutant à avancé', duration: '6 semaines',
     download_url: '/downloads/programme-hiit.pdf',
     isAffiliate: false,
   },
@@ -399,6 +404,7 @@ export const PRODUCTS: Product[] = [
     tags: ['running', 'marathon', 'course à pied', 'e-book'],
     disciplines: ['running-cardio'],
     features: ['120 pages expert', 'Plans 5K/10K/semi/marathon', 'Nutrition course', 'Anti-blessures', 'Mental compétiteur'],
+    level: 'Tous niveaux', duration: '8 à 16 semaines',
     download_url: '/downloads/guide-running-marathon.pdf',
     isAffiliate: false,
   },

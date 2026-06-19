@@ -3,7 +3,7 @@
 import { useTranslations, useLocale } from 'next-intl'
 import { Link } from '@/i18n/navigation'
 import Image from 'next/image'
-import { ArrowRight, Star, Download } from 'lucide-react'
+import { ArrowRight, Star, Download, Signal, Clock } from 'lucide-react'
 import { SectionHeader } from '@/components/ui/SectionHeader'
 import { Carousel } from '@/components/ui/Carousel'
 import { Tilt3D } from '@/components/premium/Tilt3D'
@@ -67,9 +67,19 @@ export function ProgramsShowcase({ programs }: { programs: Product[] }) {
                         {p.name}
                       </h3>
 
-                      {/* Caractéristiques clés (durée/structure, déjà localisées) */}
+                      {/* Badges niveau + durée (repli sur les features si absents) */}
                       <div className="flex flex-wrap gap-1.5 mb-4">
-                        {p.features.slice(0, 2).map((f) => (
+                        {p.level && (
+                          <span className="inline-flex items-center gap-1.5 text-[10px] font-bold text-white bg-sport-card border border-sport-border px-2.5 py-1 rounded-full">
+                            <Signal size={11} className="text-sport-orange" aria-hidden="true" /> {p.level}
+                          </span>
+                        )}
+                        {p.duration && (
+                          <span className="inline-flex items-center gap-1.5 text-[10px] font-bold text-white bg-sport-card border border-sport-border px-2.5 py-1 rounded-full">
+                            <Clock size={11} className="text-sport-orange" aria-hidden="true" /> {p.duration}
+                          </span>
+                        )}
+                        {!p.level && !p.duration && p.features.slice(0, 2).map((f) => (
                           <span key={f} className="text-[10px] text-sport-gray bg-sport-card border border-sport-border px-2.5 py-1 rounded-full line-clamp-1">
                             {f}
                           </span>
