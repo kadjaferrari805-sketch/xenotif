@@ -1,13 +1,12 @@
 'use client'
 
-import { useState, useEffect, useRef } from 'react'
+import { useRef } from 'react'
 import { motion } from 'framer-motion'
 import { useTranslations } from 'next-intl'
 import { useInView } from 'react-intersection-observer'
 import { Activity, Dumbbell, Zap, Bike, Waves, Flame, ArrowRight, Leaf, Target, Layers, ChevronLeft, ChevronRight } from 'lucide-react'
 import Image from 'next/image'
 import { Link } from '@/i18n/navigation'
-import { createClient } from '@/lib/supabase/client'
 import { SectionHeader } from '@/components/ui/SectionHeader'
 import { Tilt3D } from '@/components/premium/Tilt3D'
 import { FEATURES } from '@/lib/constants'
@@ -55,18 +54,6 @@ export function Features() {
   const scrollByDir = (dir: 1 | -1) => {
     scrollRef.current?.scrollBy({ left: dir * 320, behavior: 'smooth' })
   }
-
-  // Découvrir → connexion tant que l'utilisateur n'est pas authentifié.
-  // setState en callback (promesse / abonnement) → pas de violation set-state-in-effect.
-  const [authed, setAuthed] = useState<boolean | null>(null)
-  useEffect(() => {
-    const supabase = createClient()
-    supabase.auth.getUser().then(({ data }) => setAuthed(!!data.user))
-    const { data: { subscription } } = supabase.auth.onAuthStateChange(
-      (_event, session) => setAuthed(!!session?.user)
-    )
-    return () => subscription.unsubscribe()
-  }, [])
 
   return (
     <section id="disciplines" aria-labelledby="disciplines-title" className="py-24 px-6 bg-sport-dark">
@@ -154,7 +141,7 @@ export function Features() {
                   </div>
 
                   <Link
-                    href={authed ? `/disciplines/${feat.slug}` : '/auth/signin'}
+                    href={`/disciplines/${feat.slug}`}
                     aria-label={t('discoverAria', { name: tr.title })}
                     className="inline-flex items-center gap-1.5 text-xs font-bold text-sport-orange group-hover:gap-2.5 transition-all duration-200"
                   >
