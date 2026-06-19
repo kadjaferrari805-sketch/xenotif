@@ -243,6 +243,13 @@
       "discoverAria": "Programm {name} entdecken",
       "viewAll": "Alle Programme ansehen"
     },
+    "blog": {
+      "label": "Das XENOTIF-Mag",
+      "title": "Fitness-Tipps",
+      "subtitle": "Experten-Guides, Ernährung und Training: schneller vorankommen mit unseren neuesten Artikeln.",
+      "readMore": "Lesen",
+      "viewAll": "Alle Artikel"
+    },
     "promoBanners": {
       "promo": {
         "label": "Limitiertes Angebot",

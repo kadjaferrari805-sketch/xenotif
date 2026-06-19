@@ -18,9 +18,11 @@ import { FaqSchema } from '@/components/FaqSchema'
 import { AdBanner } from '@/components/home/AdBanner'
 import { ProductShowcase } from '@/components/home/ProductShowcase'
 import { ProgramsShowcase } from '@/components/home/ProgramsShowcase'
+import { BlogShowcase } from '@/components/home/BlogShowcase'
 import { PromoBanner } from '@/components/home/PromoBanner'
 import { getProductsLocalized } from '@/lib/boutique/products.en'
 import type { Product } from '@/lib/boutique/products'
+import { getAllPostsLocalized } from '@/lib/blog/posts.en'
 import { setRequestLocale } from 'next-intl/server'
 
 // setRequestLocale → autorise le rendu statique (sinon next-intl bascule en
@@ -44,6 +46,8 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   const disc = (p: Product) => (p.original_price_cents ? 1 - p.price_cents / p.original_price_cents : 0)
   const promoProduct = [...affiliate].filter((p) => p.original_price_cents).sort((a, b) => disc(b) - disc(a))[0]
   const popularProduct = [...affiliate].sort((a, b) => b.reviews - a.reviews)[0]
+  // Derniers articles du blog (déjà triés par date) pour le carrousel « Conseils Fitness ».
+  const latestPosts = getAllPostsLocalized(locale).slice(0, 6)
 
   return (
     <>
@@ -81,6 +85,8 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       <Reviews />
       <CustomerReviews kind="platform" />
       <TransformationsGallery />
+      {/* Carrousel « Conseils Fitness » — derniers articles du blog (SEO + temps passé) */}
+      <BlogShowcase posts={latestPosts} />
       <FAQ />
       <Newsletter />
       <StickyCheckout />
