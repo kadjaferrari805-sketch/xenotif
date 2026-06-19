@@ -17,6 +17,7 @@ import { TransformationsGallery } from '@/components/transformations/Transformat
 import { FaqSchema } from '@/components/FaqSchema'
 import { AdBanner } from '@/components/home/AdBanner'
 import { ProductShowcase } from '@/components/home/ProductShowcase'
+import { ProgramsShowcase } from '@/components/home/ProgramsShowcase'
 import { PromoBanner } from '@/components/home/PromoBanner'
 import { getProductsLocalized } from '@/lib/boutique/products.en'
 import type { Product } from '@/lib/boutique/products'
@@ -28,8 +29,13 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   const { locale } = await params
   setRequestLocale(locale)
 
+  const allProducts = getProductsLocalized(locale)
   // Vitrine produits affiliés (liens Amazon localisés par langue).
-  const affiliate = getProductsLocalized(locale).filter((p) => p.isAffiliate)
+  const affiliate = allProducts.filter((p) => p.isAffiliate)
+  // Programmes digitaux XENOTIF® (PDF premium), les plus populaires d'abord.
+  const digitalPrograms = [...allProducts]
+    .filter((p) => p.type === 'digital')
+    .sort((a, b) => b.reviews - a.reviews)
   // Recommandés : promos d'abord, puis meilleures notes.
   const recommended = [...affiliate]
     .sort((a, b) => (b.original_price_cents ? 1 : 0) - (a.original_price_cents ? 1 : 0) || b.rating - a.rating)
@@ -55,6 +61,8 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         ctaHref="/auth/signup"
       />
       <Features />
+      {/* Carrousel « Nos programmes populaires » — juste après les disciplines */}
+      <ProgramsShowcase programs={digitalPrograms} />
       <HowItWorks />
       {/* Aperçu de l'espace membre — confiance avant inscription (→ /dashboard-preview) */}
       <ExperiencePreview />
