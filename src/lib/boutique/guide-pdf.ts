@@ -188,6 +188,12 @@ function drawNote(ctx: Ctx, text: string) {
 }
 
 // Libellés internes localisés (fiches exercices).
+// URL du QR vidéo d'un exercice : recherche YouTube de l'exercice → surface en
+// direct les meilleures vidéos de démonstration du web (ne casse jamais).
+function exerciseVideoUrl(name: string): string {
+  return 'https://www.youtube.com/results?search_query=' + encodeURIComponent(`${name} technique exercice`)
+}
+
 const EX_LBL: Record<string, { muscles: string; technique: string; mistakes: string; video: string }> = {
   fr: { muscles: 'Muscles', technique: 'TECHNIQUE', mistakes: 'ERREURS À ÉVITER', video: 'Vidéo démo' },
   en: { muscles: 'Muscles', technique: 'TECHNIQUE', mistakes: 'COMMON MISTAKES', video: 'Demo video' },
@@ -253,7 +259,7 @@ function drawTable(ctx: Ctx, headers: string[], rows: string[][]) {
 function drawExercise(ctx: Ctx, ex: { name: string; muscles: string; level: string; technique: string; mistakes: string; video?: string }) {
   const padX = 14, padY = 12, size = 9.5
   const lbl = EX_LBL[ctx.locale] ?? EX_LBL.fr
-  const qrImg = ex.video ? ctx.qr.get(ex.video) : undefined
+  const qrImg = ctx.qr.get(exerciseVideoUrl(ex.name))
   const qrW = qrImg ? 62 : 0
   const innerW = CONTENT_W - padX * 2 - (qrW ? qrW + 16 : 0)
   const techLines = wrap(ex.technique, ctx.reg, size, innerW)
@@ -467,7 +473,7 @@ export async function generateGuidePdf(guide: Guide, locale: string = 'fr'): Pro
     try { images.set(name, await doc.embedJpg(bytes)) } catch { /* format non-jpg ignoré */ }
   }
   const qrUrls = new Set<string>()
-  for (const b of guide.blocks) if (b.type === 'exercise' && b.video) qrUrls.add(b.video)
+  for (const b of guide.blocks) if (b.type === 'exercise') qrUrls.add(exerciseVideoUrl(b.name))
   for (const url of qrUrls) {
     try {
       const png = await QRCode.toBuffer(url, { type: 'png', margin: 1, width: 180, color: { dark: '#0A0B0F', light: '#FFFFFF' } })
