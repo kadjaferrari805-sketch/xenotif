@@ -498,6 +498,115 @@ export async function sendReactivationEmail({
   })
 }
 
+// Séquence d'onboarding (essai gratuit 7 j) — 3 emails envoyés par le cron
+// /api/cron/onboarding à J+1 (prise en main), J+3 (tirer le max), J+6 (l'essai
+// se termine → passage PRO). Une seule fonction, contenu selon `step`.
+export async function sendOnboardingEmail({
+  email, name, step, locale: rawLocale,
+}: {
+  email: string; name: string; step: 1 | 2 | 3; locale?: string
+}) {
+  const locale = norm(rawLocale)
+  const en = locale === 'en'
+  const first = name ? name.split(' ')[0] : ''
+
+  type Content = { subject: string; h1: string; intro: string; cardTitle: string; items: string[]; cta: string; ctaUrl: string; foot: string }
+  const fr: Record<1 | 2 | 3, Content> = {
+    1: {
+      subject: 'Tes premiers pas sur Xenotif® 💪',
+      h1: `Prêt(e) à démarrer${first ? `, ${first}` : ''} ?`,
+      intro: 'Bienvenue ! Ton essai gratuit est lancé. Voici comment en tirer parti dès aujourd\'hui — 5 minutes suffisent.',
+      cardTitle: 'Tes 3 premières actions :',
+      items: ['🏋️ Lance ta première séance guidée', '🤖 Pose une question à ton coach IA', '🎯 Choisis une discipline et fixe ton objectif'],
+      cta: 'Ouvrir mon espace →',
+      ctaUrl: `${BASE_URL}/dashboard`,
+      foot: 'Un conseil : commence petit mais régulier. La constance bat l\'intensité.',
+    },
+    2: {
+      subject: '3 leviers pour progresser plus vite 🚀',
+      h1: `Tu y es${first ? `, ${first}` : ''} — passe la vitesse supérieure`,
+      intro: 'Maintenant que tu as pris tes marques, voilà ce qui fait vraiment la différence sur la durée.',
+      cardTitle: 'Tire le maximum de ton accès :',
+      items: ['📋 Suis un programme structuré (pas à pas)', '📊 Garde un œil sur ton suivi & tes stats', '🔥 Gagne de l\'XP, relève les défis, débloque des badges'],
+      cta: 'Voir ma progression →',
+      ctaUrl: `${BASE_URL}/dashboard/progression`,
+      foot: 'Plus tu remplis ton suivi, plus ton coach IA t\'aide précisément.',
+    },
+    3: {
+      subject: 'Ton essai gratuit se termine bientôt ⏳',
+      h1: `Ne perds pas ton élan${first ? `, ${first}` : ''}`,
+      intro: 'Ton essai gratuit touche à sa fin. Passe en PRO pour garder l\'accès complet — toute ta progression est conservée.',
+      cardTitle: 'En restant PRO, tu gardes :',
+      items: ['🤖 Le coach IA personnalisé', '🏋️ Les 10 disciplines & tous les programmes', '📊 Le suivi, les stats & la gamification', '🎥 Les vidéos d\'entraînement HD'],
+      cta: 'Passer en PRO — 9,99€/mois →',
+      ctaUrl: `${BASE_URL}/dashboard/abonnement`,
+      foot: 'Sans engagement : tu peux résilier à tout moment en un clic.',
+    },
+  }
+  const enC: Record<1 | 2 | 3, Content> = {
+    1: {
+      subject: 'Your first steps on Xenotif® 💪',
+      h1: `Ready to start${first ? `, ${first}` : ''}?`,
+      intro: 'Welcome! Your free trial is live. Here\'s how to make the most of it today — 5 minutes is enough.',
+      cardTitle: 'Your first 3 actions:',
+      items: ['🏋️ Start your first guided session', '🤖 Ask your AI coach a question', '🎯 Pick a discipline and set your goal'],
+      cta: 'Open my dashboard →',
+      ctaUrl: `${BASE_URL}/dashboard`,
+      foot: 'A tip: start small but consistent. Consistency beats intensity.',
+    },
+    2: {
+      subject: '3 levers to progress faster 🚀',
+      h1: `You\'re in${first ? `, ${first}` : ''} — shift up a gear`,
+      intro: 'Now that you\'ve found your feet, here\'s what really makes the difference over time.',
+      cardTitle: 'Get the most from your access:',
+      items: ['📋 Follow a structured program (step by step)', '📊 Keep an eye on your tracking & stats', '🔥 Earn XP, take on challenges, unlock badges'],
+      cta: 'See my progress →',
+      ctaUrl: `${BASE_URL}/dashboard/progression`,
+      foot: 'The more you fill in your tracking, the more precisely your AI coach helps you.',
+    },
+    3: {
+      subject: 'Your free trial ends soon ⏳',
+      h1: `Don\'t lose your momentum${first ? `, ${first}` : ''}`,
+      intro: 'Your free trial is coming to an end. Go PRO to keep full access — all your progress is saved.',
+      cardTitle: 'By staying PRO, you keep:',
+      items: ['🤖 Your personalized AI coach', '🏋️ The 10 disciplines & every program', '📊 Tracking, stats & gamification', '🎥 HD training videos'],
+      cta: 'Go PRO — €9.99/month →',
+      ctaUrl: `${BASE_URL}/dashboard/abonnement`,
+      foot: 'No commitment: cancel anytime in one click.',
+    },
+  }
+  const c = (en ? enC : fr)[step]
+
+  await resend.emails.send({
+    from: FROM,
+    to: email,
+    subject: c.subject,
+    html: wrap(`
+      <h1 style="font-size:26px;font-weight:900;margin:0 0 8px;">
+        ${c.h1}
+      </h1>
+      <p style="color:#9CA3AF;font-size:15px;line-height:1.6;margin:0 0 24px;">
+        ${c.intro}
+      </p>
+
+      <div style="background:#111218;border:1px solid #1F2937;border-radius:16px;padding:24px;margin-bottom:24px;">
+        <p style="margin:0 0 12px;font-weight:700;color:#fff;">${c.cardTitle}</p>
+        <ul style="margin:0 0 20px;padding:0;list-style:none;color:#9CA3AF;font-size:14px;line-height:2.2;">
+          ${c.items.map(f => `<li>${f}</li>`).join('')}
+        </ul>
+        <a href="${c.ctaUrl}"
+           style="display:inline-block;background:#F97316;color:#fff;padding:14px 28px;border-radius:50px;font-weight:700;font-size:14px;text-decoration:none;">
+          ${c.cta}
+        </a>
+      </div>
+
+      <p style="color:#6B7280;font-size:13px;">
+        ${c.foot}
+      </p>
+    `, locale),
+  })
+}
+
 export async function sendAbandonedCartEmail({
   email, items, total, recoverUrl, locale: rawLocale,
 }: {
