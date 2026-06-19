@@ -250,6 +250,28 @@
       "readMore": "Lire",
       "viewAll": "Tous les articles"
     },
+    "leadPopup": {
+      "eyebrow": "Offert",
+      "title": "Obtiens ton programme fitness gratuit",
+      "subtitle": "Un programme découverte 7 jours en PDF — entraînement + nutrition. Sans carte, sans engagement.",
+      "perks": [
+        "7 jours d’entraînement guidé",
+        "Plan nutrition + recettes",
+        "PDF premium à garder"
+      ],
+      "emailPlaceholder": "Ton adresse email",
+      "cta": "Recevoir mon programme",
+      "loading": "Envoi…",
+      "successTitle": "C’est parti ! 🎉",
+      "successText": "Vérifie ta boîte mail — ton programme t’attend. Tu peux aussi le télécharger tout de suite :",
+      "download": "Télécharger le PDF",
+      "signup": "Créer mon compte gratuit",
+      "privacy": "Pas de spam. Désinscription en 1 clic.",
+      "close": "Fermer",
+      "errorInvalid": "Adresse email invalide.",
+      "errorGeneric": "Une erreur est survenue. Réessaie.",
+      "errorNetwork": "Problème de connexion. Réessaie."
+    },
     "promoBanners": {
       "promo": {
         "label": "Offre limitée",

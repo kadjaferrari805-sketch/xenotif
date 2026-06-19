@@ -250,6 +250,28 @@
       "readMore": "Read",
       "viewAll": "All articles"
     },
+    "leadPopup": {
+      "eyebrow": "Free",
+      "title": "Get your free fitness program",
+      "subtitle": "A 7-day starter program (PDF) — training + nutrition. No card, no commitment.",
+      "perks": [
+        "7 days of guided training",
+        "Nutrition plan + recipes",
+        "Premium PDF to keep"
+      ],
+      "emailPlaceholder": "Your email address",
+      "cta": "Get my program",
+      "loading": "Sending…",
+      "successTitle": "You’re in! 🎉",
+      "successText": "Check your inbox — your program is waiting. You can also download it right now:",
+      "download": "Download the PDF",
+      "signup": "Create my free account",
+      "privacy": "No spam. Unsubscribe in 1 click.",
+      "close": "Close",
+      "errorInvalid": "Invalid email address.",
+      "errorGeneric": "Something went wrong. Please try again.",
+      "errorNetwork": "Connection issue. Please try again."
+    },
     "promoBanners": {
       "promo": {
         "label": "Limited offer",

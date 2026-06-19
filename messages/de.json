@@ -250,6 +250,28 @@
       "readMore": "Lesen",
       "viewAll": "Alle Artikel"
     },
+    "leadPopup": {
+      "eyebrow": "Gratis",
+      "title": "Hol dir dein kostenloses Fitness-Programm",
+      "subtitle": "Ein 7-Tage-Einsteigerprogramm (PDF) — Training + Ernährung. Ohne Karte, ohne Verpflichtung.",
+      "perks": [
+        "7 Tage geführtes Training",
+        "Ernährungsplan + Rezepte",
+        "Premium-PDF zum Behalten"
+      ],
+      "emailPlaceholder": "Deine E-Mail-Adresse",
+      "cta": "Programm erhalten",
+      "loading": "Wird gesendet…",
+      "successTitle": "Geschafft! 🎉",
+      "successText": "Schau in dein Postfach — dein Programm wartet. Du kannst es auch sofort herunterladen:",
+      "download": "PDF herunterladen",
+      "signup": "Kostenloses Konto erstellen",
+      "privacy": "Kein Spam. Abmeldung mit 1 Klick.",
+      "close": "Schließen",
+      "errorInvalid": "Ungültige E-Mail-Adresse.",
+      "errorGeneric": "Etwas ist schiefgelaufen. Bitte erneut versuchen.",
+      "errorNetwork": "Verbindungsproblem. Bitte erneut versuchen."
+    },
     "promoBanners": {
       "promo": {
         "label": "Limitiertes Angebot",
