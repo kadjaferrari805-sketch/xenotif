@@ -42,13 +42,7 @@ export function FreeProgramPopup() {
     } catch {
       return
     }
-    try {
-      setReduced(window.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches ?? false)
-    } catch {
-      /* matchMedia indisponible */
-    }
 
-    let timer: ReturnType<typeof setTimeout>
     const onMouseOut = (e: MouseEvent) => {
       // Exit-intent desktop : la souris sort par le haut de la fenêtre.
       if (e.clientY <= 0 && !e.relatedTarget) trigger()
@@ -65,11 +59,17 @@ export function FreeProgramPopup() {
       } catch {
         /* stockage indisponible */
       }
+      // Lu au déclenchement (callback, pas corps d'effet) → pas de cascade de rendus.
+      try {
+        setReduced(window.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches ?? false)
+      } catch {
+        /* matchMedia indisponible */
+      }
       setOpen(true)
       cleanup()
     }
 
-    timer = setTimeout(trigger, SHOW_DELAY_MS)
+    const timer = setTimeout(trigger, SHOW_DELAY_MS)
     document.addEventListener('mouseout', onMouseOut)
     return cleanup
   }, [excluded])
