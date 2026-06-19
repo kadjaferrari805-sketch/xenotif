@@ -97,8 +97,15 @@ export default function BoutiquePage() {
             {t('catalogue.seeAll')}
           </Link>
         </div>
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          {bestsellers.map((p, i) => <ProductCard key={p.id} product={p} index={i} />)}
+        {/* Mobile : carrousel horizontal full-bleed (swipe fluide, snap, défilement
+            rapide — pas de scroll-snap-stop pour laisser filer les flicks).
+            sm+ : grille e-commerce classique. */}
+        <div className="-mx-4 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-2 disc-scroll scroll-smooth sm:mx-0 sm:grid sm:gap-6 sm:overflow-visible sm:px-0 sm:pb-0 sm:snap-none sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          {bestsellers.map((p, i) => (
+            <div key={p.id} className="w-[78%] min-[440px]:w-[300px] shrink-0 snap-start sm:w-auto">
+              <ProductCard product={p} index={i} />
+            </div>
+          ))}
         </div>
       </section>
 
