@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation'
 import { useTranslations } from 'next-intl'
 import { Nav } from '@/components/layout/Nav'
 import { Footer } from '@/components/layout/Footer'
+import { FreeProgramPopup } from '@/components/home/FreeProgramPopup'
 
 // Décide d'afficher (ou non) le chrome marketing (Nav/Footer) selon la route.
 // Côté CLIENT via usePathname() — contrairement à headers() côté serveur, ce
@@ -28,6 +29,8 @@ export function ConditionalChrome({ children }: { children: ReactNode }) {
         {children}
       </main>
       <Footer />
+      {/* Pop-up lead magnet (timing/exit-intent, 1×/visiteur, exclut auth/checkout) */}
+      <FreeProgramPopup />
     </>
   )
 }
