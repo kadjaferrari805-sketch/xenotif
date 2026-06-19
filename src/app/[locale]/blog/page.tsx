@@ -1,10 +1,9 @@
 import type { Metadata } from 'next'
-import Image from 'next/image'
 import { getTranslations } from 'next-intl/server'
 import { Link } from '@/i18n/navigation'
 import { getAllPostsLocalized, getPostsByCategoryLocalized } from '@/lib/blog/posts.en'
 import type { BlogPost } from '@/lib/blog/posts'
-import { Tilt3D } from '@/components/premium/Tilt3D'
+import { BlogSearchableGrid } from '@/components/blog/BlogSearchableGrid'
 
 const SITE = 'https://xenotif.com'
 
@@ -34,21 +33,6 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 const CATEGORY_VALUES: Array<BlogPost['category'] | 'Tous'> = [
   'Tous', 'Musculation', 'Nutrition', 'Running', 'HIIT', 'Récupération', 'Matériel',
 ]
-
-const CATEGORY_COLORS: Record<string, string> = {
-  Musculation: 'bg-sport-orange/10 text-sport-orange border-sport-orange/20',
-  Nutrition: 'bg-green-500/10 text-green-400 border-green-500/20',
-  Running: 'bg-blue-500/10 text-blue-400 border-blue-500/20',
-  HIIT: 'bg-red-500/10 text-red-400 border-red-500/20',
-  Récupération: 'bg-purple-500/10 text-purple-400 border-purple-500/20',
-  Matériel: 'bg-sport-lime/10 text-sport-lime border-sport-lime/20',
-}
-
-function formatDate(isoDate: string, locale: string): string {
-  return new Date(isoDate).toLocaleDateString(locale === 'en' ? 'en-US' : 'fr-FR', {
-    day: 'numeric', month: 'long', year: 'numeric',
-  })
-}
 
 const VALID_CATEGORIES: BlogPost['category'][] = ['Musculation', 'Nutrition', 'Running', 'Récupération', 'Matériel', 'HIIT']
 
@@ -151,42 +135,7 @@ export default async function BlogPage({
             </Link>
           </div>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {posts.map(post => {
-              const colorClass = CATEGORY_COLORS[post.category] ?? 'bg-sport-orange/10 text-sport-orange border-sport-orange/20'
-              return (
-                <Tilt3D key={post.slug} max={13} className="relative h-full rounded-2xl">
-                <Link
-                  href={`/blog/${post.slug}`}
-                  className="group block h-full overflow-hidden rounded-2xl border border-sport-border bg-sport-card hover:border-sport-orange/30 transition-all duration-300 hover:shadow-xl hover:shadow-sport-orange/5"
-                >
-                  <div className="relative h-52 overflow-hidden">
-                    <Image src={post.coverImage} alt={post.title} fill className="object-cover transition-transform duration-500 group-hover:scale-105" style={{ objectPosition: post.coverPosition }} sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-sport-dark/80 via-transparent to-transparent" />
-                    <span className={`absolute top-3 left-3 text-xs font-bold px-2.5 py-1 rounded-full border ${colorClass}`}>
-                      {t(`categories.${post.category}`)}
-                    </span>
-                  </div>
-                  <div className="p-5">
-                    <h2 className="font-black text-white text-lg leading-snug mb-2 group-hover:text-sport-orange transition-colors line-clamp-2">{post.title}</h2>
-                    <p className="text-sport-gray text-sm leading-relaxed line-clamp-3 mb-4">{post.excerpt}</p>
-                    <div className="flex items-center justify-between text-xs text-sport-gray border-t border-sport-border pt-3">
-                      <div className="flex items-center gap-2">
-                        <div className="w-6 h-6 rounded-full bg-sport-orange/20 flex items-center justify-center text-sport-orange font-black text-xs">{post.author.charAt(0)}</div>
-                        <span>{post.author}</span>
-                      </div>
-                      <div className="flex items-center gap-3">
-                        <span>{formatDate(post.publishedAt, locale)}</span>
-                        <span className="text-sport-orange">•</span>
-                        <span>{t('readingTime', { minutes: post.readingMinutes })}</span>
-                      </div>
-                    </div>
-                  </div>
-                </Link>
-                </Tilt3D>
-              )
-            })}
-          </div>
+          <BlogSearchableGrid posts={posts} />
         )}
       </section>
 
