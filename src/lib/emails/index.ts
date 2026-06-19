@@ -431,6 +431,73 @@ export async function sendCancellationEmail({
   })
 }
 
+// Email de réactivation (win-back) — envoyé aux abonnés résiliés (status 'canceled')
+// par le cron /api/cron/reactivation. On rappelle ce qu'ils manquent + que leur
+// progression est sauvegardée, et on invite à réactiver. Aucun faux code promo.
+export async function sendReactivationEmail({
+  email, name, locale: rawLocale,
+}: {
+  email: string; name: string; locale?: string
+}) {
+  const locale = norm(rawLocale)
+  const en = locale === 'en'
+  const first = name ? name.split(' ')[0] : ''
+  const missing = en ? [
+    '🤖 Your personalized AI coach', '🏋️ The 10 disciplines & every program',
+    '📊 Progress tracking & statistics', '🎥 HD training videos', '🔥 Daily challenges, XP & badges',
+  ] : [
+    '🤖 Ton coach IA personnalisé', '🏋️ Les 10 disciplines & tous les programmes',
+    '📊 Le suivi & les statistiques de progression', '🎥 Les vidéos d\'entraînement HD', '🔥 Les défis quotidiens, l\'XP & les badges',
+  ]
+  const c = en ? {
+    subject: `We saved your spot 💪 — come back to Xenotif®`,
+    h1: `We miss you${first ? `, ${first}` : ''} 💪`,
+    intro: 'Your account and all your progress are still here, exactly where you left them. Whenever you\'re ready, you can pick up right where you stopped.',
+    missingTitle: 'Here\'s what\'s waiting for you:',
+    nudge: 'No card needed to look around — and reactivating takes one click. Your best shape is still ahead of you.',
+    cta: 'Reactivate my access →',
+    ps: 'Stopped for a reason? Just reply to this email — we read every message and we\'d love your feedback.',
+  } : {
+    subject: `On t'a gardé ta place 💪 — reviens sur Xenotif®`,
+    h1: `Tu nous manques${first ? `, ${first}` : ''} 💪`,
+    intro: 'Ton compte et toute ta progression sont toujours là, exactement où tu les as laissés. Dès que tu es prêt(e), tu peux reprendre là où tu t\'es arrêté(e).',
+    missingTitle: 'Voilà ce qui t\'attend :',
+    nudge: 'Pas besoin de carte pour jeter un œil — et réactiver, c\'est un clic. Ta meilleure forme est encore devant toi.',
+    cta: 'Réactiver mon accès →',
+    ps: 'Tu as arrêté pour une raison ? Réponds simplement à cet email — on lit chaque message et ton retour nous intéresse.',
+  }
+
+  await resend.emails.send({
+    from: FROM,
+    to: email,
+    subject: c.subject,
+    html: wrap(`
+      <h1 style="font-size:26px;font-weight:900;margin:0 0 8px;">
+        ${c.h1}
+      </h1>
+      <p style="color:#9CA3AF;font-size:15px;line-height:1.6;margin:0 0 24px;">
+        ${c.intro}
+      </p>
+
+      <div style="background:#111218;border:1px solid #1F2937;border-radius:16px;padding:24px;margin-bottom:24px;">
+        <p style="margin:0 0 12px;font-weight:700;color:#fff;">${c.missingTitle}</p>
+        <ul style="margin:0 0 20px;padding:0;list-style:none;color:#9CA3AF;font-size:14px;line-height:2.2;">
+          ${missing.map(f => `<li>${f}</li>`).join('')}
+        </ul>
+        <a href="${BASE_URL}/dashboard/abonnement"
+           style="display:inline-block;background:#F97316;color:#fff;padding:14px 28px;border-radius:50px;font-weight:700;font-size:14px;text-decoration:none;">
+          ${c.cta}
+        </a>
+        <p style="color:#6B7280;font-size:12px;margin:14px 0 0;">${c.nudge}</p>
+      </div>
+
+      <p style="color:#6B7280;font-size:13px;">
+        ${c.ps}
+      </p>
+    `, locale),
+  })
+}
+
 export async function sendAbandonedCartEmail({
   email, items, total, recoverUrl, locale: rawLocale,
 }: {
