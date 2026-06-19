@@ -7,6 +7,8 @@ import { PRODUCTS_DE } from './products.de'
 
 type ProductText = Pick<Product, 'name' | 'description' | 'longDescription' | 'features' | 'tags'> & {
   badge?: string | null
+  level?: string
+  duration?: string
 }
 
 const TEXT_EN: Record<string, ProductText> = {
@@ -158,6 +160,7 @@ const TEXT_EN: Record<string, ProductText> = {
     longDescription: 'The most complete muscle-gain program on the market. 84 sessions over 12 weeks with week-by-week load progression. Includes: detailed muscle split, personalized macro calculation by body type, recovery guide, 40+ exercises illustrated in HD video. Built-in progress tracking in Excel.',
     features: ['84 sessions over 12 weeks', '4-day/week split', 'Guided load progression', 'Nutrition plan + macros', 'HD videos included'],
     tags: ['muscle gain', 'strength', 'program', 'PDF'],
+    level: 'Intermediate', duration: '12 weeks',
   },
   d2: {
     name: 'Cutting Nutrition Plan — 8 Weeks',
@@ -166,6 +169,7 @@ const TEXT_EN: Record<string, ProductText> = {
     longDescription: 'The most downloaded cutting nutrition plan on the platform. 56 days of varied menus calculated by our certified nutritionist. Each meal is optimized to maintain satiety while creating the necessary caloric deficit. Simple, fast recipes (under 15 min). Vegan-compatible with a single selection.',
     features: ['56 days of menus', '40+ fitness recipes', 'Weekly shopping list', 'Personalized macros', 'Vegan compatible'],
     tags: ['nutrition', 'cutting', 'diet', 'PDF'],
+    level: 'All levels', duration: '8 weeks',
   },
   d3: {
     name: 'Fat-Burning HIIT Program — 6 Weeks',
@@ -174,6 +178,7 @@ const TEXT_EN: Record<string, ProductText> = {
     longDescription: 'The XENOTIF HIIT program is designed by our CrossFit Level 2 certified coach. 4 sessions per week of 20 to 30 minutes maximum, 100% bodyweight — no equipment required. The progressive build guarantees optimal adaptation without injury risk. Each session includes a built-in timer and demonstration videos.',
     features: ['24 sessions of 20–30 min', 'No equipment', 'Beginner → advanced', 'Built-in timer', 'HD demo videos'],
     tags: ['HIIT', 'fat-burning', 'bodyweight', 'cardio'],
+    level: 'Beginner to advanced', duration: '6 weeks',
   },
   d4: {
     name: 'Running Guide — From 5K to Marathon',
@@ -182,6 +187,7 @@ const TEXT_EN: Record<string, ProductText> = {
     longDescription: 'The XENOTIF running guide covers the full spectrum of the modern runner. Written by a certified athletics coach, it includes personalized plans for 4 distances, nutrition advice before/during/after a race, a 7-point anti-injury protocol and a proven mental preparation. 120 richly illustrated pages.',
     features: ['120 expert pages', '5K/10K/half/marathon plans', 'Race nutrition', 'Injury prevention', 'Competitor mindset'],
     tags: ['running', 'marathon', 'running', 'e-book'],
+    level: 'All levels', duration: '8 to 16 weeks',
   },
   c1: {
     name: 'Aerodynamic Road Bike Helmet',

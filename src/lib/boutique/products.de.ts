@@ -6,6 +6,8 @@ import { PRODUCTS, amazonSearchUrl, AMAZON_TAG_DE, type Product } from './produc
 
 type ProductText = Pick<Product, 'name' | 'description' | 'longDescription' | 'features' | 'tags'> & {
   badge?: string | null
+  level?: string
+  duration?: string
 }
 
 const TEXT_DE: Record<string, ProductText> = {
@@ -157,6 +159,7 @@ const TEXT_DE: Record<string, ProductText> = {
     longDescription: 'Das kompletteste Masseaufbau-Programm am Markt. 84 Einheiten über 12 Wochen mit Woche-für-Woche-Laststeigerung. Enthält: detaillierten Muskel-Split, personalisierte Makro-Berechnung nach Körpertyp, Erholungs-Leitfaden, 40+ Übungen in HD-Video illustriert. Integriertes Fortschritts-Tracking in Excel.',
     features: ['84 Einheiten über 12 Wochen', '4-Tage/Woche-Split', 'Geführte Laststeigerung', 'Ernährungsplan + Makros', 'HD-Videos inklusive'],
     tags: ['masseaufbau', 'kraft', 'programm', 'PDF'],
+    level: 'Fortgeschritten', duration: '12 Wochen',
   },
   d2: {
     name: 'Definitions-Ernährungsplan — 8 Wochen',
@@ -165,6 +168,7 @@ const TEXT_DE: Record<string, ProductText> = {
     longDescription: 'Der meistgeladene Definitions-Ernährungsplan der Plattform. 56 Tage abwechslungsreiche Menüs, berechnet von unserer zertifizierten Ernährungsberaterin. Jede Mahlzeit ist optimiert, um die Sättigung zu erhalten und gleichzeitig das nötige Kaloriendefizit zu schaffen. Einfache, schnelle Rezepte (unter 15 Min). Vegan-kompatibel mit einer einzigen Auswahl.',
     features: ['56 Tage Menüs', '40+ Fitness-Rezepte', 'Wöchentliche Einkaufsliste', 'Personalisierte Makros', 'Vegan-kompatibel'],
     tags: ['ernährung', 'definition', 'diät', 'PDF'],
+    level: 'Alle Level', duration: '8 Wochen',
   },
   d3: {
     name: 'Fettverbrennungs-HIIT-Programm — 6 Wochen',
@@ -173,6 +177,7 @@ const TEXT_DE: Record<string, ProductText> = {
     longDescription: 'Das XENOTIF-HIIT-Programm ist von unserem CrossFit-Level-2-zertifizierten Coach entwickelt. 4 Einheiten pro Woche à 20 bis maximal 30 Minuten, 100% Körpergewicht — keine Ausrüstung erforderlich. Der progressive Aufbau garantiert optimale Anpassung ohne Verletzungsrisiko. Jede Einheit enthält einen integrierten Timer und Demonstrationsvideos.',
     features: ['24 Einheiten à 20–30 Min', 'Keine Ausrüstung', 'Anfänger → Fortgeschritten', 'Integrierter Timer', 'HD-Demovideos'],
     tags: ['HIIT', 'fettverbrennung', 'körpergewicht', 'cardio'],
+    level: 'Anfänger bis Fortgeschritten', duration: '6 Wochen',
   },
   d4: {
     name: 'Lauf-Leitfaden — Von 5 km bis Marathon',
@@ -181,6 +186,7 @@ const TEXT_DE: Record<string, ProductText> = {
     longDescription: 'Der XENOTIF-Lauf-Leitfaden deckt das gesamte Spektrum des modernen Läufers ab. Geschrieben von einem zertifizierten Leichtathletik-Coach, enthält er personalisierte Pläne für 4 Distanzen, Ernährungsrat vor/während/nach einem Wettkampf, ein 7-Punkte-Anti-Verletzungs-Protokoll und eine bewährte mentale Vorbereitung. 120 reich illustrierte Seiten.',
     features: ['120 Experten-Seiten', 'Pläne 5 km/10 km/Halb/Marathon', 'Wettkampfernährung', 'Verletzungsprävention', 'Wettkämpfer-Mindset'],
     tags: ['running', 'marathon', 'laufen', 'e-book'],
+    level: 'Alle Level', duration: '8 bis 16 Wochen',
   },
   c1: {
     name: 'Aerodynamischer Rennrad-Helm',

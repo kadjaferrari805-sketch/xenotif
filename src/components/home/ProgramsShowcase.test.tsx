@@ -24,8 +24,8 @@ function makeProgram(over: Partial<Product> & { id: string; slug: string; name: 
 }
 
 const PROGRAMS: Product[] = [
-  makeProgram({ id: 'd1', slug: 'programme-prise-masse-12-semaines', name: 'Programme Prise de Masse — 12 Semaines' }),
-  makeProgram({ id: 'd3', slug: 'programme-hiit-6-semaines', name: 'Programme HIIT Brûle-Graisses — 6 Semaines' }),
+  makeProgram({ id: 'd1', slug: 'programme-prise-masse-12-semaines', name: 'Programme Prise de Masse — 12 Semaines', level: 'Intermédiaire', duration: '12 semaines' }),
+  makeProgram({ id: 'd3', slug: 'programme-hiit-6-semaines', name: 'Programme HIIT Brûle-Graisses — 6 Semaines', level: 'Débutant à avancé', duration: '6 semaines' }),
 ]
 
 describe('ProgramsShowcase', () => {
@@ -39,6 +39,14 @@ describe('ProgramsShowcase', () => {
     const links = screen.getAllByRole('link')
     expect(links.some((l) => l.getAttribute('href')?.includes('/boutique/programme-prise-masse-12-semaines'))).toBe(true)
     expect(links.some((l) => l.getAttribute('href')?.includes('/boutique/programme-hiit-6-semaines'))).toBe(true)
+  })
+
+  it('shows level and duration badges', () => {
+    renderWithIntl(<ProgramsShowcase programs={PROGRAMS} />)
+    expect(screen.getByText('Intermédiaire')).toBeInTheDocument()
+    expect(screen.getByText('12 semaines')).toBeInTheDocument()
+    expect(screen.getByText('Débutant à avancé')).toBeInTheDocument()
+    expect(screen.getByText('6 semaines')).toBeInTheDocument()
   })
 
   it('links « voir tous » to the catalogue', () => {
