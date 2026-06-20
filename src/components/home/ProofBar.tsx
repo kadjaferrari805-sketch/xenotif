@@ -52,8 +52,11 @@ export function ProofBar() {
       {/* subtle grid pattern */}
       <div aria-hidden="true" className="absolute inset-0 opacity-[0.03]" style={{backgroundImage: 'linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)', backgroundSize: '40px 40px'}} />
 
+      {/* Grille de stats en <div> (pas <dl>) : la structure animée (Tilt3D +
+          motion.div + icône + sous-libellé) ne respecte pas les contraintes de
+          contenu d'une liste de définition → on évite l'erreur a11y. */}
       <div className="max-w-6xl mx-auto relative" ref={ref}>
-        <dl className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4">
           {STAT_STYLE.map((stat, i) => (
             <Tilt3D key={labels[i].label} max={9} glare={false} className="relative">
             <motion.div
@@ -68,15 +71,15 @@ export function ProofBar() {
               >
                 <stat.Icon size={20} className={stat.color} />
               </div>
-              <dt className={`text-4xl font-black ${stat.color} tabular-nums`}>
+              <div className={`text-4xl font-black ${stat.color} tabular-nums`}>
                 <Counter end={stat.end} suffix={stat.suffix} decimal={stat.decimal} active={inView} />
-              </dt>
-              <dd className="text-xs font-bold text-white uppercase tracking-widest mt-1">{labels[i].label}</dd>
+              </div>
+              <div className="text-xs font-bold text-white uppercase tracking-widest mt-1">{labels[i].label}</div>
               <span className="text-[11px] text-sport-gray">{labels[i].sublabel}</span>
             </motion.div>
             </Tilt3D>
           ))}
-        </dl>
+        </div>
       </div>
     </section>
   )

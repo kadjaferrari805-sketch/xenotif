@@ -125,7 +125,7 @@ export default async function DisciplinePage({ params }: { params: Promise<{ slu
               <span className={`text-[10px] font-bold tracking-widest uppercase px-3 py-1.5 rounded-full ${COLOR_PILL[color]}`}>
                 {tag}
               </span>
-              <div className="flex gap-0.5" aria-label={t('ratingAria')}>
+              <div role="img" className="flex gap-0.5" aria-label={t('ratingAria')}>
                 {Array.from({ length: 5 }).map((_, i) => <Star key={i} size={12} aria-hidden="true" className="fill-sport-orange text-sport-orange" />)}
               </div>
               {content && (
