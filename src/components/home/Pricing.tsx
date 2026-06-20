@@ -8,6 +8,7 @@ import { CheckCircle, ArrowRight, Zap, Lock, ShieldCheck } from 'lucide-react'
 import { useRouter } from '@/i18n/navigation'
 import { SectionHeader } from '@/components/ui/SectionHeader'
 import { Tilt3D } from '@/components/premium/Tilt3D'
+import { Carousel } from '@/components/ui/Carousel'
 
 type PlanId = 'gratuit' | 'pro'
 type Period = 'monthly' | 'annual'
@@ -86,11 +87,15 @@ export function Pricing() {
           </button>
         </div>
 
-        <div ref={ref} className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-10">
+        {/* Carrousel défilant : flèches (desktop) + swipe (mobile). pt-5 → le badge
+            « -top-4 » du plan mis en avant n'est pas rogné par l'overflow du scroll. */}
+        <div ref={ref} className="mt-10">
+          <Carousel>
           {PLANS.map((plan, i) => {
             const tr = plans[i]
             return (
-              <Tilt3D key={plan.id} max={plan.highlight ? 16 : 12} className="relative h-full rounded-2xl">
+              <div key={plan.id} className="mr-6 w-[300px] shrink-0 pt-5 sm:w-[360px]">
+              <Tilt3D max={plan.highlight ? 16 : 12} className="relative h-full rounded-2xl">
               <motion.div
                 initial={{ opacity: 0, y: 28 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -158,8 +163,10 @@ export function Pricing() {
                 )}
               </motion.div>
               </Tilt3D>
+              </div>
             )
           })}
+          </Carousel>
         </div>
 
         <p className="text-center text-sport-gray text-xs mt-12 pt-8 border-t border-sport-border">
