@@ -41,8 +41,15 @@ export function Hero() {
     const v = videoRef.current
     if (!v) return
     try {
-      if (window.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches) return
-      const p = v.play()
+      // Perf mobile : la vidéo (preload="none") n'est PAS chargée sur petit écran,
+      // en mode économie de données, ni en reduced-motion. Le poster optimisé
+      // (priority) reste l'affichage premium → zéro téléchargement vidéo inutile,
+      // moins de blocage CPU (meilleurs TBT / Speed Index). Desktop : lecture normale.
+      const reduce = window.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches
+      const bigScreen = window.matchMedia?.('(min-width: 768px)')?.matches ?? true
+      const saveData = (navigator as { connection?: { saveData?: boolean } }).connection?.saveData
+      if (reduce || !bigScreen || saveData) return
+      const p = v.play() // preload="none" → play() déclenche le chargement à la demande
       if (p && typeof p.catch === 'function') p.catch(() => {})
     } catch {
       /* autoplay bloqué / jsdom → le poster reste affiché */
@@ -130,7 +137,7 @@ export function Hero() {
           muted
           loop
           playsInline
-          preload="auto"
+          preload="none"
           aria-hidden="true"
           onPlaying={() => setVideoReady(true)}
           className={`absolute inset-0 h-full w-full object-cover object-[center_40%] md:object-center transition-opacity duration-700 ${videoReady ? 'opacity-100' : 'opacity-0'}`}
