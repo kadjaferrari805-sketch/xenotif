@@ -57,7 +57,7 @@ export default async function BlogPage({
   const totalCount = getAllPostsLocalized(locale).length
 
   return (
-    <div className="min-h-screen bg-sport-dark">
+    <div className="min-h-screen bg-sport-dark overflow-x-hidden">
       {/* Hero */}
       <section className="relative overflow-hidden border-b border-sport-border py-20 px-6">
         <div
