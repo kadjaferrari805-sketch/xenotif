@@ -1077,13 +1077,7 @@
     "amazon": {
       "label": "Amazon-Auswahl",
       "featuredTitle": "Top-Produkte",
-      "featuredSub": "Unsere handverlesenen Favoriten.",
-      "bestRatedTitle": "Beste Fitness-Produkte auf Amazon",
-      "bestRatedSub": "Am besten von Käufern bewertet.",
-      "topSellersTitle": "Bestseller",
-      "topSellersSub": "Die meistverkaufte Fitness-Ausrüstung.",
-      "allTitle": "Alles auf Amazon",
-      "allSub": "{count} ausgewählte Fitness-Produkte, geliefert von Amazon."
+      "featuredSub": "Unsere handverlesenen Favoriten."
     }
   },
   "blog": {
