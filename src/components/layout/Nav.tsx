@@ -55,6 +55,14 @@ export function Nav() {
     return () => document.removeEventListener('keydown', handleKey)
   }, [isOpen])
 
+  // Nav premium : frosted (blur + transparence) + compactage une fois scrollé.
+  const [scrolled, setScrolled] = useState(false)
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8)
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
   // Profil de l'abonné (remplace « Mon espace »).
   const initials = (name || user?.email || 'U').slice(0, 2).toUpperCase()
 
@@ -64,11 +72,16 @@ export function Nav() {
       initial={{ y: -64, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-      // Barre d'en-tête au fond solide (sport-dark) — masque le contenu au scroll.
-      className="sticky top-0 z-50 transition-all duration-300 bg-sport-dark border-b border-white/10 pt-safe"
+      // Barre d'en-tête : solide en haut, frosted (blur + transparence + ombre)
+      // une fois scrollée → profondeur premium.
+      className={`sticky top-0 z-50 transition-all duration-300 pt-safe border-b ${
+        scrolled
+          ? 'bg-sport-dark/80 backdrop-blur-xl border-white/10 shadow-lg shadow-black/30'
+          : 'bg-sport-dark border-white/10'
+      }`}
     >
       {/* Logo (gauche) · liens centrés dans l'espace dispo (flex-1) · actions (droite) */}
-      <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between gap-4">
+      <div className={`max-w-6xl mx-auto px-6 flex items-center justify-between gap-4 transition-all duration-300 ${scrolled ? 'h-14' : 'h-16'}`}>
         {/* Logo */}
         <div className="shrink-0">
           <Logo href="/" size="sm" animated />
