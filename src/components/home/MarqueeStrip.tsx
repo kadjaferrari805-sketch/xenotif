@@ -15,7 +15,7 @@ export function MarqueeStrip() {
   return (
     <div
       aria-hidden="true"
-      className="w-full overflow-hidden bg-sport-orange py-3 border-y border-sport-orange/50"
+      className="w-full overflow-hidden bg-sport-orange-deep py-3 border-y border-sport-orange/40"
     >
       <div className="flex gap-0 whitespace-nowrap marquee-track">
         {all.map((item, i) => (
@@ -25,7 +25,7 @@ export function MarqueeStrip() {
           >
             <span>{item.emoji}</span>
             <span>{item.text}</span>
-            <span className="text-white/40 mx-1">·</span>
+            <span className="text-white/70 mx-1">·</span>
           </span>
         ))}
       </div>
