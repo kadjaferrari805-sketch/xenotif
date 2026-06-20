@@ -52,3 +52,50 @@ export function getDailyPushContent(
   const locale: PushLocale = rawLocale === 'en' ? 'en' : rawLocale === 'de' ? 'de' : 'fr'
   return DAILY_PUSH[locale][date.getDay()]
 }
+
+// ──────────────────────────────────────────────────────────────────────
+// Rappel du soir — 2ᵉ créneau quotidien (push uniquement, pas d'email).
+// Ton « avant de finir la journée » : as-tu bougé, garde ta série, note ta
+// progression. Une phrase par jour, change chaque jour, en fr / en / de.
+// ──────────────────────────────────────────────────────────────────────
+const EVENING_PUSH: Record<PushLocale, DailyPushContent[]> = {
+  fr: [
+    { title: '🌙 Dimanche soir', body: 'Prépare ta semaine : choisis ta séance de demain dans Xenotif.' },
+    { title: '🌙 Ta séance du jour ?', body: 'Pas encore bougé ? 15 minutes suffisent pour valider ta journée.' },
+    { title: '🌙 Garde ta série', body: 'Ne casse pas la chaîne — une courte séance ce soir et c\'est gagné.' },
+    { title: '🌙 Petit effort, grand impact', body: 'Même 10 min ce soir comptent. Ouvre Xenotif et bouge.' },
+    { title: '🌙 Avant de te reposer', body: 'Note ta journée et ta progression dans Xenotif.' },
+    { title: '🌙 Termine la semaine fort', body: 'Une dernière séance avant le week-end ? Tu ne le regretteras pas.' },
+    { title: '🌙 Récup\' du soir', body: 'Étire-toi 10 min et récupère — ton corps te dira merci demain.' },
+  ],
+  en: [
+    { title: '🌙 Sunday evening', body: 'Plan your week: pick tomorrow\'s session in Xenotif.' },
+    { title: '🌙 Trained today?', body: 'Not yet? 15 minutes is enough to make the day count.' },
+    { title: '🌙 Keep your streak', body: 'Don\'t break the chain — a short session tonight and you\'re set.' },
+    { title: '🌙 Small effort, big impact', body: 'Even 10 min tonight counts. Open Xenotif and move.' },
+    { title: '🌙 Before you rest', body: 'Log your day and progress in Xenotif.' },
+    { title: '🌙 End the week strong', body: 'One last session before the weekend? You won\'t regret it.' },
+    { title: '🌙 Evening recovery', body: 'Stretch for 10 min and recover — your body will thank you tomorrow.' },
+  ],
+  de: [
+    { title: '🌙 Sonntagabend', body: 'Plane deine Woche: wähle die Einheit für morgen in Xenotif.' },
+    { title: '🌙 Heute trainiert?', body: 'Noch nicht? 15 Minuten reichen, damit der Tag zählt.' },
+    { title: '🌙 Halte deine Serie', body: 'Brich die Kette nicht — eine kurze Einheit heute Abend genügt.' },
+    { title: '🌙 Kleiner Aufwand, große Wirkung', body: 'Auch 10 Min heute Abend zählen. Öffne Xenotif und beweg dich.' },
+    { title: '🌙 Bevor du ruhst', body: 'Halte deinen Tag und Fortschritt in Xenotif fest.' },
+    { title: '🌙 Stark ins Wochenende', body: 'Eine letzte Einheit vor dem Wochenende? Du wirst es nicht bereuen.' },
+    { title: '🌙 Erholung am Abend', body: 'Dehne dich 10 Min und erhol dich — dein Körper dankt es dir morgen.' },
+  ],
+}
+
+/**
+ * Renvoie le titre + le corps du rappel du soir, dans la langue demandée
+ * (fr par défaut). `date` est injectable pour les tests.
+ */
+export function getEveningPushContent(
+  rawLocale: string | null | undefined,
+  date: Date = new Date(),
+): DailyPushContent {
+  const locale: PushLocale = rawLocale === 'en' ? 'en' : rawLocale === 'de' ? 'de' : 'fr'
+  return EVENING_PUSH[locale][date.getDay()]
+}
