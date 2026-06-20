@@ -40,6 +40,12 @@ export function Catalogue() {
   const [discipline, setDiscipline] = useState('all')
   const [sort, setSort] = useState('popular')
 
+  // En vue « Tous », on ne rend qu'un APERÇU par discipline (le bouton « Voir
+  // tout » ouvre la liste complète de la discipline, et le compteur affiche le
+  // total réel). Évite de rendre ~160 cartes d'un coup → HTML catalogue bien
+  // plus léger (≈1,4 Mo → ~0,8 Mo) et page nettement plus rapide.
+  const PREVIEW_PER_DISCIPLINE = 8
+
   // 1. Recherche sur tout le catalogue.
   const searched = useMemo(() => {
     const q = search.trim().toLowerCase()
@@ -184,7 +190,7 @@ export function Catalogue() {
                 </div>
                 {/* Mobile : carrousel horizontal full-bleed · sm+ : grille */}
                 <div className="-mx-4 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-2 disc-scroll scroll-smooth sm:mx-0 sm:grid sm:gap-6 sm:overflow-visible sm:px-0 sm:pb-0 sm:snap-none sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-                  {items.map((p, i) => (
+                  {items.slice(0, PREVIEW_PER_DISCIPLINE).map((p, i) => (
                     <div key={p.id} className="w-[78%] min-[440px]:w-[300px] shrink-0 snap-start sm:w-auto">
                       <ProductCard product={p} index={i} />
                     </div>
