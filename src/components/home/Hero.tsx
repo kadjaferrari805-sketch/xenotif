@@ -133,7 +133,9 @@ export function Hero() {
         />
         <video
           ref={videoRef}
-          poster="/video/hero-poster.jpg"
+          // Pas d'attribut `poster` : l'<Image> optimisée (AVIF, priority) juste
+          // derrière sert déjà de visuel → évite un 2ᵉ téléchargement du JPG brut
+          // non optimisé (~96 KB). La vidéo reste opacity-0 jusqu'à sa lecture.
           muted
           loop
           playsInline
