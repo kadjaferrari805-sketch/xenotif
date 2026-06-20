@@ -318,6 +318,23 @@ const TEXT_EN: Record<string, ProductText> = {
     features: ['Secure ear-hooks', 'IPX7 waterproof', '40h battery', 'Deep bass', 'Bluetooth 5.3'],
     tags: ['earbuds', 'bluetooth', 'sport', 'running'],
   },
+  b1: { name: 'Boxing Gloves 12oz Synthetic Leather', badge: '🥊 Best Seller', description: '12oz boxing gloves, multi-layer padding, wrist support, breathable lining. Bag, sparring and fitness boxing.', features: ['12oz multi-layer', 'Wrist support', 'Breathable lining', 'Durable synthetic leather', 'Bag & sparring'], tags: ['boxing gloves', 'boxing', 'punching bag', 'sparring'] },
+  b2: { name: 'Boxing Hand Wraps 4.5m (pair)', badge: '🥊 Essential', description: 'Semi-elastic 4.5m wraps, protect wrists and joints. Velcro and thumb loop. A must before the gloves.', features: ['4.5m per wrap', 'Protect wrists & knuckles', 'Thumb loop', 'Wide velcro', 'Washable'], tags: ['hand wraps', 'wraps', 'boxing', 'protection'] },
+  b3: { name: 'Hanging Punching Bag 120cm + Chain', badge: '🥊 Pro', description: 'Filled 120cm punching bag, chain hanging and anti-twist swivel. Boxing, kickboxing and cardio.', features: ['120cm filled', 'Chain + swivel', 'Anti-twist', 'Strike-resistant', 'Boxing & cardio'], tags: ['punching bag', 'boxing', 'kickboxing', 'cardio'] },
+  b4: { name: 'Curved Focus Mitts (pair)', badge: '🥊 Duo', description: 'Pair of curved focus mitts, padded strike target. Train speed, precision and combos with a partner.', features: ['Curved multi-layer', 'Impact-absorbing', 'Breathable glove', 'Speed & precision', 'Partner work'], tags: ['focus mitts', 'punch mitts', 'boxing', 'precision'] },
+  b5: { name: 'Free-Standing Punching Bag', badge: '🥊 No Drilling', description: 'Free-standing punching bag, fillable base (water/sand), adjustable height. No drilling, ideal for flats.', features: ['Fillable water/sand base', 'Adjustable height', 'No drilling', 'Auto return', 'Ideal for flats'], tags: ['punching bag', 'free-standing', 'boxing', 'home'] },
+  m1: { name: 'Cork Yoga Blocks (set of 2)', badge: '🧘 Natural', description: 'Pair of natural cork blocks, non-slip, support poses and improve alignment.', features: ['Natural cork', 'Non-slip', 'Pose support', 'Alignment', 'Set of 2'], tags: ['yoga block', 'cork', 'yoga', 'stretching'] },
+  m2: { name: 'Yoga Stretching Strap 10 Loops', badge: '🧘 Flexibility', description: '10-loop stretching strap, gain flexibility safely. Ideal for yoga, mobility and rehab.', features: ['10 loops', 'Guided stretching', 'No partner', 'Non-stretch fabric', 'Yoga & mobility'], tags: ['stretching strap', 'yoga', 'mobility', 'flexibility'] },
+  m3: { name: 'Back-Pain Yoga Wheel', badge: '🧘 Mobility', description: 'Yoga wheel to open the chest, stretch the back and relieve tension. Holds up to 150 kg.', features: ['Opens the chest', 'Stretches the back', 'Up to 150 kg', 'Non-slip', 'Anti-tension'], tags: ['yoga wheel', 'back', 'mobility', 'stretching'] },
+  m4: { name: 'Mobility Loop Bands (set of 5)', badge: '🧘 Activation', description: 'Set of 5 mini loop bands, 5 resistances. Activation, hip/shoulder mobility, glutes and rehab.', features: ['5 resistances', 'No roll', 'Mobility & activation', 'Glutes', 'Pouch included'], tags: ['loop bands', 'mobility', 'glutes', 'activation'] },
+  m5: { name: 'Trigger Massage Balls (set of 3)', badge: '🧘 Recovery', description: 'Set of 3 balls of varying density, target tension points. Self-massage, mobility and recovery.', features: ['3 densities', 'Targeted self-massage', 'Tension points', 'Pre/post workout', 'Compact'], tags: ['massage ball', 'trigger point', 'mobility', 'recovery'] },
+  m6: { name: 'Pro Multi-Loop Stretching Band', badge: '🧘 Flexibility', description: 'Multi-loop stretching band for dance, gym and mobility. Guided, gentle flexibility progression.', features: ['Thick multi-loop', 'Guided stretching', 'Gentle progression', 'Dance & gym', 'Travel-friendly'], tags: ['stretching band', 'stretching', 'flexibility', 'mobility'] },
+  u1: { name: 'Pre-Workout Energy & Focus', badge: '⚡ Energy', description: 'Pre-workout booster: caffeine, beta-alanine and citrulline for energy, pump and focus. Sugar-free.', features: ['Caffeine + beta-alanine', 'L-citrulline', 'Energy & focus', 'Sugar-free', 'Fast-dissolving'], tags: ['pre-workout', 'caffeine', 'energy', 'nutrition'] },
+  u2: { name: 'Hydration Electrolytes (tablets)', badge: '💧 Endurance', description: 'Effervescent sodium/potassium/magnesium tablets. Rehydration and anti-cramp for endurance.', features: ['Sodium/potassium/magnesium', 'Anti-cramp', 'Rehydration', 'Effervescent', 'Low-calorie'], tags: ['electrolytes', 'hydration', 'endurance', 'nutrition'] },
+  u3: { name: 'Protein Bars 20g (box of 12)', badge: '🍫 Snack', description: '20g protein bars, low sugar, indulgent coating. The perfect post-training or on-the-go snack.', features: ['20g protein', 'Low sugar', 'Indulgent coating', 'Box of 12', 'On-the-go'], tags: ['protein bars', 'protein', 'snack', 'nutrition'] },
+  u4: { name: 'Omega-3 EPA/DHA (120 capsules)', badge: '🐟 Recovery', description: 'Concentrated EPA/DHA fish oil. Heart, joints and recovery. No aftertaste.', features: ['Concentrated EPA/DHA', 'Heart & joints', 'Recovery', 'No aftertaste', '120 capsules'], tags: ['omega-3', 'epa dha', 'recovery', 'nutrition'] },
+  w1: { name: 'Swim Hand Paddles (pair)', badge: '🏊 Technique', description: 'Hand paddles to strengthen the upper body and refine the catch. Adjustable straps.', features: ['Strengthens upper body', 'Refines the catch', 'Adjustable straps', 'Multiple sizes', 'Pool training'], tags: ['hand paddles', 'swimming', 'technique', 'strength'] },
+  w2: { name: 'Pull Buoy Leg Float', badge: '🏊 Core', description: 'Pull buoy between the thighs: isolates arm work and improves body position. Durable foam.', features: ['Isolates arm work', 'Improves position', 'Durable EVA foam', 'Core', 'Pool training'], tags: ['pull buoy', 'swimming', 'float', 'technique'] },
 }
 
 // Mots-clés de recherche en allemand → liens affiliés amazon.de pour la locale EN
@@ -358,6 +375,12 @@ const AMAZON_DE_KEYWORDS: Record<string, string> = {
   a6: 'isolierte trinkflasche 2l edelstahl',
   a7: 'protein shaker blender bottle',
   a8: 'sport kopfhörer bluetooth wasserdicht',
+  b1: 'boxhandschuhe 12oz', b2: 'boxbandagen handbandagen', b3: 'boxsack hängend 120cm',
+  b4: 'pratzen boxen handpratzen', b5: 'standboxsack freistehend',
+  m1: 'yogablöcke kork', m2: 'yoga gurt stretching schlaufen', m3: 'yoga rad rücken',
+  m4: 'mobility bänder loop', m5: 'massagebälle trigger point', m6: 'stretchband gymnastik schlaufen',
+  u1: 'pre workout booster', u2: 'elektrolyte tabletten', u3: 'proteinriegel 20g', u4: 'omega 3 epa dha kapseln',
+  w1: 'schwimm paddles handpaddles', w2: 'pull buoy schwimmen',
 }
 
 export const PRODUCTS_EN: Product[] = PRODUCTS.map((p) => {
