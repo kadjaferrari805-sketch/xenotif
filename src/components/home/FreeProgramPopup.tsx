@@ -142,7 +142,7 @@ export function FreeProgramPopup() {
           {/* Carte */}
           <motion.div
             {...cardAnim}
-            transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
             role="dialog"
             aria-modal="true"
             aria-labelledby="lead-popup-title"

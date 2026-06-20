@@ -22,7 +22,7 @@ export function XpLevelBar({ xp, levelKey, xpInLevel, xpForNext, compact = false
         <span className="text-sm font-black text-sport-orange tabular-nums">{xp} {t('xp')}</span>
       </div>
       <div className="w-full bg-sport-dark rounded-full h-2 overflow-hidden">
-        <motion.div className="bg-sport-orange h-2 rounded-full" initial={{ width: 0 }} whileInView={{ width: `${pct}%` }} viewport={{ once: true }} transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }} />
+        <motion.div className="bg-sport-orange h-2 rounded-full" initial={{ width: 0 }} whileInView={{ width: `${pct}%` }} viewport={{ once: true }} transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }} />
       </div>
       {xpForNext && (
         <p className="text-[11px] text-sport-gray mt-1.5 text-right">{xpInLevel}/{xpForNext} {t('xp')} · {t('nextLevel')}</p>

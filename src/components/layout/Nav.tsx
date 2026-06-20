@@ -71,7 +71,7 @@ export function Nav() {
       aria-label="Navigation principale"
       initial={{ y: -64, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+      transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
       // Barre d'en-tête : solide en haut, frosted (blur + transparence + ombre)
       // une fois scrollée → profondeur premium.
       className={`sticky top-0 z-50 transition-all duration-300 pt-safe border-b ${

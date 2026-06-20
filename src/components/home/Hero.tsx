@@ -223,7 +223,7 @@ export function Hero() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -12 }}
-                transition={{ duration: 0.5, delay: 0.55, ease: [0.22, 1, 0.36, 1] }}
+                transition={{ duration: 0.5, delay: 0.55, ease: [0.16, 1, 0.3, 1] }}
                 className={`text-3d text-3xl md:text-5xl lg:text-6xl font-black mb-8 leading-tight break-words ${SLIDE_STYLE[current].accentColor}`}
               >
                 {slides[current].accent}
