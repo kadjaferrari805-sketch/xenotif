@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { getTranslations } from 'next-intl/server'
+import { getTranslations, setRequestLocale } from 'next-intl/server'
 import { Link } from '@/i18n/navigation'
 import { Target, Sparkles, Repeat, Users, ArrowRight, ShoppingBag } from 'lucide-react'
 import { Tilt3D } from '@/components/premium/Tilt3D'
@@ -33,8 +33,10 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 const VALUE_ICONS = [Target, Sparkles, Repeat, Users]
 const VALUE_ACCENT = ['text-sport-orange', 'text-sport-blue', 'text-sport-lime', 'text-sport-orange']
 
-export default async function AboutPage() {
-  const t = await getTranslations('about')
+export default async function AboutPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  setRequestLocale(locale)
+  const t = await getTranslations({ locale, namespace: 'about' })
   const values = t.raw('values') as { title: string; text: string }[]
 
   return (
