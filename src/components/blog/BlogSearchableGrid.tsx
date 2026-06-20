@@ -75,11 +75,14 @@ export function BlogSearchableGrid({ posts }: { posts: BlogPost[] }) {
           </button>
         </div>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        // Mobile : carrousel horizontal full-bleed (swipe fluide, snap) ·
+        // sm+ : grille classique. Même logique que la boutique.
+        <div className="-mx-6 flex snap-x snap-mandatory gap-4 overflow-x-auto px-6 pb-2 disc-scroll scroll-smooth sm:mx-0 sm:grid sm:grid-cols-2 sm:gap-6 sm:overflow-visible sm:px-0 sm:pb-0 sm:snap-none lg:grid-cols-3">
           {filtered.map((post) => {
             const colorClass = CATEGORY_COLORS[post.category] ?? CATEGORY_COLORS.Musculation
             return (
-              <Tilt3D key={post.slug} max={13} className="relative h-full rounded-2xl">
+              <div key={post.slug} className="w-[82%] min-[440px]:w-[320px] shrink-0 snap-start sm:w-auto">
+              <Tilt3D max={13} className="relative h-full rounded-2xl">
                 <Link
                   href={`/blog/${post.slug}`}
                   className="group block h-full overflow-hidden rounded-2xl border border-sport-border bg-sport-card hover:border-sport-orange/30 transition-all duration-300 hover:shadow-xl hover:shadow-sport-orange/5"
@@ -108,6 +111,7 @@ export function BlogSearchableGrid({ posts }: { posts: BlogPost[] }) {
                   </div>
                 </Link>
               </Tilt3D>
+              </div>
             )
           })}
         </div>
