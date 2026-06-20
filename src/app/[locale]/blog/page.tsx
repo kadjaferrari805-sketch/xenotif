@@ -94,7 +94,8 @@ export default async function BlogPage({
       {/* Category Filter */}
       <section className="sticky top-16 z-40 bg-sport-dark/90 backdrop-blur-lg border-b border-sport-border">
         <div className="max-w-6xl mx-auto px-6 py-4">
-          <div className="flex gap-2 overflow-x-auto scrollbar-hide">
+          {/* Carrousel snap mobile : accroche par pastille, défilement net */}
+          <div className="flex gap-2 overflow-x-auto scrollbar-hide snap-x snap-proximity scroll-pl-6 scroll-smooth">
             {CATEGORY_VALUES.map(value => {
               const isActive = value === 'Tous' ? !activeCategory : activeCategory === value
               const href = value === 'Tous' ? '/blog' : `/blog?categorie=${encodeURIComponent(value)}`
@@ -103,7 +104,7 @@ export default async function BlogPage({
                 <Link
                   key={value}
                   href={href}
-                  className={`flex-shrink-0 px-4 py-2 rounded-full text-sm font-semibold transition-all ${
+                  className={`snap-start flex-shrink-0 px-4 py-2 rounded-full text-sm font-semibold transition-all ${
                     isActive
                       ? 'bg-sport-orange text-white shadow-lg shadow-sport-orange/20'
                       : 'bg-sport-card border border-sport-border text-sport-gray hover:text-white hover:border-sport-orange/30'
