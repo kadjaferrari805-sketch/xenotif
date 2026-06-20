@@ -5,10 +5,11 @@
 import { PRODUCTS, amazonSearchUrl, AMAZON_TAG_DE, type Product } from './products'
 import { PRODUCTS_DE } from './products.de'
 
-type ProductText = Pick<Product, 'name' | 'description' | 'longDescription' | 'features' | 'tags'> & {
+type ProductText = Pick<Product, 'name' | 'description' | 'features' | 'tags'> & {
   badge?: string | null
   level?: string
   duration?: string
+  longDescription?: string // optionnel : repli FR (non affiché sur les cartes affiliées)
 }
 
 const TEXT_EN: Record<string, ProductText> = {
@@ -261,6 +262,62 @@ const TEXT_EN: Record<string, ProductText> = {
     features: ['Chlorine-resistant fabric', 'Quick-drying', 'Snug low-drag fit', 'Flat seams', 'Long-lasting'],
     tags: ['swimsuit', 'swimming', 'chlorine-resistant', 'pool'],
   },
+  a1: {
+    name: 'Doorway Pull-Up Bar — No Screws',
+    badge: '🔥 Best Seller',
+    description: 'Multi-grip pull-up bar for door frames, no drilling. Up to 130 kg. Train back, biceps and core at home.',
+    features: ['No screws or drilling', 'Multi-grip', 'Up to 130 kg', 'Non-slip foam', 'Reinforced steel'],
+    tags: ['pull-up bar', 'back', 'strength', 'home'],
+  },
+  a2: {
+    name: 'Adjustable Foldable Weight Bench',
+    badge: '💪 Home Gym',
+    description: '7-position incline bench, foldable and compact. Ideal for bench press, curls and dumbbell work at home.',
+    features: ['7 incline positions', 'Foldable & compact', 'Up to 250 kg', 'High-density padding', 'Steel frame'],
+    tags: ['weight bench', 'dumbbells', 'bench press', 'home'],
+  },
+  a3: {
+    name: 'Wooden Gymnastic Rings + Straps',
+    badge: '🆕 New',
+    description: 'Pair of wooden rings with numbered adjustable straps. Dips, pull-ups, muscle-ups — calisthenics and CrossFit.',
+    features: ['Natural-grip wood', '4.5 m numbered straps', 'Quick-lock buckles', 'Dips & pull-ups', 'Muscle-ups'],
+    tags: ['gymnastic rings', 'calisthenics', 'crossfit', 'street workout'],
+  },
+  a4: {
+    name: 'Rotating Push-Up Bars (pair)',
+    badge: '🤲 Grip',
+    description: 'Rotating push-up bars that ease strain on wrists and shoulders. Greater range for sharper chest gains.',
+    features: ['Natural rotation', 'Wrist-friendly', 'Greater range', 'Non-slip base', 'Travel-friendly'],
+    tags: ['push-ups', 'push-up bars', 'chest', 'bodyweight'],
+  },
+  a5: {
+    name: '40L Gym Bag with Shoe Compartment',
+    badge: '🎒 Bestseller',
+    description: 'Durable 40L gym bag with vented shoe compartment and wet pocket. Ideal for the gym, travel and weekends.',
+    features: ['40 L', 'Vented shoe compartment', 'Waterproof wet pocket', 'Water-repellent fabric', 'Padded strap'],
+    tags: ['gym bag', 'duffel', 'travel', 'accessory'],
+  },
+  a6: {
+    name: 'Insulated Sports Bottle 2L Stainless',
+    badge: '💧 Hydration',
+    description: '2L double-wall stainless bottle, cold for 24h. Graduated, leak-proof, wide mouth. For long sessions.',
+    features: ['2 L double-wall', 'Cold for 24h', 'Graduated', 'Leak-proof', 'BPA-free'],
+    tags: ['water bottle', 'hydration', 'stainless', 'sport'],
+  },
+  a7: {
+    name: 'Protein Shaker 700ml Leak-Proof + Ball',
+    badge: '🥤 Essential',
+    description: '700ml shaker with stainless mixing ball, no clumps. Airtight leak-proof lid, graduations, BPA-free.',
+    features: ['Stainless ball, no clumps', '700 ml', 'Airtight leak-proof', 'oz/ml graduations', 'BPA-free'],
+    tags: ['shaker', 'protein', 'whey', 'nutrition'],
+  },
+  a8: {
+    name: 'Waterproof Sport Bluetooth Earbuds IPX7',
+    badge: '🎧 IPX7',
+    description: 'Wireless ear-hook earbuds, secure fit, IPX7 waterproof. 40h battery, deep bass. Running and lifting.',
+    features: ['Secure ear-hooks', 'IPX7 waterproof', '40h battery', 'Deep bass', 'Bluetooth 5.3'],
+    tags: ['earbuds', 'bluetooth', 'sport', 'running'],
+  },
 }
 
 // Mots-clés de recherche en allemand → liens affiliés amazon.de pour la locale EN
@@ -293,6 +350,14 @@ const AMAZON_DE_KEYWORDS: Record<string, string> = {
   s2: 'badekappe silikon',
   s3: 'schwimmbrett kickboard',
   s4: 'badeanzug schwimmen chlorresistent',
+  a1: 'klimmzugstange türrahmen ohne bohren',
+  a2: 'hantelbank verstellbar klappbar',
+  a3: 'turnringe holz gymnastik',
+  a4: 'liegestützgriffe drehbar',
+  a5: 'sporttasche schuhfach',
+  a6: 'isolierte trinkflasche 2l edelstahl',
+  a7: 'protein shaker blender bottle',
+  a8: 'sport kopfhörer bluetooth wasserdicht',
 }
 
 export const PRODUCTS_EN: Product[] = PRODUCTS.map((p) => {

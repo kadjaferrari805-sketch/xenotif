@@ -1072,6 +1072,17 @@
       "physicalShipped": "Your <o>physical products</o> will be shipped within 2-5 business days.",
       "continueShopping": "Continue shopping",
       "goDashboard": "Go to dashboard →"
+    },
+    "amazon": {
+      "label": "Amazon picks",
+      "featuredTitle": "Featured products",
+      "featuredSub": "Our hand-picked favorites right now.",
+      "bestRatedTitle": "Best fitness products on Amazon",
+      "bestRatedSub": "The highest-rated by buyers.",
+      "topSellersTitle": "Best sellers",
+      "topSellersSub": "The top-selling fitness gear right now.",
+      "allTitle": "All on Amazon",
+      "allSub": "{count} hand-picked fitness products, shipped by Amazon."
     }
   },
   "blog": {
