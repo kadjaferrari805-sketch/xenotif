@@ -4,9 +4,40 @@ import { useMemo } from 'react'
 import { useTranslations, useLocale } from 'next-intl'
 import { motion } from 'framer-motion'
 import { Link } from '@/i18n/navigation'
-import { Zap, ShoppingBag, Star, TrendingUp, ArrowRight, LayoutGrid } from 'lucide-react'
+import { Zap, ShoppingBag, Star, TrendingUp, ArrowRight, LayoutGrid, Sparkles, Award, Flame, type LucideIcon } from 'lucide-react'
 import { ProductCard } from '@/components/boutique/ProductCard'
+import { Carousel } from '@/components/ui/Carousel'
 import { getProductsLocalized } from '@/lib/boutique/products.en'
+import type { Product } from '@/lib/boutique/products'
+
+// Rangée premium « Sélection Amazon » : en-tête (icône + label + titre + sous-titre)
+// + carrousel 3D de cartes affiliées (chaque carte → lien Amazon direct, tag localisé).
+function AmazonRow({ icon: Icon, label, title, subtitle, products }: {
+  icon: LucideIcon; label: string; title: string; subtitle: string; products: Product[]
+}) {
+  if (products.length === 0) return null
+  return (
+    <section className="mx-auto max-w-7xl px-4 sm:px-6 py-9">
+      <div className="mb-6 flex items-center gap-3">
+        <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-sport-orange/30 bg-sport-orange/15 text-sport-orange">
+          <Icon size={19} aria-hidden="true" />
+        </span>
+        <div className="min-w-0">
+          <p className="text-[11px] font-black uppercase tracking-wider text-sport-orange">{label}</p>
+          <h2 className="text-xl sm:text-2xl font-black text-white leading-tight">{title}</h2>
+          <p className="text-xs text-sport-gray">{subtitle}</p>
+        </div>
+      </div>
+      <Carousel>
+        {products.map((p, i) => (
+          <div key={p.id} className="mr-4 w-[260px] shrink-0 sm:w-[280px]">
+            <ProductCard product={p} index={i} source="boutique_amazon" />
+          </div>
+        ))}
+      </Carousel>
+    </section>
+  )
+}
 
 export default function BoutiquePage() {
   const t = useTranslations('boutique')
@@ -18,6 +49,15 @@ export default function BoutiquePage() {
     () => [...products].sort((a, b) => b.reviews - a.reviews).slice(0, 8),
     [products],
   )
+
+  // ─── Sélections Amazon (affiliation) — chaque section ≥ 10 produits ───
+  const affiliate = useMemo(() => products.filter((p) => p.isAffiliate && p.amazon), [products])
+  const featured = useMemo(() => affiliate.filter((p) => p.featured), [affiliate])
+  const bestRated = useMemo(
+    () => [...affiliate].sort((a, b) => b.rating - a.rating || b.reviews - a.reviews).slice(0, 12),
+    [affiliate],
+  )
+  const topSellers = useMemo(() => [...affiliate].sort((a, b) => b.reviews - a.reviews).slice(0, 12), [affiliate])
 
   const stats = [
     { icon: ShoppingBag, label: t('stats.products'), value: `${products.length}+` },
@@ -108,6 +148,14 @@ export default function BoutiquePage() {
           ))}
         </div>
       </section>
+
+      {/* ─── Sélections Amazon (affiliation) ─── */}
+      <div className="border-t border-sport-border bg-gradient-to-b from-sport-card/30 to-transparent">
+        <AmazonRow icon={Sparkles} label={t('amazon.label')} title={t('amazon.featuredTitle')} subtitle={t('amazon.featuredSub')} products={featured} />
+        <AmazonRow icon={Award} label={t('amazon.label')} title={t('amazon.bestRatedTitle')} subtitle={t('amazon.bestRatedSub')} products={bestRated} />
+        <AmazonRow icon={Flame} label={t('amazon.label')} title={t('amazon.topSellersTitle')} subtitle={t('amazon.topSellersSub')} products={topSellers} />
+        <AmazonRow icon={ShoppingBag} label={t('amazon.label')} title={t('amazon.allTitle')} subtitle={t('amazon.allSub', { count: affiliate.length })} products={affiliate} />
+      </div>
 
       {/* ─── CTA final → catalogue ─── */}
       <section className="mx-auto max-w-7xl px-4 sm:px-6 pb-16">

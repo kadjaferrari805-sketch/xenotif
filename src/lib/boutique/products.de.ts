@@ -4,10 +4,11 @@
 
 import { PRODUCTS, amazonSearchUrl, AMAZON_TAG_DE, type Product } from './products'
 
-type ProductText = Pick<Product, 'name' | 'description' | 'longDescription' | 'features' | 'tags'> & {
+type ProductText = Pick<Product, 'name' | 'description' | 'features' | 'tags'> & {
   badge?: string | null
   level?: string
   duration?: string
+  longDescription?: string // optionnel : repli FR (non affiché sur les cartes affiliées)
 }
 
 const TEXT_DE: Record<string, ProductText> = {
@@ -260,6 +261,62 @@ const TEXT_DE: Record<string, ProductText> = {
     features: ['Chlorbeständiges Gewebe', 'Schnelltrocknend', 'Eng anliegend, widerstandsarm', 'Flache Nähte', 'Langlebig'],
     tags: ['badeanzug', 'schwimmen', 'chlorbeständig', 'becken'],
   },
+  a1: {
+    name: 'Türrahmen-Klimmzugstange ohne Bohren',
+    badge: '🔥 Bestseller',
+    description: 'Multigriff-Klimmzugstange für Türrahmen, ohne Bohren. Bis 130 kg. Rücken, Bizeps und Core zu Hause trainieren.',
+    features: ['Ohne Schrauben/Bohren', 'Multigriff', 'Bis 130 kg', 'Rutschfester Schaum', 'Verstärkter Stahl'],
+    tags: ['klimmzugstange', 'rücken', 'kraft', 'zuhause'],
+  },
+  a2: {
+    name: 'Verstellbare Klappbare Hantelbank',
+    badge: '💪 Home Gym',
+    description: 'Schrägbank mit 7 Positionen, klappbar und kompakt. Ideal für Bankdrücken, Curls und Hantelübungen zu Hause.',
+    features: ['7 Neigungen', 'Klappbar & kompakt', 'Bis 250 kg', 'Hochdichte Polsterung', 'Stahlrahmen'],
+    tags: ['hantelbank', 'hanteln', 'bankdrücken', 'zuhause'],
+  },
+  a3: {
+    name: 'Turnringe aus Holz + Gurte',
+    badge: '🆕 Neu',
+    description: 'Paar Holzringe mit nummerierten, verstellbaren Gurten. Dips, Klimmzüge, Muscle-ups — Calisthenics und CrossFit.',
+    features: ['Holz mit natürlichem Grip', '4,5 m nummerierte Gurte', 'Schnellverschluss', 'Dips & Klimmzüge', 'Muscle-ups'],
+    tags: ['turnringe', 'calisthenics', 'crossfit', 'street workout'],
+  },
+  a4: {
+    name: 'Drehbare Liegestützgriffe (Paar)',
+    badge: '🤲 Grip',
+    description: 'Drehbare Liegestützgriffe, schonen Handgelenke und Schultern. Größere Amplitude für definierte Brust.',
+    features: ['Natürliche Rotation', 'Handgelenkschonend', 'Größere Amplitude', 'Rutschfeste Basis', 'Mobil'],
+    tags: ['liegestütze', 'push-up', 'brust', 'körpergewicht'],
+  },
+  a5: {
+    name: 'Sporttasche 40L mit Schuhfach',
+    badge: '🎒 Bestseller',
+    description: 'Robuste 40-L-Sporttasche mit belüftetem Schuhfach und Nassfach. Ideal für Gym, Reise und Wochenende.',
+    features: ['40 L', 'Belüftetes Schuhfach', 'Wasserdichtes Nassfach', 'Wasserabweisend', 'Gepolsterter Gurt'],
+    tags: ['sporttasche', 'gym bag', 'reise', 'zubehör'],
+  },
+  a6: {
+    name: 'Isolierte Sport-Trinkflasche 2L Edelstahl',
+    badge: '💧 Hydration',
+    description: '2-L-Edelstahlflasche, doppelwandig, 24h kalt. Skaliert, auslaufsicher, weite Öffnung. Für lange Einheiten.',
+    features: ['2 L doppelwandig', '24h kalt', 'Skaliert', 'Auslaufsicher', 'BPA-frei'],
+    tags: ['trinkflasche', 'hydration', 'edelstahl', 'sport'],
+  },
+  a7: {
+    name: 'Protein-Shaker 700ml Auslaufsicher + Ball',
+    badge: '🥤 Essenziell',
+    description: '700-ml-Shaker mit Edelstahl-Mixball, klumpenfrei. Luftdichter, auslaufsicherer Deckel, Skala, BPA-frei.',
+    features: ['Edelstahlball, klumpenfrei', '700 ml', 'Luftdicht auslaufsicher', 'oz/ml-Skala', 'BPA-frei'],
+    tags: ['shaker', 'protein', 'whey', 'ernährung'],
+  },
+  a8: {
+    name: 'Wasserdichte Sport-Bluetooth-Kopfhörer IPX7',
+    badge: '🎧 IPX7',
+    description: 'Kabellose Ohrbügel-Kopfhörer, sicherer Sitz, IPX7 wasserdicht. 40h Akku, tiefe Bässe. Laufen und Krafttraining.',
+    features: ['Sichere Ohrbügel', 'IPX7 wasserdicht', '40h Akku', 'Tiefe Bässe', 'Bluetooth 5.3'],
+    tags: ['kopfhörer', 'bluetooth', 'sport', 'laufen'],
+  },
 }
 
 // Mots-clés de recherche en allemand → liens affiliés amazon.de pour la locale DE.
@@ -291,6 +348,14 @@ const AMAZON_DE_KEYWORDS: Record<string, string> = {
   s2: 'badekappe silikon',
   s3: 'schwimmbrett kickboard',
   s4: 'badeanzug schwimmen chlorresistent',
+  a1: 'klimmzugstange türrahmen ohne bohren',
+  a2: 'hantelbank verstellbar klappbar',
+  a3: 'turnringe holz gymnastik',
+  a4: 'liegestützgriffe drehbar',
+  a5: 'sporttasche schuhfach',
+  a6: 'isolierte trinkflasche 2l edelstahl',
+  a7: 'protein shaker blender bottle',
+  a8: 'sport kopfhörer bluetooth wasserdicht',
 }
 
 export const PRODUCTS_DE: Product[] = PRODUCTS.map((p) => {
