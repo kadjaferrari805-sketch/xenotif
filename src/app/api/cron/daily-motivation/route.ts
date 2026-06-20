@@ -16,27 +16,43 @@ export async function GET(request: Request) {
 
   const supabase = createAdminClient()
 
-  const { data: subscribers, error } = await supabase
+  // ── PUSH quotidien : TOUS les appareils enregistrés (push natif Expo + Web Push
+  //    PWA), quel que soit l'abonnement. Inclut donc les essais gratuits 7 j
+  //    (app-level, sans ligne `subscriptions`) et les comptes non abonnés.
+  //    Seuls les utilisateurs ayant activé les notifications ont un token ici, donc
+  //    élargir la cible n'envoie rien à ceux qui n'ont pas opté. ──
+  const [nativeRes, webRes] = await Promise.all([
+    supabase.from('push_tokens').select('user_id'),
+    supabase.from('web_push_subscriptions').select('user_id'),
+  ])
+  if (nativeRes.error) console.error('[daily-motivation] push_tokens query error:', nativeRes.error)
+  if (webRes.error) console.error('[daily-motivation] web_push_subscriptions query error:', webRes.error)
+  const deviceUserIds = Array.from(new Set<string>([
+    ...(nativeRes.data ?? []).map((r: { user_id: string }) => r.user_id),
+    ...(webRes.data ?? []).map((r: { user_id: string }) => r.user_id),
+  ]))
+
+  // ── EMAIL quotidien : abonnés actifs / en essai Stripe. ──
+  const { data: subscribers, error: subErr } = await supabase
     .from('subscriptions')
     .select('user_id, status')
     .in('status', ['active', 'trialing'])
+  if (subErr) {
+    // On n'interrompt pas : le push doit partir même si la table abonnements échoue.
+    console.error('[daily-motivation] subscriptions query error:', subErr)
+  }
+  const subIds = (subscribers ?? []).map((s: { user_id: string }) => s.user_id)
 
-  if (error) {
-    console.error('[daily-motivation] subscriptions query error:', error)
-    return NextResponse.json({ error: error.message }, { status: 500 })
+  if (deviceUserIds.length === 0 && subIds.length === 0) {
+    return NextResponse.json({ sent: 0, pushed: 0, devices: 0 })
   }
 
-  if (!subscribers || subscribers.length === 0) {
-    return NextResponse.json({ sent: 0 })
-  }
-
-  const userIds = subscribers.map((s: { user_id: string }) => s.user_id)
-
-  // Prénom (optionnel) depuis profiles
+  // Profils (prénom + locale) pour l'union des destinataires (push ∪ email).
+  const allIds = Array.from(new Set<string>([...deviceUserIds, ...subIds]))
   const { data: profiles } = await supabase
     .from('profiles')
     .select('id, full_name, locale')
-    .in('id', userIds)
+    .in('id', allIds)
   const nameById = new Map<string, string | null>(
     (profiles ?? []).map((p: { id: string; full_name: string | null }) => [p.id, p.full_name])
   )
@@ -44,46 +60,49 @@ export async function GET(request: Request) {
     (profiles ?? []).map((p: { id: string; locale: string | null }) => [p.id, p.locale ?? 'fr'])
   )
 
-  // Email depuis auth.users (source de vérité — toujours présent, contrairement à profiles.email)
-  const wanted = new Set(userIds)
+  // Email depuis auth.users (source de vérité) — uniquement pour les abonnés à emailer.
+  const wanted = new Set(subIds)
   const emailById = new Map<string, string>()
-  for (let page = 1; page <= 25; page++) {
-    const { data: list, error: listErr } = await supabase.auth.admin.listUsers({ page, perPage: 200 })
-    if (listErr) {
-      console.error('[daily-motivation] listUsers error:', listErr)
-      break
+  if (wanted.size > 0) {
+    for (let page = 1; page <= 25; page++) {
+      const { data: list, error: listErr } = await supabase.auth.admin.listUsers({ page, perPage: 200 })
+      if (listErr) {
+        console.error('[daily-motivation] listUsers error:', listErr)
+        break
+      }
+      for (const u of list.users) {
+        if (u.email && wanted.has(u.id)) emailById.set(u.id, u.email)
+      }
+      if (list.users.length < 200) break
     }
-    for (const u of list.users) {
-      if (u.email && wanted.has(u.id)) emailById.set(u.id, u.email)
-    }
-    if (list.users.length < 200) break
   }
 
   let sent = 0
   let pushed = 0
   const errors: string[] = []
 
-  for (const userId of userIds) {
-    const locale = localeById.get(userId) ?? 'fr'
-
-    // Email (si on connaît l'adresse)
+  // Email → abonnés actifs / en essai.
+  for (const userId of subIds) {
     const email = emailById.get(userId)
-    if (email) {
-      try {
-        await sendDailyMotivationEmail({ email, name: nameById.get(userId) ?? '', locale })
-        sent++
-      } catch (e) {
-        errors.push(`email ${email}: ${e}`)
-      }
+    if (!email) continue
+    const locale = localeById.get(userId) ?? 'fr'
+    try {
+      await sendDailyMotivationEmail({ email, name: nameById.get(userId) ?? '', locale })
+      sent++
+    } catch (e) {
+      errors.push(`email ${email}: ${e}`)
     }
+  }
 
-    // Push (natif Expo + Web Push PWA ; ne fait rien si l'utilisateur n'a aucun appareil)
-    // Contenu qui change chaque jour (comme l'email et les cartes in-app).
-    const { title: pushTitle, body: pushBody } = getDailyPushContent(locale)
+  // Push → TOUS les appareils enregistrés (natif Expo + Web Push PWA).
+  // Contenu qui change chaque jour (comme l'email et les cartes in-app).
+  for (const userId of deviceUserIds) {
+    const locale = localeById.get(userId) ?? 'fr'
+    const { title, body } = getDailyPushContent(locale)
     try {
       pushed += await sendPushToUser(userId, {
-        title: pushTitle,
-        body: pushBody,
+        title,
+        body,
         data: { type: 'daily_motivation' },
       })
     } catch (e) {
@@ -91,8 +110,8 @@ export async function GET(request: Request) {
     }
     try {
       pushed += await sendWebPushToUser(userId, {
-        title: pushTitle,
-        body: pushBody,
+        title,
+        body,
         url: '/dashboard/notifications',
         tag: 'daily_motivation',
       })
@@ -101,6 +120,6 @@ export async function GET(request: Request) {
     }
   }
 
-  console.log(`[daily-motivation] emails=${sent} push=${pushed} errors=${errors.length}`)
-  return NextResponse.json({ sent, pushed, errors })
+  console.log(`[daily-motivation] emails=${sent} push=${pushed} devices=${deviceUserIds.length} errors=${errors.length}`)
+  return NextResponse.json({ sent, pushed, devices: deviceUserIds.length, errors })
 }
