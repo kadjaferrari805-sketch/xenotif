@@ -80,7 +80,7 @@ export function Catalogue() {
   const shown = discipline === 'all' ? total : flat.length
 
   return (
-    <div className="min-h-screen bg-sport-dark">
+    <div className="min-h-screen bg-sport-dark overflow-x-hidden">
       {/* Hero éditorial */}
       <section className="relative overflow-hidden pt-24 pb-9">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(255,69,0,0.15),transparent)]" />
@@ -178,18 +178,28 @@ export function Catalogue() {
                     {t('catalogue.seeAll')}
                   </button>
                 </div>
-                <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-                  {items.map((p, i) => <ProductCard key={p.id} product={p} index={i} />)}
+                {/* Mobile : carrousel horizontal full-bleed · sm+ : grille */}
+                <div className="-mx-4 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-2 disc-scroll scroll-smooth sm:mx-0 sm:grid sm:gap-6 sm:overflow-visible sm:px-0 sm:pb-0 sm:snap-none sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                  {items.map((p, i) => (
+                    <div key={p.id} className="w-[78%] min-[440px]:w-[300px] shrink-0 snap-start sm:w-auto">
+                      <ProductCard product={p} index={i} />
+                    </div>
+                  ))}
                 </div>
               </section>
             ))}
           </div>
         ) : (
-          // Mode « un sport » : grille filtrée
+          // Mode « un sport » : liste filtrée
           <>
             <h2 className="text-2xl font-black text-white mb-6 border-b border-sport-border pb-3">{t(`disciplinesFilter.${discipline}`)}</h2>
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-              {flat.map((p, i) => <ProductCard key={p.id} product={p} index={i} />)}
+            {/* Mobile : carrousel horizontal full-bleed · sm+ : grille */}
+            <div className="-mx-4 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-2 disc-scroll scroll-smooth sm:mx-0 sm:grid sm:gap-6 sm:overflow-visible sm:px-0 sm:pb-0 sm:snap-none sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+              {flat.map((p, i) => (
+                <div key={p.id} className="w-[78%] min-[440px]:w-[300px] shrink-0 snap-start sm:w-auto">
+                  <ProductCard product={p} index={i} />
+                </div>
+              ))}
             </div>
           </>
         )}
