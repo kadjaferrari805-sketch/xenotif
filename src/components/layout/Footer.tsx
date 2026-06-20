@@ -48,7 +48,7 @@ export function Footer() {
       <div className="bg-sport-card border-t border-sport-border py-16 px-6">
         <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
           {/* Brand */}
-          <div>
+          <div data-reveal>
             <div className="mb-5">
               <Logo href="/" size="sm" />
             </div>
@@ -79,7 +79,7 @@ export function Footer() {
           </div>
 
           {/* Disciplines */}
-          <div>
+          <div data-reveal>
             <h3 className="text-xs font-bold text-white uppercase tracking-widest mb-5">{t('disciplines')}</h3>
             <ul className="flex flex-col gap-2.5">
               {DISC_LINKS.map((link) => (
@@ -93,7 +93,7 @@ export function Footer() {
           </div>
 
           {/* Programmes */}
-          <div>
+          <div data-reveal>
             <h3 className="text-xs font-bold text-white uppercase tracking-widest mb-5">{t('programmes')}</h3>
             <ul className="flex flex-col gap-2.5">
               {PROG_LINKS.map((link) => (
@@ -107,7 +107,7 @@ export function Footer() {
           </div>
 
           {/* Informations */}
-          <div>
+          <div data-reveal>
             <h3 className="text-xs font-bold text-white uppercase tracking-widest mb-5">{t('informations')}</h3>
             <ul className="flex flex-col gap-2.5">
               {INFO_LINKS.map((link) => (
