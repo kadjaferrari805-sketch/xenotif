@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect, useRef } from 'react'
-import { motion, AnimatePresence, useMotionValue, useSpring } from 'framer-motion'
+import { motion, AnimatePresence, useMotionValue, useSpring, useScroll, useTransform, useReducedMotion } from 'framer-motion'
 import { useTranslations } from 'next-intl'
 import Image from 'next/image'
 import { Link } from '@/i18n/navigation'
@@ -101,6 +101,13 @@ export function Hero() {
   const my = useMotionValue(0)
   const px = useSpring(mx, { stiffness: 120, damping: 30 })
   const py = useSpring(my, { stiffness: 120, damping: 30 })
+  // Parallaxe au scroll : le fond se décale un peu plus lentement que le contenu
+  // → profondeur cinématique. 100 % GPU (transform), désactivée en reduced-motion.
+  const reduce = useReducedMotion()
+  const heroRef = useRef<HTMLElement>(null)
+  const { scrollYProgress } = useScroll({ target: heroRef, offset: ['start start', 'end start'] })
+  const scrollParallax = useTransform(scrollYProgress, [0, 1], [0, reduce ? 0 : 90])
+  const bgY = useTransform([py, scrollParallax], (v: number[]) => (v[0] ?? 0) + (v[1] ?? 0))
   function handleParallax(e: React.MouseEvent<HTMLElement>) {
     const r = e.currentTarget.getBoundingClientRect()
     mx.set(((e.clientX - r.left) / r.width - 0.5) * 28)
@@ -109,6 +116,7 @@ export function Hero() {
 
   return (
     <section
+      ref={heroRef}
       aria-label={t('aria.welcome')}
       className="relative h-screen min-h-[600px] overflow-hidden"
       onMouseEnter={() => setPaused(true)}
@@ -124,7 +132,7 @@ export function Hero() {
           Le poster optimisé est peint immédiatement (LCP) ; la vidéo se fond
           par-dessus dès qu'elle joue. Si l'autoplay est bloqué ou que
           prefers-reduced-motion est actif, le poster reste affiché. */}
-      <motion.div className="absolute -inset-10 z-0" style={{ x: px, y: py }}>
+      <motion.div className="absolute -inset-10 z-0" style={{ x: px, y: bgY }}>
         <Image
           src="/video/hero-poster.jpg"
           alt=""
