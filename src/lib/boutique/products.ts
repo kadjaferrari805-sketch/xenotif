@@ -103,7 +103,7 @@ export const PRODUCTS: Product[] = [
     brand: 'Reebok',
     description: 'Corde à sauter câble acier revêtu, roulements à billes aluminium. Réglable 2,5—3,5m. Parfaite pour HIIT et boxe.',
     longDescription: 'La corde à sauter Reebok Speed est conçue pour les athlètes CrossFit et boxeurs. Câble acier ultra-léger, roulements à billes de précision pour une rotation fluide à haute vitesse. Poignées ergonomiques en aluminium brossé. Idéale pour double-unders et HIIT intensif.',
-    type: 'physical', price_cents: 2999, stripe_price_id: 'price_corde_sauter',
+    type: 'physical', price_cents: 1799, stripe_price_id: 'price_corde_sauter',
     images: ['https://images.pexels.com/photos/6390232/pexels-photo-6390232.jpeg?auto=compress&cs=tinysrgb&w=800'],
     badge: '⚡ Pro', category: 'Équipements', rating: 4.5, reviews: 892, inStock: true,
     tags: ['corde à sauter', 'cardio', 'crossfit', 'boxe'],
@@ -292,7 +292,7 @@ export const PRODUCTS: Product[] = [
     brand: 'XENOTIF',
     description: 'Short 4-way stretch, Dry-Fit moisture-wicking. Poche zippée. Tailles S-XXL. Noir, gris, marine.',
     longDescription: 'Conçu pour les athlètes qui ne font aucun compromis sur la performance. Le tissu 4-way stretch épouse parfaitement le corps sans contraindre les mouvements. La technologie Dry-Fit évacue la transpiration 3x plus vite que le coton. Poche zippée latérale sécurisée pour smartphone. Coutures renforcées résistantes aux lavages intensifs.',
-    type: 'physical', price_cents: 3499, stripe_price_id: 'price_short_homme',
+    type: 'physical', price_cents: 2499, stripe_price_id: 'price_short_homme',
     images: [
       'https://images.pexels.com/photos/4803921/pexels-photo-4803921.jpeg?auto=compress&cs=tinysrgb&w=800',
     ],
