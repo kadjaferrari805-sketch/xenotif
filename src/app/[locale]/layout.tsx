@@ -13,6 +13,7 @@ import { MetaPixelRouteTracker } from '@/components/analytics/MetaPixel'
 import { ServiceWorkerRegister } from '@/components/ServiceWorkerRegister'
 import { SmoothScroll } from '@/components/premium/SmoothScroll'
 import { ScrollReveal } from '@/components/premium/ScrollReveal'
+import { Preloader } from '@/components/premium/Preloader'
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 // Orbitron = wordmark/identité de marque uniquement (police variable → pas de `weight`).
@@ -116,9 +117,10 @@ export default async function RootLayout({
   return (
     <html lang={locale} className={`${inter.variable} ${orbitron.variable}`}>
       <head>
-        {/* Reveal au scroll : pose `html.js-reveal` AVANT le paint → les titres ne
-            sont masqués (puis révélés au scroll) que si JS est actif, sans flash. */}
-        <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js-reveal')" }} />
+        {/* Avant le paint : (1) `html.js-reveal` → reveal des titres actif seulement
+            si JS (sans flash) ; (2) `html.preloaded` si le préchargeur a déjà été vu
+            cette session → on ne le rejoue pas (affiché une seule fois / session). */}
+        <script dangerouslySetInnerHTML={{ __html: "(function(){var d=document.documentElement;d.classList.add('js-reveal');try{if(sessionStorage.getItem('xeno_pl'))d.classList.add('preloaded');else sessionStorage.setItem('xeno_pl','1');}catch(e){}})()" }} />
         {/* Preconnect aux origines tierces chargées après hydratation (analytics)
             → ouvre DNS/TCP/TLS en amont, ~300ms gagnés (audit Lighthouse). */}
         <link rel="preconnect" href="https://www.googletagmanager.com" />
@@ -126,6 +128,7 @@ export default async function RootLayout({
         <link rel="dns-prefetch" href="https://region1.google-analytics.com" />
       </head>
       <body>
+        <Preloader />
         <NextIntlClientProvider>
           <Providers>
             <ConditionalChrome>{children}</ConditionalChrome>

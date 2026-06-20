@@ -258,3 +258,92 @@
     filter: blur(0);
   }
 }
+
+/* ── Préchargement premium ────────────────────────────────────────────────
+   Overlay rendu côté serveur (visible dès le 1er paint → pas de flash).
+   S'efface tout seul via l'animation `pl-out` (forwards) même sans JS.
+   Masqué sur les chargements « à chaud » de la session (html.preloaded, posé
+   avant le paint) et en reduced-motion. */
+#preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-sport-dark);
+  animation: pl-out 1.5s ease forwards;
+}
+html.preloaded #preloader { display: none; }
+@media (prefers-reduced-motion: reduce) { #preloader { display: none; } }
+
+#preloader .pl-glow {
+  position: absolute;
+  width: 340px;
+  height: 340px;
+  border-radius: 9999px;
+  background: rgba(255, 69, 0, 0.18);
+  filter: blur(120px);
+  animation: pl-glow 1s ease-out both;
+}
+#preloader .pl-logo {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.4rem;
+  animation: pl-in 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+#preloader .pl-word {
+  position: relative;
+  overflow: hidden;
+  font-family: var(--font-orbitron), sans-serif;
+  font-weight: 800;
+  letter-spacing: 0.26em;
+  font-size: 1.55rem;
+  color: #fff;
+  padding-left: 0.26em; /* compense le letter-spacing à droite */
+}
+#preloader .pl-word .pl-r { color: var(--color-sport-orange); }
+#preloader .pl-shine {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.55), transparent);
+  transform: translateX(-130%) skewX(-12deg);
+  animation: pl-shine 1.15s ease-in-out 0.25s both;
+}
+#preloader .pl-bar {
+  width: 168px;
+  height: 3px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+}
+#preloader .pl-bar i {
+  display: block;
+  height: 100%;
+  width: 0;
+  border-radius: 9999px;
+  background: var(--color-sport-orange);
+  animation: pl-bar 1.15s cubic-bezier(0.6, 0, 0.2, 1) both;
+}
+@keyframes pl-out {
+  0%, 66% { opacity: 1; visibility: visible; }
+  100% { opacity: 0; visibility: hidden; }
+}
+@keyframes pl-in {
+  from { opacity: 0; transform: translateY(16px) scale(0.94); filter: blur(10px); }
+  to { opacity: 1; transform: none; filter: blur(0); }
+}
+@keyframes pl-glow {
+  from { opacity: 0; transform: scale(0.6); }
+  to { opacity: 1; transform: scale(1); }
+}
+@keyframes pl-shine {
+  from { transform: translateX(-130%) skewX(-12deg); }
+  to { transform: translateX(130%) skewX(-12deg); }
+}
+@keyframes pl-bar {
+  from { width: 0; }
+  to { width: 100%; }
+}
