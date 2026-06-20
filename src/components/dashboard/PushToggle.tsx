@@ -1,8 +1,8 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { useTranslations, useLocale } from 'next-intl'
-import { Bell, BellOff, Smartphone, Send } from 'lucide-react'
+import { useTranslations } from 'next-intl'
+import { Bell, BellOff, Smartphone } from 'lucide-react'
 import {
   webPushSupported,
   getWebPushSubscription,
@@ -15,10 +15,8 @@ type State = 'loading' | 'unsupported' | 'on' | 'off' | 'denied'
 // Carte d'activation des notifications Web Push (PWA) — sur cet appareil/navigateur.
 export function PushToggle() {
   const t = useTranslations('dashboard.notifications.push')
-  const locale = useLocale()
   const [state, setState] = useState<State>('loading')
   const [busy, setBusy] = useState(false)
-  const [tested, setTested] = useState<'idle' | 'sending' | 'sent'>('idle')
 
   /* eslint-disable react-hooks/set-state-in-effect --
      Détection des capacités navigateur (Notification/PushManager) et de l'état d'abonnement au montage. */
@@ -43,21 +41,6 @@ export function PushToggle() {
     setBusy(false)
   }
 
-  async function sendTest() {
-    setTested('sending')
-    try {
-      await fetch('/api/push/web/test', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ locale }),
-      })
-      setTested('sent')
-      setTimeout(() => setTested('idle'), 3000)
-    } catch {
-      setTested('idle')
-    }
-  }
-
   // Rien à afficher tant qu'on charge ou si le navigateur ne supporte pas le Web Push.
   if (state === 'loading' || state === 'unsupported') return null
 
@@ -73,23 +56,14 @@ export function PushToggle() {
         </p>
       </div>
       {state === 'on' ? (
-        <div className="flex shrink-0 items-center gap-2">
-          <button
-            onClick={sendTest}
-            disabled={tested === 'sending'}
-            className="inline-flex items-center gap-1.5 rounded-full border border-sport-border px-3 py-2 text-xs font-bold text-white hover:border-sport-orange/50 disabled:opacity-60 transition-colors"
-          >
-            <Send size={12} aria-hidden="true" /> {tested === 'sent' ? t('testSent') : tested === 'sending' ? t('testing') : t('test')}
-          </button>
-          <button
-            onClick={disable}
-            disabled={busy}
-            aria-label={t('disable')}
-            className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-sport-border text-white hover:border-sport-orange/50 disabled:opacity-60 transition-colors"
-          >
-            <BellOff size={14} aria-hidden="true" />
-          </button>
-        </div>
+        <button
+          onClick={disable}
+          disabled={busy}
+          aria-label={t('disable')}
+          className="shrink-0 inline-flex h-9 w-9 items-center justify-center rounded-full border border-sport-border text-white hover:border-sport-orange/50 disabled:opacity-60 transition-colors"
+        >
+          <BellOff size={14} aria-hidden="true" />
+        </button>
       ) : state === 'off' ? (
         <button
           onClick={enable}
