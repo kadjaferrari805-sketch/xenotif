@@ -8,6 +8,23 @@ import { Bell, Flame, Lightbulb, Activity, X, ArrowRight } from 'lucide-react'
 const READ_KEY = 'xeno_notif_read'
 const todayStr = () => new Date().toISOString().split('T')[0]
 
+// 3 notifications quotidiennes (motivation + astuce + rappel d'activité).
+// Garder synchro avec le tableau `items` ci-dessous.
+const DAILY_NOTIF_COUNT = 3
+
+// Badge compteur sur l'icône de l'app installée (PWA Badging API) → visible sur
+// l'écran d'accueil mobile. No-op silencieux si non supporté (best-effort iOS 16.4+/Android).
+function syncAppBadge(count: number) {
+  try {
+    const nav = navigator as Navigator & {
+      setAppBadge?: (n?: number) => Promise<void>
+      clearAppBadge?: () => Promise<void>
+    }
+    if (count > 0) nav.setAppBadge?.(count)?.catch(() => {})
+    else nav.clearAppBadge?.()?.catch(() => {})
+  } catch { /* ignore */ }
+}
+
 // Cloche de notifications de l'espace membre : 3 notifications par jour
 // (motivation + astuce qui tournent chaque jour + rappel d'activité).
 // État « lu » mémorisé en localStorage (point rouge tant que le jour n'est pas ouvert).
@@ -25,6 +42,7 @@ export function NotificationBell({ align = 'right' }: { align?: 'left' | 'right'
     { Icon: Lightbulb, color: '#A3FF00', text: tips[day % tips.length], href: '/dashboard/programme' },
     { Icon: Activity, color: '#38bdf8', text: t('activity'), href: '/dashboard' },
   ]
+  const unreadCount = unread ? DAILY_NOTIF_COUNT : 0
 
   /* eslint-disable react-hooks/set-state-in-effect --
      Date du jour + état « lu » (localStorage) : lecture client uniquement, une fois au montage. */
@@ -49,6 +67,9 @@ export function NotificationBell({ align = 'right' }: { align?: 'left' | 'right'
     if (next) {
       try { localStorage.setItem(READ_KEY, todayStr()) } catch { /* ignore */ }
       setUnread(false)
+      // Lu → efface le badge de l'icône (clear immédiat + reset du compteur tenu par le SW).
+      syncAppBadge(0)
+      try { navigator.serviceWorker?.controller?.postMessage('xeno-clear-badge') } catch { /* ignore */ }
     }
   }
 
@@ -56,13 +77,20 @@ export function NotificationBell({ align = 'right' }: { align?: 'left' | 'right'
     <div className="relative" ref={ref}>
       <button
         onClick={toggle}
-        aria-label={t('aria')}
+        aria-label={unreadCount > 0 ? `${t('aria')} (${unreadCount})` : t('aria')}
         aria-haspopup="dialog"
         aria-expanded={open}
         className="relative flex h-9 w-9 items-center justify-center rounded-full border border-sport-border text-sport-gray hover:text-white hover:border-white/20 transition-all"
       >
         <Bell size={16} aria-hidden="true" />
-        {unread && <span className="absolute top-1.5 right-1.5 h-2 w-2 rounded-full bg-sport-orange ring-2 ring-sport-card" />}
+        {unreadCount > 0 && (
+          <span
+            aria-hidden="true"
+            className="absolute -top-1 -right-1 flex h-[18px] min-w-[18px] items-center justify-center rounded-full bg-sport-orange px-1 text-[10px] font-black leading-none text-white ring-2 ring-sport-card"
+          >
+            {unreadCount > 9 ? '9+' : unreadCount}
+          </span>
+        )}
       </button>
 
       {open && (
