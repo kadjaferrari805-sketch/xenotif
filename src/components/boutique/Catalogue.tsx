@@ -121,17 +121,18 @@ export function Catalogue() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
           <div className="flex items-center gap-3 py-3">
             {/* Puces de sport */}
-            <div className="min-w-0 flex-1 flex items-center gap-2 overflow-x-auto scrollbar-hide" role="tablist" aria-label={t('filterDiscipline')}>
+            {/* Carrousel snap mobile : accroche par pastille, défilement net */}
+            <div className="min-w-0 flex-1 flex items-center gap-2 overflow-x-auto scrollbar-hide snap-x snap-proximity scroll-pl-4 sm:scroll-pl-6 scroll-smooth" role="tablist" aria-label={t('filterDiscipline')}>
               <button
                 role="tab" aria-selected={discipline === 'all'} onClick={() => setDiscipline('all')}
-                className={`shrink-0 rounded-full px-4 py-2 text-sm font-bold transition-all ${discipline === 'all' ? 'bg-sport-orange text-white shadow-lg shadow-sport-orange/20' : 'border border-sport-border text-sport-gray hover:text-white hover:border-white/20'}`}
+                className={`snap-start shrink-0 rounded-full px-4 py-2 text-sm font-bold transition-all ${discipline === 'all' ? 'bg-sport-orange text-white shadow-lg shadow-sport-orange/20' : 'border border-sport-border text-sport-gray hover:text-white hover:border-white/20'}`}
               >
                 {t('allDisciplines')}
               </button>
               {available.map(id => (
                 <button
                   key={id} role="tab" aria-selected={discipline === id} onClick={() => setDiscipline(id)}
-                  className={`shrink-0 rounded-full px-4 py-2 text-sm font-bold whitespace-nowrap transition-all ${discipline === id ? 'bg-sport-orange text-white shadow-lg shadow-sport-orange/20' : 'border border-sport-border text-sport-gray hover:text-white hover:border-white/20'}`}
+                  className={`snap-start shrink-0 rounded-full px-4 py-2 text-sm font-bold whitespace-nowrap transition-all ${discipline === id ? 'bg-sport-orange text-white shadow-lg shadow-sport-orange/20' : 'border border-sport-border text-sport-gray hover:text-white hover:border-white/20'}`}
                 >
                   {t(`disciplinesFilter.${id}`)}
                 </button>
