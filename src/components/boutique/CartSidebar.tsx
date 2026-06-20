@@ -91,7 +91,7 @@ export function CartSidebar({ open, onClose }: CartSidebarProps) {
                     <motion.div key={product.id} initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }}
                       className="flex gap-4 py-4 border-b border-sport-border last:border-0">
                       <div className="relative h-16 w-16 flex-shrink-0 overflow-hidden rounded-xl bg-sport-border/30">
-                        <Image src={product.images[0] ?? ''} alt={product.name} fill className="object-cover" />
+                        <Image src={product.images[0] ?? ''} alt={product.name} fill sizes="64px" className="object-cover" />
                       </div>
                       <div className="flex flex-1 flex-col justify-between min-w-0">
                         <div className="flex items-start justify-between gap-2">
