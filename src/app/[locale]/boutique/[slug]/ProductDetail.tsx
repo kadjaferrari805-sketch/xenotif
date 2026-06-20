@@ -43,6 +43,7 @@ export function ProductDetail({ product }: { product: Product }) {
           {/* Image */}
           <div className="relative aspect-square overflow-hidden rounded-2xl border border-sport-border bg-sport-card">
             <Image src={product.images[0] ?? ''} alt={product.name} fill
+              sizes="(max-width: 1024px) 100vw, 50vw"
               className={product.imageFit === 'contain' ? 'object-contain p-4' : 'object-cover'}
               style={product.imagePosition ? { objectPosition: product.imagePosition } : undefined} />
             {product.badge && (

@@ -101,7 +101,7 @@ export default function PanierPage() {
                   {ownItems.map(({ product, quantity }) => (
                     <div key={product.id} className="flex gap-4 rounded-2xl border border-sport-border bg-sport-card p-4">
                       <div className="relative h-20 w-20 flex-shrink-0 overflow-hidden rounded-xl bg-sport-border/30">
-                        <Image src={product.images[0] ?? ''} alt={product.name} fill className="object-cover" />
+                        <Image src={product.images[0] ?? ''} alt={product.name} fill sizes="80px" className="object-cover" />
                       </div>
                       <div className="flex flex-1 flex-col justify-between min-w-0">
                         <div className="flex items-start justify-between gap-3">
@@ -144,7 +144,7 @@ export default function PanierPage() {
                   {affiliateItems.map(({ product }) => (
                     <div key={product.id} className="flex gap-4 rounded-2xl border border-sport-border/40 bg-sport-card/60 p-4">
                       <div className="relative h-16 w-16 flex-shrink-0 overflow-hidden rounded-xl bg-sport-border/30">
-                        <Image src={product.images[0] ?? ''} alt={product.name} fill className="object-cover" />
+                        <Image src={product.images[0] ?? ''} alt={product.name} fill sizes="64px" className="object-cover" />
                       </div>
                       <div className="flex flex-1 items-center justify-between gap-3 min-w-0">
                         <div className="min-w-0">
