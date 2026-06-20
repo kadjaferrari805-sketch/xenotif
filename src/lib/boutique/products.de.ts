@@ -317,6 +317,23 @@ const TEXT_DE: Record<string, ProductText> = {
     features: ['Sichere Ohrbügel', 'IPX7 wasserdicht', '40h Akku', 'Tiefe Bässe', 'Bluetooth 5.3'],
     tags: ['kopfhörer', 'bluetooth', 'sport', 'laufen'],
   },
+  b1: { name: 'Boxhandschuhe 12oz Kunstleder', badge: '🥊 Bestseller', description: '12oz-Boxhandschuhe, mehrschichtige Polsterung, Handgelenkstütze, atmungsaktiv. Sack, Sparring und Fitnessboxen.', features: ['12oz mehrschichtig', 'Handgelenkstütze', 'Atmungsaktives Futter', 'Robustes Kunstleder', 'Sack & Sparring'], tags: ['boxhandschuhe', 'boxen', 'boxsack', 'sparring'] },
+  b2: { name: 'Box-Handbandagen 4,5m (Paar)', badge: '🥊 Essenziell', description: 'Halbelastische 4,5-m-Bandagen, schützen Handgelenke und Gelenke. Klett und Daumenschlaufe. Pflicht vor den Handschuhen.', features: ['4,5 m pro Bandage', 'Schützt Handgelenke & Knöchel', 'Daumenschlaufe', 'Breiter Klett', 'Waschbar'], tags: ['handbandagen', 'bandagen', 'boxen', 'schutz'] },
+  b3: { name: 'Hängender Boxsack 120cm + Kette', badge: '🥊 Pro', description: 'Gefüllter 120-cm-Boxsack, Kettenaufhängung und Anti-Dreh-Wirbel. Boxen, Kickboxen und Cardio.', features: ['120 cm gefüllt', 'Kette + Wirbel', 'Anti-Dreh', 'Schlagfest', 'Boxen & Cardio'], tags: ['boxsack', 'boxen', 'kickboxen', 'cardio'] },
+  b4: { name: 'Gebogene Handpratzen (Paar)', badge: '🥊 Duo', description: 'Paar gebogene Handpratzen, gepolstertes Schlagziel. Schnelligkeit, Präzision und Kombos zu zweit.', features: ['Gebogen mehrschichtig', 'Stoßabsorbierend', 'Atmungsaktiver Handschuh', 'Schnelligkeit & Präzision', 'Partnerarbeit'], tags: ['pratzen', 'handpratzen', 'boxen', 'präzision'] },
+  b5: { name: 'Freistehender Standboxsack', badge: '🥊 Ohne Bohren', description: 'Freistehender Boxsack, befüllbare Basis (Wasser/Sand), höhenverstellbar. Ohne Bohren, ideal für Wohnungen.', features: ['Befüllbare Basis', 'Höhenverstellbar', 'Ohne Bohren', 'Rückkehr-Automatik', 'Ideal für Wohnungen'], tags: ['boxsack', 'standboxsack', 'boxen', 'zuhause'] },
+  m1: { name: 'Yogablöcke Kork (2er-Set)', badge: '🧘 Natürlich', description: 'Paar Korkblöcke, rutschfest, stützen Posen und verbessern die Ausrichtung.', features: ['Naturkork', 'Rutschfest', 'Posen-Stütze', 'Ausrichtung', '2er-Set'], tags: ['yogablock', 'kork', 'yoga', 'dehnen'] },
+  m2: { name: 'Yoga-Stretchgurt 10 Schlaufen', badge: '🧘 Flexibilität', description: 'Stretchgurt mit 10 Schlaufen, sicher beweglicher werden. Ideal für Yoga, Mobilität und Reha.', features: ['10 Schlaufen', 'Geführtes Dehnen', 'Ohne Partner', 'Nicht dehnbar', 'Yoga & Mobilität'], tags: ['stretchgurt', 'yoga', 'mobilität', 'flexibilität'] },
+  m3: { name: 'Yoga-Rad gegen Rückenschmerzen', badge: '🧘 Mobilität', description: 'Yoga-Rad zum Öffnen der Brust, Dehnen des Rückens und Lösen von Spannungen. Bis 150 kg.', features: ['Öffnet die Brust', 'Dehnt den Rücken', 'Bis 150 kg', 'Rutschfest', 'Anti-Spannung'], tags: ['yoga rad', 'rücken', 'mobilität', 'dehnen'] },
+  m4: { name: 'Mobility-Loop-Bänder (5er-Set)', badge: '🧘 Aktivierung', description: '5 Mini-Loop-Bänder, 5 Stärken. Aktivierung, Hüft-/Schultermobilität, Gesäß und Reha.', features: ['5 Stärken', 'Rutschen nicht', 'Mobilität & Aktivierung', 'Gesäß', 'Beutel inklusive'], tags: ['loop bänder', 'mobilität', 'gesäß', 'aktivierung'] },
+  m5: { name: 'Trigger-Massagebälle (3er-Set)', badge: '🧘 Erholung', description: '3 Bälle unterschiedlicher Dichte, gezielt gegen Verspannungen. Selbstmassage, Mobilität und Erholung.', features: ['3 Dichten', 'Gezielte Selbstmassage', 'Triggerpunkte', 'Vor/nach Training', 'Kompakt'], tags: ['massageball', 'trigger point', 'mobilität', 'erholung'] },
+  m6: { name: 'Pro Stretchband Multi-Schlaufen', badge: '🧘 Flexibilität', description: 'Multi-Schlaufen-Stretchband für Tanz, Gym und Mobilität. Geführte, sanfte Flexibilitätssteigerung.', features: ['Dick, Multi-Schlaufe', 'Geführtes Dehnen', 'Sanfte Steigerung', 'Tanz & Gym', 'Mobil'], tags: ['stretchband', 'dehnen', 'flexibilität', 'mobilität'] },
+  u1: { name: 'Pre-Workout Energie & Fokus', badge: '⚡ Energie', description: 'Pre-Workout-Booster: Koffein, Beta-Alanin und Citrullin für Energie, Pump und Fokus. Zuckerfrei.', features: ['Koffein + Beta-Alanin', 'L-Citrullin', 'Energie & Fokus', 'Zuckerfrei', 'Schnell löslich'], tags: ['pre-workout', 'koffein', 'energie', 'ernährung'] },
+  u2: { name: 'Hydrations-Elektrolyte (Tabletten)', badge: '💧 Ausdauer', description: 'Brausetabletten mit Natrium/Kalium/Magnesium. Rehydration und Anti-Krampf für Ausdauer.', features: ['Natrium/Kalium/Magnesium', 'Anti-Krampf', 'Rehydration', 'Brausetabletten', 'Kalorienarm'], tags: ['elektrolyte', 'hydration', 'ausdauer', 'ernährung'] },
+  u3: { name: 'Proteinriegel 20g (12er-Box)', badge: '🍫 Snack', description: '20g-Proteinriegel, zuckerarm, leckere Hülle. Der perfekte Snack nach dem Training oder unterwegs.', features: ['20g Protein', 'Zuckerarm', 'Leckere Hülle', '12er-Box', 'Unterwegs'], tags: ['proteinriegel', 'protein', 'snack', 'ernährung'] },
+  u4: { name: 'Omega-3 EPA/DHA (120 Kapseln)', badge: '🐟 Erholung', description: 'Konzentriertes EPA/DHA-Fischöl. Herz, Gelenke und Erholung. Ohne Nachgeschmack.', features: ['Konzentriertes EPA/DHA', 'Herz & Gelenke', 'Erholung', 'Ohne Nachgeschmack', '120 Kapseln'], tags: ['omega-3', 'epa dha', 'erholung', 'ernährung'] },
+  w1: { name: 'Schwimm-Handpaddles (Paar)', badge: '🏊 Technik', description: 'Handpaddles zum Stärken des Oberkörpers und Verfeinern des Wasserfassens. Verstellbare Riemen.', features: ['Stärkt den Oberkörper', 'Verfeinert den Zug', 'Verstellbare Riemen', 'Mehrere Größen', 'Beckentraining'], tags: ['handpaddles', 'schwimmen', 'technik', 'kraft'] },
+  w2: { name: 'Pull Buoy Bein-Schwimmhilfe', badge: '🏊 Core', description: 'Pull Buoy zwischen den Oberschenkeln: isoliert die Armarbeit und verbessert die Wasserlage. Robuster Schaum.', features: ['Isoliert die Armarbeit', 'Bessere Wasserlage', 'Robuster EVA-Schaum', 'Core', 'Beckentraining'], tags: ['pull buoy', 'schwimmen', 'schwimmhilfe', 'technik'] },
 }
 
 // Mots-clés de recherche en allemand → liens affiliés amazon.de pour la locale DE.
@@ -356,6 +373,12 @@ const AMAZON_DE_KEYWORDS: Record<string, string> = {
   a6: 'isolierte trinkflasche 2l edelstahl',
   a7: 'protein shaker blender bottle',
   a8: 'sport kopfhörer bluetooth wasserdicht',
+  b1: 'boxhandschuhe 12oz', b2: 'boxbandagen handbandagen', b3: 'boxsack hängend 120cm',
+  b4: 'pratzen boxen handpratzen', b5: 'standboxsack freistehend',
+  m1: 'yogablöcke kork', m2: 'yoga gurt stretching schlaufen', m3: 'yoga rad rücken',
+  m4: 'mobility bänder loop', m5: 'massagebälle trigger point', m6: 'stretchband gymnastik schlaufen',
+  u1: 'pre workout booster', u2: 'elektrolyte tabletten', u3: 'proteinriegel 20g', u4: 'omega 3 epa dha kapseln',
+  w1: 'schwimm paddles handpaddles', w2: 'pull buoy schwimmen',
 }
 
 export const PRODUCTS_DE: Product[] = PRODUCTS.map((p) => {

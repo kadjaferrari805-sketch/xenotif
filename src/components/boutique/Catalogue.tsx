@@ -11,7 +11,7 @@ import type { Product } from '@/lib/boutique/products'
 // Ordre d'affichage des disciplines (sport).
 const DISCIPLINE_ORDER = [
   'musculation', 'running-cardio', 'cyclisme', 'natation',
-  'hiit', 'crossfit', 'yoga', 'boxing', 'stretching',
+  'hiit', 'crossfit', 'yoga', 'boxing', 'stretching', 'nutrition',
 ] as const
 
 const SORT_VALUES = ['popular', 'price_asc', 'price_desc', 'rating'] as const
@@ -25,11 +25,12 @@ function sortProducts(list: Product[], sort: string): Product[] {
   }
 }
 
-const primaryOf = (p: Product) => p.disciplines?.[0] ?? 'autres'
-
 // Catalogue premium (inspiration Zalando/Zara) : produits classés par discipline,
 // barre d'outils collante (puces de sport + tri), recherche. « Tous » = sections
 // par discipline ; un sport sélectionné = grille filtrée de ce sport.
+// Regroupement par APPARTENANCE : un produit apparaît dans CHAQUE discipline de
+// sa liste (le matériel polyvalent est listé sous tous ses sports) → sections
+// par discipline équilibrées (≥ 10 produits chacune).
 export function Catalogue() {
   const t = useTranslations('boutique')
   const locale = useLocale()
@@ -46,14 +47,17 @@ export function Catalogue() {
     return products.filter(p => p.name.toLowerCase().includes(q) || p.tags.some(tag => tag.toLowerCase().includes(q)))
   }, [products, search])
 
-  // 2. Map discipline principale → produits.
+  // 2. Map discipline → produits (par appartenance : un produit dans chacune de
+  //    ses disciplines).
   const byDiscipline = useMemo(() => {
     const map = new Map<string, Product[]>()
     for (const p of searched) {
-      const d = primaryOf(p)
-      const arr = map.get(d)
-      if (arr) arr.push(p)
-      else map.set(d, [p])
+      const ds = p.disciplines?.length ? p.disciplines : ['autres']
+      for (const d of ds) {
+        const arr = map.get(d)
+        if (arr) arr.push(p)
+        else map.set(d, [p])
+      }
     }
     return map
   }, [searched])
