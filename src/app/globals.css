@@ -231,3 +231,23 @@
 .dash-nav-safe { padding-bottom: calc(0.5rem + env(safe-area-inset-bottom)); }
 .dash-main { padding-top: calc(3.5rem + env(safe-area-inset-top)); }
 @media (min-width: 768px) { .dash-main { padding-top: 0; } }
+
+/* ── Reveal au scroll des titres de section/page ──────────────────────────
+   Masqué uniquement si JS (classe html.js-reveal posée AVANT le paint par un
+   script inline dans <head>) → aucun titre caché sans JS, aucun flash. Révélé
+   par ScrollReveal (IntersectionObserver) via .is-revealed. Désactivé si
+   l'utilisateur préfère moins d'animations. Les titres déjà animés en
+   framer-motion sont exclus via [data-no-reveal]. */
+@media (prefers-reduced-motion: no-preference) {
+  html.js-reveal main :is(h1, h2):not(a h1):not(a h2):not([data-no-reveal]) {
+    opacity: 0;
+    transform: translateY(24px);
+    transition:
+      opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  html.js-reveal main :is(h1, h2):not(a h1):not(a h2):not([data-no-reveal]).is-revealed {
+    opacity: 1;
+    transform: none;
+  }
+}

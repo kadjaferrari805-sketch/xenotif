@@ -182,6 +182,7 @@ export function Hero() {
             <AnimatePresence mode="wait">
               <motion.h1
                 key={current + 'h1'}
+                data-no-reveal
                 initial={{ opacity: 0, y: 28 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -16 }}
