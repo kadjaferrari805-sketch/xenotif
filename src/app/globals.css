@@ -80,10 +80,27 @@
     color: var(--color-sport-gray);
   }
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 bg-sport-orange text-white px-6 py-3.5 rounded-full font-bold text-sm shadow-lg shadow-sport-orange/30 hover:bg-orange-600 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-sport-orange/40 active:translate-y-0 active:scale-95 transition-all duration-200;
+    @apply relative overflow-hidden inline-flex items-center justify-center gap-2 bg-sport-orange text-white px-6 py-3.5 rounded-full font-bold text-sm shadow-lg shadow-sport-orange/30 hover:bg-orange-600 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-sport-orange/40 active:translate-y-0 active:scale-95 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sport-orange/60 focus-visible:ring-offset-2 focus-visible:ring-offset-sport-dark;
   }
   .btn-secondary {
-    @apply inline-flex items-center justify-center gap-2 text-white border-2 border-white/30 px-6 py-3.5 rounded-full font-bold text-sm shadow-lg shadow-black/20 hover:border-white hover:bg-white/10 hover:-translate-y-0.5 hover:shadow-xl active:translate-y-0 active:scale-95 transition-all duration-200;
+    @apply relative overflow-hidden inline-flex items-center justify-center gap-2 text-white border-2 border-white/30 px-6 py-3.5 rounded-full font-bold text-sm shadow-lg shadow-black/20 hover:border-white hover:bg-white/10 hover:-translate-y-0.5 hover:shadow-xl active:translate-y-0 active:scale-95 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40 focus-visible:ring-offset-2 focus-visible:ring-offset-sport-dark;
+  }
+  /* Balayage lumineux premium au survol (clipé par le pill via overflow-hidden). */
+  .btn-primary::after, .btn-secondary::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -65%;
+    width: 45%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+    transform: skewX(-20deg);
+    transition: left 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    pointer-events: none;
+  }
+  .btn-primary:hover::after, .btn-secondary:hover::after { left: 130%; }
+  @media (prefers-reduced-motion: reduce) {
+    .btn-primary::after, .btn-secondary::after { display: none; }
   }
   .card-base {
     @apply bg-sport-card border border-sport-border rounded-2xl;
