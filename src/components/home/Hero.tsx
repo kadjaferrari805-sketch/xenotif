@@ -316,22 +316,28 @@ export function Hero() {
         {/* Slide dots with progress */}
         <div className="flex gap-2 items-center" role="tablist" aria-label={t('aria.slides')}>
           {slides.map((_, i) => (
+            // Bouton avec zone tactile ≥24px (px-2 py-3) ; la barre visuelle reste
+            // fine via un <span> interne (accessibilité : taille des cibles tactiles).
             <button
               key={i}
               role="tab"
               onClick={() => { setCurrent(i); setProgress(0) }}
               aria-label={t('aria.slide', { n: i + 1, total: slides.length })}
               aria-selected={i === current}
-              className={`h-1.5 rounded-full transition-all duration-300 overflow-hidden ${
-                i === current ? 'w-10 bg-white/20' : 'w-2 bg-white/25 hover:bg-white/45'
-              }`}
+              className="group flex items-center px-2 py-3"
             >
-              {i === current && (
-                <div
-                  className="h-full bg-sport-orange rounded-full"
-                  style={{ width: `${progress}%`, transition: 'none' }}
-                />
-              )}
+              <span
+                className={`block h-1.5 rounded-full overflow-hidden transition-all duration-300 ${
+                  i === current ? 'w-10 bg-white/20' : 'w-2 bg-white/25 group-hover:bg-white/45'
+                }`}
+              >
+                {i === current && (
+                  <span
+                    className="block h-full bg-sport-orange rounded-full"
+                    style={{ width: `${progress}%`, transition: 'none' }}
+                  />
+                )}
+              </span>
             </button>
           ))}
         </div>

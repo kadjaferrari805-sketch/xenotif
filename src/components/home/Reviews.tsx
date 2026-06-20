@@ -52,7 +52,7 @@ export function Reviews() {
               className={`card-base p-6 h-full flex flex-col transition-all duration-300 hover:shadow-2xl ${BORDER_HOVER[review.color] ?? ''}`}
             >
               {/* Stars */}
-              <div className="flex gap-0.5 mb-4" aria-label={t('ratingAria', { rating: review.rating })}>
+              <div role="img" className="flex gap-0.5 mb-4" aria-label={t('ratingAria', { rating: review.rating })}>
                 {Array.from({ length: review.rating }).map((_, j) => (
                   <Star key={j} size={13} aria-hidden="true" className="fill-sport-orange text-sport-orange" />
                 ))}

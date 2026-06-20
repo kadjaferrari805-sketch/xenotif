@@ -33,7 +33,6 @@ export function ProgramsShowcase({ programs }: { programs: Product[] }) {
                 <Tilt3D max={13} className="relative rounded-2xl h-full">
                   <Link
                     href={`/boutique/${p.slug}`}
-                    aria-label={t('discoverAria', { name: p.name })}
                     className="group flex h-full flex-col overflow-hidden rounded-2xl border border-sport-border bg-sport-dark transition-all duration-300 hover:border-sport-orange/40 hover:shadow-2xl hover:shadow-sport-orange/10"
                   >
                     {/* Couverture */}
