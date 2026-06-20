@@ -82,7 +82,7 @@ export function ExperiencePreview() {
                     initial={{ opacity: 0, y: 16 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: '-60px' }}
-                    transition={{ duration: 0.45, delay: i * 0.06, ease: [0.22, 1, 0.36, 1] }}
+                    transition={{ duration: 0.45, delay: i * 0.06, ease: [0.16, 1, 0.3, 1] }}
                     className="flex gap-4"
                   >
                     <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-sport-orange/30 bg-sport-orange/10">

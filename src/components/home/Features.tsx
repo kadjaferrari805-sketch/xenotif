@@ -94,7 +94,7 @@ export function Features() {
                 key={feat.title}
                 initial={{ opacity: 0, y: 28 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ delay: i * 0.06, duration: 0.5, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
+                transition={{ delay: i * 0.06, duration: 0.5, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }}
                 className="snap-start shrink-0 w-[280px] sm:w-[300px]"
               >
                 <Tilt3D
