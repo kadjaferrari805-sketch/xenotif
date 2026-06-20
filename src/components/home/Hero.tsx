@@ -19,6 +19,17 @@ const BADGE_ICONS = [Users, Trophy, Star, Zap]
 
 const SLIDE_DURATION = 5000
 
+// Titre du Hero : cascade mot par mot (entrée cinématique premium).
+const EASE = [0.16, 1, 0.3, 1] as [number, number, number, number]
+const HEADLINE_CONTAINER = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.07, delayChildren: 0.05 } },
+}
+const HEADLINE_WORD = {
+  hidden: { opacity: 0, y: '0.6em' },
+  show: { opacity: 1, y: 0, transition: { duration: 0.55, ease: EASE } },
+}
+
 type Slide = { tag: string; headline: string; accent: string }
 type Badge = { label: string; sub: string }
 type Trust = { label: string; sublabel: string }
@@ -183,13 +194,17 @@ export function Hero() {
               <motion.h1
                 key={current + 'h1'}
                 data-no-reveal
-                initial={{ opacity: 0, y: 28 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -16 }}
-                transition={{ duration: 0.5, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}
+                variants={HEADLINE_CONTAINER}
+                initial="hidden"
+                animate="show"
+                exit={{ opacity: 0, y: -16, transition: { duration: 0.3 } }}
                 className="text-3d text-5xl md:text-7xl lg:text-8xl font-black text-white leading-[0.95] mb-2 tracking-tight break-words"
               >
-                {slides[current].headline}
+                {slides[current].headline.split(' ').map((word, i) => (
+                  <motion.span key={i} variants={HEADLINE_WORD} className="inline-block mr-[0.22em] last:mr-0">
+                    {word}
+                  </motion.span>
+                ))}
               </motion.h1>
             </AnimatePresence>
 
@@ -200,7 +215,7 @@ export function Hero() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -12 }}
-                transition={{ duration: 0.45, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}
+                transition={{ duration: 0.5, delay: 0.55, ease: [0.22, 1, 0.36, 1] }}
                 className={`text-3d text-3xl md:text-5xl lg:text-6xl font-black mb-8 leading-tight break-words ${SLIDE_STYLE[current].accentColor}`}
               >
                 {slides[current].accent}
