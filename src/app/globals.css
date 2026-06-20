@@ -10,10 +10,6 @@
   --color-sport-card: #0F1117;
   --color-sport-border: #1E2028;
   --color-sport-orange: #FF4500;
-  /* Orange profond pour les surfaces à TEXTE BLANC (boutons, bandeaux) : contraste
-     AA (~4.9:1 avec #fff). L'orange vif #FF4500 reste pour le texte/accent sur fond
-     sombre (où il a un excellent contraste). */
-  --color-sport-orange-deep: #D13900;
   --color-sport-blue: #2563EB;
   --color-sport-lime: #A3FF00;
   --color-sport-gray: #9CA3AF;
@@ -84,7 +80,7 @@
     color: var(--color-sport-gray);
   }
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 bg-sport-orange-deep text-white px-6 py-3.5 rounded-full font-bold text-sm shadow-lg shadow-sport-orange/30 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-sport-orange/40 active:translate-y-0 active:scale-95 transition-all duration-200;
+    @apply inline-flex items-center justify-center gap-2 bg-sport-orange text-white px-6 py-3.5 rounded-full font-bold text-sm shadow-lg shadow-sport-orange/30 hover:bg-orange-600 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-sport-orange/40 active:translate-y-0 active:scale-95 transition-all duration-200;
   }
   .btn-secondary {
     @apply inline-flex items-center justify-center gap-2 text-white border-2 border-white/30 px-6 py-3.5 rounded-full font-bold text-sm shadow-lg shadow-black/20 hover:border-white hover:bg-white/10 hover:-translate-y-0.5 hover:shadow-xl active:translate-y-0 active:scale-95 transition-all duration-200;

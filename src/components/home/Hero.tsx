@@ -41,15 +41,8 @@ export function Hero() {
     const v = videoRef.current
     if (!v) return
     try {
-      // Perf mobile : la vidéo (preload="none") n'est PAS chargée sur petit écran,
-      // en mode économie de données, ni en reduced-motion. Le poster optimisé
-      // (priority) reste l'affichage premium → zéro téléchargement vidéo inutile,
-      // moins de blocage CPU (meilleurs TBT / Speed Index). Desktop : lecture normale.
-      const reduce = window.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches
-      const bigScreen = window.matchMedia?.('(min-width: 768px)')?.matches ?? true
-      const saveData = (navigator as { connection?: { saveData?: boolean } }).connection?.saveData
-      if (reduce || !bigScreen || saveData) return
-      const p = v.play() // preload="none" → play() déclenche le chargement à la demande
+      if (window.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches) return
+      const p = v.play()
       if (p && typeof p.catch === 'function') p.catch(() => {})
     } catch {
       /* autoplay bloqué / jsdom → le poster reste affiché */
@@ -133,13 +126,11 @@ export function Hero() {
         />
         <video
           ref={videoRef}
-          // Pas d'attribut `poster` : l'<Image> optimisée (AVIF, priority) juste
-          // derrière sert déjà de visuel → évite un 2ᵉ téléchargement du JPG brut
-          // non optimisé (~96 KB). La vidéo reste opacity-0 jusqu'à sa lecture.
+          poster="/video/hero-poster.jpg"
           muted
           loop
           playsInline
-          preload="none"
+          preload="auto"
           aria-hidden="true"
           onPlaying={() => setVideoReady(true)}
           className={`absolute inset-0 h-full w-full object-cover object-[center_40%] md:object-center transition-opacity duration-700 ${videoReady ? 'opacity-100' : 'opacity-0'}`}
