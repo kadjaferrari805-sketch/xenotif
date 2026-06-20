@@ -45,11 +45,19 @@ export function ProductCard({ product, index = 0, source = 'shop' }: ProductCard
         <a href={product.amazon.affiliateUrl} target="_blank" rel="noopener noreferrer"
           onClick={() => trackProductClick(product, source)}
           className="group block overflow-hidden rounded-2xl border border-sport-border bg-sport-card transition-all duration-300">
-          <div className="relative h-52 overflow-hidden bg-sport-border/20">
+          <div className={`relative h-52 overflow-hidden ${product.imageFit === 'contain' ? 'bg-[radial-gradient(circle_at_50%_30%,#ffffff,#eef0f5_80%)]' : 'bg-sport-border/20'}`}>
             <Image src={product.images[0] ?? ''} alt={product.name} fill
-              className={`${product.imageFit === 'contain' ? 'object-contain p-2' : 'object-cover'} transition-transform duration-500 group-hover:scale-105`}
+              className={`${product.imageFit === 'contain' ? 'object-contain p-4' : 'object-cover'} transition-transform duration-500 group-hover:scale-105`}
               style={product.imagePosition ? { objectPosition: product.imagePosition } : undefined}
               sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw" />
+            {/* Mini-studio premium pour les visuels à fond blanc : ombre de contact au
+                sol + vignette douce → le produit « pose » sur un fond premium. */}
+            {product.imageFit === 'contain' && (
+              <>
+                <div aria-hidden="true" className="pointer-events-none absolute inset-x-7 bottom-3.5 h-3 rounded-[50%] bg-black/20 blur-md transition-all duration-500 group-hover:bottom-2.5 group-hover:opacity-80" />
+                <div aria-hidden="true" className="pointer-events-none absolute inset-0" style={{ background: 'radial-gradient(120% 75% at 50% 28%, transparent 55%, rgba(15,17,23,0.10))' }} />
+              </>
+            )}
             {product.badge && <span className="absolute top-3 left-3 rounded-full bg-sport-orange px-2.5 py-1 text-xs font-black text-white shadow-lg">{product.badge}</span>}
             {discount && <span className="absolute top-3 right-10 rounded-full bg-red-500 px-2 py-0.5 text-xs font-black text-white">-{discount}%</span>}
             <span className="absolute top-3 right-3 flex h-7 w-7 items-center justify-center rounded-full bg-sport-dark/80 text-xs">🔗</span>
