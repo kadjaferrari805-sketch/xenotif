@@ -822,7 +822,7 @@ export const PRODUCTS: Product[] = [
     description: 'Barres 20g de protéines, faibles en sucre, enrobage gourmand. En-cas idéal post-training ou nomade.',
     longDescription: 'Barres apportant 20 g de protéines, faibles en sucres, à la texture moelleuse et l\'enrobage gourmand : l\'en-cas parfait après l\'entraînement ou en déplacement. Boîte de 12.',
     type: 'physical', price_cents: 2490, stripe_price_id: 'price_aff_u3',
-    images: ['https://images.pexels.com/photos/17763560/pexels-photo-17763560.jpeg?auto=compress&cs=tinysrgb&w=800'],
+    images: ['https://m.media-amazon.com/images/I/71ICmQdTMhL.jpg'], imageFit: 'contain',
     badge: '🍫 En-cas', category: 'Nutrition', rating: 4.7, reviews: 15320, inStock: true,
     tags: ['barres protéinées', 'protéine', 'en-cas', 'nutrition'], disciplines: ['nutrition', 'musculation', 'running-cardio'],
     features: ['20 g de protéines', 'Faible en sucre', 'Enrobage gourmand', 'Boîte de 12', 'Nomade'],
