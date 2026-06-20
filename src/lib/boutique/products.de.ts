@@ -83,7 +83,7 @@ const TEXT_DE: Record<string, ProductText> = {
     tags: ['kreatin', 'kraft', 'power', 'training'],
   },
   n3: {
-    name: 'BCAA 2:1:1 Fruit Punch 500 g — MyProtein',
+    name: 'BCAA Xplode 2:1:1 Fruit Punch 500 g — Olimp',
     badge: '💊 Vegan',
     description: 'BCAAs im Verhältnis 2:1:1. 7 g pro Dosis, 83 Portionen. Vegan-zertifiziert. Erholung, Anti-Katabolismus, Ausdauer.',
     longDescription: 'BCAAs (verzweigtkettige Aminosäuren) im optimierten Verhältnis 2:1:1: Leucin, Isoleucin, Valin. Leucin stimuliert direkt die Proteinsynthese, Isoleucin unterstützt die Glukoseverwertung und Valin reduziert die zentrale Ermüdung. Ideal während des Trainings, um die Muskelmasse zu erhalten.',
