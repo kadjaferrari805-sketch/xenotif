@@ -12,6 +12,7 @@ import { OrganizationSchema, WebsiteSchema } from '@/components/SchemaOrg'
 import { MetaPixelRouteTracker } from '@/components/analytics/MetaPixel'
 import { ServiceWorkerRegister } from '@/components/ServiceWorkerRegister'
 import { SmoothScroll } from '@/components/premium/SmoothScroll'
+import { ScrollReveal } from '@/components/premium/ScrollReveal'
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 // Orbitron = wordmark/identité de marque uniquement (police variable → pas de `weight`).
@@ -115,6 +116,9 @@ export default async function RootLayout({
   return (
     <html lang={locale} className={`${inter.variable} ${orbitron.variable}`}>
       <head>
+        {/* Reveal au scroll : pose `html.js-reveal` AVANT le paint → les titres ne
+            sont masqués (puis révélés au scroll) que si JS est actif, sans flash. */}
+        <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js-reveal')" }} />
         {/* Preconnect aux origines tierces chargées après hydratation (analytics)
             → ouvre DNS/TCP/TLS en amont, ~300ms gagnés (audit Lighthouse). */}
         <link rel="preconnect" href="https://www.googletagmanager.com" />
@@ -158,6 +162,7 @@ export default async function RootLayout({
         <MetaPixelRouteTracker />
         <ServiceWorkerRegister />
         <SmoothScroll />
+        <ScrollReveal />
       </body>
     </html>
   )
