@@ -310,7 +310,7 @@ export const PRODUCTS: Product[] = [
     description: 'Compression graduée, taille haute, tissu opaque anti-UV. Poche téléphone. XS-XL. 5 coloris.',
     longDescription: 'Le legging de compression XENOTIF offre un maintien optimal pour toutes les disciplines. La taille haute plate-forme assure un maintien du ventre sans comprimer. Le tissu opaque (280 GSM) est certifié anti-UV et résiste aux transparences même lors des squats. La compression graduée améliore la circulation sanguine et réduit les courbatures.',
     type: 'physical', price_cents: 4499, original_price_cents: 5499, stripe_price_id: 'price_legging_femme',
-    images: ['https://images.pexels.com/photos/31679369/pexels-photo-31679369.jpeg?auto=compress&cs=tinysrgb&w=800'],
+    images: ['https://m.media-amazon.com/images/I/71Sy0ZR5GQL.jpg'], imageFit: 'contain',
     badge: '❤️ Best Seller', category: 'Vêtements', rating: 4.8, reviews: 3421, inStock: true,
     tags: ['legging', 'compression', 'femme', 'yoga'],
     disciplines: ['yoga', 'running-cardio', 'crossfit', 'hiit'],
