@@ -4,7 +4,7 @@ import { useMemo } from 'react'
 import { useTranslations, useLocale } from 'next-intl'
 import { motion } from 'framer-motion'
 import { Link } from '@/i18n/navigation'
-import { Zap, ShoppingBag, Star, TrendingUp, ArrowRight, LayoutGrid, Sparkles, Award, Flame, type LucideIcon } from 'lucide-react'
+import { Zap, ShoppingBag, Star, TrendingUp, ArrowRight, LayoutGrid, Sparkles, type LucideIcon } from 'lucide-react'
 import { ProductCard } from '@/components/boutique/ProductCard'
 import { Carousel } from '@/components/ui/Carousel'
 import { getProductsLocalized } from '@/lib/boutique/products.en'
@@ -53,11 +53,6 @@ export default function BoutiquePage() {
   // ─── Sélections Amazon (affiliation) — chaque section ≥ 10 produits ───
   const affiliate = useMemo(() => products.filter((p) => p.isAffiliate && p.amazon), [products])
   const featured = useMemo(() => affiliate.filter((p) => p.featured), [affiliate])
-  const bestRated = useMemo(
-    () => [...affiliate].sort((a, b) => b.rating - a.rating || b.reviews - a.reviews).slice(0, 12),
-    [affiliate],
-  )
-  const topSellers = useMemo(() => [...affiliate].sort((a, b) => b.reviews - a.reviews).slice(0, 12), [affiliate])
 
   const stats = [
     { icon: ShoppingBag, label: t('stats.products'), value: `${products.length}+` },
@@ -152,9 +147,6 @@ export default function BoutiquePage() {
       {/* ─── Sélections Amazon (affiliation) ─── */}
       <div className="border-t border-sport-border bg-gradient-to-b from-sport-card/30 to-transparent">
         <AmazonRow icon={Sparkles} label={t('amazon.label')} title={t('amazon.featuredTitle')} subtitle={t('amazon.featuredSub')} products={featured} />
-        <AmazonRow icon={Award} label={t('amazon.label')} title={t('amazon.bestRatedTitle')} subtitle={t('amazon.bestRatedSub')} products={bestRated} />
-        <AmazonRow icon={Flame} label={t('amazon.label')} title={t('amazon.topSellersTitle')} subtitle={t('amazon.topSellersSub')} products={topSellers} />
-        <AmazonRow icon={ShoppingBag} label={t('amazon.label')} title={t('amazon.allTitle')} subtitle={t('amazon.allSub', { count: affiliate.length })} products={affiliate} />
       </div>
 
       {/* ─── CTA final → catalogue ─── */}
