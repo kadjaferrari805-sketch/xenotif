@@ -80,7 +80,7 @@ export function Catalogue() {
   const shown = discipline === 'all' ? total : flat.length
 
   return (
-    <div className="min-h-screen bg-sport-dark overflow-x-hidden">
+    <div className="min-h-screen bg-sport-dark">
       {/* Hero éditorial */}
       <section className="relative overflow-hidden pt-24 pb-9">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(255,69,0,0.15),transparent)]" />
