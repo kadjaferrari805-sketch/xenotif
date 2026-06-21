@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { getTranslations } from 'next-intl/server'
 import { Link } from '@/i18n/navigation'
+import Image from 'next/image'
 import { getAllPostsLocalized, getPostsByCategoryLocalized } from '@/lib/blog/posts.en'
 import type { BlogPost } from '@/lib/blog/posts'
 import { BlogSearchableGrid } from '@/components/blog/BlogSearchableGrid'
@@ -60,6 +61,18 @@ export default async function BlogPage({
     <div className="min-h-screen bg-sport-dark">
       {/* Hero */}
       <section className="relative overflow-hidden border-b border-sport-border py-20 px-6">
+        {/* Image Hero blog : espace d'écriture (laptop + journal + café) → thème blog.
+            Overlays sombres → texte lisible + tint orange/lime de la marque par-dessus. */}
+        <Image
+          src="https://images.pexels.com/photos/6393017/pexels-photo-6393017.jpeg?auto=compress&cs=tinysrgb&w=1600"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-center"
+        />
+        <div aria-hidden="true" className="absolute inset-0 bg-sport-dark/82" />
+        <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-b from-sport-dark/50 via-transparent to-sport-dark" />
         <div
           className="absolute inset-0 opacity-5"
           style={{ backgroundImage: 'radial-gradient(circle at 30% 50%, #FF4500 0%, transparent 50%), radial-gradient(circle at 70% 50%, #A3FF00 0%, transparent 50%)' }}
@@ -68,10 +81,10 @@ export default async function BlogPage({
           <span className="inline-block text-sport-orange font-bold text-sm uppercase tracking-widest mb-4">
             {t('eyebrow')}
           </span>
-          <h1 className="text-4xl md:text-6xl font-black text-white mb-6 leading-tight">
+          <h1 className="text-4xl md:text-6xl font-black text-white mb-6 leading-tight [text-shadow:0_2px_18px_rgba(0,0,0,0.6)]">
             {t.rich('title', { o: (c) => <span className="text-sport-orange">{c}</span> })}
           </h1>
-          <p className="text-sport-gray text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
+          <p className="text-gray-200 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed [text-shadow:0_2px_12px_rgba(0,0,0,0.85)]">
             {t('subtitle')}
           </p>
           <div className="mt-6 flex items-center justify-center gap-6 text-sm text-sport-gray">
