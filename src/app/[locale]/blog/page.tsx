@@ -81,13 +81,13 @@ export default async function BlogPage({
           <span className="inline-block text-sport-orange font-bold text-sm uppercase tracking-widest mb-4">
             {t('eyebrow')}
           </span>
-          <h1 className="text-4xl md:text-6xl font-black text-white mb-6 leading-tight [text-shadow:0_2px_18px_rgba(0,0,0,0.6)]">
+          <h1 className="text-3xl sm:text-4xl md:text-6xl font-black text-white mb-6 leading-tight px-2 text-balance [text-shadow:0_2px_18px_rgba(0,0,0,0.6)]">
             {t.rich('title', { o: (c) => <span className="text-sport-orange">{c}</span> })}
           </h1>
           <p className="text-gray-200 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed [text-shadow:0_2px_12px_rgba(0,0,0,0.85)]">
             {t('subtitle')}
           </p>
-          <div className="mt-6 flex items-center justify-center gap-6 text-sm text-sport-gray">
+          <div className="mt-6 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-sm text-sport-gray">
             <span className="flex items-center gap-1.5">
               <span className="w-2 h-2 rounded-full bg-sport-lime" />
               {t('statsArticles', { count: totalCount })}
