@@ -24,9 +24,6 @@ export function ProductCard({ product, index = 0, source = 'shop' }: ProductCard
   const { toggle, isWishlisted } = useWishlist()
   const [added, setAdded] = useState(false)
   const wishlisted = isWishlisted(product.id)
-  // Visuels « studio premium » détourés sur dégradé sombre (public/products/*.jpg) :
-  // object-contain + fond sombre → le carreau se fond dans la carte (pas de bloc blanc).
-  const baked = product.images[0]?.startsWith('/products/') ?? false
 
   const discount = product.original_price_cents
     ? Math.round((1 - product.price_cents / product.original_price_cents) * 100)
@@ -48,9 +45,9 @@ export function ProductCard({ product, index = 0, source = 'shop' }: ProductCard
         <a href={product.amazon.affiliateUrl} target="_blank" rel="noopener noreferrer"
           onClick={() => trackProductClick(product, source)}
           className="group block overflow-hidden rounded-2xl border border-sport-border bg-sport-card transition-all duration-300">
-          <div className={`relative isolate h-52 overflow-hidden ${baked ? 'bg-sport-dark' : product.imageFit === 'contain' ? 'bg-[radial-gradient(75%_55%_at_50%_0%,rgba(255,69,0,0.24),transparent_64%),radial-gradient(125%_100%_at_50%_36%,#f5f3f8,#d7d5e0_100%)]' : 'bg-sport-border/20'}`}>
+          <div className={`relative isolate h-52 overflow-hidden ${product.imageFit === 'contain' ? 'bg-[radial-gradient(75%_55%_at_50%_0%,rgba(255,69,0,0.24),transparent_64%),radial-gradient(125%_100%_at_50%_36%,#f5f3f8,#d7d5e0_100%)]' : 'bg-sport-border/20'}`}>
             <Image src={product.images[0] ?? ''} alt={product.name} fill
-              className={`${baked ? 'object-contain' : product.imageFit === 'contain' ? 'object-contain p-5 mix-blend-multiply' : 'object-cover'} transition-transform duration-500 group-hover:scale-105`}
+              className={`${product.imageFit === 'contain' ? 'object-contain p-5 mix-blend-multiply' : 'object-cover'} transition-transform duration-500 group-hover:scale-105`}
               style={product.imagePosition ? { objectPosition: product.imagePosition } : undefined}
               sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw" />
             {/* Studio premium « palette XENOTIF » pour les visuels à fond blanc :
@@ -98,8 +95,8 @@ export function ProductCard({ product, index = 0, source = 'shop' }: ProductCard
     <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3, delay: index * 0.05 }}>
       <Tilt3D max={14} className="relative rounded-2xl">
       <div className="group overflow-hidden rounded-2xl border border-sport-border bg-sport-card transition-all duration-300 flex flex-col">
-        <Link href={`/boutique/${product.slug}`} onClick={() => trackProductClick(product, source)} className={`relative block h-52 overflow-hidden ${baked ? 'bg-sport-dark' : 'bg-sport-border/20'}`}>
-          <Image src={product.images[0] ?? ''} alt={product.name} fill className={`${baked ? 'object-contain' : 'object-cover'} transition-transform duration-500 group-hover:scale-105`}
+        <Link href={`/boutique/${product.slug}`} onClick={() => trackProductClick(product, source)} className="relative block h-52 overflow-hidden bg-sport-border/20">
+          <Image src={product.images[0] ?? ''} alt={product.name} fill className="object-cover transition-transform duration-500 group-hover:scale-105"
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw" />
           {product.badge && <span className="absolute top-3 left-3 rounded-full bg-sport-orange px-2.5 py-1 text-xs font-black text-white shadow-lg">{product.badge}</span>}
           {discount && <span className="absolute top-3 right-10 rounded-full bg-red-500 px-2 py-0.5 text-xs font-black text-white">-{discount}%</span>}
