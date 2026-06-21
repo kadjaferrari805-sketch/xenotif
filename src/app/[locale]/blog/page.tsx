@@ -71,8 +71,8 @@ export default async function BlogPage({
           sizes="100vw"
           className="object-cover object-center"
         />
-        <div aria-hidden="true" className="absolute inset-0 bg-sport-dark/82" />
-        <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-b from-sport-dark/50 via-transparent to-sport-dark" />
+        <div aria-hidden="true" className="absolute inset-0 bg-sport-dark/64" />
+        <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-b from-sport-dark/35 via-transparent to-sport-dark" />
         <div
           className="absolute inset-0 opacity-5"
           style={{ backgroundImage: 'radial-gradient(circle at 30% 50%, #FF4500 0%, transparent 50%), radial-gradient(circle at 70% 50%, #A3FF00 0%, transparent 50%)' }}
