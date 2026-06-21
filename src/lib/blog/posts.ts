@@ -46,7 +46,7 @@ const BLOG_POSTS: BlogPost[] = [
     coverImage:
       'https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=1200&q=80',
     author: 'Thomas Mercier',
-    publishedAt: '2026-01-15T08:00:00Z',
+    publishedAt: '2026-05-14T08:00:00Z',
     readingMinutes: 9,
     productSlugs: [
       'halteres-reglables-bowflex',
@@ -197,7 +197,7 @@ const BLOG_POSTS: BlogPost[] = [
       'https://images.pexels.com/photos/5236668/pexels-photo-5236668.jpeg?auto=compress&cs=tinysrgb&w=1200',
     coverPosition: '50% 62%',
     author: 'Dr. Sophie Laurent',
-    publishedAt: '2026-01-22T08:00:00Z',
+    publishedAt: '2026-05-20T08:00:00Z',
     readingMinutes: 10,
     productSlugs: [
       'whey-myprotein-chocolat-1kg',
@@ -356,7 +356,7 @@ const BLOG_POSTS: BlogPost[] = [
     coverImage:
       'https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=1200&q=80',
     author: 'Thomas Mercier',
-    publishedAt: '2026-02-03T08:00:00Z',
+    publishedAt: '2026-05-25T08:00:00Z',
     readingMinutes: 8,
     productSlugs: [
       'programme-hiit-6-semaines',
@@ -520,7 +520,7 @@ const BLOG_POSTS: BlogPost[] = [
     coverImage:
       'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=1200&q=80',
     author: 'Dr. Sophie Laurent',
-    publishedAt: '2026-02-14T08:00:00Z',
+    publishedAt: '2026-05-30T08:00:00Z',
     readingMinutes: 9,
     productSlugs: [
       'pistolet-massage-theragun',
@@ -666,7 +666,7 @@ const BLOG_POSTS: BlogPost[] = [
     coverImage:
       'https://images.unsplash.com/photo-1571008887538-b36bb32f4571?auto=format&fit=crop&w=1200&q=80',
     author: 'Marie Dubois',
-    publishedAt: '2026-02-28T08:00:00Z',
+    publishedAt: '2026-06-04T08:00:00Z',
     readingMinutes: 10,
     productSlugs: ['guide-running-marathon-complet', 'short-training-gymshark-homme'],
     content: [
@@ -845,7 +845,7 @@ const BLOG_POSTS: BlogPost[] = [
       'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1200&q=80',
     coverPosition: '50% 35%',
     author: 'Thomas Mercier',
-    publishedAt: '2026-06-04T08:00:00Z',
+    publishedAt: '2026-06-07T08:00:00Z',
     readingMinutes: 10,
     productSlugs: [
       'programme-prise-masse-12-semaines',
@@ -990,7 +990,7 @@ const BLOG_POSTS: BlogPost[] = [
       'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=1200&q=80',
     coverPosition: '50% 50%',
     author: 'Thomas Mercier',
-    publishedAt: '2026-06-04T09:00:00Z',
+    publishedAt: '2026-06-10T09:00:00Z',
     readingMinutes: 8,
     productSlugs: ['roue-abdominale-pro-double', 'programme-hiit-6-semaines'],
     content: [
@@ -1117,7 +1117,7 @@ const BLOG_POSTS: BlogPost[] = [
     coverImage:
       'https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=1200&q=80',
     author: 'Camille Laurent',
-    publishedAt: '2026-06-09T08:00:00Z',
+    publishedAt: '2026-06-17T08:00:00Z',
     readingMinutes: 8,
     productSlugs: ['whey-myprotein-chocolat-1kg', 'creatine-monohydrate-myprotein-300g', 'bcaa-myprotein-500g-fruit'],
     content: [
@@ -1173,7 +1173,7 @@ const BLOG_POSTS: BlogPost[] = [
     coverImage:
       'https://images.pexels.com/photos/3771069/pexels-photo-3771069.jpeg?auto=compress&cs=tinysrgb&w=1200',
     author: 'Julie Moreau',
-    publishedAt: '2026-06-07T08:00:00Z',
+    publishedAt: '2026-06-15T08:00:00Z',
     readingMinutes: 7,
     productSlugs: ['pistolet-massage-theragun', 'foam-roller-trigger-point', 'montre-connectee-sport-gps'],
     content: [
@@ -1225,7 +1225,7 @@ const BLOG_POSTS: BlogPost[] = [
     coverImage:
       'https://images.pexels.com/photos/4720236/pexels-photo-4720236.jpeg?auto=compress&cs=tinysrgb&w=1200',
     author: 'Thomas Mercier',
-    publishedAt: '2026-06-05T08:00:00Z',
+    publishedAt: '2026-06-12T08:00:00Z',
     readingMinutes: 9,
     productSlugs: ['whey-myprotein-chocolat-1kg', 'bracelet-fitness-tracker', 'bcaa-myprotein-500g-fruit'],
     content: [
@@ -1261,7 +1261,7 @@ const BLOG_POSTS: BlogPost[] = [
     category: 'Nutrition',
     coverImage: 'https://m.media-amazon.com/images/I/51TAQnfNZKL.jpg',
     author: 'Camille Laurent',
-    publishedAt: '2026-06-14T08:00:00Z',
+    publishedAt: '2026-06-21T08:00:00Z',
     readingMinutes: 7,
     productSlugs: ['whey-myprotein-chocolat-1kg', 'creatine-monohydrate-myprotein-300g', 'bcaa-myprotein-500g-fruit'],
     content: [
@@ -1303,7 +1303,7 @@ const BLOG_POSTS: BlogPost[] = [
     category: 'Matériel',
     coverImage: 'https://images.unsplash.com/photo-1579586337278-3befd40fd17a?auto=format&fit=crop&w=1200&q=80',
     author: 'Thomas Mercier',
-    publishedAt: '2026-06-12T08:00:00Z',
+    publishedAt: '2026-06-19T08:00:00Z',
     readingMinutes: 8,
     productSlugs: ['montre-connectee-sport-gps', 'montre-connectee-tactile-running', 'bracelet-fitness-tracker'],
     content: [
