@@ -69,15 +69,15 @@ export default function BoutiquePage() {
         {/* Image Hero : équipement de gym sombre en plein cadre, derrière le texte.
             Overlays sombres → texte blanc lisible + halo orange de la marque par-dessus. */}
         <Image
-          src="https://images.pexels.com/photos/2261481/pexels-photo-2261481.jpeg?auto=compress&cs=tinysrgb&w=1600"
+          src="https://images.pexels.com/photos/7031705/pexels-photo-7031705.jpeg?auto=compress&cs=tinysrgb&w=1600"
           alt=""
           fill
           priority
           sizes="100vw"
           className="object-cover object-center"
         />
-        <div aria-hidden="true" className="absolute inset-0 bg-sport-dark/70" />
-        <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-b from-sport-dark/40 via-transparent to-sport-dark" />
+        <div aria-hidden="true" className="absolute inset-0 bg-sport-dark/45" />
+        <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-b from-sport-dark/20 via-transparent to-sport-dark" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(255,69,0,0.15),transparent)]" />
         <div className="absolute top-20 right-10 h-72 w-72 rounded-full bg-sport-orange/5 blur-3xl" />
 
