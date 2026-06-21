@@ -88,11 +88,11 @@ export default function BoutiquePage() {
               {t('badge')}
             </motion.div>
             <motion.h1 data-no-reveal initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}
-              className="text-3xl font-black leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl mb-4 px-2">
+              className="text-3xl font-black leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl mb-4 px-2 [text-shadow:0_2px_18px_rgba(0,0,0,0.6)]">
               {t.rich('heroTitle', { o: (c) => <span className="text-sport-orange">{c}</span>, br: () => <br /> })}
             </motion.h1>
             <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}
-              className="text-base sm:text-lg text-sport-gray max-w-2xl mx-auto mb-9">
+              className="text-base sm:text-lg text-gray-100 max-w-2xl mx-auto mb-9 [text-shadow:0_2px_12px_rgba(0,0,0,0.85)]">
               {t('heroSubtitle')}
             </motion.p>
 
