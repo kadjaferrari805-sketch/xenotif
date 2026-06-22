@@ -21,6 +21,22 @@
     {
       "path": "/api/cron/onboarding",
       "schedule": "30 9 * * *"
+    },
+    {
+      "path": "/api/cron/daily-newsletter",
+      "schedule": "0 9 * * *"
+    },
+    {
+      "path": "/api/cron/boutique-push",
+      "schedule": "0 12 * * *"
+    },
+    {
+      "path": "/api/cron/guide-push",
+      "schedule": "0 15 * * *"
+    },
+    {
+      "path": "/api/cron/subscribe-push",
+      "schedule": "0 20 * * *"
     }
   ]
 }

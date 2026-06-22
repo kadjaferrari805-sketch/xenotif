@@ -1,8 +1,13 @@
 import { Resend } from 'resend'
 import { getProductById } from '@/lib/boutique/products'
+import { getCampaignEmail } from '@/lib/campaigns'
 
-export type EmailLocale = 'fr' | 'en'
-const norm = (l?: string): EmailLocale => (l === 'en' ? 'en' : 'fr')
+export type EmailLocale = 'fr' | 'en' | 'de'
+// `norm` (fr/en) : conservé pour les emails transactionnels encore bilingues
+// (welcome, essai, réactivation, onboarding) → l'allemand y retombe sur le FR.
+const norm = (l?: string): 'fr' | 'en' => (l === 'en' ? 'en' : 'fr')
+// `norm3` (fr/en/de) : pour les emails localisés en 3 langues (newsletter/motivation).
+const norm3 = (l?: string): EmailLocale => (l === 'en' ? 'en' : l === 'de' ? 'de' : 'fr')
 
 const resend = new Resend(process.env.RESEND_API_KEY ?? 'placeholder')
 const FROM = 'Xenotif® <noreply@xenotif.com>'
@@ -22,6 +27,13 @@ const CHROME = {
     shop: 'Shop',
     contact: 'Contact',
     copyright: '© 2026 Xenotif® — All rights reserved. Forge your body. Push your limits.',
+  },
+  de: {
+    tagline: 'Performance · KI-Coaching',
+    preheader: 'Xenotif® — Forme deinen Körper. Überschreite deine Grenzen.',
+    shop: 'Shop',
+    contact: 'Kontakt',
+    copyright: '© 2026 Xenotif® — Alle Rechte vorbehalten. Forme deinen Körper. Überschreite deine Grenzen.',
   },
 } as const
 
@@ -322,6 +334,64 @@ const DAILY_MESSAGES: Record<EmailLocale, DailyMessage[]> = {
       challenge: 'Today\'s challenge: outdoor sport, swimming, cycling or a light session — 30 min is enough!',
     },
   ],
+  de: [
+    {
+      subject: '☀️ Neustart — deine Woche beginnt heute!',
+      quote: '„Erfolg ist nicht endgültig, Misserfolg ist nicht fatal: Es zählt der Mut weiterzumachen.“',
+      quoteAuthor: '— Winston Churchill',
+      headline: 'Starte stark in deine Woche!',
+      body: 'Der Sonntag ist ideal, um die Basis für deine Woche zu legen. Eine kurze Einheit heute und du startest am Montag mit Energie und Selbstvertrauen.',
+      challenge: 'Tages-Challenge: 15 Min Mobilität oder ein zügiger Spaziergang, um deinen Körper vorzubereiten.',
+    },
+    {
+      subject: '💪 Montag = der Tag. Bereit, alles zu geben?',
+      quote: '„Es fehlt nicht an Lust — es ist die Disziplin, die den Unterschied macht.“',
+      quoteAuthor: '— Xenotif®',
+      headline: 'Montag ist dein Krafttag.',
+      body: 'Champions wählen ihre Tage nicht. Sie trainieren, weil sie wissen, dass jeder Einsatz zählt — auch an Tagen ohne Motivation.',
+      challenge: 'Tages-Challenge: absolviere eine komplette Kraft- oder Cardio-Einheit auf deinem Dashboard.',
+    },
+    {
+      subject: '🔥 Dienstag — halt das Tempo, bleib dran!',
+      quote: '„Der Schmerz von heute ist die Kraft von morgen.“',
+      quoteAuthor: '— Arnold Schwarzenegger',
+      headline: 'Das Momentum ist auf deiner Seite.',
+      body: 'Nach dem Montag wird am Dienstag die Verbindlichkeit getestet. Wer jetzt beständig bleibt, sieht in 30 Tagen Ergebnisse.',
+      challenge: 'Tages-Challenge: füge 5 % Last oder 2 Wiederholungen zu deiner Hauptübung hinzu.',
+    },
+    {
+      subject: '⚡ Wochenmitte — du bist auf halbem Weg, weiter so!',
+      quote: '„Dein Körper kann alles. Es ist dein Kopf, den du überzeugen musst.“',
+      quoteAuthor: '— Xenotif®',
+      headline: 'Mittwoch: der Wendepunkt der Woche.',
+      body: 'Die Wochenmitte ist oft der Moment, in dem die Müdigkeit kommt. Aber genau dann machen echte Athleten den Unterschied. Bleib in deiner Routine.',
+      challenge: 'Tages-Challenge: eine kurze Cardio-Einheit oder Yoga, um zu regenerieren und aktiv zu bleiben.',
+    },
+    {
+      subject: '🎯 Donnerstag — fast Freitag, gib noch mehr!',
+      quote: '„Jede Wiederholung, jeder Satz, jeder Schweißtropfen bringt dich deinem Ziel näher.“',
+      quoteAuthor: '— Xenotif®',
+      headline: 'Der Einsatz von heute ist die Veränderung von morgen.',
+      body: 'Donnerstag ist der Endspurt der Woche. Das Schwierigste hast du schon geschafft. Gib heute den Rest — dein zukünftiges Ich wird es dir danken.',
+      challenge: 'Tages-Challenge: beende eine komplette Einheit und trag deinen Fortschritt ein.',
+    },
+    {
+      subject: '🏆 Freitag — beende die Woche stark!',
+      quote: '„Erfolg kommt nicht vom Talent, sondern von der Beständigkeit.“',
+      quoteAuthor: '— Dwayne Johnson',
+      headline: 'Am Freitag abzuschließen ist das beste Gefühl.',
+      body: 'Eine komplette Trainingswoche — das sind 52 Wochen Fortschritt im Jahr. Wer freitags trainiert, verändert seinen Körper dauerhaft.',
+      challenge: 'Tages-Challenge: eine intensive Einheit, überschreite deine Grenzen — der letzte Einsatz der Woche!',
+    },
+    {
+      subject: '🌟 Aktiver Samstag — genieß ihn und bleib in Bewegung!',
+      quote: '„Der Körper erreicht, was der Geist glaubt.“',
+      quoteAuthor: '— Napoleon Hill',
+      headline: 'Samstag: aktive Erholung oder eine neue Challenge.',
+      body: 'Das Wochenende ist keine Pause, sondern eine Chance. Eine kurze Einheit oder Aktivität draußen hält dein Momentum und hebt deine Laune den ganzen Tag.',
+      challenge: 'Tages-Challenge: Sport draußen, Schwimmen, Radfahren oder eine leichte Einheit — 30 Min reichen!',
+    },
+  ],
 }
 
 export async function sendDailyMotivationEmail({
@@ -329,14 +399,16 @@ export async function sendDailyMotivationEmail({
 }: {
   email: string; name: string; locale?: string
 }) {
-  const locale = norm(rawLocale)
-  const en = locale === 'en'
+  const locale = norm3(rawLocale)
   const dayIndex = new Date().getDay() // 0=Sunday … 6=Saturday
   const msg = DAILY_MESSAGES[locale][dayIndex]
   const firstName = name ? name.split(' ')[0] : ''
-  const labels = en
-    ? { challenge: 'Today\'s challenge', cta: 'Start my session →', unsub: 'You receive this daily email because you\'re subscribed to Xenotif®.', prefs: 'Manage my preferences' }
-    : { challenge: 'Défi du jour', cta: 'Commencer ma séance →', unsub: 'Tu reçois cet email quotidien car tu es abonné(e) à Xenotif®.', prefs: 'Gérer mes préférences' }
+  const LABELS: Record<EmailLocale, { challenge: string; cta: string; unsub: string; prefs: string }> = {
+    fr: { challenge: 'Défi du jour', cta: 'Commencer ma séance →', unsub: 'Tu reçois cet email quotidien car tu es inscrit(e) à Xenotif®.', prefs: 'Gérer mes préférences' },
+    en: { challenge: 'Today\'s challenge', cta: 'Start my session →', unsub: 'You receive this daily email because you\'re signed up to Xenotif®.', prefs: 'Manage my preferences' },
+    de: { challenge: 'Tages-Challenge', cta: 'Meine Einheit starten →', unsub: 'Du erhältst diese tägliche E-Mail, weil du bei Xenotif® angemeldet bist.', prefs: 'Einstellungen verwalten' },
+  }
+  const labels = LABELS[locale]
 
   await resend.emails.send({
     from: FROM,
@@ -369,6 +441,44 @@ export async function sendDailyMotivationEmail({
       <p style="color:#374151;font-size:12px;text-align:center;line-height:1.6;">
         ${labels.unsub}<br/>
         <a href="${BASE_URL}/dashboard/abonnement" style="color:#6B7280;">${labels.prefs}</a>
+      </p>
+    `, locale),
+  })
+}
+
+// Newsletter quotidienne à thème tournant (boutique / guide / abonnement),
+// localisée fr/en/de. Le thème « motivation » passe par sendDailyMotivationEmail.
+export async function sendThemedDailyEmail({
+  email, name, locale: rawLocale, theme,
+}: {
+  email: string; name: string; locale?: string; theme: 'boutique' | 'guide' | 'subscribe'
+}) {
+  const locale = norm3(rawLocale)
+  const c = getCampaignEmail(theme, locale)
+  const firstName = name ? name.split(' ')[0] : ''
+  const hi = locale === 'en' ? 'Hi' : locale === 'de' ? 'Hallo' : 'Salut'
+  const unsub: Record<EmailLocale, string> = {
+    fr: 'Tu reçois cet email car tu es inscrit(e) à Xenotif®.',
+    en: 'You receive this email because you\'re signed up to Xenotif®.',
+    de: 'Du erhältst diese E-Mail, weil du bei Xenotif® angemeldet bist.',
+  }
+  const prefs: Record<EmailLocale, string> = {
+    fr: 'Gérer mes préférences', en: 'Manage my preferences', de: 'Einstellungen verwalten',
+  }
+  const href = c.ctaUrl.startsWith('http') ? c.ctaUrl : `${BASE_URL}${c.ctaUrl}`
+  await resend.emails.send({
+    from: FROM,
+    to: email,
+    subject: c.subject,
+    html: wrap(`
+      <h1 style="font-size:24px;font-weight:900;margin:0 0 14px;">${c.headline}${firstName ? `, ${firstName}` : ''} 🔥</h1>
+      <p style="color:#9CA3AF;font-size:15px;line-height:1.7;margin:0 0 26px;">${c.body}</p>
+      <table role="presentation" cellpadding="0" cellspacing="0"><tr><td style="border-radius:99px;background:#FF4500;">
+        <a href="${href}" style="display:inline-block;padding:14px 28px;color:#fff;font-weight:800;font-size:14px;text-decoration:none;border-radius:99px;">${c.cta}</a>
+      </td></tr></table>
+      <p style="margin:30px 0 0;font-size:11px;color:#6B7280;line-height:1.7;">
+        ${unsub[locale]}<br/>
+        <a href="${BASE_URL}/dashboard/abonnement" style="color:#6B7280;">${prefs[locale]}</a>
       </p>
     `, locale),
   })

@@ -3,15 +3,13 @@ import { createAdminClient } from '@/lib/supabase/admin'
 import { sendPushToUser } from '@/lib/push'
 import { sendWebPushToUser } from '@/lib/web-push'
 import { getDevicePushRecipients } from '@/lib/push-recipients'
-import { getDailyPushContent } from '@/lib/daily-motivation'
+import { getCampaignPush } from '@/lib/campaigns'
 
 export const runtime = 'nodejs'
 export const dynamic = 'force-dynamic'
 
-// 1er créneau quotidien (matin) : motivation. PUSH localisé (fr/en/de) à TOUS
-// les appareils enregistrés (natif Expo + Web Push PWA), quel que soit
-// l'abonnement. L'email quotidien (newsletter à thème tournant) part désormais
-// du cron `daily-newsletter`.
+// Créneau après-midi : « prends ton guide programme ». PUSH localisé (fr/en/de)
+// à tous les appareils enregistrés (natif Expo + Web Push PWA).
 export async function GET(request: Request) {
   const authHeader = request.headers.get('Authorization')
   if (authHeader !== `Bearer ${process.env.CRON_SECRET}`) {
@@ -25,19 +23,12 @@ export async function GET(request: Request) {
   let pushed = 0
   const errors: string[] = []
   for (const { userId, locale } of recipients) {
-    const { title, body } = getDailyPushContent(locale)
-    try {
-      pushed += await sendPushToUser(userId, { title, body, data: { type: 'daily_motivation' } })
-    } catch (e) {
-      errors.push(`push ${userId}: ${e}`)
-    }
-    try {
-      pushed += await sendWebPushToUser(userId, { title, body, url: '/dashboard/notifications', tag: 'daily_motivation' })
-    } catch (e) {
-      errors.push(`webpush ${userId}: ${e}`)
-    }
+    const { title, body, url, tag } = getCampaignPush('guide', locale)
+    try { pushed += await sendPushToUser(userId, { title, body, data: { type: 'guide_daily', url } }) }
+    catch (e) { errors.push(`push ${userId}: ${e}`) }
+    try { pushed += await sendWebPushToUser(userId, { title, body, url, tag }) }
+    catch (e) { errors.push(`webpush ${userId}: ${e}`) }
   }
-
-  console.log(`[daily-motivation] push=${pushed} devices=${recipients.length} errors=${errors.length}`)
+  console.log(`[guide-push] push=${pushed} devices=${recipients.length} errors=${errors.length}`)
   return NextResponse.json({ pushed, devices: recipients.length, errors })
 }
