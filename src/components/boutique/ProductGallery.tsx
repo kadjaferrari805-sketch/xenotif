@@ -9,6 +9,8 @@ interface ProductGalleryProps {
   discountLabel?: string | null
   imageFit?: 'cover' | 'contain'
   imagePosition?: string
+  /** Photo produit fond blanc → tuile blanche + object-contain (produit entièrement visible). */
+  lightTile?: boolean
 }
 
 /**
@@ -17,14 +19,15 @@ interface ProductGalleryProps {
  * Sur mobile, le zoom au survol ne s'applique pas — la navigation se fait
  * via les miniatures défilantes. Style cohérent e-commerce haut de gamme.
  */
-export function ProductGallery({ images, alt, badge, discountLabel, imageFit, imagePosition }: ProductGalleryProps) {
+export function ProductGallery({ images, alt, badge, discountLabel, imageFit, imagePosition, lightTile }: ProductGalleryProps) {
   const list = images.length ? images : ['']
   const [active, setActive] = useState(0)
   const [zoom, setZoom] = useState(false)
   const [pos, setPos] = useState({ x: 50, y: 50 })
   const frameRef = useRef<HTMLDivElement>(null)
 
-  const fitClass = imageFit === 'contain' ? 'object-contain p-4' : 'object-cover'
+  const contain = lightTile || imageFit === 'contain'
+  const fitClass = contain ? 'object-contain p-4' : 'object-cover'
 
   function handleMove(e: React.MouseEvent<HTMLDivElement>) {
     const r = frameRef.current?.getBoundingClientRect()
@@ -43,7 +46,7 @@ export function ProductGallery({ images, alt, badge, discountLabel, imageFit, im
         onMouseEnter={() => setZoom(true)}
         onMouseLeave={() => setZoom(false)}
         onMouseMove={handleMove}
-        className="group relative aspect-square overflow-hidden rounded-2xl border border-sport-border bg-sport-card cursor-zoom-in"
+        className={`group relative aspect-square overflow-hidden rounded-2xl border border-sport-border cursor-zoom-in ${lightTile ? 'bg-white' : 'bg-sport-card'}`}
       >
         <Image
           key={active}
@@ -81,11 +84,11 @@ export function ProductGallery({ images, alt, badge, discountLabel, imageFit, im
               onClick={() => setActive(i)}
               onMouseEnter={() => setActive(i)}
               aria-label={`Vue ${i + 1}`}
-              className={`relative h-16 w-16 shrink-0 overflow-hidden rounded-lg border-2 transition-all ${
+              className={`relative h-16 w-16 shrink-0 overflow-hidden rounded-lg border-2 transition-all ${lightTile ? 'bg-white' : ''} ${
                 i === active ? 'border-sport-orange ring-2 ring-sport-orange/30' : 'border-sport-border hover:border-sport-gray'
               }`}
             >
-              <Image src={img} alt="" fill sizes="64px" className={imageFit === 'contain' ? 'object-contain p-1' : 'object-cover'} />
+              <Image src={img} alt="" fill sizes="64px" className={contain ? 'object-contain p-1' : 'object-cover'} />
             </button>
           ))}
         </div>
