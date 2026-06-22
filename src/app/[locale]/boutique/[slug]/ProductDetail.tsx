@@ -1,6 +1,5 @@
 'use client'
 import { useState } from 'react'
-import Image from 'next/image'
 import { Link } from '@/i18n/navigation'
 import { useTranslations, useLocale } from 'next-intl'
 import { ArrowLeft, ShoppingCart, Download, Check, Star, ExternalLink } from 'lucide-react'
@@ -8,6 +7,7 @@ import { formatPrice, type Product } from '@/lib/boutique/products'
 import { getProductsLocalized } from '@/lib/boutique/products.en'
 import { useCart } from '@/lib/boutique/cart'
 import { ProductCard } from '@/components/boutique/ProductCard'
+import { ProductGallery } from '@/components/boutique/ProductGallery'
 import { CustomerReviews } from '@/components/reviews/CustomerReviews'
 
 // Partie interactive de la fiche produit (panier, état du bouton).
@@ -40,19 +40,15 @@ export function ProductDetail({ product }: { product: Product }) {
         </Link>
 
         <div className="grid gap-12 lg:grid-cols-2 mb-16">
-          {/* Image */}
-          <div className="relative aspect-square overflow-hidden rounded-2xl border border-sport-border bg-sport-card">
-            <Image src={product.images[0] ?? ''} alt={product.name} fill
-              sizes="(max-width: 1024px) 100vw, 50vw"
-              className={product.imageFit === 'contain' ? 'object-contain p-4' : 'object-cover'}
-              style={product.imagePosition ? { objectPosition: product.imagePosition } : undefined} />
-            {product.badge && (
-              <span className="absolute top-4 left-4 rounded-full bg-sport-orange px-3 py-1 text-sm font-black text-white">{product.badge}</span>
-            )}
-            {discount && (
-              <span className="absolute top-4 right-4 rounded-full bg-red-500 px-3 py-1 text-sm font-black text-white">-{discount}%</span>
-            )}
-          </div>
+          {/* Galerie produit premium (image principale + miniatures + zoom au survol) */}
+          <ProductGallery
+            images={product.images}
+            alt={product.name}
+            badge={product.badge}
+            discountLabel={discount ? `-${discount}%` : null}
+            imageFit={product.imageFit}
+            imagePosition={product.imagePosition}
+          />
 
           {/* Détails */}
           <div className="flex flex-col">
