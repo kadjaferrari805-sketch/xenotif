@@ -48,6 +48,7 @@ export function ProductDetail({ product }: { product: Product }) {
             discountLabel={discount ? `-${discount}%` : null}
             imageFit={product.imageFit}
             imagePosition={product.imagePosition}
+            lightTile={product.type !== 'digital'}
           />
 
           {/* Détails */}
