@@ -108,10 +108,18 @@ export async function POST(req: NextRequest) {
     // Enregistrer l'abonné dans la liste newsletter persistante (non bloquant)
     try {
       const supabase = createAdminClient()
-      await supabase.from('newsletter_subscribers').upsert(
-        { email: email.toLowerCase().trim(), source: 'newsletter', subscribed_at: new Date().toISOString() },
+      const cleanEmail = email.toLowerCase().trim()
+      const { error } = await supabase.from('newsletter_subscribers').upsert(
+        { email: cleanEmail, source: 'newsletter', locale, subscribed_at: new Date().toISOString() },
         { onConflict: 'email' }
       )
+      // Repli si la colonne `locale` n'existe pas encore (avant exécution du SQL).
+      if (error) {
+        await supabase.from('newsletter_subscribers').upsert(
+          { email: cleanEmail, source: 'newsletter', subscribed_at: new Date().toISOString() },
+          { onConflict: 'email' }
+        )
+      }
     } catch (dbErr) {
       console.error('[subscribe] DB upsert error (non-bloquant):', dbErr)
     }

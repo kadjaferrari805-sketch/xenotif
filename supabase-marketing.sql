@@ -7,8 +7,13 @@
 create table if not exists public.newsletter_subscribers (
   email         text primary key,
   source        text default 'newsletter',
+  locale        text not null default 'fr',
   subscribed_at timestamptz not null default now()
 );
+
+-- Langue de l'abonné (pour des newsletters localisées fr/en/de) — ajout idempotent.
+alter table public.newsletter_subscribers
+  add column if not exists locale text not null default 'fr';
 
 -- Paniers abandonnés (relance automatique)
 create table if not exists public.abandoned_carts (
