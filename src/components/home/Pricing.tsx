@@ -113,10 +113,18 @@ export function Pricing() {
                     : 'bg-sport-dark border-sport-border'
                 }`}
               >
-                {tr.badge && (
+                {tr.badge && plan.id !== 'gratuit' && (
                   <span className="absolute -top-4 left-1/2 -translate-x-1/2 bg-sport-orange text-white text-[10px] font-black uppercase tracking-wider px-4 py-1.5 rounded-full flex items-center gap-1.5 whitespace-nowrap shadow-lg shadow-sport-orange/30">
                     <Zap size={10} aria-hidden="true" /> {tr.badge}
                   </span>
+                )}
+
+                {/* Carte Gratuit : l'upsell « 7 jours Pro offerts » remplace le badge,
+                    en tête de carte sur toute la largeur. */}
+                {plan.id === 'gratuit' && (
+                  <div className="mb-6">
+                    <ProOfferPill {...(PILL_TXT[locale] ?? PILL_TXT.fr)} />
+                  </div>
                 )}
 
                 <div className="mb-6">
@@ -140,12 +148,6 @@ export function Pricing() {
                     <p className="text-[10px] text-emerald-400 mt-1.5 font-semibold">
                       {t('freeTrialNote')}
                     </p>
-                  )}
-                  {/* Bloc promo premium « 7 jours Pro offerts » + compteur sur la carte Gratuit */}
-                  {plan.id === 'gratuit' && (
-                    <div className="mt-3.5">
-                      <ProOfferPill {...(PILL_TXT[locale] ?? PILL_TXT.fr)} />
-                    </div>
                   )}
                 </div>
 
