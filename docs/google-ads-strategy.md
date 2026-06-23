@@ -237,4 +237,38 @@ Règle : ne pas changer d'enchères pendant la phase d'apprentissage (1-2 sem). 
 
 ---
 
+## 14. Annexe — Liaison GA4 ↔ Google Ads (runbook UI)
+
+> Les events `sign_up` et `purchase` sont **déjà en production** (`src/lib/analytics.ts` → `trackSignUp` / `trackPurchase`, posés à côté des events Meta sur signup + les 2 pages de succès Stripe). Il reste à les exploiter côté Google. Tout se fait dans les interfaces web GA4 + Google Ads.
+
+**A. Prérequis**
+- Compte **Google Ads** actif (facturation configurable sans lancer de campagne).
+- **Administrateur** sur GA4 `G-3H3JTM404V` **et** sur Google Ads (idéalement même login Google).
+
+**B. GA4 — marquer les événements clés**
+1. GA4 → **Admin** → *Affichage des données* → **Événements clés**.
+2. **« Nouvel événement clé »** → `sign_up` → Enregistrer. Refaire pour `purchase`.
+   - 💡 On peut les créer par leur nom même avant le 1er déclenchement.
+
+**C. Lier GA4 ↔ Google Ads**
+1. GA4 → **Admin** → *Associations de produits* → **Associations Google Ads** → **Associer**.
+2. Sélectionner le compte Google Ads → activer **Personnalisation pub** + **Marquage automatique (auto-tagging)** → Envoyer.
+
+**D. Importer les conversions dans Google Ads**
+1. Google Ads → **Objectifs** → **Conversions** → **+ Nouvelle action** → **Importer**.
+2. **Google Analytics 4 (Web)** → cocher **`sign_up`** + **`purchase`** → Importer.
+
+**E. Principale / secondaire**
+- **`purchase`** = **Principale** (optimisation/ROAS). ⚠️ Couvre abo **et** guides (l'abo est câblé en `purchase`).
+- **`sign_up`** = **Secondaire** (signal haut d'entonnoir). Possibilité de le passer Principale au démarrage pour le volume, puis rebasculer sur `purchase` à ~30-50 conv/sem.
+
+**F. Conversions étendues (recommandé)**
+- GA4 → **Admin** → *Collecte de données* → **Collecte de données fournies par l'utilisateur** → activer (hash e-mail → meilleure attribution, équivalent CAPI Meta).
+
+**G. Vérifier**
+- Google Ads → Conversions : statut **« Enregistrement des conversions »** sous 24-48 h après des events réels.
+- GA4 → **Temps réel / DebugView** : `sign_up` à l'inscription, `purchase` à l'achat.
+
+---
+
 *Dernière mise à jour : juin 2026.*
