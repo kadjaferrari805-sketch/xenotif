@@ -10,11 +10,11 @@ import { SectionHeader } from '@/components/ui/SectionHeader'
 import { Tilt3D } from '@/components/premium/Tilt3D'
 import { ProOfferPill } from '@/components/promo/ProOfferPill'
 
-// Label court de la mini-pub premium sur la carte Gratuit, par langue.
-const PILL_LABEL: Record<string, string> = {
-  fr: '7 j Pro offerts',
-  en: '7d Pro free',
-  de: '7 T Pro gratis',
+// Bloc promo premium sur la carte Gratuit, par langue.
+const PILL_TXT: Record<string, { flash: string; title: string; benefit: string; urgency: string }> = {
+  fr: { flash: 'Offre flash', title: '7 jours de Pro, 100 % offerts', benefit: 'Coach IA + toutes les disciplines débloqués. Sans carte bancaire.', urgency: 'L’offre file — plus que' },
+  en: { flash: 'Flash deal', title: '7 days of Pro, 100% free', benefit: 'AI coach + every discipline unlocked. No card needed.', urgency: 'Hurry — ends in' },
+  de: { flash: 'Flash-Angebot', title: '7 Tage Pro, 100 % gratis', benefit: 'KI-Coach + alle Sportarten frei. Ohne Kreditkarte.', urgency: 'Schnell — nur noch' },
 }
 
 type PlanId = 'gratuit' | 'pro'
@@ -141,10 +141,10 @@ export function Pricing() {
                       {t('freeTrialNote')}
                     </p>
                   )}
-                  {/* Mini-pub premium « 7 j Pro offerts » + compteur sur la carte Gratuit */}
+                  {/* Bloc promo premium « 7 jours Pro offerts » + compteur sur la carte Gratuit */}
                   {plan.id === 'gratuit' && (
-                    <div className="mt-3">
-                      <ProOfferPill label={PILL_LABEL[locale] ?? PILL_LABEL.fr} />
+                    <div className="mt-3.5">
+                      <ProOfferPill {...(PILL_TXT[locale] ?? PILL_TXT.fr)} />
                     </div>
                   )}
                 </div>
