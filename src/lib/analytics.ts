@@ -47,3 +47,30 @@ export function trackProductClick(product: Product, source = 'shop'): void {
     currency: 'EUR',
   })
 }
+
+// Inscription réussie. Événement recommandé GA4 « sign_up ». `method` = plan
+// choisi (gratuit/pro), pendant GA4 du `CompleteRegistration` Meta.
+export function trackSignUp(method = 'gratuit'): void {
+  if (typeof window === 'undefined') return
+  const w = window as unknown as { gtag?: Gtag }
+  w.gtag?.('event', 'sign_up', { method })
+}
+
+// Achat confirmé (guide boutique ou abonnement). Événement e-commerce GA4
+// standard « purchase » → importable comme conversion Google Ads. `value` en
+// euros, `transactionId` = id de session Stripe (dédup côté GA).
+export function trackPurchase(opts: {
+  value: number
+  currency?: string
+  transactionId?: string
+  items?: { item_id: string; item_name: string }[]
+}): void {
+  if (typeof window === 'undefined') return
+  const w = window as unknown as { gtag?: Gtag }
+  w.gtag?.('event', 'purchase', {
+    transaction_id: opts.transactionId,
+    value: opts.value,
+    currency: opts.currency ?? 'EUR',
+    items: opts.items ?? [],
+  })
+}
