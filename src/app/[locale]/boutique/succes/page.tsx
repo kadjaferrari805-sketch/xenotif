@@ -5,6 +5,7 @@ import Stripe from 'stripe'
 import { CheckCircle, Download, Package, ArrowRight } from 'lucide-react'
 import { getProductByIdLocalized } from '@/lib/boutique/products.en'
 import { MetaTrack } from '@/components/analytics/MetaTrack'
+import { GtagPurchase } from '@/components/analytics/GtagPurchase'
 
 export const dynamic = 'force-dynamic'
 
@@ -57,9 +58,13 @@ export default async function BoutiqueSuccesPage({
 
   return (
     <div className="flex min-h-screen flex-col items-center justify-center bg-sport-dark px-4 pt-20 pb-16 text-center">
-      {/* Conversion Meta Pixel : achat boutique confirmé — eventId partagé avec l'API Conversions */}
+      {/* Conversion achat boutique confirmé. Meta : eventId partagé avec l'API Conversions.
+          GA4 : événement « purchase » importable comme conversion Google Ads. */}
       {value > 0 && (
-        <MetaTrack event="Purchase" value={value} currency={currency} contentIds={digitalItems.map(i => i.id)} eventId={session_id} />
+        <>
+          <MetaTrack event="Purchase" value={value} currency={currency} contentIds={digitalItems.map(i => i.id)} eventId={session_id} />
+          <GtagPurchase value={value} currency={currency} transactionId={session_id} items={digitalItems.map(i => ({ item_id: i.id, item_name: i.name }))} />
+        </>
       )}
       <div className="w-full max-w-md">
         <div className="mb-8 flex justify-center">

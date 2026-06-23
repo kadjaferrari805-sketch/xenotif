@@ -4,6 +4,7 @@ import { CheckCircle, ArrowRight, Zap } from 'lucide-react'
 import Stripe from 'stripe'
 import { createServiceClient } from '@/lib/supabase/server'
 import { MetaTrack } from '@/components/analytics/MetaTrack'
+import { GtagPurchase } from '@/components/analytics/GtagPurchase'
 
 export const metadata: Metadata = {
   title: 'Paiement confirmé — Xenotif®',
@@ -16,14 +17,16 @@ const NEXT_STEPS = [
   { num: '3', text: 'Choisis ta première discipline et lance ta première séance.' },
 ]
 
-async function syncSubscription(sessionId: string) {
+type SubInfo = { value: number; currency: string; plan: string }
+
+async function syncSubscription(sessionId: string): Promise<SubInfo | null> {
   try {
     const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!)
     const session = await stripe.checkout.sessions.retrieve(sessionId, {
       expand: ['subscription'],
     })
-    if (session.mode !== 'subscription' || !session.customer || !session.subscription) return
-    if (typeof session.subscription === 'string') return
+    if (session.mode !== 'subscription' || !session.customer || !session.subscription) return null
+    if (typeof session.subscription === 'string') return null
 
     const sub = session.subscription as Stripe.Subscription
     const email = session.customer_details?.email ?? session.customer_email
@@ -40,7 +43,7 @@ async function syncSubscription(sessionId: string) {
       const { data: users } = await service.auth.admin.listUsers({ perPage: 200 })
       userId = users?.users?.find(u => u.email?.toLowerCase() === email.toLowerCase())?.id ?? null
     }
-    if (!userId) return
+    if (!userId) return null
 
     const plan = session.metadata?.plan ?? 'pro'
 
@@ -54,8 +57,15 @@ async function syncSubscription(sessionId: string) {
       current_period_end: new Date((sub.items.data[0]?.current_period_end ?? 0) * 1000).toISOString(),
       cancel_at_period_end: sub.cancel_at_period_end,
     }, { onConflict: 'user_id' })
+
+    return {
+      value: (session.amount_total ?? 0) / 100,
+      currency: (session.currency ?? 'eur').toUpperCase(),
+      plan,
+    }
   } catch (err) {
     console.error('syncSubscription error:', err)
+    return null
   }
 }
 
@@ -65,12 +75,16 @@ export default async function SuccessPage({
   searchParams: Promise<{ session_id?: string }>
 }) {
   const { session_id } = await searchParams
-  if (session_id) await syncSubscription(session_id)
+  const sub = session_id ? await syncSubscription(session_id) : null
 
   return (
     <main className="min-h-[80vh] flex flex-col items-center justify-center px-6 py-20 bg-sport-dark">
-      {/* Conversion Meta Pixel : abonnement (essai) démarré — eventId partagé avec l'API Conversions */}
+      {/* Conversion abonnement démarré. Meta : eventId partagé avec l'API Conversions.
+          GA4 : événement « purchase » importable comme conversion Google Ads. */}
       {session_id && <MetaTrack event="Subscribe" eventId={session_id} />}
+      {session_id && sub && (
+        <GtagPurchase value={sub.value} currency={sub.currency} transactionId={session_id} items={[{ item_id: sub.plan, item_name: `Abonnement ${sub.plan}` }]} />
+      )}
       {/* Glow */}
       <div
         aria-hidden="true"

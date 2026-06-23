@@ -7,6 +7,7 @@ import { Link, useRouter } from '@/i18n/navigation'
 import { ArrowRight, CheckCircle, Zap, Eye, EyeOff } from 'lucide-react'
 import { createClient } from '@/lib/supabase/client'
 import { trackMeta } from '@/lib/meta-pixel'
+import { trackSignUp } from '@/lib/analytics'
 import { Logo } from '@/components/ui/Logo'
 
 type PlanId = 'gratuit' | 'pro'
@@ -85,8 +86,9 @@ function SignUpForm() {
       return
     }
 
-    // Conversion Meta Pixel : inscription réussie
+    // Conversion : inscription réussie (Meta Pixel + GA4 sign_up)
     trackMeta('CompleteRegistration', { content_name: selectedPlan })
+    trackSignUp(selectedPlan)
 
     if (selectedPlan !== 'gratuit') {
       // Conversion Meta Pixel : passage au paiement
