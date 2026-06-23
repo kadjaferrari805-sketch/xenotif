@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: #000;
+        font-family: "Inter", sans-serif; -webkit-font-smoothing: antialiased; }
+      #root { position: relative; }
+      .scene { position: absolute; inset: 0; overflow: hidden; }
+      .kb { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+            will-change: transform; }
+      .scrim { position: absolute; inset: 0; background:
+        linear-gradient(180deg, rgba(0,0,0,.62) 0%, rgba(0,0,0,.28) 32%, rgba(0,0,0,.55) 70%, rgba(0,0,0,.9) 100%); }
+      .glow { position: absolute; left: 50%; top: 50%; width: 1100px; height: 1100px;
+        transform: translate(-50%,-50%);
+        background: radial-gradient(circle, rgba(255,69,0,0.18) 0%, rgba(255,69,0,0) 60%); }
+      .content { position: absolute; inset: 0; display: flex; flex-direction: column;
+        align-items: center; justify-content: center; padding: 0 90px; z-index: 3; }
+      .headline { font-size: 78px; font-weight: 900; color: #fff; letter-spacing: 1px;
+        text-align: center; line-height: 1.04; text-shadow: 0 4px 30px rgba(0,0,0,.7); }
+      .card { width: 740px; border-radius: 30px; padding: 40px 48px; text-align: center; }
+      .clabel { font-size: 29px; font-weight: 800; letter-spacing: 5px; text-transform: uppercase; }
+      .price { font-weight: 900; line-height: 1; }
+      .per { font-size: 34px; font-weight: 700; }
+      .vs { width: 122px; height: 122px; border-radius: 50%; display: flex; align-items: center;
+        justify-content: center; font-size: 50px; font-weight: 900; color: #fff; background: #FF4500;
+        box-shadow: 0 0 60px rgba(255,69,0,0.7); }
+      .big-num { font-size: 350px; font-weight: 900; color: #FF4500; line-height: 0.9;
+        text-shadow: 0 0 90px rgba(255,69,0,0.65), 0 4px 30px rgba(0,0,0,.6); }
+      .sub { font-size: 86px; font-weight: 900; color: #fff; text-align: center; line-height: 1.04;
+        text-shadow: 0 4px 26px rgba(0,0,0,.8); }
+      .discs { font-size: 40px; font-weight: 800; color: #fff; letter-spacing: 2px; text-align: center;
+        line-height: 1.7; text-shadow: 0 3px 18px rgba(0,0,0,.9); }
+      .badge { padding: 26px 60px; border-radius: 999px; background: #FF4500; font-size: 54px;
+        font-weight: 900; color: #fff; letter-spacing: 2px; box-shadow: 0 0 70px rgba(255,69,0,0.6); }
+      .small { font-size: 31px; font-weight: 800; letter-spacing: 6px; color: #e6e6e6;
+        text-transform: uppercase; text-shadow: 0 2px 14px rgba(0,0,0,.9); }
+      .logo { font-size: 128px; font-weight: 900; color: #fff; letter-spacing: 1px;
+        text-shadow: 0 4px 30px rgba(0,0,0,.7); }
+      .logo b { color: #FF4500; }
+      .tag { font-size: 46px; font-weight: 800; color: #FF4500; letter-spacing: 1px;
+        text-shadow: 0 3px 18px rgba(0,0,0,.8); }
+      .url { font-size: 40px; font-weight: 800; color: #fff; letter-spacing: 5px;
+        text-shadow: 0 3px 16px rgba(0,0,0,.9); }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="13"
+         data-width="1080" data-height="1920">
+
+      <!-- SCENE 1 — muscu + prix -->
+      <div id="s1" class="scene clip" data-start="0" data-duration="4.3" data-track-index="1">
+        <img id="img1" class="kb" src="bg1.jpg" alt="" />
+        <div class="scrim"></div>
+        <div class="glow"></div>
+        <div class="content">
+          <div id="s1-head" class="headline" style="margin-bottom: 56px"><span style="display:block">LE MÊME</span><span style="display:block">COACHING.</span></div>
+          <div id="s1-cardA" class="card" style="background:rgba(14,14,14,.80); border:2px solid #4a2020; margin-bottom: 26px">
+            <div class="clabel" style="color:#ff7a7a">Coach perso</div>
+            <div class="price" style="font-size:128px; color:#9a9a9a; text-decoration:line-through; text-decoration-color:#ff5252">200 €</div>
+            <div class="per" style="color:#9a9a9a">par mois</div>
+          </div>
+          <div id="s1-vs" class="vs" style="margin: 2px 0 26px">VS</div>
+          <div id="s1-cardB" class="card" style="background:rgba(20,11,2,.84); border:2px solid #FF4500">
+            <div class="clabel" style="color:#fff">Xenotif®</div>
+            <div class="price" style="font-size:160px; color:#FF4500">9,99 €</div>
+            <div class="per" style="color:#fff">par mois</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SCENE 2 — kettlebell + 20x -->
+      <div id="s2" class="scene clip" data-start="4.3" data-duration="4.3" data-track-index="2">
+        <img id="img2" class="kb" src="bg2.jpg" alt="" />
+        <div class="scrim"></div>
+        <div class="glow"></div>
+        <div class="content">
+          <div id="s2-num" class="big-num">20×</div>
+          <div id="s2-sub" class="sub" style="margin: 6px 0 56px">MOINS CHER</div>
+          <div id="s2-discs" class="discs"><span style="display:block">Muscu · Running · HIIT</span><span style="display:block">CrossFit · Natation · Vélo</span></div>
+          <div id="s2-pocket" class="sub" style="font-size:56px; color:#FF4500; margin-top:54px">Dans ta poche.</div>
+        </div>
+      </div>
+
+      <!-- SCENE 3 — salle + CTA -->
+      <div id="s3" class="scene clip" data-start="8.6" data-duration="4.4" data-track-index="3">
+        <img id="img3" class="kb" src="bg3.jpg" alt="" />
+        <div class="scrim"></div>
+        <div class="glow"></div>
+        <div class="content">
+          <div id="s3-badge" class="badge" style="margin-bottom: 30px">7 JOURS GRATUITS</div>
+          <div id="s3-eng" class="small" style="margin-bottom: 84px">Sans engagement</div>
+          <div id="s3-logo" class="logo" style="margin-bottom: 16px">XENO<b>TIF®</b></div>
+          <div id="s3-tag" class="tag" style="margin-bottom: 64px">Forge ton corps.</div>
+          <div id="s3-url" class="url">XENOTIF.COM</div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+
+      // Ken Burns (zoom lent) par image
+      tl.fromTo("#img1", { scale: 1.0, xPercent: 1.5 }, { scale: 1.13, xPercent: -1.5, duration: 4.3, ease: "none" }, 0);
+      tl.fromTo("#img2", { scale: 1.0, xPercent: -1.5 }, { scale: 1.13, xPercent: 1.5, duration: 4.3, ease: "none" }, 4.3);
+      tl.fromTo("#img3", { scale: 1.05, yPercent: 1.5 }, { scale: 1.15, yPercent: -1.5, duration: 4.4, ease: "none" }, 8.6);
+
+      // SCENE 1
+      tl.fromTo("#s1-head", { opacity: 0, y: -50 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 0.15);
+      tl.fromTo("#s1-cardA", { opacity: 0, x: -150 }, { opacity: 1, x: 0, duration: 0.6, ease: "power3.out" }, 0.5);
+      tl.fromTo("#s1-vs", { opacity: 0, scale: 0 }, { opacity: 1, scale: 1, duration: 0.45, ease: "back.out(2)" }, 1.0);
+      tl.fromTo("#s1-cardB", { opacity: 0, x: 150 }, { opacity: 1, x: 0, duration: 0.6, ease: "power3.out" }, 1.25);
+
+      // SCENE 2
+      tl.fromTo("#s2-num", { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.6, ease: "back.out(1.7)" }, 4.4);
+      tl.fromTo("#s2-sub", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 4.75);
+      tl.fromTo("#s2-discs", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 5.2);
+      tl.fromTo("#s2-pocket", { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, duration: 0.5, ease: "back.out(1.7)" }, 6.0);
+
+      // SCENE 3
+      tl.fromTo("#s3-badge", { opacity: 0, scale: 0 }, { opacity: 1, scale: 1, duration: 0.5, ease: "back.out(2)" }, 8.75);
+      tl.fromTo("#s3-eng", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 9.15);
+      tl.fromTo("#s3-logo", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 9.45);
+      tl.fromTo("#s3-tag", { opacity: 0 }, { opacity: 1, duration: 0.5 }, 10.0);
+      tl.fromTo("#s3-url", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 10.4);
+      tl.to("#s3-badge", { scale: 1.06, duration: 0.5, repeat: 3, yoyo: true, ease: "sine.inOut" }, 10.9);
+
+      tl.seek(0);
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>
