@@ -20,6 +20,13 @@ const TRIAL_TXT: Record<string, { title: string; sub: string; cta: string }> = {
   de: { title: '⚡ Dein Pro-Zugang ist GRATIS', sub: 'Nutze es voll — es endet in:', cta: 'Pro behalten' },
 }
 
+// Utilisateur gratuit (essai terminé) : upsell Pro avec urgence du jour.
+const FREE_TXT: Record<string, { title: string; sub: string; cta: string }> = {
+  fr: { title: '🔥 Débloque TOUT le Pro', sub: 'Coach IA + toutes les disciplines. Offre du jour, plus que :', cta: 'Passer en Pro' },
+  en: { title: '🔥 Unlock ALL of Pro', sub: 'AI coach + every discipline. Today’s deal, ends in:', cta: 'Go Pro' },
+  de: { title: '🔥 Schalte ALLES in Pro frei', sub: 'KI-Coach + alle Sportarten. Angebot heute, nur noch:', cta: 'Pro holen' },
+}
+
 const STATUS_CLS: Record<string, string> = {
   trialing: 'bg-blue-500/15 text-blue-400 border-blue-500/30',
   active:   'bg-emerald-500/15 text-emerald-400 border-emerald-500/30',
@@ -121,8 +128,9 @@ export default async function DashboardPage() {
         <p className="text-sport-gray text-sm mt-1">{t('overview.subtitle')}</p>
       </div>
 
-      {/* Pub « Pro offert » : vrai décompte d'essai clignotant (seulement en essai) */}
-      {access.status === 'trialing' && access.trialEnd && (
+      {/* Pub Pro clignotante : en essai → vrai décompte ; gratuit (essai fini) → upsell.
+          Rien pour les abonnés Pro payants (status 'active'). */}
+      {access.status === 'trialing' && access.trialEnd ? (
         <div className="mb-6">
           <OfferBanner
             title={(TRIAL_TXT[locale] ?? TRIAL_TXT.fr).title}
@@ -132,7 +140,16 @@ export default async function DashboardPage() {
             cta={{ href: '/dashboard/abonnement', label: (TRIAL_TXT[locale] ?? TRIAL_TXT.fr).cta }}
           />
         </div>
-      )}
+      ) : !access.isPro ? (
+        <div className="mb-6">
+          <OfferBanner
+            title={(FREE_TXT[locale] ?? FREE_TXT.fr).title}
+            subtitle={(FREE_TXT[locale] ?? FREE_TXT.fr).sub}
+            daily
+            cta={{ href: '/dashboard/abonnement', label: (FREE_TXT[locale] ?? FREE_TXT.fr).cta }}
+          />
+        </div>
+      ) : null}
 
       {/* Niveau / XP (gamification) */}
       <div className="mb-6">
