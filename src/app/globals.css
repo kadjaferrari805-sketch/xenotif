@@ -393,6 +393,16 @@ html.preloaded #preloader { display: none; }
   90%, 100% { opacity: 1; }
 }
 .xeno-blink { animation: xeno-blink 1.2s ease-in-out infinite; }
+
+/* Reflet premium qui balaye la pill d'offre */
+@keyframes xeno-shimmer {
+  0% { transform: translateX(-130%); }
+  60%, 100% { transform: translateX(130%); }
+}
+.xeno-shimmer {
+  background: linear-gradient(100deg, transparent 35%, rgba(255, 255, 255, 0.22) 50%, transparent 65%);
+  animation: xeno-shimmer 2.8s ease-in-out infinite;
+}
 @media (prefers-reduced-motion: reduce) {
-  .xeno-blink { animation: none; }
+  .xeno-blink, .xeno-shimmer { animation: none; }
 }
