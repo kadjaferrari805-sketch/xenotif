@@ -2,12 +2,20 @@
 
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { useTranslations } from 'next-intl'
+import { useTranslations, useLocale } from 'next-intl'
 import { useInView } from 'react-intersection-observer'
 import { CheckCircle, ArrowRight, Zap, Lock, ShieldCheck } from 'lucide-react'
 import { useRouter } from '@/i18n/navigation'
 import { SectionHeader } from '@/components/ui/SectionHeader'
 import { Tilt3D } from '@/components/premium/Tilt3D'
+import { OfferBanner } from '@/components/promo/OfferBanner'
+
+// Upsell « 7 jours Pro offerts » (acquisition) au-dessus des plans de la home.
+const HOME_OFFER: Record<string, { title: string; sub: string; cta: string }> = {
+  fr: { title: '🔥 Débloque TOUT le Pro — 7 jours offerts', sub: 'Coach IA + toutes les disciplines. Sans carte. Offre du jour, plus que :', cta: 'Démarrer gratuitement' },
+  en: { title: '🔥 Unlock ALL of Pro — 7 days free', sub: 'AI coach + every discipline. No card. Today’s deal, ends in:', cta: 'Start free' },
+  de: { title: '🔥 Schalte ALLES in Pro frei — 7 Tage gratis', sub: 'KI-Coach + alle Sportarten. Ohne Karte. Angebot heute, nur noch:', cta: 'Gratis starten' },
+}
 
 type PlanId = 'gratuit' | 'pro'
 type Period = 'monthly' | 'annual'
@@ -55,6 +63,7 @@ function PlanButton({
 export function Pricing() {
   const t = useTranslations('home.pricing')
   const tt = useTranslations('trust')
+  const locale = useLocale()
   const plans = t.raw('plans') as PlanText[]
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 })
   const [period, setPeriod] = useState<Period>('monthly')
@@ -84,6 +93,16 @@ export function Pricing() {
             {t('annual')}
             <span className="text-[10px] font-black bg-emerald-500 text-white px-2 py-0.5 rounded-full">{t('save')}</span>
           </button>
+        </div>
+
+        {/* Upsell « 7 jours Pro offerts » + compteur clignotant (acquisition) */}
+        <div className="mx-auto mt-10 max-w-3xl">
+          <OfferBanner
+            title={(HOME_OFFER[locale] ?? HOME_OFFER.fr).title}
+            subtitle={(HOME_OFFER[locale] ?? HOME_OFFER.fr).sub}
+            daily
+            cta={{ href: '/auth/signup?plan=gratuit', label: (HOME_OFFER[locale] ?? HOME_OFFER.fr).cta }}
+          />
         </div>
 
         {/* Plans centrés horizontalement (flex justify-center). pt-5 → le badge

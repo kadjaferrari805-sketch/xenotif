@@ -61,28 +61,34 @@ export function OfferBanner({
 
   return (
     <div className="relative overflow-hidden rounded-2xl border border-sport-orange/40 bg-gradient-to-r from-sport-orange/20 via-sport-card to-sport-card p-4 shadow-[0_0_30px_rgba(255,69,0,0.12)]">
-      <div className="flex flex-wrap items-center gap-3">
-        <span className="xeno-blink flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-sport-orange text-white shadow-[0_0_18px_rgba(255,69,0,0.6)]">
-          <Zap size={18} aria-hidden="true" />
-        </span>
-        <div className="min-w-0 flex-1">
-          <p className="text-sm font-black leading-tight text-white">{title}</p>
-          {subtitle && <p className="text-[11px] leading-tight text-sport-gray">{subtitle}</p>}
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+        {/* Ligne 1 (mobile) : icône + texte */}
+        <div className="flex min-w-0 flex-1 items-center gap-3">
+          <span className="xeno-blink flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-sport-orange text-white shadow-[0_0_18px_rgba(255,69,0,0.6)]">
+            <Zap size={18} aria-hidden="true" />
+          </span>
+          <div className="min-w-0">
+            <p className="text-sm font-black leading-tight text-white">{title}</p>
+            {subtitle && <p className="text-[11px] leading-tight text-sport-gray">{subtitle}</p>}
+          </div>
         </div>
-        <span
-          className="xeno-blink shrink-0 rounded-xl border border-sport-orange/50 bg-black/40 px-3 py-1.5 font-mono text-lg font-black tabular-nums text-sport-orange"
-          aria-live="off"
-        >
-          {time}
-        </span>
-        {cta && (
-          <Link
-            href={cta.href}
-            className="inline-flex shrink-0 items-center gap-1.5 rounded-xl bg-sport-orange px-4 py-2 text-xs font-bold text-white transition-colors hover:bg-orange-600"
+        {/* Ligne 2 (mobile) : compteur + CTA */}
+        <div className="flex items-center justify-between gap-3 sm:shrink-0 sm:justify-end">
+          <span
+            className="xeno-blink shrink-0 rounded-xl border border-sport-orange/50 bg-black/40 px-3 py-1.5 font-mono text-lg font-black tabular-nums text-sport-orange"
+            aria-live="off"
           >
-            {cta.label} <ArrowRight size={14} aria-hidden="true" />
-          </Link>
-        )}
+            {time}
+          </span>
+          {cta && (
+            <Link
+              href={cta.href}
+              className="inline-flex shrink-0 items-center gap-1.5 rounded-xl bg-sport-orange px-4 py-2 text-xs font-bold text-white transition-colors hover:bg-orange-600"
+            >
+              {cta.label} <ArrowRight size={14} aria-hidden="true" />
+            </Link>
+          )}
+        </div>
       </div>
     </div>
   )
