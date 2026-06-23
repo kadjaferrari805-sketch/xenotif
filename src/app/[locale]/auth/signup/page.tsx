@@ -13,9 +13,9 @@ import { OfferBanner } from '@/components/promo/OfferBanner'
 
 // Textes de la pub « 7 jours Pro offerts » (compteur d'urgence du jour).
 const OFFER_TXT: Record<string, { title: string; sub: string }> = {
-  fr: { title: '🔥 7 jours de Pro offerts', sub: 'Accès complet, sans carte. Offre du jour :' },
-  en: { title: '🔥 7 days of Pro, free', sub: 'Full access, no card. Today’s offer:' },
-  de: { title: '🔥 7 Tage Pro gratis', sub: 'Voller Zugriff, ohne Karte. Angebot heute:' },
+  fr: { title: '🔥 7 jours de Pro, 100 % offerts', sub: 'Coach IA + toutes les disciplines débloqués. Sans carte. Plus que :' },
+  en: { title: '🔥 7 days of Pro, 100% free', sub: 'AI coach + every discipline unlocked. No card. Ends in:' },
+  de: { title: '🔥 7 Tage Pro, 100 % gratis', sub: 'KI-Coach + alle Sportarten frei. Ohne Karte. Nur noch:' },
 }
 
 type PlanId = 'gratuit' | 'pro'
