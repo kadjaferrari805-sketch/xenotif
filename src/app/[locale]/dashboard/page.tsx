@@ -15,9 +15,9 @@ import { OfferBanner } from '@/components/promo/OfferBanner'
 
 // Textes de la bannière « Pro offert » (vrai décompte d'essai) sur le dashboard.
 const TRIAL_TXT: Record<string, { title: string; sub: string; cta: string }> = {
-  fr: { title: '🔥 Tu profites du Pro — offert', sub: 'Fin de ton essai dans :', cta: 'Garder le Pro' },
-  en: { title: '🔥 You’re on Pro — free', sub: 'Your trial ends in:', cta: 'Keep Pro' },
-  de: { title: '🔥 Du nutzt Pro — gratis', sub: 'Dein Test endet in:', cta: 'Pro behalten' },
+  fr: { title: '⚡ Ton accès Pro est OFFERT', sub: 'Profites-en à fond — il disparaît dans :', cta: 'Je garde le Pro' },
+  en: { title: '⚡ Your Pro access is FREE', sub: 'Make the most of it — it’s gone in:', cta: 'Keep my Pro' },
+  de: { title: '⚡ Dein Pro-Zugang ist GRATIS', sub: 'Nutze es voll — es endet in:', cta: 'Pro behalten' },
 }
 
 const STATUS_CLS: Record<string, string> = {
