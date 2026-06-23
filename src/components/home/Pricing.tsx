@@ -8,13 +8,13 @@ import { CheckCircle, ArrowRight, Zap, Lock, ShieldCheck } from 'lucide-react'
 import { useRouter } from '@/i18n/navigation'
 import { SectionHeader } from '@/components/ui/SectionHeader'
 import { Tilt3D } from '@/components/premium/Tilt3D'
-import { OfferBanner } from '@/components/promo/OfferBanner'
+import { ProOfferPill } from '@/components/promo/ProOfferPill'
 
-// Upsell « 7 jours Pro offerts » (acquisition) au-dessus des plans de la home.
-const HOME_OFFER: Record<string, { title: string; sub: string; cta: string }> = {
-  fr: { title: '🔥 Débloque TOUT le Pro — 7 jours offerts', sub: 'Coach IA + toutes les disciplines. Sans carte. Offre du jour, plus que :', cta: 'Démarrer gratuitement' },
-  en: { title: '🔥 Unlock ALL of Pro — 7 days free', sub: 'AI coach + every discipline. No card. Today’s deal, ends in:', cta: 'Start free' },
-  de: { title: '🔥 Schalte ALLES in Pro frei — 7 Tage gratis', sub: 'KI-Coach + alle Sportarten. Ohne Karte. Angebot heute, nur noch:', cta: 'Gratis starten' },
+// Label court de la mini-pub premium sur la carte Gratuit, par langue.
+const PILL_LABEL: Record<string, string> = {
+  fr: '7 j Pro offerts',
+  en: '7d Pro free',
+  de: '7 T Pro gratis',
 }
 
 type PlanId = 'gratuit' | 'pro'
@@ -95,16 +95,6 @@ export function Pricing() {
           </button>
         </div>
 
-        {/* Upsell « 7 jours Pro offerts » + compteur clignotant (acquisition) */}
-        <div className="mx-auto mt-10 max-w-3xl">
-          <OfferBanner
-            title={(HOME_OFFER[locale] ?? HOME_OFFER.fr).title}
-            subtitle={(HOME_OFFER[locale] ?? HOME_OFFER.fr).sub}
-            daily
-            cta={{ href: '/auth/signup?plan=gratuit', label: (HOME_OFFER[locale] ?? HOME_OFFER.fr).cta }}
-          />
-        </div>
-
         {/* Plans centrés horizontalement (flex justify-center). pt-5 → le badge
             « -top-4 » du plan mis en avant n'est pas rogné. */}
         <div ref={ref} className="mt-10 flex flex-wrap items-stretch justify-center gap-6">
@@ -150,6 +140,12 @@ export function Pricing() {
                     <p className="text-[10px] text-emerald-400 mt-1.5 font-semibold">
                       {t('freeTrialNote')}
                     </p>
+                  )}
+                  {/* Mini-pub premium « 7 j Pro offerts » + compteur sur la carte Gratuit */}
+                  {plan.id === 'gratuit' && (
+                    <div className="mt-3">
+                      <ProOfferPill label={PILL_LABEL[locale] ?? PILL_LABEL.fr} />
+                    </div>
                   )}
                 </div>
 
