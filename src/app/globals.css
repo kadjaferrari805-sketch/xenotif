@@ -385,3 +385,14 @@ html.preloaded #preloader { display: none; }
   html.js-reveal footer [data-reveal]:nth-child(3) { transition-delay: 0.14s; }
   html.js-reveal footer [data-reveal]:nth-child(4) { transition-delay: 0.21s; }
 }
+
+/* Compteur d'offre qui clignote (badge promo « Pro offert ») */
+@keyframes xeno-blink {
+  0%, 55% { opacity: 1; }
+  72% { opacity: 0.2; }
+  90%, 100% { opacity: 1; }
+}
+.xeno-blink { animation: xeno-blink 1.2s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) {
+  .xeno-blink { animation: none; }
+}
