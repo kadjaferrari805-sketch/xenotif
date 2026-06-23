@@ -11,6 +11,14 @@ import { computeXp, xpToLevel } from '@/lib/gamification'
 import { XpLevelBar } from '@/components/gamification/XpLevelBar'
 import { TodayActivity, type TrendDay } from '@/components/dashboard/TodayActivity'
 import { ReviewInvite } from '@/components/reviews/ReviewInvite'
+import { OfferBanner } from '@/components/promo/OfferBanner'
+
+// Textes de la bannière « Pro offert » (vrai décompte d'essai) sur le dashboard.
+const TRIAL_TXT: Record<string, { title: string; sub: string; cta: string }> = {
+  fr: { title: '🔥 Tu profites du Pro — offert', sub: 'Fin de ton essai dans :', cta: 'Garder le Pro' },
+  en: { title: '🔥 You’re on Pro — free', sub: 'Your trial ends in:', cta: 'Keep Pro' },
+  de: { title: '🔥 Du nutzt Pro — gratis', sub: 'Dein Test endet in:', cta: 'Pro behalten' },
+}
 
 const STATUS_CLS: Record<string, string> = {
   trialing: 'bg-blue-500/15 text-blue-400 border-blue-500/30',
@@ -112,6 +120,19 @@ export default async function DashboardPage() {
         </h1>
         <p className="text-sport-gray text-sm mt-1">{t('overview.subtitle')}</p>
       </div>
+
+      {/* Pub « Pro offert » : vrai décompte d'essai clignotant (seulement en essai) */}
+      {access.status === 'trialing' && access.trialEnd && (
+        <div className="mb-6">
+          <OfferBanner
+            title={(TRIAL_TXT[locale] ?? TRIAL_TXT.fr).title}
+            subtitle={(TRIAL_TXT[locale] ?? TRIAL_TXT.fr).sub}
+            targetMs={access.trialEnd.getTime()}
+            withDays
+            cta={{ href: '/dashboard/abonnement', label: (TRIAL_TXT[locale] ?? TRIAL_TXT.fr).cta }}
+          />
+        </div>
+      )}
 
       {/* Niveau / XP (gamification) */}
       <div className="mb-6">

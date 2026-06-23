@@ -9,6 +9,14 @@ import { createClient } from '@/lib/supabase/client'
 import { trackMeta } from '@/lib/meta-pixel'
 import { trackSignUp } from '@/lib/analytics'
 import { Logo } from '@/components/ui/Logo'
+import { OfferBanner } from '@/components/promo/OfferBanner'
+
+// Textes de la pub « 7 jours Pro offerts » (compteur d'urgence du jour).
+const OFFER_TXT: Record<string, { title: string; sub: string }> = {
+  fr: { title: '🔥 7 jours de Pro offerts', sub: 'Accès complet, sans carte. Offre du jour :' },
+  en: { title: '🔥 7 days of Pro, free', sub: 'Full access, no card. Today’s offer:' },
+  de: { title: '🔥 7 Tage Pro gratis', sub: 'Voller Zugriff, ohne Karte. Angebot heute:' },
+}
 
 type PlanId = 'gratuit' | 'pro'
 type Period = 'monthly' | 'annual'
@@ -169,6 +177,15 @@ function SignUpForm() {
             {t('annual')}
             <span className="text-[10px] font-black bg-emerald-500 text-white px-2 py-0.5 rounded-full">{t('save')}</span>
           </button>
+        </div>
+
+        {/* Pub offre : 7 jours Pro offerts + compteur d'urgence clignotant */}
+        <div className="mb-5">
+          <OfferBanner
+            title={(OFFER_TXT[locale] ?? OFFER_TXT.fr).title}
+            subtitle={(OFFER_TXT[locale] ?? OFFER_TXT.fr).sub}
+            daily
+          />
         </div>
 
         {/* Plan selector */}
