@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
+import { Flame, Clock } from 'lucide-react'
 
 function endOfDayMs(): number {
   const d = new Date()
@@ -8,9 +9,19 @@ function endOfDayMs(): number {
   return d.getTime()
 }
 
-// Petite pub premium pour la carte « Gratuit » : pill avec reflet qui balaye,
-// point clignotant et mini-compteur d'urgence (décompte du jour).
-export function ProOfferPill({ label }: { label: string }) {
+// Bloc promo premium pour la carte « Gratuit » : label flash, titre accrocheur,
+// bénéfice, et gros compteur d'urgence du jour. Reflet qui balaye + clignotement.
+export function ProOfferPill({
+  flash,
+  title,
+  benefit,
+  urgency,
+}: {
+  flash: string
+  title: string
+  benefit: string
+  urgency: string
+}) {
   const [remaining, setRemaining] = useState<number | null>(null)
   const targetRef = useRef<number>(0)
 
@@ -40,11 +51,25 @@ export function ProOfferPill({ label }: { label: string }) {
   }
 
   return (
-    <div className="relative inline-flex items-center gap-2 overflow-hidden rounded-full border border-sport-orange/60 bg-gradient-to-r from-[#2a1400] via-[#3d1e00] to-[#2a1400] px-3 py-1.5 shadow-[0_0_18px_rgba(255,69,0,0.3)]">
+    <div className="relative overflow-hidden rounded-xl border border-sport-orange/50 bg-gradient-to-br from-[#2c1500] via-[#3d1e00] to-[#160a00] p-3.5 shadow-[0_0_26px_rgba(255,69,0,0.25)]">
       <span aria-hidden="true" className="xeno-shimmer pointer-events-none absolute inset-0" />
-      <span className="xeno-blink relative h-1.5 w-1.5 shrink-0 rounded-full bg-sport-orange shadow-[0_0_8px_rgba(255,69,0,0.9)]" />
-      <span className="relative text-[10px] font-black uppercase tracking-wider text-sport-orange">{label}</span>
-      <span className="xeno-blink relative font-mono text-[12px] font-black tabular-nums text-white">{time}</span>
+      <div className="relative">
+        <div className="mb-1.5 flex items-center gap-1.5">
+          <span className="xeno-blink flex h-4 w-4 items-center justify-center rounded-full bg-sport-orange text-white">
+            <Flame size={10} aria-hidden="true" />
+          </span>
+          <span className="text-[10px] font-black uppercase tracking-[2px] text-sport-orange">{flash}</span>
+        </div>
+        <p className="text-[15px] font-black leading-tight text-white">{title}</p>
+        <p className="mt-0.5 text-[11px] leading-snug text-sport-gray">{benefit}</p>
+        <div className="mt-2.5 flex items-center gap-2 border-t border-sport-orange/20 pt-2.5">
+          <Clock size={14} aria-hidden="true" className="shrink-0 text-sport-orange" />
+          <span className="text-[11px] font-bold text-sport-gray">{urgency}</span>
+          <span className="xeno-blink ml-auto font-mono text-xl font-black tabular-nums tracking-tight text-sport-orange">
+            {time}
+          </span>
+        </div>
+      </div>
     </div>
   )
 }
