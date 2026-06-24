@@ -72,15 +72,16 @@ export function ProOfferPill({
   }
 
   return (
-    <div className="relative overflow-hidden rounded-2xl border border-emerald-400/50 bg-gradient-to-r from-emerald-500/20 via-lime-400/10 to-sport-orange/15 p-4 shadow-[0_0_34px_rgba(16,185,129,0.22)]">
+    <div className="relative overflow-hidden rounded-2xl border border-emerald-400/50 bg-gradient-to-r from-emerald-500/20 via-lime-400/10 to-sport-orange/15 p-3 shadow-[0_0_34px_rgba(16,185,129,0.22)] sm:p-4">
       <span aria-hidden="true" className="pointer-events-none absolute -left-10 -top-12 h-36 w-36 rounded-full bg-emerald-400/20 blur-2xl" />
       <span aria-hidden="true" className="pointer-events-none absolute -bottom-12 -right-10 h-36 w-36 rounded-full bg-sport-orange/15 blur-2xl" />
       {/* Une seule rangée à toutes les tailles. Sur mobile, les éléments
           secondaires (pill, prix barré, « inclus », label du compteur) sont
           masqués pour que l'accroche + le compteur tiennent sur une ligne. */}
       <div className="relative flex items-center gap-2.5 sm:gap-3">
-        <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-emerald-400/20 text-emerald-300 sm:h-10 sm:w-10">
-          <Sparkles size={18} aria-hidden="true" />
+        <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-emerald-400/20 text-emerald-300 sm:h-10 sm:w-10 sm:rounded-xl">
+          <Sparkles size={16} aria-hidden="true" className="sm:hidden" />
+          <Sparkles size={18} aria-hidden="true" className="hidden sm:block" />
         </span>
         <div className="min-w-0 flex-1">
           <div className="flex items-center gap-2">
