@@ -1,16 +1,17 @@
 'use client'
 
 import { useState, useEffect, useRef } from 'react'
-import { useTranslations } from 'next-intl'
+import { useTranslations, useLocale } from 'next-intl'
 import { Link } from '@/i18n/navigation'
-import { Bell, Flame, Lightbulb, Activity, X, ArrowRight } from 'lucide-react'
+import { Bell, Flame, ShoppingBag, BookOpen, Moon, Rocket, X, ArrowRight } from 'lucide-react'
+import { getSentNotifications, type DashNotifIcon } from '@/lib/dashboard-notifications'
 
 const READ_KEY = 'xeno_notif_read'
 const todayStr = () => new Date().toISOString().split('T')[0]
 
-// 3 notifications quotidiennes (motivation + astuce + rappel d'activité).
-// Garder synchro avec le tableau `items` ci-dessous.
-const DAILY_NOTIF_COUNT = 3
+const ICONS: Record<DashNotifIcon, typeof Flame> = {
+  flame: Flame, shop: ShoppingBag, book: BookOpen, moon: Moon, rocket: Rocket,
+}
 
 // Badge compteur sur l'icône de l'app installée (PWA Badging API) → visible sur
 // l'écran d'accueil mobile. No-op silencieux si non supporté (best-effort iOS 16.4+/Android).
@@ -25,29 +26,24 @@ function syncAppBadge(count: number) {
   } catch { /* ignore */ }
 }
 
-// Cloche de notifications de l'espace membre : 3 notifications par jour
-// (motivation + astuce qui tournent chaque jour + rappel d'activité).
+// Cloche de notifications de l'espace membre : miroir des push du jour réellement
+// envoyées (motivation · boutique · guide · rappel · abonnement), localisées.
 // État « lu » mémorisé en localStorage (point rouge tant que le jour n'est pas ouvert).
 export function NotificationBell({ align = 'right' }: { align?: 'left' | 'right' }) {
   const t = useTranslations('dashboard.notifications')
+  const locale = useLocale()
   const [open, setOpen] = useState(false)
   const [unread, setUnread] = useState(false)
-  const [day, setDay] = useState(0)
+  const [now, setNow] = useState<Date | null>(null)
   const ref = useRef<HTMLDivElement>(null)
 
-  const motivations = t.raw('motivation') as string[]
-  const tips = t.raw('tip') as string[]
-  const items = [
-    { Icon: Flame, color: '#FF4500', text: motivations[day % motivations.length], href: '/dashboard/programme' },
-    { Icon: Lightbulb, color: '#A3FF00', text: tips[day % tips.length], href: '/dashboard/programme' },
-    { Icon: Activity, color: '#38bdf8', text: t('activity'), href: '/dashboard' },
-  ]
-  const unreadCount = unread ? DAILY_NOTIF_COUNT : 0
+  const items = now ? getSentNotifications(locale, now) : []
+  const unreadCount = unread ? items.length : 0
 
   /* eslint-disable react-hooks/set-state-in-effect --
      Date du jour + état « lu » (localStorage) : lecture client uniquement, une fois au montage. */
   useEffect(() => {
-    setDay(Math.floor(Date.now() / 86400000))
+    setNow(new Date())
     try { setUnread(localStorage.getItem(READ_KEY) !== todayStr()) } catch { setUnread(true) }
   }, [])
   /* eslint-enable react-hooks/set-state-in-effect */
@@ -106,22 +102,26 @@ export function NotificationBell({ align = 'right' }: { align?: 'left' | 'right'
             </button>
           </div>
           <div className="max-h-[60vh] overflow-y-auto p-2">
-            {items.map((n, i) => (
-              <Link
-                key={i}
-                href={n.href}
-                onClick={() => setOpen(false)}
-                className="flex items-start gap-3 rounded-xl px-3 py-3 hover:bg-white/5 transition-colors"
-              >
-                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg" style={{ background: `${n.color}1f`, border: `1px solid ${n.color}40` }}>
-                  <n.Icon size={15} style={{ color: n.color }} aria-hidden="true" />
-                </div>
-                <div className="min-w-0">
-                  <p className="text-xs text-white leading-relaxed">{n.text}</p>
-                  <p className="text-[10px] text-sport-gray mt-1">{t('today')}</p>
-                </div>
-              </Link>
-            ))}
+            {items.map((n, i) => {
+              const Icon = ICONS[n.icon]
+              return (
+                <Link
+                  key={i}
+                  href={n.href}
+                  onClick={() => setOpen(false)}
+                  className="flex items-start gap-3 rounded-xl px-3 py-3 hover:bg-white/5 transition-colors"
+                >
+                  <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg" style={{ background: `${n.color}1f`, border: `1px solid ${n.color}40` }}>
+                    <Icon size={15} style={{ color: n.color }} aria-hidden="true" />
+                  </div>
+                  <div className="min-w-0">
+                    <p className="text-xs font-bold text-white leading-snug">{n.title}</p>
+                    <p className="text-[11px] text-sport-gray leading-snug mt-0.5 line-clamp-2">{n.body}</p>
+                    <p className="text-[10px] text-sport-gray mt-1">{`${String(n.hour).padStart(2, '0')}:00 · ${t('today')}`}</p>
+                  </div>
+                </Link>
+              )
+            })}
           </div>
           <Link
             href="/dashboard/notifications"
