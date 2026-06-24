@@ -10,11 +10,11 @@ import { SectionHeader } from '@/components/ui/SectionHeader'
 import { Tilt3D } from '@/components/premium/Tilt3D'
 import { ProOfferPill } from '@/components/promo/ProOfferPill'
 
-// Upsell « essai Pro » (style pricing Higgsfield, en vert) sur la carte Gratuit.
-const PILL_TXT: Record<string, { badge: string; headline: string; price: string; free: string; save: string; benefit: string }> = {
-  fr: { badge: 'Essai Pro', headline: '7 jours de Pro, offerts', price: '9,99 €/mois', free: 'inclus', save: 'Économise 9,99 €', benefit: 'Coach IA, toutes les disciplines et le suivi avancé. Sans engagement.' },
-  en: { badge: 'Pro trial', headline: '7 days of Pro, free', price: '€9.99/mo', free: 'included', save: 'Save €9.99', benefit: 'AI coach, every discipline and advanced tracking. No commitment.' },
-  de: { badge: 'Pro-Test', headline: '7 Tage Pro, gratis', price: '9,99 €/Monat', free: 'inklusive', save: 'Spare 9,99 €', benefit: 'KI-Coach, alle Sportarten und erweitertes Tracking. Ohne Verpflichtung.' },
+// Bannière upsell « essai Pro » au-dessus du toggle de période (style Higgsfield).
+const PILL_TXT: Record<string, { badge: string; headline: string; price: string; free: string; save: string; countdownLabel: string }> = {
+  fr: { badge: 'Essai Pro', headline: '7 jours de Pro, offerts', price: '9,99 €/mois', free: 'inclus', save: 'Économise 9,99 €', countdownLabel: 'se termine dans' },
+  en: { badge: 'Pro trial', headline: '7 days of Pro, free', price: '€9.99/mo', free: 'included', save: 'Save €9.99', countdownLabel: 'ends in' },
+  de: { badge: 'Pro-Test', headline: '7 Tage Pro, gratis', price: '9,99 €/Monat', free: 'inklusive', save: 'Spare 9,99 €', countdownLabel: 'endet in' },
 }
 
 type PlanId = 'gratuit' | 'pro'
@@ -78,8 +78,13 @@ export function Pricing() {
           subtitle={t('subtitle')}
         />
 
+        {/* Upsell « 7 jours Pro offerts » + compteur clignotant, au-dessus du toggle */}
+        <div className="mx-auto mt-10 max-w-2xl">
+          <ProOfferPill {...(PILL_TXT[locale] ?? PILL_TXT.fr)} />
+        </div>
+
         {/* Billing toggle */}
-        <div className="flex items-center justify-center gap-4 mt-10">
+        <div className="flex items-center justify-center gap-4 mt-8">
           <button
             onClick={() => setPeriod('monthly')}
             className={`px-5 py-2 rounded-full text-sm font-bold transition-all ${period === 'monthly' ? 'bg-sport-orange text-white' : 'text-sport-gray hover:text-white'}`}
@@ -117,14 +122,6 @@ export function Pricing() {
                   <span className="absolute -top-4 left-1/2 -translate-x-1/2 bg-sport-orange text-white text-[10px] font-black uppercase tracking-wider px-4 py-1.5 rounded-full flex items-center gap-1.5 whitespace-nowrap shadow-lg shadow-sport-orange/30">
                     <Zap size={10} aria-hidden="true" /> {tr.badge}
                   </span>
-                )}
-
-                {/* Carte Gratuit : l'upsell « 7 jours Pro offerts » remplace le badge,
-                    en tête de carte sur toute la largeur. */}
-                {plan.id === 'gratuit' && (
-                  <div className="mb-6">
-                    <ProOfferPill {...(PILL_TXT[locale] ?? PILL_TXT.fr)} />
-                  </div>
                 )}
 
                 <div className="mb-6">
