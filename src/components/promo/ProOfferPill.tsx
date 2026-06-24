@@ -3,6 +3,22 @@
 import { useEffect, useRef, useState } from 'react'
 import { Sparkles, Clock } from 'lucide-react'
 
+export type ProOfferText = {
+  badge: string
+  headline: string
+  price: string
+  free: string
+  save: string
+  countdownLabel: string
+}
+
+// Textes partagés de la bannière upsell (home + inscription), par langue.
+export const PRO_OFFER_TXT: Record<string, ProOfferText> = {
+  fr: { badge: 'Essai Pro', headline: '7 jours de Pro, offerts', price: '9,99 €/mois', free: 'inclus', save: 'Économise 9,99 €', countdownLabel: 'se termine dans' },
+  en: { badge: 'Pro trial', headline: '7 days of Pro, free', price: '€9.99/mo', free: 'included', save: 'Save €9.99', countdownLabel: 'ends in' },
+  de: { badge: 'Pro-Test', headline: '7 Tage Pro, gratis', price: '9,99 €/Monat', free: 'inklusive', save: 'Spare 9,99 €', countdownLabel: 'endet in' },
+}
+
 function endOfDayMs(): number {
   const d = new Date()
   d.setHours(23, 59, 59, 999)

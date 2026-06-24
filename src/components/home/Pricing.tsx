@@ -8,14 +8,7 @@ import { CheckCircle, ArrowRight, Zap, Lock, ShieldCheck } from 'lucide-react'
 import { useRouter } from '@/i18n/navigation'
 import { SectionHeader } from '@/components/ui/SectionHeader'
 import { Tilt3D } from '@/components/premium/Tilt3D'
-import { ProOfferPill } from '@/components/promo/ProOfferPill'
-
-// Bannière upsell « essai Pro » au-dessus du toggle de période (style Higgsfield).
-const PILL_TXT: Record<string, { badge: string; headline: string; price: string; free: string; save: string; countdownLabel: string }> = {
-  fr: { badge: 'Essai Pro', headline: '7 jours de Pro, offerts', price: '9,99 €/mois', free: 'inclus', save: 'Économise 9,99 €', countdownLabel: 'se termine dans' },
-  en: { badge: 'Pro trial', headline: '7 days of Pro, free', price: '€9.99/mo', free: 'included', save: 'Save €9.99', countdownLabel: 'ends in' },
-  de: { badge: 'Pro-Test', headline: '7 Tage Pro, gratis', price: '9,99 €/Monat', free: 'inklusive', save: 'Spare 9,99 €', countdownLabel: 'endet in' },
-}
+import { ProOfferPill, PRO_OFFER_TXT } from '@/components/promo/ProOfferPill'
 
 type PlanId = 'gratuit' | 'pro'
 type Period = 'monthly' | 'annual'
@@ -80,7 +73,7 @@ export function Pricing() {
 
         {/* Upsell « 7 jours Pro offerts » + compteur clignotant, au-dessus du toggle */}
         <div className="mx-auto mt-10 max-w-2xl">
-          <ProOfferPill {...(PILL_TXT[locale] ?? PILL_TXT.fr)} />
+          <ProOfferPill {...(PRO_OFFER_TXT[locale] ?? PRO_OFFER_TXT.fr)} />
         </div>
 
         {/* Billing toggle */}

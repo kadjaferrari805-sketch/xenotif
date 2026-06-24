@@ -9,14 +9,7 @@ import { createClient } from '@/lib/supabase/client'
 import { trackMeta } from '@/lib/meta-pixel'
 import { trackSignUp } from '@/lib/analytics'
 import { Logo } from '@/components/ui/Logo'
-import { OfferBanner } from '@/components/promo/OfferBanner'
-
-// Textes de la pub « 7 jours Pro offerts » (compteur d'urgence du jour).
-const OFFER_TXT: Record<string, { title: string; sub: string }> = {
-  fr: { title: '🔥 7 jours de Pro, 100 % offerts', sub: 'Coach IA + toutes les disciplines débloqués. Sans carte. Plus que :' },
-  en: { title: '🔥 7 days of Pro, 100% free', sub: 'AI coach + every discipline unlocked. No card. Ends in:' },
-  de: { title: '🔥 7 Tage Pro, 100 % gratis', sub: 'KI-Coach + alle Sportarten frei. Ohne Karte. Nur noch:' },
-}
+import { ProOfferPill, PRO_OFFER_TXT } from '@/components/promo/ProOfferPill'
 
 type PlanId = 'gratuit' | 'pro'
 type Period = 'monthly' | 'annual'
@@ -160,6 +153,11 @@ function SignUpForm() {
           <p className="text-sport-gray text-sm">{t('subtitle')}</p>
         </div>
 
+        {/* Upsell « 7 jours Pro offerts » + compteur clignotant, au-dessus du toggle */}
+        <div className="mb-6">
+          <ProOfferPill {...(PRO_OFFER_TXT[locale] ?? PRO_OFFER_TXT.fr)} />
+        </div>
+
         {/* Billing toggle (mensuel / annuel) */}
         <div className="flex items-center justify-center gap-3 mb-6">
           <button
@@ -177,15 +175,6 @@ function SignUpForm() {
             {t('annual')}
             <span className="text-[10px] font-black bg-emerald-500 text-white px-2 py-0.5 rounded-full">{t('save')}</span>
           </button>
-        </div>
-
-        {/* Pub offre : 7 jours Pro offerts + compteur d'urgence clignotant */}
-        <div className="mb-5">
-          <OfferBanner
-            title={(OFFER_TXT[locale] ?? OFFER_TXT.fr).title}
-            subtitle={(OFFER_TXT[locale] ?? OFFER_TXT.fr).sub}
-            daily
-          />
         </div>
 
         {/* Plan selector */}
