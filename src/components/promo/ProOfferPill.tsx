@@ -1,75 +1,45 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
 import { Sparkles } from 'lucide-react'
 
-function endOfDayMs(): number {
-  const d = new Date()
-  d.setHours(23, 59, 59, 999)
-  return d.getTime()
-}
-
-// Upsell premium « essai Pro » pour la carte Gratuit : sobre, accent émeraude,
-// compteur discret (pas de clignotement). Élégant plutôt qu'urgence « solde ».
+// Upsell « essai Pro » pour la carte Gratuit, inspiré du pricing Higgsfield :
+// highlight en gradient, prix barré → inclus, badge d'économie. Accent émeraude.
 export function ProOfferPill({
-  flash,
-  title,
+  badge,
+  headline,
+  price,
+  free,
+  save,
   benefit,
-  urgency,
 }: {
-  flash: string
-  title: string
+  badge: string
+  headline: string
+  price: string
+  free: string
+  save: string
   benefit: string
-  urgency: string
 }) {
-  const [remaining, setRemaining] = useState<number | null>(null)
-  const targetRef = useRef<number>(0)
-
-  useEffect(() => {
-    targetRef.current = endOfDayMs()
-    const tick = () => {
-      let r = targetRef.current - Date.now()
-      if (r <= 0) {
-        targetRef.current = endOfDayMs()
-        r = targetRef.current - Date.now()
-      }
-      setRemaining(Math.max(0, r))
-    }
-    tick()
-    const id = setInterval(tick, 1000)
-    return () => clearInterval(id)
-  }, [])
-
-  let time = '··:··'
-  if (remaining !== null) {
-    const s = Math.floor(remaining / 1000)
-    const h = Math.floor(s / 3600)
-    const m = Math.floor((s % 3600) / 60)
-    const sec = s % 60
-    const p = (n: number) => String(n).padStart(2, '0')
-    time = `${p(h)}:${p(m)}:${p(sec)}`
-  }
-
   return (
-    <div className="relative overflow-hidden rounded-2xl border border-emerald-500/35 bg-gradient-to-br from-emerald-950/55 via-sport-card to-sport-card p-4 shadow-[0_0_28px_rgba(16,185,129,0.12)]">
-      {/* halo doux statique (premium, pas d'animation) */}
+    <div className="relative overflow-hidden rounded-2xl border border-emerald-500/45 bg-gradient-to-br from-emerald-500/[0.18] via-emerald-900/25 to-sport-card p-4 shadow-[0_0_30px_rgba(16,185,129,0.16)]">
       <span
         aria-hidden="true"
-        className="pointer-events-none absolute -right-10 -top-12 h-32 w-32 rounded-full bg-emerald-500/15 blur-2xl"
+        className="pointer-events-none absolute -right-12 -top-14 h-36 w-36 rounded-full bg-emerald-500/20 blur-2xl"
       />
       <div className="relative">
-        <div className="mb-1.5 flex items-center gap-2">
-          <Sparkles size={14} aria-hidden="true" className="text-emerald-400" />
-          <span className="text-[10px] font-bold uppercase tracking-[2.5px] text-emerald-400">{flash}</span>
-        </div>
-        <p className="text-[17px] font-black leading-tight text-white">{title}</p>
-        <p className="mt-1 text-[11px] leading-snug text-sport-gray">{benefit}</p>
-        <div className="mt-3 flex items-center gap-2 border-t border-emerald-500/15 pt-2.5">
-          <span className="text-[11px] text-sport-gray">{urgency}</span>
-          <span className="ml-auto font-mono text-[13px] font-bold tabular-nums tracking-tight text-emerald-300">
-            {time}
+        <div className="mb-2.5 flex items-center justify-between gap-2">
+          <span className="inline-flex items-center gap-1.5 text-[10px] font-black uppercase tracking-[2px] text-emerald-300">
+            <Sparkles size={12} aria-hidden="true" /> {badge}
+          </span>
+          <span className="shrink-0 rounded-full bg-emerald-400 px-2.5 py-0.5 text-[10px] font-black text-emerald-950">
+            {save}
           </span>
         </div>
+        <p className="text-[17px] font-black leading-tight text-white">{headline}</p>
+        <div className="mt-1 flex items-baseline gap-2">
+          <span className="text-sm font-bold text-sport-gray line-through decoration-emerald-400/60">{price}</span>
+          <span className="text-sm font-black text-emerald-300">{free}</span>
+        </div>
+        <p className="mt-2 text-[11px] leading-snug text-sport-gray">{benefit}</p>
       </div>
     </div>
   )

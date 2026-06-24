@@ -10,11 +10,11 @@ import { SectionHeader } from '@/components/ui/SectionHeader'
 import { Tilt3D } from '@/components/premium/Tilt3D'
 import { ProOfferPill } from '@/components/promo/ProOfferPill'
 
-// Upsell premium « essai Pro » sur la carte Gratuit, par langue.
-const PILL_TXT: Record<string, { flash: string; title: string; benefit: string; urgency: string }> = {
-  fr: { flash: 'Essai Pro inclus', title: '7 jours offerts, tout compris', benefit: 'Coach IA, toutes les disciplines et le suivi avancé. Sans engagement.', urgency: 'Offre valable encore' },
-  en: { flash: 'Pro trial included', title: '7 days free, all in', benefit: 'AI coach, every discipline and advanced tracking. No commitment.', urgency: 'Available for' },
-  de: { flash: 'Pro-Test inklusive', title: '7 Tage gratis, alles dabei', benefit: 'KI-Coach, alle Sportarten und erweitertes Tracking. Ohne Verpflichtung.', urgency: 'Noch verfügbar' },
+// Upsell « essai Pro » (style pricing Higgsfield, en vert) sur la carte Gratuit.
+const PILL_TXT: Record<string, { badge: string; headline: string; price: string; free: string; save: string; benefit: string }> = {
+  fr: { badge: 'Essai Pro', headline: '7 jours de Pro, offerts', price: '9,99 €/mois', free: 'inclus', save: 'Économise 9,99 €', benefit: 'Coach IA, toutes les disciplines et le suivi avancé. Sans engagement.' },
+  en: { badge: 'Pro trial', headline: '7 days of Pro, free', price: '€9.99/mo', free: 'included', save: 'Save €9.99', benefit: 'AI coach, every discipline and advanced tracking. No commitment.' },
+  de: { badge: 'Pro-Test', headline: '7 Tage Pro, gratis', price: '9,99 €/Monat', free: 'inklusive', save: 'Spare 9,99 €', benefit: 'KI-Coach, alle Sportarten und erweitertes Tracking. Ohne Verpflichtung.' },
 }
 
 type PlanId = 'gratuit' | 'pro'
