@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
-import { Flame, Clock } from 'lucide-react'
+import { Sparkles } from 'lucide-react'
 
 function endOfDayMs(): number {
   const d = new Date()
@@ -9,8 +9,8 @@ function endOfDayMs(): number {
   return d.getTime()
 }
 
-// Bloc promo premium pour la carte « Gratuit » : label flash, titre accrocheur,
-// bénéfice, et gros compteur d'urgence du jour. Reflet qui balaye + clignotement.
+// Upsell premium « essai Pro » pour la carte Gratuit : sobre, accent émeraude,
+// compteur discret (pas de clignotement). Élégant plutôt qu'urgence « solde ».
 export function ProOfferPill({
   flash,
   title,
@@ -40,7 +40,7 @@ export function ProOfferPill({
     return () => clearInterval(id)
   }, [])
 
-  let time = '··:··:··'
+  let time = '··:··'
   if (remaining !== null) {
     const s = Math.floor(remaining / 1000)
     const h = Math.floor(s / 3600)
@@ -51,21 +51,22 @@ export function ProOfferPill({
   }
 
   return (
-    <div className="relative overflow-hidden rounded-xl border border-sport-orange/50 bg-gradient-to-br from-[#2c1500] via-[#3d1e00] to-[#160a00] p-3.5 shadow-[0_0_26px_rgba(255,69,0,0.25)]">
-      <span aria-hidden="true" className="xeno-shimmer pointer-events-none absolute inset-0" />
+    <div className="relative overflow-hidden rounded-2xl border border-emerald-500/35 bg-gradient-to-br from-emerald-950/55 via-sport-card to-sport-card p-4 shadow-[0_0_28px_rgba(16,185,129,0.12)]">
+      {/* halo doux statique (premium, pas d'animation) */}
+      <span
+        aria-hidden="true"
+        className="pointer-events-none absolute -right-10 -top-12 h-32 w-32 rounded-full bg-emerald-500/15 blur-2xl"
+      />
       <div className="relative">
-        <div className="mb-1.5 flex items-center gap-1.5">
-          <span className="xeno-blink flex h-4 w-4 items-center justify-center rounded-full bg-sport-orange text-white">
-            <Flame size={10} aria-hidden="true" />
-          </span>
-          <span className="text-[10px] font-black uppercase tracking-[2px] text-sport-orange">{flash}</span>
+        <div className="mb-1.5 flex items-center gap-2">
+          <Sparkles size={14} aria-hidden="true" className="text-emerald-400" />
+          <span className="text-[10px] font-bold uppercase tracking-[2.5px] text-emerald-400">{flash}</span>
         </div>
-        <p className="text-[15px] font-black leading-tight text-white">{title}</p>
-        <p className="mt-0.5 text-[11px] leading-snug text-sport-gray">{benefit}</p>
-        <div className="mt-2.5 flex items-center gap-2 border-t border-sport-orange/20 pt-2.5">
-          <Clock size={14} aria-hidden="true" className="shrink-0 text-sport-orange" />
-          <span className="text-[11px] font-bold text-sport-gray">{urgency}</span>
-          <span className="xeno-blink ml-auto font-mono text-xl font-black tabular-nums tracking-tight text-sport-orange">
+        <p className="text-[17px] font-black leading-tight text-white">{title}</p>
+        <p className="mt-1 text-[11px] leading-snug text-sport-gray">{benefit}</p>
+        <div className="mt-3 flex items-center gap-2 border-t border-emerald-500/15 pt-2.5">
+          <span className="text-[11px] text-sport-gray">{urgency}</span>
+          <span className="ml-auto font-mono text-[13px] font-bold tabular-nums tracking-tight text-emerald-300">
             {time}
           </span>
         </div>
