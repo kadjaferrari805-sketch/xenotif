@@ -66,7 +66,7 @@ export function Pricing() {
   const locale = useLocale()
   const plans = t.raw('plans') as PlanText[]
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 })
-  const [period, setPeriod] = useState<Period>('monthly')
+  const [period, setPeriod] = useState<Period>('annual')
 
   return (
     <section id="tarifs" aria-labelledby="tarifs-title" className="py-24 px-6 bg-sport-card border-y border-sport-border">
