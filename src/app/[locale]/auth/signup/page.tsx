@@ -39,7 +39,7 @@ function SignUpForm() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const [selectedPlan, setSelectedPlan] = useState<PlanId>('pro')
-  const [period, setPeriod] = useState<Period>('monthly')
+  const [period, setPeriod] = useState<Period>('annual')
   const [form, setForm] = useState({ fullName: '', email: '', password: '' })
   const [showPwd, setShowPwd] = useState(false)
   const [loading, setLoading] = useState(false)
