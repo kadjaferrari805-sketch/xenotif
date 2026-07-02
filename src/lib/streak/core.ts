@@ -26,3 +26,25 @@ export function parseWeekKey(key: string): Date {
   const [y, m, dd] = key.split('-').map(Number)
   return new Date(Date.UTC(y, m - 1, dd))
 }
+
+// Ajouter dans src/lib/streak/core.ts
+export const MILESTONES = [4, 12, 26, 52] as const
+
+export function bucketActiveDaysByWeek(activityDates: string[]): Map<string, number> {
+  const byWeek = new Map<string, Set<string>>()
+  for (const iso of activityDates) {
+    if (!iso) continue
+    const d = new Date(iso)
+    const wk = weekKeyOf(d)
+    if (!byWeek.has(wk)) byWeek.set(wk, new Set())
+    byWeek.get(wk)!.add(dayKey(d))
+  }
+  const counts = new Map<string, number>()
+  for (const [wk, days] of byWeek) counts.set(wk, days.size)
+  return counts
+}
+
+export function nextMilestone(current: number): number | null {
+  for (const m of MILESTONES) if (m > current) return m
+  return null
+}
