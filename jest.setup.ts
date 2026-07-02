@@ -40,16 +40,21 @@ class MockResizeObserver {
 global.IntersectionObserver = MockIntersectionObserver as unknown as typeof IntersectionObserver
 global.ResizeObserver = MockResizeObserver as unknown as typeof ResizeObserver
 
-Object.defineProperty(window, 'matchMedia', {
-  writable: true,
-  value: (query: string) => ({
-    matches: false,
-    media: query,
-    onchange: null,
-    addListener: () => {},
-    removeListener: () => {},
-    addEventListener: () => {},
-    removeEventListener: () => {},
-    dispatchEvent: () => false,
-  }),
-})
+// `window` est absent des tests de Route Handlers, qui tournent en
+// environnement `node` (cf. src/app/api/streak/route.test.ts) car `next/server`
+// requiert les globals Fetch API natifs à Node, absents de jsdom.
+if (typeof window !== 'undefined') {
+  Object.defineProperty(window, 'matchMedia', {
+    writable: true,
+    value: (query: string) => ({
+      matches: false,
+      media: query,
+      onchange: null,
+      addListener: () => {},
+      removeListener: () => {},
+      addEventListener: () => {},
+      removeEventListener: () => {},
+      dispatchEvent: () => false,
+    }),
+  })
+}
