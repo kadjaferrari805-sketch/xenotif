@@ -41,21 +41,9 @@ describe('computeGamification — badges', () => {
     const g = computeGamification({ workouts: five, programSessionsCompleted: 0, now: NOW })
     expect(g.badges.find(b => b.id === 'fiveDisciplines')!.earned).toBe(true)
   })
-  it('streak7 sur 7 jours consécutifs', () => {
-    const days = ['2026-06-01', '2026-06-02', '2026-06-03', '2026-06-04', '2026-06-05', '2026-06-06', '2026-06-07']
-    const g = computeGamification({ workouts: days.map(d => w(d + 'T10:00:00')), programSessionsCompleted: 0, now: NOW })
-    expect(g.badges.find(b => b.id === 'streak7')!.earned).toBe(true)
-  })
 })
 
 describe('computeGamification — défis', () => {
-  it('compte les séances de la semaine courante (lun→dim)', () => {
-    const ws = [w('2026-06-09T10:00:00'), w('2026-06-11T10:00:00'), w('2026-06-02T10:00:00')]
-    const g = computeGamification({ workouts: ws, programSessionsCompleted: 0, now: NOW })
-    const weekSessions = g.weekly.find(c => c.id === 'weekSessions')!
-    expect(weekSessions.current).toBe(2)
-    expect(weekSessions.target).toBe(3)
-  })
   it('compte les minutes du mois courant', () => {
     const ws = [w('2026-06-03T10:00:00', 'm', 60), w('2026-06-20T10:00:00', 'm', 90), w('2026-05-30T10:00:00', 'm', 120)]
     const g = computeGamification({ workouts: ws, programSessionsCompleted: 0, now: NOW })

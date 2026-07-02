@@ -36,7 +36,6 @@ export const PREVIEW = {
     xpInLevel: 120,
     xpForNext: 800,
     weekly: [
-      { id: 'weekSessions', target: 3, current: 2 },
       { id: 'weekMinutes', target: 120, current: 95 },
       { id: 'weekDisciplines', target: 2, current: 2 },
     ],
