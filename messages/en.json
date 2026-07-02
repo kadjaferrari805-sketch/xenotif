@@ -84,11 +84,9 @@
       "month": "30 sessions",
       "century": "100 sessions",
       "tenHours": "10h total",
-      "fiveDisciplines": "5 disciplines",
-      "streak7": "7-day streak"
+      "fiveDisciplines": "5 disciplines"
     },
     "challenges": {
-      "weekSessions": "{current}/{target} sessions",
       "weekMinutes": "{current}/{target} active min",
       "weekDisciplines": "{current}/{target} disciplines",
       "monthSessions": "{current}/{target} sessions",
@@ -1666,5 +1664,17 @@
     "ctaSubtitle": "Join thousands of athletes progressing with Xenotif®.",
     "ctaJoin": "Join Xenotif®",
     "ctaShop": "Explore the shop"
+  },
+  "streak": {
+    "title": "Your streak",
+    "weeks": "weeks",
+    "thisWeek": "This week",
+    "record": "record",
+    "freezes": "Freezes",
+    "freezeTooltip": "A freeze absorbs one missed week without breaking your streak.",
+    "empty": "Start your streak this week 💪",
+    "goalLabel": "Weekly goal",
+    "sessions": "sessions",
+    "newRecord": "New record! 🎉"
   }
 }
