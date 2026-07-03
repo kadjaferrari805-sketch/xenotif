@@ -47,6 +47,13 @@ async function syncSubscription(sessionId: string): Promise<SubInfo | null> {
 
     const plan = session.metadata?.plan ?? 'pro'
 
+    // Essai gratuit 7 j → `amount_total` = 0 au checkout. On envoie la valeur du
+    // plan (montant récurrent Stripe) plutôt que 0 pour que Google Ads/GA4 puissent
+    // optimiser sur la vraie valeur de l'abonnement. Si un montant est débité
+    // immédiatement (plan sans essai), on privilégie ce montant réel.
+    const chargedNow = (session.amount_total ?? 0) / 100
+    const recurring = (sub.items.data[0]?.price?.unit_amount ?? 0) / 100
+
     await service.from('subscriptions').upsert({
       user_id: userId,
       stripe_customer_id: typeof session.customer === 'string' ? session.customer : session.customer.id,
@@ -59,7 +66,7 @@ async function syncSubscription(sessionId: string): Promise<SubInfo | null> {
     }, { onConflict: 'user_id' })
 
     return {
-      value: (session.amount_total ?? 0) / 100,
+      value: chargedNow > 0 ? chargedNow : recurring,
       currency: (session.currency ?? 'eur').toUpperCase(),
       plan,
     }
@@ -82,7 +89,7 @@ export default async function SuccessPage({
       {/* Conversion abonnement démarré. Meta : eventId partagé avec l'API Conversions.
           GA4 : événement « purchase » importable comme conversion Google Ads. */}
       {session_id && <MetaTrack event="Subscribe" eventId={session_id} />}
-      {session_id && sub && (
+      {session_id && sub && sub.value > 0 && (
         <GtagPurchase value={sub.value} currency={sub.currency} transactionId={session_id} items={[{ item_id: sub.plan, item_name: `Abonnement ${sub.plan}` }]} />
       )}
       {/* Glow */}
