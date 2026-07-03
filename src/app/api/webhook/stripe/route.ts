@@ -4,6 +4,7 @@ import { createServiceClient } from '@/lib/supabase/server'
 import { sendWelcomeEmail, sendTrialReminderEmail, sendCancellationEmail, sendDigitalDeliveryEmail } from '@/lib/emails'
 import { getProductById } from '@/lib/boutique/products'
 import { sendMetaConversion } from '@/lib/meta-capi'
+import { sendGa4Purchase } from '@/lib/ga-measurement'
 
 export const runtime = 'nodejs'
 
@@ -263,6 +264,40 @@ export async function POST(req: NextRequest) {
             status: 'past_due',
           }).eq('stripe_subscription_id', subIdStr)
         }
+        break
+      }
+
+      case 'invoice.paid': {
+        const invoice = event.data.object as Stripe.Invoice
+        // Essai / facture à 0 € → pas une vraie conversion. On ne compte que le 1er
+        // vrai paiement (acquisition), UNE seule fois par abonnement (pas les renouvellements).
+        if ((invoice.amount_paid ?? 0) <= 0 || !invoice.id) break
+        const subRef = invoice.parent?.subscription_details?.subscription
+        const subId = typeof subRef === 'string' ? subRef : subRef?.id
+        if (!subId) break
+
+        const { data: row } = await service
+          .from('subscriptions')
+          .select('ga_purchase_sent')
+          .eq('stripe_subscription_id', subId)
+          .maybeSingle()
+        if (!row || row.ga_purchase_sent) break
+
+        const sub = await stripe.subscriptions.retrieve(subId)
+        const clientId = sub.metadata?.ga_client_id ?? ''
+        const plan = sub.metadata?.plan ?? 'pro'
+        if (clientId) {
+          await sendGa4Purchase({
+            clientId,
+            transactionId: invoice.id,
+            value: (invoice.amount_paid ?? 0) / 100,
+            currency: (invoice.currency ?? 'eur').toUpperCase(),
+            items: [{ item_id: plan, item_name: `Abonnement ${plan}` }],
+          })
+        }
+        // Marqué traité même sans client_id (visiteur non consentant) → évite de
+        // re-vérifier à chaque renouvellement.
+        await service.from('subscriptions').update({ ga_purchase_sent: true }).eq('stripe_subscription_id', subId)
         break
       }
     }

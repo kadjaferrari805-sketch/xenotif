@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import Stripe from 'stripe'
+import { parseGaClientId } from '@/lib/ga-measurement'
 
 const PLAN_CONFIG = {
   pro: {
@@ -37,6 +38,10 @@ export async function POST(req: NextRequest) {
 
     const priceId = isAnnual ? process.env.STRIPE_PRICE_PRO_ANNUAL : process.env.STRIPE_PRICE_PRO
 
+    // client_id GA4 (cookie _ga) → stocké sur l'abonnement pour envoyer la
+    // conversion « purchase » côté serveur au 1er vrai paiement (fin d'essai).
+    const gaClientId = parseGaClientId(req.cookies.get('_ga')?.value)
+
     const session = await stripe.checkout.sessions.create({
       mode: 'subscription',
       locale,
@@ -61,10 +66,13 @@ export async function POST(req: NextRequest) {
             },
           }],
       allow_promotion_codes: true,
-      // Pas d'essai : la carte est requise et débitée immédiatement à l'abonnement.
+      // Essai gratuit 7 jours : la carte est collectée à l'inscription, aucun débit
+      // avant la fin de l'essai. La conversion d'achat (GA4/Ads) est envoyée côté
+      // serveur au 1er vrai paiement (webhook invoice.paid → Measurement Protocol).
       payment_method_collection: 'always',
       subscription_data: {
-        metadata: { plan, period, locale, user_id: userId ?? '' },
+        trial_period_days: 7,
+        metadata: { plan, period, locale, user_id: userId ?? '', ga_client_id: gaClientId },
       },
       metadata: { plan, period, locale, user_id: userId ?? '' },
       success_url: `${baseUrl}/success?session_id={CHECKOUT_SESSION_ID}`,
