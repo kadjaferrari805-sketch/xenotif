@@ -4,6 +4,8 @@ import { sendPushToUser } from '@/lib/push'
 import { sendWebPushToUser } from '@/lib/web-push'
 import { getDevicePushRecipients } from '@/lib/push-recipients'
 import { getEveningPushContent } from '@/lib/daily-motivation'
+import { getStreak } from '@/lib/streak/service'
+import { getStreakReminderContent } from '@/lib/streak/reminder-content'
 
 export const runtime = 'nodejs'
 export const dynamic = 'force-dynamic'
@@ -28,23 +30,34 @@ export async function GET(request: Request) {
   const errors: string[] = []
 
   for (const { userId, locale } of recipients) {
-    const { title, body } = getEveningPushContent(locale)
+    // Rappel de série si la semaine (UTC) se termine bientôt et reste atteignable.
+    let content: { title: string; body: string } = getEveningPushContent(locale)
+    let data: Record<string, string> = { type: 'evening_reminder' }
+    let url = '/dashboard/notifications'
+    let tag = 'evening_reminder'
     try {
-      pushed += await sendPushToUser(userId, {
-        title,
-        body,
-        data: { type: 'evening_reminder' },
-      })
+      const streak = await getStreak(supabase, userId)
+      const dow = new Date().getUTCDay() // 0 = dimanche, 6 = samedi
+      const daysLeft = dow === 0 ? 1 : dow === 6 ? 2 : 0 // seulement sam/dim
+      const remaining = streak.weeklyGoal - streak.activeDaysThisWeek
+      if (daysLeft > 0 && remaining > 0 && remaining <= daysLeft) {
+        content = getStreakReminderContent(locale, remaining, streak.currentStreak)
+        data = { type: 'streak_reminder' }
+        url = '/dashboard/progression'
+        tag = 'streak_reminder'
+      }
+    } catch (e) {
+      errors.push(`streak ${userId}: ${e}`)
+    }
+
+    const { title, body } = content
+    try {
+      pushed += await sendPushToUser(userId, { title, body, data })
     } catch (e) {
       errors.push(`push ${userId}: ${e}`)
     }
     try {
-      pushed += await sendWebPushToUser(userId, {
-        title,
-        body,
-        url: '/dashboard/notifications',
-        tag: 'evening_reminder',
-      })
+      pushed += await sendWebPushToUser(userId, { title, body, url, tag })
     } catch (e) {
       errors.push(`webpush ${userId}: ${e}`)
     }

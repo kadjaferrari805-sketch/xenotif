@@ -42,30 +42,6 @@ export function xpToLevel(xp: number) {
   }
 }
 
-// Jour local "YYYY-MM-DD" d'une date ISO.
-function dayKey(iso: string): string {
-  const d = new Date(iso)
-  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`
-}
-
-// Plus longue série de jours consécutifs présents dans l'ensemble.
-function longestStreak(days: Set<string>): number {
-  let best = 0
-  for (const day of days) {
-    const prev = new Date(day); prev.setDate(prev.getDate() - 1)
-    if (days.has(dayKey(prev.toISOString()))) continue // pas un début de série
-    let len = 1
-    const cur = new Date(day)
-    for (;;) {
-      cur.setDate(cur.getDate() + 1)
-      if (days.has(dayKey(cur.toISOString()))) len++
-      else break
-    }
-    best = Math.max(best, len)
-  }
-  return best
-}
-
 function startOfWeek(now: Date): Date {
   const d = new Date(now); d.setHours(0, 0, 0, 0)
   const dow = (d.getDay() + 6) % 7 // 0 = lundi
@@ -81,8 +57,6 @@ export function computeGamification(input: { workouts: WorkoutLite[]; programSes
 
   const totalMinutes = workouts.reduce((a, w) => a + (w.duration_minutes ?? 0), 0)
   const disciplines = new Set(workouts.map(w => w.discipline))
-  const dayset = new Set(workouts.map(w => dayKey(w.completed_at)))
-  const streak = longestStreak(dayset)
 
   const badges: Badge[] = [
     { id: 'first', icon: '🏃', earned: workouts.length >= 1 },
@@ -91,7 +65,6 @@ export function computeGamification(input: { workouts: WorkoutLite[]; programSes
     { id: 'century', icon: '💯', earned: workouts.length >= 100 },
     { id: 'tenHours', icon: '⏱️', earned: totalMinutes >= 600 },
     { id: 'fiveDisciplines', icon: '🎯', earned: disciplines.size >= 5 },
-    { id: 'streak7', icon: '🔥', earned: streak >= 7 },
   ]
 
   const weekStart = startOfWeek(now).getTime()
@@ -101,7 +74,6 @@ export function computeGamification(input: { workouts: WorkoutLite[]; programSes
   const min = (arr: WorkoutLite[]) => arr.reduce((a, w) => a + (w.duration_minutes ?? 0), 0)
 
   const weekly: Challenge[] = [
-    { id: 'weekSessions', target: 3, current: inWeek.length },
     { id: 'weekMinutes', target: 120, current: min(inWeek) },
     { id: 'weekDisciplines', target: 2, current: new Set(inWeek.map(w => w.discipline)).size },
   ]

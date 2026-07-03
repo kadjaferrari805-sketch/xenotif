@@ -84,11 +84,9 @@
       "month": "30 Einheiten",
       "century": "100 Einheiten",
       "tenHours": "10 Std. gesamt",
-      "fiveDisciplines": "5 Disziplinen",
-      "streak7": "7 Tage in Folge"
+      "fiveDisciplines": "5 Disziplinen"
     },
     "challenges": {
-      "weekSessions": "{current}/{target} Einheiten",
       "weekMinutes": "{current}/{target} aktive Min.",
       "weekDisciplines": "{current}/{target} Disziplinen",
       "monthSessions": "{current}/{target} Einheiten",
@@ -1666,5 +1664,17 @@
     "ctaSubtitle": "Schließe dich Tausenden von Sportlern an, die mit Xenotif® Fortschritte machen.",
     "ctaJoin": "Xenotif® beitreten",
     "ctaShop": "Den Shop entdecken"
+  },
+  "streak": {
+    "title": "Deine Serie",
+    "weeks": "Wochen",
+    "thisWeek": "Diese Woche",
+    "record": "Rekord",
+    "freezes": "Einfrierungen",
+    "freezeTooltip": "Eine Einfrierung fängt eine verpasste Woche ab, ohne deine Serie zu brechen.",
+    "empty": "Starte deine Serie diese Woche 💪",
+    "goalLabel": "Wochenziel",
+    "sessions": "Einheiten",
+    "newRecord": "Neuer Rekord! 🎉"
   }
 }
