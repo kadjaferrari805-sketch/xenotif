@@ -13,6 +13,7 @@ const EVENTS = [
   'customer.subscription.updated',
   'customer.subscription.deleted',
   'invoice.payment_failed',
+  'invoice.paid',
 ]
 
 const stripeKey      = process.env.STRIPE_SECRET_KEY
