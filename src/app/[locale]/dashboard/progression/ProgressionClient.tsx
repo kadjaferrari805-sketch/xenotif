@@ -10,13 +10,16 @@ import { XpLevelBar } from '@/components/gamification/XpLevelBar'
 import { ChallengesCard } from '@/components/gamification/ChallengesCard'
 import { BadgesGrid } from '@/components/gamification/BadgesGrid'
 import { TransformationForm } from '@/components/transformations/TransformationForm'
+import { StreakRing } from '@/components/streak/StreakRing'
+import { GoalSelector } from '@/components/streak/GoalSelector'
+import type { StreakView } from '@/lib/streak/core'
 
 type Workout = { discipline: string; duration_minutes: number; completed_at: string }
 type ProgressRow = { discipline: string; completed: boolean }
 
 const DISCIPLINES = ['running-cardio', 'musculation', 'hiit', 'cyclisme', 'natation', 'crossfit', 'yoga', 'boxing', 'stretching', 'nutrition']
 
-export function ProgressionClient({ userId, initialWorkouts, initialProgress }: { userId: string; initialWorkouts: Workout[]; initialProgress: ProgressRow[] }) {
+export function ProgressionClient({ userId, initialWorkouts, initialProgress, streak }: { userId: string; initialWorkouts: Workout[]; initialProgress: ProgressRow[]; streak: StreakView }) {
   const t = useTranslations('dashboard.progression')
   const locale = useLocale()
   const dateLocale = locale === 'en' ? 'en-US' : 'fr-FR'
@@ -72,6 +75,13 @@ export function ProgressionClient({ userId, initialWorkouts, initialProgress }: 
 
       <div className="mb-8">
         <XpLevelBar xp={gam.xp} levelKey={gam.levelKey} xpInLevel={gam.xpInLevel} xpForNext={gam.xpForNext} />
+      </div>
+
+      <div className="mb-8 grid grid-cols-1 md:grid-cols-[auto_1fr] gap-4 items-start">
+        <StreakRing view={streak} />
+        <div className="bg-sport-card border border-sport-border rounded-2xl p-5">
+          <GoalSelector initialGoal={streak.weeklyGoal} />
+        </div>
       </div>
 
       {/* Add workout modal */}
