@@ -105,8 +105,49 @@ export default async function DisciplinePage({ params }: { params: Promise<{ slu
     return { slug: f.slug, title: m.title, tag: m.tag }
   })
 
+  // ── SEO : données structurées (fil d'Ariane + FAQ) ──
+  // FR à la racine (locale par défaut), autres préfixées, cohérent avec generateMetadata.
+  const path = `/disciplines/${slug}`
+  const pageUrl = locale === 'en' ? `${SITE}/en${path}` : locale === 'de' ? `${SITE}/de${path}` : `${SITE}${path}`
+  const homeUrl = locale === 'en' ? `${SITE}/en` : locale === 'de' ? `${SITE}/de` : SITE
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Xenotif®', item: homeUrl },
+      { '@type': 'ListItem', position: 2, name: title, item: pageUrl },
+    ],
+  }
+  const faq = content?.faq ?? []
+  const faqSchema = faq.length > 0
+    ? {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: faq.map((f) => ({
+          '@type': 'Question',
+          name: f.q,
+          acceptedAnswer: { '@type': 'Answer', text: f.a },
+        })),
+      }
+    : null
+  // Programme d'entraînement structuré = Course (nom, description, fournisseur).
+  const courseSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Course',
+    name: title,
+    description,
+    inLanguage: locale,
+    url: pageUrl,
+    provider: { '@type': 'Organization', name: 'Xenotif®', url: SITE },
+  }
+
   return (
     <div className="min-h-screen bg-sport-dark text-white">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(courseSchema) }} />
+      {faqSchema && (
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      )}
 
       {/* ── Hero ─────────────────────────────────────────────── */}
       <section className="relative h-[75vh] min-h-[520px] overflow-hidden" aria-label={t('heroAria', { name: title })}>

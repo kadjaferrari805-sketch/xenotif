@@ -26,6 +26,9 @@ const orbitron = Orbitron({ subsets: ['latin'], variable: '--font-orbitron', dis
 
 const SITE = 'https://xenotif.com'
 const META_PIXEL_ID = process.env.NEXT_PUBLIC_META_PIXEL_ID
+// Google Ads : tag de conversion (AW-XXXXXXXXX). Activé uniquement si l'ID est
+// défini en env (comme le Meta Pixel) → aucun identifiant en dur.
+const GOOGLE_ADS_ID = process.env.NEXT_PUBLIC_GOOGLE_ADS_ID
 const LOCALE_OG: Record<string, string> = {
   fr: 'fr_FR',
   en: 'en_US',
@@ -158,7 +161,7 @@ export default async function RootLayout({
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', 'G-3H3JTM404V');
+            gtag('config', 'G-3H3JTM404V');${GOOGLE_ADS_ID ? `\n            gtag('config', '${GOOGLE_ADS_ID}');` : ''}
           `}
         </Script>
 

@@ -15,6 +15,7 @@ import { StickyCheckout } from '@/components/home/StickyCheckout'
 import { CustomerReviews } from '@/components/reviews/CustomerReviews'
 import { TransformationsGallery } from '@/components/transformations/TransformationsGallery'
 import { FaqSchema } from '@/components/FaqSchema'
+import { AppRatingSchema } from '@/components/AppRatingSchema'
 import { AdBanner } from '@/components/home/AdBanner'
 import { ProductShowcase } from '@/components/home/ProductShowcase'
 import { ProgramsShowcase } from '@/components/home/ProgramsShowcase'
@@ -52,6 +53,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   return (
     <>
       <FaqSchema />
+      <AppRatingSchema />
       <Hero />
       <TrustRow />
       <MarqueeStrip />
