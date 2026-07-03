@@ -130,10 +130,21 @@ export default async function DisciplinePage({ params }: { params: Promise<{ slu
         })),
       }
     : null
+  // Programme d'entraînement structuré = Course (nom, description, fournisseur).
+  const courseSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Course',
+    name: title,
+    description,
+    inLanguage: locale,
+    url: pageUrl,
+    provider: { '@type': 'Organization', name: 'Xenotif®', url: SITE },
+  }
 
   return (
     <div className="min-h-screen bg-sport-dark text-white">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(courseSchema) }} />
       {faqSchema && (
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       )}
