@@ -37,6 +37,10 @@
     {
       "path": "/api/cron/subscribe-push",
       "schedule": "0 20 * * *"
+    },
+    {
+      "path": "/api/cron/streak-finalize",
+      "schedule": "0 2 * * *"
     }
   ]
 }
