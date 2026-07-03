@@ -73,4 +73,18 @@ export function trackPurchase(opts: {
     currency: opts.currency ?? 'EUR',
     items: opts.items ?? [],
   })
+
+  // Google Ads — conversion dédiée, si l'ID (AW-…) et le label sont configurés
+  // en env (NEXT_PUBLIC_GOOGLE_ADS_ID + NEXT_PUBLIC_GOOGLE_ADS_PURCHASE_LABEL).
+  // Complète l'import GA4→Ads pour un suivi de conversion direct.
+  const adsId = process.env.NEXT_PUBLIC_GOOGLE_ADS_ID
+  const adsLabel = process.env.NEXT_PUBLIC_GOOGLE_ADS_PURCHASE_LABEL
+  if (adsId && adsLabel) {
+    w.gtag?.('event', 'conversion', {
+      send_to: `${adsId}/${adsLabel}`,
+      value: opts.value,
+      currency: opts.currency ?? 'EUR',
+      transaction_id: opts.transactionId,
+    })
+  }
 }
