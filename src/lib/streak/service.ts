@@ -12,7 +12,15 @@ function defaultState(goal = DEFAULT_GOAL): StreakState {
   return { weeklyGoal: goal, currentStreak: 0, longestStreak: 0, freezesAvailable: 0, lastFinalizedWeek: null }
 }
 
-function toState(row: any): StreakState {
+type StreakRow = {
+  weekly_goal: number
+  current_streak: number
+  longest_streak: number
+  freezes_available: number
+  last_finalized_week: string | null
+}
+
+function toState(row: StreakRow): StreakState {
   return {
     weeklyGoal: row.weekly_goal,
     currentStreak: row.current_streak,
@@ -29,9 +37,10 @@ async function loadActivityDates(supabase: SupabaseClient, userId: string, since
     supabase.from('smartwatch_sessions').select('started_at, duration_seconds').eq('user_id', userId).gte('started_at', sinceISO),
   ])
   return [
-    ...((w.data ?? []) as any[]).map(r => r.completed_at),
-    ...((p.data ?? []) as any[]).map(r => r.completed_at),
-    ...((s.data ?? []) as any[]).filter(r => (r.duration_seconds ?? 0) >= MIN_SMARTWATCH_SECONDS).map(r => r.started_at),
+    ...((w.data ?? []) as { completed_at: string }[]).map(r => r.completed_at),
+    ...((p.data ?? []) as { completed_at: string }[]).map(r => r.completed_at),
+    ...((s.data ?? []) as { started_at: string; duration_seconds: number | null }[])
+      .filter(r => (r.duration_seconds ?? 0) >= MIN_SMARTWATCH_SECONDS).map(r => r.started_at),
   ].filter(Boolean) as string[]
 }
 
