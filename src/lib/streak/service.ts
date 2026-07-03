@@ -45,7 +45,8 @@ async function loadActivityDates(supabase: SupabaseClient, userId: string, since
 }
 
 export async function getStreak(supabase: SupabaseClient, userId: string): Promise<StreakView> {
-  const { data: row } = await supabase.from('user_streaks').select('*').eq('user_id', userId).maybeSingle()
+  const { data: row, error: selError } = await supabase.from('user_streaks').select('*').eq('user_id', userId).maybeSingle()
+  if (selError) console.error('[streak] select', userId, selError.message)
   const state = row ? toState(row) : defaultState()
 
   const sinceISO = new Date(Date.now() - LOOKBACK_DAYS * 86400000).toISOString()
@@ -53,15 +54,26 @@ export async function getStreak(supabase: SupabaseClient, userId: string): Promi
   const now = new Date()
   const { state: next, view } = reconcile(state, bucketActiveDaysByWeek(dates), now)
 
-  await supabase.from('user_streaks').upsert({
-    user_id: userId,
-    weekly_goal: next.weeklyGoal,
-    current_streak: next.currentStreak,
-    longest_streak: next.longestStreak,
-    freezes_available: next.freezesAvailable,
-    last_finalized_week: next.lastFinalizedWeek,
-    updated_at: now.toISOString(),
-  }, { onConflict: 'user_id' })
+  // N'écrire que si l'état a changé (ou si la ligne n'existait pas) : évite un
+  // upsert à chaque rendu de page / itération de cron quand rien n'a bougé.
+  const changed = !row
+    || next.weeklyGoal !== state.weeklyGoal
+    || next.currentStreak !== state.currentStreak
+    || next.longestStreak !== state.longestStreak
+    || next.freezesAvailable !== state.freezesAvailable
+    || next.lastFinalizedWeek !== state.lastFinalizedWeek
+  if (changed) {
+    const { error: upError } = await supabase.from('user_streaks').upsert({
+      user_id: userId,
+      weekly_goal: next.weeklyGoal,
+      current_streak: next.currentStreak,
+      longest_streak: next.longestStreak,
+      freezes_available: next.freezesAvailable,
+      last_finalized_week: next.lastFinalizedWeek,
+      updated_at: now.toISOString(),
+    }, { onConflict: 'user_id' })
+    if (upError) console.error('[streak] upsert', userId, upError.message)
+  }
 
   return view
 }

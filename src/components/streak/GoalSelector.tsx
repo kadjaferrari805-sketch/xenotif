@@ -1,12 +1,14 @@
 'use client'
 
 import { useState } from 'react'
+import { useRouter } from 'next/navigation'
 import { useTranslations } from 'next-intl'
 
 const OPTIONS = [2, 3, 4, 5, 6, 7]
 
 export function GoalSelector({ initialGoal }: { initialGoal: number }) {
   const t = useTranslations('streak')
+  const router = useRouter()
   const [goal, setGoal] = useState(initialGoal)
   const [saving, setSaving] = useState(false)
 
@@ -20,6 +22,7 @@ export function GoalSelector({ initialGoal }: { initialGoal: number }) {
         body: JSON.stringify({ goal: next }),
       })
       if (!res.ok) setGoal(prev)
+      else router.refresh()
     } catch {
       setGoal(prev)
     } finally {

@@ -25,7 +25,7 @@ export const PREVIEW = {
   weight: { unit: 'kg', points: [82.4, 82.0, 81.6, 81.1, 80.7, 80.2, 79.8], goal: 78 },
   nutrition: { calories: 2180, target: 2300, protein: 148, carbs: 210, fat: 64 },
   badges: [
-    { icon: '🔥', label: '7 jours' },
+    { icon: '🔥', label: '12 semaines' },
     { icon: '💪', label: '50 séances' },
     { icon: '🏃', label: '100 km' },
     { icon: '⚡', label: 'HIIT x20' },
