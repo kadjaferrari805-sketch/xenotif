@@ -51,13 +51,19 @@ export function Hero() {
   useEffect(() => {
     const v = videoRef.current
     if (!v) return
-    try {
-      if (window.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches) return
-      const p = v.play()
-      if (p && typeof p.catch === 'function') p.catch(() => {})
-    } catch {
-      /* autoplay bloqué / jsdom → le poster reste affiché */
-    }
+    if (window.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches) return
+    // Vidéo différée (~1,2 s) : le rendu critique (LCP = poster prioritaire) passe
+    // d'abord, puis la vidéo se charge/joue → home nettement plus rapide (crucial
+    // pour les pubs mobiles). Couplé à preload="none", zéro téléchargement anticipé.
+    const id = window.setTimeout(() => {
+      try {
+        const p = v.play()
+        if (p && typeof p.catch === 'function') p.catch(() => {})
+      } catch {
+        /* autoplay bloqué / jsdom → le poster reste affiché */
+      }
+    }, 1200)
+    return () => clearTimeout(id)
   }, [])
 
   // Fonctions simples : le React Compiler les mémoïse automatiquement.
@@ -149,7 +155,7 @@ export function Hero() {
           muted
           loop
           playsInline
-          preload="auto"
+          preload="none"
           aria-hidden="true"
           onPlaying={() => setVideoReady(true)}
           className={`absolute inset-0 h-full w-full object-cover object-[center_40%] md:object-center transition-opacity duration-700 ${videoReady ? 'opacity-100' : 'opacity-0'}`}
