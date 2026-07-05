@@ -170,11 +170,16 @@ export async function POST(req: NextRequest) {
           await sendWelcomeEmail({ email: userEmail, name: customerName, plan, setupLink, locale })
         }
 
-        // API Conversions Meta — abonnement (essai) démarré (déduplication via session.id côté Pixel)
+        // API Conversions Meta — abonnement (essai) démarré (déduplication via session.id côté Pixel).
+        // Signaux de correspondance (fbp/fbc/IP/UA) captés au checkout → bien meilleur match.
         await sendMetaConversion({
           eventName: 'Subscribe',
           eventId: session.id,
           email: customerEmail,
+          fbp: sub.metadata?.fb_fbp,
+          fbc: sub.metadata?.fb_fbc,
+          clientIpAddress: sub.metadata?.fb_ip,
+          clientUserAgent: sub.metadata?.fb_ua,
         })
 
         break
@@ -286,15 +291,30 @@ export async function POST(req: NextRequest) {
         const sub = await stripe.subscriptions.retrieve(subId)
         const clientId = sub.metadata?.ga_client_id ?? ''
         const plan = sub.metadata?.plan ?? 'pro'
+        const value = (invoice.amount_paid ?? 0) / 100
+        const currency = (invoice.currency ?? 'eur').toUpperCase()
         if (clientId) {
           await sendGa4Purchase({
             clientId,
             transactionId: invoice.id,
-            value: (invoice.amount_paid ?? 0) / 100,
-            currency: (invoice.currency ?? 'eur').toUpperCase(),
+            value,
+            currency,
             items: [{ item_id: plan, item_name: `Abonnement ${plan}` }],
           })
         }
+        // API Conversions Meta — vrai paiement (fin d'essai) : Meta optimise alors sur
+        // les vrais payeurs, pas seulement les débuts d'essai. Dédup via invoice.id.
+        await sendMetaConversion({
+          eventName: 'Purchase',
+          eventId: invoice.id,
+          email: invoice.customer_email,
+          value,
+          currency,
+          fbp: sub.metadata?.fb_fbp,
+          fbc: sub.metadata?.fb_fbc,
+          clientIpAddress: sub.metadata?.fb_ip,
+          clientUserAgent: sub.metadata?.fb_ua,
+        })
         // Marqué traité même sans client_id (visiteur non consentant) → évite de
         // re-vérifier à chaque renouvellement.
         await service.from('subscriptions').update({ ga_purchase_sent: true }).eq('stripe_subscription_id', subId)

@@ -41,6 +41,12 @@ export async function POST(req: NextRequest) {
     // client_id GA4 (cookie _ga) → stocké sur l'abonnement pour envoyer la
     // conversion « purchase » côté serveur au 1er vrai paiement (fin d'essai).
     const gaClientId = parseGaClientId(req.cookies.get('_ga')?.value)
+    // Signaux Meta (Event Match Quality) : cookies _fbp/_fbc + IP + User-Agent,
+    // relayés au webhook pour un bien meilleur rattachement des conversions aux pubs.
+    const fbp = req.cookies.get('_fbp')?.value ?? ''
+    const fbc = req.cookies.get('_fbc')?.value ?? ''
+    const clientIp = (req.headers.get('x-forwarded-for') ?? '').split(',')[0].trim()
+    const userAgent = (req.headers.get('user-agent') ?? '').slice(0, 480)
 
     const session = await stripe.checkout.sessions.create({
       mode: 'subscription',
@@ -72,7 +78,11 @@ export async function POST(req: NextRequest) {
       payment_method_collection: 'always',
       subscription_data: {
         trial_period_days: 7,
-        metadata: { plan, period, locale, user_id: userId ?? '', ga_client_id: gaClientId },
+        metadata: {
+          plan, period, locale, user_id: userId ?? '',
+          ga_client_id: gaClientId,
+          fb_fbp: fbp, fb_fbc: fbc, fb_ip: clientIp, fb_ua: userAgent,
+        },
       },
       metadata: { plan, period, locale, user_id: userId ?? '' },
       success_url: `${baseUrl}/success?session_id={CHECKOUT_SESSION_ID}`,

@@ -19,6 +19,12 @@ type ConversionInput = {
   email?: string | null
   value?: number
   currency?: string
+  // Signaux de correspondance (Event Match Quality) — NON hachés (Meta les veut bruts).
+  // Captés au checkout (cookies _fbp/_fbc + IP/UA) et relayés côté serveur.
+  fbp?: string | null
+  fbc?: string | null
+  clientIpAddress?: string | null
+  clientUserAgent?: string | null
 }
 
 // N'a aucun effet si le Pixel ID ou le token CAPI ne sont pas configurés.
@@ -28,6 +34,10 @@ export async function sendMetaConversion(input: ConversionInput): Promise<void> 
   try {
     const userData: Record<string, unknown> = {}
     if (input.email) userData.em = [sha256(input.email)]
+    if (input.fbp) userData.fbp = input.fbp
+    if (input.fbc) userData.fbc = input.fbc
+    if (input.clientIpAddress) userData.client_ip_address = input.clientIpAddress
+    if (input.clientUserAgent) userData.client_user_agent = input.clientUserAgent
 
     const body = {
       data: [
