@@ -9,8 +9,6 @@ import { DISCIPLINE_CONTENT } from '@/lib/disciplines'
 import { getDisciplineFromDb } from '@/lib/content-db'
 import { computeXp, xpToLevel } from '@/lib/gamification'
 import { XpLevelBar } from '@/components/gamification/XpLevelBar'
-import { getStreak } from '@/lib/streak/service'
-import { StreakRing } from '@/components/streak/StreakRing'
 import { TodayActivity, type TrendDay } from '@/components/dashboard/TodayActivity'
 import { ReviewInvite } from '@/components/reviews/ReviewInvite'
 import { OfferBanner } from '@/components/promo/OfferBanner'
@@ -56,7 +54,7 @@ export default async function DashboardPage() {
   const overviewSlugs = ['running-cardio', 'musculation', 'hiit'] as const
 
   // Une seule vague parallèle : accès, profil, activité (RLS user) et contenu des 3 programmes.
-  const [access, fullName, { data: allWorkouts }, { count: workoutCount }, { data: progress }, { data: healthMetrics }, overviewPairs, streak] = await Promise.all([
+  const [access, fullName, { data: allWorkouts }, { count: workoutCount }, { data: progress }, { data: healthMetrics }, overviewPairs] = await Promise.all([
     getAccess(),
     getProfileName(),
     supabase.from('workouts').select('*').eq('user_id', user.id).order('completed_at', { ascending: false }).limit(60),
@@ -64,7 +62,6 @@ export default async function DashboardPage() {
     supabase.from('progress').select('*').eq('user_id', user.id),
     supabase.from('health_metrics').select('date, steps, active_minutes').eq('user_id', user.id).gte('date', weekAgoStr),
     Promise.all(overviewSlugs.map(async (s) => [s, (await getDisciplineFromDb(s, locale))?.content ?? DISCIPLINE_CONTENT[s]] as const)),
-    getStreak(supabase, user.id),
   ])
   const overviewContents = Object.fromEntries(overviewPairs)
 
@@ -153,11 +150,6 @@ export default async function DashboardPage() {
           />
         </div>
       ) : null}
-
-      {/* Série hebdomadaire (streak) */}
-      <div className="mb-4">
-        <StreakRing view={streak} compact />
-      </div>
 
       {/* Niveau / XP (gamification) */}
       <div className="mb-6">
