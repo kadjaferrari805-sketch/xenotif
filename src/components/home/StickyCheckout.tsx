@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import { ArrowRight, X, Zap } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import { Link } from '@/i18n/navigation'
+import { XenotifMark } from '@/components/ui/Logo'
 
 export function StickyCheckout() {
   const t = useTranslations('home.sticky')
@@ -28,7 +29,7 @@ export function StickyCheckout() {
         <div className="flex items-center gap-3">
           {/* Accroche + réassurance essai gratuit */}
           <div className="hidden md:flex items-center gap-2.5 shrink-0 mr-1">
-            <span aria-hidden="true" className="w-7 h-7 bg-sport-orange rounded-md flex items-center justify-center font-black text-white text-xs">X</span>
+            <XenotifMark size={28} />
             <div className="leading-tight">
               <p className="font-black text-white text-xs">{t('lead')}</p>
               <p className="flex items-center gap-1 text-[10px] text-sport-lime font-bold">
