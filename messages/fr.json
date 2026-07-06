@@ -323,7 +323,7 @@
       "eyebrow": "La Plateforme Sport Premium",
       "ctaPrimary": "Commencer gratuitement",
       "ctaSecondary": "Voir les disciplines",
-      "ctaNote": "7 jours PRO offerts, sans carte · puis 9,99 €/mois",
+      "ctaNote": "Musculation gratuite, sans carte · PRO dès 9,99 €/mois",
       "socialProof": "<b>4,9/5</b> · déjà rejoint par <b>12 000+ athlètes</b>",
       "scroll": "Scroll",
       "slides": [
@@ -538,7 +538,7 @@
       "title": "Commence en 4 étapes",
       "subtitle": "De l'inscription à tes premiers résultats — simple, rapide, efficace",
       "cta": "Commencer maintenant",
-      "ctaNote": "7 jours d'essai PRO offerts · Sans carte · Sans engagement",
+      "ctaNote": "Commence gratuitement · Sans carte · Sans engagement",
       "steps": [
         {
           "title": "Crée ton compte",
@@ -602,15 +602,15 @@
       "plans": [
         {
           "name": "Gratuit",
-          "period": "7 jours PRO offerts",
+          "period": "Gratuit à vie",
           "badge": "Sans carte",
-          "description": "Débloque TOUT le PRO pendant 7 jours, sans carte bancaire. Ensuite, tu gardes la Musculation gratuitement.",
+          "description": "Le programme Musculation en accès libre, sans carte bancaire. Passe à PRO quand tu veux pour tout débloquer.",
           "cta": "Commencer gratuitement",
           "features": [
-            "Accès PRO complet pendant 7 jours",
-            "Toutes les disciplines & le coach IA",
+            "Programme Musculation + 1ʳᵉ vidéo",
             "Suivi & statistiques de progression",
-            "Aucune carte bancaire requise"
+            "Rappels & notifications",
+            "Sans carte bancaire"
           ]
         },
         {
@@ -788,11 +788,11 @@
       "plans": [
         {
           "name": "Gratuit",
-          "period": "7 jours PRO offerts",
+          "period": "Gratuit à vie",
           "badge": "Sans carte",
           "features": [
-            "7 jours d'accès PRO complet",
-            "Toutes les disciplines & coach IA",
+            "Programme Musculation + 1ʳᵉ vidéo",
+            "Suivi & progression",
             "Sans carte bancaire"
           ]
         },
