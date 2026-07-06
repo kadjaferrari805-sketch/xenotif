@@ -10,6 +10,7 @@ import { PreviewWeightChart } from './PreviewWeightChart'
 import { PreviewNutrition } from './PreviewNutrition'
 import { XpLevelBar } from '@/components/gamification/XpLevelBar'
 import { ChallengesCard } from '@/components/gamification/ChallengesCard'
+import { StreakRing } from '@/components/streak/StreakRing'
 import { PREVIEW } from '@/lib/preview-data'
 
 const reveal = {
@@ -40,6 +41,11 @@ export function PreviewDashboard() {
         <motion.div {...reveal} className="mb-8">
           <h1 className="text-2xl md:text-3xl font-black">{t('greeting', { name: PREVIEW.name })}</h1>
           <p className="text-sport-gray text-sm mt-1">{t('subtitle')}</p>
+        </motion.div>
+
+        {/* Série hebdomadaire (streak) — même widget que le vrai dashboard */}
+        <motion.div {...reveal} className="mb-8 max-w-xs">
+          <StreakRing view={{ ...PREVIEW.streak }} />
         </motion.div>
 
         <motion.div {...reveal} className="mb-8">
