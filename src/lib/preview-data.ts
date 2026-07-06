@@ -30,16 +30,6 @@ export const PREVIEW = {
     { icon: '🏃', label: '100 km' },
     { icon: '⚡', label: 'HIIT x20' },
   ],
-  streak: {
-    weeklyGoal: 3,
-    currentStreak: 12,
-    longestStreak: 18,
-    freezesAvailable: 1,
-    lastFinalizedWeek: '2026-06-29',
-    activeDaysThisWeek: 2,
-    weekValidated: false,
-    nextMilestone: 26,
-  },
   gamification: {
     xp: 920,
     levelKey: 'competiteur',
