@@ -323,7 +323,7 @@
       "eyebrow": "The Premium Sports Platform",
       "ctaPrimary": "Start for free",
       "ctaSecondary": "Explore the disciplines",
-      "ctaNote": "7 days of PRO free, no card · then €9.99/mo",
+      "ctaNote": "Free Strength Training, no card · PRO from €9.99/mo",
       "socialProof": "<b>4.9/5</b> · joined by <b>12,000+ athletes</b>",
       "scroll": "Scroll",
       "slides": [
@@ -538,7 +538,7 @@
       "title": "Get started in 4 steps",
       "subtitle": "From sign-up to your first results — simple, fast, effective",
       "cta": "Start now",
-      "ctaNote": "7-day PRO trial free · No card · No commitment",
+      "ctaNote": "Start for free · No card · No commitment",
       "steps": [
         {
           "title": "Create your account",
@@ -602,14 +602,14 @@
       "plans": [
         {
           "name": "Free",
-          "period": "7 days of PRO",
+          "period": "Free forever",
           "badge": "No card",
-          "description": "Unlock ALL of PRO for 7 days, no credit card. After that, keep Strength Training for free.",
+          "description": "Free access to the Strength Training program, no credit card. Upgrade to PRO anytime to unlock everything.",
           "cta": "Start for free",
           "features": [
-            "Full PRO access for 7 days",
-            "All disciplines & the AI coach",
+            "Full Strength Training program + 1st video",
             "Progress tracking & stats",
+            "Reminders & notifications",
             "No credit card required"
           ]
         },
@@ -788,11 +788,11 @@
       "plans": [
         {
           "name": "Free",
-          "period": "7 days of PRO",
+          "period": "Free forever",
           "badge": "No card",
           "features": [
-            "7 days of full PRO access",
-            "All disciplines & AI coach",
+            "Strength Training program + 1st video",
+            "Progress tracking",
             "No credit card"
           ]
         },

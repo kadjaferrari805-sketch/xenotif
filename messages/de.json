@@ -323,7 +323,7 @@
       "eyebrow": "Die Premium-Sportplattform",
       "ctaPrimary": "Kostenlos starten",
       "ctaSecondary": "Disziplinen ansehen",
-      "ctaNote": "7 Tage PRO gratis, ohne Karte · dann 9,99 €/Monat",
+      "ctaNote": "Krafttraining gratis, ohne Karte · PRO ab 9,99 €/Monat",
       "socialProof": "<b>4,9/5</b> · von <b>12.000+ Athleten</b> genutzt",
       "scroll": "Scrollen",
       "slides": [
@@ -538,7 +538,7 @@
       "title": "Starte in 4 Schritten",
       "subtitle": "Von der Anmeldung bis zu deinen ersten Ergebnissen — einfach, schnell, effektiv",
       "cta": "Jetzt starten",
-      "ctaNote": "7 Tage PRO-Test gratis · Ohne Karte · Unverbindlich",
+      "ctaNote": "Kostenlos starten · Ohne Karte · Unverbindlich",
       "steps": [
         {
           "title": "Erstelle dein Konto",
@@ -602,14 +602,14 @@
       "plans": [
         {
           "name": "Kostenlos",
-          "period": "7 Tage PRO gratis",
+          "period": "Für immer kostenlos",
           "badge": "Ohne Karte",
-          "description": "Schalte 7 Tage lang ALLES von PRO frei, ohne Kreditkarte. Danach behältst du das Krafttraining kostenlos.",
+          "description": "Freier Zugang zum Krafttraining-Programm, ohne Kreditkarte. Jederzeit auf PRO upgraden, um alles freizuschalten.",
           "cta": "Kostenlos starten",
           "features": [
-            "Voller PRO-Zugang für 7 Tage",
-            "Alle Disziplinen & KI-Coach",
+            "Vollständiges Krafttraining-Programm + 1. Video",
             "Fortschritts-Tracking & Statistiken",
+            "Erinnerungen & Benachrichtigungen",
             "Keine Kreditkarte erforderlich"
           ]
         },
@@ -788,11 +788,11 @@
       "plans": [
         {
           "name": "Kostenlos",
-          "period": "7 Tage PRO gratis",
+          "period": "Für immer kostenlos",
           "badge": "Ohne Karte",
           "features": [
-            "7 Tage voller PRO-Zugang",
-            "Alle Disziplinen & KI-Coach",
+            "Krafttraining-Programm + 1. Video",
+            "Fortschritts-Tracking",
             "Ohne Kreditkarte"
           ]
         },
