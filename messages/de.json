@@ -1665,17 +1665,5 @@
     "ctaSubtitle": "Schließe dich Tausenden von Sportlern an, die mit Xenotif® Fortschritte machen.",
     "ctaJoin": "Xenotif® beitreten",
     "ctaShop": "Den Shop entdecken"
-  },
-  "streak": {
-    "title": "Deine Serie",
-    "weeks": "Wochen",
-    "thisWeek": "Diese Woche",
-    "record": "Rekord",
-    "freezes": "Einfrierungen",
-    "freezeTooltip": "Eine Einfrierung fängt eine verpasste Woche ab, ohne deine Serie zu brechen.",
-    "empty": "Starte deine Serie diese Woche 💪",
-    "goalLabel": "Wochenziel",
-    "sessions": "Einheiten",
-    "newRecord": "Neuer Rekord! 🎉"
   }
 }

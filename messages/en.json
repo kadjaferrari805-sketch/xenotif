@@ -1665,17 +1665,5 @@
     "ctaSubtitle": "Join thousands of athletes progressing with Xenotif®.",
     "ctaJoin": "Join Xenotif®",
     "ctaShop": "Explore the shop"
-  },
-  "streak": {
-    "title": "Your streak",
-    "weeks": "weeks",
-    "thisWeek": "This week",
-    "record": "record",
-    "freezes": "Freezes",
-    "freezeTooltip": "A freeze absorbs one missed week without breaking your streak.",
-    "empty": "Start your streak this week 💪",
-    "goalLabel": "Weekly goal",
-    "sessions": "sessions",
-    "newRecord": "New record! 🎉"
   }
 }
