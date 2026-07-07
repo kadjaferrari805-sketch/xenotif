@@ -456,7 +456,6 @@ export async function sendThemedDailyEmail({
   const locale = norm3(rawLocale)
   const c = getCampaignEmail(theme, locale)
   const firstName = name ? name.split(' ')[0] : ''
-  const hi = locale === 'en' ? 'Hi' : locale === 'de' ? 'Hallo' : 'Salut'
   const unsub: Record<EmailLocale, string> = {
     fr: 'Tu reçois cet email car tu es inscrit(e) à Xenotif®.',
     en: 'You receive this email because you\'re signed up to Xenotif®.',

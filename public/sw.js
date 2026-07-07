@@ -16,7 +16,7 @@ self.addEventListener('fetch', () => {
 function badgeCount(mode, delta) {
   return new Promise((resolve) => {
     let req
-    try { req = indexedDB.open('xeno-badge', 1) } catch (e) { resolve(0); return }
+    try { req = indexedDB.open('xeno-badge', 1) } catch { resolve(0); return }
     req.onupgradeneeded = () => req.result.createObjectStore('kv')
     req.onerror = () => resolve(0)
     req.onsuccess = () => {
@@ -33,7 +33,7 @@ function badgeCount(mode, delta) {
           resolve(next)
         }
         get.onerror = () => resolve(0)
-      } catch (e) { resolve(0) }
+      } catch { resolve(0) }
     }
   })
 }
@@ -43,7 +43,7 @@ async function applyBadge(n) {
     if (!('setAppBadge' in self.navigator)) return
     if (n > 0) await self.navigator.setAppBadge(n)
     else await self.navigator.clearAppBadge()
-  } catch (e) { /* best-effort iOS 16.4+/Android */ }
+  } catch { /* best-effort iOS 16.4+/Android */ }
 }
 
 // ── Web Push : affichage des notifications reçues + incrément du badge ───
@@ -78,7 +78,7 @@ self.addEventListener('message', (event) => {
       try {
         const notifs = await self.registration.getNotifications()
         notifs.forEach((nf) => nf.close())
-      } catch (e) { /* ignore */ }
+      } catch { /* ignore */ }
     })())
   }
 })
@@ -89,7 +89,7 @@ self.addEventListener('notificationclick', (event) => {
   const url = (event.notification.data && event.notification.data.url) || '/dashboard'
   event.waitUntil((async () => {
     // Une notification lue → -1 sur le badge de l'icône.
-    try { await applyBadge(await badgeCount('inc', -1)) } catch (e) { /* ignore */ }
+    try { await applyBadge(await badgeCount('inc', -1)) } catch { /* ignore */ }
     const wins = await self.clients.matchAll({ type: 'window', includeUncontrolled: true })
     for (const w of wins) {
       if ('focus' in w) {
