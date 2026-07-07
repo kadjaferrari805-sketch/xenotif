@@ -385,7 +385,8 @@
         "carousel": "Karussell-Navigation",
         "slides": "Folien",
         "slide": "Folie {n} von {total}"
-      }
+      },
+      "subheadline": "Strukturierte Programme, Ernährung und ein KI-Coach für Kraft, Running und HIIT. Schließ dich 12.000+ Athleten an — kostenlos starten, ohne Karte."
     },
     "marquee": {
       "items": [
@@ -733,6 +734,24 @@
         {
           "q": "Funktionieren die Programme auf dem Handy?",
           "a": "Ja. Xenotif® ist vollständig responsive und auf Smartphone, Tablet und Computer verfügbar. Deine Einheiten begleiten dich überall, sogar offline (Offline-Modus im Pro-Plan verfügbar)."
+        }
+      ]
+    },
+    "whyXenotif": {
+      "eyebrow": "Warum Xenotif",
+      "title": "Nicht noch eine App.",
+      "pillars": [
+        {
+          "title": "Kein weiterer Tracker",
+          "desc": "Andere Apps zählen deine Schritte. Xenotif sagt dir, was zu tun ist: echte Programme Woche für Woche, detaillierte Workouts, Ernährung und Fortschritts-Tracking."
+        },
+        {
+          "title": "Null Bullshit",
+          "desc": "Krafttraining kostenlos, ohne Kreditkarte. 7-Tage-PRO-Test, Kündigung mit einem Klick. Keine Fallen, keine versteckte Bindung."
+        },
+        {
+          "title": "Ein Coach in deiner Tasche",
+          "desc": "KI-Coach, Ernährungsplan und Tracking — Kraft, Running, HIIT. Alles an einem Ort, 24/7, auf dein Niveau abgestimmt."
         }
       ]
     }

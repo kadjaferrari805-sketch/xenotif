@@ -2,6 +2,7 @@ import { Hero } from '@/components/home/Hero'
 import { TrustRow } from '@/components/home/TrustRow'
 import { MarqueeStrip } from '@/components/home/MarqueeStrip'
 import { ProofBar } from '@/components/home/ProofBar'
+import { WhyXenotif } from '@/components/home/WhyXenotif'
 import { Features } from '@/components/home/Features'
 import { HowItWorks } from '@/components/home/HowItWorks'
 import { ExperiencePreview } from '@/components/home/ExperiencePreview'
@@ -58,6 +59,8 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       <TrustRow />
       <MarqueeStrip />
       <ProofBar />
+      {/* Positionnement / différenciation — 3 piliers, haut de page */}
+      <WhyXenotif />
       {/* Vitrine produits affiliés — visible dès le haut de page */}
       <ProductShowcase section="recommended" products={recommended} dark />
       {/* Bandeau pub — Transforme ton corps (+ CTA) */}

@@ -236,6 +236,17 @@ export function Hero() {
               </motion.p>
             </AnimatePresence>
 
+            {/* Clarté produit (statique) : dit CE QU'EST Xenotif + le bénéfice +
+                la preuve + le prix, en une phrase, sous les headlines émotionnelles. */}
+            <motion.p
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: 0.15 }}
+              className="text-base md:text-lg text-white/75 max-w-xl mb-6 leading-relaxed"
+            >
+              {t('subheadline')}
+            </motion.p>
+
             {/* Preuve sociale (note + nombre d'athlètes) — au-dessus des CTA */}
             <motion.div
               initial={{ opacity: 0, y: 12 }}

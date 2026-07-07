@@ -385,7 +385,8 @@
         "carousel": "Navigation du carrousel",
         "slides": "Diapositives",
         "slide": "Diapositive {n} sur {total}"
-      }
+      },
+      "subheadline": "Programmes structurés, nutrition et coach IA pour la muscu, le running et le HIIT. Rejoins 12 000+ athlètes — gratuit pour commencer, sans carte."
     },
     "marquee": {
       "items": [
@@ -733,6 +734,24 @@
         {
           "q": "Les programmes fonctionnent-ils sur mobile ?",
           "a": "Oui. Xenotif® est entièrement responsive et accessible sur smartphone, tablette et ordinateur. Tes séances te suivent partout, même hors-ligne (mode hors-connexion disponible sur le plan Pro)."
+        }
+      ]
+    },
+    "whyXenotif": {
+      "eyebrow": "Pourquoi Xenotif",
+      "title": "Pas une app de plus.",
+      "pillars": [
+        {
+          "title": "Pas un énième tracker",
+          "desc": "Les autres apps comptent tes pas. Xenotif te dit quoi faire : de vrais programmes semaine par semaine, séances détaillées, nutrition et suivi de progression."
+        },
+        {
+          "title": "Zéro bullshit",
+          "desc": "Musculation gratuite, sans carte bancaire. Essai PRO 7 jours, résiliable en 1 clic. Pas de piège, pas d’engagement caché."
+        },
+        {
+          "title": "Un coach dans ta poche",
+          "desc": "Coach IA, plan nutrition et suivi — musculation, running, HIIT. Tout au même endroit, 24/7, adapté à ton niveau."
         }
       ]
     }
