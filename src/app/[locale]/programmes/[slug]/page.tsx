@@ -2,7 +2,7 @@ import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 import { getTranslations } from 'next-intl/server'
 import { Link } from '@/i18n/navigation'
-import { ArrowRight, CheckCircle, Lock, Zap } from 'lucide-react'
+import { ArrowRight, CheckCircle, ChevronDown, Lock, Zap } from 'lucide-react'
 import { getLocalizedProgram, programSlugs, localesForProgram } from '@/lib/programs/registry'
 import { GuideBlocks } from '@/components/programs/GuideBlocks'
 
@@ -66,10 +66,27 @@ export default async function ProgramPage({ params }: { params: Promise<{ slug: 
     ],
   }
 
+  // FAQ localisée (5 questions communes, titre du programme interpolé). Rendue à
+  // l'écran ET en FAQPage schema — le markup doit refléter du contenu visible.
+  const faq = [1, 2, 3, 4, 5].map((n) => ({
+    q: t(`faqQ${n}` as 'faqQ1', { title: program.title }),
+    a: t(`faqA${n}` as 'faqA1', { title: program.title }),
+  }))
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faq.map(({ q, a }) => ({
+      '@type': 'Question',
+      name: q,
+      acceptedAnswer: { '@type': 'Answer', text: a },
+    })),
+  }
+
   return (
     <div className="min-h-screen bg-sport-dark text-white">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(courseSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
 
       <section className="relative overflow-hidden border-b border-sport-border bg-gradient-to-br from-sport-orange/15 via-sport-dark to-sport-dark">
         <div className="max-w-3xl mx-auto px-6 py-16 md:py-20">
@@ -116,6 +133,21 @@ export default async function ProgramPage({ params }: { params: Promise<{ slug: 
             <p className="text-[11px] text-sport-gray mt-3">{t('trialNote')}</p>
           </div>
         )}
+      </section>
+
+      <section className="max-w-3xl mx-auto px-6 pb-16">
+        <h2 className="text-2xl md:text-3xl font-black mb-6">{t('faqTitle')}</h2>
+        <div className="space-y-3">
+          {faq.map(({ q, a }, i) => (
+            <details key={i} className="group bg-sport-card border border-sport-border rounded-2xl px-5 py-4">
+              <summary className="flex items-center justify-between gap-4 cursor-pointer list-none font-bold text-white">
+                {q}
+                <ChevronDown size={18} aria-hidden="true" className="shrink-0 text-sport-orange transition-transform group-open:rotate-180" />
+              </summary>
+              <p className="text-sm text-sport-gray leading-relaxed mt-3">{a}</p>
+            </details>
+          ))}
+        </div>
       </section>
     </div>
   )
