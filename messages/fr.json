@@ -1680,6 +1680,17 @@
     "hubSubtitle": "Des programmes complets, structurés semaine par semaine — objectifs, séances détaillées, plan nutrition et suivi. Commence gratuitement.",
     "seeProgram": "Voir le programme",
     "hubMetaTitle": "Programmes d’entraînement",
-    "hubMetaDesc": "Programmes fitness complets et structurés : prise de masse, perte de poids, musculation, HIIT, nutrition. Séances, nutrition et suivi jour par jour."
+    "hubMetaDesc": "Programmes fitness complets et structurés : prise de masse, perte de poids, musculation, HIIT, nutrition. Séances, nutrition et suivi jour par jour.",
+    "faqTitle": "Questions fréquentes",
+    "faqQ1": "Pour quel niveau est conçu {title} ?",
+    "faqA1": "Chaque exercice est expliqué pas à pas (technique et erreurs à éviter), et l’application Xenotif adapte l’intensité à ton niveau — que tu débutes ou que tu cherches à passer un cap. Tu progresses à ton rythme.",
+    "faqQ2": "Ai-je besoin de matériel ou d’un abonnement en salle ?",
+    "faqA2": "Ça dépend du programme : plusieurs se pratiquent au poids du corps à la maison, d’autres tirent parti d’une salle. Dans tous les cas, l’application propose des variantes selon le matériel dont tu disposes.",
+    "faqQ3": "En combien de temps vais-je voir des résultats ?",
+    "faqA3": "Avec de la régularité, les premières sensations arrivent en 2 à 3 semaines et les résultats visibles en 6 à 8 semaines. La clé, c’est la constance — le suivi et les rappels de Xenotif t’aident à ne rien lâcher.",
+    "faqQ4": "Le programme est-il vraiment gratuit ?",
+    "faqA4": "Tu débloques le programme complet gratuitement pendant 7 jours, sans carte bancaire. Ensuite, l’abonnement Xenotif donne accès à tous les programmes, au suivi et au coach IA. Résiliation en 1 clic.",
+    "faqQ5": "Puis-je suivre ce programme depuis l’application Xenotif ?",
+    "faqA5": "Oui. Le calendrier jour par jour, les séances, le plan nutrition et le suivi de progression sont intégrés à l’application, avec des rappels pour rester motivé."
   }
 }

@@ -1680,6 +1680,17 @@
     "hubSubtitle": "Komplette, Woche für Woche strukturierte Programme — Ziele, detaillierte Einheiten, Ernährungsplan und Tracking. Kostenlos starten.",
     "seeProgram": "Programm ansehen",
     "hubMetaTitle": "Trainingsprogramme",
-    "hubMetaDesc": "Komplette, strukturierte Fitnessprogramme: Muskelaufbau, Abnehmen, Krafttraining, HIIT, Ernährung. Tägliche Einheiten, Ernährung und Tracking."
+    "hubMetaDesc": "Komplette, strukturierte Fitnessprogramme: Muskelaufbau, Abnehmen, Krafttraining, HIIT, Ernährung. Tägliche Einheiten, Ernährung und Tracking.",
+    "faqTitle": "Häufige Fragen",
+    "faqQ1": "Für wen ist {title} gedacht?",
+    "faqA1": "Jede Übung wird Schritt für Schritt erklärt (Technik und zu vermeidende Fehler), und die Xenotif-App passt die Intensität an dein Niveau an — egal ob du gerade erst anfängst oder ein Plateau überwinden willst. Du machst in deinem eigenen Tempo Fortschritte.",
+    "faqQ2": "Brauche ich Ausrüstung oder eine Fitnessstudio-Mitgliedschaft?",
+    "faqA2": "Das hängt vom Programm ab: Einige lassen sich mit dem eigenen Körpergewicht zu Hause absolvieren, andere nutzen ein Fitnessstudio optimal. In jedem Fall bietet die App Varianten je nach verfügbarer Ausrüstung.",
+    "faqQ3": "Wie lange dauert es, bis ich Ergebnisse sehe?",
+    "faqA3": "Mit Regelmäßigkeit stellen sich die ersten Empfindungen nach 2 bis 3 Wochen ein, sichtbare Ergebnisse nach 6 bis 8 Wochen. Der Schlüssel ist Beständigkeit — das Tracking und die Erinnerungen von Xenotif helfen dir, dranzubleiben.",
+    "faqQ4": "Ist das Programm wirklich kostenlos?",
+    "faqA4": "Du schaltest das komplette Programm 7 Tage lang kostenlos frei, ohne Kreditkarte. Danach erhältst du mit dem Xenotif-Abo Zugriff auf alle Programme, das Fortschritts-Tracking und den KI-Coach. Kündigung mit einem Klick.",
+    "faqQ5": "Kann ich diesem Programm über die Xenotif-App folgen?",
+    "faqA5": "Ja. Der Tag-für-Tag-Kalender, die Workouts, der Ernährungsplan und das Fortschritts-Tracking sind in die App integriert, mit Erinnerungen, die dich motiviert halten."
   }
 }

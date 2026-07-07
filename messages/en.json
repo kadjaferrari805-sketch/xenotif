@@ -1680,6 +1680,17 @@
     "hubSubtitle": "Complete programs, structured week by week — goals, detailed sessions, nutrition plan and tracking. Start for free.",
     "seeProgram": "View program",
     "hubMetaTitle": "Training programs",
-    "hubMetaDesc": "Complete, structured fitness programs: mass gain, weight loss, strength training, HIIT, nutrition. Day-by-day sessions, nutrition and tracking."
+    "hubMetaDesc": "Complete, structured fitness programs: mass gain, weight loss, strength training, HIIT, nutrition. Day-by-day sessions, nutrition and tracking.",
+    "faqTitle": "Frequently asked questions",
+    "faqQ1": "Who is {title} designed for?",
+    "faqA1": "Every exercise is explained step by step (technique and mistakes to avoid), and the Xenotif app adapts the intensity to your level — whether you’re just starting out or looking to break through a plateau. You progress at your own pace.",
+    "faqQ2": "Do I need equipment or a gym membership?",
+    "faqA2": "It depends on the program: several can be done with bodyweight at home, others make the most of a gym. Either way, the app offers variations based on the equipment you have.",
+    "faqQ3": "How long until I see results?",
+    "faqA3": "With consistency, the first sensations show up in 2 to 3 weeks and visible results in 6 to 8 weeks. The key is consistency — Xenotif’s tracking and reminders help you stay on track.",
+    "faqQ4": "Is the program really free?",
+    "faqA4": "You unlock the full program free for 7 days, no credit card required. After that, the Xenotif subscription gives you access to every program, progress tracking and the AI coach. Cancel in one click.",
+    "faqQ5": "Can I follow this program from the Xenotif app?",
+    "faqA5": "Yes. The day-by-day calendar, workouts, nutrition plan and progress tracking are built into the app, with reminders to keep you motivated."
   }
 }
