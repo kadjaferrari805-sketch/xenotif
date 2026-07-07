@@ -1,39 +1,41 @@
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
+import { getTranslations } from 'next-intl/server'
 import { Link } from '@/i18n/navigation'
 import { ArrowRight, CheckCircle, Lock, Zap } from 'lucide-react'
-import { getProgram, PROGRAMS } from '@/lib/programs/library'
+import { getLocalizedProgram, programSlugs, localesForProgram } from '@/lib/programs/registry'
 import { GuideBlocks } from '@/components/programs/GuideBlocks'
 
 const SITE = 'https://xenotif.com'
 
+// FR à la racine (locale par défaut), autres préfixées.
+function progUrl(slug: string, locale: string): string {
+  return locale === 'fr' ? `${SITE}/programmes/${slug}` : `${SITE}/${locale}/programmes/${slug}`
+}
+
 export function generateStaticParams() {
-  return Object.keys(PROGRAMS).map((slug) => ({ slug }))
+  return programSlugs().map((slug) => ({ slug }))
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string; locale: string }> }): Promise<Metadata> {
   const { slug, locale } = await params
-  const program = getProgram(slug)
-  // v1 : programmes publiés en FR (contenu complet). Les autres locales → pas de page.
-  if (!program || locale !== 'fr') return {}
-  const url = `${SITE}/programmes/${slug}`
+  const program = getLocalizedProgram(slug, locale)
+  if (!program) return {}
+  const languages: Record<string, string> = { 'x-default': progUrl(slug, 'fr') }
+  for (const l of localesForProgram(slug)) languages[l] = progUrl(slug, l)
   return {
     title: program.title,
     description: program.subtitle,
-    alternates: { canonical: url },
-    openGraph: {
-      title: `${program.title} | Xenotif®`,
-      description: program.subtitle,
-      url,
-      type: 'article',
-    },
+    alternates: { canonical: progUrl(slug, locale), languages },
+    openGraph: { title: `${program.title} | Xenotif®`, description: program.subtitle, url: progUrl(slug, locale), type: 'article' },
   }
 }
 
 export default async function ProgramPage({ params }: { params: Promise<{ slug: string; locale: string }> }) {
   const { slug, locale } = await params
-  const program = getProgram(slug)
-  if (!program || locale !== 'fr') notFound()
+  const program = getLocalizedProgram(slug, locale)
+  if (!program) notFound()
+  const t = await getTranslations('programs')
 
   // Aperçu SEO généreux : jusqu'au début du 4e chapitre (h1). Le reste (calendrier
   // jour par jour, séances détaillées, suivi) est réservé aux membres → conversion.
@@ -45,13 +47,13 @@ export default async function ProgramPage({ params }: { params: Promise<{ slug: 
   const preview = program.blocks.slice(0, cut)
   const gated = cut < program.blocks.length
 
-  const url = `${SITE}/programmes/${slug}`
+  const url = progUrl(slug, locale)
   const courseSchema = {
     '@context': 'https://schema.org',
     '@type': 'Course',
     name: program.title,
     description: program.subtitle,
-    inLanguage: 'fr',
+    inLanguage: locale,
     url,
     provider: { '@type': 'Organization', name: 'Xenotif®', url: SITE },
   }
@@ -69,10 +71,9 @@ export default async function ProgramPage({ params }: { params: Promise<{ slug: 
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(courseSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
 
-      {/* Hero */}
       <section className="relative overflow-hidden border-b border-sport-border bg-gradient-to-br from-sport-orange/15 via-sport-dark to-sport-dark">
         <div className="max-w-3xl mx-auto px-6 py-16 md:py-20">
-          <p className="text-[11px] font-bold tracking-[2px] uppercase text-sport-orange mb-3">Programme Xenotif®</p>
+          <p className="text-[11px] font-bold tracking-[2px] uppercase text-sport-orange mb-3">{t('eyebrow')}</p>
           <h1 className="text-4xl md:text-5xl font-black leading-tight mb-4">{program.title}</h1>
           <p className="text-lg text-sport-gray leading-relaxed mb-6">{program.subtitle}</p>
           <div className="flex flex-wrap gap-3">
@@ -91,12 +92,11 @@ export default async function ProgramPage({ params }: { params: Promise<{ slug: 
             href="/auth/signup?plan=pro"
             className="mt-8 inline-flex items-center gap-2 bg-sport-orange text-white px-7 py-3.5 rounded-full font-bold text-sm hover:bg-orange-600 active:scale-95 transition-all shadow-lg shadow-sport-orange/25"
           >
-            Commencer gratuitement <ArrowRight size={15} aria-hidden="true" />
+            {t('startFree')} <ArrowRight size={15} aria-hidden="true" />
           </Link>
         </div>
       </section>
 
-      {/* Aperçu du programme */}
       <section className="max-w-3xl mx-auto px-6 py-14">
         <GuideBlocks blocks={preview} />
 
@@ -105,17 +105,15 @@ export default async function ProgramPage({ params }: { params: Promise<{ slug: 
             <div className="w-12 h-12 mx-auto rounded-2xl bg-sport-orange/15 border border-sport-orange/30 flex items-center justify-center mb-4">
               <Lock size={22} aria-hidden="true" className="text-sport-orange" />
             </div>
-            <h2 className="text-xl font-black mb-2">Le programme complet t&apos;attend</h2>
-            <p className="text-sport-gray text-sm max-w-md mx-auto mb-6">
-              Calendrier jour par jour, toutes les séances détaillées, plan nutrition, suivi de progression et coach IA — débloque tout, sans carte, pendant 7 jours.
-            </p>
+            <h2 className="text-xl font-black mb-2">{t('gateTitle')}</h2>
+            <p className="text-sport-gray text-sm max-w-md mx-auto mb-6">{t('gateDesc')}</p>
             <Link
               href="/auth/signup?plan=pro"
               className="inline-flex items-center gap-2 bg-sport-orange text-white px-7 py-3.5 rounded-full font-bold text-sm hover:bg-orange-600 active:scale-95 transition-all"
             >
-              Démarrer mon essai gratuit <ArrowRight size={15} aria-hidden="true" />
+              {t('startTrial')} <ArrowRight size={15} aria-hidden="true" />
             </Link>
-            <p className="text-[11px] text-sport-gray mt-3">7 jours gratuits · sans engagement · résiliation en 1 clic</p>
+            <p className="text-[11px] text-sport-gray mt-3">{t('trialNote')}</p>
           </div>
         )}
       </section>

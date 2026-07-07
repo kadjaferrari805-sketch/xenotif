@@ -1665,5 +1665,21 @@
     "ctaSubtitle": "Schließe dich Tausenden von Sportlern an, die mit Xenotif® Fortschritte machen.",
     "ctaJoin": "Xenotif® beitreten",
     "ctaShop": "Den Shop entdecken"
+  },
+  "programs": {
+    "eyebrow": "Xenotif®-Programm",
+    "startFree": "Kostenlos starten",
+    "gateTitle": "Das komplette Programm wartet auf dich",
+    "gateDesc": "Tag-für-Tag-Kalender, alle detaillierten Einheiten, Ernährungsplan, Fortschritts-Tracking und KI-Coach — schalte alles frei, ohne Karte, für 7 Tage.",
+    "startTrial": "Kostenlose Testphase starten",
+    "trialNote": "7 Tage gratis · unverbindlich · Kündigung mit 1 Klick",
+    "technique": "Technik: ",
+    "mistakes": "Häufige Fehler: ",
+    "hubEyebrow": "Xenotif®-Programme",
+    "hubTitle": "Unsere Trainingsprogramme",
+    "hubSubtitle": "Komplette, Woche für Woche strukturierte Programme — Ziele, detaillierte Einheiten, Ernährungsplan und Tracking. Kostenlos starten.",
+    "seeProgram": "Programm ansehen",
+    "hubMetaTitle": "Trainingsprogramme",
+    "hubMetaDesc": "Komplette, strukturierte Fitnessprogramme: Muskelaufbau, Abnehmen, Krafttraining, HIIT, Ernährung. Tägliche Einheiten, Ernährung und Tracking."
   }
 }
