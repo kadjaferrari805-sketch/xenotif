@@ -59,6 +59,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       }),
     ),
     // Programmes publics (FR uniquement en v1 → pas d'alternates hreflang).
+    { url: `${BASE_URL}/programmes`, lastModified: new Date(), changeFrequency: 'weekly' as ChangeFreq, priority: 0.8 },
     ...Object.keys(PROGRAMS).map(slug => ({
       url: `${BASE_URL}/programmes/${slug}`,
       lastModified: new Date(),

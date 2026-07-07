@@ -15,10 +15,10 @@ const DISC_LINKS = [
 ]
 
 const PROG_LINKS = [
-  { key: 'debutant',      href: '/#programmes' },
-  { key: 'intermediaire', href: '/#programmes' },
-  { key: 'avance',        href: '/#programmes' },
-  { key: 'elite',         href: '/#programmes' },
+  { key: 'debutant',      href: '/programmes/musculation-debutant' },
+  { key: 'intermediaire', href: '/programmes/musculation-intermediaire' },
+  { key: 'avance',        href: '/programmes/musculation-avance' },
+  { key: 'elite',         href: '/programmes/prise-de-masse-12s' },
   { key: 'coachingIA',    href: '/dashboard/coach' },
   { key: 'preview',       href: '/dashboard-preview' },
   { key: 'tarifs',        href: '/#tarifs' },

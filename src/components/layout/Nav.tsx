@@ -13,7 +13,7 @@ import type { User } from '@supabase/supabase-js'
 
 const NAV_LINKS = [
   { href: '/#disciplines', key: 'disciplines' },
-  { href: '/#programmes', key: 'programmes' },
+  { href: '/programmes', key: 'programmes' },
   { href: '/boutique', key: 'boutique' },
   { href: '/blog', key: 'blog' },
   { href: '/a-propos', key: 'about' },
