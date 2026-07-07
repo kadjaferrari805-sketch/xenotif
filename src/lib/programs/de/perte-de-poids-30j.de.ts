@@ -1,0 +1,495 @@
+import type { Guide } from '@/lib/boutique/guides'
+
+const D = 'https://xenotif.com/disciplines' // Basis der Video-QR-Codes (Disziplin-Seiten)
+
+// DE-Mirror von perteDePoids30j (library.ts).
+export const perteDePoids30jDe: Guide = {
+  id: 'perte-de-poids-30j',
+  title: 'Gewichtsverlust-Programm',
+  subtitle: '30 Tage, um einen nachhaltigen Fettabbau in Gang zu bringen — ohne Extrem-Diät',
+  author: 'XENOTIF Coach — Athletiktraining & Ernährung zertifiziert',
+  level: 'Anfänger - Mittel',
+  duration: '30 Tage · 5 Einheiten/Woche',
+  coverImage: 'cover.jpg',
+  blocks: [
+    // ── EINLEITUNG ─────────────────────────────────────────
+    { type: 'h1', text: 'Willkommen zu deiner 30-Tage-Challenge' },
+    { type: 'p', text: `In den nächsten 30 Tagen bringst du einen echten, nachhaltigen Fettabbau in Gang — ohne Extrem-Diät und ohne endlose Trainingseinheiten. Die Methode stützt sich auf drei einfache, bewährte Hebel: ein leichtes Kaloriendefizit, kurze, aber effektive Einheiten und Regelmäßigkeit. Folge dem Plan Tag für Tag, hake deine Checkliste jede Woche ab, fülle dein Tracking aus und lass die Ergebnisse sich einstellen.` },
+    { type: 'p', text: `Dieses Dokument ist dein Coach in der Hosentasche: behalte es auf deinem Handy, drucke es aus, mach dir Notizen darauf. Jede Übung hat einen QR-Code, der ein Demovideo auf XENOTIF® öffnet — scanne ihn, sobald du dir bei der Technik nicht sicher bist.` },
+    { type: 'meta', items: [
+      { label: 'Ziel', value: '2 bis 4 kg Fett verlieren' },
+      { label: 'Niveau', value: 'Anfänger bis Mittel' },
+      { label: 'Dauer', value: '30 Tage (4 Wochen)' },
+      { label: 'Häufigkeit', value: '5 Einheiten pro Woche' },
+      { label: 'Ausrüstung', value: 'Matte + 1 Paar Kurzhanteln (optional)' },
+      { label: 'Ort', value: 'Zuhause oder Studio' },
+    ] },
+    { type: 'h2', text: 'Ziele des Programms' },
+    { type: 'list', items: [
+      `Verliere 2 bis 4 kg Fettmasse (je nach deinem Ausgangspunkt).`,
+      `Definiere deine Silhouette: flacherer Bauch, bessere Definition.`,
+      `Gewinne an Energie, Kondition und Schlafqualität.`,
+      `Etabliere gesunde Ernährungsgewohnheiten, die auch nach den 30 Tagen bestehen bleiben.`,
+    ] },
+    { type: 'h2', text: 'So nutzt du diesen Leitfaden' },
+    { type: 'list', items: [
+      `Lies den gesamten Leitfaden einmal komplett durch, bevor du startest.`,
+      `Folge dem 30-Tage-Kalender: jeder Tag zeigt dir genau, was zu tun ist.`,
+      `Wärme dich vor jeder Einheit 5 Minuten auf (eigene Seite dazu).`,
+      `Scanne den QR-Code einer Übung, wenn du die Technik im Video nachsehen willst.`,
+      `Jeden Sonntag: fülle dein Tracking aus und hake deine Wochen-Checkliste ab.`,
+    ] },
+    { type: 'h2', text: 'Erforderliches Niveau' },
+    { type: 'p', text: `Keine Vorkenntnisse nötig: Das Programm startet bei null und steigert sich schrittweise. Falls du bereits aktiv bist, nutze die angegebenen fortgeschrittenen Varianten und verkürze die Pausenzeiten. Bei Schmerzen, Schwangerschaft oder Vorerkrankungen hol dir vor dem Start ärztlichen Rat.` },
+    { type: 'note', text: `Goldene Regel: Fettabbau entscheidet sich zu 70 % auf dem Teller. Das Training beschleunigt das Ergebnis, aber die Ernährungsdisziplin macht den wahren Unterschied.` },
+
+    // ── METHODE ────────────────────────────────────────────
+    { type: 'h1', text: 'So funktioniert es' },
+    { type: 'list', items: [
+      `Moderates Kaloriendefizit: iss 300 bis 500 kcal unter deinem Erhaltungsbedarf, nie mehr.`,
+      `Bewege dich im Alltag mehr (NEAT): ziele auf 8 000 bis 10 000 Schritte pro Tag.`,
+      `Sätze × Wiederholungen: „3 × 12" = 3 Sätze mit je 12 Wiederholungen.`,
+      `Pause: 30 bis 60 Sekunden zwischen den Sätzen, um Intensität und Puls hochzuhalten.`,
+      `RPE (gefühlte Intensität von 10): ziele auf 7 bis 8. Es sollten dir noch etwa 2 Wiederholungen „in Reserve" bleiben.`,
+      `Wärme dich vor jeder Einheit 5 Minuten auf und dehne dich danach 5 Minuten.`,
+    ] },
+    { type: 'h2', text: 'Das Kaloriendefizit einfach erklärt' },
+    { type: 'p', text: `Dein Körper verbrennt jeden Tag eine bestimmte Menge Kalorien (deinen „Erhaltungsbedarf"). Isst du etwas weniger davon, greift er auf deine Fettreserven zurück, um die Differenz auszugleichen: Das ist das Defizit. Zu gering, und du nimmst nicht ab; zu aggressiv, und du verlierst Muskeln, deine Energie sackt ab und du gibst auf. Die ideale Zone: 300 bis 500 kcal unter deinem Erhaltungsbedarf. Das reicht, um 0,5 bis 0,8 kg Fett pro Woche zu verlieren, ohne zu leiden.` },
+    { type: 'h2', text: 'Warum Muskeln aufbauen, während du Fett verlierst?' },
+    { type: 'p', text: `Muskeln sind metabolisch aktiv: je mehr du hast, desto mehr Kalorien verbrennst du im Ruhezustand. Vor allem sendet Krafttraining während eines Defizits dem Körper das Signal, die Muskeln zu erhalten und stattdessen das Fett anzugreifen. Ergebnis: Du wirst nicht „dünn und schlaff", sondern definiert und straff.` },
+
+    // ── AUFWÄRMEN ──────────────────────────────────────────
+    { type: 'h1', text: 'Aufwärmen & Cool-down' },
+    { type: 'p', text: `Lass das Aufwärmen nie aus: Es bereitet die Gelenke vor, steigert die Leistung und senkt das Verletzungsrisiko deutlich. Der Cool-down beschleunigt die Erholung und begrenzt Muskelkater.` },
+    { type: 'h2', text: 'Typisches Aufwärmen (5 Minuten)' },
+    { type: 'table', headers: ['Bewegung', 'Dauer'], rows: [
+      ['Zügiges Gehen oder Laufen auf der Stelle', '60 s'],
+      ['Knieheben', '45 s'],
+      ['Arm- und Hüftkreisen', '45 s'],
+      ['Langsame Kniebeugen (steigende Tiefe)', '45 s'],
+      ['Dynamische Ausfallschritte', '45 s'],
+      ['Anfersen', '40 s'],
+    ] },
+    { type: 'h2', text: 'Cool-down (5 Minuten)' },
+    { type: 'list', items: [
+      `Langsames Gehen 1 bis 2 Min., um den Puls zu senken.`,
+      `Dehnung von Quadrizeps, Beinbeugern, Gesäß und Waden: je 20 bis 30 s.`,
+      `Dehnung von Brust, Rücken und Schultern: 20 bis 30 s.`,
+      `3 bis 5 tiefe Atemzüge zum Abschluss der Einheit.`,
+    ] },
+
+    // ── ERNÄHRUNG ──────────────────────────────────────────
+    { type: 'photo', src: 'nutrition.jpg', caption: 'Ernährung: 70 % des Ergebnisses entscheiden sich auf dem Teller.' },
+    { type: 'h1', text: 'Ernährungsplan' },
+    { type: 'p', text: `Du musst nicht jedes Lebensmittel aufs Gramm genau abwiegen. Wende diese einfachen Richtwerte an, und die Waage bewegt sich Woche für Woche in die richtige Richtung.` },
+    { type: 'meta', items: [
+      { label: 'Angestrebtes Defizit', value: '300 bis 500 kcal / Tag' },
+      { label: 'Eiweiß', value: '1,8 bis 2,2 g pro kg Körpergewicht' },
+      { label: 'Flüssigkeitszufuhr', value: '2 bis 2,5 L Wasser pro Tag' },
+      { label: 'Schlaf', value: '7 bis 8 h (Schlüssel zum Fettabbau)' },
+    ] },
+    { type: 'h2', text: 'Die 5 goldenen Regeln' },
+    { type: 'list', items: [
+      `Eine Eiweißquelle bei jeder Mahlzeit (Eier, Hähnchen, Fisch, Tofu, Hülsenfrüchte, Skyr).`,
+      `Die Hälfte des Tellers mit Gemüse, bei jeder Hauptmahlzeit.`,
+      `Kohlenhydrate vor allem rund ums Training (Reis, Süßkartoffel, Haferflocken, Obst).`,
+      `Reduziere flüssigen Zucker (Softdrinks, Säfte, Alkohol) — der schnellste und lohnendste Sieg.`,
+      `Gönn dir 1 Genussmahlzeit pro Woche: totale Frustration führt zum Aufgeben.`,
+    ] },
+    { type: 'h2', text: 'Wie viel essen?' },
+    { type: 'p', text: `Schnelle Schätzung deines Erhaltungsbedarfs: Gewicht (kg) × etwa 30. Beispiel für 70 kg: ≈ 2 100 kcal. Ziele dann auf 1 600 bis 1 800 kcal/Tag. Passe nach 2 Wochen je nach Gewichtstrend an: keine Abnahme → 100-150 kcal streichen; zu schnelle Abnahme (> 1 kg/Woche) → 100-150 kcal hinzufügen.` },
+    { type: 'h2', text: 'Typischer Tag (≈ 1 800 kcal)' },
+    { type: 'table', headers: ['Mahlzeit', 'Beispiel', 'Eiweiß'], rows: [
+      ['Frühstück', 'Skyr + Haferflocken + Beeren', '30 g'],
+      ['Mittagessen', 'Hähnchen + Reis + grünes Gemüse + Olivenöl', '40 g'],
+      ['Snack', '1 Stück Obst + eine Handvoll Mandeln', '8 g'],
+      ['Abendessen', 'Lachs (oder Tofu) + Süßkartoffel + Salat', '35 g'],
+      ['Gesamt', '≈ 1 800 kcal · moderates Defizit', '≈ 113 g'],
+    ] },
+    { type: 'h2', text: 'Grundlegende Einkaufsliste' },
+    { type: 'list', items: [
+      `Eiweiß: Eier, Hähnchen, Pute, Weißfisch, Lachs, Tofu, Skyr, Linsen.`,
+      `Kohlenhydrate: Reis, Süßkartoffel, Haferflocken, Vollkornbrot, Obst.`,
+      `Gemüse: Brokkoli, Zucchini, Spinat, Paprika, Tomaten, Salat.`,
+      `Gute Fette: Olivenöl, Avocado, Mandeln, Walnüsse.`,
+      `Extras: Kaffee/Tee, Gewürze, Zitrone, Balsamico-Essig.`,
+    ] },
+    { type: 'h2', text: 'Flüssigkeitszufuhr & Nahrungsergänzung' },
+    { type: 'list', items: [
+      `Wasser: 2 bis 2,5 L/Tag. Trink vor jeder Mahlzeit ein großes Glas (Sättigungseffekt).`,
+      `Kaffee/Tee ohne Zucker: kein Problem, und ein natürlicher Appetitzügler vor dem Training.`,
+      `Sinnvolle Ergänzungen (optional): Whey, falls dir Eiweiß fehlt, Vitamin D im Winter, Omega-3.`,
+      `Unnötig: angebliche Wunder-„Fatburner". Keiner ersetzt das Kaloriendefizit.`,
+    ] },
+    { type: 'note', text: `Batch-Cooking-Tipp: Koche 2-mal pro Woche größere Mengen vor (Eiweiß + Kohlenhydrate + Gemüse). Wenn alles schon fertig ist, isst du besser und greifst nicht zum ersten Fertiggericht.` },
+    { type: 'h2', text: 'Deine Makros verstehen (in 2 Minuten)' },
+    { type: 'p', text: `Kalorien stammen aus drei Makronährstoffen. Du musst nicht alles zählen, aber ihre Rolle zu verstehen hilft dir, bessere Teller zusammenzustellen.` },
+    { type: 'table', headers: ['Makro', 'Rolle', 'Pro g', 'Priorität in der Definitionsphase'], rows: [
+      ['Eiweiß', 'Erhält die Muskeln, sättigt', '4 kcal', 'HOCH — 1,8-2,2 g/kg'],
+      ['Kohlenhydrate', 'Energie, Leistung', '4 kcal', 'Rund ums Training'],
+      ['Fette', 'Hormone, Sättigung', '9 kcal', 'Moderat, auf Qualität achten'],
+    ] },
+    { type: 'list', items: [
+      `Priorisiere immer Eiweiß: das ist Makro Nr. 1 beim Fettabbau.`,
+      `Kohlenhydrate „machen nicht dick": entscheidend ist der gesamte Kalorienüberschuss.`,
+      `Behalte etwas gute Fette (Olivenöl, Avocado, Nüsse) für Hormone und Sättigung bei.`,
+    ] },
+
+    // ── REZEPTE ────────────────────────────────────────────
+    { type: 'h1', text: 'Express-Rezepte (unter 15 Min.)' },
+    { type: 'p', text: `Vier einfache, eiweißreiche und sättigende Rezepte, damit du nie auf dem falschen Fuß erwischt wirst.` },
+    { type: 'h2', text: 'Eiweiß-Frühstücksbowl' },
+    { type: 'meta', items: [
+      { label: 'Kalorien', value: '≈ 380 kcal' },
+      { label: 'Eiweiß', value: '32 g' },
+    ] },
+    { type: 'list', items: [`200 g Naturjoghurt (Skyr)`, `40 g Haferflocken`, `1 Handvoll Beeren`, `1 TL Honig (optional)`] },
+    { type: 'p', text: `Zubereitung: Skyr und Haferflocken mischen, 5 Min. ziehen lassen (oder über Nacht im Kühlschrank). Beeren und Honig dazugeben. Fertig.` },
+    { type: 'h2', text: 'Hähnchen-Gemüse-Wrap' },
+    { type: 'meta', items: [
+      { label: 'Kalorien', value: '≈ 450 kcal' },
+      { label: 'Eiweiß', value: '38 g' },
+    ] },
+    { type: 'list', items: [`1 Vollkorn-Tortilla`, `120 g gegrilltes Hähnchen`, `Salat, Tomate, Gurke`, `1 EL Quark + Senf`] },
+    { type: 'p', text: `Zubereitung: Die Tortilla mit der Quark-Senf-Mischung bestreichen, mit Hähnchen und Gemüse belegen, fest aufrollen. In zwei Hälften schneiden.` },
+    { type: 'h2', text: 'Express-Pfanne Tofu/Hähnchen & Gemüse' },
+    { type: 'meta', items: [
+      { label: 'Kalorien', value: '≈ 480 kcal' },
+      { label: 'Eiweiß', value: '40 g' },
+    ] },
+    { type: 'list', items: [`150 g fester Tofu oder Hähnchen`, `200 g Tiefkühlgemüse`, `100 g gekochter Reis`, `Sojasoße, Knoblauch, Ingwer`] },
+    { type: 'p', text: `Zubereitung: Tofu/Hähnchen scharf anbraten, Gemüse dazugeben, mit Sojasoße, Knoblauch und Ingwer ablöschen. Auf dem Reis servieren.` },
+    { type: 'h2', text: 'Abend-Gemüseomelett' },
+    { type: 'meta', items: [
+      { label: 'Kalorien', value: '≈ 320 kcal' },
+      { label: 'Eiweiß', value: '28 g' },
+    ] },
+    { type: 'list', items: [`3 Eier`, `1 Handvoll Spinat`, `1/2 Paprika`, `Kräuter, Salz, Pfeffer`] },
+    { type: 'p', text: `Zubereitung: Gemüse 3 Min. andünsten, verquirlte Eier dazugeben, bei schwacher Hitze stocken lassen. Dazu einen grünen Salat servieren.` },
+
+    // ── ERHOLUNG ───────────────────────────────────────────
+    { type: 'photo', src: 'recovery.jpg', caption: 'Der Körper verändert sich in der Ruhephase.' },
+    { type: 'h1', text: 'Erholung' },
+    { type: 'list', items: [
+      `Schlafe 7 bis 8 h: Schlafmangel steigert den Hunger (Ghrelin) und bremst den Fettabbau.`,
+      `Leichter Muskelkater ist normal; Gelenkschmerz ist es nicht — anpassen oder ruhen.`,
+      `Plane mindestens 1 echten Ruhetag pro Woche ein (leichtes Gehen ist erlaubt).`,
+      `Dehne dich nach jeder Einheit 5 bis 10 Min., um Verspannungen zu begrenzen.`,
+    ] },
+    { type: 'h2', text: 'Besser schlafen' },
+    { type: 'list', items: [
+      `Geh zu einer festen Uhrzeit ins Bett, auch am Wochenende.`,
+      `Schalte Bildschirme 30 Min. vor dem Schlafen aus; dimm das Licht.`,
+      `Kein Kaffee nach 16 Uhr; ein kühles, dunkles Schlafzimmer.`,
+    ] },
+    { type: 'h2', text: 'Heißhunger in den Griff bekommen' },
+    { type: 'list', items: [
+      `Trink ein großes Glas Wasser: Durst wird oft mit Hunger verwechselt.`,
+      `Halte eiweißreiche Snacks griffbereit (Skyr, hartgekochtes Ei, Putenbrust).`,
+      `Ein Heißhungeranfall dauert ~15 Min.: lenk dich ab, er geht vorbei.`,
+    ] },
+
+    // ── PLANUNG ────────────────────────────────────────────
+    { type: 'photo', src: 'training.jpg', caption: 'Ein klarer Plan, Woche für Woche.' },
+    { type: 'h1', text: 'Dein 4-Wochen-Plan' },
+    { type: 'p', text: `Die Intensität steigt jede Woche schrittweise. Überspringe keine Stufe: Genau diese Progression macht das Programm effektiv und sicher.` },
+    { type: 'table', headers: ['Woche', 'Fokus', 'Einheiten', 'Cardio'], rows: [
+      ['Woche 1', 'Anpassung & Technik', '5 × 25 Min.', '2 zügige Spaziergänge'],
+      ['Woche 2', 'Volumen — Ganzkörper', '5 × 30 Min.', '2 leichte HIIT'],
+      ['Woche 3', 'Intensität — Zirkel', '5 × 35 Min.', '3 HIIT'],
+      ['Woche 4', 'Höhepunkt & Abschluss', '5 × 35 Min.', '3 HIIT + 1 lange Einheit'],
+    ] },
+    { type: 'h2', text: 'Typische Woche (Übersicht)' },
+    { type: 'table', headers: ['Tag', 'Einheit', 'Dauer', 'Intensität'], rows: [
+      ['Montag', 'Einheit A — Unterkörper', '30 Min.', 'Moderat'],
+      ['Dienstag', 'HIIT Fettverbrennung', '20 Min.', 'Hoch'],
+      ['Mittwoch', 'Einheit B — Oberkörper', '30 Min.', 'Moderat'],
+      ['Donnerstag', 'Zügiges Gehen / aktive Erholung', '30 Min.', 'Niedrig'],
+      ['Freitag', 'Ganzkörper-Zirkel', '35 Min.', 'Hoch'],
+      ['Samstag', 'Cardio + Core', '25 Min.', 'Moderat'],
+      ['Sonntag', 'Ruhe + Tracking', '—', 'Erholung'],
+    ] },
+
+    // ── 30-TAGE-KALENDER ───────────────────────────────────
+    { type: 'h1', text: 'Dein 30-Tage-Kalender' },
+    { type: 'p', text: `Jeder Tag zeigt dir genau, was zu tun ist. Hake nach und nach ab. Die Tage mit „aktiver Erholung" sind nicht optional: Gehen gehört zum Programm dazu.` },
+    { type: 'h2', text: 'Woche 1 — Anpassung' },
+    { type: 'table', headers: ['Tag', 'Auf dem Programm', 'Dauer'], rows: [
+      ['T1', 'Einheit A — Unterkörper', '25 Min.'],
+      ['T2', 'Leichtes HIIT + Core', '20 Min.'],
+      ['T3', 'Einheit B — Oberkörper', '25 Min.'],
+      ['T4', 'Zügiges Gehen', '30 Min.'],
+      ['T5', 'Ganzkörper-Zirkel', '25 Min.'],
+      ['T6', 'Cardio + Core', '25 Min.'],
+      ['T7', 'Ruhe + Wochen-Tracking', '—'],
+    ] },
+    { type: 'h2', text: 'Woche 2 — Volumen' },
+    { type: 'table', headers: ['Tag', 'Auf dem Programm', 'Dauer'], rows: [
+      ['T8', 'Einheit A — Unterkörper', '30 Min.'],
+      ['T9', 'HIIT 15 Min. + Gehen', '30 Min.'],
+      ['T10', 'Einheit B — Oberkörper', '30 Min.'],
+      ['T11', 'Zügiges Gehen', '35 Min.'],
+      ['T12', 'Ganzkörper-Zirkel', '30 Min.'],
+      ['T13', 'Cardio + Core', '25 Min.'],
+      ['T14', 'Ruhe + Wochen-Tracking', '—'],
+    ] },
+    { type: 'h2', text: 'Woche 3 — Intensität' },
+    { type: 'table', headers: ['Tag', 'Auf dem Programm', 'Dauer'], rows: [
+      ['T15', 'Einheit A (Pause -10 s)', '35 Min.'],
+      ['T16', 'HIIT 20 Min.', '20 Min.'],
+      ['T17', 'Einheit B (Pause -10 s)', '35 Min.'],
+      ['T18', 'Zügiges Gehen', '40 Min.'],
+      ['T19', 'Intensiver Ganzkörper-Zirkel', '35 Min.'],
+      ['T20', 'HIIT + Core', '25 Min.'],
+      ['T21', 'Ruhe + Wochen-Tracking', '—'],
+    ] },
+    { type: 'h2', text: 'Woche 4 — Höhepunkt & Abschluss' },
+    { type: 'table', headers: ['Tag', 'Auf dem Programm', 'Dauer'], rows: [
+      ['T22', 'Einheit A — sauberes Maximum', '35 Min.'],
+      ['T23', 'HIIT 20 Min.', '20 Min.'],
+      ['T24', 'Einheit B — sauberes Maximum', '35 Min.'],
+      ['T25', 'Lange Einheit (Gehen/Rad)', '50 Min.'],
+      ['T26', 'Ganzkörper-Zirkel', '35 Min.'],
+      ['T27', 'HIIT + Core', '25 Min.'],
+      ['T28', 'Ruhe + Wochen-Tracking', '—'],
+    ] },
+    { type: 'note', text: `Tage 29 & 30: Wiederhole deine liebste Einheit, nimm erneut deine Maße und ein „Nachher"-Foto. Vergleiche es mit deinem „Vorher": Das ist deine wahre Belohnung.` },
+
+    // ── EINHEITEN IM DETAIL ────────────────────────────────
+    { type: 'h1', text: 'Deine Einheiten im Detail' },
+    { type: 'h2', text: 'Einheit A — Unterkörper' },
+    { type: 'table', headers: ['Übung', 'Sätze', 'Wiederholungen', 'Pause'], rows: [
+      ['Kniebeuge mit Körpergewicht', '4', '15', '45 s'],
+      ['Abwechselnde Ausfallschritte', '3', '12 / Bein', '45 s'],
+      ['Hüftheben', '3', '20', '40 s'],
+      ['Wandsitz', '3', '30 s', '40 s'],
+      ['Wadenheben im Stehen', '3', '20', '30 s'],
+    ] },
+    { type: 'h2', text: 'Einheit B — Oberkörper & Core' },
+    { type: 'table', headers: ['Übung', 'Sätze', 'Wiederholungen', 'Pause'], rows: [
+      ['Liegestütze (Knie oder Füße)', '4', '8 bis 12', '45 s'],
+      ['Rudern mit Kurzhanteln / Wasserflaschen', '4', '12', '45 s'],
+      ['Stuhl-Dips', '3', '10', '40 s'],
+      ['Unterarmstütz (Plank)', '3', '30 bis 45 s', '40 s'],
+      ['Seitstütz', '3', '20 s / Seite', '30 s'],
+    ] },
+    { type: 'h2', text: 'HIIT-Fettverbrennungs-Zirkel (20 Min.)' },
+    { type: 'table', headers: ['Block', 'Belastung', 'Erholung', 'Runden'], rows: [
+      ['Mountain Climbers', '30 s', '20 s', '4'],
+      ['Sprungkniebeugen (oder Kniebeugen)', '30 s', '20 s', '4'],
+      ['Hampelmänner', '30 s', '20 s', '4'],
+      ['Dynamischer Unterarmstütz', '30 s', '20 s', '4'],
+    ] },
+
+    // ── ÜBUNGSBIBLIOTHEK ───────────────────────────────────
+    { type: 'h1', text: 'Übungsbibliothek' },
+    { type: 'p', text: `Beherrsche diese Bewegungen: Sie bilden den Kern der Einheiten. Erst die richtige Technik, dann Last und Tempo. Scanne den QR-Code jeder Übung, um das Demovideo auf XENOTIF® zu sehen.` },
+    { type: 'exercise', name: 'Kniebeuge mit Körpergewicht', muscles: 'Quadrizeps, Gesäß, Beinbeuger', level: 'Anfänger', video: `${D}/musculation`, technique: `Füße schulterbreit, schiebe das Gesäß nach hinten, als würdest du dich hinsetzen, Rücken gerade, Fersen am Boden. Senke dich, bis die Oberschenkel parallel zum Boden sind, dann drücke dich über die Fersen wieder hoch.`, mistakes: `Knie, die nach innen fallen, abhebende Fersen, runder Rücken. Halte die Brust offen und den Blick nach vorn gerichtet.` },
+    { type: 'exercise', name: 'Abwechselnde Ausfallschritte', muscles: 'Gesäß, Quadrizeps, Gleichgewicht', level: 'Anfänger', video: `${D}/musculation`, technique: `Großer Schritt nach vorn, senke das hintere Knie Richtung Boden, während der Oberkörper aufrecht bleibt. Das vordere Knie bleibt über dem Knöchel. Drücke dich über die vordere Ferse zurück, dann wechsle das Bein.`, mistakes: `Zu kurzer Schritt (Knie ragt über die Zehen hinaus), nach vorn geneigter Oberkörper, Gleichgewichtsverlust. Spann die Bauchmuskeln an, um stabil zu bleiben.` },
+    { type: 'exercise', name: 'Hüftheben', muscles: 'Gesäß, Beinbeuger, Rumpf', level: 'Anfänger', video: `${D}/musculation`, technique: `Auf dem Rücken liegend, Knie gebeugt, Füße flach auf dem Boden. Drücke durch die Fersen, um das Becken zu heben, bis Schultern, Hüfte und Knie eine Linie bilden. Spann das Gesäß oben 1 Sekunde an, dann senke ab, ohne ganz aufzusetzen.`, mistakes: `Den unteren Rücken durchdrücken statt das Gesäß anzuspannen, zu hoch heben, Füße zu weit vom Becken entfernt.` },
+    { type: 'exercise', name: 'Wandsitz', muscles: 'Quadrizeps, Core', level: 'Anfänger', video: `${D}/musculation`, technique: `Rücken flach an der Wand, gleite herunter, bis die Oberschenkel parallel zum Boden sind, Knie im 90°-Winkel. Halte die Position, ruhige Atmung, Bauch angespannt.`, mistakes: `Knie, die über die Knöchel hinausragen, Rücken löst sich von der Wand, Luft anhalten. Halte das Gewicht auf den Fersen.` },
+    { type: 'exercise', name: 'Liegestütze (Knie oder Füße)', muscles: 'Brust, Trizeps, Schultern, Core', level: 'Anfänger - Mittel', video: `${D}/musculation`, technique: `Hände etwas breiter als schulterbreit, Körper fest in einer Linie. Senke die Brust Richtung Boden, Ellbogen bei ~45°, dann drücke dich hoch. Bei Bedarf auf den Knien, um eine saubere Form zu bewahren.`, mistakes: `Becken, das durchhängt oder nach oben zeigt, zu weit abgespreizte Ellbogen, zu kurze Bewegungsamplitude.` },
+    { type: 'exercise', name: 'Rudern mit Kurzhanteln (oder Wasserflaschen)', muscles: 'Rücken, Bizeps, hintere Schultern', level: 'Anfänger', video: `${D}/musculation`, technique: `Oberkörper nach vorn geneigt (Rücken flach), Arme gestreckt Richtung Boden. Ziehe die Ellbogen nach hinten und die Schulterblätter zusammen, dann senke langsam wieder ab. Halte den Rücken stabil.`, mistakes: `Runder Rücken, Schwung mit dem Oberkörper, Ziehen mit den Armen statt mit dem Rücken.` },
+    { type: 'exercise', name: 'Stuhl-Dips', muscles: 'Trizeps, Schultern, Brust', level: 'Anfänger - Mittel', video: `${D}/musculation`, technique: `Hände auf der Kante eines stabilen Stuhls, Beine nach vorn gestreckt. Senke das Becken, indem du die Ellbogen nach hinten beugst, dann drücke dich wieder hoch. Je gestreckter die Beine, desto schwerer.`, mistakes: `Schultern, die zu den Ohren hochziehen, zu kurzes Absenken, instabiler Stuhl.` },
+    { type: 'exercise', name: 'Unterarmstütz (Plank)', muscles: 'Rumpf, unterer Rücken', level: 'Anfänger', video: `${D}/musculation`, technique: `Auf Unterarmen und Zehenspitzen abgestützt, Körper in einer geraden Linie. Bauch und Gesäß anspannen, ruhig atmen, die Position halten.`, mistakes: `Durchhängendes Becken, zu hoch angehobenes Gesäß, angehobener Kopf. Stell dir ein starres Brett vor.` },
+    { type: 'exercise', name: 'Seitstütz', muscles: 'Schräge Bauchmuskeln, Core', level: 'Anfänger - Mittel', video: `${D}/musculation`, technique: `Seitlich liegend, auf einem Unterarm abgestützt, Körper ausgerichtet. Hebe die Hüften an und halte, ohne das Becken abzusenken. Danach die Seite wechseln.`, mistakes: `Absinkende Hüfte, Schulter nicht über dem Ellbogen ausgerichtet, nach vorn kippender Körper.` },
+    { type: 'exercise', name: 'Mountain Climbers', muscles: 'Bauch, Schultern, Cardio', level: 'Mittel', video: `${D}/hiit`, technique: `Im hohen Plank mit gestreckten Armen abwechselnd ein Knie zur Brust ziehen, immer schneller werdend. Halte die Hüften tief und den Rumpf angespannt.`, mistakes: `Zu hoch angehobenes Gesäß, durchhängender Rücken, unregelmäßiger Rhythmus.` },
+    { type: 'exercise', name: 'Hampelmänner', muscles: 'Cardio, Schultern, Beine', level: 'Anfänger', video: `${D}/hiit`, technique: `Im Stehen springen und dabei Beine und Arme gleichzeitig spreizen, dann zurück. Weiche Landung auf den Fußballen, gleichmäßiger Rhythmus.`, mistakes: `Landung mit gestreckten Knien, durchgedrückter Rücken, unvollständige Armbewegung. Federe ab und halte den Takt.` },
+    { type: 'exercise', name: 'Burpee (fortgeschrittene Option)', muscles: 'Ganzer Körper, Cardio', level: 'Fortgeschritten', video: `${D}/hiit`, technique: `Aus dem Stand: Hände auf den Boden, Füße nach hinten in den Plank springen, einen Liegestütz machen (optional), Füße wieder heranziehen und mit gestreckten Armen nach oben springen. Flüssig aneinanderreihen.`, mistakes: `Runder Rücken beim Absenken, Landung mit gestreckten Beinen. Federe ab und bevorzuge einen gleichmäßigen Rhythmus statt schnell und schlampig.` },
+
+    // ── CARDIO ─────────────────────────────────────────────
+    { type: 'photo', src: 'cardio.jpg', caption: 'Cardio kurbelt den Verbrauch an — und den Kopf gleich mit.' },
+    { type: 'h1', text: 'Cardio & HIIT' },
+    { type: 'p', text: `HIIT wechselt intensive Belastungen mit kurzen Erholungsphasen ab: Du verbrennst Kalorien WÄHREND UND NACH der Einheit (EPOC-Effekt). Zügiges Gehen wiederum steigert deinen täglichen Verbrauch, ohne zu ermüden — dein Geheimtipp für die „Off"-Tage.` },
+    { type: 'list', items: [
+      `HIIT: 30 s Belastung / 20 s Erholung, 4 Runden pro Übung. Während der Belastung solltest du keine Unterhaltung führen können.`,
+      `Zügiges Gehen: 30 bis 45 Min., forsches Tempo, 2 bis 3 Mal pro Woche.`,
+      `Woche 4: füge am Wochenende eine lange Einheit hinzu (45-60 Min. Gehen/Radfahren).`,
+      `Im Alltag: Nimm die Treppe, steig eine Haltestelle früher aus, geh beim Telefonieren umher.`,
+    ] },
+    { type: 'h2', text: 'Deine Belastungszonen' },
+    { type: 'p', text: `Um dich ohne Pulsmesser zu orientieren, nutze den „Sprechtest": deine Fähigkeit zu sprechen zeigt dir die Intensität an.` },
+    { type: 'table', headers: ['Zone', 'Gefühl', 'Sprechtest', 'Einsatz'], rows: [
+      ['Niedrig', 'Sehr leicht', 'Du kannst singen', 'Aufwärmen, Gehen'],
+      ['Moderat', 'Anstrengend, aber machbar', 'Kurze Sätze', 'Krafttraining, Cardio'],
+      ['Hoch', 'Hart, außer Atem', 'Wenige Worte', 'HIIT, Finisher'],
+      ['Maximal', 'Sehr hart', 'Sprechen unmöglich', 'Spitzen von 20-30 s'],
+    ] },
+    { type: 'h2', text: 'Gehen: dein Geheimtipp' },
+    { type: 'list', items: [
+      `Verbrennt Kalorien, ohne zu ermüden oder den Appetit anzukurbeln — ideal im Defizit.`,
+      `Ziele auf 8 000 bis 10 000 Schritte/Tag. Teile sie auf: 3 × 10 Min. zählen genauso viel wie ein Block.`,
+      `Morgens nüchtern, mit Musik oder Podcast: das ist der beste Moment, um die Gewohnheit beizubehalten.`,
+    ] },
+
+    // ── PROGRESSION ────────────────────────────────────────
+    { type: 'h1', text: 'Empfohlene Progression' },
+    { type: 'p', text: `Der Körper passt sich schnell an: Wenn du die Schwierigkeit nie steigerst, stagniert er. So steigerst du dich jede Woche.` },
+    { type: 'table', headers: ['Woche', 'Wiederholungen', 'Pause', 'Cardio'], rows: [
+      ['Woche 1', 'Basis (Technik erlernen)', '60 s', '2 × 30 Min. Gehen'],
+      ['Woche 2', '+1 bis 2 Wdh. / Satz', '50 s', '2 HIIT 15 Min.'],
+      ['Woche 3', '+2 Wdh. oder schwerere Variante', '40 s', '3 HIIT 20 Min.'],
+      ['Woche 4', 'Sauberes Maximum pro Satz', '30 s', '3 HIIT + lange Einheit'],
+    ] },
+    { type: 'list', items: [
+      `Wenn eine Übung leicht wird (RPE < 6), wechsle zur schwereren Variante.`,
+      `Notiere deine Leistungen: die Vorwoche zu schlagen ist die beste Motivation.`,
+    ] },
+    { type: 'h2', text: 'Anzeichen für Fortschritt (über die Waage hinaus)' },
+    { type: 'list', items: [
+      `Deine Kleidung sitzt lockerer, vor allem an der Taille.`,
+      `Du schaffst mehr Wiederholungen oder hältst den Plank länger.`,
+      `Du erholst dich schneller zwischen den Sätzen und steigst Treppen, ohne außer Atem zu geraten.`,
+      `Du schläfst besser, hast mehr Energie und bessere Laune.`,
+    ] },
+    { type: 'note', text: `Plateau nach 3 Wochen? Leg eine leichtere „Deload"-Woche ein (Volumen −30 %), dann starte wieder stärker durch. Erholung gehört zum Fortschritt dazu.` },
+
+    // ── DEHNEN & MOBILITÄT ─────────────────────────────────
+    { type: 'h1', text: 'Dehnen & Mobilität' },
+    { type: 'p', text: `5 bis 10 Minuten Dehnen nach jeder Einheit (oder an Ruhetagen) verbessern die Beweglichkeit, reduzieren Muskelkater und beugen Verletzungen vor. Halte jede Position 20 bis 30 Sekunden, ohne ruckartige Bewegungen, und atme dabei.` },
+    { type: 'table', headers: ['Dehnung', 'Bereich', 'Dauer'], rows: [
+      ['Tiefer Ausfallschritt (Hüftbeuger)', 'Hüfte, Hüftbeuger', '30 s / Seite'],
+      ['Dehnung der Beinbeuger (gestrecktes Bein)', 'Oberschenkelrückseite', '30 s / Seite'],
+      ['Quadrizeps im Stehen', 'Oberschenkelvorderseite', '30 s / Seite'],
+      ['Gesäßdehnung (Figure Four)', 'Gesäß', '30 s / Seite'],
+      ['Katze-Kuh', 'Wirbelsäule, Rücken', '45 s'],
+      ['Brustöffnung an der Wand', 'Brust, Schultern', '30 s / Seite'],
+    ] },
+
+    // ── EXPRESS-EINHEIT ────────────────────────────────────
+    { type: 'h1', text: 'Plan B: Express-Einheit 10 Minuten' },
+    { type: 'p', text: `Keine Zeit? Eine kurze Einheit ist IMMER besser als gar keine: Sie hält die Gewohnheit aufrecht (der eigentliche Erfolgsfaktor). Mach diesen Zirkel 2-mal, ohne Pause zwischen den Übungen, mit 30 Sekunden Pause zwischen den beiden Runden.` },
+    { type: 'table', headers: ['Übung', 'Dauer', 'Erholung'], rows: [
+      ['Kniebeugen', '40 s', '20 s'],
+      ['Liegestütze (Knie oder Füße)', '40 s', '20 s'],
+      ['Mountain Climbers', '40 s', '20 s'],
+      ['Abwechselnde Ausfallschritte', '40 s', '20 s'],
+      ['Unterarmstütz (Plank)', '40 s', '20 s'],
+    ] },
+    { type: 'note', text: `Behalte diese „Plan B"-Einheit im Hinterkopf: an vollen Tagen rettet sie deine Regelmäßigkeit.` },
+
+    // ── ANPASSUNGEN ────────────────────────────────────────
+    { type: 'h1', text: 'Jede Übung an dein Niveau anpassen' },
+    { type: 'p', text: `Zu leicht oder zu schwer? Jede Bewegung hat eine einfachere und eine schwerere Version. Wähle die, mit der du bei allen Wiederholungen eine saubere Technik beibehalten kannst.` },
+    { type: 'table', headers: ['Übung', 'Leichter', 'Schwerer'], rows: [
+      ['Kniebeuge', 'Kniebeuge zum Stuhl', 'Sprungkniebeuge / mit Zusatzgewicht'],
+      ['Liegestütz', 'Auf den Knien / erhöht', 'Füße erhöht / Decline'],
+      ['Ausfallschritt', 'Statisch, mit Wandstütze', 'Sprung-Ausfallschritt'],
+      ['Plank', 'Auf den Knien', 'Dynamischer Plank / auf 3 Stützpunkten'],
+      ['Dips', 'Füße nah am Körper', 'Gestreckte Beine / mit Zusatzgewicht'],
+      ['Mountain Climber', 'Langsamer', 'Schnell Cross-Body'],
+    ] },
+    { type: 'note', text: `Einfache Regel: Wenn du die vorgesehene Wiederholungszahl nicht mit sauberer Form schaffst, geh einen Schritt zurück. Wenn es zu leicht ist (RPE < 6), steigere dich.` },
+
+    // ── FEHLER ─────────────────────────────────────────────
+    { type: 'h1', text: 'Zu vermeidende Fehler' },
+    { type: 'list', items: [
+      `Zu schnell vorangehen wollen: ein zu aggressives Defizit lässt dich Muskeln verlieren und bricht die Motivation.`,
+      `Eiweiß auslassen: ohne es verlierst du Muskeln statt Fett.`,
+      `Sich jeden Tag wiegen: wiege dich 1-mal pro Woche, nüchtern, am selben Tag.`,
+      `Die Erholung vergessen: der Körper verändert sich in der Ruhephase.`,
+      `Das Aufwärmen auslassen: das ist der beste Weg, dich zu verletzen und alles abbrechen zu müssen.`,
+      `Deine Woche 1 mit der Transformation von jemand anderem vergleichen. Vergleiche dich mit dir von gestern.`,
+    ] },
+    { type: 'h2', text: 'Problem → Lösung' },
+    { type: 'table', headers: ['Du erlebst…', 'Die Lösung'], rows: [
+      ['Die Waage bewegt sich nicht mehr', 'Schau auf 2 Wochen; sonst −100 kcal abends'],
+      ['Du hast ständig Hunger', 'Mehr Eiweiß + Gemüse + Wasser zu den Mahlzeiten'],
+      ['Dir fehlt Energie', 'Kohlenhydrate rund ums Training + 8 h Schlaf'],
+      ['Starker Muskelkater', 'Reduziere das Volumen 2-3 Tage, dehne dich, trinke genug'],
+      ['Du hast eine Einheit verpasst', 'Mach mit der nächsten weiter, „hole" nicht alles nach'],
+    ] },
+
+    // ── MOTIVATION ─────────────────────────────────────────
+    { type: 'h1', text: 'Motiviert bleiben' },
+    { type: 'list', items: [
+      `Setz dir ein präzises Ziel und ein Datum (z. B. „-3 kg in 30 Tagen").`,
+      `Mach ein „Vorher"-Foto und nimm deine Maße: die Waage lügt manchmal, der Spiegel nicht.`,
+      `Leg deine Sportkleidung schon am Vorabend bereit: weniger Reibung = mehr durchgezogene Einheiten.`,
+      `Such dir einen Trainingspartner oder teile deinen Fortschritt: öffentliches Commitment verdoppelt die Regelmäßigkeit.`,
+      `Feiere jede abgeschlossene Woche. Beständigkeit schlägt Perfektion.`,
+    ] },
+    { type: 'h2', text: 'Baue eine Gewohnheit auf (nicht nur Motivation)' },
+    { type: 'p', text: `Motivation ist ein Strohfeuer: an manchen Tagen ist sie da, an anderen nicht. Was dich zum Erfolg führt, ist die Gewohnheit. Und eine Gewohnheit entsteht, indem du Reibung reduzierst und an einem Ritual festhältst.` },
+    { type: 'list', items: [
+      `Verbinde deine Einheit mit einem festen Zeitpunkt (z. B. direkt nach dem Aufwachen oder vor dem Abendessen).`,
+      `Die 2-Minuten-Regel: fang einfach mit dem Aufwärmen an. Bist du erst mal drin, machst du weiter.`,
+      `Reiß die Kette nie zweimal hintereinander ab. Ein Ausfalltag passiert — zwei werden zum Abbruch.`,
+      `Mach es sichtbar: hake deinen Kalender ab, das ist erstaunlich befriedigend und wirksam.`,
+    ] },
+
+    // ── FAQ ────────────────────────────────────────────────
+    { type: 'h1', text: 'Häufige Fragen' },
+    { type: 'h2', text: 'Ich habe keine Kurzhanteln, ist das schlimm?' },
+    { type: 'p', text: `Nein. Das gesamte Programm funktioniert mit Körpergewicht. Wasserflaschen oder ein beschwerter Rucksack ersetzen Kurzhanteln beim Rudern und bei den Ausfallschritten problemlos.` },
+    { type: 'h2', text: 'Kann ich morgens nüchtern trainieren?' },
+    { type: 'p', text: `Ja, wenn du dich damit wohlfühlst. Nüchtern oder nicht — über 30 Tage zählen das gesamte Kaloriendefizit und die Regelmäßigkeit, nicht der genaue Zeitpunkt der Einheit.` },
+    { type: 'h2', text: 'Die Waage bewegt sich nicht, was tue ich?' },
+    { type: 'p', text: `Geduld: das Gewicht schwankt (Wasser, Verdauung). Schau dir den Trend über 2 Wochen und deine Maße an. Wenn sich nach 2 Wochen nichts tut, reduziere abends leicht die Kohlenhydrate.` },
+    { type: 'h2', text: 'Wie viel Gewicht werde ich verlieren?' },
+    { type: 'p', text: `Im Schnitt 0,5 bis 0,8 kg Fett pro Woche, also 2 bis 4 kg in 30 Tagen. Je größer dein Ausgangspunkt, desto schneller der anfängliche Verlust (ein Teil davon ist in der ersten Woche Wasser).` },
+    { type: 'h2', text: 'Kann ich dieses Programm im Studio machen?' },
+    { type: 'p', text: `Natürlich. Ersetze die Körpergewichtsübungen bei Bedarf durch ihre geführten Versionen (Beinpresse, Latzug, Beincurl) und behalte dabei die gleiche Anzahl an Sätzen/Wiederholungen bei.` },
+    { type: 'h2', text: 'Ich habe irgendwo Schmerzen, mache ich weiter?' },
+    { type: 'p', text: `Muskelkater: ja, mit Anpassungen. Gelenk- oder akuter Schmerz: nein, schone die Stelle und geh zum Arzt, falls es anhält. Spiel niemals mit echtem Schmerz.` },
+    { type: 'h2', text: 'Wird die „Genussmahlzeit" nicht alles zunichtemachen?' },
+    { type: 'p', text: `Nein, im Gegenteil. Eine Genussmahlzeit pro Woche bei 21 Mahlzeiten bleibt ein wöchentliches Defizit. Sie bewahrt deine Motivation und dein soziales Leben — die wahren Gründe fürs Aufgeben.` },
+    { type: 'h2', text: 'Und nach den 30 Tagen?' },
+    { type: 'p', text: `Entweder wiederholst du einen Zyklus (mit mehr Intensität), oder du steigst in ein PRO-Programm ein (Masseaufbau, Muskelaufbau, 90-Tage-Transformation), um weiter Fortschritte zu machen.` },
+
+    // ── TRACKING ───────────────────────────────────────────
+    { type: 'h1', text: 'Tracking deines Fortschritts' },
+    { type: 'p', text: `Fülle diese Tabellen jede Woche aus. Miss dich nüchtern, morgens, unter denselben Bedingungen. Das ist dein Cockpit: was gemessen wird, kann gesteuert werden.` },
+    { type: 'h2', text: 'Gewicht & Energie' },
+    { type: 'tracker', columns: ['Datum', 'Gewicht (kg)', 'Taillenumfang (cm)', 'Energie /10'], rows: 8 },
+    { type: 'h2', text: 'Maße (cm)' },
+    { type: 'tracker', columns: ['Datum', 'Taille', 'Hüfte', 'Oberschenkel', 'Arm'], rows: 5 },
+    { type: 'h2', text: 'Leistungen (Wiederholungen oder Zeit)' },
+    { type: 'tracker', columns: ['Übung', 'W1', 'W2', 'W3', 'W4'], rows: 6 },
+
+    // ── CHECKLISTE ─────────────────────────────────────────
+    { type: 'h1', text: 'Wöchentliche Checkliste' },
+    { type: 'p', text: `Hake jedes Kästchen am Ende der Woche ab. Ziel: mindestens 6 von 8.` },
+    { type: 'checklist', items: [
+      `Ich habe meine 5 Einheiten diese Woche gemacht.`,
+      `Ich habe bei jeder Mahlzeit Eiweiß gegessen.`,
+      `Ich habe an den meisten Tagen 8 000+ Schritte erreicht.`,
+      `Ich habe 2 L Wasser pro Tag getrunken.`,
+      `Ich habe die meisten Nächte 7 bis 8 h geschlafen.`,
+      `Ich habe flüssigen Zucker und Alkohol eingeschränkt.`,
+      `Ich habe mich 1-mal unter denselben Bedingungen gewogen.`,
+      `Ich habe meine Leistungen und mein Befinden notiert.`,
+    ] },
+    { type: 'h2', text: 'Abschlussbilanz (Tag 30)' },
+    { type: 'checklist', items: [
+      `Ich habe mein Gewicht und meine Maße erneut erfasst.`,
+      `Ich habe mein „Nachher"-Foto gemacht und mit dem „Vorher" verglichen.`,
+      `Ich habe mindestens einen Wiederholungsrekord gegenüber Woche 1 gebrochen.`,
+      `Ich habe 2 Gewohnheiten identifiziert, die ich beibehalten will.`,
+      `Ich habe mein nächstes Programm gewählt, um den Schwung nicht zu verlieren.`,
+    ] },
+
+    // ── NACH DEM PROGRAMM ──────────────────────────────────
+    { type: 'h1', text: 'Und nach deinen 30 Tagen?' },
+    { type: 'p', text: `Die klassische Falle ist der Jo-Jo-Effekt: zu den alten Gewohnheiten zurückkehren und das verlorene Fett wieder zunehmen. Um deine Ergebnisse zu festigen, zählt der Übergang genauso viel wie das Programm selbst.` },
+    { type: 'h2', text: 'Deine Ergebnisse halten' },
+    { type: 'list', items: [
+      `Erhöhe deine Kalorien schrittweise Richtung Erhaltungsbedarf (+100 kcal/Woche), statt alles auf einmal loszulassen.`,
+      `Behalte die 2-3 Gewohnheiten bei, die dir am meisten geholfen haben (Eiweiß, Gehen, Schlaf).`,
+      `Trainiere weiterhin 3 bis 5 Mal pro Woche: erhaltene Muskeln halten deinen Stoffwechsel aufrecht.`,
+      `Wiege dich 1-mal pro Woche: nimmst du 1-2 kg zu, reagiere sofort, nicht erst in 6 Monaten.`,
+    ] },
+    { type: 'h2', text: 'Dein nächstes Ziel' },
+    { type: 'list', items: [
+      `Noch Fett zu verlieren? Wiederhole einen 30-Tage-Zyklus, mit mehr Intensität.`,
+      `Lust, dich zu straffen/formen? Wechsle zum Programm Muskelaufbau oder Fitness Frau/Mann.`,
+      `Bereit für eine echte Herausforderung? Starte die 90-Tage-Körpertransformation.`,
+    ] },
+
+    // ── NOTIZEN ────────────────────────────────────────────
+    { type: 'h1', text: 'Persönliche Notizen' },
+    { type: 'tracker', columns: ['Meine Notizen, Empfindungen und Erfolge der Woche'], rows: 18 },
+
+    { type: 'note', text: `Hast du deine 30 Tage geschafft? Mach direkt weiter mit einem PRO-Programm (Masseaufbau, 90-Tage-Transformation, Muskelaufbau), um am Ball zu bleiben. Erstelle dein Konto auf xenotif.com und behalte den Schwung.` },
+  ],
+}
