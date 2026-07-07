@@ -1665,5 +1665,21 @@
     "ctaSubtitle": "Rejoins des milliers de sportifs qui progressent avec Xenotif®.",
     "ctaJoin": "Rejoindre Xenotif®",
     "ctaShop": "Découvrir la boutique"
+  },
+  "programs": {
+    "eyebrow": "Programme Xenotif®",
+    "startFree": "Commencer gratuitement",
+    "gateTitle": "Le programme complet t’attend",
+    "gateDesc": "Calendrier jour par jour, toutes les séances détaillées, plan nutrition, suivi de progression et coach IA — débloque tout, sans carte, pendant 7 jours.",
+    "startTrial": "Démarrer mon essai gratuit",
+    "trialNote": "7 jours gratuits · sans engagement · résiliation en 1 clic",
+    "technique": "Technique : ",
+    "mistakes": "Erreurs fréquentes : ",
+    "hubEyebrow": "Programmes Xenotif®",
+    "hubTitle": "Nos programmes d’entraînement",
+    "hubSubtitle": "Des programmes complets, structurés semaine par semaine — objectifs, séances détaillées, plan nutrition et suivi. Commence gratuitement.",
+    "seeProgram": "Voir le programme",
+    "hubMetaTitle": "Programmes d’entraînement",
+    "hubMetaDesc": "Programmes fitness complets et structurés : prise de masse, perte de poids, musculation, HIIT, nutrition. Séances, nutrition et suivi jour par jour."
   }
 }

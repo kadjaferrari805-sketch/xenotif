@@ -2,7 +2,7 @@ import type { MetadataRoute } from 'next'
 import { DISCIPLINE_CONTENT } from '@/lib/disciplines'
 import { PRODUCTS } from '@/lib/boutique/products'
 import { getAllPosts } from '@/lib/blog/posts'
-import { PROGRAMS } from '@/lib/programs/library'
+import { programSlugs, localesForProgram } from '@/lib/programs/registry'
 import { routing } from '@/i18n/routing'
 
 const BASE_URL = 'https://xenotif.com'
@@ -58,13 +58,26 @@ export default function sitemap(): MetadataRoute.Sitemap {
         lastModified: new Date(post.publishedAt),
       }),
     ),
-    // Programmes publics (FR uniquement en v1 → pas d'alternates hreflang).
-    { url: `${BASE_URL}/programmes`, lastModified: new Date(), changeFrequency: 'weekly' as ChangeFreq, priority: 0.8 },
-    ...Object.keys(PROGRAMS).map(slug => ({
-      url: `${BASE_URL}/programmes/${slug}`,
+    // Programmes publics : hub + programmes, avec alternates hreflang par langue dispo.
+    {
+      url: `${BASE_URL}/programmes`,
       lastModified: new Date(),
-      changeFrequency: 'monthly' as ChangeFreq,
+      changeFrequency: 'weekly' as ChangeFreq,
       priority: 0.8,
-    })),
+      alternates: { languages: { fr: `${BASE_URL}/programmes`, en: `${BASE_URL}/en/programmes`, de: `${BASE_URL}/de/programmes` } },
+    },
+    ...programSlugs().map(slug => {
+      const languages: Record<string, string> = {}
+      for (const l of localesForProgram(slug)) {
+        languages[l] = l === 'fr' ? `${BASE_URL}/programmes/${slug}` : `${BASE_URL}/${l}/programmes/${slug}`
+      }
+      return {
+        url: `${BASE_URL}/programmes/${slug}`,
+        lastModified: new Date(),
+        changeFrequency: 'monthly' as ChangeFreq,
+        priority: 0.8,
+        alternates: { languages },
+      }
+    }),
   ]
 }

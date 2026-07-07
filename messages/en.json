@@ -1665,5 +1665,21 @@
     "ctaSubtitle": "Join thousands of athletes progressing with Xenotif®.",
     "ctaJoin": "Join Xenotif®",
     "ctaShop": "Explore the shop"
+  },
+  "programs": {
+    "eyebrow": "Xenotif® Program",
+    "startFree": "Start for free",
+    "gateTitle": "The full program awaits",
+    "gateDesc": "Day-by-day calendar, every detailed session, nutrition plan, progress tracking and AI coach — unlock everything, no card, for 7 days.",
+    "startTrial": "Start my free trial",
+    "trialNote": "7 days free · no commitment · cancel in 1 click",
+    "technique": "Technique: ",
+    "mistakes": "Common mistakes: ",
+    "hubEyebrow": "Xenotif® Programs",
+    "hubTitle": "Our training programs",
+    "hubSubtitle": "Complete programs, structured week by week — goals, detailed sessions, nutrition plan and tracking. Start for free.",
+    "seeProgram": "View program",
+    "hubMetaTitle": "Training programs",
+    "hubMetaDesc": "Complete, structured fitness programs: mass gain, weight loss, strength training, HIIT, nutrition. Day-by-day sessions, nutrition and tracking."
   }
 }

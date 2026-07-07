@@ -1,4 +1,5 @@
 import { CheckCircle } from 'lucide-react'
+import { getTranslations } from 'next-intl/server'
 import type { GuideBlock } from '@/lib/boutique/guides'
 
 // Rendu HTML des blocs d'un guide programme, pour les pages publiques SEO.
@@ -6,7 +7,8 @@ import type { GuideBlock } from '@/lib/boutique/guides'
 // note/meta/table/exercise). Les blocs propres au PDF (photo locale, tracker,
 // checklist, chapter) sont ignorés dans l'aperçu web.
 // Les h1/h2 du guide sont rendus en h2/h3 (le titre de page = h1).
-export function GuideBlocks({ blocks }: { blocks: GuideBlock[] }) {
+export async function GuideBlocks({ blocks }: { blocks: GuideBlock[] }) {
+  const t = await getTranslations('programs')
   return (
     <div className="space-y-6">
       {blocks.map((b, i) => {
@@ -71,8 +73,8 @@ export function GuideBlocks({ blocks }: { blocks: GuideBlock[] }) {
                   <span className="shrink-0 text-[10px] font-bold px-2.5 py-1 rounded-full bg-sport-orange/10 text-sport-orange">{b.level}</span>
                 </div>
                 <p className="text-[11px] text-sport-gray mb-2">{b.muscles}</p>
-                <p className="text-sm text-sport-gray leading-relaxed"><strong className="text-white">Technique : </strong>{b.technique}</p>
-                {b.mistakes && <p className="text-sm text-sport-gray leading-relaxed mt-1.5"><strong className="text-white">Erreurs fréquentes : </strong>{b.mistakes}</p>}
+                <p className="text-sm text-sport-gray leading-relaxed"><strong className="text-white">{t('technique')}</strong>{b.technique}</p>
+                {b.mistakes && <p className="text-sm text-sport-gray leading-relaxed mt-1.5"><strong className="text-white">{t('mistakes')}</strong>{b.mistakes}</p>}
               </div>
             )
           default:
