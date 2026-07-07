@@ -385,7 +385,8 @@
         "carousel": "Carousel navigation",
         "slides": "Slides",
         "slide": "Slide {n} of {total}"
-      }
+      },
+      "subheadline": "Structured programs, nutrition and an AI coach for strength, running and HIIT. Join 12,000+ athletes — free to start, no card required."
     },
     "marquee": {
       "items": [
@@ -733,6 +734,24 @@
         {
           "q": "Do the programs work on mobile?",
           "a": "Yes. Xenotif® is fully responsive and accessible on smartphone, tablet and computer. Your sessions follow you everywhere, even offline (offline mode available on the Pro plan)."
+        }
+      ]
+    },
+    "whyXenotif": {
+      "eyebrow": "Why Xenotif",
+      "title": "Not just another app.",
+      "pillars": [
+        {
+          "title": "Not another tracker",
+          "desc": "Other apps count your steps. Xenotif tells you what to do: real week-by-week programs, detailed workouts, nutrition and progress tracking."
+        },
+        {
+          "title": "Zero BS",
+          "desc": "Free strength training, no credit card. 7-day PRO trial, cancel in one click. No traps, no hidden commitment."
+        },
+        {
+          "title": "A coach in your pocket",
+          "desc": "AI coach, nutrition plan and tracking — strength, running, HIIT. All in one place, 24/7, tailored to your level."
         }
       ]
     }
