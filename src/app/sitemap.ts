@@ -2,6 +2,7 @@ import type { MetadataRoute } from 'next'
 import { DISCIPLINE_CONTENT } from '@/lib/disciplines'
 import { PRODUCTS } from '@/lib/boutique/products'
 import { getAllPosts } from '@/lib/blog/posts'
+import { PROGRAMS } from '@/lib/programs/library'
 import { routing } from '@/i18n/routing'
 
 const BASE_URL = 'https://xenotif.com'
@@ -57,5 +58,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
         lastModified: new Date(post.publishedAt),
       }),
     ),
+    // Programmes publics (FR uniquement en v1 → pas d'alternates hreflang).
+    ...Object.keys(PROGRAMS).map(slug => ({
+      url: `${BASE_URL}/programmes/${slug}`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as ChangeFreq,
+      priority: 0.8,
+    })),
   ]
 }
