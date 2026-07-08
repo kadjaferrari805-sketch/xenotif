@@ -175,7 +175,8 @@
         "preview": "Space preview",
         "tarifs": "Pricing",
         "faq": "FAQ",
-        "defis": "Challenges"
+        "defis": "Challenges",
+        "exercices": "Exercises"
       }
     },
     "skipLink": "Skip to main content",
@@ -1768,5 +1769,23 @@
     "faqA4": "You unlock the full program free for 7 days, no credit card required. After that, the Xenotif subscription gives you access to every program, progress tracking and the AI coach. Cancel in one click.",
     "faqQ5": "Can I follow this program from the Xenotif app?",
     "faqA5": "Yes. The day-by-day calendar, workouts, nutrition plan and progress tracking are built into the app, with reminders to keep you motivated."
+  },
+  "exercices": {
+    "eyebrow": "Xenotif Exercise",
+    "musclesLabel": "Target muscles",
+    "levelLabel": "Level",
+    "techniqueLabel": "Technique",
+    "mistakesLabel": "Common mistakes",
+    "backToHub": "All exercises",
+    "seeExercise": "View exercise",
+    "metaSuffix": "technique, target muscles, mistakes to avoid",
+    "ctaTitle": "Put it into practice",
+    "ctaDesc": "This exercise is part of the Xenotif programs — full workouts, progress tracking and an AI coach. Start free, no card required.",
+    "ctaButton": "Start free",
+    "hubEyebrow": "Xenotif Exercises",
+    "hubTitle": "Exercise library",
+    "hubSubtitle": "Step-by-step technique, target muscles and mistakes to avoid for every exercise — strength, cardio, bodyweight. Free.",
+    "hubMetaTitle": "Exercises — technique, target muscles and mistakes",
+    "hubMetaDesc": "Xenotif exercise library: detailed technique, muscles worked and common mistakes. Strength, cardio and bodyweight, explained simply."
   }
 }
