@@ -41,7 +41,7 @@ export default function NotFound() {
             Retour à l&apos;accueil
           </Link>
           <Link
-            href="/#disciplines"
+            href="/disciplines"
             className="btn-secondary"
           >
             Voir les disciplines

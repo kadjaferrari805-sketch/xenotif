@@ -153,7 +153,8 @@
       "training": "Training",
       "resources": "Ressourcen",
       "exercices": "Übungen",
-      "calculateurs": "Rechner"
+      "calculateurs": "Rechner",
+      "sinscrire": "Registrieren"
     },
     "footer": {
       "ariaFooter": "Fußzeile",
@@ -851,7 +852,15 @@
       "noAccount": "Noch kein Konto?",
       "createAccount": "Konto erstellen →",
       "secure": "Sichere SSL-Verbindung — Deine Daten sind geschützt",
-      "errorInvalid": "E-Mail oder Passwort falsch."
+      "errorInvalid": "E-Mail oder Passwort falsch.",
+      "panelTitle": "Mach da weiter, wo du aufgehört hast.",
+      "panelSubtitle": "Deine Programme, dein KI-Coach und dein Fortschritt warten.",
+      "panelBullets": [
+        "Strukturierte Wochenprogramme",
+        "KI-Coach & Ernährungsplan",
+        "Verfolge deinen Fortschritt"
+      ],
+      "panelProof": "★ 4,9/5 · bereits 12.000+ Athleten"
     },
     "signup": {
       "title": "Erstelle dein Konto",
@@ -1896,5 +1905,13 @@
     "ctaTitle": "Geh weiter mit Xenotif",
     "ctaDesc": "Strukturierte Programme, Ernährungsplan und KI-Coach — um aus diesen Zahlen Ergebnisse zu machen. Kostenlos starten.",
     "ctaButton": "Kostenlos starten"
+  },
+  "disciplinesHub": {
+    "eyebrow": "Xenotif Disziplinen",
+    "title": "Alle Disziplinen",
+    "subtitle": "Wähl deinen Sport — Kraft, Running, HIIT, Yoga, Schwimmen… jede Disziplin mit Programmen, Übungen und Tipps.",
+    "metaTitle": "Disziplinen — Kraft, Running, HIIT, Yoga…",
+    "metaDescription": "Alle Xenotif-Disziplinen: Kraft, Running, HIIT, CrossFit, Yoga, Schwimmen, Radfahren, Boxen, Stretching, Ernährung. Programme und Tipps pro Sport.",
+    "see": "Entdecken"
   }
 }

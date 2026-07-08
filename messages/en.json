@@ -153,7 +153,8 @@
       "training": "Training",
       "resources": "Resources",
       "exercices": "Exercises",
-      "calculateurs": "Calculators"
+      "calculateurs": "Calculators",
+      "sinscrire": "Sign up"
     },
     "footer": {
       "ariaFooter": "Footer",
@@ -851,7 +852,15 @@
       "noAccount": "No account yet?",
       "createAccount": "Create an account →",
       "secure": "Secure SSL connection — Your data is protected",
-      "errorInvalid": "Incorrect email or password."
+      "errorInvalid": "Incorrect email or password.",
+      "panelTitle": "Pick up where you left off.",
+      "panelSubtitle": "Your programs, AI coach and progress are waiting.",
+      "panelBullets": [
+        "Structured week-by-week programs",
+        "AI coach & nutrition plan",
+        "Track your progress"
+      ],
+      "panelProof": "★ 4.9/5 · 12,000+ athletes already"
     },
     "signup": {
       "title": "Create your account",
@@ -1896,5 +1905,13 @@
     "ctaTitle": "Go further with Xenotif",
     "ctaDesc": "Structured programs, nutrition plan and AI coach — to turn these numbers into results. Free to start.",
     "ctaButton": "Start free"
+  },
+  "disciplinesHub": {
+    "eyebrow": "Xenotif Disciplines",
+    "title": "All disciplines",
+    "subtitle": "Pick your sport — strength, running, HIIT, yoga, swimming… each discipline with its programs, exercises and tips.",
+    "metaTitle": "Disciplines — strength, running, HIIT, yoga…",
+    "metaDescription": "All Xenotif disciplines: strength, running, HIIT, CrossFit, yoga, swimming, cycling, boxing, stretching, nutrition. Programs and tips by sport.",
+    "see": "Explore"
   }
 }
