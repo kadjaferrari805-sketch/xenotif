@@ -1,13 +1,18 @@
 'use client'
 
+import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { useTranslations } from 'next-intl'
 import { useInView } from 'react-intersection-observer'
 import { ClipboardList, Sparkles, TrendingUp } from 'lucide-react'
 
-// Section « 3 cartes » façon Strava : ce que tu obtiens concrètement (programmes,
-// coach IA, suivi). Structure (icône) constante ; textes → home.featureCards.cards.
-const CARD_STYLE = [ClipboardList, Sparkles, TrendingUp]
+// Section « 3 cartes » façon Strava : photo lifestyle en haut + icône superposée
+// + texte. Structure (icône, image) constante ; textes → home.featureCards.cards.
+const CARDS = [
+  { Icon: ClipboardList, img: 'https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=600&q=80' },
+  { Icon: Sparkles, img: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=600&q=80' },
+  { Icon: TrendingUp, img: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=600&q=80' },
+]
 
 type Card = { title: string; desc: string }
 
@@ -25,19 +30,31 @@ export function FeatureCards() {
         </div>
 
         <div ref={ref} className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {CARD_STYLE.map((Icon, i) => (
+          {CARDS.map(({ Icon, img }, i) => (
             <motion.div
               key={i}
               initial={{ opacity: 0, y: 24 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: i * 0.12, duration: 0.5 }}
-              className="bg-sport-card border border-sport-border rounded-2xl p-7 flex flex-col gap-4"
+              className="bg-sport-card border border-sport-border rounded-2xl overflow-hidden flex flex-col"
             >
-              <div className="w-12 h-12 rounded-2xl border border-sport-orange/25 bg-sport-orange/10 flex items-center justify-center">
-                <Icon size={22} aria-hidden="true" className="text-sport-orange" />
+              <div className="relative aspect-[16/10] w-full">
+                <Image
+                  src={img}
+                  alt={cards[i].title}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-sport-card via-sport-card/25 to-transparent" />
+                <div className="absolute bottom-3 left-3 w-11 h-11 rounded-2xl border border-sport-orange/30 bg-sport-dark/80 backdrop-blur flex items-center justify-center">
+                  <Icon size={20} aria-hidden="true" className="text-sport-orange" />
+                </div>
               </div>
-              <h3 className="text-xl font-black text-white">{cards[i].title}</h3>
-              <p className="text-sm text-sport-gray leading-relaxed">{cards[i].desc}</p>
+              <div className="p-6 flex flex-col gap-3">
+                <h3 className="text-xl font-black text-white">{cards[i].title}</h3>
+                <p className="text-sm text-sport-gray leading-relaxed">{cards[i].desc}</p>
+              </div>
             </motion.div>
           ))}
         </div>
