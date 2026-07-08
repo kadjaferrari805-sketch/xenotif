@@ -153,7 +153,8 @@
       "training": "Entraînement",
       "resources": "Ressources",
       "exercices": "Exercices",
-      "calculateurs": "Calculateurs"
+      "calculateurs": "Calculateurs",
+      "sinscrire": "S’inscrire"
     },
     "footer": {
       "ariaFooter": "Pied de page",
@@ -851,7 +852,15 @@
       "noAccount": "Pas encore de compte ?",
       "createAccount": "Créer un compte →",
       "secure": "Connexion sécurisée SSL — Tes données sont protégées",
-      "errorInvalid": "Email ou mot de passe incorrect."
+      "errorInvalid": "Email ou mot de passe incorrect.",
+      "panelTitle": "Reprends là où tu t’es arrêté.",
+      "panelSubtitle": "Tes programmes, ton coach IA et ta progression t’attendent.",
+      "panelBullets": [
+        "Programmes structurés semaine par semaine",
+        "Coach IA & plan nutrition",
+        "Suivi de ta progression"
+      ],
+      "panelProof": "★ 4,9/5 · déjà 12 000+ athlètes"
     },
     "signup": {
       "title": "Crée ton compte",
@@ -1896,5 +1905,13 @@
     "ctaTitle": "Va plus loin avec Xenotif",
     "ctaDesc": "Programmes structurés, plan nutrition et coach IA — pour transformer ces chiffres en résultats. Gratuit pour commencer.",
     "ctaButton": "Commencer gratuitement"
+  },
+  "disciplinesHub": {
+    "eyebrow": "Disciplines Xenotif",
+    "title": "Toutes les disciplines",
+    "subtitle": "Choisis ton sport — musculation, running, HIIT, yoga, natation… chaque discipline avec ses programmes, exercices et conseils.",
+    "metaTitle": "Disciplines — musculation, running, HIIT, yoga…",
+    "metaDescription": "Toutes les disciplines Xenotif : musculation, running, HIIT, CrossFit, yoga, natation, cyclisme, boxe, stretching, nutrition. Programmes et conseils par sport.",
+    "see": "Découvrir"
   }
 }

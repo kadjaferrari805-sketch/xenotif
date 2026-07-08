@@ -157,7 +157,7 @@ export default async function DisciplinePage({ params }: { params: Promise<{ slu
 
         <div className="absolute inset-0 flex flex-col justify-end px-6 pb-16">
           <div className="max-w-5xl mx-auto w-full">
-            <Link href="/#disciplines" className="inline-flex items-center gap-1.5 text-white/55 text-sm mb-10 hover:text-white transition-colors">
+            <Link href="/disciplines" className="inline-flex items-center gap-1.5 text-white/55 text-sm mb-10 hover:text-white transition-colors">
               <ArrowLeft size={14} aria-hidden="true" /> {t('back')}
             </Link>
 

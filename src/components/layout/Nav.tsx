@@ -9,23 +9,11 @@ import { Logo } from '@/components/ui/Logo'
 import { LanguageSwitcher } from './LanguageSwitcher'
 import { AppDownload } from './AppDownload'
 import { createClient } from '@/lib/supabase/client'
+import { DISCIPLINE_SLUGS as DISCIPLINES } from '@/lib/disciplines-nav'
 import type { User } from '@supabase/supabase-js'
 
-// Méga-menu « Entraînement » façon Strava : colonne Disciplines (par sport) +
-// colonne Ressources (programmes, exercices, défis, outils).
-const DISCIPLINES = [
-  { slug: 'musculation', emoji: '🏋️' },
-  { slug: 'running-cardio', emoji: '🏃' },
-  { slug: 'hiit', emoji: '⚡' },
-  { slug: 'crossfit', emoji: '🤸' },
-  { slug: 'boxing', emoji: '🥊' },
-  { slug: 'natation', emoji: '🏊' },
-  { slug: 'cyclisme', emoji: '🚴' },
-  { slug: 'yoga', emoji: '🧘' },
-  { slug: 'stretching', emoji: '🙆' },
-  { slug: 'nutrition', emoji: '🥗' },
-] as const
-
+// Méga-menu « Entraînement » façon Strava : colonne Disciplines (par sport,
+// DISCIPLINE_SLUGS partagé avec /disciplines) + colonne Ressources.
 const RESOURCES = [
   { href: '/programmes', key: 'programmes', Icon: ClipboardList },
   { href: '/exercices', key: 'exercices', Icon: Dumbbell },
@@ -173,7 +161,7 @@ export function Nav() {
                   </div>
 
                   <Link
-                    href="/#disciplines"
+                    href="/disciplines"
                     onClick={() => setMenuOpen(false)}
                     className="mt-3 flex items-center justify-center gap-1.5 rounded-xl border border-white/10 py-2.5 text-xs font-bold text-sport-orange hover:bg-sport-orange/10 transition-colors"
                   >
@@ -202,7 +190,15 @@ export function Nav() {
               <span className="flex h-8 w-8 items-center justify-center rounded-full bg-sport-orange/20 border border-sport-orange/40 text-sport-orange font-black text-xs">{initials}</span>
             </Link>
           ) : (
-            <Link href="/auth/signin" className="text-sm text-sport-gray hover:text-white transition-colors">{t('connexion')}</Link>
+            <>
+              <Link href="/auth/signin" className="hidden sm:inline text-sm text-sport-gray hover:text-white transition-colors">{t('connexion')}</Link>
+              <Link
+                href="/auth/signup"
+                className="inline-flex items-center bg-sport-orange text-white text-sm font-bold px-4 py-2 rounded-full hover:bg-orange-600 active:scale-95 transition-all shadow-lg shadow-sport-orange/25"
+              >
+                {t('sinscrire')}
+              </Link>
+            </>
           )}
           <AppDownload
             triggerClassName="hidden md:inline-flex items-center justify-center h-9 w-9 rounded-full border border-sport-border text-white/90 hover:text-white hover:border-white/30 transition-all"
