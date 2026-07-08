@@ -4,15 +4,15 @@ import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useTranslations } from 'next-intl'
 import { Link } from '@/i18n/navigation'
-import { Menu, X, ChevronDown, ArrowRight } from 'lucide-react'
+import { Menu, X, ChevronDown, ArrowRight, Dumbbell, ClipboardList, Trophy, Calculator } from 'lucide-react'
 import { Logo } from '@/components/ui/Logo'
 import { LanguageSwitcher } from './LanguageSwitcher'
 import { AppDownload } from './AppDownload'
 import { createClient } from '@/lib/supabase/client'
 import type { User } from '@supabase/supabase-js'
 
-// Méga-menu « Disciplines » façon Strava : icône + slug ; libellés localisés via
-// common.nav.disc.<slug>. Les slugs correspondent aux routes /disciplines/[slug].
+// Méga-menu « Entraînement » façon Strava : colonne Disciplines (par sport) +
+// colonne Ressources (programmes, exercices, défis, outils).
 const DISCIPLINES = [
   { slug: 'musculation', emoji: '🏋️' },
   { slug: 'running-cardio', emoji: '🏃' },
@@ -26,25 +26,28 @@ const DISCIPLINES = [
   { slug: 'nutrition', emoji: '🥗' },
 ] as const
 
+const RESOURCES = [
+  { href: '/programmes', key: 'programmes', Icon: ClipboardList },
+  { href: '/exercices', key: 'exercices', Icon: Dumbbell },
+  { href: '/defis', key: 'defis', Icon: Trophy },
+  { href: '/outils', key: 'calculateurs', Icon: Calculator },
+] as const
+
 const NAV_LINKS = [
-  { href: '/programmes', key: 'programmes' },
-  { href: '/defis', key: 'defis' },
   { href: '/boutique', key: 'boutique' },
   { href: '/blog', key: 'blog' },
-  { href: '/a-propos', key: 'about' },
   { href: '/#tarifs', key: 'tarifs' },
-  { href: '/#faq', key: 'faq' },
 ] as const
 
 export function Nav() {
   const t = useTranslations('common.nav')
   const [isOpen, setIsOpen] = useState(false)
-  const [discOpen, setDiscOpen] = useState(false)
-  const [mobileDiscOpen, setMobileDiscOpen] = useState(false)
+  const [menuOpen, setMenuOpen] = useState(false)
+  const [mobileTrainOpen, setMobileTrainOpen] = useState(false)
   const [user, setUser] = useState<User | null>(null)
   const [name, setName] = useState<string | null>(null)
   const hamburgerRef = useRef<HTMLButtonElement>(null)
-  const discRef = useRef<HTMLDivElement>(null)
+  const menuRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const supabase = createClient()
@@ -65,27 +68,22 @@ export function Nav() {
   useEffect(() => {
     function handleKey(e: KeyboardEvent) {
       if (e.key === 'Escape') {
-        if (discOpen) setDiscOpen(false)
-        if (isOpen) {
-          setIsOpen(false)
-          hamburgerRef.current?.focus()
-        }
+        if (menuOpen) setMenuOpen(false)
+        if (isOpen) { setIsOpen(false); hamburgerRef.current?.focus() }
       }
     }
     document.addEventListener('keydown', handleKey)
     return () => document.removeEventListener('keydown', handleKey)
-  }, [isOpen, discOpen])
+  }, [isOpen, menuOpen])
 
-  // Ferme le méga-menu au clic extérieur.
   useEffect(() => {
     function onDocClick(e: MouseEvent) {
-      if (discOpen && discRef.current && !discRef.current.contains(e.target as Node)) setDiscOpen(false)
+      if (menuOpen && menuRef.current && !menuRef.current.contains(e.target as Node)) setMenuOpen(false)
     }
     document.addEventListener('mousedown', onDocClick)
     return () => document.removeEventListener('mousedown', onDocClick)
-  }, [discOpen])
+  }, [menuOpen])
 
-  // Nav premium : frosted (blur + transparence) + compactage une fois scrollé.
   const [scrolled, setScrolled] = useState(false)
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8)
@@ -93,7 +91,6 @@ export function Nav() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  // Profil de l'abonné (remplace « Mon espace »).
   const initials = (name || user?.email || 'U').slice(0, 2).toUpperCase()
 
   return (
@@ -103,67 +100,82 @@ export function Nav() {
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
       className={`sticky top-0 z-50 transition-all duration-300 pt-safe border-b ${
-        scrolled
-          ? 'bg-sport-dark/80 backdrop-blur-xl border-white/10 shadow-lg shadow-black/30'
-          : 'bg-sport-dark border-white/10'
+        scrolled ? 'bg-sport-dark/80 backdrop-blur-xl border-white/10 shadow-lg shadow-black/30' : 'bg-sport-dark border-white/10'
       }`}
     >
-      {/* Logo (gauche) · liens centrés dans l'espace dispo (flex-1) · actions (droite) */}
       <div className={`max-w-6xl mx-auto px-6 flex items-center justify-between gap-4 transition-all duration-300 ${scrolled ? 'h-14' : 'h-16'}`}>
-        {/* Logo */}
         <div className="shrink-0">
           <Logo href="/" size="sm" animated />
         </div>
 
         {/* Desktop links */}
         <div className="hidden md:flex flex-1 justify-center items-center gap-7 text-sm font-medium text-sport-gray whitespace-nowrap">
-          {/* Méga-menu Disciplines (hover + clic) */}
-          <div
-            ref={discRef}
-            className="relative"
-            onMouseEnter={() => setDiscOpen(true)}
-            onMouseLeave={() => setDiscOpen(false)}
-          >
+          {/* Méga-menu Entraînement (Disciplines + Ressources) */}
+          <div ref={menuRef} className="relative" onMouseEnter={() => setMenuOpen(true)} onMouseLeave={() => setMenuOpen(false)}>
             <button
               type="button"
               aria-haspopup="true"
-              aria-expanded={discOpen}
-              onClick={() => setDiscOpen((v) => !v)}
+              aria-expanded={menuOpen}
+              onClick={() => setMenuOpen((v) => !v)}
               className="inline-flex items-center gap-1 hover:text-white transition-colors py-1"
             >
-              {t('disciplines')}
-              <ChevronDown size={14} aria-hidden="true" className={`transition-transform duration-200 ${discOpen ? 'rotate-180' : ''}`} />
+              {t('training')}
+              <ChevronDown size={14} aria-hidden="true" className={`transition-transform duration-200 ${menuOpen ? 'rotate-180' : ''}`} />
             </button>
 
             <AnimatePresence>
-              {discOpen && (
+              {menuOpen && (
                 <motion.div
                   role="menu"
-                  aria-label={t('disciplines')}
+                  aria-label={t('training')}
                   initial={{ opacity: 0, y: 8 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: 8 }}
                   transition={{ duration: 0.18, ease: [0.16, 1, 0.3, 1] }}
-                  className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-[520px] max-w-[calc(100vw-2rem)] bg-sport-dark/95 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl shadow-black/50 p-4"
+                  className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-[680px] max-w-[calc(100vw-2rem)] bg-sport-dark/95 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl shadow-black/50 p-5"
                 >
-                  <div className="grid grid-cols-2 gap-1">
-                    {DISCIPLINES.map((d) => (
-                      <Link
-                        key={d.slug}
-                        href={`/disciplines/${d.slug}`}
-                        role="menuitem"
-                        onClick={() => setDiscOpen(false)}
-                        className="flex items-center gap-3 rounded-xl px-3 py-2.5 hover:bg-white/5 transition-colors group/disc"
-                      >
-                        <span className="text-lg w-6 text-center" aria-hidden="true">{d.emoji}</span>
-                        <span className="text-sm font-medium text-sport-gray group-hover/disc:text-white transition-colors">{t(`disc.${d.slug}`)}</span>
-                      </Link>
-                    ))}
+                  <div className="grid grid-cols-3 gap-5">
+                    <div className="col-span-2">
+                      <p className="text-[10px] font-black uppercase tracking-wider text-sport-gray mb-3 px-2">{t('disciplines')}</p>
+                      <div className="grid grid-cols-2 gap-1">
+                        {DISCIPLINES.map((d) => (
+                          <Link
+                            key={d.slug}
+                            href={`/disciplines/${d.slug}`}
+                            role="menuitem"
+                            onClick={() => setMenuOpen(false)}
+                            className="flex items-center gap-3 rounded-xl px-3 py-2 hover:bg-white/5 transition-colors group/disc"
+                          >
+                            <span className="text-lg w-6 text-center" aria-hidden="true">{d.emoji}</span>
+                            <span className="text-sm font-medium text-sport-gray group-hover/disc:text-white transition-colors">{t(`disc.${d.slug}`)}</span>
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div className="border-l border-white/10 pl-5">
+                      <p className="text-[10px] font-black uppercase tracking-wider text-sport-gray mb-3 px-2">{t('resources')}</p>
+                      <div className="flex flex-col gap-1">
+                        {RESOURCES.map(({ href, key, Icon }) => (
+                          <Link
+                            key={href}
+                            href={href}
+                            role="menuitem"
+                            onClick={() => setMenuOpen(false)}
+                            className="flex items-center gap-3 rounded-xl px-3 py-2 hover:bg-white/5 transition-colors group/res"
+                          >
+                            <Icon size={16} aria-hidden="true" className="text-sport-orange shrink-0" />
+                            <span className="text-sm font-medium text-sport-gray group-hover/res:text-white transition-colors">{t(key)}</span>
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
                   </div>
+
                   <Link
                     href="/#disciplines"
-                    onClick={() => setDiscOpen(false)}
-                    className="mt-2 flex items-center justify-center gap-1.5 rounded-xl border border-white/10 py-2.5 text-xs font-bold text-sport-orange hover:bg-sport-orange/10 transition-colors"
+                    onClick={() => setMenuOpen(false)}
+                    className="mt-3 flex items-center justify-center gap-1.5 rounded-xl border border-white/10 py-2.5 text-xs font-bold text-sport-orange hover:bg-sport-orange/10 transition-colors"
                   >
                     {t('allDisciplines')} <ArrowRight size={13} aria-hidden="true" />
                   </Link>
@@ -173,11 +185,7 @@ export function Nav() {
           </div>
 
           {NAV_LINKS.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="hover:text-white transition-colors relative group py-1"
-            >
+            <Link key={link.href} href={link.href} className="hover:text-white transition-colors relative group py-1">
               {t(link.key)}
               <span className="absolute bottom-0 left-0 w-0 h-px bg-sport-orange transition-all duration-300 group-hover:w-full" />
             </Link>
@@ -190,24 +198,12 @@ export function Nav() {
             <LanguageSwitcher />
           </div>
           {user ? (
-            <Link
-              href="/dashboard"
-              aria-label={t('monEspace')}
-              className="inline-flex items-center justify-center rounded-full border border-sport-border bg-sport-card/70 p-1 hover:border-sport-orange/50 transition-all active:scale-95"
-            >
-              <span className="flex h-8 w-8 items-center justify-center rounded-full bg-sport-orange/20 border border-sport-orange/40 text-sport-orange font-black text-xs">
-                {initials}
-              </span>
+            <Link href="/dashboard" aria-label={t('monEspace')} className="inline-flex items-center justify-center rounded-full border border-sport-border bg-sport-card/70 p-1 hover:border-sport-orange/50 transition-all active:scale-95">
+              <span className="flex h-8 w-8 items-center justify-center rounded-full bg-sport-orange/20 border border-sport-orange/40 text-sport-orange font-black text-xs">{initials}</span>
             </Link>
           ) : (
-            <Link
-              href="/auth/signin"
-              className="text-sm text-sport-gray hover:text-white transition-colors"
-            >
-              {t('connexion')}
-            </Link>
+            <Link href="/auth/signin" className="text-sm text-sport-gray hover:text-white transition-colors">{t('connexion')}</Link>
           )}
-          {/* Télécharger l'app (desktop) : bouton compact icône pour garder la barre aérée. */}
           <AppDownload
             triggerClassName="hidden md:inline-flex items-center justify-center h-9 w-9 rounded-full border border-sport-border text-white/90 hover:text-white hover:border-white/30 transition-all"
             labelClassName="hidden"
@@ -239,33 +235,36 @@ export function Nav() {
             className="md:hidden bg-sport-dark/80 backdrop-blur-xl border-t border-white/10 overflow-hidden"
           >
             <div className="px-6 py-5 flex flex-col gap-1">
-              {/* Disciplines (accordéon) */}
+              {/* Entraînement (accordéon) */}
               <button
                 type="button"
-                onClick={() => setMobileDiscOpen((v) => !v)}
-                aria-expanded={mobileDiscOpen}
+                onClick={() => setMobileTrainOpen((v) => !v)}
+                aria-expanded={mobileTrainOpen}
                 className="flex items-center justify-between text-sm font-medium text-sport-gray hover:text-white transition-colors py-3 border-b border-sport-border"
               >
-                {t('disciplines')}
-                <ChevronDown size={16} aria-hidden="true" className={`transition-transform duration-200 ${mobileDiscOpen ? 'rotate-180' : ''}`} />
+                {t('training')}
+                <ChevronDown size={16} aria-hidden="true" className={`transition-transform duration-200 ${mobileTrainOpen ? 'rotate-180' : ''}`} />
               </button>
               <AnimatePresence>
-                {mobileDiscOpen && (
+                {mobileTrainOpen && (
                   <motion.div
                     initial={{ opacity: 0, height: 0 }}
                     animate={{ opacity: 1, height: 'auto' }}
                     exit={{ opacity: 0, height: 0 }}
                     transition={{ duration: 0.2 }}
-                    className="overflow-hidden border-b border-sport-border"
+                    className="overflow-hidden border-b border-sport-border pb-2"
                   >
-                    <div className="grid grid-cols-2 gap-1 py-2">
+                    <div className="flex flex-col gap-1 py-2">
+                      {RESOURCES.map(({ href, key, Icon }) => (
+                        <Link key={href} href={href} onClick={() => setIsOpen(false)} className="flex items-center gap-2.5 rounded-lg px-2 py-2 text-sm font-medium text-white hover:bg-white/5 transition-colors">
+                          <Icon size={15} aria-hidden="true" className="text-sport-orange" /> {t(key)}
+                        </Link>
+                      ))}
+                    </div>
+                    <p className="text-[10px] font-black uppercase tracking-wider text-sport-gray px-2 pt-2 pb-1">{t('disciplines')}</p>
+                    <div className="grid grid-cols-2 gap-1">
                       {DISCIPLINES.map((d) => (
-                        <Link
-                          key={d.slug}
-                          href={`/disciplines/${d.slug}`}
-                          onClick={() => setIsOpen(false)}
-                          className="flex items-center gap-2.5 rounded-lg px-2 py-2 text-sm text-sport-gray hover:text-white hover:bg-white/5 transition-colors"
-                        >
+                        <Link key={d.slug} href={`/disciplines/${d.slug}`} onClick={() => setIsOpen(false)} className="flex items-center gap-2 rounded-lg px-2 py-2 text-sm text-sport-gray hover:text-white hover:bg-white/5 transition-colors">
                           <span aria-hidden="true">{d.emoji}</span> {t(`disc.${d.slug}`)}
                         </Link>
                       ))}
@@ -275,21 +274,12 @@ export function Nav() {
               </AnimatePresence>
 
               {NAV_LINKS.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  onClick={() => setIsOpen(false)}
-                  className="text-sm font-medium text-sport-gray hover:text-white transition-colors py-3 border-b border-sport-border last:border-0"
-                >
+                <Link key={link.href} href={link.href} onClick={() => setIsOpen(false)} className="text-sm font-medium text-sport-gray hover:text-white transition-colors py-3 border-b border-sport-border last:border-0">
                   {t(link.key)}
                 </Link>
               ))}
               {!user && (
-                <Link
-                  href="/auth/signin"
-                  onClick={() => setIsOpen(false)}
-                  className="text-sm font-medium text-sport-gray hover:text-white transition-colors py-3"
-                >
+                <Link href="/auth/signin" onClick={() => setIsOpen(false)} className="text-sm font-medium text-sport-gray hover:text-white transition-colors py-3">
                   {t('connexion')}
                 </Link>
               )}

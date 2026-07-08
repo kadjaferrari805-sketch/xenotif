@@ -149,7 +149,11 @@
         "stretching": "Stretching",
         "nutrition": "Nutrition"
       },
-      "allDisciplines": "Toutes les disciplines"
+      "allDisciplines": "Toutes les disciplines",
+      "training": "Entraînement",
+      "resources": "Ressources",
+      "exercices": "Exercices",
+      "calculateurs": "Calculateurs"
     },
     "footer": {
       "ariaFooter": "Pied de page",
@@ -811,6 +815,24 @@
           "duration": "14 jours",
           "level": "Tous niveaux",
           "desc": "2 semaines pour amorcer ta définition : plan nutrition, cardio ciblé et suivi quotidien. Idéal avant l’été ou un événement."
+        }
+      ]
+    },
+    "featureCards": {
+      "eyebrow": "L’essentiel",
+      "title": "Tout pour progresser, au même endroit",
+      "cards": [
+        {
+          "title": "Des programmes qui te guident",
+          "desc": "Muscu, running, HIIT, perte de poids — des plans structurés semaine par semaine, avec séances détaillées et nutrition."
+        },
+        {
+          "title": "Un coach IA, 24/7",
+          "desc": "Il adapte l’intensité à ton niveau, répond à tes questions et ajuste ton plan quand il le faut."
+        },
+        {
+          "title": "Ta progression en un coup d’œil",
+          "desc": "Suivi des séances, du poids et des performances — vois tes résultats et reste motivé."
         }
       ]
     }
