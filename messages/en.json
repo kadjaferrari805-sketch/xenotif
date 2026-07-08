@@ -149,7 +149,11 @@
         "stretching": "Stretching",
         "nutrition": "Nutrition"
       },
-      "allDisciplines": "All disciplines"
+      "allDisciplines": "All disciplines",
+      "training": "Training",
+      "resources": "Resources",
+      "exercices": "Exercises",
+      "calculateurs": "Calculators"
     },
     "footer": {
       "ariaFooter": "Footer",
@@ -811,6 +815,24 @@
           "duration": "14 days",
           "level": "All levels",
           "desc": "2 weeks to kick-start your definition: nutrition plan, targeted cardio and daily tracking. Perfect before summer or an event."
+        }
+      ]
+    },
+    "featureCards": {
+      "eyebrow": "The essentials",
+      "title": "Everything to progress, in one place",
+      "cards": [
+        {
+          "title": "Programs that guide you",
+          "desc": "Strength, running, HIIT, weight loss — structured week-by-week plans with detailed workouts and nutrition."
+        },
+        {
+          "title": "An AI coach, 24/7",
+          "desc": "It adapts the intensity to your level, answers your questions and adjusts your plan when needed."
+        },
+        {
+          "title": "Your progress at a glance",
+          "desc": "Track workouts, weight and performance — see your results and stay motivated."
         }
       ]
     }

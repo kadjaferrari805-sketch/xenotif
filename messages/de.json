@@ -149,7 +149,11 @@
         "stretching": "Stretching",
         "nutrition": "Ernährung"
       },
-      "allDisciplines": "Alle Disziplinen"
+      "allDisciplines": "Alle Disziplinen",
+      "training": "Training",
+      "resources": "Ressourcen",
+      "exercices": "Übungen",
+      "calculateurs": "Rechner"
     },
     "footer": {
       "ariaFooter": "Fußzeile",
@@ -811,6 +815,24 @@
           "duration": "14 Tage",
           "level": "Alle Level",
           "desc": "2 Wochen, um deine Definition anzukurbeln: Ernährungsplan, gezieltes Cardio und tägliches Tracking. Ideal vor dem Sommer oder einem Event."
+        }
+      ]
+    },
+    "featureCards": {
+      "eyebrow": "Das Wesentliche",
+      "title": "Alles für deinen Fortschritt, an einem Ort",
+      "cards": [
+        {
+          "title": "Programme, die dich führen",
+          "desc": "Kraft, Running, HIIT, Abnehmen — strukturierte Wochenpläne mit detaillierten Workouts und Ernährung."
+        },
+        {
+          "title": "Ein KI-Coach, 24/7",
+          "desc": "Er passt die Intensität an dein Niveau an, beantwortet deine Fragen und passt deinen Plan bei Bedarf an."
+        },
+        {
+          "title": "Dein Fortschritt auf einen Blick",
+          "desc": "Verfolge Workouts, Gewicht und Leistung — sieh deine Ergebnisse und bleib motiviert."
         }
       ]
     }
