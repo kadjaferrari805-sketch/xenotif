@@ -6,12 +6,13 @@ import { useTranslations } from 'next-intl'
 import { useInView } from 'react-intersection-observer'
 import { ClipboardList, Sparkles, TrendingUp } from 'lucide-react'
 
-// Section « 3 cartes » façon Strava : photo lifestyle en haut + icône superposée
-// + texte. Structure (icône, image) constante ; textes → home.featureCards.cards.
+// Section « 3 cartes » façon Strava : créative de marque (IA Higgsfield, dark +
+// orange) en haut + icône superposée + texte. Images locales dans public/home ;
+// textes → home.featureCards.cards.
 const CARDS = [
-  { Icon: ClipboardList, img: 'https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=600&q=80' },
-  { Icon: Sparkles, img: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=600&q=80' },
-  { Icon: TrendingUp, img: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=600&q=80' },
+  { Icon: ClipboardList, img: '/home/feature-programmes.jpg' },
+  { Icon: Sparkles, img: '/home/feature-coach.jpg' },
+  { Icon: TrendingUp, img: '/home/feature-progression.jpg' },
 ]
 
 type Card = { title: string; desc: string }
