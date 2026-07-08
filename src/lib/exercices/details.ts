@@ -41,8 +41,28 @@ export type ExerciceDetail = {
 }
 
 // Overrides médias par slug (à remplir quand de vrais fichiers existent dans
-// public/videos/exercises, public/gifs, etc.). Fallback = placeholder.
+// public/videos/exercises, public/gifs, etc.). Fallback = GIF d'animation par
+// pattern de mouvement (généré localement) + placeholder vidéo.
 const MEDIA_OVERRIDES: Record<string, ExerciceMedia> = {}
+
+// GIF d'animation par pattern de mouvement (public/gifs/<pattern>.gif).
+const PATTERN_RULES: { pattern: string; re: RegExp }[] = [
+  { pattern: 'jumpingjack', re: /jumping|burpee|mountain|climber|high knee|skater|sprint|talon|corde|montees de genoux|genou/ },
+  { pattern: 'plank', re: /gainage|plank|superman|hollow/ },
+  { pattern: 'crunch', re: /crunch|abdo|relev|sit-?up|russian|roue abdominal|leg raise|jambes suspendu/ },
+  { pattern: 'curl', re: /curl|biceps|marteau/ },
+  { pattern: 'press', re: /developpe militaire|militaire|overhead|elevation|epaule|pike|shoulder/ },
+  { pattern: 'pushup', re: /pompes|push|dips|developpe (couche|incline)|pec|face pull/ },
+  { pattern: 'hinge', re: /souleve|deadlift|romanian|hip thrust|pont fessier|good morning|rowing|tirage|traction|pull|hinge/ },
+  { pattern: 'lunge', re: /fente|lunge|split squat|bulgar|montee/ },
+  { pattern: 'squat', re: /squat|chaise|wall sit|presse|leg (press|extension|curl)|goblet|mollet|pistol|jumping squat|fessier/ },
+]
+
+function patternFor(name: string): string {
+  const n = norm(name)
+  for (const r of PATTERN_RULES) if (r.re.test(n)) return r.pattern
+  return 'squat'
+}
 
 const norm = (s: string) =>
   s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase()
@@ -188,6 +208,9 @@ export function getExerciceDetail(slug: string, locale: string): ExerciceDetail 
     regions: musclesToRegions(primaryMuscles, secondaryMuscles),
     similar: similarFor(slug, primaryMuscles, locale),
     stats: STATS[difficulty],
-    media: MEDIA_OVERRIDES[slug] ?? {},
+    media: {
+      ...MEDIA_OVERRIDES[slug],
+      gifUrl: MEDIA_OVERRIDES[slug]?.gifUrl ?? `/gifs/${patternFor(ex.name)}.gif`,
+    },
   }
 }
