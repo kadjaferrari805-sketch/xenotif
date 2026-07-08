@@ -136,7 +136,20 @@
       "monEspace": "Mon espace",
       "ouvrirMenu": "Ouvrir le menu de navigation",
       "fermerMenu": "Fermer le menu",
-      "defis": "Défis"
+      "defis": "Défis",
+      "disc": {
+        "musculation": "Musculation",
+        "running-cardio": "Running & Cardio",
+        "hiit": "HIIT",
+        "crossfit": "CrossFit",
+        "boxing": "Boxe",
+        "natation": "Natation",
+        "cyclisme": "Cyclisme",
+        "yoga": "Yoga",
+        "stretching": "Stretching",
+        "nutrition": "Nutrition"
+      },
+      "allDisciplines": "Toutes les disciplines"
     },
     "footer": {
       "ariaFooter": "Pied de page",
