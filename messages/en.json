@@ -836,6 +836,12 @@
           "desc": "Track workouts, weight and performance — see your results and stay motivated."
         }
       ]
+    },
+    "videoBand": {
+      "eyebrow": "Running",
+      "title": "Your first 10K. Your marathon. Your finish line.",
+      "subtitle": "A personalized running plan, week by week. Xenotif gets you there.",
+      "cta": "Start free"
     }
   },
   "auth": {

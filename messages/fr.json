@@ -836,6 +836,12 @@
           "desc": "Suivi des séances, du poids et des performances — vois tes résultats et reste motivé."
         }
       ]
+    },
+    "videoBand": {
+      "eyebrow": "Running",
+      "title": "Ton premier 10 km. Ton marathon. Ta ligne d’arrivée.",
+      "subtitle": "Un plan running personnalisé, semaine par semaine. Xenotif t’y emmène.",
+      "cta": "Commencer gratuitement"
     }
   },
   "auth": {

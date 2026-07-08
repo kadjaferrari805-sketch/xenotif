@@ -836,6 +836,12 @@
           "desc": "Verfolge Workouts, Gewicht und Leistung — sieh deine Ergebnisse und bleib motiviert."
         }
       ]
+    },
+    "videoBand": {
+      "eyebrow": "Running",
+      "title": "Deine ersten 10 km. Dein Marathon. Deine Ziellinie.",
+      "subtitle": "Ein personalisierter Laufplan, Woche für Woche. Xenotif bringt dich hin.",
+      "cta": "Kostenlos starten"
     }
   },
   "auth": {
