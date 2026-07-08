@@ -20,6 +20,7 @@ const PROG_LINKS = [
   { key: 'avance',        href: '/programmes/musculation-avance' },
   { key: 'elite',         href: '/programmes/prise-de-masse-12s' },
   { key: 'exercices',     href: '/exercices' },
+  { key: 'outils',        href: '/outils' },
   { key: 'defis',         href: '/defis' },
   { key: 'coachingIA',    href: '/dashboard/coach' },
   { key: 'preview',       href: '/dashboard-preview' },

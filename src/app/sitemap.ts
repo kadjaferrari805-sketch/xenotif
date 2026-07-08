@@ -4,6 +4,7 @@ import { PRODUCTS } from '@/lib/boutique/products'
 import { getAllPosts } from '@/lib/blog/posts'
 import { programSlugs, localesForProgram } from '@/lib/programs/registry'
 import { exerciceSlugs, localesForExercice } from '@/lib/exercices/registry'
+import { outilSlugs } from '@/lib/outils/registry'
 import { routing } from '@/i18n/routing'
 
 const BASE_URL = 'https://xenotif.com'
@@ -37,6 +38,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ['/', { changeFrequency: 'daily', priority: 1.0 }],
     ['/a-propos', { changeFrequency: 'monthly', priority: 0.6 }],
     ['/defis', { changeFrequency: 'weekly', priority: 0.7 }],
+    ['/outils', { changeFrequency: 'monthly', priority: 0.7 }],
+    ...outilSlugs().map((s) => [`/outils/${s}`, { changeFrequency: 'monthly' as ChangeFreq, priority: 0.6 }] as [string, { changeFrequency: ChangeFreq; priority: number }]),
     ['/dashboard-preview', { changeFrequency: 'monthly', priority: 0.7 }],
     ['/boutique', { changeFrequency: 'daily', priority: 0.9 }],
     ['/boutique/catalogue', { changeFrequency: 'daily', priority: 0.8 }],
