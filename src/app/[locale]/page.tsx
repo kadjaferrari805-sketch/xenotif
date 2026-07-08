@@ -3,6 +3,7 @@ import { TrustRow } from '@/components/home/TrustRow'
 import { MarqueeStrip } from '@/components/home/MarqueeStrip'
 import { ProofBar } from '@/components/home/ProofBar'
 import { WhyXenotif } from '@/components/home/WhyXenotif'
+import { Challenges } from '@/components/home/Challenges'
 import { Features } from '@/components/home/Features'
 import { HowItWorks } from '@/components/home/HowItWorks'
 import { ExperiencePreview } from '@/components/home/ExperiencePreview'
@@ -79,6 +80,8 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       <PromoBanner variant="promo" product={promoProduct} />
       <CoachAd />
       <IntensityLevels />
+      {/* Défis — engagement/rétention (objectifs guidés → /defis) */}
+      <Challenges />
       {/* Bandeau pub — Entraîne-toi comme jamais */}
       <AdBanner
         id="train"

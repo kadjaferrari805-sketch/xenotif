@@ -754,6 +754,48 @@
           "desc": "KI-Coach, Ernährungsplan und Tracking — Kraft, Running, HIIT. Alles an einem Ort, 24/7, auf dein Niveau abgestimmt."
         }
       ]
+    },
+    "challenges": {
+      "eyebrow": "Xenotif Challenges",
+      "title": "Nimm eine Challenge an. Bleib motiviert.",
+      "subtitle": "Ein klares Ziel, ein Zeitraum, ein Plan. Wähle deine Challenge und lass dich von Xenotif begleiten — Tag für Tag.",
+      "seeAll": "Alle Challenges ansehen",
+      "startChallenge": "Challenge annehmen",
+      "metaTitle": "Fitness-Challenges — 30 Tage, Cardio, Kraft, Definition",
+      "metaDescription": "Nimm eine Fitness-Challenge mit Xenotif an: 30 Tage, Cardio-Woche, Kraft-Streak, Definitions-Sprint. Klares Ziel, tägliches Tracking, kostenlos starten.",
+      "pageTitle": "Fitness-Challenges",
+      "pageSubtitle": "Ein Ziel, ein Zeitraum, ein Plan. Schließ dich 12.000+ Xenotif-Athleten an und nimm deine Challenge an — die App begleitet dich und hält dich Tag für Tag am Ball.",
+      "goalLabel": "Ziel",
+      "items": [
+        {
+          "title": "30-Tage-Challenge",
+          "goal": "1 Workout pro Tag, 30 Tage",
+          "duration": "30 Tage",
+          "level": "Alle Level",
+          "desc": "Die Challenge, die zur Gewohnheit wird. 30 Tage, ein von der App geführtes Workout pro Tag — Kraft, Cardio oder Mobilität. Am Ende gehört Training zu deinem Leben."
+        },
+        {
+          "title": "Cardio-Woche",
+          "goal": "7 Tage HIIT & Cardio",
+          "duration": "7 Tage",
+          "level": "Mittel",
+          "desc": "Eine intensive Woche, um deine Ausdauer neu aufzubauen und Fett zu verbrennen. Kurze HIIT-Einheiten, ohne Geräte, 20-30 Min pro Tag."
+        },
+        {
+          "title": "Kraft-Streak",
+          "goal": "3 Kraft-Workouts/Woche, 4 Wochen",
+          "duration": "4 Wochen",
+          "level": "Anfänger → Fortgeschritten",
+          "desc": "Baue Muskeln durch Beständigkeit auf. 3 Einheiten pro Woche einen Monat lang, strukturiertes Programm und verfolgter Fortschritt."
+        },
+        {
+          "title": "Definitions-Sprint",
+          "goal": "Ernährung + Cardio, 14 Tage",
+          "duration": "14 Tage",
+          "level": "Alle Level",
+          "desc": "2 Wochen, um deine Definition anzukurbeln: Ernährungsplan, gezieltes Cardio und tägliches Tracking. Ideal vor dem Sommer oder einem Event."
+        }
+      ]
     }
   },
   "auth": {

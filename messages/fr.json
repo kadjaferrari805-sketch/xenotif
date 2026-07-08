@@ -754,6 +754,48 @@
           "desc": "Coach IA, plan nutrition et suivi — musculation, running, HIIT. Tout au même endroit, 24/7, adapté à ton niveau."
         }
       ]
+    },
+    "challenges": {
+      "eyebrow": "Défis Xenotif",
+      "title": "Relève un défi. Reste motivé.",
+      "subtitle": "Un objectif clair, une durée, un plan. Choisis ton défi et laisse Xenotif te guider — et te tenir responsable — jour après jour.",
+      "seeAll": "Voir tous les défis",
+      "startChallenge": "Relever le défi",
+      "metaTitle": "Défis fitness — 30 jours, cardio, force, sèche",
+      "metaDescription": "Relève un défi fitness avec Xenotif : 30 jours, semaine cardio, streak musculation, sèche express. Objectif clair, suivi jour par jour, gratuit pour commencer.",
+      "pageTitle": "Défis fitness",
+      "pageSubtitle": "Un objectif, une durée, un plan. Rejoins les 12 000+ athlètes Xenotif et relève ton défi — l’app te guide et te tient responsable, jour après jour.",
+      "goalLabel": "Objectif",
+      "items": [
+        {
+          "title": "Défi 30 Jours",
+          "goal": "1 séance par jour, 30 jours",
+          "duration": "30 jours",
+          "level": "Tous niveaux",
+          "desc": "Le défi qui installe l’habitude. 30 jours, une séance par jour guidée par l’app — muscu, cardio ou mobilité. À la fin, l’entraînement fait partie de ta vie."
+        },
+        {
+          "title": "Semaine Cardio",
+          "goal": "7 jours de HIIT & cardio",
+          "duration": "7 jours",
+          "level": "Intermédiaire",
+          "desc": "Une semaine intense pour relancer ta caisse et brûler du gras. Séances courtes de HIIT, sans matériel, 20-30 min par jour."
+        },
+        {
+          "title": "Streak Force",
+          "goal": "3 séances muscu / semaine, 4 semaines",
+          "duration": "4 semaines",
+          "level": "Débutant → Avancé",
+          "desc": "Construis du muscle avec de la régularité. 3 séances par semaine pendant un mois, programme structuré et progression suivie."
+        },
+        {
+          "title": "Sèche Express",
+          "goal": "Nutrition + cardio, 14 jours",
+          "duration": "14 jours",
+          "level": "Tous niveaux",
+          "desc": "2 semaines pour amorcer ta définition : plan nutrition, cardio ciblé et suivi quotidien. Idéal avant l’été ou un événement."
+        }
+      ]
     }
   },
   "auth": {

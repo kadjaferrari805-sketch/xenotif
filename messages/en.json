@@ -754,6 +754,48 @@
           "desc": "AI coach, nutrition plan and tracking — strength, running, HIIT. All in one place, 24/7, tailored to your level."
         }
       ]
+    },
+    "challenges": {
+      "eyebrow": "Xenotif Challenges",
+      "title": "Take on a challenge. Stay motivated.",
+      "subtitle": "A clear goal, a timeframe, a plan. Pick your challenge and let Xenotif guide you — and keep you accountable — day after day.",
+      "seeAll": "See all challenges",
+      "startChallenge": "Take the challenge",
+      "metaTitle": "Fitness challenges — 30 days, cardio, strength, cutting",
+      "metaDescription": "Take on a fitness challenge with Xenotif: 30 days, cardio week, strength streak, cutting sprint. Clear goal, day-by-day tracking, free to start.",
+      "pageTitle": "Fitness challenges",
+      "pageSubtitle": "One goal, one timeframe, one plan. Join 12,000+ Xenotif athletes and take on your challenge — the app guides you and keeps you accountable, day after day.",
+      "goalLabel": "Goal",
+      "items": [
+        {
+          "title": "30-Day Challenge",
+          "goal": "1 workout a day, 30 days",
+          "duration": "30 days",
+          "level": "All levels",
+          "desc": "The challenge that builds the habit. 30 days, one app-guided workout a day — strength, cardio or mobility. By the end, training is part of your life."
+        },
+        {
+          "title": "Cardio Week",
+          "goal": "7 days of HIIT & cardio",
+          "duration": "7 days",
+          "level": "Intermediate",
+          "desc": "One intense week to rebuild your engine and burn fat. Short HIIT sessions, no equipment, 20-30 min a day."
+        },
+        {
+          "title": "Strength Streak",
+          "goal": "3 strength workouts/week, 4 weeks",
+          "duration": "4 weeks",
+          "level": "Beginner → Advanced",
+          "desc": "Build muscle through consistency. 3 sessions a week for a month, structured program and tracked progress."
+        },
+        {
+          "title": "Cutting Sprint",
+          "goal": "Nutrition + cardio, 14 days",
+          "duration": "14 days",
+          "level": "All levels",
+          "desc": "2 weeks to kick-start your definition: nutrition plan, targeted cardio and daily tracking. Perfect before summer or an event."
+        }
+      ]
     }
   },
   "auth": {
