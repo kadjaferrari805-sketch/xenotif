@@ -175,7 +175,8 @@
         "preview": "Bereich-Vorschau",
         "tarifs": "Preise",
         "faq": "FAQ",
-        "defis": "Challenges"
+        "defis": "Challenges",
+        "exercices": "Übungen"
       }
     },
     "skipLink": "Zum Hauptinhalt springen",
@@ -1768,5 +1769,23 @@
     "faqA4": "Du schaltest das komplette Programm 7 Tage lang kostenlos frei, ohne Kreditkarte. Danach erhältst du mit dem Xenotif-Abo Zugriff auf alle Programme, das Fortschritts-Tracking und den KI-Coach. Kündigung mit einem Klick.",
     "faqQ5": "Kann ich diesem Programm über die Xenotif-App folgen?",
     "faqA5": "Ja. Der Tag-für-Tag-Kalender, die Workouts, der Ernährungsplan und das Fortschritts-Tracking sind in die App integriert, mit Erinnerungen, die dich motiviert halten."
+  },
+  "exercices": {
+    "eyebrow": "Xenotif Übung",
+    "musclesLabel": "Zielmuskeln",
+    "levelLabel": "Niveau",
+    "techniqueLabel": "Technik",
+    "mistakesLabel": "Häufige Fehler",
+    "backToHub": "Alle Übungen",
+    "seeExercise": "Übung ansehen",
+    "metaSuffix": "Technik, Zielmuskeln, zu vermeidende Fehler",
+    "ctaTitle": "Setz es in die Praxis um",
+    "ctaDesc": "Diese Übung ist Teil der Xenotif-Programme — komplette Workouts, Fortschritts-Tracking und KI-Coach. Kostenlos starten, ohne Karte.",
+    "ctaButton": "Kostenlos starten",
+    "hubEyebrow": "Xenotif Übungen",
+    "hubTitle": "Übungsbibliothek",
+    "hubSubtitle": "Schritt-für-Schritt-Technik, Zielmuskeln und zu vermeidende Fehler für jede Übung — Kraft, Cardio, Körpergewicht. Kostenlos.",
+    "hubMetaTitle": "Übungen — Technik, Zielmuskeln und Fehler",
+    "hubMetaDesc": "Xenotif-Übungsbibliothek: detaillierte Technik, beanspruchte Muskeln und häufige Fehler. Kraft, Cardio und Körpergewicht, einfach erklärt."
   }
 }

@@ -3,6 +3,7 @@ import { DISCIPLINE_CONTENT } from '@/lib/disciplines'
 import { PRODUCTS } from '@/lib/boutique/products'
 import { getAllPosts } from '@/lib/blog/posts'
 import { programSlugs, localesForProgram } from '@/lib/programs/registry'
+import { exerciceSlugs, localesForExercice } from '@/lib/exercices/registry'
 import { routing } from '@/i18n/routing'
 
 const BASE_URL = 'https://xenotif.com'
@@ -77,6 +78,27 @@ export default function sitemap(): MetadataRoute.Sitemap {
         lastModified: new Date(),
         changeFrequency: 'monthly' as ChangeFreq,
         priority: 0.8,
+        alternates: { languages },
+      }
+    }),
+    // Exercices : hub + fiches, avec alternates hreflang par langue dispo.
+    {
+      url: `${BASE_URL}/exercices`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly' as ChangeFreq,
+      priority: 0.7,
+      alternates: { languages: { fr: `${BASE_URL}/exercices`, en: `${BASE_URL}/en/exercices`, de: `${BASE_URL}/de/exercices` } },
+    },
+    ...exerciceSlugs().map(slug => {
+      const languages: Record<string, string> = {}
+      for (const l of localesForExercice(slug)) {
+        languages[l] = l === 'fr' ? `${BASE_URL}/exercices/${slug}` : `${BASE_URL}/${l}/exercices/${slug}`
+      }
+      return {
+        url: `${BASE_URL}/exercices/${slug}`,
+        lastModified: new Date(),
+        changeFrequency: 'monthly' as ChangeFreq,
+        priority: 0.6,
         alternates: { languages },
       }
     }),

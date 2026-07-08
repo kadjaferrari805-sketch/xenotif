@@ -175,7 +175,8 @@
         "preview": "Aperçu de l'espace",
         "tarifs": "Tarifs",
         "faq": "FAQ",
-        "defis": "Défis"
+        "defis": "Défis",
+        "exercices": "Exercices"
       }
     },
     "skipLink": "Aller au contenu principal",
@@ -1768,5 +1769,23 @@
     "faqA4": "Tu débloques le programme complet gratuitement pendant 7 jours, sans carte bancaire. Ensuite, l’abonnement Xenotif donne accès à tous les programmes, au suivi et au coach IA. Résiliation en 1 clic.",
     "faqQ5": "Puis-je suivre ce programme depuis l’application Xenotif ?",
     "faqA5": "Oui. Le calendrier jour par jour, les séances, le plan nutrition et le suivi de progression sont intégrés à l’application, avec des rappels pour rester motivé."
+  },
+  "exercices": {
+    "eyebrow": "Exercice Xenotif",
+    "musclesLabel": "Muscles ciblés",
+    "levelLabel": "Niveau",
+    "techniqueLabel": "Technique",
+    "mistakesLabel": "Erreurs fréquentes",
+    "backToHub": "Tous les exercices",
+    "seeExercise": "Voir la fiche",
+    "metaSuffix": "technique, muscles ciblés, erreurs à éviter",
+    "ctaTitle": "Passe à la pratique",
+    "ctaDesc": "Cet exercice fait partie des programmes Xenotif — séances complètes, progression et coach IA. Commence gratuitement, sans carte.",
+    "ctaButton": "Commencer gratuitement",
+    "hubEyebrow": "Exercices Xenotif",
+    "hubTitle": "Bibliothèque d’exercices",
+    "hubSubtitle": "Technique pas à pas, muscles ciblés et erreurs à éviter pour chaque exercice — musculation, cardio, poids du corps. Gratuit.",
+    "hubMetaTitle": "Exercices — technique, muscles ciblés et erreurs",
+    "hubMetaDesc": "Bibliothèque d’exercices Xenotif : technique détaillée, muscles travaillés et erreurs fréquentes. Musculation, cardio et poids du corps, expliqués simplement."
   }
 }
