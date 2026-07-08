@@ -1,6 +1,7 @@
 import { Hero } from '@/components/home/Hero'
 import { FeatureCards } from '@/components/home/FeatureCards'
 import { WhyXenotif } from '@/components/home/WhyXenotif'
+import { VideoBand } from '@/components/home/VideoBand'
 import { ExperiencePreview } from '@/components/home/ExperiencePreview'
 import { Pricing } from '@/components/home/Pricing'
 import { Reviews } from '@/components/home/Reviews'
@@ -36,6 +37,8 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       <FeatureCards />
       {/* Pourquoi Xenotif — 3 piliers de différenciation */}
       <WhyXenotif />
+      {/* Bande vidéo pleine largeur — créative de marque « coureur » */}
+      <VideoBand />
       {/* Aperçu de l'espace membre — « dive into details » */}
       <ExperiencePreview />
       {/* Abonnement */}
