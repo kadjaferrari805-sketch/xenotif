@@ -10,7 +10,8 @@ describe('Nav', () => {
 
   it('renders navigation links', () => {
     renderWithIntl(<Nav />)
-    expect(screen.getByRole('link', { name: /disciplines/i })).toBeInTheDocument()
+    // « Disciplines » est le déclencheur du méga-menu (bouton), pas un lien direct.
+    expect(screen.getByRole('button', { name: /disciplines/i })).toBeInTheDocument()
     expect(screen.getByRole('link', { name: /blog/i })).toBeInTheDocument()
   })
 
