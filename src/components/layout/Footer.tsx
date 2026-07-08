@@ -19,6 +19,7 @@ const PROG_LINKS = [
   { key: 'intermediaire', href: '/programmes/musculation-intermediaire' },
   { key: 'avance',        href: '/programmes/musculation-avance' },
   { key: 'elite',         href: '/programmes/prise-de-masse-12s' },
+  { key: 'defis',         href: '/defis' },
   { key: 'coachingIA',    href: '/dashboard/coach' },
   { key: 'preview',       href: '/dashboard-preview' },
   { key: 'tarifs',        href: '/#tarifs' },

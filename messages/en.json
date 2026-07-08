@@ -135,7 +135,8 @@
       "rejoindre": "Join",
       "monEspace": "My space",
       "ouvrirMenu": "Open navigation menu",
-      "fermerMenu": "Close menu"
+      "fermerMenu": "Close menu",
+      "defis": "Challenges"
     },
     "footer": {
       "ariaFooter": "Footer",
@@ -160,7 +161,8 @@
         "coachingIA": "AI Coaching",
         "preview": "Space preview",
         "tarifs": "Pricing",
-        "faq": "FAQ"
+        "faq": "FAQ",
+        "defis": "Challenges"
       }
     },
     "skipLink": "Skip to main content",

@@ -135,7 +135,8 @@
       "rejoindre": "Mitmachen",
       "monEspace": "Mein Bereich",
       "ouvrirMenu": "Navigationsmenü öffnen",
-      "fermerMenu": "Menü schließen"
+      "fermerMenu": "Menü schließen",
+      "defis": "Challenges"
     },
     "footer": {
       "ariaFooter": "Fußzeile",
@@ -160,7 +161,8 @@
         "coachingIA": "KI-Coaching",
         "preview": "Bereich-Vorschau",
         "tarifs": "Preise",
-        "faq": "FAQ"
+        "faq": "FAQ",
+        "defis": "Challenges"
       }
     },
     "skipLink": "Zum Hauptinhalt springen",
