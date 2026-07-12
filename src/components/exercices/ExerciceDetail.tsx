@@ -44,7 +44,7 @@ function Section({ icon: Icon, title, children }: { icon: React.ElementType; tit
 }
 
 // ─── Média : vidéo (placeholder si absent) ──────────────────────────────────
-function VideoBlock({ url, t }: { url?: string; t: ReturnType<typeof useTranslations> }) {
+function VideoBlock({ url, poster, t }: { url?: string; poster?: string; t: ReturnType<typeof useTranslations> }) {
   const { ref, inView } = useInView({ triggerOnce: true, rootMargin: '200px' })
   const videoRef = useRef<HTMLVideoElement>(null)
   const [rate, setRate] = useState(1)
@@ -54,9 +54,9 @@ function VideoBlock({ url, t }: { url?: string; t: ReturnType<typeof useTranslat
     <div ref={ref}>
       {url ? (
         <>
-          <div className="relative rounded-2xl overflow-hidden bg-black aspect-video">
+          <div className="relative rounded-2xl overflow-hidden bg-sport-dark aspect-video">
             {inView && (
-              <video ref={videoRef} controls preload="none" playsInline className="w-full h-full">
+              <video ref={videoRef} controls autoPlay muted loop playsInline preload="metadata" poster={poster} className="w-full h-full object-contain">
                 <source src={url} type="video/mp4" />
               </video>
             )}
@@ -305,7 +305,7 @@ export function ExerciceDetail({ detail, locale }: { detail: Detail; locale: str
       {/* 1. Vidéo + 2. GIF */}
       <div className="grid md:grid-cols-2 gap-6">
         <Section icon={Film} title={t('sec_video')}>
-          <VideoBlock url={d.media.videoUrl} t={t} />
+          <VideoBlock url={d.media.videoUrl} poster={d.media.videoPoster} t={t} />
         </Section>
         <Section icon={Play} title={t('sec_gif')}>
           {d.media.gifUrl ? (

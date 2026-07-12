@@ -1,3 +1,5 @@
+import { existsSync } from 'node:fs'
+import { join } from 'node:path'
 import { getExercice, exercicesForLocale } from './registry'
 
 // Fiche exercice complète (façon Nike Training Club / Freeletics), dérivée
@@ -17,6 +19,7 @@ export type ExerciceStats = {
 
 export type ExerciceMedia = {
   videoUrl?: string
+  videoPoster?: string
   gifUrl?: string
   images?: string[]
 }
@@ -184,6 +187,11 @@ function similarFor(slug: string, primary: string[], locale: string) {
   return picked
 }
 
+// Détecte un média déposé dans public/ au build (vidéo/poster par exercice).
+function fileUrl(rel: string): string | undefined {
+  return existsSync(join(process.cwd(), 'public', rel)) ? `/${rel}` : undefined
+}
+
 export function getExerciceDetail(slug: string, locale: string): ExerciceDetail | undefined {
   const ex = getExercice(slug, locale)
   if (!ex) return undefined
@@ -211,6 +219,8 @@ export function getExerciceDetail(slug: string, locale: string): ExerciceDetail 
     stats: STATS[difficulty],
     media: {
       ...MEDIA_OVERRIDES[slug],
+      videoUrl: MEDIA_OVERRIDES[slug]?.videoUrl ?? fileUrl(`videos/exercises/${slug}.mp4`),
+      videoPoster: MEDIA_OVERRIDES[slug]?.videoPoster ?? fileUrl(`videos/exercises/${slug}.jpg`),
       gifUrl: MEDIA_OVERRIDES[slug]?.gifUrl ?? `/gifs/${patternFor(ex.name)}.gif`,
     },
   }
