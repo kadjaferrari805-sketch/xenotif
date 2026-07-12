@@ -52,8 +52,9 @@ const PATTERN_RULES: { pattern: string; re: RegExp }[] = [
   { pattern: 'crunch', re: /crunch|abdo|relev|sit-?up|russian|roue abdominal|leg raise|jambes suspendu/ },
   { pattern: 'curl', re: /curl|biceps|marteau/ },
   { pattern: 'press', re: /developpe militaire|militaire|overhead|elevation|epaule|pike|shoulder/ },
-  { pattern: 'pushup', re: /pompes|push|dips|developpe (couche|incline)|pec|face pull/ },
-  { pattern: 'hinge', re: /souleve|deadlift|romanian|hip thrust|pont fessier|good morning|rowing|tirage|traction|pull|hinge/ },
+  { pattern: 'pushup', re: /pompes|push|dips|developpe (couche|incline)|pec/ },
+  { pattern: 'pull', re: /traction|tirage|rowing|pull-over|pull|face pull/ },
+  { pattern: 'hinge', re: /souleve|deadlift|romanian|hip thrust|pont fessier|good morning|hinge/ },
   { pattern: 'lunge', re: /fente|lunge|split squat|bulgar|montee/ },
   { pattern: 'squat', re: /squat|chaise|wall sit|presse|leg (press|extension|curl)|goblet|mollet|pistol|jumping squat|fessier/ },
 ]
