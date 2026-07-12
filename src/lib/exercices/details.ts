@@ -200,6 +200,7 @@ export function getExerciceDetail(slug: string, locale: string): ExerciceDetail 
   const primaryMuscles = allMuscles.slice(0, Math.max(1, Math.ceil(allMuscles.length / 2)))
   const secondaryMuscles = allMuscles.slice(primaryMuscles.length)
   const difficulty = difficultyFromLevel(ex.level)
+  const pat = patternFor(ex.name)
 
   return {
     slug,
@@ -221,7 +222,8 @@ export function getExerciceDetail(slug: string, locale: string): ExerciceDetail 
       ...MEDIA_OVERRIDES[slug],
       videoUrl: MEDIA_OVERRIDES[slug]?.videoUrl ?? fileUrl(`videos/exercises/${slug}.mp4`),
       videoPoster: MEDIA_OVERRIDES[slug]?.videoPoster ?? fileUrl(`videos/exercises/${slug}.jpg`),
-      gifUrl: MEDIA_OVERRIDES[slug]?.gifUrl ?? `/gifs/${patternFor(ex.name)}.gif`,
+      gifUrl: MEDIA_OVERRIDES[slug]?.gifUrl ?? `/gifs/${pat}.gif`,
+      images: MEDIA_OVERRIDES[slug]?.images ?? [1, 2, 3, 4, 5].map((n) => `/steps/${pat}-${n}.jpg`),
     },
   }
 }

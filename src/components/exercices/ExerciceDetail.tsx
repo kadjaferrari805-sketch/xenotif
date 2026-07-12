@@ -326,15 +326,19 @@ export function ExerciceDetail({ detail, locale }: { detail: Detail; locale: str
         <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
           {stepLabels.map((label, i) => (
             <div key={i} className="rounded-xl overflow-hidden">
-              <div className="relative aspect-square bg-gradient-to-br from-sport-dark to-sport-card border border-sport-border flex items-center justify-center">
-                <div className="absolute inset-0 animate-pulse bg-white/[0.02]" />
-                <span className="text-2xl font-black text-sport-orange/40 relative">{i + 1}</span>
+              <div className="relative aspect-square rounded-xl overflow-hidden bg-gradient-to-b from-white to-[#e8e8ee] border border-sport-border">
+                {d.media.images?.[i] ? (
+                  <Image src={d.media.images[i]} alt={`${label} — ${d.name}`} fill sizes="(max-width:768px) 45vw, 18vw" className="object-contain" />
+                ) : (
+                  <div className="absolute inset-0 flex items-center justify-center"><span className="text-2xl font-black text-sport-orange/40">{i + 1}</span></div>
+                )}
+                <span className="absolute top-1.5 left-1.5 w-5 h-5 rounded-full bg-sport-orange text-white text-[10px] font-black flex items-center justify-center">{i + 1}</span>
               </div>
               <p className="text-[11px] text-sport-gray mt-1.5 text-center">{label}</p>
             </div>
           ))}
         </div>
-        <p className="text-[11px] text-sport-gray mt-3">{t('stepsSoon')}</p>
+        {!d.media.images?.length && <p className="text-[11px] text-sport-gray mt-3">{t('stepsSoon')}</p>}
       </Section>
 
       {/* 4. Description */}
