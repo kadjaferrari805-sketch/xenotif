@@ -309,7 +309,7 @@ export function ExerciceDetail({ detail, locale }: { detail: Detail; locale: str
         </Section>
         <Section icon={Play} title={t('sec_gif')}>
           {d.media.gifUrl ? (
-            <div className="relative w-full aspect-video rounded-2xl overflow-hidden bg-sport-dark border border-sport-border">
+            <div className="relative w-full aspect-video rounded-2xl overflow-hidden bg-gradient-to-b from-white to-[#e8e8ee] border border-sport-border">
               <Image src={d.media.gifUrl} alt={d.name} fill unoptimized className="object-contain" />
             </div>
           ) : (
