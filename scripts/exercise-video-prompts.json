@@ -1,0 +1,374 @@
+[
+  {
+    "slug": "burpee",
+    "fr": "Burpee",
+    "pattern": "jumpingjack",
+    "prompt": "Cinematic fitness demonstration: a fit athlete in fitted black sportswear performing a jumping-jack cardio move (\"Burpee\") on a seamless bright white studio background, full body visible and centered, performing jumping jacks, arms and legs opening out and returning together in rhythm, smooth continuous controlled repetitions, soft even studio lighting with a soft floor shadow, front three-quarter camera angle, sharp focus, photorealistic, 5-second seamless loop, no text, no logos, no captions."
+  },
+  {
+    "slug": "chaise-contre-le-mur",
+    "fr": "Chaise contre le mur",
+    "pattern": "squat",
+    "prompt": "Cinematic fitness demonstration: a fit athlete in fitted black sportswear performing a squat (\"Chaise contre le mur\") on a seamless bright white studio background, full body visible and centered, lowering into a controlled squat and standing back up, knees tracking over the toes, chest up, smooth continuous controlled repetitions, soft even studio lighting with a soft floor shadow, front three-quarter camera angle, sharp focus, photorealistic, 5-second seamless loop, no text, no logos, no captions."
+  },
+  {
+    "slug": "crunch",
+    "fr": "Crunch",
+    "pattern": "crunch",
+    "prompt": "Cinematic fitness demonstration: a fit athlete in fitted black sportswear performing a ab crunch (\"Crunch\") on a seamless bright white studio background, full body visible and centered, lying on the back, curling the upper torso up toward the knees and lowering with control, smooth continuous controlled repetitions, soft even studio lighting with a soft floor shadow, front three-quarter camera angle, sharp focus, photorealistic, 5-second seamless loop, no text, no logos, no captions."
+  },
+  {
+    "slug": "curl-biceps",
+    "fr": "Curl biceps",
+    "pattern": "curl",
+    "prompt": "Cinematic fitness demonstration: a fit athlete in fitted black sportswear performing a biceps curl (\"Curl biceps\") on a seamless bright white studio background, full body visible and centered, standing tall, curling the weight up by bending the elbows, then lowering slowly, smooth continuous controlled repetitions, soft even studio lighting with a soft floor shadow, front three-quarter camera angle, sharp focus, photorealistic, 5-second seamless loop, no text, no logos, no captions."
+  },
+  {
+    "slug": "curl-marteau",
+    "fr": "Curl marteau",
+    "pattern": "curl",
+    "prompt": "Cinematic fitness demonstration: a fit athlete in fitted black sportswear performing a biceps curl (\"Curl marteau\") on a seamless bright white studio background, full body visible and centered, standing tall, curling the weight up by bending the elbows, then lowering slowly, smooth continuous controlled repetitions, soft even studio lighting with a soft floor shadow, front three-quarter camera angle, sharp focus, photorealistic, 5-second seamless loop, no text, no logos, no captions."
+  },
+  {
+    "slug": "developpe-couche",
+    "fr": "Développé couché",
+    "pattern": "pushup",
+    "prompt": "Cinematic fitness demonstration: a fit athlete in fitted black sportswear performing a push-up (\"Développé couché\") on a seamless bright white studio background, full body visible and centered, in a straight-body plank, lowering the chest toward the floor and pressing back up, smooth continuous controlled repetitions, soft even studio lighting with a soft floor shadow, front three-quarter camera angle, sharp focus, photorealistic, 5-second seamless loop, no text, no logos, no captions."
+  },
+  {
+    "slug": "developpe-incline-halteres",
+    "fr": "Développé incliné haltères",
+    "pattern": "pushup",
+    "prompt": "Cinematic fitness demonstration: a fit athlete in fitted black sportswear performing a push-up (\"Développé incliné haltères\") on a seamless bright white studio background, full body visible and centered, in a straight-body plank, lowering the chest toward the floor and pressing back up, smooth continuous controlled repetitions, soft even studio lighting with a soft floor shadow, front three-quarter camera angle, sharp focus, photorealistic, 5-second seamless loop, no text, no logos, no captions."
+  },
+  {
+    "slug": "developpe-militaire",
+    "fr": "Développé militaire",
+    "pattern": "press",
+    "prompt": "Cinematic fitness demonstration: a fit athlete in fitted black sportswear performing a overhead shoulder press (\"Développé militaire\") on a seamless bright white studio background, full body visible and centered, standing, pressing the weights from the shoulders straight overhead and back down, smooth continuous controlled repetitions, soft even studio lighting with a soft floor shadow, front three-quarter camera angle, sharp focus, photorealistic, 5-second seamless loop, no text, no logos, no captions."
+  },
+  {
+    "slug": "dips-sur-banc",
+    "fr": "Dips sur banc",
+    "pattern": "pushup",
+    "prompt": "Cinematic fitness demonstration: a fit athlete in fitted black sportswear performing a push-up (\"Dips sur banc\") on a seamless bright white studio background, full body visible and centered, in a straight-body plank, lowering the chest toward the floor and pressing back up, smooth continuous controlled repetitions, soft even studio lighting with a soft floor shadow, front three-quarter camera angle, sharp focus, photorealistic, 5-second seamless loop, no text, no logos, no captions."
+  },
+  {
+    "slug": "dips-sur-chaise",
+    "fr": "Dips sur chaise",
+    "pattern": "pushup",
+    "prompt": "Cinematic fitness demonstration: a fit athlete in fitted black sportswear performing a push-up (\"Dips sur chaise\") on a seamless bright white studio background, full body visible and centered, in a straight-body plank, lowering the chest toward the floor and pressing back up, smooth continuous controlled repetitions, soft even studio lighting with a soft floor shadow, front three-quarter camera angle, sharp focus, photorealistic, 5-second seamless loop, no text, no logos, no captions."
+  },
+  {
+    "slug": "dips",
+    "fr": "Dips",
+    "pattern": "pushup",
+    "prompt": "Cinematic fitness demonstration: a fit athlete in fitted black sportswear performing a push-up (\"Dips\") on a seamless bright white studio background, full body visible and centered, in a straight-body plank, lowering the chest toward the floor and pressing back up, smooth continuous controlled repetitions, soft even studio lighting with a soft floor shadow, front three-quarter camera angle, sharp focus, photorealistic, 5-second seamless loop, no text, no logos, no captions."
+  },
+  {
+    "slug": "elevations-laterales",
+    "fr": "Élévations latérales",
+    "pattern": "press",
+    "prompt": "Cinematic fitness demonstration: a fit athlete in fitted black sportswear performing a overhead shoulder press (\"Élévations latérales\") on a seamless bright white studio background, full body visible and centered, standing, pressing the weights from the shoulders straight overhead and back down, smooth continuous controlled repetitions, soft even studio lighting with a soft floor shadow, front three-quarter camera angle, sharp focus, photorealistic, 5-second seamless loop, no text, no logos, no captions."
+  },
+  {
+    "slug": "extension-triceps-poulie",
+    "fr": "Extension triceps poulie",
+    "pattern": "squat",
+    "prompt": "Cinematic fitness demonstration: a fit athlete in fitted black sportswear performing a squat (\"Extension triceps poulie\") on a seamless bright white studio background, full body visible and centered, lowering into a controlled squat and standing back up, knees tracking over the toes, chest up, smooth continuous controlled repetitions, soft even studio lighting with a soft floor shadow, front three-quarter camera angle, sharp focus, photorealistic, 5-second seamless loop, no text, no logos, no captions."
+  },
+  {
+    "slug": "extension-triceps",
+    "fr": "Extension triceps",
+    "pattern": "squat",
+    "prompt": "Cinematic fitness demonstration: a fit athlete in fitted black sportswear performing a squat (\"Extension triceps\") on a seamless bright white studio background, full body visible and centered, lowering into a controlled squat and standing back up, knees tracking over the toes, chest up, smooth continuous controlled repetitions, soft even studio lighting with a soft floor shadow, front three-quarter camera angle, sharp focus, photorealistic, 5-second seamless loop, no text, no logos, no captions."
+  },
+  {
+    "slug": "face-pull",
+    "fr": "Face pull",
+    "pattern": "pull",
+    "prompt": "Cinematic fitness demonstration: a fit athlete in fitted black sportswear performing a back row / pulling exercise (\"Face pull\") on a seamless bright white studio background, full body visible and centered, pulling the elbows back and down in a rowing motion, squeezing the shoulder blades together, smooth continuous controlled repetitions, soft even studio lighting with a soft floor shadow, front three-quarter camera angle, sharp focus, photorealistic, 5-second seamless loop, no text, no logos, no captions."
+  },
+  {
+    "slug": "fentes-alternees",
+    "fr": "Fentes alternées",
+    "pattern": "lunge",
+    "prompt": "Cinematic fitness demonstration: a fit athlete in fitted black sportswear performing a forward lunge (\"Fentes alternées\") on a seamless bright white studio background, full body visible and centered, stepping forward into a lunge, front knee bending to about 90 degrees, then returning, smooth continuous controlled repetitions, soft even studio lighting with a soft floor shadow, front three-quarter camera angle, sharp focus, photorealistic, 5-second seamless loop, no text, no logos, no captions."
+  },
+  {
+    "slug": "fentes-halteres",
+    "fr": "Fentes haltères",
+    "pattern": "lunge",
+    "prompt": "Cinematic fitness demonstration: a fit athlete in fitted black sportswear performing a forward lunge (\"Fentes haltères\") on a seamless bright white studio background, full body visible and centered, stepping forward into a lunge, front knee bending to about 90 degrees, then returning, smooth continuous controlled repetitions, soft even studio lighting with a soft floor shadow, front three-quarter camera angle, sharp focus, photorealistic, 5-second seamless loop, no text, no logos, no captions."
+  },
+  {
+    "slug": "fentes-sautees",
+    "fr": "Fentes sautées",
+    "pattern": "lunge",
+    "prompt": "Cinematic fitness demonstration: a fit athlete in fitted black sportswear performing a forward lunge (\"Fentes sautées\") on a seamless bright white studio background, full body visible and centered, stepping forward into a lunge, front knee bending to about 90 degrees, then returning, smooth continuous controlled repetitions, soft even studio lighting with a soft floor shadow, front three-quarter camera angle, sharp focus, photorealistic, 5-second seamless loop, no text, no logos, no captions."
+  },
+  {
+    "slug": "fentes",
+    "fr": "Fentes",
+    "pattern": "lunge",
+    "prompt": "Cinematic fitness demonstration: a fit athlete in fitted black sportswear performing a forward lunge (\"Fentes\") on a seamless bright white studio background, full body visible and centered, stepping forward into a lunge, front knee bending to about 90 degrees, then returning, smooth continuous controlled repetitions, soft even studio lighting with a soft floor shadow, front three-quarter camera angle, sharp focus, photorealistic, 5-second seamless loop, no text, no logos, no captions."
+  },
+  {
+    "slug": "foulees-bondissantes",
+    "fr": "Foulées bondissantes",
+    "pattern": "squat",
+    "prompt": "Cinematic fitness demonstration: a fit athlete in fitted black sportswear performing a squat (\"Foulées bondissantes\") on a seamless bright white studio background, full body visible and centered, lowering into a controlled squat and standing back up, knees tracking over the toes, chest up, smooth continuous controlled repetitions, soft even studio lighting with a soft floor shadow, front three-quarter camera angle, sharp focus, photorealistic, 5-second seamless loop, no text, no logos, no captions."
+  },
+  {
+    "slug": "gainage-dynamique",
+    "fr": "Gainage dynamique",
+    "pattern": "plank",
+    "prompt": "Cinematic fitness demonstration: a fit athlete in fitted black sportswear performing a plank hold (\"Gainage dynamique\") on a seamless bright white studio background, full body visible and centered, holding a steady forearm plank, body in one straight line, core braced, smooth continuous controlled repetitions, soft even studio lighting with a soft floor shadow, front three-quarter camera angle, sharp focus, photorealistic, 5-second seamless loop, no text, no logos, no captions."
+  },
+  {
+    "slug": "gainage-lateral",
+    "fr": "Gainage latéral",
+    "pattern": "plank",
+    "prompt": "Cinematic fitness demonstration: a fit athlete in fitted black sportswear performing a plank hold (\"Gainage latéral\") on a seamless bright white studio background, full body visible and centered, holding a steady forearm plank, body in one straight line, core braced, smooth continuous controlled repetitions, soft even studio lighting with a soft floor shadow, front three-quarter camera angle, sharp focus, photorealistic, 5-second seamless loop, no text, no logos, no captions."
+  },
+  {
+    "slug": "gainage-planche",
+    "fr": "Gainage planche",
+    "pattern": "plank",
+    "prompt": "Cinematic fitness demonstration: a fit athlete in fitted black sportswear performing a plank hold (\"Gainage planche\") on a seamless bright white studio background, full body visible and centered, holding a steady forearm plank, body in one straight line, core braced, smooth continuous controlled repetitions, soft even studio lighting with a soft floor shadow, front three-quarter camera angle, sharp focus, photorealistic, 5-second seamless loop, no text, no logos, no captions."
+  },
+  {
+    "slug": "gammes-montees-de-genoux",
+    "fr": "Gammes : montées de genoux",
+    "pattern": "jumpingjack",
+    "prompt": "Cinematic fitness demonstration: a fit athlete in fitted black sportswear performing a jumping-jack cardio move (\"Gammes : montées de genoux\") on a seamless bright white studio background, full body visible and centered, performing jumping jacks, arms and legs opening out and returning together in rhythm, smooth continuous controlled repetitions, soft even studio lighting with a soft floor shadow, front three-quarter camera angle, sharp focus, photorealistic, 5-second seamless loop, no text, no logos, no captions."
+  },
+  {
+    "slug": "gammes-talons-fesses",
+    "fr": "Gammes : talons-fesses",
+    "pattern": "jumpingjack",
+    "prompt": "Cinematic fitness demonstration: a fit athlete in fitted black sportswear performing a jumping-jack cardio move (\"Gammes : talons-fesses\") on a seamless bright white studio background, full body visible and centered, performing jumping jacks, arms and legs opening out and returning together in rhythm, smooth continuous controlled repetitions, soft even studio lighting with a soft floor shadow, front three-quarter camera angle, sharp focus, photorealistic, 5-second seamless loop, no text, no logos, no captions."
+  },
+  {
+    "slug": "high-knees",
+    "fr": "High knees (montées de genoux)",
+    "pattern": "jumpingjack",
+    "prompt": "Cinematic fitness demonstration: a fit athlete in fitted black sportswear performing a jumping-jack cardio move (\"High knees (montées de genoux)\") on a seamless bright white studio background, full body visible and centered, performing jumping jacks, arms and legs opening out and returning together in rhythm, smooth continuous controlled repetitions, soft even studio lighting with a soft floor shadow, front three-quarter camera angle, sharp focus, photorealistic, 5-second seamless loop, no text, no logos, no captions."
+  },
+  {
+    "slug": "hip-thrust-leste",
+    "fr": "Hip thrust lesté",
+    "pattern": "hinge",
+    "prompt": "Cinematic fitness demonstration: a fit athlete in fitted black sportswear performing a hip-hinge / deadlift (\"Hip thrust lesté\") on a seamless bright white studio background, full body visible and centered, hinging at the hips with a flat neutral back, lowering the weight and driving the hips forward to stand, smooth continuous controlled repetitions, soft even studio lighting with a soft floor shadow, front three-quarter camera angle, sharp focus, photorealistic, 5-second seamless loop, no text, no logos, no captions."
+  },
+  {
+    "slug": "hip-thrust",
+    "fr": "Hip thrust (pont fessier lesté)",
+    "pattern": "hinge",
+    "prompt": "Cinematic fitness demonstration: a fit athlete in fitted black sportswear performing a hip-hinge / deadlift (\"Hip thrust (pont fessier lesté)\") on a seamless bright white studio background, full body visible and centered, hinging at the hips with a flat neutral back, lowering the weight and driving the hips forward to stand, smooth continuous controlled repetitions, soft even studio lighting with a soft floor shadow, front three-quarter camera angle, sharp focus, photorealistic, 5-second seamless loop, no text, no logos, no captions."
+  },
+  {
+    "slug": "jumping-jacks",
+    "fr": "Jumping jacks",
+    "pattern": "jumpingjack",
+    "prompt": "Cinematic fitness demonstration: a fit athlete in fitted black sportswear performing a jumping-jack cardio move (\"Jumping jacks\") on a seamless bright white studio background, full body visible and centered, performing jumping jacks, arms and legs opening out and returning together in rhythm, smooth continuous controlled repetitions, soft even studio lighting with a soft floor shadow, front three-quarter camera angle, sharp focus, photorealistic, 5-second seamless loop, no text, no logos, no captions."
+  },
+  {
+    "slug": "leg-curl",
+    "fr": "Leg curl",
+    "pattern": "curl",
+    "prompt": "Cinematic fitness demonstration: a fit athlete in fitted black sportswear performing a biceps curl (\"Leg curl\") on a seamless bright white studio background, full body visible and centered, standing tall, curling the weight up by bending the elbows, then lowering slowly, smooth continuous controlled repetitions, soft even studio lighting with a soft floor shadow, front three-quarter camera angle, sharp focus, photorealistic, 5-second seamless loop, no text, no logos, no captions."
+  },
+  {
+    "slug": "mollets-debout",
+    "fr": "Mollets debout",
+    "pattern": "squat",
+    "prompt": "Cinematic fitness demonstration: a fit athlete in fitted black sportswear performing a squat (\"Mollets debout\") on a seamless bright white studio background, full body visible and centered, lowering into a controlled squat and standing back up, knees tracking over the toes, chest up, smooth continuous controlled repetitions, soft even studio lighting with a soft floor shadow, front three-quarter camera angle, sharp focus, photorealistic, 5-second seamless loop, no text, no logos, no captions."
+  },
+  {
+    "slug": "montees-sur-step",
+    "fr": "Montées sur step",
+    "pattern": "lunge",
+    "prompt": "Cinematic fitness demonstration: a fit athlete in fitted black sportswear performing a forward lunge (\"Montées sur step\") on a seamless bright white studio background, full body visible and centered, stepping forward into a lunge, front knee bending to about 90 degrees, then returning, smooth continuous controlled repetitions, soft even studio lighting with a soft floor shadow, front three-quarter camera angle, sharp focus, photorealistic, 5-second seamless loop, no text, no logos, no captions."
+  },
+  {
+    "slug": "mountain-climbers",
+    "fr": "Mountain climbers",
+    "pattern": "jumpingjack",
+    "prompt": "Cinematic fitness demonstration: a fit athlete in fitted black sportswear performing a jumping-jack cardio move (\"Mountain climbers\") on a seamless bright white studio background, full body visible and centered, performing jumping jacks, arms and legs opening out and returning together in rhythm, smooth continuous controlled repetitions, soft even studio lighting with a soft floor shadow, front three-quarter camera angle, sharp focus, photorealistic, 5-second seamless loop, no text, no logos, no captions."
+  },
+  {
+    "slug": "pompes-declinees",
+    "fr": "Pompes déclinées",
+    "pattern": "pushup",
+    "prompt": "Cinematic fitness demonstration: a fit athlete in fitted black sportswear performing a push-up (\"Pompes déclinées\") on a seamless bright white studio background, full body visible and centered, in a straight-body plank, lowering the chest toward the floor and pressing back up, smooth continuous controlled repetitions, soft even studio lighting with a soft floor shadow, front three-quarter camera angle, sharp focus, photorealistic, 5-second seamless loop, no text, no logos, no captions."
+  },
+  {
+    "slug": "pompes-diamant",
+    "fr": "Pompes diamant",
+    "pattern": "pushup",
+    "prompt": "Cinematic fitness demonstration: a fit athlete in fitted black sportswear performing a push-up (\"Pompes diamant\") on a seamless bright white studio background, full body visible and centered, in a straight-body plank, lowering the chest toward the floor and pressing back up, smooth continuous controlled repetitions, soft even studio lighting with a soft floor shadow, front three-quarter camera angle, sharp focus, photorealistic, 5-second seamless loop, no text, no logos, no captions."
+  },
+  {
+    "slug": "pompes-pike",
+    "fr": "Pompes piké",
+    "pattern": "press",
+    "prompt": "Cinematic fitness demonstration: a fit athlete in fitted black sportswear performing a overhead shoulder press (\"Pompes piké\") on a seamless bright white studio background, full body visible and centered, standing, pressing the weights from the shoulders straight overhead and back down, smooth continuous controlled repetitions, soft even studio lighting with a soft floor shadow, front three-quarter camera angle, sharp focus, photorealistic, 5-second seamless loop, no text, no logos, no captions."
+  },
+  {
+    "slug": "pompes",
+    "fr": "Pompes",
+    "pattern": "pushup",
+    "prompt": "Cinematic fitness demonstration: a fit athlete in fitted black sportswear performing a push-up (\"Pompes\") on a seamless bright white studio background, full body visible and centered, in a straight-body plank, lowering the chest toward the floor and pressing back up, smooth continuous controlled repetitions, soft even studio lighting with a soft floor shadow, front three-quarter camera angle, sharp focus, photorealistic, 5-second seamless loop, no text, no logos, no captions."
+  },
+  {
+    "slug": "pont-fessier-une-jambe",
+    "fr": "Pont fessier une jambe",
+    "pattern": "hinge",
+    "prompt": "Cinematic fitness demonstration: a fit athlete in fitted black sportswear performing a hip-hinge / deadlift (\"Pont fessier une jambe\") on a seamless bright white studio background, full body visible and centered, hinging at the hips with a flat neutral back, lowering the weight and driving the hips forward to stand, smooth continuous controlled repetitions, soft even studio lighting with a soft floor shadow, front three-quarter camera angle, sharp focus, photorealistic, 5-second seamless loop, no text, no logos, no captions."
+  },
+  {
+    "slug": "pont-fessier",
+    "fr": "Pont fessier",
+    "pattern": "hinge",
+    "prompt": "Cinematic fitness demonstration: a fit athlete in fitted black sportswear performing a hip-hinge / deadlift (\"Pont fessier\") on a seamless bright white studio background, full body visible and centered, hinging at the hips with a flat neutral back, lowering the weight and driving the hips forward to stand, smooth continuous controlled repetitions, soft even studio lighting with a soft floor shadow, front three-quarter camera angle, sharp focus, photorealistic, 5-second seamless loop, no text, no logos, no captions."
+  },
+  {
+    "slug": "presse-a-cuisses",
+    "fr": "Presse à cuisses",
+    "pattern": "squat",
+    "prompt": "Cinematic fitness demonstration: a fit athlete in fitted black sportswear performing a squat (\"Presse à cuisses\") on a seamless bright white studio background, full body visible and centered, lowering into a controlled squat and standing back up, knees tracking over the toes, chest up, smooth continuous controlled repetitions, soft even studio lighting with a soft floor shadow, front three-quarter camera angle, sharp focus, photorealistic, 5-second seamless loop, no text, no logos, no captions."
+  },
+  {
+    "slug": "pull-over-poulie",
+    "fr": "Pull-over poulie",
+    "pattern": "pull",
+    "prompt": "Cinematic fitness demonstration: a fit athlete in fitted black sportswear performing a back row / pulling exercise (\"Pull-over poulie\") on a seamless bright white studio background, full body visible and centered, pulling the elbows back and down in a rowing motion, squeezing the shoulder blades together, smooth continuous controlled repetitions, soft even studio lighting with a soft floor shadow, front three-quarter camera angle, sharp focus, photorealistic, 5-second seamless loop, no text, no logos, no captions."
+  },
+  {
+    "slug": "releve-de-jambes-suspendu",
+    "fr": "Relevé de jambes suspendu",
+    "pattern": "crunch",
+    "prompt": "Cinematic fitness demonstration: a fit athlete in fitted black sportswear performing a ab crunch (\"Relevé de jambes suspendu\") on a seamless bright white studio background, full body visible and centered, lying on the back, curling the upper torso up toward the knees and lowering with control, smooth continuous controlled repetitions, soft even studio lighting with a soft floor shadow, front three-quarter camera angle, sharp focus, photorealistic, 5-second seamless loop, no text, no logos, no captions."
+  },
+  {
+    "slug": "releve-de-jambes",
+    "fr": "Relevé de jambes",
+    "pattern": "crunch",
+    "prompt": "Cinematic fitness demonstration: a fit athlete in fitted black sportswear performing a ab crunch (\"Relevé de jambes\") on a seamless bright white studio background, full body visible and centered, lying on the back, curling the upper torso up toward the knees and lowering with control, smooth continuous controlled repetitions, soft even studio lighting with a soft floor shadow, front three-quarter camera angle, sharp focus, photorealistic, 5-second seamless loop, no text, no logos, no captions."
+  },
+  {
+    "slug": "releves-de-jambes",
+    "fr": "Relevés de jambes",
+    "pattern": "crunch",
+    "prompt": "Cinematic fitness demonstration: a fit athlete in fitted black sportswear performing a ab crunch (\"Relevés de jambes\") on a seamless bright white studio background, full body visible and centered, lying on the back, curling the upper torso up toward the knees and lowering with control, smooth continuous controlled repetitions, soft even studio lighting with a soft floor shadow, front three-quarter camera angle, sharp focus, photorealistic, 5-second seamless loop, no text, no logos, no captions."
+  },
+  {
+    "slug": "rowing-barre",
+    "fr": "Rowing barre",
+    "pattern": "pull",
+    "prompt": "Cinematic fitness demonstration: a fit athlete in fitted black sportswear performing a back row / pulling exercise (\"Rowing barre\") on a seamless bright white studio background, full body visible and centered, pulling the elbows back and down in a rowing motion, squeezing the shoulder blades together, smooth continuous controlled repetitions, soft even studio lighting with a soft floor shadow, front three-quarter camera angle, sharp focus, photorealistic, 5-second seamless loop, no text, no logos, no captions."
+  },
+  {
+    "slug": "rowing-haltere",
+    "fr": "Rowing haltère",
+    "pattern": "pull",
+    "prompt": "Cinematic fitness demonstration: a fit athlete in fitted black sportswear performing a back row / pulling exercise (\"Rowing haltère\") on a seamless bright white studio background, full body visible and centered, pulling the elbows back and down in a rowing motion, squeezing the shoulder blades together, smooth continuous controlled repetitions, soft even studio lighting with a soft floor shadow, front three-quarter camera angle, sharp focus, photorealistic, 5-second seamless loop, no text, no logos, no captions."
+  },
+  {
+    "slug": "rowing-halteres",
+    "fr": "Rowing haltères (ou bouteilles)",
+    "pattern": "pull",
+    "prompt": "Cinematic fitness demonstration: a fit athlete in fitted black sportswear performing a back row / pulling exercise (\"Rowing haltères (ou bouteilles)\") on a seamless bright white studio background, full body visible and centered, pulling the elbows back and down in a rowing motion, squeezing the shoulder blades together, smooth continuous controlled repetitions, soft even studio lighting with a soft floor shadow, front three-quarter camera angle, sharp focus, photorealistic, 5-second seamless loop, no text, no logos, no captions."
+  },
+  {
+    "slug": "skaters",
+    "fr": "Skaters (patineur)",
+    "pattern": "jumpingjack",
+    "prompt": "Cinematic fitness demonstration: a fit athlete in fitted black sportswear performing a jumping-jack cardio move (\"Skaters (patineur)\") on a seamless bright white studio background, full body visible and centered, performing jumping jacks, arms and legs opening out and returning together in rhythm, smooth continuous controlled repetitions, soft even studio lighting with a soft floor shadow, front three-quarter camera angle, sharp focus, photorealistic, 5-second seamless loop, no text, no logos, no captions."
+  },
+  {
+    "slug": "souleve-de-terre-roumain",
+    "fr": "Soulevé de terre roumain",
+    "pattern": "hinge",
+    "prompt": "Cinematic fitness demonstration: a fit athlete in fitted black sportswear performing a hip-hinge / deadlift (\"Soulevé de terre roumain\") on a seamless bright white studio background, full body visible and centered, hinging at the hips with a flat neutral back, lowering the weight and driving the hips forward to stand, smooth continuous controlled repetitions, soft even studio lighting with a soft floor shadow, front three-quarter camera angle, sharp focus, photorealistic, 5-second seamless loop, no text, no logos, no captions."
+  },
+  {
+    "slug": "souleve-de-terre",
+    "fr": "Soulevé de terre",
+    "pattern": "hinge",
+    "prompt": "Cinematic fitness demonstration: a fit athlete in fitted black sportswear performing a hip-hinge / deadlift (\"Soulevé de terre\") on a seamless bright white studio background, full body visible and centered, hinging at the hips with a flat neutral back, lowering the weight and driving the hips forward to stand, smooth continuous controlled repetitions, soft even studio lighting with a soft floor shadow, front three-quarter camera angle, sharp focus, photorealistic, 5-second seamless loop, no text, no logos, no captions."
+  },
+  {
+    "slug": "split-squat-bulgare",
+    "fr": "Split squat bulgare",
+    "pattern": "lunge",
+    "prompt": "Cinematic fitness demonstration: a fit athlete in fitted black sportswear performing a forward lunge (\"Split squat bulgare\") on a seamless bright white studio background, full body visible and centered, stepping forward into a lunge, front knee bending to about 90 degrees, then returning, smooth continuous controlled repetitions, soft even studio lighting with a soft floor shadow, front three-quarter camera angle, sharp focus, photorealistic, 5-second seamless loop, no text, no logos, no captions."
+  },
+  {
+    "slug": "sprint-sur-place",
+    "fr": "Sprint sur place",
+    "pattern": "jumpingjack",
+    "prompt": "Cinematic fitness demonstration: a fit athlete in fitted black sportswear performing a jumping-jack cardio move (\"Sprint sur place\") on a seamless bright white studio background, full body visible and centered, performing jumping jacks, arms and legs opening out and returning together in rhythm, smooth continuous controlled repetitions, soft even studio lighting with a soft floor shadow, front three-quarter camera angle, sharp focus, photorealistic, 5-second seamless loop, no text, no logos, no captions."
+  },
+  {
+    "slug": "squat-au-poids-du-corps",
+    "fr": "Squat au poids du corps",
+    "pattern": "squat",
+    "prompt": "Cinematic fitness demonstration: a fit athlete in fitted black sportswear performing a squat (\"Squat au poids du corps\") on a seamless bright white studio background, full body visible and centered, lowering into a controlled squat and standing back up, knees tracking over the toes, chest up, smooth continuous controlled repetitions, soft even studio lighting with a soft floor shadow, front three-quarter camera angle, sharp focus, photorealistic, 5-second seamless loop, no text, no logos, no captions."
+  },
+  {
+    "slug": "squat",
+    "fr": "Squat",
+    "pattern": "squat",
+    "prompt": "Cinematic fitness demonstration: a fit athlete in fitted black sportswear performing a squat (\"Squat\") on a seamless bright white studio background, full body visible and centered, lowering into a controlled squat and standing back up, knees tracking over the toes, chest up, smooth continuous controlled repetitions, soft even studio lighting with a soft floor shadow, front three-quarter camera angle, sharp focus, photorealistic, 5-second seamless loop, no text, no logos, no captions."
+  },
+  {
+    "slug": "squats-sautes",
+    "fr": "Squats sautés",
+    "pattern": "squat",
+    "prompt": "Cinematic fitness demonstration: a fit athlete in fitted black sportswear performing a squat (\"Squats sautés\") on a seamless bright white studio background, full body visible and centered, lowering into a controlled squat and standing back up, knees tracking over the toes, chest up, smooth continuous controlled repetitions, soft even studio lighting with a soft floor shadow, front three-quarter camera angle, sharp focus, photorealistic, 5-second seamless loop, no text, no logos, no captions."
+  },
+  {
+    "slug": "squats",
+    "fr": "Squats",
+    "pattern": "squat",
+    "prompt": "Cinematic fitness demonstration: a fit athlete in fitted black sportswear performing a squat (\"Squats\") on a seamless bright white studio background, full body visible and centered, lowering into a controlled squat and standing back up, knees tracking over the toes, chest up, smooth continuous controlled repetitions, soft even studio lighting with a soft floor shadow, front three-quarter camera angle, sharp focus, photorealistic, 5-second seamless loop, no text, no logos, no captions."
+  },
+  {
+    "slug": "superman",
+    "fr": "Superman",
+    "pattern": "plank",
+    "prompt": "Cinematic fitness demonstration: a fit athlete in fitted black sportswear performing a plank hold (\"Superman\") on a seamless bright white studio background, full body visible and centered, holding a steady forearm plank, body in one straight line, core braced, smooth continuous controlled repetitions, soft even studio lighting with a soft floor shadow, front three-quarter camera angle, sharp focus, photorealistic, 5-second seamless loop, no text, no logos, no captions."
+  },
+  {
+    "slug": "talons-fesses",
+    "fr": "Talons-fesses",
+    "pattern": "jumpingjack",
+    "prompt": "Cinematic fitness demonstration: a fit athlete in fitted black sportswear performing a jumping-jack cardio move (\"Talons-fesses\") on a seamless bright white studio background, full body visible and centered, performing jumping jacks, arms and legs opening out and returning together in rhythm, smooth continuous controlled repetitions, soft even studio lighting with a soft floor shadow, front three-quarter camera angle, sharp focus, photorealistic, 5-second seamless loop, no text, no logos, no captions."
+  },
+  {
+    "slug": "tirage-horizontal",
+    "fr": "Tirage horizontal",
+    "pattern": "pull",
+    "prompt": "Cinematic fitness demonstration: a fit athlete in fitted black sportswear performing a back row / pulling exercise (\"Tirage horizontal\") on a seamless bright white studio background, full body visible and centered, pulling the elbows back and down in a rowing motion, squeezing the shoulder blades together, smooth continuous controlled repetitions, soft even studio lighting with a soft floor shadow, front three-quarter camera angle, sharp focus, photorealistic, 5-second seamless loop, no text, no logos, no captions."
+  },
+  {
+    "slug": "tirage-vertical",
+    "fr": "Tirage vertical",
+    "pattern": "pull",
+    "prompt": "Cinematic fitness demonstration: a fit athlete in fitted black sportswear performing a back row / pulling exercise (\"Tirage vertical\") on a seamless bright white studio background, full body visible and centered, pulling the elbows back and down in a rowing motion, squeezing the shoulder blades together, smooth continuous controlled repetitions, soft even studio lighting with a soft floor shadow, front three-quarter camera angle, sharp focus, photorealistic, 5-second seamless loop, no text, no logos, no captions."
+  },
+  {
+    "slug": "tractions-lestees",
+    "fr": "Tractions lestées",
+    "pattern": "pull",
+    "prompt": "Cinematic fitness demonstration: a fit athlete in fitted black sportswear performing a back row / pulling exercise (\"Tractions lestées\") on a seamless bright white studio background, full body visible and centered, pulling the elbows back and down in a rowing motion, squeezing the shoulder blades together, smooth continuous controlled repetitions, soft even studio lighting with a soft floor shadow, front three-quarter camera angle, sharp focus, photorealistic, 5-second seamless loop, no text, no logos, no captions."
+  },
+  {
+    "slug": "tractions",
+    "fr": "Tractions",
+    "pattern": "pull",
+    "prompt": "Cinematic fitness demonstration: a fit athlete in fitted black sportswear performing a back row / pulling exercise (\"Tractions\") on a seamless bright white studio background, full body visible and centered, pulling the elbows back and down in a rowing motion, squeezing the shoulder blades together, smooth continuous controlled repetitions, soft even studio lighting with a soft floor shadow, front three-quarter camera angle, sharp focus, photorealistic, 5-second seamless loop, no text, no logos, no captions."
+  }
+]
