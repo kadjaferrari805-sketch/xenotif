@@ -1,0 +1,482 @@
+[
+  {
+    "slug": "burpee",
+    "names": [
+      "Burpee"
+    ]
+  },
+  {
+    "slug": "chaise-contre-le-mur",
+    "names": [
+      "Chaise contre le mur",
+      "Wall sit",
+      "Wandsitz"
+    ]
+  },
+  {
+    "slug": "crunch",
+    "names": [
+      "Crunch"
+    ]
+  },
+  {
+    "slug": "curl-biceps",
+    "names": [
+      "Curl biceps",
+      "Biceps curl",
+      "Bizepscurls"
+    ]
+  },
+  {
+    "slug": "curl-marteau",
+    "names": [
+      "Curl marteau",
+      "Hammer curl",
+      "Hammercurl"
+    ]
+  },
+  {
+    "slug": "developpe-couche",
+    "names": [
+      "Développé couché",
+      "Bench press",
+      "Bankdrücken"
+    ]
+  },
+  {
+    "slug": "developpe-incline-halteres",
+    "names": [
+      "Développé incliné haltères",
+      "Incline dumbbell press",
+      "Schrägbankdrücken Kurzhantel"
+    ]
+  },
+  {
+    "slug": "developpe-militaire",
+    "names": [
+      "Développé militaire",
+      "Overhead press",
+      "Schulterdrücken"
+    ]
+  },
+  {
+    "slug": "dips-sur-banc",
+    "names": [
+      "Dips sur banc",
+      "Bench Dips",
+      "Bankdips"
+    ]
+  },
+  {
+    "slug": "dips-sur-chaise",
+    "names": [
+      "Dips sur chaise",
+      "Chair dips",
+      "Stuhl-Dips"
+    ]
+  },
+  {
+    "slug": "dips",
+    "names": [
+      "Dips"
+    ]
+  },
+  {
+    "slug": "elevations-laterales",
+    "names": [
+      "Élévations latérales",
+      "Lateral raises",
+      "Seitheben"
+    ]
+  },
+  {
+    "slug": "extension-triceps-poulie",
+    "names": [
+      "Extension triceps poulie",
+      "Cable triceps extension",
+      "Trizepsdrücken am Kabel"
+    ]
+  },
+  {
+    "slug": "extension-triceps",
+    "names": [
+      "Extension triceps",
+      "Triceps extension",
+      "Trizepsstrecken"
+    ]
+  },
+  {
+    "slug": "face-pull",
+    "names": [
+      "Face pull",
+      "Face Pull"
+    ]
+  },
+  {
+    "slug": "fentes-alternees",
+    "names": [
+      "Fentes alternées",
+      "Alternating lunges",
+      "Abwechselnde Ausfallschritte"
+    ]
+  },
+  {
+    "slug": "fentes-halteres",
+    "names": [
+      "Fentes haltères",
+      "Dumbbell lunges",
+      "Ausfallschritte Kurzhantel"
+    ]
+  },
+  {
+    "slug": "fentes-sautees",
+    "names": [
+      "Fentes sautées",
+      "Jump lunges",
+      "Sprung-Ausfallschritte"
+    ]
+  },
+  {
+    "slug": "fentes",
+    "names": [
+      "Fentes",
+      "Lunges",
+      "Ausfallschritte"
+    ]
+  },
+  {
+    "slug": "foulees-bondissantes",
+    "names": [
+      "Foulées bondissantes",
+      "Bounding strides",
+      "Sprunglauf"
+    ]
+  },
+  {
+    "slug": "gainage-dynamique",
+    "names": [
+      "Gainage dynamique",
+      "Plank up-downs",
+      "Plank Up-Downs"
+    ]
+  },
+  {
+    "slug": "gainage-lateral",
+    "names": [
+      "Gainage latéral",
+      "Side Plank",
+      "Side-Plank"
+    ]
+  },
+  {
+    "slug": "gainage-planche",
+    "names": [
+      "Gainage planche",
+      "Plank"
+    ]
+  },
+  {
+    "slug": "gammes-montees-de-genoux",
+    "names": [
+      "Gammes : montées de genoux",
+      "Drill: high knees",
+      "Lauf-ABC: High Knees"
+    ]
+  },
+  {
+    "slug": "gammes-talons-fesses",
+    "names": [
+      "Gammes : talons-fesses",
+      "Drill: butt kicks",
+      "Lauf-ABC: Anfersen"
+    ]
+  },
+  {
+    "slug": "high-knees",
+    "names": [
+      "High knees (montées de genoux)",
+      "High knees",
+      "High Knees"
+    ]
+  },
+  {
+    "slug": "hip-thrust-leste",
+    "names": [
+      "Hip thrust lesté",
+      "Weighted hip thrust",
+      "Hip Thrust mit Zusatzgewicht"
+    ]
+  },
+  {
+    "slug": "hip-thrust",
+    "names": [
+      "Hip thrust (pont fessier lesté)",
+      "Hip Thrust",
+      "Hip Thrust (Hüftheben mit Gewicht)"
+    ]
+  },
+  {
+    "slug": "jumping-jacks",
+    "names": [
+      "Jumping jacks",
+      "Hampelmänner"
+    ]
+  },
+  {
+    "slug": "leg-curl",
+    "names": [
+      "Leg curl",
+      "Beincurl"
+    ]
+  },
+  {
+    "slug": "mollets-debout",
+    "names": [
+      "Mollets debout",
+      "Standing Calf Raise",
+      "Wadenheben im Stehen"
+    ]
+  },
+  {
+    "slug": "montees-sur-step",
+    "names": [
+      "Montées sur step",
+      "Step-ups",
+      "Step-Ups"
+    ]
+  },
+  {
+    "slug": "mountain-climbers",
+    "names": [
+      "Mountain climbers",
+      "Mountain Climbers"
+    ]
+  },
+  {
+    "slug": "pompes-declinees",
+    "names": [
+      "Pompes déclinées",
+      "Decline push-ups",
+      "Decline-Liegestütze"
+    ]
+  },
+  {
+    "slug": "pompes-diamant",
+    "names": [
+      "Pompes diamant",
+      "Diamond push-ups",
+      "Diamant-Liegestütze"
+    ]
+  },
+  {
+    "slug": "pompes-pike",
+    "names": [
+      "Pompes piké",
+      "Pike push-ups",
+      "Pike-Liegestütze"
+    ]
+  },
+  {
+    "slug": "pompes",
+    "names": [
+      "Pompes",
+      "Push-ups",
+      "Liegestütze"
+    ]
+  },
+  {
+    "slug": "pont-fessier-une-jambe",
+    "names": [
+      "Pont fessier une jambe",
+      "Single-leg glute bridge",
+      "Einbeiniges Hüftheben"
+    ]
+  },
+  {
+    "slug": "pont-fessier",
+    "names": [
+      "Pont fessier",
+      "Glute bridge",
+      "Hüftheben"
+    ]
+  },
+  {
+    "slug": "presse-a-cuisses",
+    "names": [
+      "Presse à cuisses",
+      "Leg press",
+      "Beinpresse"
+    ]
+  },
+  {
+    "slug": "pull-over-poulie",
+    "names": [
+      "Pull-over poulie",
+      "Cable pullover",
+      "Pullover am Kabel"
+    ]
+  },
+  {
+    "slug": "releve-de-jambes-suspendu",
+    "names": [
+      "Relevé de jambes suspendu",
+      "Hanging leg raise",
+      "Hängendes Beinheben"
+    ]
+  },
+  {
+    "slug": "releve-de-jambes",
+    "names": [
+      "Relevé de jambes",
+      "Leg Raise",
+      "Beinheben"
+    ]
+  },
+  {
+    "slug": "releves-de-jambes",
+    "names": [
+      "Relevés de jambes",
+      "Leg raises",
+      "Beinheben"
+    ]
+  },
+  {
+    "slug": "rowing-barre",
+    "names": [
+      "Rowing barre",
+      "Barbell row",
+      "Langhantelrudern"
+    ]
+  },
+  {
+    "slug": "rowing-haltere",
+    "names": [
+      "Rowing haltère",
+      "Dumbbell Row",
+      "Kurzhantel-Rudern"
+    ]
+  },
+  {
+    "slug": "rowing-halteres",
+    "names": [
+      "Rowing haltères (ou bouteilles)",
+      "Dumbbell rows (or bottles)",
+      "Rudern mit Kurzhanteln (oder Wasserflaschen)"
+    ]
+  },
+  {
+    "slug": "skaters",
+    "names": [
+      "Skaters (patineur)",
+      "Skaters"
+    ]
+  },
+  {
+    "slug": "souleve-de-terre-roumain",
+    "names": [
+      "Soulevé de terre roumain",
+      "Romanian deadlift",
+      "Rumänisches Kreuzheben"
+    ]
+  },
+  {
+    "slug": "souleve-de-terre",
+    "names": [
+      "Soulevé de terre",
+      "Deadlift",
+      "Kreuzheben"
+    ]
+  },
+  {
+    "slug": "split-squat-bulgare",
+    "names": [
+      "Split squat bulgare",
+      "Bulgarian split squat",
+      "Bulgarian Split Squat"
+    ]
+  },
+  {
+    "slug": "sprint-sur-place",
+    "names": [
+      "Sprint sur place",
+      "Sprint in place",
+      "Sprint auf der Stelle"
+    ]
+  },
+  {
+    "slug": "squat-au-poids-du-corps",
+    "names": [
+      "Squat au poids du corps",
+      "Bodyweight squat",
+      "Körpergewichts-Kniebeuge"
+    ]
+  },
+  {
+    "slug": "squat",
+    "names": [
+      "Squat",
+      "Kniebeuge"
+    ]
+  },
+  {
+    "slug": "squats-sautes",
+    "names": [
+      "Squats sautés",
+      "Jump squats",
+      "Sprungkniebeugen"
+    ]
+  },
+  {
+    "slug": "squats",
+    "names": [
+      "Squats",
+      "Kniebeugen"
+    ]
+  },
+  {
+    "slug": "superman",
+    "names": [
+      "Superman"
+    ]
+  },
+  {
+    "slug": "talons-fesses",
+    "names": [
+      "Talons-fesses",
+      "Butt kicks",
+      "Anfersen"
+    ]
+  },
+  {
+    "slug": "tirage-horizontal",
+    "names": [
+      "Tirage horizontal",
+      "Seated cable row",
+      "Sitzendes Kabelrudern"
+    ]
+  },
+  {
+    "slug": "tirage-vertical",
+    "names": [
+      "Tirage vertical",
+      "Lat Pulldown",
+      "Latzug"
+    ]
+  },
+  {
+    "slug": "tractions-lestees",
+    "names": [
+      "Tractions lestées",
+      "Weighted pull-ups",
+      "Klimmzüge mit Zusatzgewicht"
+    ]
+  },
+  {
+    "slug": "tractions",
+    "names": [
+      "Tractions",
+      "Pull-ups",
+      "Klimmzüge"
+    ]
+  }
+]
