@@ -190,15 +190,7 @@ export function Nav() {
               <span className="flex h-8 w-8 items-center justify-center rounded-full bg-sport-orange/20 border border-sport-orange/40 text-sport-orange font-black text-xs">{initials}</span>
             </Link>
           ) : (
-            <>
-              <Link href="/auth/signin" className="hidden sm:inline text-sm text-sport-gray hover:text-white transition-colors">{t('connexion')}</Link>
-              <Link
-                href="/auth/signup"
-                className="inline-flex items-center bg-sport-orange text-white text-sm font-bold px-4 py-2 rounded-full hover:bg-orange-600 active:scale-95 transition-all shadow-lg shadow-sport-orange/25"
-              >
-                {t('sinscrire')}
-              </Link>
-            </>
+            <Link href="/auth/signin" className="text-sm text-sport-gray hover:text-white transition-colors">{t('connexion')}</Link>
           )}
           <AppDownload
             triggerClassName="hidden md:inline-flex items-center justify-center h-9 w-9 rounded-full border border-sport-border text-white/90 hover:text-white hover:border-white/30 transition-all"
