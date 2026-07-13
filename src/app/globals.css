@@ -32,11 +32,11 @@
 }
 
 [data-theme="light"] {
-  --background: #EDEEF0;
+  --background: #E2E3E7;
   --foreground: #0A0B0F;
-  --val-sport-dark: #EDEEF0;
-  --val-sport-card: #F7F8FA;
-  --val-sport-border: #E0E2E7;
+  --val-sport-dark: #E2E3E7;
+  --val-sport-card: #EDEEF1;
+  --val-sport-border: #D3D5DB;
   --val-sport-gray: #24262B;
   --val-sport-fg: #0A0B0F;
 }
