@@ -32,7 +32,7 @@ export function StickyCheckout() {
             <XenotifMark size={28} />
             <div className="leading-tight">
               <p className="font-black text-sport-fg text-xs">{t('lead')}</p>
-              <p className="flex items-center gap-1 text-[10px] text-sport-lime font-bold">
+              <p className="flex items-center gap-1 text-[10px] text-[#1E7F5A] font-bold">
                 <Zap size={9} aria-hidden="true" /> {t('trial')}
               </p>
             </div>

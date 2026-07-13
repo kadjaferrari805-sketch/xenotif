@@ -29,11 +29,14 @@ export function PreviewDashboard() {
   ]
   return (
     <div className="min-h-screen bg-sport-dark text-sport-fg">
-      {/* Bannière aperçu */}
-      <div className="bg-sport-orange/10 border-b border-sport-orange/30 px-6 py-2.5 flex items-center justify-center relative">
+      {/* Bannière aperçu — le lien retour était en absolute left-6 avec le texte
+          centré sur toute la largeur : sur mobile les deux se chevauchaient.
+          Empilés et centrés sous sm, repositionné en absolute uniquement à
+          partir de sm où il y a assez de place. */}
+      <div className="bg-sport-orange/10 border-b border-sport-orange/30 px-4 sm:px-6 py-2.5 flex flex-col sm:flex-row items-center justify-center gap-1.5 sm:gap-0 sm:relative text-center">
         <Link
           href="/"
-          className="absolute left-6 inline-flex items-center gap-1.5 text-xs font-bold text-sport-orange hover:opacity-80 transition-opacity"
+          className="sm:absolute sm:left-6 inline-flex items-center gap-1.5 text-xs font-bold text-sport-orange hover:opacity-80 transition-opacity"
         >
           <ArrowLeft size={13} aria-hidden="true" /> {t('backToHome')}
         </Link>
@@ -96,7 +99,7 @@ export function PreviewDashboard() {
 
         <motion.div {...reveal} className="bg-sport-card border border-sport-border rounded-2xl p-6 mb-8">
           <h3 className="text-sm font-black mb-5">{t('badges')}</h3>
-          <div className="grid grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {PREVIEW.badges.map(b => (
               <div key={b.label} className="rounded-xl p-4 text-center bg-yellow-400/10 border border-yellow-400/30">
                 <span className="text-3xl block mb-2">{b.icon}</span>

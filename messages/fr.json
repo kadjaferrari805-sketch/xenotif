@@ -1321,6 +1321,15 @@
       "abonnement": "Abonnement",
       "profil": "Mon Profil"
     },
+    "navShort": {
+      "overview": "Accueil",
+      "coach": "Coach",
+      "programme": "Programme",
+      "progression": "Progrès",
+      "smartwatch": "Montre",
+      "abonnement": "Abonnement",
+      "profil": "Profil"
+    },
     "navAria": "Navigation dashboard",
     "signOut": "Déconnexion",
     "athlete": "Athlète",

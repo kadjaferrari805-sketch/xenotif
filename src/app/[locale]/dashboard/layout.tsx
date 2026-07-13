@@ -90,12 +90,15 @@ export default async function DashboardLayout({ children }: { children: React.Re
         {children}
       </main>
 
-      {/* Mobile bottom nav */}
-      <nav className="md:hidden fixed bottom-0 left-0 right-0 bg-sport-card border-t border-sport-border px-2 pt-2 dash-nav-safe flex justify-around z-50">
+      {/* Mobile bottom nav — colonnes égales (flex-1) pour un espacement régulier
+          entre les 7 items, libellés courts dédiés (dashboard.navShort) pour éviter
+          les doublons visuels (ex. "Mon Programme"/"Mon Profil" tronqués donnaient
+          tous les deux "Mon"). */}
+      <nav className="md:hidden fixed bottom-0 left-0 right-0 bg-sport-card border-t border-sport-border px-1 pt-2 dash-nav-safe flex z-50">
         {NAV.map(({ href, key, Icon }) => (
-          <Link key={href} href={href} className="flex flex-col items-center gap-1 px-3 py-1.5 text-sport-gray hover:text-sport-orange transition-colors">
+          <Link key={href} href={href} className="flex flex-1 min-w-0 flex-col items-center gap-1 px-0.5 py-1.5 text-sport-gray hover:text-sport-orange transition-colors">
             <Icon size={18} aria-hidden="true" />
-            <span className="text-[9px] font-semibold">{t(`nav.${key}`).split(' ')[0]}</span>
+            <span className="text-[9px] font-semibold truncate max-w-full">{t(`navShort.${key}`)}</span>
           </Link>
         ))}
       </nav>

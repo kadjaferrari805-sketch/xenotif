@@ -1321,6 +1321,15 @@
       "abonnement": "Abonnement",
       "profil": "Mein Profil"
     },
+    "navShort": {
+      "overview": "Start",
+      "coach": "Coach",
+      "programme": "Programm",
+      "progression": "Fortschritt",
+      "smartwatch": "Uhr",
+      "abonnement": "Abo",
+      "profil": "Profil"
+    },
     "navAria": "Dashboard-Navigation",
     "signOut": "Abmelden",
     "athlete": "Athlet",
