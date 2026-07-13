@@ -31,9 +31,9 @@ export function PreviewDashboard() {
     <div className="min-h-screen bg-sport-dark text-sport-fg">
       {/* Bannière aperçu — le lien retour était en absolute left-6 avec le texte
           centré sur toute la largeur : sur mobile les deux se chevauchaient.
-          Empilés et centrés sous sm, repositionné en absolute uniquement à
-          partir de sm où il y a assez de place. */}
-      <div className="bg-sport-orange/10 border-b border-sport-orange/30 px-4 sm:px-6 py-2.5 flex flex-col sm:flex-row items-center justify-center gap-1.5 sm:gap-0 sm:relative text-center">
+          Empilés sous sm avec le lien retour aligné à gauche (comme sur desktop),
+          repositionné en absolute uniquement à partir de sm où il y a assez de place. */}
+      <div className="bg-sport-orange/10 border-b border-sport-orange/30 px-4 sm:px-6 py-2.5 flex flex-col sm:flex-row items-start sm:items-center justify-start sm:justify-center gap-1.5 sm:gap-0 sm:relative text-left sm:text-center">
         <Link
           href="/"
           className="sm:absolute sm:left-6 inline-flex items-center gap-1.5 text-xs font-bold text-sport-orange hover:opacity-80 transition-opacity"
