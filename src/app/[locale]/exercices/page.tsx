@@ -71,7 +71,7 @@ export default async function ExercicesHubPage({
       <section className="max-w-5xl mx-auto px-6 py-16 md:py-20">
         <p className="text-[11px] font-bold tracking-[2px] uppercase text-sport-orange mb-3">{t('hubEyebrow')}</p>
         <h1 className="text-4xl md:text-5xl font-black mb-4">{t('hubTitle')}</h1>
-        <p className="text-lg text-sport-gray max-w-2xl mb-6">{t('hubSubtitle')}</p>
+        <p className="text-lg text-sport-fg max-w-2xl mb-6">{t('hubSubtitle')}</p>
 
         {filterLabel && (
           <Link

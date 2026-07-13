@@ -46,7 +46,7 @@ export default async function DisciplinesHubPage({ params }: { params: Promise<{
       <section className="max-w-5xl mx-auto px-6 py-16 md:py-20">
         <p className="text-[11px] font-bold tracking-[2px] uppercase text-sport-orange mb-3">{t('eyebrow')}</p>
         <h1 className="text-4xl md:text-5xl font-black mb-4">{t('title')}</h1>
-        <p className="text-lg text-sport-gray max-w-2xl mb-12">{t('subtitle')}</p>
+        <p className="text-lg text-sport-fg max-w-2xl mb-12">{t('subtitle')}</p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {DISCIPLINE_SLUGS.map((d) => (

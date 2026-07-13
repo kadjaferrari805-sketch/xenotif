@@ -26,7 +26,7 @@ function AmazonRow({ icon: Icon, label, title, subtitle, products }: {
         <div className="min-w-0">
           <p className="text-[11px] font-black uppercase tracking-wider text-sport-orange">{label}</p>
           <h2 className="text-xl sm:text-2xl font-black text-sport-fg leading-tight">{title}</h2>
-          <p className="text-xs text-sport-gray">{subtitle}</p>
+          <p className="text-xs text-sport-fg">{subtitle}</p>
         </div>
       </div>
       <Carousel>

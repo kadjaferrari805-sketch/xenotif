@@ -213,7 +213,7 @@ export default async function DisciplinePage({ params }: { params: Promise<{ slu
             <h2 id="videos-title" className="text-3xl md:text-4xl font-black text-sport-fg mb-2">
               {t('videos.title')}
             </h2>
-            <p className="text-sport-gray text-sm mb-10 max-w-xl">
+            <p className="text-sport-fg text-sm mb-10 max-w-xl">
               {t('videos.subtitle')}
             </p>
 
@@ -300,7 +300,7 @@ export default async function DisciplinePage({ params }: { params: Promise<{ slu
             <h2 id="exercises-title" className="text-3xl md:text-4xl font-black text-sport-fg mb-2">
               {t('exercises.title')}
             </h2>
-            <p className="text-sport-gray text-sm mb-10 max-w-xl">
+            <p className="text-sport-fg text-sm mb-10 max-w-xl">
               {t('exercises.subtitle')}
             </p>
 

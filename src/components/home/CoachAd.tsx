@@ -39,7 +39,7 @@ export function CoachAd() {
             <Sparkles size={12} aria-hidden="true" /> {t('badge')}
           </span>
           <h2 className="text-3xl md:text-4xl font-black text-sport-fg mt-4">{t('title')}</h2>
-          <p className="text-sport-gray mt-3 max-w-md mx-auto md:mx-0">{t('subtitle')}</p>
+          <p className="text-sport-fg mt-3 max-w-md mx-auto md:mx-0">{t('subtitle')}</p>
           <div className="mt-7 flex justify-center md:justify-start">
             <Link href="/auth/signup" className="btn-primary inline-flex items-center gap-2">
               {t('cta')} <ArrowRight size={16} aria-hidden="true" />

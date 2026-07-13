@@ -106,7 +106,7 @@ export function Catalogue() {
             <h1 className="text-3xl font-black leading-tight tracking-tight text-sport-fg sm:text-5xl lg:text-6xl mb-4">
               {t.rich('catalogue.title', { o: (c) => <span className="text-sport-orange">{c}</span> })}
             </h1>
-            <p className="text-base sm:text-lg text-sport-gray max-w-2xl mx-auto">{t('catalogue.subtitle')}</p>
+            <p className="text-base sm:text-lg text-sport-fg max-w-2xl mx-auto">{t('catalogue.subtitle')}</p>
           </div>
 
           {/* Recherche */}

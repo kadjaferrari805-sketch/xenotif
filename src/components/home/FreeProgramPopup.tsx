@@ -191,7 +191,7 @@ export function FreeProgramPopup() {
                   </div>
                   <span className="text-[11px] font-black uppercase tracking-wider text-sport-orange">{t('eyebrow')}</span>
                   <h2 id="lead-popup-title" className="mt-1 text-2xl font-black leading-tight text-sport-fg">{t('title')}</h2>
-                  <p className="mt-2 text-sm text-sport-gray">{t('subtitle')}</p>
+                  <p className="mt-2 text-sm text-sport-fg">{t('subtitle')}</p>
 
                   <ul className="mt-4 space-y-1.5">
                     {(t.raw('perks') as string[]).map((perk) => (

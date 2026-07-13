@@ -97,7 +97,7 @@
   }
   .section-sub {
     @apply text-sm text-center leading-relaxed;
-    color: var(--color-sport-gray);
+    color: var(--color-sport-fg);
   }
   .btn-primary {
     @apply relative overflow-hidden inline-flex items-center justify-center gap-2 bg-sport-orange text-sport-fg px-6 py-3.5 rounded-full font-bold text-sm shadow-lg shadow-sport-orange/30 hover:bg-orange-600 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-sport-orange/40 active:translate-y-0 active:scale-95 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sport-orange/60 focus-visible:ring-offset-2 focus-visible:ring-offset-sport-dark;
