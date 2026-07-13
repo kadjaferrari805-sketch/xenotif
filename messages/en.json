@@ -1823,7 +1823,10 @@
     "hubTitle": "Exercise library",
     "hubSubtitle": "Step-by-step technique, target muscles and mistakes to avoid for every exercise — strength, cardio, bodyweight. Free.",
     "hubMetaTitle": "Exercises — technique, target muscles and mistakes",
-    "hubMetaDesc": "Xenotif exercise library: detailed technique, muscles worked and common mistakes. Strength, cardio and bodyweight, explained simply."
+    "hubMetaDesc": "Xenotif exercise library: detailed technique, muscles worked and common mistakes. Strength, cardio and bodyweight, explained simply.",
+    "hubFilteredBy": "Filtered by {label}",
+    "hubClearFilter": "See all exercises",
+    "hubNoResults": "No exercise matches this filter."
   },
   "outils": {
     "hubEyebrow": "Xenotif Tools",

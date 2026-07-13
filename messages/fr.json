@@ -1823,7 +1823,10 @@
     "hubTitle": "Bibliothèque d’exercices",
     "hubSubtitle": "Technique pas à pas, muscles ciblés et erreurs à éviter pour chaque exercice — musculation, cardio, poids du corps. Gratuit.",
     "hubMetaTitle": "Exercices — technique, muscles ciblés et erreurs",
-    "hubMetaDesc": "Bibliothèque d’exercices Xenotif : technique détaillée, muscles travaillés et erreurs fréquentes. Musculation, cardio et poids du corps, expliqués simplement."
+    "hubMetaDesc": "Bibliothèque d’exercices Xenotif : technique détaillée, muscles travaillés et erreurs fréquentes. Musculation, cardio et poids du corps, expliqués simplement.",
+    "hubFilteredBy": "Filtré par {label}",
+    "hubClearFilter": "Voir tous les exercices",
+    "hubNoResults": "Aucun exercice ne correspond à ce filtre."
   },
   "outils": {
     "hubEyebrow": "Outils Xenotif",

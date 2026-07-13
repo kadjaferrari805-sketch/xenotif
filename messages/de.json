@@ -1823,7 +1823,10 @@
     "hubTitle": "Übungsbibliothek",
     "hubSubtitle": "Schritt-für-Schritt-Technik, Zielmuskeln und zu vermeidende Fehler für jede Übung — Kraft, Cardio, Körpergewicht. Kostenlos.",
     "hubMetaTitle": "Übungen — Technik, Zielmuskeln und Fehler",
-    "hubMetaDesc": "Xenotif-Übungsbibliothek: detaillierte Technik, beanspruchte Muskeln und häufige Fehler. Kraft, Cardio und Körpergewicht, einfach erklärt."
+    "hubMetaDesc": "Xenotif-Übungsbibliothek: detaillierte Technik, beanspruchte Muskeln und häufige Fehler. Kraft, Cardio und Körpergewicht, einfach erklärt.",
+    "hubFilteredBy": "Gefiltert nach {label}",
+    "hubClearFilter": "Alle Übungen anzeigen",
+    "hubNoResults": "Keine Übung entspricht diesem Filter."
   },
   "outils": {
     "hubEyebrow": "Xenotif Tools",

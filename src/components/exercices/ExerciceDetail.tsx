@@ -287,18 +287,31 @@ export function ExerciceDetail({ detail, locale }: { detail: Detail; locale: str
 
   return (
     <div className="space-y-6">
-      {/* Header */}
+      {/* Header — badges cliquables, filtrent la bibliothèque d'exercices */}
       <div className="flex flex-wrap items-center gap-3">
-        <span className={`inline-flex items-center gap-1.5 text-xs font-bold px-3 py-1.5 rounded-full border ${DIFF_STYLE[d.difficulty]}`}>
+        <Link
+          href={{ pathname: '/exercices', query: { level: d.difficulty } }}
+          className={`inline-flex items-center gap-1.5 text-xs font-bold px-3 py-1.5 rounded-full border hover:opacity-80 transition-opacity ${DIFF_STYLE[d.difficulty]}`}
+        >
           <Activity size={12} aria-hidden="true" /> {t(`diff_${d.difficulty}` as 'diff_debutant')}
-        </span>
-        <span className="inline-flex items-center gap-1.5 text-xs font-bold px-3 py-1.5 rounded-full bg-sport-card border border-sport-border text-sport-gray">
-          {d.muscles}
-        </span>
+        </Link>
+        {[...new Set([...d.primaryMuscles, ...d.secondaryMuscles])].map((m) => (
+          <Link
+            key={m}
+            href={{ pathname: '/exercices', query: { muscle: m } }}
+            className="inline-flex items-center gap-1.5 text-xs font-bold px-3 py-1.5 rounded-full bg-sport-card border border-sport-border text-sport-gray hover:text-white hover:border-sport-orange/50 transition-colors"
+          >
+            {m}
+          </Link>
+        ))}
         {d.equipment.map((k) => (
-          <span key={k} className="inline-flex items-center gap-1.5 text-xs font-bold px-3 py-1.5 rounded-full bg-sport-card border border-sport-border text-sport-gray">
+          <Link
+            key={k}
+            href={{ pathname: '/exercices', query: { equipment: k } }}
+            className="inline-flex items-center gap-1.5 text-xs font-bold px-3 py-1.5 rounded-full bg-sport-card border border-sport-border text-sport-gray hover:text-white hover:border-sport-orange/50 transition-colors"
+          >
             <Dumbbell size={12} aria-hidden="true" className="text-sport-orange" /> {equipLabel(k)}
-          </span>
+          </Link>
         ))}
       </div>
 
