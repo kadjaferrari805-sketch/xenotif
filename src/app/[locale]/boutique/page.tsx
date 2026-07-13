@@ -92,7 +92,7 @@ export default function BoutiquePage() {
               {t.rich('heroTitle', { o: (c) => <span className="text-sport-orange">{c}</span>, br: () => <br /> })}
             </motion.h1>
             <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}
-              className="text-base sm:text-lg text-gray-100 max-w-2xl mx-auto mb-9 [text-shadow:0_2px_12px_rgba(0,0,0,0.85)]">
+              className="text-base sm:text-lg text-sport-fg max-w-2xl mx-auto mb-9 [text-shadow:0_2px_12px_rgba(0,0,0,0.85)]">
               {t('heroSubtitle')}
             </motion.p>
 
