@@ -17,7 +17,7 @@ type Billing = { card: Card | null; invoices: Invoice[] }
 
 const STATUS_CLS: Record<string, string> = {
   trialing: 'bg-blue-500/15 text-blue-400 border-blue-500/30',
-  active:   'bg-emerald-500/15 text-emerald-400 border-emerald-500/30',
+  active:   'bg-emerald-500/15 text-[#1E7F5A] border-emerald-500/30',
   canceled: 'bg-red-500/15 text-red-400 border-red-500/30',
   past_due: 'bg-orange-500/15 text-orange-400 border-orange-500/30',
 }
@@ -272,7 +272,7 @@ export function AbonnementClient({ initialSub }: { initialSub: Sub | null }) {
             </div>
           )}
           <div className="flex items-center gap-3 text-sm">
-            <ShieldCheck size={15} className="text-emerald-400 shrink-0" />
+            <ShieldCheck size={15} className="text-[#1E7F5A] shrink-0" />
             <span className="text-sport-gray">{t('securePayment')}</span>
           </div>
         </div>
@@ -284,7 +284,7 @@ export function AbonnementClient({ initialSub }: { initialSub: Sub | null }) {
         <ul className="space-y-2.5">
           {(t.raw('featuresPro') as string[]).map(item => (
             <li key={item} className="flex items-center gap-2.5 text-sm text-sport-gray">
-              <CheckCircle size={13} className="text-emerald-400 shrink-0" />
+              <CheckCircle size={13} className="text-[#1E7F5A] shrink-0" />
               {item}
             </li>
           ))}
@@ -358,7 +358,7 @@ export function AbonnementClient({ initialSub }: { initialSub: Sub | null }) {
 
         {isCanceled && (
           <div className="text-center p-4 bg-emerald-500/5 border border-emerald-500/20 rounded-xl">
-            <p className="text-emerald-400 text-sm font-semibold">{t('cancelConfirmed')}</p>
+            <p className="text-[#1E7F5A] text-sm font-semibold">{t('cancelConfirmed')}</p>
             <p className="text-sport-gray text-xs mt-1">{t('cancelConfirmedDesc')}</p>
             {sub.cancel_at_period_end && sub.status !== 'canceled' ? (
               <>

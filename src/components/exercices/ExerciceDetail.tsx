@@ -16,7 +16,7 @@ import type { ExerciceDetail as Detail } from '@/lib/exercices/details'
 
 const SPEECH_LANG: Record<string, string> = { fr: 'fr-FR', en: 'en-US', de: 'de-DE' }
 const DIFF_STYLE: Record<string, string> = {
-  debutant: 'text-emerald-400 border-emerald-500/30 bg-emerald-500/10',
+  debutant: 'text-[#1E7F5A] border-emerald-500/30 bg-emerald-500/10',
   intermediaire: 'text-sport-blue border-sport-blue/30 bg-sport-blue/10',
   avance: 'text-sport-orange border-sport-orange/30 bg-sport-orange/10',
 }
@@ -247,7 +247,7 @@ function NotesCard({ slug, t, locale }: { slug: string; t: ReturnType<typeof use
         />
         <div className="flex items-center gap-3 mt-2">
           <button type="button" onClick={save} className="text-xs font-bold bg-sport-orange text-white px-4 py-2 rounded-full hover:bg-orange-600 transition-colors">{t('notes_save')}</button>
-          {saved && <span className="text-xs text-emerald-400">{t('notes_saved')}</span>}
+          {saved && <span className="text-xs text-[#1E7F5A]">{t('notes_saved')}</span>}
         </div>
       </div>
 

@@ -425,7 +425,7 @@ export default async function DisciplinePage({ params }: { params: Promise<{ slu
               <ul className="space-y-2.5 mb-7">
                 {(t.raw('cta.features') as string[]).map((item) => (
                   <li key={item} className="flex items-center gap-2 text-xs text-sport-gray">
-                    <CheckCircle size={13} aria-hidden="true" className="text-emerald-500 shrink-0" />
+                    <CheckCircle size={13} aria-hidden="true" className="text-[#1E7F5A] shrink-0" />
                     {item}
                   </li>
                 ))}
@@ -444,8 +444,8 @@ export default async function DisciplinePage({ params }: { params: Promise<{ slu
 
               {/* Trust micro */}
               <div className="mt-5 pt-5 border-t border-sport-border flex justify-center gap-4 text-[10px] text-sport-gray">
-                <span className="flex items-center gap-1"><CheckCircle size={10} className="text-emerald-500" /> {t('cta.noCard')}</span>
-                <span className="flex items-center gap-1"><CheckCircle size={10} className="text-emerald-500" /> {t('cta.freeCancel')}</span>
+                <span className="flex items-center gap-1"><CheckCircle size={10} className="text-[#1E7F5A]" /> {t('cta.noCard')}</span>
+                <span className="flex items-center gap-1"><CheckCircle size={10} className="text-[#1E7F5A]" /> {t('cta.freeCancel')}</span>
               </div>
             </div>
           </aside>

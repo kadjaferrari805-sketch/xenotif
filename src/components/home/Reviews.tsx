@@ -59,7 +59,7 @@ export function Reviews() {
               </div>
 
               {/* Result badge */}
-              <div className="inline-flex items-center gap-1.5 bg-emerald-500/10 border border-emerald-500/25 text-emerald-400 text-[10px] font-bold px-2.5 py-1 rounded-full mb-4 w-fit">
+              <div className="inline-flex items-center gap-1.5 bg-emerald-500/10 border border-emerald-500/25 text-[#1E7F5A] text-[10px] font-bold px-2.5 py-1 rounded-full mb-4 w-fit">
                 <TrendingUp size={10} aria-hidden="true" />
                 {results[i]}
               </div>
@@ -85,7 +85,7 @@ export function Reviews() {
                   <p className="text-[10px] text-sport-gray mt-0.5">{items[i].sport}</p>
                 </div>
 
-                <div className="flex items-center gap-1 text-[10px] text-emerald-400 font-bold shrink-0">
+                <div className="flex items-center gap-1 text-[10px] text-[#1E7F5A] font-bold shrink-0">
                   <CheckCircle size={11} aria-hidden="true" />
                   {t('verified')}
                 </div>

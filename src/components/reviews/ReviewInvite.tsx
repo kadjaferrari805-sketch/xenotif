@@ -26,7 +26,7 @@ export function ReviewInvite() {
       <p className="text-sm font-black text-sport-fg mb-1">{t('inviteTitle')}</p>
       <p className="text-xs text-sport-gray mb-4">{t('inviteSubtitle')}</p>
       {done ? (
-        <p className="text-emerald-400 text-sm font-semibold">{t('thanks')}</p>
+        <p className="text-[#1E7F5A] text-sm font-semibold">{t('thanks')}</p>
       ) : open ? (
         <ReviewForm type="platform" initial={elig.existing} onPublished={() => { setOpen(false); setDone(true) }} />
       ) : (

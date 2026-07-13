@@ -84,10 +84,10 @@ export default async function SuccessPage({
       <div className="relative z-10 max-w-lg w-full text-center">
         {/* Success icon */}
         <div className="w-20 h-20 rounded-full bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center mx-auto mb-8">
-          <CheckCircle size={40} className="text-emerald-400" aria-hidden="true" />
+          <CheckCircle size={40} className="text-[#1E7F5A]" aria-hidden="true" />
         </div>
 
-        <p className="text-[11px] font-bold tracking-[3px] uppercase text-emerald-400 mb-3">
+        <p className="text-[11px] font-bold tracking-[3px] uppercase text-[#1E7F5A] mb-3">
           Paiement confirmé
         </p>
 

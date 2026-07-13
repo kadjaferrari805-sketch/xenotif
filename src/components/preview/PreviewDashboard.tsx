@@ -24,7 +24,7 @@ export function PreviewDashboard() {
   const stats = [
     { Icon: Flame, label: t('statSessions'), value: PREVIEW.stats.sessionsWeek, color: 'text-sport-orange' },
     { Icon: Clock, label: t('statHours'), value: `${PREVIEW.stats.hours}h`, color: 'text-sport-blue' },
-    { Icon: TrendingUp, label: t('statActiveDays'), value: PREVIEW.stats.activeDays, color: 'text-emerald-400' },
+    { Icon: TrendingUp, label: t('statActiveDays'), value: PREVIEW.stats.activeDays, color: 'text-[#1E7F5A]' },
     { Icon: Award, label: t('statBadges'), value: PREVIEW.stats.badges, color: 'text-yellow-400' },
   ]
   return (

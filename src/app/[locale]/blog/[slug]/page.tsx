@@ -68,7 +68,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 const CATEGORY_COLORS: Record<string, string> = {
   Musculation: 'bg-sport-orange/10 text-sport-orange border-sport-orange/20',
-  Nutrition: 'bg-green-500/10 text-green-400 border-green-500/20',
+  Nutrition: 'bg-green-500/10 text-[#1E7F5A] border-green-500/20',
   Running: 'bg-blue-500/10 text-blue-400 border-blue-500/20',
   HIIT: 'bg-red-500/10 text-red-400 border-red-500/20',
   Récupération: 'bg-purple-500/10 text-purple-400 border-purple-500/20',

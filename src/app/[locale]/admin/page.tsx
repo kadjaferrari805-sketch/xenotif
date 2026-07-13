@@ -31,7 +31,7 @@ export default async function AdminPage() {
 
   const STATUS_MAP: Record<string, { label: string; Icon: typeof CheckCircle; cls: string }> = {
     trialing: { label: 'Essai',  Icon: Clock,       cls: 'text-blue-400' },
-    active:   { label: 'Actif',  Icon: CheckCircle, cls: 'text-emerald-400' },
+    active:   { label: 'Actif',  Icon: CheckCircle, cls: 'text-[#1E7F5A]' },
     canceled: { label: 'Annulé', Icon: XCircle,     cls: 'text-red-400' },
     past_due: { label: 'Impayé', Icon: XCircle,     cls: 'text-orange-400' },
   }
@@ -53,7 +53,7 @@ export default async function AdminPage() {
       <div className="grid grid-cols-2 md:grid-cols-4 gap-5 mb-10">
         {[
           { Icon: Users,       label: 'Utilisateurs total', value: (profiles ?? []).length.toString(), color: 'text-sport-blue',   bg: 'bg-sport-blue/10' },
-          { Icon: TrendingUp,  label: 'Abonnements actifs',  value: activeCount.toString(),            color: 'text-emerald-400', bg: 'bg-emerald-400/10' },
+          { Icon: TrendingUp,  label: 'Abonnements actifs',  value: activeCount.toString(),            color: 'text-[#1E7F5A]', bg: 'bg-emerald-400/10' },
           { Icon: Clock,       label: 'Essais en cours',     value: trialCount.toString(),             color: 'text-blue-400',    bg: 'bg-blue-400/10' },
           { Icon: Euro,        label: 'Revenu MRR (€)',      value: `${totalRevenue.toFixed(2)} €`,    color: 'text-sport-orange', bg: 'bg-sport-orange/10' },
         ].map(({ Icon, label, value, color, bg }) => (

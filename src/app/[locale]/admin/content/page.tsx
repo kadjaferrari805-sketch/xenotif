@@ -30,7 +30,7 @@ export default async function AdminContentPage() {
           >
             <span className="text-sm font-bold text-sport-fg">{f.title}</span>
             <span className="flex items-center gap-3">
-              <span className={`text-[10px] font-black uppercase tracking-wider px-2.5 py-1 rounded-full border ${minPlanBySlug.get(f.slug) === 'free' ? 'text-emerald-400 border-emerald-500/30 bg-emerald-500/10' : 'text-sport-orange border-sport-orange/30 bg-sport-orange/10'}`}>
+              <span className={`text-[10px] font-black uppercase tracking-wider px-2.5 py-1 rounded-full border ${minPlanBySlug.get(f.slug) === 'free' ? 'text-[#1E7F5A] border-emerald-500/30 bg-emerald-500/10' : 'text-sport-orange border-sport-orange/30 bg-sport-orange/10'}`}>
                 {minPlanBySlug.get(f.slug) ?? 'non seedé'}
               </span>
               <ArrowRight size={14} className="text-sport-gray" />

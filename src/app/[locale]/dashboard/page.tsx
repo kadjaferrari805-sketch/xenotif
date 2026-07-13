@@ -29,7 +29,7 @@ const FREE_TXT: Record<string, { title: string; sub: string; cta: string }> = {
 
 const STATUS_CLS: Record<string, string> = {
   trialing: 'bg-blue-500/15 text-blue-400 border-blue-500/30',
-  active:   'bg-emerald-500/15 text-emerald-400 border-emerald-500/30',
+  active:   'bg-emerald-500/15 text-[#1E7F5A] border-emerald-500/30',
   canceled: 'bg-red-500/15 text-red-400 border-red-500/30',
   past_due: 'bg-orange-500/15 text-orange-400 border-orange-500/30',
   free:     'bg-sport-fg/10 text-sport-gray border-sport-border',
@@ -195,7 +195,7 @@ export default async function DashboardPage() {
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
         {[
           { icon: Flame,      label: t('overview.statSessionsWeek'), value: sessionsThisWeek.toString(), color: 'text-sport-orange' },
-          { icon: CheckCircle,label: t('overview.statModules'),      value: totalSessions.toString(), color: 'text-emerald-400' },
+          { icon: CheckCircle,label: t('overview.statModules'),      value: totalSessions.toString(), color: 'text-[#1E7F5A]' },
           { icon: TrendingUp, label: t('overview.statActiveDays'),   value: activeDays.toString(),    color: 'text-sport-blue' },
           { icon: Award,      label: t('overview.statBadges'),       value: totalSessions >= 5 ? '1' : '0', color: 'text-yellow-400' },
         ].map(({ icon: Icon, label, value, color }) => (

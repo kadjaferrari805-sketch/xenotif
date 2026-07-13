@@ -208,8 +208,8 @@ export function SmartwatchClient({ initialData }: { initialData: DashboardData }
         <div className="flex items-center gap-2 flex-wrap">
           {connectedDevice && (
             <div className="flex items-center gap-1.5 bg-emerald-500/10 border border-emerald-500/20 rounded-full px-3 py-1.5">
-              <Wifi size={11} className="text-emerald-400" />
-              <span className="text-[11px] text-emerald-400 font-bold">{t('synced')}</span>
+              <Wifi size={11} className="text-[#1E7F5A]" />
+              <span className="text-[11px] text-[#1E7F5A] font-bold">{t('synced')}</span>
             </div>
           )}
 

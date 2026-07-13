@@ -79,19 +79,19 @@ export function ProOfferPill({
           secondaires (pill, prix barré, « inclus », label du compteur) sont
           masqués pour que l'accroche + le compteur tiennent sur une ligne. */}
       <div className="relative flex items-center gap-2.5 sm:gap-3">
-        <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-emerald-400/20 text-promo-accent sm:h-10 sm:w-10 sm:rounded-xl">
+        <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-emerald-400/20 text-[#1E7F5A] sm:h-10 sm:w-10 sm:rounded-xl">
           <Sparkles size={16} aria-hidden="true" className="sm:hidden" />
           <Sparkles size={18} aria-hidden="true" className="hidden sm:block" />
         </span>
         <div className="min-w-0 flex-1">
           <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
-            <span className="text-[10px] font-black uppercase tracking-[2px] text-promo-accent">{badge}</span>
+            <span className="text-[10px] font-black uppercase tracking-[2px] text-[#1E7F5A]">{badge}</span>
             <span className="rounded-full bg-emerald-400 px-2 py-0.5 text-[9px] font-black text-emerald-950">{save}</span>
           </div>
           <p className="mt-0.5 text-xs font-black leading-snug text-sport-fg sm:text-[15px]">
             {headline}
             <span className="text-[11px] font-bold text-sport-gray line-through decoration-emerald-300/60 sm:text-sm"> {price}</span>
-            <span className="text-[11px] font-black text-promo-accent sm:text-sm"> {free}</span>
+            <span className="text-[11px] font-black text-[#1E7F5A] sm:text-sm"> {free}</span>
           </p>
         </div>
         {/* Compteur compact : vertical (label au-dessus de l'heure) sur mobile,

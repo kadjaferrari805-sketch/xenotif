@@ -24,7 +24,7 @@ export function ExperiencePreview() {
   const tiles = [
     { Icon: Flame, label: td('statSessions'), value: PREVIEW.stats.sessionsWeek, color: 'text-sport-orange' },
     { Icon: Clock, label: td('statHours'), value: `${PREVIEW.stats.hours}h`, color: 'text-sport-blue' },
-    { Icon: CalendarCheck, label: td('statActiveDays'), value: PREVIEW.stats.activeDays, color: 'text-emerald-400' },
+    { Icon: CalendarCheck, label: td('statActiveDays'), value: PREVIEW.stats.activeDays, color: 'text-[#1E7F5A]' },
     { Icon: Award, label: td('statBadges'), value: PREVIEW.stats.badges, color: 'text-yellow-400' },
   ]
 

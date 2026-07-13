@@ -131,7 +131,7 @@ function SignUpForm() {
     return (
       <div className="text-center py-4">
         <div className="w-16 h-16 bg-emerald-500/10 border border-emerald-500/30 rounded-full flex items-center justify-center mx-auto mb-5">
-          <CheckCircle size={28} className="text-emerald-400" />
+          <CheckCircle size={28} className="text-[#1E7F5A]" />
         </div>
         <h2 className="text-xl font-black text-sport-fg mb-3">{t('doneTitle')}</h2>
         <p className="text-sport-gray text-sm leading-relaxed mb-6">
@@ -205,14 +205,14 @@ function SignUpForm() {
               <p className="text-sm font-black text-sport-fg leading-none">{period === 'annual' ? plan.priceAnnual : plan.priceMonthly}</p>
               <p className="text-[10px] text-sport-gray mb-1">{plans[i].period}</p>
               {period === 'annual' && plan.totalAnnual && (
-                <p className="text-[9px] text-emerald-400 mb-2 leading-tight">
+                <p className="text-[9px] text-[#1E7F5A] mb-2 leading-tight">
                   {t.rich('billed', { total: plan.totalAnnual, b: (c) => <strong>{c}</strong> })}
                 </p>
               )}
               <ul className="space-y-1">
                 {plans[i].features.map(f => (
                   <li key={f} className="flex items-center gap-1 text-[9px] text-sport-gray leading-tight">
-                    <CheckCircle size={8} className={`shrink-0 ${selectedPlan === plan.id ? 'text-sport-orange' : 'text-emerald-500'}`} />
+                    <CheckCircle size={8} className={`shrink-0 ${selectedPlan === plan.id ? 'text-sport-orange' : 'text-[#1E7F5A]'}`} />
                     {f}
                   </li>
                 ))}
@@ -266,11 +266,11 @@ function SignUpForm() {
             {/* Réassurance au point de décision : essai gratuit + aucun débit + résiliation. */}
             {selectedPlan !== 'gratuit' && (
               <div className="rounded-xl bg-emerald-500/10 border border-emerald-500/25 px-4 py-3">
-                <p className="text-xs font-bold text-emerald-400 text-center mb-2">{t('trialReassure')}</p>
+                <p className="text-xs font-bold text-[#1E7F5A] text-center mb-2">{t('trialReassure')}</p>
                 <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1 text-[10px] text-sport-gray">
-                  <span className="inline-flex items-center gap-1"><Lock size={10} aria-hidden="true" className="text-emerald-500" /> {tt('securePayment')}</span>
-                  <span className="inline-flex items-center gap-1"><ShieldCheck size={10} aria-hidden="true" className="text-emerald-500" /> {tt('guarantee')}</span>
-                  <span className="inline-flex items-center gap-1"><CheckCircle size={10} aria-hidden="true" className="text-emerald-500" /> {tt('cancel')}</span>
+                  <span className="inline-flex items-center gap-1"><Lock size={10} aria-hidden="true" className="text-[#1E7F5A]" /> {tt('securePayment')}</span>
+                  <span className="inline-flex items-center gap-1"><ShieldCheck size={10} aria-hidden="true" className="text-[#1E7F5A]" /> {tt('guarantee')}</span>
+                  <span className="inline-flex items-center gap-1"><CheckCircle size={10} aria-hidden="true" className="text-[#1E7F5A]" /> {tt('cancel')}</span>
                 </div>
               </div>
             )}

@@ -90,7 +90,7 @@ export function AdminPushForm() {
             {sending ? <><span className="w-4 h-4 border-2 border-white/40 border-t-white rounded-full animate-spin" />Envoi…</> : <><Bell size={14} />Envoyer</>}
           </button>
           {result && (
-            <p className="text-emerald-400 text-sm font-semibold flex items-center gap-1.5">
+            <p className="text-[#1E7F5A] text-sm font-semibold flex items-center gap-1.5">
               <CheckCircle size={14} /> {result.recipients} destinataire{result.recipients > 1 ? 's' : ''} · {result.sent} appareil{result.sent > 1 ? 's' : ''}
             </p>
           )}

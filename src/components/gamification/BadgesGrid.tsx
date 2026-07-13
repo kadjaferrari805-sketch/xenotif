@@ -12,7 +12,7 @@ export function BadgesGrid({ badges }: { badges: Badge[] }) {
           <div key={b.id} className={`rounded-xl p-4 text-center border transition-all ${b.earned ? 'bg-yellow-400/10 border-yellow-400/30' : 'bg-sport-dark border-sport-border opacity-50'}`}>
             <span className="text-3xl block mb-2">{b.icon}</span>
             <p className={`text-[11px] font-black leading-tight ${b.earned ? 'text-yellow-400' : 'text-sport-gray'}`}>{t(`badges.${b.id}`)}</p>
-            {b.earned && <CheckCircle size={12} className="text-emerald-400 mx-auto mt-2" aria-hidden="true" />}
+            {b.earned && <CheckCircle size={12} className="text-[#1E7F5A] mx-auto mt-2" aria-hidden="true" />}
           </div>
         ))}
       </div>

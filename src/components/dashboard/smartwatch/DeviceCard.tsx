@@ -62,8 +62,8 @@ export function DeviceCard({ provider, connection, onConnect, onDisconnect, onSy
       {/* Connected badge */}
       {isConnected && (
         <div className="absolute top-3 right-3 flex items-center gap-1.5 bg-emerald-500/15 border border-emerald-500/30 rounded-full px-2.5 py-1">
-          <CheckCircle2 size={10} className="text-emerald-400" />
-          <span className="text-[10px] text-emerald-400 font-bold">{t('connected')}</span>
+          <CheckCircle2 size={10} className="text-[#1E7F5A]" />
+          <span className="text-[10px] text-[#1E7F5A] font-bold">{t('connected')}</span>
         </div>
       )}
 

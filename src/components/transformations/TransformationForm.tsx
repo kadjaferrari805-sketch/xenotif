@@ -41,7 +41,7 @@ export function TransformationForm() {
   if (done) {
     return (
       <div className="bg-sport-card border border-emerald-500/30 rounded-2xl p-6 flex items-center gap-3">
-        <CheckCircle size={20} className="text-emerald-400 shrink-0" aria-hidden="true" />
+        <CheckCircle size={20} className="text-[#1E7F5A] shrink-0" aria-hidden="true" />
         <p className="text-sm text-sport-fg">{t('success')}</p>
       </div>
     )

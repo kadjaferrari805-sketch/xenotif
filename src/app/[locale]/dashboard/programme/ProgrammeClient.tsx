@@ -143,7 +143,7 @@ function ProgrammeContent({ isPro, freeSlugs, userId, initialProgress }: { isPro
           <div className="bg-sport-orange h-2 rounded-full transition-all duration-500" style={{ width: `${pct}%` }} />
         </div>
         {pct === 100 && (
-          <p className="text-emerald-400 text-xs font-bold mt-3 flex items-center gap-1.5">
+          <p className="text-[#1E7F5A] text-xs font-bold mt-3 flex items-center gap-1.5">
             <CheckCircle size={13} /> {t('done')}
           </p>
         )}
@@ -196,7 +196,7 @@ function ProgrammeContent({ isPro, freeSlugs, userId, initialProgress }: { isPro
                         className="mt-0.5 shrink-0 transition-all hover:scale-110"
                       >
                         {done
-                          ? <CheckCircle size={20} className="text-emerald-400" />
+                          ? <CheckCircle size={20} className="text-[#1E7F5A]" />
                           : <Circle size={20} className="text-sport-border hover:text-sport-orange transition-colors" />
                         }
                       </button>

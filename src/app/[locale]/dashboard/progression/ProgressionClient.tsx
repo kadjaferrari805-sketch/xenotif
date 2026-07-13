@@ -119,7 +119,7 @@ export function ProgressionClient({ userId, initialWorkouts, initialProgress }: 
         {[
           { Icon: Flame, label: t('statTotalSessions'), value: workouts.length.toString(), color: 'text-sport-orange' },
           { Icon: Clock, label: t('statHours'), value: `${totalHours}h`, color: 'text-sport-blue' },
-          { Icon: TrendingUp, label: t('statModules'), value: progress.filter(p => p.completed).length.toString(), color: 'text-emerald-400' },
+          { Icon: TrendingUp, label: t('statModules'), value: progress.filter(p => p.completed).length.toString(), color: 'text-[#1E7F5A]' },
           { Icon: Award, label: t('statBadges'), value: gam.badges.filter(b => b.earned).length.toString(), color: 'text-yellow-400' },
         ].map(({ Icon, label, value, color }) => (
           <div key={label} className="bg-sport-card border border-sport-border rounded-xl p-4">

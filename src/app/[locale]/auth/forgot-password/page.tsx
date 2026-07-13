@@ -35,7 +35,7 @@ export default function ForgotPasswordPage() {
           {done ? (
             <div className="text-center">
               <div className="w-16 h-16 bg-emerald-500/10 border border-emerald-500/30 rounded-full flex items-center justify-center mx-auto mb-5">
-                <CheckCircle size={28} className="text-emerald-400" />
+                <CheckCircle size={28} className="text-[#1E7F5A]" />
               </div>
               <h2 className="text-xl font-black text-sport-fg mb-3">{t('doneTitle')}</h2>
               <p className="text-sport-gray text-sm leading-relaxed mb-6">
