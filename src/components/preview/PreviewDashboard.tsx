@@ -35,8 +35,11 @@ export function PreviewDashboard() {
           Texte plus petit + whitespace-nowrap sous sm : à 12px les deux blocs
           (~357px) dépassaient la largeur dispo sur un vrai téléphone (~343-358px
           à 375-390px), ce qui les faisait passer chacun sur 2 lignes.
+          demo-banner-safe (padding-top + safe-area-inset-top) : la page est en
+          viewport-fit=cover (edge-to-edge), donc sans ça la bannière démarre sous
+          l'encoche/Dynamic Island au lieu d'en dessous.
           À partir de sm : lien en absolute à gauche, badge centré sur toute la largeur. */}
-      <div className="bg-sport-orange/10 border-b border-sport-orange/30 px-3 sm:px-6 py-2.5 flex flex-row items-center justify-between sm:justify-center gap-1 sm:gap-0 sm:relative">
+      <div className="bg-sport-orange/10 border-b border-sport-orange/30 px-3 sm:px-6 pb-2.5 demo-banner-safe flex flex-row items-center justify-between sm:justify-center gap-1 sm:gap-0 sm:relative">
         <Link
           href="/"
           className="sm:absolute sm:left-6 inline-flex items-center gap-1 sm:gap-1.5 whitespace-nowrap text-[10px] sm:text-xs font-bold text-sport-orange hover:opacity-80 transition-opacity"

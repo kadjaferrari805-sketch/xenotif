@@ -285,6 +285,7 @@
 .dash-header-safe { padding-top: calc(0.75rem + env(safe-area-inset-top)); }
 .dash-nav-safe { padding-bottom: calc(0.5rem + env(safe-area-inset-bottom)); }
 .dash-main { padding-top: calc(3.5rem + env(safe-area-inset-top)); }
+.demo-banner-safe { padding-top: calc(0.625rem + env(safe-area-inset-top)); }
 @media (min-width: 768px) { .dash-main { padding-top: 0; } }
 
 /* ── Reveal au scroll des titres de section/page ──────────────────────────
