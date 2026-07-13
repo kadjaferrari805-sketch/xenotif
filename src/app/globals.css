@@ -134,6 +134,19 @@
   .text-3d {
     text-shadow: 0 1px 0 rgba(0, 0, 0, 0.35), 0 3px 8px rgba(0, 0, 0, 0.45), 0 0 28px rgba(249, 115, 22, 0.14);
   }
+  /* Halo réactif (couleur du fond de page) pour détacher un texte en couleur
+     de premier plan (sport-fg, réactif) d'une photo derrière lui — un simple
+     ombre noire fixe ne fonctionne qu'en thème sombre (texte blanc) ; ici le
+     halo reprend --background, donc blanc/clair en thème clair (texte
+     sombre) et sombre en thème sombre (texte blanc), dans les deux cas. */
+  .photo-text-halo {
+    text-shadow:
+      0 1px 3px var(--background),
+      0 -1px 3px var(--background),
+      1px 0 3px var(--background),
+      -1px 0 3px var(--background),
+      0 2px 20px var(--background);
+  }
   /* Hover scale for feature images */
   .group-hover\:scale-108:hover {
     transform: scale(1.08);
