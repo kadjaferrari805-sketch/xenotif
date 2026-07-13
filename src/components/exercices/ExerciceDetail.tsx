@@ -88,13 +88,21 @@ function VideoBlock({ url, poster, t }: { url?: string; poster?: string; t: Retu
   )
 }
 
-// ─── Aperçu figé (vraie frame extraite de la vidéo, pas de silhouette) ──────
-function LoopBlock({ photo, gifUrl, alt, t }: { photo?: string; gifUrl?: string; alt: string; t: ReturnType<typeof useTranslations> }) {
+// ─── Aperçu en boucle (même vidéo réelle, muette, sans contrôles) ───────────
+// Note : l'URL reçoit un suffixe distinct de celle du bloc "Vidéo de
+// démonstration" — deux <video> avec un src strictement identique peuvent se
+// bloquer mutuellement au chargement (requêtes range dédupliquées par le
+// navigateur) ; ce paramètre inoffensif force une requête indépendante.
+function LoopBlock({ url, photo, gifUrl, alt, t }: { url?: string; photo?: string; gifUrl?: string; alt: string; t: ReturnType<typeof useTranslations> }) {
   const { ref, inView } = useInView({ triggerOnce: true, rootMargin: '200px' })
   return (
     <div ref={ref} className="relative w-full aspect-video rounded-2xl overflow-hidden bg-sport-dark border border-sport-border">
-      {photo ? (
-        inView && <Image src={photo} alt={alt} fill sizes="(max-width:768px) 90vw, 45vw" className="object-contain" />
+      {url ? (
+        inView && (
+          <video autoPlay muted loop playsInline preload="metadata" poster={photo} className="w-full h-full object-contain">
+            <source src={`${url}?loop`} type="video/mp4" />
+          </video>
+        )
       ) : gifUrl ? (
         <Image src={gifUrl} alt={alt} fill unoptimized className="object-contain" />
       ) : (
@@ -327,7 +335,13 @@ export function ExerciceDetail({ detail, locale }: { detail: Detail; locale: str
           <VideoBlock url={d.media.videoUrl} poster={d.media.videoPoster} t={t} />
         </Section>
         <Section icon={Play} title={t('sec_gif')}>
-          <LoopBlock photo={d.media.images?.[2] ?? d.media.videoPoster} gifUrl={d.media.gifUrl} alt={d.name} t={t} />
+          <LoopBlock
+            url={d.media.videoUrl}
+            photo={d.media.images?.[2] ?? d.media.videoPoster}
+            gifUrl={d.media.gifUrl}
+            alt={d.name}
+            t={t}
+          />
         </Section>
       </div>
 
