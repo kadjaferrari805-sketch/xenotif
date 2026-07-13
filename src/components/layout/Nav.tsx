@@ -25,6 +25,7 @@ const NAV_LINKS = [
   { href: '/boutique', key: 'boutique' },
   { href: '/blog', key: 'blog' },
   { href: '/#tarifs', key: 'tarifs' },
+  { href: '/contact', key: 'contact' },
 ] as const
 
 export function Nav() {
