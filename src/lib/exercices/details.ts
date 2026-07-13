@@ -20,7 +20,6 @@ export type ExerciceStats = {
 export type ExerciceMedia = {
   videoUrl?: string
   videoPoster?: string
-  gifUrl?: string
   images?: string[]
 }
 
@@ -44,11 +43,11 @@ export type ExerciceDetail = {
 }
 
 // Overrides médias par slug (à remplir quand de vrais fichiers existent dans
-// public/videos/exercises, public/gifs, etc.). Fallback = GIF d'animation par
-// pattern de mouvement (généré localement) + placeholder vidéo.
+// public/videos/exercises, etc.). Fallback = images d'étapes par pattern de
+// mouvement (généré localement) + placeholder vidéo.
 const MEDIA_OVERRIDES: Record<string, ExerciceMedia> = {}
 
-// GIF d'animation par pattern de mouvement (public/gifs/<pattern>.gif).
+// Pattern de mouvement, utilisé pour le fallback des étapes (public/steps/<pattern>-N.jpg).
 const PATTERN_RULES: { pattern: string; re: RegExp }[] = [
   { pattern: 'jumpingjack', re: /jumping|burpee|mountain|climber|high knee|skater|sprint|talon|corde|montees de genoux|genou/ },
   { pattern: 'plank', re: /gainage|plank|superman|hollow/ },
@@ -222,7 +221,6 @@ export function getExerciceDetail(slug: string, locale: string): ExerciceDetail 
       ...MEDIA_OVERRIDES[slug],
       videoUrl: MEDIA_OVERRIDES[slug]?.videoUrl ?? fileUrl(`videos/exercises/${slug}.mp4`),
       videoPoster: MEDIA_OVERRIDES[slug]?.videoPoster ?? fileUrl(`videos/exercises/${slug}.jpg`),
-      gifUrl: MEDIA_OVERRIDES[slug]?.gifUrl ?? `/gifs/${pat}.gif`,
       images:
         MEDIA_OVERRIDES[slug]?.images ??
         ([1, 2, 3, 4, 5].map((n) => fileUrl(`steps/${slug}-${n}.jpg`)).every(Boolean)

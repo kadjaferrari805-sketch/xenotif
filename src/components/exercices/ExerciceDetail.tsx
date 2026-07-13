@@ -88,33 +88,6 @@ function VideoBlock({ url, poster, t }: { url?: string; poster?: string; t: Retu
   )
 }
 
-// ─── Aperçu en boucle (même vidéo réelle, muette, sans contrôles) ───────────
-// Note : l'URL reçoit un suffixe distinct de celle du bloc "Vidéo de
-// démonstration" — deux <video> avec un src strictement identique peuvent se
-// bloquer mutuellement au chargement (requêtes range dédupliquées par le
-// navigateur) ; ce paramètre inoffensif force une requête indépendante.
-function LoopBlock({ url, photo, gifUrl, alt, t }: { url?: string; photo?: string; gifUrl?: string; alt: string; t: ReturnType<typeof useTranslations> }) {
-  const { ref, inView } = useInView({ triggerOnce: true, rootMargin: '200px' })
-  return (
-    <div ref={ref} className="relative w-full aspect-video rounded-2xl overflow-hidden bg-sport-dark border border-sport-border">
-      {url ? (
-        inView && (
-          <video autoPlay muted loop playsInline preload="metadata" poster={photo} className="w-full h-full object-contain">
-            <source src={`${url}?loop`} type="video/mp4" />
-          </video>
-        )
-      ) : gifUrl ? (
-        <Image src={gifUrl} alt={alt} fill unoptimized className="object-contain" />
-      ) : (
-        <>
-          <div className="absolute inset-0 animate-pulse bg-white/[0.02]" />
-          <p className="text-sm text-sport-gray relative flex items-center justify-center h-full">{t('gifSoon')}</p>
-        </>
-      )}
-    </div>
-  )
-}
-
 // ─── Coach vocal (Web Speech API) ───────────────────────────────────────────
 function VoiceCoach({ text, locale, t }: { text: string; locale: string; t: ReturnType<typeof useTranslations> }) {
   const [supported, setSupported] = useState(true)
@@ -329,21 +302,10 @@ export function ExerciceDetail({ detail, locale }: { detail: Detail; locale: str
         ))}
       </div>
 
-      {/* 1. Vidéo + 2. GIF */}
-      <div className="grid md:grid-cols-2 gap-6">
-        <Section icon={Film} title={t('sec_video')}>
-          <VideoBlock url={d.media.videoUrl} poster={d.media.videoPoster} t={t} />
-        </Section>
-        <Section icon={Play} title={t('sec_gif')}>
-          <LoopBlock
-            url={d.media.videoUrl}
-            photo={d.media.images?.[2] ?? d.media.videoPoster}
-            gifUrl={d.media.gifUrl}
-            alt={d.name}
-            t={t}
-          />
-        </Section>
-      </div>
+      {/* Vidéo de démonstration */}
+      <Section icon={Film} title={t('sec_video')}>
+        <VideoBlock url={d.media.videoUrl} poster={d.media.videoPoster} t={t} />
+      </Section>
 
       {/* 3. Étapes */}
       <Section icon={Images} title={t('sec_steps')}>
