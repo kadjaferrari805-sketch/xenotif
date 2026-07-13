@@ -2,23 +2,25 @@
 
 import Image from 'next/image'
 import { motion } from 'framer-motion'
-import { useTranslations } from 'next-intl'
+import { useLocale, useTranslations } from 'next-intl'
 import { useInView } from 'react-intersection-observer'
 import { ClipboardList, Sparkles, TrendingUp } from 'lucide-react'
 
-// Section « 3 cartes » façon Strava : créative de marque (IA Higgsfield, dark +
-// orange) en haut + icône superposée + texte. Images locales dans public/home ;
-// textes → home.featureCards.cards.
+// Section « 3 cartes » façon Strava : créative de marque en haut + icône
+// superposée + texte. Images locales dans public/home ; textes →
+// home.featureCards.cards. La carte « coach » utilise le mockup de la vraie
+// app (public/pub/coach-poche-<locale>.webp) plutôt qu'une créative abstraite.
 const CARDS = [
-  { Icon: ClipboardList, img: '/home/feature-programmes.jpg' },
-  { Icon: Sparkles, img: '/home/feature-coach.jpg' },
-  { Icon: TrendingUp, img: '/home/feature-progression.jpg' },
+  { Icon: ClipboardList, img: '/home/feature-programmes.jpg', position: 'object-center' },
+  { Icon: Sparkles, img: null, position: 'object-[70%_28%]' },
+  { Icon: TrendingUp, img: '/home/feature-progression.jpg', position: 'object-center' },
 ]
 
 type Card = { title: string; desc: string }
 
 export function FeatureCards() {
   const t = useTranslations('home.featureCards')
+  const locale = useLocale()
   const cards = t.raw('cards') as Card[]
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.15 })
 
@@ -31,7 +33,7 @@ export function FeatureCards() {
         </div>
 
         <div ref={ref} className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {CARDS.map(({ Icon, img }, i) => (
+          {CARDS.map(({ Icon, img, position }, i) => (
             <motion.div
               key={i}
               initial={{ opacity: 0, y: 24 }}
@@ -41,11 +43,11 @@ export function FeatureCards() {
             >
               <div className="relative aspect-[16/10] w-full">
                 <Image
-                  src={img}
+                  src={img ?? `/pub/coach-poche-${locale}.webp`}
                   alt={cards[i].title}
                   fill
                   sizes="(max-width: 768px) 100vw, 33vw"
-                  className="object-cover"
+                  className={`object-cover ${position}`}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-sport-card via-sport-card/25 to-transparent" />
                 <div className="absolute bottom-3 left-3 w-11 h-11 rounded-2xl border border-sport-orange/30 bg-sport-dark/80 backdrop-blur flex items-center justify-center">
