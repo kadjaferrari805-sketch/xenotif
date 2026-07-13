@@ -7,14 +7,13 @@ import { useInView } from 'react-intersection-observer'
 import { ClipboardList, Sparkles, TrendingUp } from 'lucide-react'
 
 // Section « 3 cartes » façon Strava : créative de marque en haut + icône
-// superposée + texte. Images locales dans public/home ; textes →
-// home.featureCards.cards. La carte « coach » utilise un recadrage du
-// mockup réel de l'app (juste le téléphone, sans le texte marketing —
-// voir public/pub/coach-poche-<locale>.webp, source non recadrée).
+// superposée + texte. Les 3 images sont de vrais recadrages du mockup app
+// (public/pub/coach-poche-<locale>.webp, source non recadrée) : écran
+// d'accueil, programmes, objectifs/progression — voir public/home/feature-*.
 const CARDS = [
-  { Icon: ClipboardList, img: '/home/feature-programmes.jpg' },
-  { Icon: Sparkles, img: null },
-  { Icon: TrendingUp, img: '/home/feature-progression.jpg' },
+  { Icon: ClipboardList, imgKey: 'programmes' },
+  { Icon: Sparkles, imgKey: 'coach' },
+  { Icon: TrendingUp, imgKey: 'progression' },
 ]
 
 type Card = { title: string; desc: string }
@@ -34,7 +33,7 @@ export function FeatureCards() {
         </div>
 
         <div ref={ref} className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {CARDS.map(({ Icon, img }, i) => (
+          {CARDS.map(({ Icon, imgKey }, i) => (
             <motion.div
               key={i}
               initial={{ opacity: 0, y: 24 }}
@@ -44,7 +43,7 @@ export function FeatureCards() {
             >
               <div className="relative aspect-[16/10] w-full">
                 <Image
-                  src={img ?? `/home/feature-coach-${locale}.webp`}
+                  src={`/home/feature-${imgKey}-${locale}.webp`}
                   alt={cards[i].title}
                   fill
                   sizes="(max-width: 768px) 100vw, 33vw"
