@@ -83,7 +83,7 @@ export default async function ProgramPage({ params }: { params: Promise<{ slug: 
   }
 
   return (
-    <div className="min-h-screen bg-sport-dark text-white">
+    <div className="min-h-screen bg-sport-dark text-sport-fg">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(courseSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
@@ -140,7 +140,7 @@ export default async function ProgramPage({ params }: { params: Promise<{ slug: 
         <div className="space-y-3">
           {faq.map(({ q, a }, i) => (
             <details key={i} className="group bg-sport-card border border-sport-border rounded-2xl px-5 py-4">
-              <summary className="flex items-center justify-between gap-4 cursor-pointer list-none font-bold text-white">
+              <summary className="flex items-center justify-between gap-4 cursor-pointer list-none font-bold text-sport-fg">
                 {q}
                 <ChevronDown size={18} aria-hidden="true" className="shrink-0 text-sport-orange transition-transform group-open:rotate-180" />
               </summary>

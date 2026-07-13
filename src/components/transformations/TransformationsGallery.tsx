@@ -20,7 +20,7 @@ export function TransformationsGallery() {
     <section className="px-6 py-20 bg-sport-dark" aria-label={t('galleryTitle')}>
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-10">
-          <h2 className="text-3xl md:text-4xl font-black text-white">{t('galleryTitle')}</h2>
+          <h2 className="text-3xl md:text-4xl font-black text-sport-fg">{t('galleryTitle')}</h2>
           <p className="text-sport-gray text-sm mt-3">{t('gallerySubtitle')}</p>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -36,7 +36,7 @@ export function TransformationsGallery() {
                 ))}
               </div>
               <figcaption className="p-4">
-                <p className="text-sm font-bold text-white">{it.displayName ?? t('defaultName')}{it.weeks ? <span className="text-sport-orange font-black"> · {t('weeks', { weeks: it.weeks })}</span> : null}</p>
+                <p className="text-sm font-bold text-sport-fg">{it.displayName ?? t('defaultName')}{it.weeks ? <span className="text-sport-orange font-black"> · {t('weeks', { weeks: it.weeks })}</span> : null}</p>
                 {it.caption && <p className="text-xs text-sport-gray mt-1 leading-relaxed">{it.caption}</p>}
               </figcaption>
             </figure>

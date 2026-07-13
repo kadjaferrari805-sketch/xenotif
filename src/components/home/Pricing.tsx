@@ -44,8 +44,8 @@ function PlanButton({
       aria-label={t('subscribeAria', { name })}
       className={`w-full py-3.5 px-6 rounded-full font-bold text-sm transition-all inline-flex items-center justify-center gap-2 active:scale-95 ${
         highlight
-          ? 'bg-sport-orange text-white hover:bg-orange-600 shadow-lg shadow-sport-orange/25'
-          : 'border border-sport-border text-white hover:border-sport-gray hover:bg-white/5'
+          ? 'bg-sport-orange text-sport-fg hover:bg-orange-600 shadow-lg shadow-sport-orange/25'
+          : 'border border-sport-border text-sport-fg hover:border-sport-gray hover:bg-sport-fg/5'
       }`}
     >
       {cta} <ArrowRight size={14} aria-hidden="true" />
@@ -80,13 +80,13 @@ export function Pricing() {
         <div className="flex items-center justify-center gap-4 mt-8">
           <button
             onClick={() => setPeriod('monthly')}
-            className={`px-5 py-2 rounded-full text-sm font-bold transition-all ${period === 'monthly' ? 'bg-sport-orange text-white' : 'text-sport-gray hover:text-white'}`}
+            className={`px-5 py-2 rounded-full text-sm font-bold transition-all ${period === 'monthly' ? 'bg-sport-orange text-sport-fg' : 'text-sport-gray hover:text-sport-fg'}`}
           >
             {t('monthly')}
           </button>
           <button
             onClick={() => setPeriod('annual')}
-            className={`px-5 py-2 rounded-full text-sm font-bold transition-all flex items-center gap-2 ${period === 'annual' ? 'bg-sport-orange text-white' : 'text-sport-gray hover:text-white'}`}
+            className={`px-5 py-2 rounded-full text-sm font-bold transition-all flex items-center gap-2 ${period === 'annual' ? 'bg-sport-orange text-sport-fg' : 'text-sport-gray hover:text-sport-fg'}`}
           >
             {t('annual')}
             <span className="text-[10px] font-black bg-emerald-500 text-white px-2 py-0.5 rounded-full">{t('save')}</span>
@@ -118,20 +118,20 @@ export function Pricing() {
                 )}
 
                 <div className="mb-6">
-                  <h3 className="text-lg font-black text-white mb-2">{tr.name}</h3>
+                  <h3 className="text-lg font-black text-sport-fg mb-2">{tr.name}</h3>
                   <p className="text-sport-gray text-xs leading-relaxed">{tr.description}</p>
                 </div>
 
                 <div className="mb-8 pb-8 border-b border-sport-border">
                   <div className="flex items-baseline gap-2">
-                    <span className="text-4xl font-black text-white">
+                    <span className="text-4xl font-black text-sport-fg">
                       {period === 'annual' ? plan.priceAnnual : plan.priceMonthly}
                     </span>
                     <span className="text-sport-gray text-xs">{tr.period}</span>
                   </div>
                   {period === 'annual' && plan.totalAnnual && (
                     <p className="text-[10px] text-sport-gray mt-1">
-                      {t.rich('billed', { total: plan.totalAnnual, b: (c) => <strong className="text-white">{c}</strong> })}
+                      {t.rich('billed', { total: plan.totalAnnual, b: (c) => <strong className="text-sport-fg">{c}</strong> })}
                     </p>
                   )}
                   {plan.id !== 'gratuit' && (

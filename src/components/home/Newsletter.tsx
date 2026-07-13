@@ -56,14 +56,14 @@ export function Newsletter() {
         </span>
         <p className="text-[11px] font-bold uppercase tracking-[2px] text-sport-gray mb-4">{t('eyebrow')}</p>
 
-        <h2 id="newsletter-title" className="text-3d text-4xl md:text-5xl font-black text-white mb-4 leading-tight">
+        <h2 id="newsletter-title" className="text-3d text-4xl md:text-5xl font-black text-sport-fg mb-4 leading-tight">
           {t('titleTop')}
           <br />
           <span className="text-sport-orange">{t('titleBottom')}</span>
         </h2>
 
         <p className="text-sport-gray mb-8 text-sm leading-relaxed max-w-md mx-auto">
-          {t.rich('desc', { b: (c) => <strong className="text-white">{c}</strong> })}
+          {t.rich('desc', { b: (c) => <strong className="text-sport-fg">{c}</strong> })}
         </p>
 
         {/* Perks list */}
@@ -92,7 +92,7 @@ export function Newsletter() {
                 <CheckCircle size={32} className="text-sport-orange" aria-hidden="true" />
               </div>
               <div>
-                <p className="text-white font-black text-xl mb-1">{t('successTitle')}</p>
+                <p className="text-sport-fg font-black text-xl mb-1">{t('successTitle')}</p>
                 <p className="text-sport-gray text-sm mb-5">{t('successText')}</p>
                 <a
                   href={`/api/free-program?locale=${locale}`}
@@ -128,7 +128,7 @@ export function Newsletter() {
                   aria-required="true"
                   aria-describedby={error ? 'newsletter-error' : undefined}
                   aria-invalid={!!error}
-                  className={`w-full bg-sport-card border text-white placeholder:text-sport-gray rounded-full px-5 py-3.5 text-sm outline-none transition-colors ${
+                  className={`w-full bg-sport-card border text-sport-fg placeholder:text-sport-gray rounded-full px-5 py-3.5 text-sm outline-none transition-colors ${
                     error ? 'border-red-500' : 'border-sport-border focus:border-sport-orange'
                   }`}
                 />

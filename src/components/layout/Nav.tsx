@@ -7,6 +7,7 @@ import { Link } from '@/i18n/navigation'
 import { Menu, X, ChevronDown, ArrowRight, Dumbbell, ClipboardList, Trophy, Calculator } from 'lucide-react'
 import { Logo } from '@/components/ui/Logo'
 import { LanguageSwitcher } from './LanguageSwitcher'
+import { ThemeToggle } from './ThemeToggle'
 import { AppDownload } from './AppDownload'
 import { createClient } from '@/lib/supabase/client'
 import { DISCIPLINE_SLUGS as DISCIPLINES } from '@/lib/disciplines-nav'
@@ -89,7 +90,7 @@ export function Nav() {
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
       className={`sticky top-0 z-50 transition-all duration-300 pt-safe border-b ${
-        scrolled ? 'bg-sport-dark/80 backdrop-blur-xl border-white/10 shadow-lg shadow-black/30' : 'bg-sport-dark border-white/10'
+        scrolled ? 'bg-sport-dark/80 backdrop-blur-xl border-sport-fg/10 shadow-lg shadow-black/30' : 'bg-sport-dark border-sport-fg/10'
       }`}
     >
       <div className={`max-w-6xl mx-auto px-6 flex items-center justify-between gap-4 transition-all duration-300 ${scrolled ? 'h-14' : 'h-16'}`}>
@@ -106,7 +107,7 @@ export function Nav() {
               aria-haspopup="true"
               aria-expanded={menuOpen}
               onClick={() => setMenuOpen((v) => !v)}
-              className="inline-flex items-center gap-1 hover:text-white transition-colors py-1"
+              className="inline-flex items-center gap-1 hover:text-sport-fg transition-colors py-1"
             >
               {t('training')}
               <ChevronDown size={14} aria-hidden="true" className={`transition-transform duration-200 ${menuOpen ? 'rotate-180' : ''}`} />
@@ -121,7 +122,7 @@ export function Nav() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: 8 }}
                   transition={{ duration: 0.18, ease: [0.16, 1, 0.3, 1] }}
-                  className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-[680px] max-w-[calc(100vw-2rem)] bg-sport-dark/95 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl shadow-black/50 p-5"
+                  className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-[680px] max-w-[calc(100vw-2rem)] bg-sport-dark/95 backdrop-blur-xl border border-sport-fg/10 rounded-2xl shadow-2xl shadow-black/50 p-5"
                 >
                   <div className="grid grid-cols-3 gap-5">
                     <div className="col-span-2">
@@ -133,16 +134,16 @@ export function Nav() {
                             href={`/disciplines/${d.slug}`}
                             role="menuitem"
                             onClick={() => setMenuOpen(false)}
-                            className="flex items-center gap-3 rounded-xl px-3 py-2 hover:bg-white/5 transition-colors group/disc"
+                            className="flex items-center gap-3 rounded-xl px-3 py-2 hover:bg-sport-fg/5 transition-colors group/disc"
                           >
                             <span className="text-lg w-6 text-center" aria-hidden="true">{d.emoji}</span>
-                            <span className="text-sm font-medium text-sport-gray group-hover/disc:text-white transition-colors">{t(`disc.${d.slug}`)}</span>
+                            <span className="text-sm font-medium text-sport-gray group-hover/disc:text-sport-fg transition-colors">{t(`disc.${d.slug}`)}</span>
                           </Link>
                         ))}
                       </div>
                     </div>
 
-                    <div className="border-l border-white/10 pl-5">
+                    <div className="border-l border-sport-fg/10 pl-5">
                       <p className="text-[10px] font-black uppercase tracking-wider text-sport-gray mb-3 px-2">{t('resources')}</p>
                       <div className="flex flex-col gap-1">
                         {RESOURCES.map(({ href, key, Icon }) => (
@@ -151,10 +152,10 @@ export function Nav() {
                             href={href}
                             role="menuitem"
                             onClick={() => setMenuOpen(false)}
-                            className="flex items-center gap-3 rounded-xl px-3 py-2 hover:bg-white/5 transition-colors group/res"
+                            className="flex items-center gap-3 rounded-xl px-3 py-2 hover:bg-sport-fg/5 transition-colors group/res"
                           >
                             <Icon size={16} aria-hidden="true" className="text-sport-orange shrink-0" />
-                            <span className="text-sm font-medium text-sport-gray group-hover/res:text-white transition-colors">{t(key)}</span>
+                            <span className="text-sm font-medium text-sport-gray group-hover/res:text-sport-fg transition-colors">{t(key)}</span>
                           </Link>
                         ))}
                       </div>
@@ -164,7 +165,7 @@ export function Nav() {
                   <Link
                     href="/disciplines"
                     onClick={() => setMenuOpen(false)}
-                    className="mt-3 flex items-center justify-center gap-1.5 rounded-xl border border-white/10 py-2.5 text-xs font-bold text-sport-orange hover:bg-sport-orange/10 transition-colors"
+                    className="mt-3 flex items-center justify-center gap-1.5 rounded-xl border border-sport-fg/10 py-2.5 text-xs font-bold text-sport-orange hover:bg-sport-orange/10 transition-colors"
                   >
                     {t('allDisciplines')} <ArrowRight size={13} aria-hidden="true" />
                   </Link>
@@ -174,7 +175,7 @@ export function Nav() {
           </div>
 
           {NAV_LINKS.map((link) => (
-            <Link key={link.href} href={link.href} className="hover:text-white transition-colors relative group py-1">
+            <Link key={link.href} href={link.href} className="hover:text-sport-fg transition-colors relative group py-1">
               {t(link.key)}
               <span className="absolute bottom-0 left-0 w-0 h-px bg-sport-orange transition-all duration-300 group-hover:w-full" />
             </Link>
@@ -183,18 +184,19 @@ export function Nav() {
 
         {/* Desktop actions */}
         <div className="flex items-center justify-end gap-3 shrink-0">
-          <div className="hidden md:block">
+          <div className="hidden md:flex items-center gap-2">
             <LanguageSwitcher />
+            <ThemeToggle />
           </div>
           {user ? (
             <Link href="/dashboard" aria-label={t('monEspace')} className="inline-flex items-center justify-center rounded-full border border-sport-border bg-sport-card/70 p-1 hover:border-sport-orange/50 transition-all active:scale-95">
               <span className="flex h-8 w-8 items-center justify-center rounded-full bg-sport-orange/20 border border-sport-orange/40 text-sport-orange font-black text-xs">{initials}</span>
             </Link>
           ) : (
-            <Link href="/auth/signin" className="text-sm text-sport-gray hover:text-white transition-colors">{t('connexion')}</Link>
+            <Link href="/auth/signin" className="text-sm text-sport-gray hover:text-sport-fg transition-colors">{t('connexion')}</Link>
           )}
           <AppDownload
-            triggerClassName="hidden md:inline-flex items-center justify-center h-9 w-9 rounded-full border border-sport-border text-white/90 hover:text-white hover:border-white/30 transition-all"
+            triggerClassName="hidden md:inline-flex items-center justify-center h-9 w-9 rounded-full border border-sport-border text-sport-fg/90 hover:text-sport-fg hover:border-sport-fg/30 transition-all"
             labelClassName="hidden"
             iconSize={16}
           />
@@ -204,7 +206,7 @@ export function Nav() {
             aria-label={isOpen ? t('fermerMenu') : t('ouvrirMenu')}
             aria-expanded={isOpen}
             aria-controls="mobile-menu"
-            className="md:hidden text-white p-1"
+            className="md:hidden text-sport-fg p-1"
           >
             {isOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
@@ -221,7 +223,7 @@ export function Nav() {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.25 }}
-            className="md:hidden bg-sport-dark/80 backdrop-blur-xl border-t border-white/10 overflow-hidden"
+            className="md:hidden bg-sport-dark/80 backdrop-blur-xl border-t border-sport-fg/10 overflow-hidden"
           >
             <div className="px-6 py-5 flex flex-col gap-1">
               {/* Entraînement (accordéon) */}
@@ -229,7 +231,7 @@ export function Nav() {
                 type="button"
                 onClick={() => setMobileTrainOpen((v) => !v)}
                 aria-expanded={mobileTrainOpen}
-                className="flex items-center justify-between text-sm font-medium text-sport-gray hover:text-white transition-colors py-3 border-b border-sport-border"
+                className="flex items-center justify-between text-sm font-medium text-sport-gray hover:text-sport-fg transition-colors py-3 border-b border-sport-border"
               >
                 {t('training')}
                 <ChevronDown size={16} aria-hidden="true" className={`transition-transform duration-200 ${mobileTrainOpen ? 'rotate-180' : ''}`} />
@@ -245,7 +247,7 @@ export function Nav() {
                   >
                     <div className="flex flex-col gap-1 py-2">
                       {RESOURCES.map(({ href, key, Icon }) => (
-                        <Link key={href} href={href} onClick={() => setIsOpen(false)} className="flex items-center gap-2.5 rounded-lg px-2 py-2 text-sm font-medium text-white hover:bg-white/5 transition-colors">
+                        <Link key={href} href={href} onClick={() => setIsOpen(false)} className="flex items-center gap-2.5 rounded-lg px-2 py-2 text-sm font-medium text-sport-fg hover:bg-sport-fg/5 transition-colors">
                           <Icon size={15} aria-hidden="true" className="text-sport-orange" /> {t(key)}
                         </Link>
                       ))}
@@ -253,7 +255,7 @@ export function Nav() {
                     <p className="text-[10px] font-black uppercase tracking-wider text-sport-gray px-2 pt-2 pb-1">{t('disciplines')}</p>
                     <div className="grid grid-cols-2 gap-1">
                       {DISCIPLINES.map((d) => (
-                        <Link key={d.slug} href={`/disciplines/${d.slug}`} onClick={() => setIsOpen(false)} className="flex items-center gap-2 rounded-lg px-2 py-2 text-sm text-sport-gray hover:text-white hover:bg-white/5 transition-colors">
+                        <Link key={d.slug} href={`/disciplines/${d.slug}`} onClick={() => setIsOpen(false)} className="flex items-center gap-2 rounded-lg px-2 py-2 text-sm text-sport-gray hover:text-sport-fg hover:bg-sport-fg/5 transition-colors">
                           <span aria-hidden="true">{d.emoji}</span> {t(`disc.${d.slug}`)}
                         </Link>
                       ))}
@@ -263,17 +265,18 @@ export function Nav() {
               </AnimatePresence>
 
               {NAV_LINKS.map((link) => (
-                <Link key={link.href} href={link.href} onClick={() => setIsOpen(false)} className="text-sm font-medium text-sport-gray hover:text-white transition-colors py-3 border-b border-sport-border last:border-0">
+                <Link key={link.href} href={link.href} onClick={() => setIsOpen(false)} className="text-sm font-medium text-sport-gray hover:text-sport-fg transition-colors py-3 border-b border-sport-border last:border-0">
                   {t(link.key)}
                 </Link>
               ))}
               {!user && (
-                <Link href="/auth/signin" onClick={() => setIsOpen(false)} className="text-sm font-medium text-sport-gray hover:text-white transition-colors py-3">
+                <Link href="/auth/signin" onClick={() => setIsOpen(false)} className="text-sm font-medium text-sport-gray hover:text-sport-fg transition-colors py-3">
                   {t('connexion')}
                 </Link>
               )}
-              <div className="pt-4 mt-2 border-t border-sport-border">
+              <div className="pt-4 mt-2 border-t border-sport-border flex items-center justify-between gap-3">
                 <LanguageSwitcher />
+                <ThemeToggle />
               </div>
             </div>
           </motion.div>

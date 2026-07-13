@@ -38,7 +38,7 @@ export function CoachAd() {
           <span className="inline-flex items-center gap-1.5 text-[11px] font-black uppercase tracking-widest text-sport-orange bg-sport-orange/10 border border-sport-orange/20 rounded-full px-3 py-1">
             <Sparkles size={12} aria-hidden="true" /> {t('badge')}
           </span>
-          <h2 className="text-3xl md:text-4xl font-black text-white mt-4">{t('title')}</h2>
+          <h2 className="text-3xl md:text-4xl font-black text-sport-fg mt-4">{t('title')}</h2>
           <p className="text-sport-gray mt-3 max-w-md mx-auto md:mx-0">{t('subtitle')}</p>
           <div className="mt-7 flex justify-center md:justify-start">
             <Link href="/auth/signup" className="btn-primary inline-flex items-center gap-2">

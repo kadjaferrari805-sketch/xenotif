@@ -22,7 +22,7 @@ export function AdminTransformations() {
 
   return (
     <div className="mt-10 bg-sport-card border border-sport-border rounded-2xl p-6">
-      <h2 className="text-sm font-black text-white mb-5">{t('adminTitle')} ({items.length})</h2>
+      <h2 className="text-sm font-black text-sport-fg mb-5">{t('adminTitle')} ({items.length})</h2>
       {items.length === 0 ? (
         <p className="text-sport-gray text-sm">{t('adminEmpty')}</p>
       ) : (
@@ -34,7 +34,7 @@ export function AdminTransformations() {
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src={it.afterUrl} alt={t('after')} className="w-16 h-20 object-cover rounded-lg" />
               <div className="flex-1 min-w-0">
-                <p className="text-sm font-bold text-white">{it.displayName ?? t('defaultName')}{it.weeks ? ` · ${t('weeks', { weeks: it.weeks })}` : ''}</p>
+                <p className="text-sm font-bold text-sport-fg">{it.displayName ?? t('defaultName')}{it.weeks ? ` · ${t('weeks', { weeks: it.weeks })}` : ''}</p>
                 {it.caption && <p className="text-xs text-sport-gray truncate">{it.caption}</p>}
               </div>
               <button onClick={() => moderate(it.id, 'approved')} aria-label={t('approve')} className="w-9 h-9 rounded-lg bg-emerald-500/15 text-emerald-400 flex items-center justify-center hover:bg-emerald-500/25"><Check size={16} /></button>

@@ -277,7 +277,7 @@ export function Hero() {
               >
                 {t('ctaPrimary')} <ArrowRight size={15} aria-hidden="true" />
               </Link>
-              <Link href="/disciplines" className="btn-secondary">
+              <Link href="/disciplines" className="btn-secondary-photo">
                 {t('ctaSecondary')}
               </Link>
             </motion.div>

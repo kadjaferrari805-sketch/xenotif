@@ -73,7 +73,7 @@ export function AppInstall() {
         <div className="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-emerald-500/15 border border-emerald-500/30">
           <Check size={28} className="text-emerald-400" aria-hidden="true" />
         </div>
-        <h1 className="text-2xl font-black text-white mb-2">
+        <h1 className="text-2xl font-black text-sport-fg mb-2">
           {installed ? t('installedTitle') : t('successTitle')}
         </h1>
         <p className="text-sport-gray text-sm leading-relaxed mb-6">{t('subtitle')}</p>
@@ -92,7 +92,7 @@ export function AppInstall() {
       <div className="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-sport-orange/15 border border-sport-orange/30">
         <Smartphone size={26} className="text-sport-orange" aria-hidden="true" />
       </div>
-      <h1 className="text-2xl font-black text-white mb-2">{t('title')}</h1>
+      <h1 className="text-2xl font-black text-sport-fg mb-2">{t('title')}</h1>
       <p className="text-sport-gray text-sm leading-relaxed mb-7">{t('subtitle')}</p>
 
       {/* Android / Chrome : invite native disponible → install en 1 tap */}
@@ -111,7 +111,7 @@ export function AppInstall() {
       ) : platform === 'ios' ? (
         /* iPhone : pas d'API d'installation → guide Partager → écran d'accueil */
         <div className="rounded-2xl border border-sport-border bg-sport-dark/50 p-5 text-left">
-          <p className="flex items-center gap-2 text-sm font-bold text-white mb-2">
+          <p className="flex items-center gap-2 text-sm font-bold text-sport-fg mb-2">
             <Share size={16} className="text-sport-orange" aria-hidden="true" /> {t('iosTitle')}
           </p>
           <p className="text-sm text-sport-gray leading-relaxed">{t('iosStep')}</p>
@@ -119,7 +119,7 @@ export function AppInstall() {
       ) : platform === 'android' ? (
         /* Android sans invite (selon le navigateur) → instructions menu */
         <div className="rounded-2xl border border-sport-border bg-sport-dark/50 p-5 text-left">
-          <p className="text-sm font-bold text-white mb-2">{t('androidTitle')}</p>
+          <p className="text-sm font-bold text-sport-fg mb-2">{t('androidTitle')}</p>
           <p className="text-sm text-sport-gray leading-relaxed">{t('androidStep')}</p>
         </div>
       ) : (

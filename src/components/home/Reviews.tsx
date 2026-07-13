@@ -74,14 +74,14 @@ export function Reviews() {
               {/* Author */}
               <footer className="flex items-center gap-3 pt-5 border-t border-sport-border">
                 <div
-                  className={`w-11 h-11 rounded-full flex items-center justify-center font-black text-sm shrink-0 text-white shadow-md ${AVATAR_BG[review.color] ?? AVATAR_BG.orange}`}
+                  className={`w-11 h-11 rounded-full flex items-center justify-center font-black text-sm shrink-0 text-sport-fg shadow-md ${AVATAR_BG[review.color] ?? AVATAR_BG.orange}`}
                   aria-hidden="true"
                 >
                   {review.initial}
                 </div>
 
                 <div className="min-w-0 flex-1">
-                  <p className="text-sm font-bold text-white leading-tight">{review.name}</p>
+                  <p className="text-sm font-bold text-sport-fg leading-tight">{review.name}</p>
                   <p className="text-[10px] text-sport-gray mt-0.5">{items[i].sport}</p>
                 </div>
 
@@ -110,8 +110,8 @@ export function Reviews() {
               ))}
             </div>
             <p className="text-sm text-sport-gray">
-              <strong className="text-white text-base">{t('summary.rating')}</strong>{' '}
-              {t('summary.basedOn')} <strong className="text-white">{t('summary.count')}</strong> {t('summary.reviews')}
+              <strong className="text-sport-fg text-base">{t('summary.rating')}</strong>{' '}
+              {t('summary.basedOn')} <strong className="text-sport-fg">{t('summary.count')}</strong> {t('summary.reviews')}
             </p>
           </div>
 
@@ -120,7 +120,7 @@ export function Reviews() {
           <div className="flex gap-6 text-center">
             {summaryStats.map(({ value, label }) => (
               <div key={label}>
-                <p className="text-lg font-black text-white">{value}</p>
+                <p className="text-lg font-black text-sport-fg">{value}</p>
                 <p className="text-[10px] text-sport-gray uppercase tracking-wider">{label}</p>
               </div>
             ))}

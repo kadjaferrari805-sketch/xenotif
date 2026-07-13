@@ -155,7 +155,7 @@ export function FreeProgramPopup() {
               type="button"
               onClick={() => setOpen(false)}
               aria-label={t('close')}
-              className="absolute right-4 top-4 z-10 flex h-8 w-8 items-center justify-center rounded-full bg-sport-dark/70 text-sport-gray hover:text-white transition-colors"
+              className="absolute right-4 top-4 z-10 flex h-8 w-8 items-center justify-center rounded-full bg-sport-dark/70 text-sport-gray hover:text-sport-fg transition-colors"
             >
               <X size={16} aria-hidden="true" />
             </button>
@@ -166,7 +166,7 @@ export function FreeProgramPopup() {
                   <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-sport-lime/15 border border-sport-lime/30">
                     <CheckCircle size={26} className="text-sport-lime" aria-hidden="true" />
                   </div>
-                  <h2 id="lead-popup-title" className="text-2xl font-black text-white mb-2">{t('successTitle')}</h2>
+                  <h2 id="lead-popup-title" className="text-2xl font-black text-sport-fg mb-2">{t('successTitle')}</h2>
                   <p className="text-sport-gray text-sm mb-6">{t('successText')}</p>
                   <a
                     href={`/api/free-program?locale=${locale}`}
@@ -179,7 +179,7 @@ export function FreeProgramPopup() {
                   <Link
                     href="/auth/signup"
                     onClick={() => setOpen(false)}
-                    className="mt-3 inline-flex w-full items-center justify-center gap-1.5 rounded-full border border-sport-border px-6 py-3 text-sm font-bold text-white hover:border-sport-orange/40 transition-all"
+                    className="mt-3 inline-flex w-full items-center justify-center gap-1.5 rounded-full border border-sport-border px-6 py-3 text-sm font-bold text-sport-fg hover:border-sport-orange/40 transition-all"
                   >
                     {t('signup')} <ArrowRight size={14} aria-hidden="true" />
                   </Link>
@@ -190,12 +190,12 @@ export function FreeProgramPopup() {
                     <Gift size={22} className="text-sport-orange" aria-hidden="true" />
                   </div>
                   <span className="text-[11px] font-black uppercase tracking-wider text-sport-orange">{t('eyebrow')}</span>
-                  <h2 id="lead-popup-title" className="mt-1 text-2xl font-black leading-tight text-white">{t('title')}</h2>
+                  <h2 id="lead-popup-title" className="mt-1 text-2xl font-black leading-tight text-sport-fg">{t('title')}</h2>
                   <p className="mt-2 text-sm text-sport-gray">{t('subtitle')}</p>
 
                   <ul className="mt-4 space-y-1.5">
                     {(t.raw('perks') as string[]).map((perk) => (
-                      <li key={perk} className="flex items-center gap-2 text-xs text-white/85">
+                      <li key={perk} className="flex items-center gap-2 text-xs text-sport-fg/85">
                         <CheckCircle size={13} className="text-sport-lime shrink-0" aria-hidden="true" /> {perk}
                       </li>
                     ))}
@@ -212,7 +212,7 @@ export function FreeProgramPopup() {
                       value={email}
                       onChange={(e) => { setEmail(e.target.value); if (status === 'error') setStatus('idle') }}
                       placeholder={t('emailPlaceholder')}
-                      className="w-full rounded-xl border border-sport-border bg-sport-dark px-4 py-3 text-sm text-white placeholder:text-sport-gray focus:border-sport-orange/60 focus:outline-none"
+                      className="w-full rounded-xl border border-sport-border bg-sport-dark px-4 py-3 text-sm text-sport-fg placeholder:text-sport-gray focus:border-sport-orange/60 focus:outline-none"
                     />
                     {status === 'error' && <p className="mt-2 text-xs text-red-400">{errorMsg}</p>}
                     <button

@@ -72,13 +72,13 @@ export default async function BoutiqueSuccesPage({
             <CheckCircle size={40} className="text-emerald-400" />
           </div>
         </div>
-        <h1 className="mb-2 text-3xl font-black text-white">{t('title')}</h1>
+        <h1 className="mb-2 text-3xl font-black text-sport-fg">{t('title')}</h1>
         <p className="mb-8 text-sport-gray">{t('subtitle')}</p>
 
         {/* Téléchargement immédiat des guides digitaux */}
         {digitalItems.length > 0 && (
           <div className="rounded-2xl border border-sport-orange/40 bg-sport-card p-6 mb-6 text-left shadow-[0_0_30px_rgba(255,69,0,0.1)]">
-            <h2 className="mb-1 font-black text-white flex items-center gap-2">
+            <h2 className="mb-1 font-black text-sport-fg flex items-center gap-2">
               <Download size={18} className="text-sport-orange" /> {t('downloadReady')}
             </h2>
             <p className="text-xs text-sport-gray mb-4">{t('downloadDesc')}</p>
@@ -88,7 +88,7 @@ export default async function BoutiqueSuccesPage({
                   key={item.id}
                   className="rounded-xl border border-sport-border bg-sport-dark px-4 py-3"
                 >
-                  <p className="text-sm font-bold text-white line-clamp-2 mb-2.5">📘 {item.name}</p>
+                  <p className="text-sm font-bold text-sport-fg line-clamp-2 mb-2.5">📘 {item.name}</p>
                   <div className="flex flex-wrap items-center gap-2">
                     <span className="text-[11px] text-sport-gray">{t('downloadLang')}</span>
                     {([
@@ -103,8 +103,8 @@ export default async function BoutiqueSuccesPage({
                         rel="noopener noreferrer"
                         className={`flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-xs font-bold transition-colors ${
                           l.code === locale
-                            ? 'bg-sport-orange text-white hover:bg-orange-600'
-                            : 'border border-sport-border text-white hover:border-sport-orange/50'
+                            ? 'bg-sport-orange text-sport-fg hover:bg-orange-600'
+                            : 'border border-sport-border text-sport-fg hover:border-sport-orange/50'
                         }`}
                       >
                         <Download size={12} /> {l.label}
@@ -118,17 +118,17 @@ export default async function BoutiqueSuccesPage({
         )}
 
         <div className="rounded-2xl border border-sport-border bg-sport-card p-6 mb-6 text-left">
-          <h2 className="mb-4 font-black text-white">{t('whatNow')}</h2>
+          <h2 className="mb-4 font-black text-sport-fg">{t('whatNow')}</h2>
           <ul className="space-y-3">
             <li className="flex items-start gap-3 text-sm">
               <Download size={16} className="mt-0.5 flex-shrink-0 text-sport-lime" />
-              <span className="text-white">
+              <span className="text-sport-fg">
                 {t.rich(digitalItems.length > 0 ? 'digitalAbove' : 'digitalEmail', { o: (c) => <span className="font-bold text-sport-lime">{c}</span> })}
               </span>
             </li>
             <li className="flex items-start gap-3 text-sm">
               <Package size={16} className="mt-0.5 flex-shrink-0 text-sport-blue" />
-              <span className="text-white">
+              <span className="text-sport-fg">
                 {t.rich('physicalShipped', { o: (c) => <span className="font-bold text-sport-blue">{c}</span> })}
               </span>
             </li>
@@ -139,7 +139,7 @@ export default async function BoutiqueSuccesPage({
           <Link href="/boutique" className="inline-flex items-center justify-center gap-2 rounded-2xl bg-sport-orange px-6 py-3.5 font-bold text-white hover:bg-orange-600 transition-all">
             {t('continueShopping')} <ArrowRight size={16} />
           </Link>
-          <Link href="/dashboard" className="text-sm font-semibold text-sport-gray hover:text-white transition-colors">
+          <Link href="/dashboard" className="text-sm font-semibold text-sport-gray hover:text-sport-fg transition-colors">
             {t('goDashboard')}
           </Link>
         </div>

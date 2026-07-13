@@ -50,22 +50,22 @@ export function CustomerReviews({ kind, productId }: Props) {
     <>
       {empty ? (
         !done && (
-          <p className={`text-sm font-semibold text-white mb-4 ${isPlatform ? 'text-center' : ''}`}>{t('beFirst')}</p>
+          <p className={`text-sm font-semibold text-sport-fg mb-4 ${isPlatform ? 'text-center' : ''}`}>{t('beFirst')}</p>
         )
       ) : isPlatform ? (
         <div className="text-center mb-6">
-          <h2 className="text-2xl font-black text-white">{t('communityTitle')}</h2>
+          <h2 className="text-2xl font-black text-sport-fg">{t('communityTitle')}</h2>
           <p className="text-sport-gray text-sm mt-1.5">{t('communitySubtitle')}</p>
         </div>
       ) : (
-        <h2 className="text-lg font-black text-white mb-4">{t('productTitle')} ({reviews.length})</h2>
+        <h2 className="text-lg font-black text-sport-fg mb-4">{t('productTitle')} ({reviews.length})</h2>
       )}
 
       {!empty && (() => {
         const cards = reviews.map((r) => (
           <div key={r.id} className={`bg-sport-card border border-sport-border rounded-xl p-4${isPlatform ? ' shrink-0 w-[300px] mr-4 self-stretch' : ''}`}>
             <div className="flex items-center justify-between mb-1.5">
-              <span className="text-sm font-bold text-white">{r.author_name}</span>
+              <span className="text-sm font-bold text-sport-fg">{r.author_name}</span>
               <span className="text-[10px] font-bold text-emerald-400">{t('verified')}</span>
             </div>
             <StarRating value={r.rating} />

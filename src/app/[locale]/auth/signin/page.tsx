@@ -38,11 +38,11 @@ export default function SignInPage() {
         <div className="relative z-10 flex flex-col justify-between p-12 w-full">
           <Logo href="/" size="md" />
           <div>
-            <h2 className="text-4xl font-black text-white leading-tight mb-4">{t('panelTitle')}</h2>
+            <h2 className="text-4xl font-black text-sport-fg leading-tight mb-4">{t('panelTitle')}</h2>
             <p className="text-lg text-sport-gray mb-8 max-w-sm">{t('panelSubtitle')}</p>
             <ul className="space-y-3">
               {bullets.map((b, i) => (
-                <li key={i} className="flex items-center gap-3 text-sm text-white/85">
+                <li key={i} className="flex items-center gap-3 text-sm text-sport-fg/85">
                   <CheckCircle size={16} aria-hidden="true" className="text-sport-orange shrink-0" /> {b}
                 </li>
               ))}
@@ -62,13 +62,13 @@ export default function SignInPage() {
 
           <div className="bg-sport-card border border-sport-border rounded-2xl p-8">
             <div className="text-center mb-8">
-              <h1 className="text-2xl font-black text-white mb-2">{t('title')}</h1>
+              <h1 className="text-2xl font-black text-sport-fg mb-2">{t('title')}</h1>
               <p className="text-sport-gray text-sm">{t('subtitle')}</p>
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-5">
               <div>
-                <label htmlFor="email" className="block text-xs font-bold text-white mb-2 uppercase tracking-wider">{t('emailLabel')}</label>
+                <label htmlFor="email" className="block text-xs font-bold text-sport-fg mb-2 uppercase tracking-wider">{t('emailLabel')}</label>
                 <input
                   id="email"
                   type="email"
@@ -76,12 +76,12 @@ export default function SignInPage() {
                   value={email}
                   onChange={e => setEmail(e.target.value)}
                   placeholder="ton@email.com"
-                  className="w-full bg-sport-dark border border-sport-border rounded-xl px-4 py-3 text-white text-sm placeholder:text-sport-gray focus:outline-none focus:border-sport-orange transition-colors"
+                  className="w-full bg-sport-dark border border-sport-border rounded-xl px-4 py-3 text-sport-fg text-sm placeholder:text-sport-gray focus:outline-none focus:border-sport-orange transition-colors"
                 />
               </div>
 
               <div>
-                <label htmlFor="password" className="block text-xs font-bold text-white mb-2 uppercase tracking-wider">{t('passwordLabel')}</label>
+                <label htmlFor="password" className="block text-xs font-bold text-sport-fg mb-2 uppercase tracking-wider">{t('passwordLabel')}</label>
                 <div className="relative">
                   <input
                     id="password"
@@ -90,12 +90,12 @@ export default function SignInPage() {
                     value={password}
                     onChange={e => setPassword(e.target.value)}
                     placeholder="••••••••"
-                    className="w-full bg-sport-dark border border-sport-border rounded-xl px-4 py-3 pr-12 text-white text-sm placeholder:text-sport-gray focus:outline-none focus:border-sport-orange transition-colors"
+                    className="w-full bg-sport-dark border border-sport-border rounded-xl px-4 py-3 pr-12 text-sport-fg text-sm placeholder:text-sport-gray focus:outline-none focus:border-sport-orange transition-colors"
                   />
                   <button
                     type="button"
                     onClick={() => setShowPwd(v => !v)}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 text-sport-gray hover:text-white transition-colors p-1"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-sport-gray hover:text-sport-fg transition-colors p-1"
                     aria-label={showPwd ? t('hide') : t('show')}
                   >
                     {showPwd ? <EyeOff size={16} /> : <Eye size={16} />}

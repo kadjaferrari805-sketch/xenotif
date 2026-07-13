@@ -102,7 +102,7 @@ function ProductCtaCard({ productSlug, reason, ctx }: { productSlug: string; rea
         <div className="p-5 flex flex-col justify-between gap-3">
           <div>
             <span className="text-sport-orange text-xs font-bold uppercase tracking-wide">{ctx.recommendedLabel}</span>
-            <h3 className="text-white font-black text-base mt-1 leading-snug">{product.name}</h3>
+            <h3 className="text-sport-fg font-black text-base mt-1 leading-snug">{product.name}</h3>
             <p className="text-sport-gray text-sm mt-2 leading-relaxed">{reason}</p>
           </div>
           <div className="flex items-center justify-between">
@@ -134,9 +134,9 @@ function renderBlock(block: ContentBlock, index: number, ctx: BlockCtx) {
     case 'paragraph':
       return <p key={index} className="text-sport-gray leading-relaxed text-base mb-5">{block.text}</p>
     case 'heading':
-      return <h2 key={index} className="text-2xl font-black text-white mt-10 mb-4 leading-snug">{block.text}</h2>
+      return <h2 key={index} className="text-2xl font-black text-sport-fg mt-10 mb-4 leading-snug">{block.text}</h2>
     case 'subheading':
-      return <h3 key={index} className="text-lg font-bold text-white mt-7 mb-3 leading-snug">{block.text}</h3>
+      return <h3 key={index} className="text-lg font-bold text-sport-fg mt-7 mb-3 leading-snug">{block.text}</h3>
     case 'list':
       return (
         <ul key={index} className="mb-5 space-y-2">
@@ -151,7 +151,7 @@ function renderBlock(block: ContentBlock, index: number, ctx: BlockCtx) {
     case 'quote':
       return (
         <blockquote key={index} className="my-8 border-l-4 border-sport-orange pl-6 py-3 bg-sport-orange/5 rounded-r-xl">
-          <p className="text-white font-semibold italic text-lg leading-relaxed">{block.text}</p>
+          <p className="text-sport-fg font-semibold italic text-lg leading-relaxed">{block.text}</p>
         </blockquote>
       )
     case 'productCta':
@@ -216,11 +216,11 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         {/* Breadcrumb */}
         <nav aria-label={t('breadcrumbAria')} className="border-b border-sport-border">
           <div className="max-w-4xl mx-auto px-6 py-3 flex items-center gap-2 text-sm text-sport-gray">
-            <Link href="/" className="hover:text-white transition-colors">{t('breadcrumbHome')}</Link>
+            <Link href="/" className="hover:text-sport-fg transition-colors">{t('breadcrumbHome')}</Link>
             <span>/</span>
-            <Link href="/blog" className="hover:text-white transition-colors">{t('breadcrumbBlog')}</Link>
+            <Link href="/blog" className="hover:text-sport-fg transition-colors">{t('breadcrumbBlog')}</Link>
             <span>/</span>
-            <span className="text-white truncate max-w-xs">{t(`categories.${post.category}`)}</span>
+            <span className="text-sport-fg truncate max-w-xs">{t(`categories.${post.category}`)}</span>
           </div>
         </nav>
 
@@ -229,12 +229,12 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           <span className={`inline-block text-xs font-bold px-2.5 py-1 rounded-full border mb-4 ${colorClass}`}>
             {t(`categories.${post.category}`)}
           </span>
-          <h1 className="text-3xl md:text-5xl font-black text-white leading-tight mb-6">{post.title}</h1>
+          <h1 className="text-3xl md:text-5xl font-black text-sport-fg leading-tight mb-6">{post.title}</h1>
           <p className="text-sport-gray text-lg leading-relaxed mb-6">{post.excerpt}</p>
           <div className="flex flex-wrap items-center gap-4 text-sm text-sport-gray border-y border-sport-border py-4">
             <div className="flex items-center gap-2">
               <div className="w-8 h-8 rounded-full bg-sport-orange/20 flex items-center justify-center text-sport-orange font-black text-sm">{post.author.charAt(0)}</div>
-              <span className="text-white font-semibold">{post.author}</span>
+              <span className="text-sport-fg font-semibold">{post.author}</span>
             </div>
             <span className="text-sport-border">|</span>
             <time dateTime={post.publishedAt}>{formatDate(post.publishedAt, locale)}</time>
@@ -259,7 +259,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         {/* CTA conversion — essai gratuit (toutes les fiches) + lien interne discipline */}
         <section className="px-6 pb-14">
           <div className="max-w-3xl mx-auto rounded-3xl border border-sport-orange/30 bg-gradient-to-br from-sport-orange/15 via-sport-card to-sport-card p-8 md:p-10 text-center">
-            <h2 className="text-2xl md:text-3xl font-black text-white mb-3">{t('cta.title')}</h2>
+            <h2 className="text-2xl md:text-3xl font-black text-sport-fg mb-3">{t('cta.title')}</h2>
             <p className="text-sport-gray text-sm md:text-base leading-relaxed max-w-xl mx-auto mb-6">{t('cta.text')}</p>
             <Link
               href="/auth/signup"
@@ -288,7 +288,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         {recommendedProducts.length > 0 && (
           <section className="border-t border-sport-border py-14 px-6">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-2xl font-black text-white mb-2">
+              <h2 className="text-2xl font-black text-sport-fg mb-2">
                 {t.rich('recommendedTitle', { o: (c) => <span className="text-sport-orange">{c}</span> })}
               </h2>
               <p className="text-sport-gray text-sm mb-8">{t('recommendedSubtitle')}</p>
@@ -305,7 +305,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         {relatedPosts.length > 0 && (
           <section className="border-t border-sport-border py-14 px-6 bg-sport-card/30">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-2xl font-black text-white mb-8">
+              <h2 className="text-2xl font-black text-sport-fg mb-8">
                 {t.rich('relatedTitle', { o: (c) => <span className="text-sport-orange">{c}</span> })}
               </h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -318,7 +318,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                         <span className={`absolute top-3 left-3 text-xs font-bold px-2 py-0.5 rounded-full border ${relColor}`}>{t(`categories.${related.category}`)}</span>
                       </div>
                       <div className="p-4">
-                        <h3 className="font-black text-white text-sm leading-snug mb-1 group-hover:text-sport-orange transition-colors line-clamp-2">{related.title}</h3>
+                        <h3 className="font-black text-sport-fg text-sm leading-snug mb-1 group-hover:text-sport-orange transition-colors line-clamp-2">{related.title}</h3>
                         <p className="text-sport-gray text-xs">{t('readingTime', { minutes: related.readingMinutes })} · {formatDate(related.publishedAt, locale)}</p>
                       </div>
                     </Link>
@@ -331,7 +331,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
         {/* Back to Blog */}
         <div className="border-t border-sport-border py-8 px-6 text-center">
-          <Link href="/blog" className="inline-flex items-center gap-2 text-sport-gray hover:text-white transition-colors text-sm">
+          <Link href="/blog" className="inline-flex items-center gap-2 text-sport-gray hover:text-sport-fg transition-colors text-sm">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
               <polyline points="15 18 9 12 15 6" />
             </svg>

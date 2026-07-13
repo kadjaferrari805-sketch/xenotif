@@ -86,10 +86,10 @@ const FR: Record<LegalSlug, { metaTitle: string; metaDescription: string; eyebro
     intro: 'Informations relatives à l’éditeur et à l’hébergeur du site xenotif.com.',
     sections: [
       { id: 'editeur', title: 'Éditeur du site', body: (
-        <p><strong className="text-white">Xenotif LTD</strong> — société à responsabilité limitée (private limited company) immatriculée en Angleterre et au Pays de Galles.<br />Numéro de société (Companies House) : 17013934<br />Siège social : 20 Wenlock Road, Londres N1 7GU, Royaume-Uni<br />Directeur de la publication : Dave Ferrari<br />Email : {mail}<br />Site : <a href="https://xenotif.com" className={LINK} target="_blank" rel="noopener noreferrer">xenotif.com</a></p>
+        <p><strong className="text-sport-fg">Xenotif LTD</strong> — société à responsabilité limitée (private limited company) immatriculée en Angleterre et au Pays de Galles.<br />Numéro de société (Companies House) : 17013934<br />Siège social : 20 Wenlock Road, Londres N1 7GU, Royaume-Uni<br />Directeur de la publication : Dave Ferrari<br />Email : {mail}<br />Site : <a href="https://xenotif.com" className={LINK} target="_blank" rel="noopener noreferrer">xenotif.com</a></p>
       )},
       { id: 'hebergement', title: 'Hébergement', body: (
-        <p><strong className="text-white">Vercel Inc.</strong><br />440 N Barranca Ave #4133, Covina, CA 91723, USA<br /><a href="https://vercel.com" className={LINK} target="_blank" rel="noopener noreferrer">vercel.com</a></p>
+        <p><strong className="text-sport-fg">Vercel Inc.</strong><br />440 N Barranca Ave #4133, Covina, CA 91723, USA<br /><a href="https://vercel.com" className={LINK} target="_blank" rel="noopener noreferrer">vercel.com</a></p>
       )},
       { id: 'propriete', title: 'Propriété intellectuelle', body: (
         <p>L&apos;ensemble du contenu de ce site (textes, images, logos, icônes, programmes) est la propriété exclusive de Xenotif®. Toute reproduction, même partielle, est interdite sans autorisation écrite préalable.</p>
@@ -113,19 +113,19 @@ const FR: Record<LegalSlug, { metaTitle: string; metaDescription: string; eyebro
         <p>Les présentes Conditions Générales de Vente (CGV) régissent toute commande passée sur le site xenotif.com : abonnement (Pro), guides et programmes digitaux, et produits physiques. Toute commande implique l&apos;acceptation pleine et entière des présentes CGV.</p>
       )},
       { id: 'vendeur', title: '2. Vendeur', body: (
-        <p>Les produits et services sont vendus par <strong className="text-white">Xenotif LTD</strong> (société immatriculée en Angleterre et au Pays de Galles, n° 17013934). Les coordonnées complètes figurent dans les <Link href="/mentions-legales" className={LINK}>mentions légales</Link>. Contact : {mail}.</p>
+        <p>Les produits et services sont vendus par <strong className="text-sport-fg">Xenotif LTD</strong> (société immatriculée en Angleterre et au Pays de Galles, n° 17013934). Les coordonnées complètes figurent dans les <Link href="/mentions-legales" className={LINK}>mentions légales</Link>. Contact : {mail}.</p>
       )},
       { id: 'produits', title: '3. Produits et services', body: (
         <>
           <p className="mb-2">Xenotif® propose :</p>
-          <p>— des <strong className="text-white">abonnements</strong> donnant accès aux programmes, au coaching IA et au suivi (Plan Pro), facturés mensuellement ou annuellement ;<br />— des <strong className="text-white">guides et programmes digitaux</strong> (PDF), à accès immédiat après paiement ;<br />— des <strong className="text-white">produits physiques</strong> (équipement, accessoires).</p>
+          <p>— des <strong className="text-sport-fg">abonnements</strong> donnant accès aux programmes, au coaching IA et au suivi (Plan Pro), facturés mensuellement ou annuellement ;<br />— des <strong className="text-sport-fg">guides et programmes digitaux</strong> (PDF), à accès immédiat après paiement ;<br />— des <strong className="text-sport-fg">produits physiques</strong> (équipement, accessoires).</p>
         </>
       )},
       { id: 'prix', title: '4. Prix', body: (
         <p>Les prix sont indiqués en euros (€), toutes taxes comprises. Xenotif® se réserve le droit de modifier ses prix à tout moment ; les produits sont facturés sur la base des tarifs en vigueur au moment de la validation de la commande.</p>
       )},
       { id: 'paiement', title: '5. Commande et paiement', body: (
-        <p>Le paiement s&apos;effectue en ligne, de manière sécurisée, via notre prestataire <strong className="text-white">Stripe</strong> (carte bancaire, Apple Pay, Google Pay selon disponibilité). Aucune donnée bancaire n&apos;est conservée par Xenotif®. La commande est validée après confirmation du paiement.</p>
+        <p>Le paiement s&apos;effectue en ligne, de manière sécurisée, via notre prestataire <strong className="text-sport-fg">Stripe</strong> (carte bancaire, Apple Pay, Google Pay selon disponibilité). Aucune donnée bancaire n&apos;est conservée par Xenotif®. La commande est validée après confirmation du paiement.</p>
       )},
       { id: 'abonnement', title: '6. Abonnement et résiliation', body: (
         <p>Les abonnements sont reconduits automatiquement par période (mensuelle ou annuelle) jusqu&apos;à résiliation. Vous pouvez résilier à tout moment depuis votre espace membre (rubrique « Abonnement ») ; l&apos;accès reste actif jusqu&apos;à la fin de la période déjà payée, sans reconduction ultérieure.</p>
@@ -136,7 +136,7 @@ const FR: Record<LegalSlug, { metaTitle: string; metaDescription: string; eyebro
       { id: 'retractation', title: '8. Droit de rétractation', body: (
         <>
           <p>Conformément à l&apos;article L.221-18 du Code de la consommation, vous disposez d&apos;un délai de 14 jours pour exercer votre droit de rétractation sur les produits physiques, à compter de leur réception, sans avoir à justifier de motif.</p>
-          <p className="mt-3"><strong className="text-white">Exception (contenus numériques)</strong> : pour les guides et programmes digitaux fournis immédiatement, vous renoncez expressément à votre droit de rétractation dès le début du téléchargement, conformément à l&apos;article L.221-28 13°. Le droit de rétractation ne s&apos;applique donc plus une fois le contenu téléchargé.</p>
+          <p className="mt-3"><strong className="text-sport-fg">Exception (contenus numériques)</strong> : pour les guides et programmes digitaux fournis immédiatement, vous renoncez expressément à votre droit de rétractation dès le début du téléchargement, conformément à l&apos;article L.221-28 13°. Le droit de rétractation ne s&apos;applique donc plus une fois le contenu téléchargé.</p>
           <p className="mt-3">Pour exercer ce droit (produits physiques), contactez-nous à {mail}.</p>
         </>
       )},
@@ -145,8 +145,8 @@ const FR: Record<LegalSlug, { metaTitle: string; metaDescription: string; eyebro
       )},
       { id: 'satisfait-rembourse', title: '10. Garantie « satisfait ou remboursé » (30 jours)', body: (
         <>
-          <p>Au-delà de vos droits légaux, Xenotif® vous offre une <strong className="text-white">garantie commerciale « satisfait ou remboursé » de 30 jours</strong> sur l&apos;abonnement (Pro) et les guides digitaux.</p>
-          <p className="mt-3">Si vous n&apos;êtes pas satisfait(e), écrivez-nous simplement à {mail} dans les 30 jours suivant votre paiement (pour un abonnement : ton premier paiement). Nous vous remboursons <strong className="text-white">intégralement</strong>, sans avoir à vous justifier. Le remboursement est effectué sous 14 jours, par le même moyen de paiement.</p>
+          <p>Au-delà de vos droits légaux, Xenotif® vous offre une <strong className="text-sport-fg">garantie commerciale « satisfait ou remboursé » de 30 jours</strong> sur l&apos;abonnement (Pro) et les guides digitaux.</p>
+          <p className="mt-3">Si vous n&apos;êtes pas satisfait(e), écrivez-nous simplement à {mail} dans les 30 jours suivant votre paiement (pour un abonnement : ton premier paiement). Nous vous remboursons <strong className="text-sport-fg">intégralement</strong>, sans avoir à vous justifier. Le remboursement est effectué sous 14 jours, par le même moyen de paiement.</p>
           <p className="mt-3">Cette garantie commerciale s&apos;ajoute aux garanties légales et au droit de rétractation : elle ne les remplace pas.</p>
         </>
       )},
@@ -207,10 +207,10 @@ const EN: Record<LegalSlug, { metaTitle: string; metaDescription: string; eyebro
     intro: 'Information about the publisher and host of the xenotif.com website.',
     sections: [
       { id: 'editeur', title: 'Site publisher', body: (
-        <p><strong className="text-white">Xenotif LTD</strong> — a private limited company registered in England and Wales.<br />Company number (Companies House): 17013934<br />Registered office: 20 Wenlock Road, London N1 7GU, United Kingdom<br />Publication director: Dave Ferrari<br />Email: {mail}<br />Site: <a href="https://xenotif.com" className={LINK} target="_blank" rel="noopener noreferrer">xenotif.com</a></p>
+        <p><strong className="text-sport-fg">Xenotif LTD</strong> — a private limited company registered in England and Wales.<br />Company number (Companies House): 17013934<br />Registered office: 20 Wenlock Road, London N1 7GU, United Kingdom<br />Publication director: Dave Ferrari<br />Email: {mail}<br />Site: <a href="https://xenotif.com" className={LINK} target="_blank" rel="noopener noreferrer">xenotif.com</a></p>
       )},
       { id: 'hebergement', title: 'Hosting', body: (
-        <p><strong className="text-white">Vercel Inc.</strong><br />440 N Barranca Ave #4133, Covina, CA 91723, USA<br /><a href="https://vercel.com" className={LINK} target="_blank" rel="noopener noreferrer">vercel.com</a></p>
+        <p><strong className="text-sport-fg">Vercel Inc.</strong><br />440 N Barranca Ave #4133, Covina, CA 91723, USA<br /><a href="https://vercel.com" className={LINK} target="_blank" rel="noopener noreferrer">vercel.com</a></p>
       )},
       { id: 'propriete', title: 'Intellectual property', body: (
         <p>All content on this site (text, images, logos, icons, programs) is the exclusive property of Xenotif®. Any reproduction, even partial, is prohibited without prior written authorization.</p>
@@ -234,19 +234,19 @@ const EN: Record<LegalSlug, { metaTitle: string; metaDescription: string; eyebro
         <p>These Terms of Sale govern any order placed on xenotif.com: subscription (Pro), digital guides and programs, and physical products. Any order implies full acceptance of these terms.</p>
       )},
       { id: 'vendeur', title: '2. Seller', body: (
-        <p>Products and services are sold by <strong className="text-white">Xenotif LTD</strong> (a company registered in England and Wales, no. 17013934). Full details are in the <Link href="/mentions-legales" className={LINK}>legal notice</Link>. Contact: {mail}.</p>
+        <p>Products and services are sold by <strong className="text-sport-fg">Xenotif LTD</strong> (a company registered in England and Wales, no. 17013934). Full details are in the <Link href="/mentions-legales" className={LINK}>legal notice</Link>. Contact: {mail}.</p>
       )},
       { id: 'produits', title: '3. Products and services', body: (
         <>
           <p className="mb-2">Xenotif® offers:</p>
-          <p>— <strong className="text-white">subscriptions</strong> giving access to programs, AI coaching and tracking (Pro plan), billed monthly or annually;<br />— <strong className="text-white">digital guides and programs</strong> (PDF), available immediately after payment;<br />— <strong className="text-white">physical products</strong> (equipment, accessories).</p>
+          <p>— <strong className="text-sport-fg">subscriptions</strong> giving access to programs, AI coaching and tracking (Pro plan), billed monthly or annually;<br />— <strong className="text-sport-fg">digital guides and programs</strong> (PDF), available immediately after payment;<br />— <strong className="text-sport-fg">physical products</strong> (equipment, accessories).</p>
         </>
       )},
       { id: 'prix', title: '4. Prices', body: (
         <p>Prices are shown in euros (€), all taxes included. Xenotif® reserves the right to change its prices at any time; products are billed based on the prices in effect when the order is confirmed.</p>
       )},
       { id: 'paiement', title: '5. Order and payment', body: (
-        <p>Payment is made online, securely, through our provider <strong className="text-white">Stripe</strong> (credit card, Apple Pay, Google Pay where available). No banking data is stored by Xenotif®. The order is confirmed once payment is approved.</p>
+        <p>Payment is made online, securely, through our provider <strong className="text-sport-fg">Stripe</strong> (credit card, Apple Pay, Google Pay where available). No banking data is stored by Xenotif®. The order is confirmed once payment is approved.</p>
       )},
       { id: 'abonnement', title: '6. Subscription and cancellation', body: (
         <p>Subscriptions renew automatically per period (monthly or annual) until cancelled. You can cancel anytime from your member area (&quot;Subscription&quot; section); access stays active until the end of the period already paid, with no further renewal.</p>
@@ -257,7 +257,7 @@ const EN: Record<LegalSlug, { metaTitle: string; metaDescription: string; eyebro
       { id: 'retractation', title: '8. Right of withdrawal', body: (
         <>
           <p>In accordance with article L.221-18 of the French Consumer Code, you have 14 days to exercise your right of withdrawal on physical products, from the date of receipt, without having to give a reason.</p>
-          <p className="mt-3"><strong className="text-white">Exception (digital content)</strong>: for digital guides and programs delivered immediately, you expressly waive your right of withdrawal as soon as the download begins, in accordance with article L.221-28 13°. The right of withdrawal therefore no longer applies once the content has been downloaded.</p>
+          <p className="mt-3"><strong className="text-sport-fg">Exception (digital content)</strong>: for digital guides and programs delivered immediately, you expressly waive your right of withdrawal as soon as the download begins, in accordance with article L.221-28 13°. The right of withdrawal therefore no longer applies once the content has been downloaded.</p>
           <p className="mt-3">To exercise this right (physical products), contact us at {mail}.</p>
         </>
       )},
@@ -266,8 +266,8 @@ const EN: Record<LegalSlug, { metaTitle: string; metaDescription: string; eyebro
       )},
       { id: 'satisfait-rembourse', title: '10. Money-back guarantee (30 days)', body: (
         <>
-          <p>Beyond your legal rights, Xenotif® offers a <strong className="text-white">30-day commercial &quot;money-back&quot; guarantee</strong> on subscription (Pro) and digital guides.</p>
-          <p className="mt-3">If you&apos;re not satisfied, simply email us at {mail} within 30 days of your payment (for a subscription: your first payment). We refund you <strong className="text-white">in full</strong>, no questions asked. The refund is issued within 14 days, using the same payment method.</p>
+          <p>Beyond your legal rights, Xenotif® offers a <strong className="text-sport-fg">30-day commercial &quot;money-back&quot; guarantee</strong> on subscription (Pro) and digital guides.</p>
+          <p className="mt-3">If you&apos;re not satisfied, simply email us at {mail} within 30 days of your payment (for a subscription: your first payment). We refund you <strong className="text-sport-fg">in full</strong>, no questions asked. The refund is issued within 14 days, using the same payment method.</p>
           <p className="mt-3">This commercial guarantee is in addition to the legal guarantees and right of withdrawal — it does not replace them.</p>
         </>
       )},
@@ -328,10 +328,10 @@ const DE: Record<LegalSlug, { metaTitle: string; metaDescription: string; eyebro
     intro: 'Informationen über den Betreiber und den Hoster der Website xenotif.com.',
     sections: [
       { id: 'editeur', title: 'Betreiber der Website', body: (
-        <p><strong className="text-white">Xenotif LTD</strong> — eine in England und Wales eingetragene Gesellschaft mit beschränkter Haftung (private limited company).<br />Handelsregisternummer (Companies House): 17013934<br />Eingetragener Sitz: 20 Wenlock Road, London N1 7GU, Vereinigtes Königreich<br />Verantwortlich für den Inhalt: Dave Ferrari<br />E-Mail: {mail}<br />Website: <a href="https://xenotif.com" className={LINK} target="_blank" rel="noopener noreferrer">xenotif.com</a></p>
+        <p><strong className="text-sport-fg">Xenotif LTD</strong> — eine in England und Wales eingetragene Gesellschaft mit beschränkter Haftung (private limited company).<br />Handelsregisternummer (Companies House): 17013934<br />Eingetragener Sitz: 20 Wenlock Road, London N1 7GU, Vereinigtes Königreich<br />Verantwortlich für den Inhalt: Dave Ferrari<br />E-Mail: {mail}<br />Website: <a href="https://xenotif.com" className={LINK} target="_blank" rel="noopener noreferrer">xenotif.com</a></p>
       )},
       { id: 'hebergement', title: 'Hosting', body: (
-        <p><strong className="text-white">Vercel Inc.</strong><br />440 N Barranca Ave #4133, Covina, CA 91723, USA<br /><a href="https://vercel.com" className={LINK} target="_blank" rel="noopener noreferrer">vercel.com</a></p>
+        <p><strong className="text-sport-fg">Vercel Inc.</strong><br />440 N Barranca Ave #4133, Covina, CA 91723, USA<br /><a href="https://vercel.com" className={LINK} target="_blank" rel="noopener noreferrer">vercel.com</a></p>
       )},
       { id: 'propriete', title: 'Geistiges Eigentum', body: (
         <p>Sämtliche Inhalte dieser Website (Texte, Bilder, Logos, Symbole, Programme) sind ausschließliches Eigentum von Xenotif®. Jede auch nur teilweise Vervielfältigung ist ohne vorherige schriftliche Genehmigung untersagt.</p>
@@ -355,19 +355,19 @@ const DE: Record<LegalSlug, { metaTitle: string; metaDescription: string; eyebro
         <p>Diese Allgemeinen Geschäftsbedingungen (AGB) regeln jede auf xenotif.com aufgegebene Bestellung: Abonnement (Pro), digitale Guides und Programme sowie physische Produkte. Jede Bestellung setzt die vollständige Annahme dieser AGB voraus.</p>
       )},
       { id: 'vendeur', title: '2. Verkäufer', body: (
-        <p>Die Produkte und Dienstleistungen werden von <strong className="text-white">Xenotif LTD</strong> (in England und Wales eingetragene Gesellschaft, Nr. 17013934) verkauft. Die vollständigen Angaben findest du im <Link href="/mentions-legales" className={LINK}>Impressum</Link>. Kontakt: {mail}.</p>
+        <p>Die Produkte und Dienstleistungen werden von <strong className="text-sport-fg">Xenotif LTD</strong> (in England und Wales eingetragene Gesellschaft, Nr. 17013934) verkauft. Die vollständigen Angaben findest du im <Link href="/mentions-legales" className={LINK}>Impressum</Link>. Kontakt: {mail}.</p>
       )},
       { id: 'produits', title: '3. Produkte und Dienstleistungen', body: (
         <>
           <p className="mb-2">Xenotif® bietet:</p>
-          <p>— <strong className="text-white">Abonnements</strong>, die Zugang zu Programmen, KI-Coaching und Tracking bieten (Pro-Plan), monatlich oder jährlich abgerechnet;<br />— <strong className="text-white">digitale Guides und Programme</strong> (PDF), sofort nach Zahlung verfügbar;<br />— <strong className="text-white">physische Produkte</strong> (Ausrüstung, Zubehör).</p>
+          <p>— <strong className="text-sport-fg">Abonnements</strong>, die Zugang zu Programmen, KI-Coaching und Tracking bieten (Pro-Plan), monatlich oder jährlich abgerechnet;<br />— <strong className="text-sport-fg">digitale Guides und Programme</strong> (PDF), sofort nach Zahlung verfügbar;<br />— <strong className="text-sport-fg">physische Produkte</strong> (Ausrüstung, Zubehör).</p>
         </>
       )},
       { id: 'prix', title: '4. Preise', body: (
         <p>Die Preise sind in Euro (€) inklusive aller Steuern angegeben. Xenotif® behält sich das Recht vor, seine Preise jederzeit zu ändern; die Produkte werden auf Grundlage der zum Zeitpunkt der Bestellbestätigung gültigen Preise abgerechnet.</p>
       )},
       { id: 'paiement', title: '5. Bestellung und Zahlung', body: (
-        <p>Die Zahlung erfolgt online und sicher über unseren Dienstleister <strong className="text-white">Stripe</strong> (Kreditkarte, Apple Pay, Google Pay, sofern verfügbar). Es werden keine Bankdaten von Xenotif® gespeichert. Die Bestellung wird nach Bestätigung der Zahlung wirksam.</p>
+        <p>Die Zahlung erfolgt online und sicher über unseren Dienstleister <strong className="text-sport-fg">Stripe</strong> (Kreditkarte, Apple Pay, Google Pay, sofern verfügbar). Es werden keine Bankdaten von Xenotif® gespeichert. Die Bestellung wird nach Bestätigung der Zahlung wirksam.</p>
       )},
       { id: 'abonnement', title: '6. Abonnement und Kündigung', body: (
         <p>Abonnements verlängern sich automatisch pro Zeitraum (monatlich oder jährlich) bis zur Kündigung. Du kannst jederzeit über deinen Mitgliederbereich (Bereich „Abonnement“) kündigen; der Zugang bleibt bis zum Ende des bereits bezahlten Zeitraums aktiv, ohne weitere Verlängerung.</p>
@@ -378,7 +378,7 @@ const DE: Record<LegalSlug, { metaTitle: string; metaDescription: string; eyebro
       { id: 'retractation', title: '8. Widerrufsrecht', body: (
         <>
           <p>Gemäß Artikel L.221-18 des französischen Verbrauchergesetzbuchs hast du bei physischen Produkten ab Erhalt 14 Tage Zeit, dein Widerrufsrecht ohne Angabe von Gründen auszuüben.</p>
-          <p className="mt-3"><strong className="text-white">Ausnahme (digitale Inhalte)</strong>: Bei sofort bereitgestellten digitalen Guides und Programmen verzichtest du gemäß Artikel L.221-28 13° ausdrücklich auf dein Widerrufsrecht, sobald der Download beginnt. Das Widerrufsrecht gilt daher nicht mehr, sobald der Inhalt heruntergeladen wurde.</p>
+          <p className="mt-3"><strong className="text-sport-fg">Ausnahme (digitale Inhalte)</strong>: Bei sofort bereitgestellten digitalen Guides und Programmen verzichtest du gemäß Artikel L.221-28 13° ausdrücklich auf dein Widerrufsrecht, sobald der Download beginnt. Das Widerrufsrecht gilt daher nicht mehr, sobald der Inhalt heruntergeladen wurde.</p>
           <p className="mt-3">Um dieses Recht auszuüben (physische Produkte), kontaktiere uns unter {mail}.</p>
         </>
       )},
@@ -387,8 +387,8 @@ const DE: Record<LegalSlug, { metaTitle: string; metaDescription: string; eyebro
       )},
       { id: 'satisfait-rembourse', title: '10. „Geld-zurück“-Garantie (30 Tage)', body: (
         <>
-          <p>Über deine gesetzlichen Rechte hinaus bietet dir Xenotif® eine <strong className="text-white">30-tägige kommerzielle „Geld-zurück“-Garantie</strong> auf das Abonnement (Pro) und die digitalen Guides.</p>
-          <p className="mt-3">Wenn du nicht zufrieden bist, schreib uns innerhalb von 30 Tagen nach deiner Zahlung einfach an {mail} (bei einem Abonnement: deine erste Zahlung). Wir erstatten dir <strong className="text-white">den vollen Betrag</strong>, ohne Nachfragen. Die Erstattung erfolgt innerhalb von 14 Tagen über dasselbe Zahlungsmittel.</p>
+          <p>Über deine gesetzlichen Rechte hinaus bietet dir Xenotif® eine <strong className="text-sport-fg">30-tägige kommerzielle „Geld-zurück“-Garantie</strong> auf das Abonnement (Pro) und die digitalen Guides.</p>
+          <p className="mt-3">Wenn du nicht zufrieden bist, schreib uns innerhalb von 30 Tagen nach deiner Zahlung einfach an {mail} (bei einem Abonnement: deine erste Zahlung). Wir erstatten dir <strong className="text-sport-fg">den vollen Betrag</strong>, ohne Nachfragen. Die Erstattung erfolgt innerhalb von 14 Tagen über dasselbe Zahlungsmittel.</p>
           <p className="mt-3">Diese kommerzielle Garantie besteht zusätzlich zu den gesetzlichen Gewährleistungen und dem Widerrufsrecht — sie ersetzt sie nicht.</p>
         </>
       )},

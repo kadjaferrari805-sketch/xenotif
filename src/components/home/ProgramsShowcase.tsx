@@ -62,19 +62,19 @@ export function ProgramsShowcase({ programs }: { programs: Product[] }) {
                       <p className="text-[10px] font-bold uppercase tracking-wider text-sport-orange mb-1.5">
                         {t('eyebrow')}
                       </p>
-                      <h3 className="text-sm font-black text-white leading-snug line-clamp-2 mb-3 group-hover:text-sport-orange transition-colors">
+                      <h3 className="text-sm font-black text-sport-fg leading-snug line-clamp-2 mb-3 group-hover:text-sport-orange transition-colors">
                         {p.name}
                       </h3>
 
                       {/* Badges niveau + durée (repli sur les features si absents) */}
                       <div className="flex flex-wrap gap-1.5 mb-4">
                         {p.level && (
-                          <span className="inline-flex items-center gap-1.5 text-[10px] font-bold text-white bg-sport-card border border-sport-border px-2.5 py-1 rounded-full">
+                          <span className="inline-flex items-center gap-1.5 text-[10px] font-bold text-sport-fg bg-sport-card border border-sport-border px-2.5 py-1 rounded-full">
                             <Signal size={11} className="text-sport-orange" aria-hidden="true" /> {p.level}
                           </span>
                         )}
                         {p.duration && (
-                          <span className="inline-flex items-center gap-1.5 text-[10px] font-bold text-white bg-sport-card border border-sport-border px-2.5 py-1 rounded-full">
+                          <span className="inline-flex items-center gap-1.5 text-[10px] font-bold text-sport-fg bg-sport-card border border-sport-border px-2.5 py-1 rounded-full">
                             <Clock size={11} className="text-sport-orange" aria-hidden="true" /> {p.duration}
                           </span>
                         )}
@@ -99,7 +99,7 @@ export function ProgramsShowcase({ programs }: { programs: Product[] }) {
                       {/* Prix + CTA */}
                       <div className="mt-auto flex items-center justify-between gap-2">
                         <div>
-                          <span className="text-lg font-black text-white">{formatPrice(p.price_cents)}</span>
+                          <span className="text-lg font-black text-sport-fg">{formatPrice(p.price_cents)}</span>
                           {p.original_price_cents && (
                             <span className="ml-1.5 text-xs text-sport-gray line-through">{formatPrice(p.original_price_cents)}</span>
                           )}

@@ -29,7 +29,7 @@ export function FeatureCards() {
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-14">
           <p className="text-[11px] font-black tracking-[3px] uppercase text-sport-orange mb-3">{t('eyebrow')}</p>
-          <h2 id="features-title" className="text-3xl md:text-5xl font-black text-white">{t('title')}</h2>
+          <h2 id="features-title" className="text-3xl md:text-5xl font-black text-sport-fg">{t('title')}</h2>
         </div>
 
         <div ref={ref} className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -55,7 +55,7 @@ export function FeatureCards() {
                 </div>
               </div>
               <div className="p-6 flex flex-col gap-3">
-                <h3 className="text-xl font-black text-white">{cards[i].title}</h3>
+                <h3 className="text-xl font-black text-sport-fg">{cards[i].title}</h3>
                 <p className="text-sm text-sport-gray leading-relaxed">{cards[i].desc}</p>
               </div>
             </motion.div>

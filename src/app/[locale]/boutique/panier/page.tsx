@@ -71,7 +71,7 @@ export default function PanierPage() {
       <div className="flex min-h-screen flex-col items-center justify-center gap-6 bg-sport-dark px-4 pt-20 text-center">
         <ShoppingBag size={64} className="text-sport-border" />
         <div>
-          <h1 className="text-2xl font-black text-white">{t('emptyTitle')}</h1>
+          <h1 className="text-2xl font-black text-sport-fg">{t('emptyTitle')}</h1>
           <p className="mt-2 text-sport-gray">{t('emptyDesc')}</p>
         </div>
         <Link href="/boutique" className="inline-flex items-center gap-2 rounded-2xl bg-sport-orange px-6 py-3 font-bold text-white hover:bg-orange-600 transition-all">
@@ -84,7 +84,7 @@ export default function PanierPage() {
   return (
     <div className="min-h-screen bg-sport-dark pt-24 pb-16">
       <div className="mx-auto max-w-5xl px-4 sm:px-6">
-        <h1 className="mb-8 text-3xl font-black text-white">
+        <h1 className="mb-8 text-3xl font-black text-sport-fg">
           {t('title')} <span className="text-sport-gray text-xl font-normal">{t('itemsCount', { count })}</span>
         </h1>
 
@@ -106,7 +106,7 @@ export default function PanierPage() {
                       <div className="flex flex-1 flex-col justify-between min-w-0">
                         <div className="flex items-start justify-between gap-3">
                           <div className="min-w-0">
-                            <p className="font-black text-white text-sm line-clamp-2">{product.name}</p>
+                            <p className="font-black text-sport-fg text-sm line-clamp-2">{product.name}</p>
                             <p className="text-xs text-sport-gray mt-0.5">{product.type === 'digital' ? t('digitalImmediate') : t('physicalDelivery')}</p>
                           </div>
                           <button onClick={() => removeItem(product.id)} className="flex-shrink-0 text-sport-gray hover:text-red-400 transition-colors">
@@ -116,16 +116,16 @@ export default function PanierPage() {
                         <div className="flex items-center justify-between mt-3">
                           {product.type === 'physical' ? (
                             <div className="flex items-center gap-2">
-                              <button onClick={() => updateQty(product.id, quantity - 1)} className="flex h-7 w-7 items-center justify-center rounded-lg border border-sport-border hover:border-sport-orange/50 text-sport-gray hover:text-white transition-colors">
+                              <button onClick={() => updateQty(product.id, quantity - 1)} className="flex h-7 w-7 items-center justify-center rounded-lg border border-sport-border hover:border-sport-orange/50 text-sport-gray hover:text-sport-fg transition-colors">
                                 <Minus size={12} />
                               </button>
-                              <span className="text-sm font-bold text-white w-5 text-center">{quantity}</span>
-                              <button onClick={() => updateQty(product.id, quantity + 1)} className="flex h-7 w-7 items-center justify-center rounded-lg border border-sport-border hover:border-sport-orange/50 text-sport-gray hover:text-white transition-colors">
+                              <span className="text-sm font-bold text-sport-fg w-5 text-center">{quantity}</span>
+                              <button onClick={() => updateQty(product.id, quantity + 1)} className="flex h-7 w-7 items-center justify-center rounded-lg border border-sport-border hover:border-sport-orange/50 text-sport-gray hover:text-sport-fg transition-colors">
                                 <Plus size={12} />
                               </button>
                             </div>
                           ) : <span className="text-xs text-sport-lime font-semibold">{t('digitalTag')}</span>}
-                          <span className="font-black text-white">{formatPrice(product.price_cents * quantity)}</span>
+                          <span className="font-black text-sport-fg">{formatPrice(product.price_cents * quantity)}</span>
                         </div>
                       </div>
                     </div>
@@ -148,7 +148,7 @@ export default function PanierPage() {
                       </div>
                       <div className="flex flex-1 items-center justify-between gap-3 min-w-0">
                         <div className="min-w-0">
-                          <p className="font-bold text-white text-sm line-clamp-1">{product.name}</p>
+                          <p className="font-bold text-sport-fg text-sm line-clamp-1">{product.name}</p>
                           <p className="text-xs text-sport-gray mt-0.5">{formatPrice(product.price_cents)} · Amazon.de</p>
                         </div>
                         <div className="flex items-center gap-2 flex-shrink-0">
@@ -175,16 +175,16 @@ export default function PanierPage() {
           <div className="space-y-4">
             {ownItems.length > 0 && (
               <div className="rounded-2xl border border-sport-orange/30 bg-sport-card p-6 shadow-[0_0_30px_rgba(255,69,0,0.08)]">
-                <h2 className="mb-4 font-black text-white">{t('summary')}</h2>
+                <h2 className="mb-4 font-black text-sport-fg">{t('summary')}</h2>
                 <div className="space-y-2 text-sm mb-4">
                   {ownItems.map(({ product, quantity }) => (
                     <div key={product.id} className="flex justify-between text-sport-gray">
                       <span className="truncate flex-1 mr-2 text-xs">{product.name.split('—')[0]?.trim()} ×{quantity}</span>
-                      <span className="font-semibold text-white flex-shrink-0">{formatPrice(product.price_cents * quantity)}</span>
+                      <span className="font-semibold text-sport-fg flex-shrink-0">{formatPrice(product.price_cents * quantity)}</span>
                     </div>
                   ))}
                   <div className="border-t border-sport-border pt-3 flex justify-between">
-                    <span className="font-black text-white">{t('total')}</span>
+                    <span className="font-black text-sport-fg">{t('total')}</span>
                     <span className="text-xl font-black text-sport-orange">{formatPrice(ownTotal)}</span>
                   </div>
                 </div>
@@ -197,7 +197,7 @@ export default function PanierPage() {
                     onChange={e => setEmail(e.target.value)}
                     onBlur={() => void saveCartForRecovery()}
                     placeholder={t('emailPlaceholder')}
-                    className="w-full rounded-xl border border-sport-border bg-sport-dark px-3 py-2.5 text-sm text-white placeholder:text-sport-gray focus:outline-none focus:border-sport-orange transition-colors"
+                    className="w-full rounded-xl border border-sport-border bg-sport-dark px-3 py-2.5 text-sm text-sport-fg placeholder:text-sport-gray focus:outline-none focus:border-sport-orange transition-colors"
                   />
                 </div>
 
@@ -227,7 +227,7 @@ export default function PanierPage() {
               </div>
             )}
 
-            <Link href="/boutique" className="block w-full text-center rounded-2xl border border-sport-border py-3 text-sm font-semibold text-sport-gray hover:text-white hover:border-white/20 transition-colors">
+            <Link href="/boutique" className="block w-full text-center rounded-2xl border border-sport-border py-3 text-sm font-semibold text-sport-gray hover:text-sport-fg hover:border-sport-fg/20 transition-colors">
               {t('continueShopping')}
             </Link>
           </div>

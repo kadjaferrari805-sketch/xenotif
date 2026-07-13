@@ -60,13 +60,13 @@ export default async function ExercicePage({ params }: { params: Promise<{ slug:
   }
 
   return (
-    <div className="min-h-screen bg-sport-dark text-white">
+    <div className="min-h-screen bg-sport-dark text-sport-fg">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }} />
 
       <section className="relative overflow-hidden border-b border-sport-border bg-gradient-to-br from-sport-orange/15 via-sport-dark to-sport-dark">
         <div className="max-w-5xl mx-auto px-6 py-14 md:py-16">
-          <Link href="/exercices" className="inline-flex items-center gap-1.5 text-xs font-bold text-sport-gray hover:text-white transition-colors mb-6">
+          <Link href="/exercices" className="inline-flex items-center gap-1.5 text-xs font-bold text-sport-gray hover:text-sport-fg transition-colors mb-6">
             <ArrowLeft size={13} aria-hidden="true" /> {t('backToHub')}
           </Link>
           <p className="text-[11px] font-bold tracking-[2px] uppercase text-sport-orange mb-3">{t('eyebrow')}</p>

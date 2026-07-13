@@ -32,7 +32,7 @@ const STATUS_CLS: Record<string, string> = {
   active:   'bg-emerald-500/15 text-emerald-400 border-emerald-500/30',
   canceled: 'bg-red-500/15 text-red-400 border-red-500/30',
   past_due: 'bg-orange-500/15 text-orange-400 border-orange-500/30',
-  free:     'bg-white/10 text-sport-gray border-sport-border',
+  free:     'bg-sport-fg/10 text-sport-gray border-sport-border',
 }
 
 function StatusBadge({ status, label }: { status: string; label: string }) {
@@ -122,7 +122,7 @@ export default async function DashboardPage() {
 
       {/* Header */}
       <div className="mb-8">
-        <h1 className="text-2xl md:text-3xl font-black text-white">
+        <h1 className="text-2xl md:text-3xl font-black text-sport-fg">
           {t.rich('overview.greeting', { name: firstName, o: (c) => <span className="text-sport-orange">{c}</span> })}
         </h1>
         <p className="text-sport-gray text-sm mt-1">{t('overview.subtitle')}</p>
@@ -178,11 +178,11 @@ export default async function DashboardPage() {
             </div>
             {access.isPro && renewDate && (
               <p className="text-sm text-sport-gray">
-                {t.rich('overview.renewOn', { date: renewDate, o: (c) => <strong className="text-white">{c}</strong> })}
+                {t.rich('overview.renewOn', { date: renewDate, o: (c) => <strong className="text-sport-fg">{c}</strong> })}
               </p>
             )}
             {!access.isPro && (
-              <p className="text-sm text-white font-semibold">{t('overview.freeUpsell')}</p>
+              <p className="text-sm text-sport-fg font-semibold">{t('overview.freeUpsell')}</p>
             )}
           </div>
           <Link href="/dashboard/abonnement" className="inline-flex items-center gap-2 text-sport-orange text-xs font-bold hover:underline">
@@ -201,7 +201,7 @@ export default async function DashboardPage() {
         ].map(({ icon: Icon, label, value, color }) => (
           <div key={label} className="bg-sport-card border border-sport-border rounded-xl p-4">
             <Icon size={18} className={`${color} mb-2`} aria-hidden="true" />
-            <p className="text-2xl font-black text-white">{value}</p>
+            <p className="text-2xl font-black text-sport-fg">{value}</p>
             <p className="text-[11px] text-sport-gray mt-0.5 leading-tight">{label}</p>
           </div>
         ))}
@@ -210,7 +210,7 @@ export default async function DashboardPage() {
       {/* Quick access programmes */}
       <div className="mb-8">
         <div className="flex items-center justify-between mb-4">
-          <h2 className="text-lg font-black text-white">{t('overview.yourPrograms')}</h2>
+          <h2 className="text-lg font-black text-sport-fg">{t('overview.yourPrograms')}</h2>
           <Link href="/dashboard/programme" className="text-xs text-sport-orange font-bold hover:underline flex items-center gap-1">
             {t('overview.seeAll')} <ArrowRight size={11} />
           </Link>
@@ -225,7 +225,7 @@ export default async function DashboardPage() {
             return (
               <Link key={slug} href={`/dashboard/programme?discipline=${slug}`} className="group bg-sport-card border border-sport-border rounded-xl p-4 hover:border-sport-orange/50 transition-all hover:-translate-y-0.5">
                 <div className="flex items-center justify-between mb-3">
-                  <p className="text-sm font-bold text-white">{t(`overview.disciplines.${slug}`)}</p>
+                  <p className="text-sm font-bold text-sport-fg">{t(`overview.disciplines.${slug}`)}</p>
                   <span className="text-xs text-sport-orange font-bold">{pct}%</span>
                 </div>
                 <div className="w-full bg-sport-dark rounded-full h-1.5 mb-2">
@@ -240,7 +240,7 @@ export default async function DashboardPage() {
 
       {/* Recent activity */}
       <div>
-        <h2 className="text-lg font-black text-white mb-4">{t('overview.recentActivity')}</h2>
+        <h2 className="text-lg font-black text-sport-fg mb-4">{t('overview.recentActivity')}</h2>
         {recentWorkouts.length === 0 ? (
           <div className="bg-sport-card border border-sport-border rounded-xl p-8 text-center">
             <Clock size={28} className="text-sport-gray mx-auto mb-3" />
@@ -258,7 +258,7 @@ export default async function DashboardPage() {
                     <Flame size={14} className="text-sport-orange" />
                   </div>
                   <div>
-                    <p className="text-sm font-bold text-white capitalize">{w.discipline}</p>
+                    <p className="text-sm font-bold text-sport-fg capitalize">{w.discipline}</p>
                     <p className="text-[11px] text-sport-gray">{new Date(w.completed_at).toLocaleDateString(dateLocale)}</p>
                   </div>
                 </div>

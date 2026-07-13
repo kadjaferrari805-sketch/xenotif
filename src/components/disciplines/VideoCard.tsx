@@ -66,7 +66,7 @@ export function VideoCard({ youtubeIds, title, description, duration, level, acc
           {level}
         </span>
       </div>
-      <h3 className="text-sm font-bold text-white mb-1.5 leading-snug">{title}</h3>
+      <h3 className="text-sm font-bold text-sport-fg mb-1.5 leading-snug">{title}</h3>
       <p className="text-xs text-sport-gray leading-relaxed line-clamp-2">{description}</p>
     </div>
   )
@@ -86,7 +86,7 @@ export function VideoCard({ youtubeIds, title, description, duration, level, acc
   }
 
   return (
-    <div className="group relative rounded-2xl overflow-hidden bg-sport-card border border-sport-border hover:border-white/20 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-black/40">
+    <div className="group relative rounded-2xl overflow-hidden bg-sport-card border border-sport-border hover:border-sport-fg/20 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-black/40">
       {playing ? (
         <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
           {/* key forces iframe re-mount when backup ID changes */}

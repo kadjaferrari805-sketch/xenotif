@@ -95,7 +95,7 @@ export function Catalogue() {
       <section className="relative overflow-hidden pt-24 pb-9">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(255,69,0,0.15),transparent)]" />
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6">
-          <Link href="/boutique" className="inline-flex items-center gap-2 text-sm font-semibold text-sport-gray hover:text-white transition-colors mb-8">
+          <Link href="/boutique" className="inline-flex items-center gap-2 text-sm font-semibold text-sport-gray hover:text-sport-fg transition-colors mb-8">
             <ArrowLeft size={14} /> {t('catalogue.back')}
           </Link>
 
@@ -103,7 +103,7 @@ export function Catalogue() {
             <span className="inline-flex items-center gap-2 rounded-full border border-sport-orange/30 bg-sport-orange/10 px-4 py-1.5 text-xs font-black text-sport-orange uppercase tracking-wider mb-6">
               {t('catalogue.badge')}
             </span>
-            <h1 className="text-3xl font-black leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl mb-4">
+            <h1 className="text-3xl font-black leading-tight tracking-tight text-sport-fg sm:text-5xl lg:text-6xl mb-4">
               {t.rich('catalogue.title', { o: (c) => <span className="text-sport-orange">{c}</span> })}
             </h1>
             <p className="text-base sm:text-lg text-sport-gray max-w-2xl mx-auto">{t('catalogue.subtitle')}</p>
@@ -115,10 +115,10 @@ export function Catalogue() {
             <input
               value={search} onChange={e => setSearch(e.target.value)}
               placeholder={t('searchPlaceholder')}
-              className="w-full rounded-2xl border border-sport-border bg-sport-card pl-12 pr-10 py-4 text-white placeholder:text-sport-gray focus:outline-none focus:border-sport-orange transition-colors text-sm"
+              className="w-full rounded-2xl border border-sport-border bg-sport-card pl-12 pr-10 py-4 text-sport-fg placeholder:text-sport-gray focus:outline-none focus:border-sport-orange transition-colors text-sm"
             />
             {search && (
-              <button onClick={() => setSearch('')} aria-label={t('reset')} className="absolute right-4 top-1/2 -translate-y-1/2 text-sport-gray hover:text-white">
+              <button onClick={() => setSearch('')} aria-label={t('reset')} className="absolute right-4 top-1/2 -translate-y-1/2 text-sport-gray hover:text-sport-fg">
                 <X size={16} />
               </button>
             )}
@@ -135,14 +135,14 @@ export function Catalogue() {
             <div className="min-w-0 flex-1 flex items-center gap-2 overflow-x-auto scrollbar-hide snap-x snap-proximity scroll-pl-4 sm:scroll-pl-6 scroll-smooth" role="tablist" aria-label={t('filterDiscipline')}>
               <button
                 role="tab" aria-selected={discipline === 'all'} onClick={() => setDiscipline('all')}
-                className={`snap-start shrink-0 rounded-full px-4 py-2 text-sm font-bold transition-all ${discipline === 'all' ? 'bg-sport-orange text-white shadow-lg shadow-sport-orange/20' : 'border border-sport-border text-sport-gray hover:text-white hover:border-white/20'}`}
+                className={`snap-start shrink-0 rounded-full px-4 py-2 text-sm font-bold transition-all ${discipline === 'all' ? 'bg-sport-orange text-sport-fg shadow-lg shadow-sport-orange/20' : 'border border-sport-border text-sport-gray hover:text-sport-fg hover:border-sport-fg/20'}`}
               >
                 {t('allDisciplines')}
               </button>
               {available.map(id => (
                 <button
                   key={id} role="tab" aria-selected={discipline === id} onClick={() => setDiscipline(id)}
-                  className={`snap-start shrink-0 rounded-full px-4 py-2 text-sm font-bold whitespace-nowrap transition-all ${discipline === id ? 'bg-sport-orange text-white shadow-lg shadow-sport-orange/20' : 'border border-sport-border text-sport-gray hover:text-white hover:border-white/20'}`}
+                  className={`snap-start shrink-0 rounded-full px-4 py-2 text-sm font-bold whitespace-nowrap transition-all ${discipline === id ? 'bg-sport-orange text-sport-fg shadow-lg shadow-sport-orange/20' : 'border border-sport-border text-sport-gray hover:text-sport-fg hover:border-sport-fg/20'}`}
                 >
                   {t(`disciplinesFilter.${id}`)}
                 </button>
@@ -154,7 +154,7 @@ export function Catalogue() {
               <ArrowDownNarrowWide size={15} className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-sport-gray" />
               <select
                 value={sort} onChange={e => setSort(e.target.value)} aria-label={t('filterSort')}
-                className="appearance-none rounded-full border border-sport-border bg-sport-card pl-9 pr-8 py-2 text-sm font-semibold text-white focus:outline-none focus:border-sport-orange cursor-pointer"
+                className="appearance-none rounded-full border border-sport-border bg-sport-card pl-9 pr-8 py-2 text-sm font-semibold text-sport-fg focus:outline-none focus:border-sport-orange cursor-pointer"
               >
                 {SORT_VALUES.map(v => <option key={v} value={v}>{t(`sort.${v}`)}</option>)}
               </select>
@@ -166,14 +166,14 @@ export function Catalogue() {
       {/* Contenu */}
       <div className="mx-auto max-w-7xl px-4 sm:px-6 py-10">
         <p className="text-sm font-semibold text-sport-gray mb-8">
-          <span className="font-black text-white">{t('count', { count: shown })}</span>
+          <span className="font-black text-sport-fg">{t('count', { count: shown })}</span>
           {search && <span> {t('forSearch', { q: search })}</span>}
         </p>
 
         {shown === 0 ? (
           <div className="py-24 text-center">
             <p className="text-5xl mb-4">🔍</p>
-            <h2 className="text-xl font-black text-white mb-2">{t('emptyTitle')}</h2>
+            <h2 className="text-xl font-black text-sport-fg mb-2">{t('emptyTitle')}</h2>
             <p className="text-sport-gray">{t('emptyDesc')}</p>
           </div>
         ) : discipline === 'all' ? (
@@ -182,7 +182,7 @@ export function Catalogue() {
             {sections.map(({ id, items }) => (
               <section key={id} aria-labelledby={`disc-${id}`} className="scroll-mt-32">
                 <div className="flex items-baseline gap-3 mb-6 border-b border-sport-border pb-3">
-                  <h2 id={`disc-${id}`} className="text-2xl font-black text-white">{t(`disciplinesFilter.${id}`)}</h2>
+                  <h2 id={`disc-${id}`} className="text-2xl font-black text-sport-fg">{t(`disciplinesFilter.${id}`)}</h2>
                   <span className="text-sm font-semibold text-sport-gray">{t('count', { count: items.length })}</span>
                   <button onClick={() => setDiscipline(id)} className="ml-auto text-xs font-bold text-sport-orange hover:underline">
                     {t('catalogue.seeAll')}
@@ -202,7 +202,7 @@ export function Catalogue() {
         ) : (
           // Mode « un sport » : liste filtrée
           <>
-            <h2 className="text-2xl font-black text-white mb-6 border-b border-sport-border pb-3">{t(`disciplinesFilter.${discipline}`)}</h2>
+            <h2 className="text-2xl font-black text-sport-fg mb-6 border-b border-sport-border pb-3">{t(`disciplinesFilter.${discipline}`)}</h2>
             {/* Mobile : carrousel horizontal full-bleed · sm+ : grille */}
             <div className="-mx-4 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-2 disc-scroll scroll-smooth sm:mx-0 sm:grid sm:gap-6 sm:overflow-visible sm:px-0 sm:pb-0 sm:snap-none sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
               {flat.map((p, i) => (

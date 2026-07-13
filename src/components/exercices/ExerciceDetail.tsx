@@ -32,7 +32,7 @@ function Section({ icon: Icon, title, children }: { icon: React.ElementType; tit
       transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
       className="bg-sport-card border border-sport-border rounded-2xl p-6 md:p-7 shadow-lg shadow-black/20"
     >
-      <h2 className="flex items-center gap-2.5 text-lg font-black text-white mb-5">
+      <h2 className="flex items-center gap-2.5 text-lg font-black text-sport-fg mb-5">
         <span className="w-9 h-9 rounded-xl bg-sport-orange/10 border border-sport-orange/25 flex items-center justify-center">
           <Icon size={17} aria-hidden="true" className="text-sport-orange" />
         </span>
@@ -68,7 +68,7 @@ function VideoBlock({ url, poster, t }: { url?: string; poster?: string; t: Retu
                 key={r}
                 type="button"
                 onClick={() => setSpeed(r)}
-                className={`text-[11px] font-bold px-2.5 py-1 rounded-full border transition-colors ${rate === r ? 'bg-sport-orange text-white border-sport-orange' : 'border-sport-border text-sport-gray hover:text-white'}`}
+                className={`text-[11px] font-bold px-2.5 py-1 rounded-full border transition-colors ${rate === r ? 'bg-sport-orange text-sport-fg border-sport-orange' : 'border-sport-border text-sport-gray hover:text-sport-fg'}`}
               >
                 {r}×
               </button>
@@ -153,19 +153,19 @@ function Timer({ t }: { t: ReturnType<typeof useTranslations> }) {
             key={m}
             type="button"
             onClick={() => switchMode(m)}
-            className={`text-xs font-bold px-3 py-1.5 rounded-full border transition-colors ${mode === m ? 'bg-sport-orange text-white border-sport-orange' : 'border-sport-border text-sport-gray hover:text-white'}`}
+            className={`text-xs font-bold px-3 py-1.5 rounded-full border transition-colors ${mode === m ? 'bg-sport-orange text-sport-fg border-sport-orange' : 'border-sport-border text-sport-gray hover:text-sport-fg'}`}
           >
             {m === 'countdown' ? t('timer_countdown') : t('timer_stopwatch')}
           </button>
         ))}
       </div>
       <div className="text-center py-6 rounded-2xl bg-sport-dark border border-sport-border">
-        <p className="text-5xl md:text-6xl font-black text-white tabular-nums tracking-tight">{mm}:{ss}</p>
+        <p className="text-5xl md:text-6xl font-black text-sport-fg tabular-nums tracking-tight">{mm}:{ss}</p>
       </div>
       {mode === 'countdown' && (
         <div className="flex justify-center gap-2 mt-4">
           {[30, 60, 90].map((s) => (
-            <button key={s} type="button" onClick={() => reset(s)} className="text-xs font-bold px-3 py-1.5 rounded-full border border-sport-border text-sport-gray hover:text-white transition-colors">{s}s</button>
+            <button key={s} type="button" onClick={() => reset(s)} className="text-xs font-bold px-3 py-1.5 rounded-full border border-sport-border text-sport-gray hover:text-sport-fg transition-colors">{s}s</button>
           ))}
         </div>
       )}
@@ -180,7 +180,7 @@ function Timer({ t }: { t: ReturnType<typeof useTranslations> }) {
         <button
           type="button"
           onClick={() => reset()}
-          className="inline-flex items-center gap-2 border border-sport-border text-sport-gray px-5 py-3 rounded-full font-bold text-sm hover:text-white transition-colors"
+          className="inline-flex items-center gap-2 border border-sport-border text-sport-gray px-5 py-3 rounded-full font-bold text-sm hover:text-sport-fg transition-colors"
         >
           <RotateCcw size={15} aria-hidden="true" /> {t('timer_reset')}
         </button>
@@ -231,7 +231,7 @@ function NotesCard({ slug, t, locale }: { slug: string; t: ReturnType<typeof use
         type="button"
         onClick={toggleFav}
         aria-pressed={fav}
-        className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-full font-bold text-sm border transition-colors ${fav ? 'bg-sport-orange/15 border-sport-orange/40 text-sport-orange' : 'border-sport-border text-sport-gray hover:text-white'}`}
+        className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-full font-bold text-sm border transition-colors ${fav ? 'bg-sport-orange/15 border-sport-orange/40 text-sport-orange' : 'border-sport-border text-sport-gray hover:text-sport-fg'}`}
       >
         <Heart size={16} aria-hidden="true" className={fav ? 'fill-sport-orange text-sport-orange' : ''} />
         {fav ? t('fav_added') : t('fav_add')}
@@ -243,7 +243,7 @@ function NotesCard({ slug, t, locale }: { slug: string; t: ReturnType<typeof use
           onChange={(e) => setDraft(e.target.value)}
           placeholder={t('notes_placeholder')}
           rows={3}
-          className="w-full bg-sport-dark border border-sport-border rounded-xl px-4 py-3 text-white text-sm placeholder:text-sport-gray focus:outline-none focus:border-sport-orange transition-colors resize-none"
+          className="w-full bg-sport-dark border border-sport-border rounded-xl px-4 py-3 text-sport-fg text-sm placeholder:text-sport-gray focus:outline-none focus:border-sport-orange transition-colors resize-none"
         />
         <div className="flex items-center gap-3 mt-2">
           <button type="button" onClick={save} className="text-xs font-bold bg-sport-orange text-white px-4 py-2 rounded-full hover:bg-orange-600 transition-colors">{t('notes_save')}</button>
@@ -299,7 +299,7 @@ export function ExerciceDetail({ detail, locale }: { detail: Detail; locale: str
           <Link
             key={m}
             href={{ pathname: '/exercices', query: { muscle: m } }}
-            className="inline-flex items-center gap-1.5 text-xs font-bold px-3 py-1.5 rounded-full bg-sport-card border border-sport-border text-sport-gray hover:text-white hover:border-sport-orange/50 transition-colors"
+            className="inline-flex items-center gap-1.5 text-xs font-bold px-3 py-1.5 rounded-full bg-sport-card border border-sport-border text-sport-gray hover:text-sport-fg hover:border-sport-orange/50 transition-colors"
           >
             {m}
           </Link>
@@ -308,7 +308,7 @@ export function ExerciceDetail({ detail, locale }: { detail: Detail; locale: str
           <Link
             key={k}
             href={{ pathname: '/exercices', query: { equipment: k } }}
-            className="inline-flex items-center gap-1.5 text-xs font-bold px-3 py-1.5 rounded-full bg-sport-card border border-sport-border text-sport-gray hover:text-white hover:border-sport-orange/50 transition-colors"
+            className="inline-flex items-center gap-1.5 text-xs font-bold px-3 py-1.5 rounded-full bg-sport-card border border-sport-border text-sport-gray hover:text-sport-fg hover:border-sport-orange/50 transition-colors"
           >
             <Dumbbell size={12} aria-hidden="true" className="text-sport-orange" /> {equipLabel(k)}
           </Link>
@@ -382,7 +382,7 @@ export function ExerciceDetail({ detail, locale }: { detail: Detail; locale: str
         <Section icon={Lightbulb} title={t('sec_tips')}>
           <ul className="space-y-2.5">
             {tips.map((tip, i) => (
-              <li key={i} className="text-sm text-sport-gray"><strong className="text-white">{tip.label} — </strong>{tip.text}</li>
+              <li key={i} className="text-sm text-sport-gray"><strong className="text-sport-fg">{tip.label} — </strong>{tip.text}</li>
             ))}
           </ul>
         </Section>
@@ -433,7 +433,7 @@ export function ExerciceDetail({ detail, locale }: { detail: Detail; locale: str
             <div key={i} className="rounded-xl bg-sport-dark border border-sport-border p-4">
               <s.icon size={16} aria-hidden="true" className="text-sport-orange mb-2" />
               <p className="text-[10px] uppercase tracking-wider text-sport-gray">{s.label}</p>
-              <p className="text-base font-black text-white mt-0.5">{s.value}</p>
+              <p className="text-base font-black text-sport-fg mt-0.5">{s.value}</p>
             </div>
           ))}
         </div>
@@ -468,7 +468,7 @@ export function ExerciceDetail({ detail, locale }: { detail: Detail; locale: str
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
           {d.similar.map((e) => (
             <Link key={e.slug} href={`/exercices/${e.slug}`} className="group bg-sport-dark border border-sport-border rounded-xl p-4 hover:border-sport-orange/50 transition-all hover:-translate-y-0.5">
-              <p className="text-sm font-black text-white group-hover:text-sport-orange transition-colors line-clamp-2">{e.name}</p>
+              <p className="text-sm font-black text-sport-fg group-hover:text-sport-orange transition-colors line-clamp-2">{e.name}</p>
               <p className="text-[11px] text-sport-gray mt-1 line-clamp-1">{e.muscles}</p>
               <span className="inline-flex items-center gap-1 text-sport-orange text-[11px] font-bold mt-2 opacity-0 group-hover:opacity-100 transition-opacity">{t('sec_similar')} <ArrowRight size={11} aria-hidden="true" /></span>
             </Link>

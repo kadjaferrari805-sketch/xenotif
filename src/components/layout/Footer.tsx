@@ -83,7 +83,7 @@ export function Footer() {
 
           {/* Disciplines */}
           <div data-reveal>
-            <h3 className="text-xs font-bold text-white uppercase tracking-widest mb-5">{t('disciplines')}</h3>
+            <h3 className="text-xs font-bold text-sport-fg uppercase tracking-widest mb-5">{t('disciplines')}</h3>
             <ul className="flex flex-col gap-2.5">
               {DISC_LINKS.map((link) => (
                 <li key={link.label}>
@@ -97,7 +97,7 @@ export function Footer() {
 
           {/* Programmes */}
           <div data-reveal>
-            <h3 className="text-xs font-bold text-white uppercase tracking-widest mb-5">{t('programmes')}</h3>
+            <h3 className="text-xs font-bold text-sport-fg uppercase tracking-widest mb-5">{t('programmes')}</h3>
             <ul className="flex flex-col gap-2.5">
               {PROG_LINKS.map((link) => (
                 <li key={link.key}>
@@ -111,7 +111,7 @@ export function Footer() {
 
           {/* Informations */}
           <div data-reveal>
-            <h3 className="text-xs font-bold text-white uppercase tracking-widest mb-5">{t('informations')}</h3>
+            <h3 className="text-xs font-bold text-sport-fg uppercase tracking-widest mb-5">{t('informations')}</h3>
             <ul className="flex flex-col gap-2.5">
               {INFO_LINKS.map((link) => (
                 <li key={link.key}>
@@ -123,7 +123,7 @@ export function Footer() {
             </ul>
             <div className="mt-6 p-4 bg-sport-dark border border-sport-border rounded-xl">
               <p className="text-[10px] text-sport-gray leading-relaxed">
-                <strong className="text-white block mb-1">Xenotif LTD</strong>
+                <strong className="text-sport-fg block mb-1">Xenotif LTD</strong>
                 Company no. 17013934<br />
                 contact@xenotif.com
               </p>

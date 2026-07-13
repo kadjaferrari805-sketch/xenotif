@@ -63,7 +63,7 @@ export function AppDownload({ triggerClassName, label, labelClassName, iconSize 
         onClick={() => setOpen(true)}
         aria-haspopup="dialog"
         aria-label={label ?? t('trigger')}
-        className={triggerClassName ?? 'inline-flex items-center gap-1.5 text-sm text-sport-gray hover:text-white transition-colors'}
+        className={triggerClassName ?? 'inline-flex items-center gap-1.5 text-sm text-sport-gray hover:text-sport-fg transition-colors'}
       >
         <Smartphone size={iconSize} aria-hidden="true" />
         <span className={labelClassName}>{label ?? t('trigger')}</span>
@@ -87,7 +87,7 @@ export function AppDownload({ triggerClassName, label, labelClassName, iconSize 
               type="button"
               onClick={() => setOpen(false)}
               aria-label={t('close')}
-              className="absolute right-4 top-4 text-sport-gray hover:text-white transition-colors p-1"
+              className="absolute right-4 top-4 text-sport-gray hover:text-sport-fg transition-colors p-1"
             >
               <X size={18} aria-hidden="true" />
             </button>
@@ -96,7 +96,7 @@ export function AppDownload({ triggerClassName, label, labelClassName, iconSize 
               <Smartphone size={22} className="text-sport-orange" aria-hidden="true" />
             </div>
 
-            <h2 className="text-xl font-black text-white mb-2">{t('title')}</h2>
+            <h2 className="text-xl font-black text-sport-fg mb-2">{t('title')}</h2>
             <p className="text-sport-gray text-sm leading-relaxed mb-6">{t('subtitle')}</p>
 
             {/* QR code (statique) — à scanner avec le téléphone */}
@@ -104,7 +104,7 @@ export function AppDownload({ triggerClassName, label, labelClassName, iconSize 
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src="/app-qr.svg" alt={t('qrAlt')} width={176} height={176} className="h-full w-full" />
             </div>
-            <p className="text-xs font-semibold text-white mb-6">{t('scan')}</p>
+            <p className="text-xs font-semibold text-sport-fg mb-6">{t('scan')}</p>
 
             {/* Invite d'installation native si dispo (Android / Chrome desktop) */}
             {deferred && (
@@ -121,10 +121,10 @@ export function AppDownload({ triggerClassName, label, labelClassName, iconSize 
             {/* Instructions par plateforme */}
             <div className="space-y-2 text-left rounded-2xl border border-sport-border bg-sport-dark/50 p-4">
               <p className="text-xs text-sport-gray leading-relaxed">
-                <span className="font-bold text-white">{t('iosTitle')}</span> — {t('iosStep')}
+                <span className="font-bold text-sport-fg">{t('iosTitle')}</span> — {t('iosStep')}
               </p>
               <p className="text-xs text-sport-gray leading-relaxed">
-                <span className="font-bold text-white">{t('androidTitle')}</span> — {t('androidStep')}
+                <span className="font-bold text-sport-fg">{t('androidTitle')}</span> — {t('androidStep')}
               </p>
             </div>
           </div>

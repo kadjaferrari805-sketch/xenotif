@@ -64,7 +64,7 @@ export function ActivityRings({ rings, size = 180 }: ActivityRingsProps) {
 
       {/* Center label */}
       <div className="absolute inset-0 flex flex-col items-center justify-center text-center">
-        <span className="text-2xl font-black text-white leading-none">
+        <span className="text-2xl font-black text-sport-fg leading-none">
           {Math.round((rings[0].value / rings[0].max) * 100)}%
         </span>
         <span className="text-[10px] text-sport-gray mt-0.5">{t('ringsCenter')}</span>

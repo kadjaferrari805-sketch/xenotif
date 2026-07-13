@@ -68,7 +68,7 @@ export function DeviceCard({ provider, connection, onConnect, onDisconnect, onSy
       )}
 
       {provider.comingSoon && (
-        <div className="absolute top-3 right-3 flex items-center gap-1.5 bg-white/5 border border-white/10 rounded-full px-2.5 py-1">
+        <div className="absolute top-3 right-3 flex items-center gap-1.5 bg-sport-fg/5 border border-sport-fg/10 rounded-full px-2.5 py-1">
           <Clock size={9} className="text-sport-gray" />
           <span className="text-[10px] text-sport-gray font-bold">{t('comingSoon')}</span>
         </div>
@@ -83,7 +83,7 @@ export function DeviceCard({ provider, connection, onConnect, onDisconnect, onSy
           {provider.logo}
         </div>
         <div>
-          <p className="text-sm font-black text-white">{provider.name}</p>
+          <p className="text-sm font-black text-sport-fg">{provider.name}</p>
           <p className="text-[11px] text-sport-gray">{provider.comingSoon ? t('comingSoonDesc') : provider.description}</p>
         </div>
       </div>

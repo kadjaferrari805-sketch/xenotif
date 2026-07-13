@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { useTranslations } from 'next-intl'
 import { Upload, CheckCircle } from 'lucide-react'
 
-const INPUT = 'w-full bg-sport-dark border border-sport-border rounded-xl px-4 py-2.5 text-white text-sm focus:outline-none focus:border-sport-orange placeholder:text-sport-gray'
+const INPUT = 'w-full bg-sport-dark border border-sport-border rounded-xl px-4 py-2.5 text-sport-fg text-sm focus:outline-none focus:border-sport-orange placeholder:text-sport-gray'
 
 export function TransformationForm() {
   const t = useTranslations('transformations')
@@ -42,19 +42,19 @@ export function TransformationForm() {
     return (
       <div className="bg-sport-card border border-emerald-500/30 rounded-2xl p-6 flex items-center gap-3">
         <CheckCircle size={20} className="text-emerald-400 shrink-0" aria-hidden="true" />
-        <p className="text-sm text-white">{t('success')}</p>
+        <p className="text-sm text-sport-fg">{t('success')}</p>
       </div>
     )
   }
 
   return (
     <div className="bg-sport-card border border-sport-border rounded-2xl p-6">
-      <h3 className="text-sm font-black text-white">{t('shareTitle')}</h3>
+      <h3 className="text-sm font-black text-sport-fg">{t('shareTitle')}</h3>
       <p className="text-xs text-sport-gray mt-1 mb-5">{t('shareSubtitle')}</p>
       <div className="grid grid-cols-2 gap-4 mb-4">
         {[{ label: t('beforeLabel'), file: before, set: setBefore }, { label: t('afterLabel'), file: after, set: setAfter }].map((f, i) => (
           <label key={i} className="cursor-pointer">
-            <span className="block text-[11px] font-bold text-white mb-1.5 uppercase tracking-wider">{f.label}</span>
+            <span className="block text-[11px] font-bold text-sport-fg mb-1.5 uppercase tracking-wider">{f.label}</span>
             <div className="aspect-[3/4] rounded-xl border border-dashed border-sport-border bg-sport-dark flex items-center justify-center overflow-hidden">
               {f.file
                 // eslint-disable-next-line @next/next/no-img-element

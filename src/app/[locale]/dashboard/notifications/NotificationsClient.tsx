@@ -39,7 +39,7 @@ export function NotificationsClient() {
   return (
     <div className="p-6 md:p-8 max-w-2xl mx-auto pb-24 md:pb-8">
       <div className="flex items-center justify-between gap-4 mb-2">
-        <h1 className="text-2xl font-black text-white flex items-center gap-2.5">
+        <h1 className="text-2xl font-black text-sport-fg flex items-center gap-2.5">
           <Bell size={22} className="text-sport-orange" aria-hidden="true" /> {t('title')}
         </h1>
         <button
@@ -67,7 +67,7 @@ export function NotificationsClient() {
                 <Icon size={18} style={{ color: n.color }} aria-hidden="true" />
               </div>
               <div className="min-w-0 flex-1">
-                <p className="text-sm font-bold text-white leading-snug">{n.title}</p>
+                <p className="text-sm font-bold text-sport-fg leading-snug">{n.title}</p>
                 <p className="text-xs text-sport-gray leading-relaxed mt-0.5">{n.body}</p>
                 <p className="text-[10px] text-sport-gray mt-1.5">{`${String(n.hour).padStart(2, '0')}:00 · ${t('today')}`}</p>
               </div>

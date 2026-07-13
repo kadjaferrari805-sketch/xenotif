@@ -8,7 +8,7 @@ type Locale = typeof LOCALES[number]
 export type EditorLocale = { title: string; tag: string; description: string; statsText: string; levelsText: string; sectionsJson: string }
 export type EditorInitial = { minPlan: string; byLocale: Record<Locale, EditorLocale>; videosJson: string }
 
-const FIELD = 'w-full bg-sport-dark border border-sport-border rounded-xl px-4 py-2.5 text-white text-sm focus:outline-none focus:border-sport-orange'
+const FIELD = 'w-full bg-sport-dark border border-sport-border rounded-xl px-4 py-2.5 text-sport-fg text-sm focus:outline-none focus:border-sport-orange'
 
 export function ContentEditor({ slug, initial }: { slug: string; initial: EditorInitial }) {
   const router = useRouter()
@@ -48,7 +48,7 @@ export function ContentEditor({ slug, initial }: { slug: string; initial: Editor
 
       <div className="flex gap-2">
         {LOCALES.map(l => (
-          <button key={l} onClick={() => setTab(l)} className={`px-4 py-1.5 rounded-full text-xs font-bold border ${tab === l ? 'bg-sport-orange text-white border-sport-orange' : 'border-sport-border text-sport-gray'}`}>{l.toUpperCase()}</button>
+          <button key={l} onClick={() => setTab(l)} className={`px-4 py-1.5 rounded-full text-xs font-bold border ${tab === l ? 'bg-sport-orange text-sport-fg border-sport-orange' : 'border-sport-border text-sport-gray'}`}>{l.toUpperCase()}</button>
         ))}
       </div>
 

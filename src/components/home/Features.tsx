@@ -26,8 +26,8 @@ const ICON_MAP: Record<string, React.ReactNode> = {
 }
 
 const ACCENT: Record<string, { icon: string; tag: string; glow: string; border: string }> = {
-  orange: { icon: 'text-sport-orange bg-sport-orange/15 border-sport-orange/25', tag: 'bg-sport-orange text-white',         glow: 'hover:shadow-sport-orange/20', border: 'hover:border-sport-orange/50' },
-  blue:   { icon: 'text-sport-blue bg-sport-blue/15 border-sport-blue/25',       tag: 'bg-sport-blue text-white',           glow: 'hover:shadow-sport-blue/20',   border: 'hover:border-sport-blue/50' },
+  orange: { icon: 'text-sport-orange bg-sport-orange/15 border-sport-orange/25', tag: 'bg-sport-orange text-sport-fg',         glow: 'hover:shadow-sport-orange/20', border: 'hover:border-sport-orange/50' },
+  blue:   { icon: 'text-sport-blue bg-sport-blue/15 border-sport-blue/25',       tag: 'bg-sport-blue text-sport-fg',           glow: 'hover:shadow-sport-blue/20',   border: 'hover:border-sport-blue/50' },
   lime:   { icon: 'text-sport-lime bg-sport-lime/15 border-sport-lime/25',        tag: 'bg-sport-lime text-[#0A0B0F]',       glow: 'hover:shadow-sport-lime/15',   border: 'hover:border-sport-lime/50' },
 }
 
@@ -71,7 +71,7 @@ export function Features() {
             type="button"
             onClick={() => scrollByDir(-1)}
             aria-label={t('prevAria')}
-            className="hidden md:flex absolute -left-4 top-1/2 -translate-y-1/2 z-10 h-10 w-10 items-center justify-center rounded-full bg-sport-card border border-sport-border text-white shadow-lg transition-all hover:border-sport-orange/60 hover:text-sport-orange active:scale-95"
+            className="hidden md:flex absolute -left-4 top-1/2 -translate-y-1/2 z-10 h-10 w-10 items-center justify-center rounded-full bg-sport-card border border-sport-border text-sport-fg shadow-lg transition-all hover:border-sport-orange/60 hover:text-sport-orange active:scale-95"
           >
             <ChevronLeft size={20} aria-hidden="true" />
           </button>
@@ -79,7 +79,7 @@ export function Features() {
             type="button"
             onClick={() => scrollByDir(1)}
             aria-label={t('nextAria')}
-            className="hidden md:flex absolute -right-4 top-1/2 -translate-y-1/2 z-10 h-10 w-10 items-center justify-center rounded-full bg-sport-card border border-sport-border text-white shadow-lg transition-all hover:border-sport-orange/60 hover:text-sport-orange active:scale-95"
+            className="hidden md:flex absolute -right-4 top-1/2 -translate-y-1/2 z-10 h-10 w-10 items-center justify-center rounded-full bg-sport-card border border-sport-border text-sport-fg shadow-lg transition-all hover:border-sport-orange/60 hover:text-sport-orange active:scale-95"
           >
             <ChevronRight size={20} aria-hidden="true" />
           </button>
@@ -128,7 +128,7 @@ export function Features() {
 
                 {/* Text content */}
                 <div className="p-5">
-                  <h3 className="text-sm font-bold text-white mb-2 group-hover:text-white transition-colors">{tr.title}</h3>
+                  <h3 className="text-sm font-bold text-sport-fg mb-2 group-hover:text-sport-fg transition-colors">{tr.title}</h3>
                   <p className="text-xs text-sport-gray leading-relaxed mb-4">{tr.description}</p>
 
                   {/* Stats chips */}

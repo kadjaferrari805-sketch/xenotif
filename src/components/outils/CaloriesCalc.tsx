@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { useTranslations } from 'next-intl'
 
-const INPUT = 'w-full bg-sport-dark border border-sport-border rounded-xl px-4 py-3 text-white focus:border-sport-orange outline-none transition-colors'
+const INPUT = 'w-full bg-sport-dark border border-sport-border rounded-xl px-4 py-3 text-sport-fg focus:border-sport-orange outline-none transition-colors'
 const ACT_FACTORS = [1.2, 1.375, 1.55, 1.725, 1.9]
 
 // Calculateur de besoin calorique (TDEE) — formule Mifflin-St Jeor, calcul live.
@@ -30,7 +30,7 @@ export function CaloriesCalc() {
                 key={s}
                 type="button"
                 onClick={() => setSex(s)}
-                className={`rounded-xl py-3 text-sm font-bold border transition-colors ${sex === s ? 'bg-sport-orange text-white border-sport-orange' : 'bg-sport-dark text-sport-gray border-sport-border hover:border-white/30'}`}
+                className={`rounded-xl py-3 text-sm font-bold border transition-colors ${sex === s ? 'bg-sport-orange text-sport-fg border-sport-orange' : 'bg-sport-dark text-sport-gray border-sport-border hover:border-sport-fg/30'}`}
               >
                 {t(`calories.${s}`)}
               </button>
@@ -62,21 +62,21 @@ export function CaloriesCalc() {
       <div className="space-y-3">
         <div className="rounded-2xl border border-sport-orange/30 bg-gradient-to-br from-sport-orange/15 via-sport-card to-sport-card p-6 text-center">
           <p className="text-xs font-bold uppercase tracking-wider text-sport-gray mb-1">{t('calories.tdee')}</p>
-          <p className="text-4xl font-black text-white">{r(tdee)}</p>
+          <p className="text-4xl font-black text-sport-fg">{r(tdee)}</p>
           <p className="text-xs text-sport-gray mt-1">{t('calories.unit')}</p>
         </div>
         <div className="grid grid-cols-3 gap-2">
           <div className="rounded-xl bg-sport-card border border-sport-border p-3 text-center">
             <p className="text-[10px] uppercase tracking-wider text-sport-gray">{t('calories.bmr')}</p>
-            <p className="text-base font-black text-white mt-1">{r(bmr)}</p>
+            <p className="text-base font-black text-sport-fg mt-1">{r(bmr)}</p>
           </div>
           <div className="rounded-xl bg-sport-card border border-sport-border p-3 text-center">
             <p className="text-[10px] uppercase tracking-wider text-sport-lime">{t('calories.cut')}</p>
-            <p className="text-base font-black text-white mt-1">{r(tdee * 0.8)}</p>
+            <p className="text-base font-black text-sport-fg mt-1">{r(tdee * 0.8)}</p>
           </div>
           <div className="rounded-xl bg-sport-card border border-sport-border p-3 text-center">
             <p className="text-[10px] uppercase tracking-wider text-sport-orange">{t('calories.bulk')}</p>
-            <p className="text-base font-black text-white mt-1">{r(tdee * 1.15)}</p>
+            <p className="text-base font-black text-sport-fg mt-1">{r(tdee * 1.15)}</p>
           </div>
         </div>
         <p className="text-[11px] text-sport-gray leading-relaxed pt-1">{t('disclaimer')}</p>

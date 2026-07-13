@@ -21,7 +21,7 @@ function FAQItem({ q, a, index }: { q: string; a: string; index: number }) {
         onClick={() => setOpen((v) => !v)}
         aria-expanded={open}
         aria-controls={answerId}
-        className="w-full flex items-center justify-between py-5 text-left text-sm font-bold text-white hover:text-sport-orange transition-colors gap-4"
+        className="w-full flex items-center justify-between py-5 text-left text-sm font-bold text-sport-fg hover:text-sport-orange transition-colors gap-4"
       >
         <span>{q}</span>
         <span

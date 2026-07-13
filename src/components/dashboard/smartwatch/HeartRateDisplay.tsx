@@ -52,7 +52,7 @@ export function HeartRateDisplay({ avg, max, resting, animated = true }: HeartRa
         </div>
         <div>
           <div className="flex items-baseline gap-1">
-            <span className="text-2xl font-black text-white">{avg}</span>
+            <span className="text-2xl font-black text-sport-fg">{avg}</span>
             <span className="text-xs text-sport-gray">{t('bpmAvg')}</span>
           </div>
           <span className="text-[10px] font-bold" style={{ color: zone.color }}>{t(zone.key)}</span>
@@ -62,11 +62,11 @@ export function HeartRateDisplay({ avg, max, resting, animated = true }: HeartRa
       <div className="grid grid-cols-2 gap-2">
         <div className="bg-sport-dark rounded-lg px-3 py-2">
           <p className="text-[10px] text-sport-gray">{t('max')}</p>
-          <p className="text-sm font-black text-white">{max} <span className="text-[10px] text-sport-gray font-normal">bpm</span></p>
+          <p className="text-sm font-black text-sport-fg">{max} <span className="text-[10px] text-sport-gray font-normal">bpm</span></p>
         </div>
         <div className="bg-sport-dark rounded-lg px-3 py-2">
           <p className="text-[10px] text-sport-gray">{t('resting')}</p>
-          <p className="text-sm font-black text-white">{resting} <span className="text-[10px] text-sport-gray font-normal">bpm</span></p>
+          <p className="text-sm font-black text-sport-fg">{resting} <span className="text-[10px] text-sport-gray font-normal">bpm</span></p>
         </div>
       </div>
     </div>

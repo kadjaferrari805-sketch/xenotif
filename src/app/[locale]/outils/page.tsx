@@ -40,7 +40,7 @@ export default async function OutilsHubPage({ params }: { params: Promise<{ loca
   }
 
   return (
-    <div className="min-h-screen bg-sport-dark text-white">
+    <div className="min-h-screen bg-sport-dark text-sport-fg">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(listSchema) }} />
       <section className="max-w-5xl mx-auto px-6 py-16 md:py-20">
         <p className="text-[11px] font-bold tracking-[2px] uppercase text-sport-orange mb-3">{t('hubEyebrow')}</p>

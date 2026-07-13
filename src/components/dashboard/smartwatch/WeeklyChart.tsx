@@ -53,7 +53,7 @@ export function WeeklyChart({ data, metric, color }: WeeklyChartProps) {
                   }}
                 />
               </div>
-              <span className={`text-[9px] font-bold ${isToday ? 'text-white' : 'text-sport-gray'}`}>
+              <span className={`text-[9px] font-bold ${isToday ? 'text-sport-fg' : 'text-sport-gray'}`}>
                 {dayLabel(d.day)}
               </span>
             </div>

@@ -76,7 +76,7 @@ export function NotificationBell({ align = 'right' }: { align?: 'left' | 'right'
         aria-label={unreadCount > 0 ? `${t('aria')} (${unreadCount})` : t('aria')}
         aria-haspopup="dialog"
         aria-expanded={open}
-        className="relative flex h-9 w-9 items-center justify-center rounded-full border border-sport-border text-sport-gray hover:text-white hover:border-white/20 transition-all"
+        className="relative flex h-9 w-9 items-center justify-center rounded-full border border-sport-border text-sport-gray hover:text-sport-fg hover:border-sport-fg/20 transition-all"
       >
         <Bell size={16} aria-hidden="true" />
         {unreadCount > 0 && (
@@ -96,8 +96,8 @@ export function NotificationBell({ align = 'right' }: { align?: 'left' | 'right'
           className={`absolute ${align === 'left' ? 'left-0' : 'right-0'} mt-2 w-80 max-w-[calc(100vw-2rem)] rounded-2xl border border-sport-border bg-sport-card shadow-2xl z-50 overflow-hidden`}
         >
           <div className="flex items-center justify-between px-4 py-3 border-b border-sport-border">
-            <p className="text-sm font-black text-white">{t('title')}</p>
-            <button onClick={() => setOpen(false)} aria-label={t('close')} className="text-sport-gray hover:text-white transition-colors">
+            <p className="text-sm font-black text-sport-fg">{t('title')}</p>
+            <button onClick={() => setOpen(false)} aria-label={t('close')} className="text-sport-gray hover:text-sport-fg transition-colors">
               <X size={15} aria-hidden="true" />
             </button>
           </div>
@@ -109,13 +109,13 @@ export function NotificationBell({ align = 'right' }: { align?: 'left' | 'right'
                   key={i}
                   href={n.href}
                   onClick={() => setOpen(false)}
-                  className="flex items-start gap-3 rounded-xl px-3 py-3 hover:bg-white/5 transition-colors"
+                  className="flex items-start gap-3 rounded-xl px-3 py-3 hover:bg-sport-fg/5 transition-colors"
                 >
                   <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg" style={{ background: `${n.color}1f`, border: `1px solid ${n.color}40` }}>
                     <Icon size={15} style={{ color: n.color }} aria-hidden="true" />
                   </div>
                   <div className="min-w-0">
-                    <p className="text-xs font-bold text-white leading-snug">{n.title}</p>
+                    <p className="text-xs font-bold text-sport-fg leading-snug">{n.title}</p>
                     <p className="text-[11px] text-sport-gray leading-snug mt-0.5 line-clamp-2">{n.body}</p>
                     <p className="text-[10px] text-sport-gray mt-1">{`${String(n.hour).padStart(2, '0')}:00 · ${t('today')}`}</p>
                   </div>
@@ -126,7 +126,7 @@ export function NotificationBell({ align = 'right' }: { align?: 'left' | 'right'
           <Link
             href="/dashboard/notifications"
             onClick={() => setOpen(false)}
-            className="flex items-center justify-center gap-1.5 border-t border-sport-border px-4 py-3 text-xs font-bold text-sport-orange hover:bg-white/5 transition-colors"
+            className="flex items-center justify-center gap-1.5 border-t border-sport-border px-4 py-3 text-xs font-bold text-sport-orange hover:bg-sport-fg/5 transition-colors"
           >
             {t('viewAll')} <ArrowRight size={12} aria-hidden="true" />
           </Link>

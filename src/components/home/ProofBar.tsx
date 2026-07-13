@@ -74,7 +74,7 @@ export function ProofBar() {
               <div className={`text-4xl font-black ${stat.color} tabular-nums`}>
                 <Counter end={stat.end} suffix={stat.suffix} decimal={stat.decimal} active={inView} />
               </div>
-              <div className="text-xs font-bold text-white uppercase tracking-widest mt-1">{labels[i].label}</div>
+              <div className="text-xs font-bold text-sport-fg uppercase tracking-widest mt-1">{labels[i].label}</div>
               <span className="text-[11px] text-sport-gray">{labels[i].sublabel}</span>
             </motion.div>
             </Tilt3D>

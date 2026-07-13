@@ -61,7 +61,7 @@ export function ProgressionClient({ userId, initialWorkouts, initialProgress }: 
   return (
     <div className="p-6 md:p-8 max-w-4xl mx-auto pb-24 md:pb-8">
       <div className="flex items-center justify-between mb-8">
-        <h1 className="text-2xl font-black text-white">{t('title')}</h1>
+        <h1 className="text-2xl font-black text-sport-fg">{t('title')}</h1>
         <button
           onClick={() => setAdding(true)}
           className="inline-flex items-center gap-2 bg-sport-orange text-white px-4 py-2 rounded-full text-xs font-bold hover:bg-orange-600 active:scale-95 transition-all shadow-lg shadow-sport-orange/20"
@@ -78,31 +78,31 @@ export function ProgressionClient({ userId, initialWorkouts, initialProgress }: 
       {adding && (
         <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
           <div className="bg-sport-card border border-sport-border rounded-2xl p-6 w-full max-w-md">
-            <h3 className="text-lg font-black text-white mb-5">{t('newSession')}</h3>
+            <h3 className="text-lg font-black text-sport-fg mb-5">{t('newSession')}</h3>
             <div className="space-y-4">
               <div>
-                <label className="block text-xs font-bold text-white mb-2 uppercase tracking-wider">{t('discipline')}</label>
+                <label className="block text-xs font-bold text-sport-fg mb-2 uppercase tracking-wider">{t('discipline')}</label>
                 <select value={form.discipline} onChange={e => setForm(f => ({ ...f, discipline: e.target.value }))}
-                  className="w-full bg-sport-dark border border-sport-border rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-sport-orange">
+                  className="w-full bg-sport-dark border border-sport-border rounded-xl px-4 py-3 text-sport-fg text-sm focus:outline-none focus:border-sport-orange">
                   {DISCIPLINES.map(s => <option key={s} value={s}>{discName(s)}</option>)}
                 </select>
               </div>
               <div>
-                <label className="block text-xs font-bold text-white mb-2 uppercase tracking-wider">{t('durationMin')}</label>
+                <label className="block text-xs font-bold text-sport-fg mb-2 uppercase tracking-wider">{t('durationMin')}</label>
                 <input type="number" min="5" max="300" value={form.duration}
                   onChange={e => setForm(f => ({ ...f, duration: e.target.value }))}
-                  className="w-full bg-sport-dark border border-sport-border rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-sport-orange" />
+                  className="w-full bg-sport-dark border border-sport-border rounded-xl px-4 py-3 text-sport-fg text-sm focus:outline-none focus:border-sport-orange" />
               </div>
               <div>
-                <label className="block text-xs font-bold text-white mb-2 uppercase tracking-wider">{t('notesOptional')}</label>
+                <label className="block text-xs font-bold text-sport-fg mb-2 uppercase tracking-wider">{t('notesOptional')}</label>
                 <textarea value={form.notes} onChange={e => setForm(f => ({ ...f, notes: e.target.value }))}
                   placeholder={t('notesPlaceholder')} rows={2}
-                  className="w-full bg-sport-dark border border-sport-border rounded-xl px-4 py-3 text-white text-sm resize-none focus:outline-none focus:border-sport-orange placeholder:text-sport-gray" />
+                  className="w-full bg-sport-dark border border-sport-border rounded-xl px-4 py-3 text-sport-fg text-sm resize-none focus:outline-none focus:border-sport-orange placeholder:text-sport-gray" />
               </div>
             </div>
             <div className="flex gap-3 mt-6">
               <button onClick={() => setAdding(false)}
-                className="flex-1 border border-sport-border text-sport-gray py-2.5 rounded-full text-sm font-bold hover:text-white hover:border-sport-gray transition-all">
+                className="flex-1 border border-sport-border text-sport-gray py-2.5 rounded-full text-sm font-bold hover:text-sport-fg hover:border-sport-gray transition-all">
                 {t('cancel')}
               </button>
               <button onClick={addWorkout} disabled={saving}
@@ -124,7 +124,7 @@ export function ProgressionClient({ userId, initialWorkouts, initialProgress }: 
         ].map(({ Icon, label, value, color }) => (
           <div key={label} className="bg-sport-card border border-sport-border rounded-xl p-4">
             <Icon size={18} className={`${color} mb-2`} />
-            <p className="text-2xl font-black text-white">{value}</p>
+            <p className="text-2xl font-black text-sport-fg">{value}</p>
             <p className="text-[11px] text-sport-gray mt-0.5 leading-tight">{label}</p>
           </div>
         ))}
@@ -132,12 +132,12 @@ export function ProgressionClient({ userId, initialWorkouts, initialProgress }: 
 
       {/* Discipline progress */}
       <div className="bg-sport-card border border-sport-border rounded-2xl p-6 mb-8">
-        <h2 className="text-base font-black text-white mb-5">{t('byDiscipline')}</h2>
+        <h2 className="text-base font-black text-sport-fg mb-5">{t('byDiscipline')}</h2>
         <div className="space-y-5">
           {disciplineProgress.map(({ slug, name, pct, done, total }) => (
             <div key={slug}>
               <div className="flex items-center justify-between mb-1.5">
-                <span className="text-sm font-semibold text-white">{name}</span>
+                <span className="text-sm font-semibold text-sport-fg">{name}</span>
                 <span className="text-xs text-sport-gray">{done}/{total} · <strong className="text-sport-orange">{pct}%</strong></span>
               </div>
               <div className="w-full bg-sport-dark rounded-full h-2">
@@ -176,7 +176,7 @@ export function ProgressionClient({ userId, initialWorkouts, initialProgress }: 
         const maxCount = Math.max(...counts, 1)
         return (
           <div className="bg-sport-card border border-sport-border rounded-2xl p-6 mb-8">
-            <h2 className="text-base font-black text-white mb-5">{t('weekActivity')}</h2>
+            <h2 className="text-base font-black text-sport-fg mb-5">{t('weekActivity')}</h2>
             <div className="flex items-end gap-2 h-24">
               {days.map((day, i) => (
                 <div key={day} className="flex-1 flex flex-col items-center gap-1.5">
@@ -197,7 +197,7 @@ export function ProgressionClient({ userId, initialWorkouts, initialProgress }: 
 
       {/* Recent workouts */}
       <div>
-        <h2 className="text-base font-black text-white mb-4">{t('history')}</h2>
+        <h2 className="text-base font-black text-sport-fg mb-4">{t('history')}</h2>
         {workouts.length === 0 ? (
           <div className="text-center py-10 text-sport-gray text-sm">
             {t('noHistory')}
@@ -211,12 +211,12 @@ export function ProgressionClient({ userId, initialWorkouts, initialProgress }: 
                     <Flame size={14} className="text-sport-orange" />
                   </div>
                   <div>
-                    <p className="text-sm font-bold text-white">{discName(w.discipline)}</p>
+                    <p className="text-sm font-bold text-sport-fg">{discName(w.discipline)}</p>
                     <p className="text-[11px] text-sport-gray">{new Date(w.completed_at).toLocaleDateString(dateLocale, { weekday: 'short', day: 'numeric', month: 'short' })}</p>
                   </div>
                 </div>
                 <div className="text-right">
-                  <p className="text-sm font-bold text-white">{w.duration_minutes} min</p>
+                  <p className="text-sm font-bold text-sport-fg">{w.duration_minutes} min</p>
                 </div>
               </div>
             ))}

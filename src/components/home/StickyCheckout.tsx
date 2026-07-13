@@ -31,7 +31,7 @@ export function StickyCheckout() {
           <div className="hidden md:flex items-center gap-2.5 shrink-0 mr-1">
             <XenotifMark size={28} />
             <div className="leading-tight">
-              <p className="font-black text-white text-xs">{t('lead')}</p>
+              <p className="font-black text-sport-fg text-xs">{t('lead')}</p>
               <p className="flex items-center gap-1 text-[10px] text-sport-lime font-bold">
                 <Zap size={9} aria-hidden="true" /> {t('trial')}
               </p>
@@ -53,7 +53,7 @@ export function StickyCheckout() {
           <button
             onClick={() => setDismissed(true)}
             aria-label={t('dismiss')}
-            className="shrink-0 text-sport-gray hover:text-white transition-colors p-1 ml-1"
+            className="shrink-0 text-sport-gray hover:text-sport-fg transition-colors p-1 ml-1"
           >
             <X size={15} aria-hidden="true" />
           </button>

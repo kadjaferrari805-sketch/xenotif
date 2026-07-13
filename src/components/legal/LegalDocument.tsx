@@ -25,11 +25,11 @@ export function LegalDocument({
   eyebrow, title, intro, sections, updatedLabel, backLabel, related,
 }: LegalDocumentProps) {
   return (
-    <main className="min-h-screen bg-sport-dark text-white py-20 px-6">
+    <main className="min-h-screen bg-sport-dark text-sport-fg py-20 px-6">
       <div className="max-w-3xl mx-auto">
         <Link
           href="/"
-          className="inline-flex items-center gap-1.5 text-sport-gray text-sm mb-10 hover:text-white transition-colors"
+          className="inline-flex items-center gap-1.5 text-sport-gray text-sm mb-10 hover:text-sport-fg transition-colors"
         >
           <ArrowLeft size={14} aria-hidden="true" /> {backLabel}
         </Link>
@@ -43,7 +43,7 @@ export function LegalDocument({
             <section key={section.id} aria-labelledby={section.id}>
               <h2
                 id={section.id}
-                className="text-white font-bold text-lg mb-4 flex items-center gap-2"
+                className="text-sport-fg font-bold text-lg mb-4 flex items-center gap-2"
               >
                 <span aria-hidden="true" className="w-1.5 h-5 bg-sport-orange rounded-full inline-block shrink-0" />
                 {section.title}

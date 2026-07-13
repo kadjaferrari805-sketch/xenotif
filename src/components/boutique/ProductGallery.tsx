@@ -69,7 +69,7 @@ export function ProductGallery({ images, alt, badge, discountLabel, imageFit, im
           <span className="pointer-events-none absolute top-4 right-4 rounded-full bg-red-500 px-3 py-1 text-sm font-black text-white shadow-lg">{discountLabel}</span>
         )}
         {/* Indice « zoom » discret */}
-        <span className="pointer-events-none absolute bottom-3 right-3 rounded-full bg-sport-dark/70 px-2.5 py-1 text-[11px] font-semibold text-white/90 opacity-0 transition-opacity group-hover:opacity-100">
+        <span className="pointer-events-none absolute bottom-3 right-3 rounded-full bg-sport-dark/70 px-2.5 py-1 text-[11px] font-semibold text-sport-fg/90 opacity-0 transition-opacity group-hover:opacity-100">
           🔍 Survol pour zoomer
         </span>
       </div>

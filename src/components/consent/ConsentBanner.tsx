@@ -83,7 +83,7 @@ export function ConsentBanner() {
         <button
           type="button"
           onClick={() => choose('denied')}
-          className="rounded-xl border border-sport-border px-4 py-2.5 text-xs font-bold text-white transition-colors hover:border-sport-gray sm:text-sm"
+          className="rounded-xl border border-sport-border px-4 py-2.5 text-xs font-bold text-sport-fg transition-colors hover:border-sport-gray sm:text-sm"
         >
           {t.refuse}
         </button>

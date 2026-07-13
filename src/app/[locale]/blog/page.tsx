@@ -81,7 +81,7 @@ export default async function BlogPage({
           <span className="inline-block text-sport-orange font-bold text-sm uppercase tracking-widest mb-4">
             {t('eyebrow')}
           </span>
-          <h1 data-no-reveal className="text-3xl sm:text-4xl md:text-6xl font-black text-white mb-6 leading-tight px-2 text-balance [text-shadow:0_2px_18px_rgba(0,0,0,0.6)]">
+          <h1 data-no-reveal className="text-3xl sm:text-4xl md:text-6xl font-black text-sport-fg mb-6 leading-tight px-2 text-balance [text-shadow:0_2px_18px_rgba(0,0,0,0.6)]">
             {t.rich('title', { o: (c) => <span className="text-sport-orange">{c}</span> })}
           </h1>
           <p className="text-gray-200 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed [text-shadow:0_2px_12px_rgba(0,0,0,0.85)]">
@@ -119,8 +119,8 @@ export default async function BlogPage({
                   href={href}
                   className={`snap-start flex-shrink-0 px-4 py-2 rounded-full text-sm font-semibold transition-all ${
                     isActive
-                      ? 'bg-sport-orange text-white shadow-lg shadow-sport-orange/20'
-                      : 'bg-sport-card border border-sport-border text-sport-gray hover:text-white hover:border-sport-orange/30'
+                      ? 'bg-sport-orange text-sport-fg shadow-lg shadow-sport-orange/20'
+                      : 'bg-sport-card border border-sport-border text-sport-gray hover:text-sport-fg hover:border-sport-orange/30'
                   }`}
                 >
                   {label}
@@ -135,7 +135,7 @@ export default async function BlogPage({
       <section className="max-w-6xl mx-auto px-6 py-14">
         {activeCategory && (
           <div className="mb-8">
-            <h2 className="text-xl font-black text-white">
+            <h2 className="text-xl font-black text-sport-fg">
               {t('categoryHeading', { count: posts.length, category: t(`categories.${activeCategory}`) })}
             </h2>
           </div>
@@ -156,7 +156,7 @@ export default async function BlogPage({
       {/* CTA Section */}
       <section className="border-t border-sport-border py-16 px-6">
         <div className="max-w-2xl mx-auto text-center">
-          <h2 className="text-3xl font-black text-white mb-4">
+          <h2 className="text-3xl font-black text-sport-fg mb-4">
             {t.rich('ctaTitle', { o: (c) => <span className="text-sport-orange">{c}</span> })}
           </h2>
           <p className="text-sport-gray mb-8">{t('ctaSubtitle')}</p>
@@ -164,7 +164,7 @@ export default async function BlogPage({
             <Link href="/boutique" className="px-8 py-3 bg-sport-orange text-white rounded-full font-bold hover:bg-orange-600 transition-all shadow-lg shadow-sport-orange/20">
               {t('ctaShop')}
             </Link>
-            <Link href="/auth/signup" className="px-8 py-3 border border-sport-border text-white rounded-full font-bold hover:border-sport-orange/40 transition-all">
+            <Link href="/auth/signup" className="px-8 py-3 border border-sport-border text-sport-fg rounded-full font-bold hover:border-sport-orange/40 transition-all">
               {t('ctaJoin')}
             </Link>
           </div>

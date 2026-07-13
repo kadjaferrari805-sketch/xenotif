@@ -45,8 +45,8 @@ export default async function AdminContentEditPage({ params }: { params: Promise
   }
 
   return (
-    <div className="min-h-screen bg-sport-dark text-white p-6 md:p-10">
-      <Link href="/admin/content" className="inline-flex items-center gap-1.5 text-sport-gray text-sm mb-8 hover:text-white">
+    <div className="min-h-screen bg-sport-dark text-sport-fg p-6 md:p-10">
+      <Link href="/admin/content" className="inline-flex items-center gap-1.5 text-sport-gray text-sm mb-8 hover:text-sport-fg">
         <ArrowLeft size={14} /> Contenu
       </Link>
       <h1 className="text-2xl font-black mb-6">{base.title}</h1>

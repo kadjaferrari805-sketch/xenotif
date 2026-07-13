@@ -14,7 +14,7 @@ export async function GuideBlocks({ blocks }: { blocks: GuideBlock[] }) {
       {blocks.map((b, i) => {
         switch (b.type) {
           case 'h1':
-            return <h2 key={i} className="text-2xl md:text-3xl font-black text-white pt-6">{b.text}</h2>
+            return <h2 key={i} className="text-2xl md:text-3xl font-black text-sport-fg pt-6">{b.text}</h2>
           case 'h2':
             return <h3 key={i} className="text-lg font-black text-sport-orange pt-2">{b.text}</h3>
           case 'p':
@@ -30,14 +30,14 @@ export async function GuideBlocks({ blocks }: { blocks: GuideBlock[] }) {
               </ul>
             )
           case 'note':
-            return <p key={i} className="text-sm text-white bg-sport-orange/10 border border-sport-orange/25 rounded-xl px-4 py-3">{b.text}</p>
+            return <p key={i} className="text-sm text-sport-fg bg-sport-orange/10 border border-sport-orange/25 rounded-xl px-4 py-3">{b.text}</p>
           case 'meta':
             return (
               <div key={i} className="grid grid-cols-2 sm:grid-cols-3 gap-3">
                 {b.items.map((m, j) => (
                   <div key={j} className="bg-sport-card border border-sport-border rounded-xl p-3">
                     <p className="text-[10px] uppercase tracking-wider text-sport-gray">{m.label}</p>
-                    <p className="text-sm font-bold text-white mt-0.5">{m.value}</p>
+                    <p className="text-sm font-bold text-sport-fg mt-0.5">{m.value}</p>
                   </div>
                 ))}
               </div>
@@ -57,7 +57,7 @@ export async function GuideBlocks({ blocks }: { blocks: GuideBlock[] }) {
                     {b.rows.map((r, j) => (
                       <tr key={j} className="border-b border-sport-border/50">
                         {r.map((c, k) => (
-                          <td key={k} className={`py-2 pr-4 align-top ${k === 0 ? 'font-bold text-white' : 'text-sport-gray'}`}>{c}</td>
+                          <td key={k} className={`py-2 pr-4 align-top ${k === 0 ? 'font-bold text-sport-fg' : 'text-sport-gray'}`}>{c}</td>
                         ))}
                       </tr>
                     ))}
@@ -69,12 +69,12 @@ export async function GuideBlocks({ blocks }: { blocks: GuideBlock[] }) {
             return (
               <div key={i} className="bg-sport-card border border-sport-border rounded-2xl p-5">
                 <div className="flex items-center justify-between gap-3 mb-2">
-                  <h4 className="font-black text-white">{b.name}</h4>
+                  <h4 className="font-black text-sport-fg">{b.name}</h4>
                   <span className="shrink-0 text-[10px] font-bold px-2.5 py-1 rounded-full bg-sport-orange/10 text-sport-orange">{b.level}</span>
                 </div>
                 <p className="text-[11px] text-sport-gray mb-2">{b.muscles}</p>
-                <p className="text-sm text-sport-gray leading-relaxed"><strong className="text-white">{t('technique')}</strong>{b.technique}</p>
-                {b.mistakes && <p className="text-sm text-sport-gray leading-relaxed mt-1.5"><strong className="text-white">{t('mistakes')}</strong>{b.mistakes}</p>}
+                <p className="text-sm text-sport-gray leading-relaxed"><strong className="text-sport-fg">{t('technique')}</strong>{b.technique}</p>
+                {b.mistakes && <p className="text-sm text-sport-gray leading-relaxed mt-1.5"><strong className="text-sport-fg">{t('mistakes')}</strong>{b.mistakes}</p>}
               </div>
             )
           default:

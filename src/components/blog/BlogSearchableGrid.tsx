@@ -53,14 +53,14 @@ export function BlogSearchableGrid({ posts }: { posts: BlogPost[] }) {
           onChange={(e) => setQuery(e.target.value)}
           placeholder={t('searchPlaceholder')}
           aria-label={t('searchPlaceholder')}
-          className="w-full rounded-full border border-sport-border bg-sport-card py-3 pl-11 pr-10 text-sm text-white placeholder:text-sport-gray focus:border-sport-orange/60 focus:outline-none"
+          className="w-full rounded-full border border-sport-border bg-sport-card py-3 pl-11 pr-10 text-sm text-sport-fg placeholder:text-sport-gray focus:border-sport-orange/60 focus:outline-none"
         />
         {query && (
           <button
             type="button"
             onClick={() => setQuery('')}
             aria-label={t('searchClear')}
-            className="absolute right-3 top-1/2 -translate-y-1/2 flex h-6 w-6 items-center justify-center rounded-full text-sport-gray hover:text-white transition-colors"
+            className="absolute right-3 top-1/2 -translate-y-1/2 flex h-6 w-6 items-center justify-center rounded-full text-sport-gray hover:text-sport-fg transition-colors"
           >
             <X size={14} aria-hidden="true" />
           </button>
@@ -95,7 +95,7 @@ export function BlogSearchableGrid({ posts }: { posts: BlogPost[] }) {
                     </span>
                   </div>
                   <div className="p-5">
-                    <h2 className="font-black text-white text-lg leading-snug mb-2 group-hover:text-sport-orange transition-colors line-clamp-2">{post.title}</h2>
+                    <h2 className="font-black text-sport-fg text-lg leading-snug mb-2 group-hover:text-sport-orange transition-colors line-clamp-2">{post.title}</h2>
                     <p className="text-sport-gray text-sm leading-relaxed line-clamp-3 mb-4">{post.excerpt}</p>
                     <div className="flex items-center justify-between text-xs text-sport-gray border-t border-sport-border pt-3">
                       <div className="flex items-center gap-2">

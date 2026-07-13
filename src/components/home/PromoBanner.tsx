@@ -59,10 +59,10 @@ export function PromoBanner({
             <span className="inline-flex w-fit items-center gap-1.5 rounded-full border border-sport-orange/30 bg-sport-orange/10 px-3 py-1 text-[11px] font-black uppercase tracking-wider text-sport-orange">
               <Icon size={12} aria-hidden="true" /> {t(`${variant}.label`)}
             </span>
-            <h3 className="text-2xl font-black leading-tight text-white md:text-3xl">{t(`${variant}.title`)}</h3>
+            <h3 className="text-2xl font-black leading-tight text-sport-fg md:text-3xl">{t(`${variant}.title`)}</h3>
             <p className="line-clamp-2 text-sm text-sport-gray">{product.name}</p>
             <div className="flex items-center gap-2">
-              <span className="text-2xl font-black text-white">{formatPrice(product.price_cents)}</span>
+              <span className="text-2xl font-black text-sport-fg">{formatPrice(product.price_cents)}</span>
               {product.original_price_cents && (
                 <span className="text-sm text-sport-gray line-through">{formatPrice(product.original_price_cents)}</span>
               )}

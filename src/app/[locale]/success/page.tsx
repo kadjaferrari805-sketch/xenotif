@@ -91,20 +91,20 @@ export default async function SuccessPage({
           Paiement confirmé
         </p>
 
-        <h1 className="text-4xl md:text-5xl font-black text-white mb-4 leading-tight">
+        <h1 className="text-4xl md:text-5xl font-black text-sport-fg mb-4 leading-tight">
           Bienvenue dans
           <br />
           <span className="text-sport-orange">la communauté Xenotif® !</span>
         </h1>
 
         <p className="text-sport-gray text-sm leading-relaxed mb-12 max-w-sm mx-auto">
-          Ton essai gratuit de <strong className="text-white">7 jours</strong> démarre maintenant.
+          Ton essai gratuit de <strong className="text-sport-fg">7 jours</strong> démarre maintenant.
           Aucun débit avant la fin de la période d&apos;essai.
         </p>
 
         {/* Next steps */}
         <div className="bg-sport-card border border-sport-border rounded-2xl p-6 mb-8 text-left">
-          <p className="text-xs font-bold text-white uppercase tracking-wider mb-5 flex items-center gap-2">
+          <p className="text-xs font-bold text-sport-fg uppercase tracking-wider mb-5 flex items-center gap-2">
             <Zap size={13} aria-hidden="true" className="text-sport-orange" />
             Prochaines étapes
           </p>

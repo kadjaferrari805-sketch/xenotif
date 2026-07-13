@@ -38,19 +38,19 @@ export default function ResetPasswordPage() {
               <div className="w-16 h-16 bg-emerald-500/10 border border-emerald-500/30 rounded-full flex items-center justify-center mx-auto mb-5">
                 <CheckCircle size={28} className="text-emerald-400" />
               </div>
-              <h2 className="text-xl font-black text-white mb-3">{t('doneTitle')}</h2>
+              <h2 className="text-xl font-black text-sport-fg mb-3">{t('doneTitle')}</h2>
               <p className="text-sport-gray text-sm">{t('doneText')}</p>
             </div>
           ) : (
             <>
               <div className="mb-8">
-                <h1 className="text-2xl font-black text-white mb-2">{t('title')}</h1>
+                <h1 className="text-2xl font-black text-sport-fg mb-2">{t('title')}</h1>
                 <p className="text-sport-gray text-sm">{t('subtitle')}</p>
               </div>
 
               <form onSubmit={handleSubmit} className="space-y-5">
                 <div>
-                  <label className="block text-xs font-bold text-white mb-2 uppercase tracking-wider">{t('passwordLabel')}</label>
+                  <label className="block text-xs font-bold text-sport-fg mb-2 uppercase tracking-wider">{t('passwordLabel')}</label>
                   <div className="relative">
                     <input
                       type={showPwd ? 'text' : 'password'}
@@ -58,9 +58,9 @@ export default function ResetPasswordPage() {
                       value={password}
                       onChange={e => setPassword(e.target.value)}
                       placeholder={t('passwordPlaceholder')}
-                      className="w-full bg-sport-dark border border-sport-border rounded-xl px-4 py-3 pr-12 text-white text-sm placeholder:text-sport-gray focus:outline-none focus:border-sport-orange transition-colors"
+                      className="w-full bg-sport-dark border border-sport-border rounded-xl px-4 py-3 pr-12 text-sport-fg text-sm placeholder:text-sport-gray focus:outline-none focus:border-sport-orange transition-colors"
                     />
-                    <button type="button" onClick={() => setShowPwd(v => !v)} className="absolute right-3 top-1/2 -translate-y-1/2 text-sport-gray hover:text-white p-1">
+                    <button type="button" onClick={() => setShowPwd(v => !v)} className="absolute right-3 top-1/2 -translate-y-1/2 text-sport-gray hover:text-sport-fg p-1">
                       {showPwd ? <EyeOff size={16} /> : <Eye size={16} />}
                     </button>
                   </div>

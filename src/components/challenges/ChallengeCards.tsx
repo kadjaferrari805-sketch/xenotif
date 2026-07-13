@@ -31,7 +31,7 @@ export function ChallengeCards() {
               {c.emoji}
             </div>
             <div>
-              <h3 className="text-lg font-black text-white">{items[i].title}</h3>
+              <h3 className="text-lg font-black text-sport-fg">{items[i].title}</h3>
               <p className={`text-sm font-bold ${c.tint}`}>{items[i].goal}</p>
             </div>
           </div>

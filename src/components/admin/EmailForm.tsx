@@ -32,16 +32,16 @@ export function AdminEmailForm() {
     <div className="bg-sport-card border border-sport-border rounded-2xl mt-10">
       <div className="px-6 py-4 border-b border-sport-border flex items-center gap-3">
         <Send size={16} className="text-sport-orange" />
-        <h2 className="text-sm font-black text-white">Envoyer un email</h2>
+        <h2 className="text-sm font-black text-sport-fg">Envoyer un email</h2>
       </div>
       <div className="p-6 space-y-4">
         <div className="grid md:grid-cols-2 gap-4">
           <div>
-            <label className="block text-xs font-bold text-white mb-2 uppercase tracking-wider">Destinataires</label>
+            <label className="block text-xs font-bold text-sport-fg mb-2 uppercase tracking-wider">Destinataires</label>
             <select
               value={target}
               onChange={e => setTarget(e.target.value as typeof target)}
-              className="w-full bg-sport-dark border border-sport-border rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-sport-orange"
+              className="w-full bg-sport-dark border border-sport-border rounded-xl px-4 py-3 text-sport-fg text-sm focus:outline-none focus:border-sport-orange"
             >
               <option value="all">Tous les utilisateurs</option>
               <option value="active">Abonnés actifs seulement</option>
@@ -49,24 +49,24 @@ export function AdminEmailForm() {
             </select>
           </div>
           <div>
-            <label className="block text-xs font-bold text-white mb-2 uppercase tracking-wider">Sujet</label>
+            <label className="block text-xs font-bold text-sport-fg mb-2 uppercase tracking-wider">Sujet</label>
             <input
               type="text"
               value={subject}
               onChange={e => setSubject(e.target.value)}
               placeholder="Objet de l'email"
-              className="w-full bg-sport-dark border border-sport-border rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-sport-orange placeholder:text-sport-gray"
+              className="w-full bg-sport-dark border border-sport-border rounded-xl px-4 py-3 text-sport-fg text-sm focus:outline-none focus:border-sport-orange placeholder:text-sport-gray"
             />
           </div>
         </div>
         <div>
-          <label className="block text-xs font-bold text-white mb-2 uppercase tracking-wider">Message</label>
+          <label className="block text-xs font-bold text-sport-fg mb-2 uppercase tracking-wider">Message</label>
           <textarea
             value={message}
             onChange={e => setMessage(e.target.value)}
             placeholder="Contenu de l'email (une ligne = un paragraphe)"
             rows={5}
-            className="w-full bg-sport-dark border border-sport-border rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-sport-orange placeholder:text-sport-gray resize-none"
+            className="w-full bg-sport-dark border border-sport-border rounded-xl px-4 py-3 text-sport-fg text-sm focus:outline-none focus:border-sport-orange placeholder:text-sport-gray resize-none"
           />
         </div>
         <div className="flex items-center gap-4">

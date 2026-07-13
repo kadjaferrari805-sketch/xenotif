@@ -10,13 +10,14 @@ const config: Config = {
     extend: {
       colors: {
         sport: {
-          dark: '#0A0B0F',
-          card: '#111318',
-          border: '#1E2028',
+          dark: 'var(--color-sport-dark)',
+          card: 'var(--color-sport-card)',
+          border: 'var(--color-sport-border)',
           orange: '#FF4500',
           blue: '#2563EB',
           lime: '#A3FF00',
-          gray: '#8B929F',
+          gray: 'var(--color-sport-gray)',
+          fg: 'var(--color-sport-fg)',
         },
       },
       fontFamily: {

@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { useTranslations } from 'next-intl'
 
-const INPUT = 'w-full bg-sport-dark border border-sport-border rounded-xl px-4 py-3 text-white focus:border-sport-orange outline-none transition-colors'
+const INPUT = 'w-full bg-sport-dark border border-sport-border rounded-xl px-4 py-3 text-sport-fg focus:border-sport-orange outline-none transition-colors'
 const PCTS = [100, 95, 90, 85, 80, 75, 70, 65, 60]
 
 // Calculateur de 1RM (charge max sur 1 rép) — formule Epley + table par %.
@@ -29,7 +29,7 @@ export function OneRmCalc() {
         </div>
         <div className="rounded-2xl border border-sport-orange/30 bg-gradient-to-br from-sport-orange/15 via-sport-card to-sport-card p-6 text-center">
           <p className="text-xs font-bold uppercase tracking-wider text-sport-gray mb-1">{t('oneRm.result')}</p>
-          <p className="text-4xl font-black text-white">{r(oneRm)} <span className="text-lg text-sport-gray">kg</span></p>
+          <p className="text-4xl font-black text-sport-fg">{r(oneRm)} <span className="text-lg text-sport-gray">kg</span></p>
         </div>
         <p className="text-[11px] text-sport-gray leading-relaxed">{t('disclaimer')}</p>
       </div>
@@ -46,7 +46,7 @@ export function OneRmCalc() {
           <tbody>
             {PCTS.map((p) => (
               <tr key={p} className="border-b border-sport-border/50">
-                <td className="py-2 font-bold text-white">{p} %</td>
+                <td className="py-2 font-bold text-sport-fg">{p} %</td>
                 <td className="py-2 text-right text-sport-gray">{r((oneRm * p) / 100)} kg</td>
               </tr>
             ))}

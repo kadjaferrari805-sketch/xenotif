@@ -23,7 +23,7 @@ export function ReviewInvite() {
 
   return (
     <div className="bg-gradient-to-br from-sport-orange/10 via-sport-card to-sport-card border border-sport-orange/20 rounded-2xl p-5">
-      <p className="text-sm font-black text-white mb-1">{t('inviteTitle')}</p>
+      <p className="text-sm font-black text-sport-fg mb-1">{t('inviteTitle')}</p>
       <p className="text-xs text-sport-gray mb-4">{t('inviteSubtitle')}</p>
       {done ? (
         <p className="text-emerald-400 text-sm font-semibold">{t('thanks')}</p>

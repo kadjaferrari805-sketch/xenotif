@@ -26,7 +26,7 @@ const PRO_VALUE: Record<Period, number> = { monthly: 9.99, annual: 95.88 }
 
 type PlanText = { name: string; period: string; badge: string; features: string[] }
 
-const INPUT = 'w-full bg-sport-dark border border-sport-border rounded-xl px-4 py-3 text-white text-sm placeholder:text-sport-gray focus:outline-none focus:border-sport-orange transition-colors'
+const INPUT = 'w-full bg-sport-dark border border-sport-border rounded-xl px-4 py-3 text-sport-fg text-sm placeholder:text-sport-gray focus:outline-none focus:border-sport-orange transition-colors'
 
 function SignUpForm() {
   const t = useTranslations('auth.signup')
@@ -133,9 +133,9 @@ function SignUpForm() {
         <div className="w-16 h-16 bg-emerald-500/10 border border-emerald-500/30 rounded-full flex items-center justify-center mx-auto mb-5">
           <CheckCircle size={28} className="text-emerald-400" />
         </div>
-        <h2 className="text-xl font-black text-white mb-3">{t('doneTitle')}</h2>
+        <h2 className="text-xl font-black text-sport-fg mb-3">{t('doneTitle')}</h2>
         <p className="text-sport-gray text-sm leading-relaxed mb-6">
-          {t.rich('doneText', { email: form.email, b: (c) => <strong className="text-white">{c}</strong> })}<br />
+          {t.rich('doneText', { email: form.email, b: (c) => <strong className="text-sport-fg">{c}</strong> })}<br />
           {t('doneCta')}
         </p>
         <Link href="/auth/signin" className="text-sport-orange text-sm font-bold hover:underline">
@@ -153,7 +153,7 @@ function SignUpForm() {
         <div className="flex justify-center mb-10"><Logo href="/" size="md" /></div>
 
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-black text-white mb-2">{t('title')}</h1>
+          <h1 className="text-3xl font-black text-sport-fg mb-2">{t('title')}</h1>
           <p className="text-sport-gray text-sm">{t('subtitle')}</p>
         </div>
 
@@ -167,14 +167,14 @@ function SignUpForm() {
           <button
             type="button"
             onClick={() => setPeriod('monthly')}
-            className={`px-5 py-2 rounded-full text-sm font-bold transition-all ${period === 'monthly' ? 'bg-sport-orange text-white' : 'text-sport-gray hover:text-white'}`}
+            className={`px-5 py-2 rounded-full text-sm font-bold transition-all ${period === 'monthly' ? 'bg-sport-orange text-sport-fg' : 'text-sport-gray hover:text-sport-fg'}`}
           >
             {t('monthly')}
           </button>
           <button
             type="button"
             onClick={() => setPeriod('annual')}
-            className={`px-5 py-2 rounded-full text-sm font-bold transition-all flex items-center gap-2 ${period === 'annual' ? 'bg-sport-orange text-white' : 'text-sport-gray hover:text-white'}`}
+            className={`px-5 py-2 rounded-full text-sm font-bold transition-all flex items-center gap-2 ${period === 'annual' ? 'bg-sport-orange text-sport-fg' : 'text-sport-gray hover:text-sport-fg'}`}
           >
             {t('annual')}
             <span className="text-[10px] font-black bg-emerald-500 text-white px-2 py-0.5 rounded-full">{t('save')}</span>
@@ -199,10 +199,10 @@ function SignUpForm() {
                   {plans[i].badge}
                 </span>
               )}
-              <p className={`text-sm font-black mb-0.5 ${selectedPlan === plan.id ? 'text-sport-orange' : 'text-white'}`}>
+              <p className={`text-sm font-black mb-0.5 ${selectedPlan === plan.id ? 'text-sport-orange' : 'text-sport-fg'}`}>
                 {plans[i].name}
               </p>
-              <p className="text-sm font-black text-white leading-none">{period === 'annual' ? plan.priceAnnual : plan.priceMonthly}</p>
+              <p className="text-sm font-black text-sport-fg leading-none">{period === 'annual' ? plan.priceAnnual : plan.priceMonthly}</p>
               <p className="text-[10px] text-sport-gray mb-1">{plans[i].period}</p>
               {period === 'annual' && plan.totalAnnual && (
                 <p className="text-[9px] text-emerald-400 mb-2 leading-tight">
@@ -226,17 +226,17 @@ function SignUpForm() {
           <form onSubmit={handleSubmit} className="space-y-5">
 
             <div>
-              <label htmlFor="fullName" className="block text-xs font-bold text-white mb-2 uppercase tracking-wider">{t('fullNameLabel')}</label>
+              <label htmlFor="fullName" className="block text-xs font-bold text-sport-fg mb-2 uppercase tracking-wider">{t('fullNameLabel')}</label>
               <input id="fullName" type="text" required value={form.fullName} onChange={set('fullName')} placeholder={t('fullNamePlaceholder')} className={INPUT} />
             </div>
 
             <div>
-              <label htmlFor="email" className="block text-xs font-bold text-white mb-2 uppercase tracking-wider">{t('emailLabel')}</label>
+              <label htmlFor="email" className="block text-xs font-bold text-sport-fg mb-2 uppercase tracking-wider">{t('emailLabel')}</label>
               <input id="email" type="email" required value={form.email} onChange={set('email')} placeholder="ton@email.com" className={INPUT} />
             </div>
 
             <div>
-              <label htmlFor="password" className="block text-xs font-bold text-white mb-2 uppercase tracking-wider">{t('passwordLabel')}</label>
+              <label htmlFor="password" className="block text-xs font-bold text-sport-fg mb-2 uppercase tracking-wider">{t('passwordLabel')}</label>
               <div className="relative">
                 <input
                   id="password"
@@ -251,7 +251,7 @@ function SignUpForm() {
                 <button
                   type="button"
                   onClick={() => setShowPwd(v => !v)}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-sport-gray hover:text-white transition-colors p-1"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-sport-gray hover:text-sport-fg transition-colors p-1"
                   aria-label={showPwd ? t('hide') : t('show')}
                 >
                   {showPwd ? <EyeOff size={16} /> : <Eye size={16} />}
@@ -290,9 +290,9 @@ function SignUpForm() {
 
             <p className="text-[10px] text-sport-gray text-center leading-relaxed">
               {t('legalPrefix')}{' '}
-              <Link href="/mentions-legales" className="underline hover:text-white">{t('legalNotice')}</Link>
+              <Link href="/mentions-legales" className="underline hover:text-sport-fg">{t('legalNotice')}</Link>
               {' '}{t('legalAnd')}{' '}
-              <Link href="/confidentialite" className="underline hover:text-white">{t('privacyPolicy')}</Link>.
+              <Link href="/confidentialite" className="underline hover:text-sport-fg">{t('privacyPolicy')}</Link>.
             </p>
           </form>
 

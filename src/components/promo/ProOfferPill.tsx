@@ -88,7 +88,7 @@ export function ProOfferPill({
             <span className="text-[10px] font-black uppercase tracking-[2px] text-emerald-300">{badge}</span>
             <span className="rounded-full bg-emerald-400 px-2 py-0.5 text-[9px] font-black text-emerald-950">{save}</span>
           </div>
-          <p className="mt-0.5 text-xs font-black leading-snug text-white sm:text-[15px]">
+          <p className="mt-0.5 text-xs font-black leading-snug text-sport-fg sm:text-[15px]">
             {headline}
             <span className="text-[11px] font-bold text-sport-gray line-through decoration-emerald-300/60 sm:text-sm"> {price}</span>
             <span className="text-[11px] font-black text-emerald-300 sm:text-sm"> {free}</span>

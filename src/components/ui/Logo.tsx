@@ -55,7 +55,7 @@ export function XenotifMark({
 export function XenotifWordmark({ className = '' }: { className?: string }) {
   return (
     <span
-      className={`font-[family-name:var(--font-orbitron)] font-extrabold tracking-[0.02em] uppercase text-white ${className}`}
+      className={`font-[family-name:var(--font-orbitron)] font-extrabold tracking-[0.02em] uppercase text-sport-fg ${className}`}
     >
       XENOTIF
       <sup className="align-super text-[0.5em] text-sport-orange ml-[0.06em]">®</sup>

@@ -28,7 +28,7 @@ export function PreviewDashboard() {
     { Icon: Award, label: t('statBadges'), value: PREVIEW.stats.badges, color: 'text-yellow-400' },
   ]
   return (
-    <div className="min-h-screen bg-sport-dark text-white">
+    <div className="min-h-screen bg-sport-dark text-sport-fg">
       {/* Bannière aperçu */}
       <div className="bg-sport-orange/10 border-b border-sport-orange/30 px-6 py-2.5 flex items-center justify-center relative">
         <Link

@@ -50,7 +50,7 @@ export function PushToggle() {
         <Smartphone size={18} aria-hidden="true" />
       </div>
       <div className="min-w-0 flex-1">
-        <p className="text-sm font-bold text-white">{t('title')}</p>
+        <p className="text-sm font-bold text-sport-fg">{t('title')}</p>
         <p className="text-[11px] text-sport-gray leading-relaxed">
           {state === 'denied' ? t('denied') : state === 'on' ? t('onHint') : t('offHint')}
         </p>
@@ -60,7 +60,7 @@ export function PushToggle() {
           onClick={disable}
           disabled={busy}
           aria-label={t('disable')}
-          className="shrink-0 inline-flex h-9 w-9 items-center justify-center rounded-full border border-sport-border text-white hover:border-sport-orange/50 disabled:opacity-60 transition-colors"
+          className="shrink-0 inline-flex h-9 w-9 items-center justify-center rounded-full border border-sport-border text-sport-fg hover:border-sport-orange/50 disabled:opacity-60 transition-colors"
         >
           <BellOff size={14} aria-hidden="true" />
         </button>

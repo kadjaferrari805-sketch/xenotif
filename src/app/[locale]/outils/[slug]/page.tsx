@@ -72,12 +72,12 @@ export default async function OutilPage({ params }: { params: Promise<{ slug: st
   }
 
   return (
-    <div className="min-h-screen bg-sport-dark text-white">
+    <div className="min-h-screen bg-sport-dark text-sport-fg">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(appSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
 
       <section className="max-w-3xl mx-auto px-6 py-14 md:py-16">
-        <Link href="/outils" className="inline-flex items-center gap-1.5 text-xs font-bold text-sport-gray hover:text-white transition-colors mb-6">
+        <Link href="/outils" className="inline-flex items-center gap-1.5 text-xs font-bold text-sport-gray hover:text-sport-fg transition-colors mb-6">
           <ArrowLeft size={13} aria-hidden="true" /> {t('backToHub')}
         </Link>
         <p className="text-[11px] font-bold tracking-[2px] uppercase text-sport-orange mb-3">{t('hubEyebrow')}</p>

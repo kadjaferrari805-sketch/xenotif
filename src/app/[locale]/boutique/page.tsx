@@ -25,7 +25,7 @@ function AmazonRow({ icon: Icon, label, title, subtitle, products }: {
         </span>
         <div className="min-w-0">
           <p className="text-[11px] font-black uppercase tracking-wider text-sport-orange">{label}</p>
-          <h2 className="text-xl sm:text-2xl font-black text-white leading-tight">{title}</h2>
+          <h2 className="text-xl sm:text-2xl font-black text-sport-fg leading-tight">{title}</h2>
           <p className="text-xs text-sport-gray">{subtitle}</p>
         </div>
       </div>
@@ -88,7 +88,7 @@ export default function BoutiquePage() {
               {t('badge')}
             </motion.div>
             <motion.h1 data-no-reveal initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}
-              className="text-3xl font-black leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl mb-4 px-2 [text-shadow:0_2px_18px_rgba(0,0,0,0.6)]">
+              className="text-3xl font-black leading-tight tracking-tight text-sport-fg sm:text-5xl lg:text-6xl mb-4 px-2 [text-shadow:0_2px_18px_rgba(0,0,0,0.6)]">
               {t.rich('heroTitle', { o: (c) => <span className="text-sport-orange">{c}</span>, br: () => <br /> })}
             </motion.h1>
             <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}
@@ -104,7 +104,7 @@ export default function BoutiquePage() {
                 <LayoutGrid size={16} /> {t('catalogue.link')} <ArrowRight size={15} />
               </Link>
               <a href="#bestsellers"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full border border-sport-border bg-sport-card px-7 py-3.5 text-sm font-bold text-white hover:border-white/20 transition-all">
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full border border-sport-border bg-sport-card px-7 py-3.5 text-sm font-bold text-sport-fg hover:border-sport-fg/20 transition-all">
                 {t('landing.bestsellersTitle')}
               </a>
             </motion.div>
@@ -116,7 +116,7 @@ export default function BoutiquePage() {
               <div key={label} className="flex items-center gap-3 rounded-xl border border-sport-border bg-sport-card/50 px-4 py-3">
                 <Icon size={16} className="text-sport-orange shrink-0" />
                 <div className="min-w-0">
-                  <p className="text-sm font-black text-white">{value}</p>
+                  <p className="text-sm font-black text-sport-fg">{value}</p>
                   <p className="text-[10px] text-sport-gray truncate">{label}</p>
                 </div>
               </div>
@@ -138,7 +138,7 @@ export default function BoutiquePage() {
       <section id="bestsellers" className="mx-auto max-w-7xl px-4 sm:px-6 py-14 scroll-mt-20">
         <div className="flex items-end justify-between gap-4 mb-8">
           <div>
-            <h2 className="text-2xl sm:text-3xl font-black text-white mb-2">{t('landing.bestsellersTitle')}</h2>
+            <h2 className="text-2xl sm:text-3xl font-black text-sport-fg mb-2">{t('landing.bestsellersTitle')}</h2>
             <p className="text-sport-gray text-sm">{t('landing.bestsellersSubtitle')}</p>
           </div>
           <Link href="/boutique/catalogue" className="shrink-0 inline-flex items-center gap-1.5 text-sm font-bold text-sport-orange hover:underline whitespace-nowrap">
@@ -166,7 +166,7 @@ export default function BoutiquePage() {
       <section className="mx-auto max-w-7xl px-4 sm:px-6 pb-16">
         <div className="relative overflow-hidden rounded-3xl border border-sport-orange/30 bg-gradient-to-br from-sport-orange/20 via-sport-card to-sport-card p-8 sm:p-12 text-center">
           <div aria-hidden="true" className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full bg-sport-orange/10 blur-3xl" />
-          <h2 className="relative text-2xl sm:text-3xl font-black text-white mb-3">{t('landing.ctaTitle')}</h2>
+          <h2 className="relative text-2xl sm:text-3xl font-black text-sport-fg mb-3">{t('landing.ctaTitle')}</h2>
           <p className="relative text-sport-gray text-sm sm:text-base max-w-xl mx-auto mb-7">{t('landing.ctaText')}</p>
           <Link href="/boutique/catalogue"
             className="relative inline-flex items-center justify-center gap-2 rounded-full bg-sport-orange px-8 py-4 text-sm font-bold text-white hover:bg-orange-600 active:scale-95 transition-all shadow-lg shadow-sport-orange/30">

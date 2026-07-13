@@ -24,7 +24,7 @@ export function DisciplineFAQSection({ items, accentColor }: { items: FAQItem[];
             aria-expanded={open === i}
             className="w-full flex items-center justify-between px-6 py-5 text-left hover:bg-white/[0.02] transition-colors"
           >
-            <span className="text-sm font-bold text-white pr-4">{item.q}</span>
+            <span className="text-sm font-bold text-sport-fg pr-4">{item.q}</span>
             <span aria-hidden="true" className={`shrink-0 ${accentColor}`}>
               {open === i ? <Minus size={16} /> : <Plus size={16} />}
             </span>

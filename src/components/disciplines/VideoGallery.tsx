@@ -48,12 +48,12 @@ export function VideoGallery({ videos, videoMinPlans, accentColor }: { videos: V
                 <div className="w-12 h-12 rounded-2xl bg-sport-orange/15 border border-sport-orange/30 flex items-center justify-center">
                   <Lock size={20} className="text-sport-orange" aria-hidden="true" />
                 </div>
-                <p className="text-xs font-bold text-white">{t('videos.locked')}</p>
+                <p className="text-xs font-bold text-sport-fg">{t('videos.locked')}</p>
                 <Link href="/#tarifs" className="text-[11px] font-bold text-sport-orange hover:underline">{t('gate.cta')}</Link>
               </div>
             </div>
             <div className="p-4">
-              <h3 className="text-sm font-bold text-white mb-1.5 leading-snug">{video.title}</h3>
+              <h3 className="text-sm font-bold text-sport-fg mb-1.5 leading-snug">{video.title}</h3>
               <p className="text-xs text-sport-gray leading-relaxed line-clamp-2">{video.description}</p>
             </div>
           </div>

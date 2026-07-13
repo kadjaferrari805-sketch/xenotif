@@ -37,11 +37,11 @@ export default async function AdminPage() {
   }
 
   return (
-    <div className="min-h-screen bg-sport-dark text-white p-6 md:p-10">
+    <div className="min-h-screen bg-sport-dark text-sport-fg p-6 md:p-10">
       {/* Header */}
       <div className="flex items-center justify-between mb-10">
         <div>
-          <h1 className="text-3xl font-black text-white">Admin Panel</h1>
+          <h1 className="text-3xl font-black text-sport-fg">Admin Panel</h1>
           <p className="text-sport-gray text-sm mt-1">Vue d&apos;ensemble de la plateforme Xenotif®</p>
         </div>
         <span className="text-[10px] font-black uppercase tracking-widest bg-red-500/15 text-red-400 border border-red-500/30 px-3 py-1.5 rounded-full">
@@ -61,7 +61,7 @@ export default async function AdminPage() {
             <div className={`w-10 h-10 ${bg} rounded-xl flex items-center justify-center mb-4`}>
               <Icon size={18} className={color} aria-hidden="true" />
             </div>
-            <p className="text-2xl font-black text-white">{value}</p>
+            <p className="text-2xl font-black text-sport-fg">{value}</p>
             <p className="text-[11px] text-sport-gray mt-1 leading-tight">{label}</p>
           </div>
         ))}
@@ -69,7 +69,7 @@ export default async function AdminPage() {
 
       {/* Revenue Chart */}
       <div className="bg-sport-card border border-sport-border rounded-2xl p-6 mb-8">
-        <h2 className="text-sm font-black text-white mb-4">Revenus mensuels (7 derniers mois)</h2>
+        <h2 className="text-sm font-black text-sport-fg mb-4">Revenus mensuels (7 derniers mois)</h2>
         <RevenueChart />
       </div>
 
@@ -81,7 +81,7 @@ export default async function AdminPage() {
         ].map(({ label, count, revenue }) => (
           <div key={label} className="bg-sport-card border border-sport-border rounded-2xl p-5">
             <p className="text-xs font-bold uppercase tracking-widest text-sport-gray mb-2">{label}</p>
-            <p className="text-3xl font-black text-white">{count}</p>
+            <p className="text-3xl font-black text-sport-fg">{count}</p>
             {revenue > 0 && <p className="text-sm text-sport-orange font-semibold mt-1">{revenue.toFixed(2)} €/mois</p>}
           </div>
         ))}
@@ -91,7 +91,7 @@ export default async function AdminPage() {
       <div className="bg-sport-card border border-sport-border rounded-2xl overflow-hidden">
         <div className="px-6 py-4 border-b border-sport-border flex items-center gap-3">
           <Users size={16} className="text-sport-orange" />
-          <h2 className="text-sm font-black text-white">Tous les utilisateurs ({(profiles ?? []).length})</h2>
+          <h2 className="text-sm font-black text-sport-fg">Tous les utilisateurs ({(profiles ?? []).length})</h2>
         </div>
 
         <div className="overflow-x-auto">
@@ -115,7 +115,7 @@ export default async function AdminPage() {
                         <div className="w-8 h-8 bg-sport-orange/15 rounded-full flex items-center justify-center font-black text-sport-orange text-xs">
                           {(profile.full_name ?? 'U').slice(0, 2).toUpperCase()}
                         </div>
-                        <span className="text-sm font-semibold text-white">{profile.full_name ?? '—'}</span>
+                        <span className="text-sm font-semibold text-sport-fg">{profile.full_name ?? '—'}</span>
                       </div>
                     </td>
                     <td className="px-5 py-4">
@@ -152,7 +152,7 @@ export default async function AdminPage() {
 
       {/* Édition du contenu (CMS) */}
       <Link href="/admin/content" className="mt-10 flex items-center justify-between rounded-2xl border border-sport-border bg-sport-card px-6 py-5 hover:border-sport-orange/40 transition-all">
-        <span className="text-sm font-black text-white">Éditer le contenu des disciplines</span>
+        <span className="text-sm font-black text-sport-fg">Éditer le contenu des disciplines</span>
         <span className="text-xs text-sport-orange font-bold">Ouvrir →</span>
       </Link>
 

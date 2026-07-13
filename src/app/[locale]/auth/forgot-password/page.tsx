@@ -37,9 +37,9 @@ export default function ForgotPasswordPage() {
               <div className="w-16 h-16 bg-emerald-500/10 border border-emerald-500/30 rounded-full flex items-center justify-center mx-auto mb-5">
                 <CheckCircle size={28} className="text-emerald-400" />
               </div>
-              <h2 className="text-xl font-black text-white mb-3">{t('doneTitle')}</h2>
+              <h2 className="text-xl font-black text-sport-fg mb-3">{t('doneTitle')}</h2>
               <p className="text-sport-gray text-sm leading-relaxed mb-6">
-                {t.rich('doneText', { email, b: (c) => <strong className="text-white">{c}</strong> })}<br />
+                {t.rich('doneText', { email, b: (c) => <strong className="text-sport-fg">{c}</strong> })}<br />
                 {t('doneHint')}
               </p>
               <Link href="/auth/signin" className="text-sport-orange text-sm font-bold hover:underline">
@@ -49,23 +49,23 @@ export default function ForgotPasswordPage() {
           ) : (
             <>
               <div className="mb-8">
-                <Link href="/auth/signin" className="inline-flex items-center gap-1.5 text-sport-gray text-xs hover:text-white transition-colors mb-6">
+                <Link href="/auth/signin" className="inline-flex items-center gap-1.5 text-sport-gray text-xs hover:text-sport-fg transition-colors mb-6">
                   <ArrowLeft size={12} /> {t('back')}
                 </Link>
-                <h1 className="text-2xl font-black text-white mb-2">{t('title')}</h1>
+                <h1 className="text-2xl font-black text-sport-fg mb-2">{t('title')}</h1>
                 <p className="text-sport-gray text-sm">{t('subtitle')}</p>
               </div>
 
               <form onSubmit={handleSubmit} className="space-y-5">
                 <div>
-                  <label className="block text-xs font-bold text-white mb-2 uppercase tracking-wider">{t('emailLabel')}</label>
+                  <label className="block text-xs font-bold text-sport-fg mb-2 uppercase tracking-wider">{t('emailLabel')}</label>
                   <input
                     type="email"
                     required
                     value={email}
                     onChange={e => setEmail(e.target.value)}
                     placeholder="ton@email.com"
-                    className="w-full bg-sport-dark border border-sport-border rounded-xl px-4 py-3 text-white text-sm placeholder:text-sport-gray focus:outline-none focus:border-sport-orange transition-colors"
+                    className="w-full bg-sport-dark border border-sport-border rounded-xl px-4 py-3 text-sport-fg text-sm placeholder:text-sport-gray focus:outline-none focus:border-sport-orange transition-colors"
                   />
                 </div>
 

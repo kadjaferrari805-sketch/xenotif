@@ -22,8 +22,8 @@ const DISCIPLINES = [
 ]
 
 const COLOR: Record<string, string> = {
-  orange: 'bg-sport-orange text-white border-sport-orange',
-  blue: 'bg-sport-blue text-white border-sport-blue',
+  orange: 'bg-sport-orange text-sport-fg border-sport-orange',
+  blue: 'bg-sport-blue text-sport-fg border-sport-blue',
   lime: 'bg-sport-lime text-[#0A0B0F] border-sport-lime',
 }
 
@@ -93,7 +93,7 @@ function ProgrammeContent({ isPro, freeSlugs, userId, initialProgress }: { isPro
 
   return (
     <div className="p-6 md:p-8 max-w-4xl mx-auto pb-24 md:pb-8">
-      <h1 className="text-2xl font-black text-white mb-6">{t('title')}</h1>
+      <h1 className="text-2xl font-black text-sport-fg mb-6">{t('title')}</h1>
 
       {/* Discipline tabs */}
       <div className="flex gap-2 flex-wrap mb-8">
@@ -106,7 +106,7 @@ function ProgrammeContent({ isPro, freeSlugs, userId, initialProgress }: { isPro
               className={`px-4 py-2 rounded-full text-xs font-bold transition-all border inline-flex items-center gap-1.5 ${
                 selected === d.slug
                   ? COLOR[d.color]
-                  : 'border-sport-border text-sport-gray hover:text-white hover:border-sport-gray bg-transparent'
+                  : 'border-sport-border text-sport-gray hover:text-sport-fg hover:border-sport-gray bg-transparent'
               }`}
             >
               {locked && <Lock size={11} aria-hidden="true" />}
@@ -121,7 +121,7 @@ function ProgrammeContent({ isPro, freeSlugs, userId, initialProgress }: { isPro
           <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-sport-orange/15 border border-sport-orange/30">
             <Lock size={20} className="text-sport-orange" aria-hidden="true" />
           </div>
-          <p className="text-lg font-black text-white mb-1">{t('lockedTitle')}</p>
+          <p className="text-lg font-black text-sport-fg mb-1">{t('lockedTitle')}</p>
           <p className="text-sport-gray text-sm mb-5">{t('lockedSubtitle', { name: t(`disciplines.${selected}`) })}</p>
           <Link href="/dashboard/abonnement" className="inline-flex items-center gap-2 rounded-full bg-sport-orange px-5 py-3 text-sm font-bold text-white hover:bg-orange-600 transition-all">
             {t('lockedCta')} <ArrowRight size={14} aria-hidden="true" />
@@ -134,7 +134,7 @@ function ProgrammeContent({ isPro, freeSlugs, userId, initialProgress }: { isPro
       <div className="bg-sport-card border border-sport-border rounded-2xl p-5 mb-8">
         <div className="flex items-center justify-between mb-3">
           <div>
-            <p className="text-sm font-black text-white">{t('weeks', { name: t(`disciplines.${selected}`) })}</p>
+            <p className="text-sm font-black text-sport-fg">{t('weeks', { name: t(`disciplines.${selected}`) })}</p>
             <p className="text-[11px] text-sport-gray">{t('sessionsCompleted', { completed: completedCount, total: totalSessions })}</p>
           </div>
           <span className="text-2xl font-black text-sport-orange">{pct}%</span>
@@ -160,7 +160,7 @@ function ProgrammeContent({ isPro, freeSlugs, userId, initialProgress }: { isPro
               <Play size={14} className="text-sport-orange ml-0.5" />
             </div>
             <div>
-              <p className="text-sm font-bold text-white">{t('videosAvailable', { count: isPro ? content.videos.length : freeVideoCount })}</p>
+              <p className="text-sm font-bold text-sport-fg">{t('videosAvailable', { count: isPro ? content.videos.length : freeVideoCount })}</p>
               <p className="text-[11px] text-sport-gray">{isPro ? t('videosSubtitle') : t('videosFreeHint')}</p>
             </div>
           </div>
@@ -180,7 +180,7 @@ function ProgrammeContent({ isPro, freeSlugs, userId, initialProgress }: { isPro
               <div className="px-5 py-3 border-b border-sport-border flex items-center justify-between">
                 <div>
                   <p className="text-[10px] font-bold uppercase tracking-wider text-sport-orange">{block.week}</p>
-                  <p className="text-sm font-bold text-white">{block.theme}</p>
+                  <p className="text-sm font-bold text-sport-fg">{block.theme}</p>
                 </div>
                 <span className="text-xs font-bold text-sport-gray">{t('phase', { n: bi + 1 })}</span>
               </div>
@@ -201,7 +201,7 @@ function ProgrammeContent({ isPro, freeSlugs, userId, initialProgress }: { isPro
                         }
                       </button>
                       <div className={done ? 'opacity-50' : ''}>
-                        <p className={`text-sm font-bold ${done ? 'line-through text-sport-gray' : 'text-white'}`}>{session.name}</p>
+                        <p className={`text-sm font-bold ${done ? 'line-through text-sport-gray' : 'text-sport-fg'}`}>{session.name}</p>
                         <p className="text-xs text-sport-gray mt-0.5 leading-relaxed">{session.detail}</p>
                       </div>
                     </li>

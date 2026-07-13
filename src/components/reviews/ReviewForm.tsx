@@ -56,14 +56,14 @@ export function ReviewForm({ type, productId, initial, onPublished }: Props) {
   return (
     <form onSubmit={submit} className="bg-sport-card border border-sport-border rounded-xl p-5 space-y-4">
       <div>
-        <label className="block text-xs font-bold text-white mb-2 uppercase tracking-wider">{t('ratingLabel')}</label>
+        <label className="block text-xs font-bold text-sport-fg mb-2 uppercase tracking-wider">{t('ratingLabel')}</label>
         <StarRating value={rating} onChange={setRating} size={24} />
       </div>
       <div>
-        <label className="block text-xs font-bold text-white mb-2 uppercase tracking-wider">{t('commentLabel')}</label>
+        <label className="block text-xs font-bold text-sport-fg mb-2 uppercase tracking-wider">{t('commentLabel')}</label>
         <textarea value={comment} onChange={e => setComment(e.target.value)} rows={4}
           placeholder={t('commentPlaceholder')}
-          className="w-full bg-sport-dark border border-sport-border rounded-xl px-4 py-3 text-white text-sm resize-none focus:outline-none focus:border-sport-orange placeholder:text-sport-gray" />
+          className="w-full bg-sport-dark border border-sport-border rounded-xl px-4 py-3 text-sport-fg text-sm resize-none focus:outline-none focus:border-sport-orange placeholder:text-sport-gray" />
       </div>
       {error && <p role="alert" className="text-red-400 text-xs">{error}</p>}
       <button type="submit" disabled={loading}

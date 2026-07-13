@@ -35,7 +35,7 @@ export function ProductDetail({ product }: { product: Product }) {
   return (
     <div className="min-h-screen bg-sport-dark pt-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 py-8">
-        <Link href="/boutique" className="mb-8 inline-flex items-center gap-2 text-sm font-semibold text-sport-gray hover:text-white transition-colors">
+        <Link href="/boutique" className="mb-8 inline-flex items-center gap-2 text-sm font-semibold text-sport-gray hover:text-sport-fg transition-colors">
           <ArrowLeft size={14} /> {t('detail.back')}
         </Link>
 
@@ -67,7 +67,7 @@ export function ProductDetail({ product }: { product: Product }) {
               )}
             </div>
 
-            <h1 className="text-3xl font-black text-white mb-3">{product.name}</h1>
+            <h1 className="text-3xl font-black text-sport-fg mb-3">{product.name}</h1>
 
             {/* Rating */}
             <div className="flex items-center gap-2 mb-6">
@@ -86,7 +86,7 @@ export function ProductDetail({ product }: { product: Product }) {
 
             {/* Prix */}
             <div className="flex items-baseline gap-3 mb-8">
-              <span className="text-4xl font-black text-white">{formatPrice(product.price_cents)}</span>
+              <span className="text-4xl font-black text-sport-fg">{formatPrice(product.price_cents)}</span>
               {product.original_price_cents && (
                 <>
                   <span className="text-xl text-sport-gray line-through">{formatPrice(product.original_price_cents)}</span>
@@ -100,7 +100,7 @@ export function ProductDetail({ product }: { product: Product }) {
               <p className="text-xs font-bold uppercase tracking-wider text-sport-gray mb-3">{t('detail.included')}</p>
               <ul className="space-y-2">
                 {product.features.map(f => (
-                  <li key={f} className="flex items-center gap-2 text-sm text-white">
+                  <li key={f} className="flex items-center gap-2 text-sm text-sport-fg">
                     <Check size={14} className="shrink-0 text-sport-lime" />{f}
                   </li>
                 ))}
@@ -121,7 +121,7 @@ export function ProductDetail({ product }: { product: Product }) {
               ) : (
                 <button
                   onClick={handleAdd}
-                  className={`flex flex-1 items-center justify-center gap-2 rounded-2xl px-6 py-3.5 font-bold text-white transition-all ${
+                  className={`flex flex-1 items-center justify-center gap-2 rounded-2xl px-6 py-3.5 font-bold text-sport-fg transition-all ${
                     added ? 'bg-emerald-600' : 'bg-sport-orange hover:bg-orange-600 shadow-[0_0_20px_rgba(255,69,0,0.3)]'
                   }`}
                 >
@@ -170,7 +170,7 @@ export function ProductDetail({ product }: { product: Product }) {
         {/* Produits similaires (même catégorie) */}
         {related.length > 0 && (
           <section className="pt-12 border-t border-sport-border">
-            <h2 className="text-2xl font-black text-white mb-8">{t('detail.related')}</h2>
+            <h2 className="text-2xl font-black text-sport-fg mb-8">{t('detail.related')}</h2>
             <div className="grid gap-6 sm:grid-cols-3">
               {related.map(p => <ProductCard key={p.id} product={p} source="product_related" />)}
             </div>

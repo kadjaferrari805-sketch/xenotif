@@ -27,7 +27,7 @@ export function ProfilClient({ initialName, email, userId }: { initialName: stri
 
   return (
     <div className="p-6 md:p-8 max-w-2xl mx-auto pb-24 md:pb-8">
-      <h1 className="text-2xl font-black text-white mb-8">{t('profil.title')}</h1>
+      <h1 className="text-2xl font-black text-sport-fg mb-8">{t('profil.title')}</h1>
 
       {/* Avatar */}
       <div className="bg-sport-card border border-sport-border rounded-2xl p-6 mb-6 flex items-center gap-6">
@@ -40,18 +40,18 @@ export function ProfilClient({ initialName, email, userId }: { initialName: stri
           </div>
         </div>
         <div>
-          <p className="text-white font-bold text-lg">{fullName || t('athlete')}</p>
+          <p className="text-sport-fg font-bold text-lg">{fullName || t('athlete')}</p>
           <p className="text-sport-gray text-sm">{email}</p>
         </div>
       </div>
 
       {/* Form */}
       <div className="bg-sport-card border border-sport-border rounded-2xl p-6 mb-6">
-        <h2 className="text-sm font-black text-white mb-5">{t('profil.personalInfo')}</h2>
+        <h2 className="text-sm font-black text-sport-fg mb-5">{t('profil.personalInfo')}</h2>
 
         <div className="space-y-4">
           <div>
-            <label className="block text-xs font-bold text-white mb-2 uppercase tracking-wider">
+            <label className="block text-xs font-bold text-sport-fg mb-2 uppercase tracking-wider">
               {t('profil.fullName')}
             </label>
             <div className="relative">
@@ -61,13 +61,13 @@ export function ProfilClient({ initialName, email, userId }: { initialName: stri
                 value={fullName}
                 onChange={e => setFullName(e.target.value)}
                 placeholder={t('profil.fullNamePlaceholder')}
-                className="w-full bg-sport-dark border border-sport-border rounded-xl pl-10 pr-4 py-3 text-white text-sm focus:outline-none focus:border-sport-orange placeholder:text-sport-gray transition-colors"
+                className="w-full bg-sport-dark border border-sport-border rounded-xl pl-10 pr-4 py-3 text-sport-fg text-sm focus:outline-none focus:border-sport-orange placeholder:text-sport-gray transition-colors"
               />
             </div>
           </div>
 
           <div>
-            <label className="block text-xs font-bold text-white mb-2 uppercase tracking-wider">
+            <label className="block text-xs font-bold text-sport-fg mb-2 uppercase tracking-wider">
               {t('profil.email')}
             </label>
             <div className="relative">
@@ -102,10 +102,10 @@ export function ProfilClient({ initialName, email, userId }: { initialName: stri
 
       {/* Security */}
       <div className="bg-sport-card border border-sport-border rounded-2xl p-6">
-        <h2 className="text-sm font-black text-white mb-5">{t('profil.security')}</h2>
+        <h2 className="text-sm font-black text-sport-fg mb-5">{t('profil.security')}</h2>
         <Link
           href="/auth/forgot-password"
-          className="inline-flex items-center gap-2 border border-sport-border text-sport-gray px-5 py-2.5 rounded-full text-sm font-bold hover:text-white hover:border-sport-gray transition-all"
+          className="inline-flex items-center gap-2 border border-sport-border text-sport-gray px-5 py-2.5 rounded-full text-sm font-bold hover:text-sport-fg hover:border-sport-gray transition-all"
         >
           {t('profil.changePassword')}
         </Link>

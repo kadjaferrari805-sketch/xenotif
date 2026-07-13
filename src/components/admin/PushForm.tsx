@@ -34,16 +34,16 @@ export function AdminPushForm() {
     <div className="bg-sport-card border border-sport-border rounded-2xl mt-10">
       <div className="px-6 py-4 border-b border-sport-border flex items-center gap-3">
         <Bell size={16} className="text-sport-orange" />
-        <h2 className="text-sm font-black text-white">Envoyer une notification push</h2>
+        <h2 className="text-sm font-black text-sport-fg">Envoyer une notification push</h2>
       </div>
       <div className="p-6 space-y-4">
         <div className="grid md:grid-cols-2 gap-4">
           <div>
-            <label className="block text-xs font-bold text-white mb-2 uppercase tracking-wider">Destinataires</label>
+            <label className="block text-xs font-bold text-sport-fg mb-2 uppercase tracking-wider">Destinataires</label>
             <select
               value={target}
               onChange={e => setTarget(e.target.value as typeof target)}
-              className="w-full bg-sport-dark border border-sport-border rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-sport-orange"
+              className="w-full bg-sport-dark border border-sport-border rounded-xl px-4 py-3 text-sport-fg text-sm focus:outline-none focus:border-sport-orange"
             >
               <option value="all">Tous les utilisateurs</option>
               <option value="active">Abonnés actifs seulement</option>
@@ -51,34 +51,34 @@ export function AdminPushForm() {
             </select>
           </div>
           <div>
-            <label className="block text-xs font-bold text-white mb-2 uppercase tracking-wider">Titre</label>
+            <label className="block text-xs font-bold text-sport-fg mb-2 uppercase tracking-wider">Titre</label>
             <input
               type="text"
               value={title}
               onChange={e => setTitle(e.target.value)}
               placeholder="Titre de la notification"
-              className="w-full bg-sport-dark border border-sport-border rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-sport-orange placeholder:text-sport-gray"
+              className="w-full bg-sport-dark border border-sport-border rounded-xl px-4 py-3 text-sport-fg text-sm focus:outline-none focus:border-sport-orange placeholder:text-sport-gray"
             />
           </div>
         </div>
         <div>
-          <label className="block text-xs font-bold text-white mb-2 uppercase tracking-wider">Message</label>
+          <label className="block text-xs font-bold text-sport-fg mb-2 uppercase tracking-wider">Message</label>
           <textarea
             value={body}
             onChange={e => setBody(e.target.value)}
             placeholder="Contenu de la notification (court)"
             rows={3}
-            className="w-full bg-sport-dark border border-sport-border rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-sport-orange placeholder:text-sport-gray resize-none"
+            className="w-full bg-sport-dark border border-sport-border rounded-xl px-4 py-3 text-sport-fg text-sm focus:outline-none focus:border-sport-orange placeholder:text-sport-gray resize-none"
           />
         </div>
         <div>
-          <label className="block text-xs font-bold text-white mb-2 uppercase tracking-wider">Lien (optionnel)</label>
+          <label className="block text-xs font-bold text-sport-fg mb-2 uppercase tracking-wider">Lien (optionnel)</label>
           <input
             type="text"
             value={url}
             onChange={e => setUrl(e.target.value)}
             placeholder="/dashboard/notifications"
-            className="w-full bg-sport-dark border border-sport-border rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-sport-orange placeholder:text-sport-gray"
+            className="w-full bg-sport-dark border border-sport-border rounded-xl px-4 py-3 text-sport-fg text-sm focus:outline-none focus:border-sport-orange placeholder:text-sport-gray"
           />
         </div>
         <div className="flex items-center gap-4">

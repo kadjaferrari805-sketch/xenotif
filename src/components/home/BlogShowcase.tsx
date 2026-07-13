@@ -64,7 +64,7 @@ export function BlogShowcase({ posts }: { posts: BlogPost[] }) {
                       </span>
                     </div>
                     <div className="flex flex-1 flex-col p-5">
-                      <h3 className="font-black text-white text-base leading-snug mb-2 line-clamp-2 group-hover:text-sport-orange transition-colors">
+                      <h3 className="font-black text-sport-fg text-base leading-snug mb-2 line-clamp-2 group-hover:text-sport-orange transition-colors">
                         {post.title}
                       </h3>
                       <p className="text-sport-gray text-xs leading-relaxed line-clamp-2 mb-4">{post.excerpt}</p>

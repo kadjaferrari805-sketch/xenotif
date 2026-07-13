@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { useTranslations } from 'next-intl'
 
-const INPUT = 'w-full bg-sport-dark border border-sport-border rounded-xl px-4 py-3 text-white focus:border-sport-orange outline-none transition-colors'
+const INPUT = 'w-full bg-sport-dark border border-sport-border rounded-xl px-4 py-3 text-sport-fg focus:border-sport-orange outline-none transition-colors'
 // Protéines (g/kg) et part de lipides (% des calories) selon l'objectif.
 const PROT_PER_KG = { cut: 2.2, maintain: 1.8, bulk: 2.0 } as const
 const FAT_PCT = { cut: 0.25, maintain: 0.28, bulk: 0.25 } as const
@@ -45,7 +45,7 @@ export function MacrosCalc() {
                 key={g}
                 type="button"
                 onClick={() => setGoal(g)}
-                className={`rounded-xl py-2.5 text-xs font-bold border transition-colors ${goal === g ? 'bg-sport-orange text-white border-sport-orange' : 'bg-sport-dark text-sport-gray border-sport-border hover:border-white/30'}`}
+                className={`rounded-xl py-2.5 text-xs font-bold border transition-colors ${goal === g ? 'bg-sport-orange text-sport-fg border-sport-orange' : 'bg-sport-dark text-sport-gray border-sport-border hover:border-sport-fg/30'}`}
               >
                 {t(`macros.${g}`)}
               </button>
@@ -58,7 +58,7 @@ export function MacrosCalc() {
       <div className="space-y-3">
         {cards.map(({ key, g, color }) => (
           <div key={key} className="rounded-2xl bg-sport-card border border-sport-border p-5 flex items-center justify-between">
-            <span className="text-sm font-bold text-white">{t(`macros.${key}`)}</span>
+            <span className="text-sm font-bold text-sport-fg">{t(`macros.${key}`)}</span>
             <span className={`text-2xl font-black ${color}`}>{g} <span className="text-sm text-sport-gray font-bold">g</span></span>
           </div>
         ))}

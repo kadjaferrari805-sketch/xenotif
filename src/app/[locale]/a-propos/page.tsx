@@ -52,7 +52,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
           <span className="inline-block text-sport-orange font-bold text-sm uppercase tracking-widest mb-4">
             {t('eyebrow')}
           </span>
-          <h1 className="text-3d text-4xl md:text-6xl font-black text-white mb-6 leading-tight">
+          <h1 className="text-3d text-4xl md:text-6xl font-black text-sport-fg mb-6 leading-tight">
             {t.rich('title', { o: (c) => <span className="text-sport-orange">{c}</span> })}
           </h1>
           <p className="text-sport-gray text-lg md:text-xl max-w-2xl mx-auto leading-relaxed mb-8">
@@ -90,7 +90,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
                     <div className={`w-12 h-12 rounded-xl border border-sport-border bg-sport-dark flex items-center justify-center ${VALUE_ACCENT[i]}`}>
                       <Icon size={22} aria-hidden="true" />
                     </div>
-                    <h3 className="text-base font-black text-white">{v.title}</h3>
+                    <h3 className="text-base font-black text-sport-fg">{v.title}</h3>
                     <p className="text-sm text-sport-gray leading-relaxed">{v.text}</p>
                   </div>
                 </Tilt3D>

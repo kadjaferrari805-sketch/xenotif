@@ -225,7 +225,7 @@ export function TodayActivity({ initialSteps, initialActiveSec, weekly, dateLabe
         <div className="relative flex items-start justify-between gap-3 mb-6">
           <div>
             <p className="text-[10px] font-bold uppercase tracking-[2px] text-sport-gray">{t('title')}</p>
-            <p className="text-lg md:text-xl font-black text-white leading-tight first-letter:uppercase">{dateLabel}</p>
+            <p className="text-lg md:text-xl font-black text-sport-fg leading-tight first-letter:uppercase">{dateLabel}</p>
           </div>
 
           {status === 'running' ? (
@@ -247,7 +247,7 @@ export function TodayActivity({ initialSteps, initialActiveSec, weekly, dateLabe
         {/* Anneaux + détail par anneau */}
         <div className="relative flex flex-col sm:flex-row items-center gap-7 sm:gap-9">
           <ActivityRing rings={rings} size={196} strokeWidth={17}>
-            <span className="text-[28px] font-black text-white tabular-nums leading-none">{steps.toLocaleString(numLocale)}</span>
+            <span className="text-[28px] font-black text-sport-fg tabular-nums leading-none">{steps.toLocaleString(numLocale)}</span>
             <span className="text-[9px] font-bold uppercase tracking-[2px] text-sport-gray mt-1.5">{t('stepsUnit')}</span>
           </ActivityRing>
 
@@ -287,7 +287,7 @@ export function TodayActivity({ initialSteps, initialActiveSec, weekly, dateLabe
               </div>
               <div className="min-w-0">
                 <p className="text-[10px] font-bold uppercase tracking-wider text-sport-gray leading-none">{label}</p>
-                <p className="text-lg font-black text-white tabular-nums leading-tight">{value}</p>
+                <p className="text-lg font-black text-sport-fg tabular-nums leading-tight">{value}</p>
               </div>
             </div>
           ))}
@@ -301,7 +301,7 @@ export function TodayActivity({ initialSteps, initialActiveSec, weekly, dateLabe
 
           {status === 'needtap' && (
             <div className="flex flex-col items-center gap-3 rounded-2xl border border-sport-lime/20 bg-sport-lime/5 px-4 py-4 text-center">
-              <p className="text-sm font-bold text-white">{t('tapToStart')}</p>
+              <p className="text-sm font-bold text-sport-fg">{t('tapToStart')}</p>
               <p className="max-w-xs text-[11px] leading-relaxed text-sport-gray">{t('tapHint')}</p>
               <button
                 onClick={start}
@@ -335,7 +335,7 @@ export function TodayActivity({ initialSteps, initialActiveSec, weekly, dateLabe
       {/* ─── Tendance 7 jours ─── */}
       <div className="rounded-3xl border border-sport-border bg-sport-card p-5 md:p-6 mb-6">
         <div className="mb-5 flex items-center justify-between">
-          <p className="flex items-center gap-2 text-sm font-black text-white">
+          <p className="flex items-center gap-2 text-sm font-black text-sport-fg">
             <TrendingUp size={15} className="text-sport-orange" /> {t('trendTitle')}
           </p>
           <span className="text-[11px] font-semibold text-sport-gray">
@@ -348,7 +348,7 @@ export function TodayActivity({ initialSteps, initialActiveSec, weekly, dateLabe
             const color = d.isToday ? C_EXER : C_STEP
             return (
               <div key={`${d.label}-${i}`} className="flex flex-1 flex-col items-center gap-2">
-                <span className={`text-[9px] font-bold tabular-nums ${d.isToday ? 'text-white' : 'text-sport-gray'}`}>
+                <span className={`text-[9px] font-bold tabular-nums ${d.isToday ? 'text-sport-fg' : 'text-sport-gray'}`}>
                   {d.steps >= 1000 ? `${(d.steps / 1000).toFixed(1)}k` : d.steps || ''}
                 </span>
                 <div className="relative flex w-full flex-1 items-end" style={{ minHeight: 0 }}>
@@ -366,7 +366,7 @@ export function TodayActivity({ initialSteps, initialActiveSec, weekly, dateLabe
                     }}
                   />
                 </div>
-                <span className={`text-[9px] font-bold ${d.isToday ? 'text-white' : 'text-sport-gray'}`}>{d.label}</span>
+                <span className={`text-[9px] font-bold ${d.isToday ? 'text-sport-fg' : 'text-sport-gray'}`}>{d.label}</span>
               </div>
             )
           })}

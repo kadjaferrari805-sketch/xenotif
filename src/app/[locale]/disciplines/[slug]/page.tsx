@@ -46,7 +46,7 @@ const DISC_ICONS: Record<string, React.ReactNode> = {
 
 const COLOR_TEXT:  Record<string, string> = { orange: 'text-sport-orange',    blue: 'text-sport-blue',   lime: 'text-sport-lime' }
 const COLOR_CARD:  Record<string, string> = { orange: 'bg-sport-orange/10 border-sport-orange/25', blue: 'bg-sport-blue/10 border-sport-blue/25', lime: 'bg-sport-lime/10 border-sport-lime/25' }
-const COLOR_PILL:  Record<string, string> = { orange: 'bg-sport-orange text-white', blue: 'bg-sport-blue text-white', lime: 'bg-sport-lime text-[#0A0B0F]' }
+const COLOR_PILL:  Record<string, string> = { orange: 'bg-sport-orange text-sport-fg', blue: 'bg-sport-blue text-sport-fg', lime: 'bg-sport-lime text-[#0A0B0F]' }
 const COLOR_VIDEO: Record<string, string> = { orange: 'bg-sport-orange/15 text-sport-orange', blue: 'bg-sport-blue/15 text-sport-blue', lime: 'bg-sport-lime/15 text-sport-lime' }
 
 /* ── Metadata ────────────────────────────────────────────────── */
@@ -142,7 +142,7 @@ export default async function DisciplinePage({ params }: { params: Promise<{ slu
   }
 
   return (
-    <div className="min-h-screen bg-sport-dark text-white">
+    <div className="min-h-screen bg-sport-dark text-sport-fg">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(courseSchema) }} />
       {faqSchema && (
@@ -175,7 +175,7 @@ export default async function DisciplinePage({ params }: { params: Promise<{ slu
             </div>
 
             {/* Title */}
-            <h1 className="text-6xl md:text-7xl font-black leading-none mb-4 tracking-tight">
+            <h1 className="text-6xl md:text-7xl font-black leading-none mb-4 tracking-tight text-white">
               {title}
             </h1>
 
@@ -210,7 +210,7 @@ export default async function DisciplinePage({ params }: { params: Promise<{ slu
               </div>
               <p className={`text-[11px] font-bold tracking-[2px] uppercase ${COLOR_TEXT[color]}`}>{t('videos.eyebrow')}</p>
             </div>
-            <h2 id="videos-title" className="text-3xl md:text-4xl font-black text-white mb-2">
+            <h2 id="videos-title" className="text-3xl md:text-4xl font-black text-sport-fg mb-2">
               {t('videos.title')}
             </h2>
             <p className="text-sport-gray text-sm mb-10 max-w-xl">
@@ -232,7 +232,7 @@ export default async function DisciplinePage({ params }: { params: Promise<{ slu
               </div>
               <p className={`text-[11px] font-bold tracking-[2px] uppercase ${COLOR_TEXT[color]}`}>{t('guide.eyebrow')}</p>
             </div>
-            <h2 id="guide-title" className="text-3xl md:text-4xl font-black text-white mb-10">
+            <h2 id="guide-title" className="text-3xl md:text-4xl font-black text-sport-fg mb-10">
               {t('guide.title')}
             </h2>
 
@@ -267,7 +267,7 @@ export default async function DisciplinePage({ params }: { params: Promise<{ slu
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-12">
               <p className={`text-[11px] font-bold tracking-[2px] uppercase mb-3 ${COLOR_TEXT[color]}`}>{t('tips.eyebrow')}</p>
-              <h2 id="tips-title" className="text-3xl md:text-4xl font-black text-white">
+              <h2 id="tips-title" className="text-3xl md:text-4xl font-black text-sport-fg">
                 {t('tips.title')}
               </h2>
             </div>
@@ -297,7 +297,7 @@ export default async function DisciplinePage({ params }: { params: Promise<{ slu
               </div>
               <p className={`text-[11px] font-bold tracking-[2px] uppercase ${COLOR_TEXT[color]}`}>{t('exercises.eyebrow')}</p>
             </div>
-            <h2 id="exercises-title" className="text-3xl md:text-4xl font-black text-white mb-2">
+            <h2 id="exercises-title" className="text-3xl md:text-4xl font-black text-sport-fg mb-2">
               {t('exercises.title')}
             </h2>
             <p className="text-sport-gray text-sm mb-10 max-w-xl">
@@ -317,7 +317,7 @@ export default async function DisciplinePage({ params }: { params: Promise<{ slu
                     </span>
                   </div>
                   <div className="flex items-center gap-3 mb-3 text-[11px] text-sport-gray">
-                    <span className="font-bold text-white">{ex.sets}</span>
+                    <span className="font-bold text-sport-fg">{ex.sets}</span>
                     <span aria-hidden="true">·</span>
                     <span>{ex.muscles}</span>
                   </div>
@@ -340,7 +340,7 @@ export default async function DisciplinePage({ params }: { params: Promise<{ slu
             <div>
               <div className="flex items-center gap-3 mb-6">
                 <span aria-hidden="true" className={COLOR_TEXT[color]}>{DISC_ICONS[base.icon]}</span>
-                <h2 className="text-2xl font-black text-white">{t('levels.title')}</h2>
+                <h2 className="text-2xl font-black text-sport-fg">{t('levels.title')}</h2>
               </div>
               <ul className="space-y-3">
                 {levels.map((level, i) => (
@@ -349,7 +349,7 @@ export default async function DisciplinePage({ params }: { params: Promise<{ slu
                       <span className={`w-7 h-7 rounded-full flex items-center justify-center font-black text-xs shrink-0 ${COLOR_PILL[color]}`} aria-hidden="true">
                         {i + 1}
                       </span>
-                      <span className="text-sm font-semibold text-white">{level}</span>
+                      <span className="text-sm font-semibold text-sport-fg">{level}</span>
                     </div>
                     <Link
                       href="/#newsletter"
@@ -368,7 +368,7 @@ export default async function DisciplinePage({ params }: { params: Promise<{ slu
               <div>
                 <div className="flex items-center gap-3 mb-6">
                   <Target size={20} aria-hidden="true" className={COLOR_TEXT[color]} />
-                  <h2 className="text-2xl font-black text-white">{t('program.title')}</h2>
+                  <h2 className="text-2xl font-black text-sport-fg">{t('program.title')}</h2>
                 </div>
 
                 <SubscriberGate minPlan={minPlan}>
@@ -379,7 +379,7 @@ export default async function DisciplinePage({ params }: { params: Promise<{ slu
                       <div className="px-5 py-3 border-b border-sport-border flex items-center justify-between">
                         <div>
                           <p className={`text-[10px] font-bold uppercase tracking-wider ${COLOR_TEXT[color]}`}>{block.week}</p>
-                          <p className="text-sm font-bold text-white">{block.theme}</p>
+                          <p className="text-sm font-bold text-sport-fg">{block.theme}</p>
                         </div>
                         <span className={`text-xs font-bold px-2.5 py-1 rounded-full ${COLOR_CARD[color]} ${COLOR_TEXT[color]}`}>
                           {t('program.phase', { n: bi + 1 })}
@@ -393,7 +393,7 @@ export default async function DisciplinePage({ params }: { params: Promise<{ slu
                               {si + 1}
                             </span>
                             <div>
-                              <p className="text-sm font-bold text-white">{session.name}</p>
+                              <p className="text-sm font-bold text-sport-fg">{session.name}</p>
                               <p className="text-xs text-sport-gray mt-0.5 leading-relaxed">{session.detail}</p>
                             </div>
                           </li>
@@ -417,9 +417,9 @@ export default async function DisciplinePage({ params }: { params: Promise<{ slu
                 <span className={COLOR_TEXT[color]} aria-hidden="true">{DISC_ICONS[base.icon]}</span>
               </div>
 
-              <h2 className="text-lg font-black text-white mb-2">{t('cta.title')}</h2>
+              <h2 className="text-lg font-black text-sport-fg mb-2">{t('cta.title')}</h2>
               <p className="text-sport-gray text-xs leading-relaxed mb-6">
-                {t.rich('cta.desc', { title, b: (c) => <strong className="text-white">{c}</strong> })}
+                {t.rich('cta.desc', { title, b: (c) => <strong className="text-sport-fg">{c}</strong> })}
               </p>
 
               <ul className="space-y-2.5 mb-7">
@@ -438,7 +438,7 @@ export default async function DisciplinePage({ params }: { params: Promise<{ slu
                 {t('cta.primary')} <ArrowRight size={14} aria-hidden="true" />
               </Link>
 
-              <Link href="/#tarifs" className="block text-center text-xs text-sport-gray hover:text-white transition-colors mt-3">
+              <Link href="/#tarifs" className="block text-center text-xs text-sport-gray hover:text-sport-fg transition-colors mt-3">
                 {t('cta.pricing')}
               </Link>
 
@@ -458,7 +458,7 @@ export default async function DisciplinePage({ params }: { params: Promise<{ slu
           <div className="max-w-3xl mx-auto">
             <div className="text-center mb-12">
               <p className={`text-[11px] font-bold tracking-[2px] uppercase mb-3 ${COLOR_TEXT[color]}`}>{t('faq.eyebrow')}</p>
-              <h2 id="faq-disc-title" className="text-3xl md:text-4xl font-black text-white">
+              <h2 id="faq-disc-title" className="text-3xl md:text-4xl font-black text-sport-fg">
                 {t('faq.title', { name: title })}
               </h2>
             </div>
@@ -470,7 +470,7 @@ export default async function DisciplinePage({ params }: { params: Promise<{ slu
       {/* ── Other disciplines ─────────────────────────────────── */}
       <section aria-labelledby="autres-disciplines-title" className="py-16 px-6 bg-sport-dark border-t border-sport-border">
         <div className="max-w-5xl mx-auto">
-          <h2 id="autres-disciplines-title" className="text-2xl font-black text-white mb-8">
+          <h2 id="autres-disciplines-title" className="text-2xl font-black text-sport-fg mb-8">
             {t('others.title')}
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">

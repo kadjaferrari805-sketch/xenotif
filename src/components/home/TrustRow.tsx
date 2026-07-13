@@ -19,7 +19,7 @@ export function TrustRow() {
               <Icon size={18} className="text-sport-orange" aria-hidden="true" />
             </div>
             <div className="min-w-0">
-              <p className="text-xs font-black text-white leading-tight">{label}</p>
+              <p className="text-xs font-black text-sport-fg leading-tight">{label}</p>
               <p className="text-[11px] text-sport-gray leading-tight">{sub}</p>
             </div>
           </div>

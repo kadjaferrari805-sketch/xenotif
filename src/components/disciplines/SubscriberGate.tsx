@@ -39,7 +39,7 @@ export function SubscriberGate({ minPlan, children }: { minPlan?: string; childr
         <div className="w-14 h-14 rounded-2xl bg-sport-orange/15 border border-sport-orange/30 flex items-center justify-center mb-4">
           <Lock size={24} className="text-sport-orange" aria-hidden="true" />
         </div>
-        <h3 className="text-xl font-black text-white mb-2">{t('title')}</h3>
+        <h3 className="text-xl font-black text-sport-fg mb-2">{t('title')}</h3>
         <p className="text-sport-gray text-sm max-w-sm mx-auto mb-5">{t('subtitle')}</p>
         <Link
           href="/#tarifs"

@@ -56,7 +56,7 @@ export function HowItWorks() {
                 <div className="bg-sport-dark border border-sport-border rounded-2xl p-6 h-full hover:border-sport-border/80 transition-all group">
                   {/* Step number + icon */}
                   <div className="flex items-center gap-3 mb-5">
-                    <div className={`relative w-12 h-12 rounded-full ${color.bg} flex items-center justify-center text-white font-black text-sm shrink-0 shadow-lg ring-4 ${color.ring}`}>
+                    <div className={`relative w-12 h-12 rounded-full ${color.bg} flex items-center justify-center text-sport-fg font-black text-sm shrink-0 shadow-lg ring-4 ${color.ring}`}>
                       {step.num}
                     </div>
                     <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${color.icon}`}>
@@ -64,7 +64,7 @@ export function HowItWorks() {
                     </div>
                   </div>
 
-                  <h3 className="text-sm font-bold text-white mb-2">{steps[i].title}</h3>
+                  <h3 className="text-sm font-bold text-sport-fg mb-2">{steps[i].title}</h3>
                   <p className="text-xs text-sport-gray leading-relaxed">{steps[i].description}</p>
                 </div>
                 </Tilt3D>

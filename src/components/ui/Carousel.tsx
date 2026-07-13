@@ -67,7 +67,7 @@ export function Carousel({ children, className = '' }: { children: ReactNode; cl
         type="button"
         onClick={() => go(-1)}
         aria-label={t('scrollPrev')}
-        className="hidden md:flex absolute -left-4 top-1/2 -translate-y-1/2 z-10 h-10 w-10 items-center justify-center rounded-full bg-sport-card border border-sport-border text-white shadow-lg transition-all hover:border-sport-orange/60 hover:text-sport-orange active:scale-95"
+        className="hidden md:flex absolute -left-4 top-1/2 -translate-y-1/2 z-10 h-10 w-10 items-center justify-center rounded-full bg-sport-card border border-sport-border text-sport-fg shadow-lg transition-all hover:border-sport-orange/60 hover:text-sport-orange active:scale-95"
       >
         <ChevronLeft size={20} aria-hidden="true" />
       </button>
@@ -75,7 +75,7 @@ export function Carousel({ children, className = '' }: { children: ReactNode; cl
         type="button"
         onClick={() => go(1)}
         aria-label={t('scrollNext')}
-        className="hidden md:flex absolute -right-4 top-1/2 -translate-y-1/2 z-10 h-10 w-10 items-center justify-center rounded-full bg-sport-card border border-sport-border text-white shadow-lg transition-all hover:border-sport-orange/60 hover:text-sport-orange active:scale-95"
+        className="hidden md:flex absolute -right-4 top-1/2 -translate-y-1/2 z-10 h-10 w-10 items-center justify-center rounded-full bg-sport-card border border-sport-border text-sport-fg shadow-lg transition-all hover:border-sport-orange/60 hover:text-sport-orange active:scale-95"
       >
         <ChevronRight size={20} aria-hidden="true" />
       </button>

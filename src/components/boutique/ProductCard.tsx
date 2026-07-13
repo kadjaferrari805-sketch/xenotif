@@ -67,7 +67,7 @@ export function ProductCard({ product, index = 0, source = 'shop' }: ProductCard
           </div>
           <div className="p-4">
             <p className="text-[10px] font-bold uppercase tracking-wider text-sport-gray mb-1">{product.brand} · Amazon</p>
-            <h3 className="text-sm font-black text-white group-hover:text-sport-orange transition-colors line-clamp-2 mb-2">{product.name}</h3>
+            <h3 className="text-sm font-black text-sport-fg group-hover:text-sport-orange transition-colors line-clamp-2 mb-2">{product.name}</h3>
             <div className="flex items-center gap-1.5 mb-3">
               <div className="flex">{Array.from({ length: 5 }).map((_, i) => <Star key={i} size={10} className={i < Math.round(product.rating) ? 'fill-sport-orange text-sport-orange' : 'fill-sport-border text-sport-border'} />)}</div>
               <span className="text-[11px] font-bold text-sport-orange">{product.rating}</span>
@@ -75,7 +75,7 @@ export function ProductCard({ product, index = 0, source = 'shop' }: ProductCard
             </div>
             <div className="flex items-center justify-between">
               <div>
-                <span className="text-base font-black text-white">{formatPrice(product.price_cents)}</span>
+                <span className="text-base font-black text-sport-fg">{formatPrice(product.price_cents)}</span>
                 {product.original_price_cents && <span className="ml-1.5 text-xs text-sport-gray line-through">{formatPrice(product.original_price_cents)}</span>}
               </div>
               <span className="flex items-center gap-1 rounded-xl bg-sport-orange/15 px-3 py-1.5 text-xs font-bold text-sport-orange border border-sport-orange/30">
@@ -101,12 +101,12 @@ export function ProductCard({ product, index = 0, source = 'shop' }: ProductCard
           {discount && <span className="absolute top-3 right-10 rounded-full bg-red-500 px-2 py-0.5 text-xs font-black text-white">-{discount}%</span>}
           {/* Wishlist */}
           <button onClick={e => { e.preventDefault(); toggle(product.id) }}
-            className={`absolute top-3 right-3 flex h-7 w-7 items-center justify-center rounded-full transition-all ${wishlisted ? 'bg-red-500 text-white' : 'bg-sport-dark/80 text-sport-gray hover:text-red-400'}`}>
+            className={`absolute top-3 right-3 flex h-7 w-7 items-center justify-center rounded-full transition-all ${wishlisted ? 'bg-red-500 text-sport-fg' : 'bg-sport-dark/80 text-sport-gray hover:text-red-400'}`}>
             <Heart size={12} fill={wishlisted ? 'currentColor' : 'none'} />
           </button>
           {/* Quick view overlay — span (pas de <a> imbriqué dans le <Link> image) */}
           <div className="absolute inset-0 bg-gradient-to-t from-sport-dark/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center pb-3">
-            <span className="flex items-center gap-1.5 rounded-full bg-white/20 backdrop-blur-sm px-3 py-1.5 text-xs font-bold text-white">
+            <span className="flex items-center gap-1.5 rounded-full bg-sport-fg/20 backdrop-blur-sm px-3 py-1.5 text-xs font-bold text-sport-fg">
               <Eye size={11} /> {t('card.detailsView')}
             </span>
           </div>
@@ -114,7 +114,7 @@ export function ProductCard({ product, index = 0, source = 'shop' }: ProductCard
         <div className="flex flex-1 flex-col p-4">
           <p className="text-[10px] font-bold uppercase tracking-wider text-sport-gray mb-0.5">{product.brand} · {t(`categories.${product.category}`)}</p>
           <Link href={`/boutique/${product.slug}`}>
-            <h3 className="text-sm font-black text-white group-hover:text-sport-orange transition-colors line-clamp-2 mb-2">{product.name}</h3>
+            <h3 className="text-sm font-black text-sport-fg group-hover:text-sport-orange transition-colors line-clamp-2 mb-2">{product.name}</h3>
           </Link>
           <div className="flex items-center gap-1.5 mb-3">
             <div className="flex">{Array.from({ length: 5 }).map((_, i) => <Star key={i} size={10} className={i < Math.round(product.rating) ? 'fill-sport-orange text-sport-orange' : 'fill-sport-border text-sport-border'} />)}</div>
@@ -123,11 +123,11 @@ export function ProductCard({ product, index = 0, source = 'shop' }: ProductCard
           </div>
           <div className="mt-auto flex items-center justify-between gap-2">
             <div>
-              <span className="text-base font-black text-white">{formatPrice(product.price_cents)}</span>
+              <span className="text-base font-black text-sport-fg">{formatPrice(product.price_cents)}</span>
               {product.original_price_cents && <span className="ml-1.5 text-xs text-sport-gray line-through">{formatPrice(product.original_price_cents)}</span>}
             </div>
             <button onClick={handleAdd}
-              className={`flex items-center gap-1.5 rounded-xl px-3 py-2 text-xs font-bold text-white transition-all whitespace-nowrap ${added ? 'bg-emerald-600' : 'bg-sport-orange hover:bg-orange-600 hover:shadow-[0_0_16px_rgba(255,69,0,0.4)]'}`}>
+              className={`flex items-center gap-1.5 rounded-xl px-3 py-2 text-xs font-bold text-sport-fg transition-all whitespace-nowrap ${added ? 'bg-emerald-600' : 'bg-sport-orange hover:bg-orange-600 hover:shadow-[0_0_16px_rgba(255,69,0,0.4)]'}`}>
               {added ? '✓' : product.type === 'digital' ? <Download size={12} /> : <ShoppingCart size={12} />}
               {added ? t('card.added') : t('card.add')}
             </button>

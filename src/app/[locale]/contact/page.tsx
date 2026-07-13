@@ -36,7 +36,7 @@ export default function ContactPage() {
     setLoading(false)
   }
 
-  const INPUT = 'w-full bg-sport-dark border border-sport-border rounded-xl px-4 py-3 text-white text-sm placeholder:text-sport-gray focus:outline-none focus:border-sport-orange transition-colors'
+  const INPUT = 'w-full bg-sport-dark border border-sport-border rounded-xl px-4 py-3 text-sport-fg text-sm placeholder:text-sport-gray focus:outline-none focus:border-sport-orange transition-colors'
 
   return (
     <div className="min-h-screen bg-sport-dark">
@@ -49,7 +49,7 @@ export default function ContactPage() {
             <MessageSquare size={12} />
             {t('badge')}
           </div>
-          <h1 className="text-4xl md:text-5xl font-black text-white mb-4">
+          <h1 className="text-4xl md:text-5xl font-black text-sport-fg mb-4">
             {t('heroTitle')}
           </h1>
           <p className="text-sport-gray text-lg max-w-xl mx-auto">
@@ -63,14 +63,14 @@ export default function ContactPage() {
         {/* Info column */}
         <div className="md:col-span-2 space-y-6">
           <div>
-            <h2 className="text-lg font-black text-white mb-4">{t('infoTitle')}</h2>
+            <h2 className="text-lg font-black text-sport-fg mb-4">{t('infoTitle')}</h2>
             <div className="space-y-4">
               <div className="flex items-start gap-3">
                 <div className="w-9 h-9 rounded-xl bg-sport-orange/10 border border-sport-orange/20 flex items-center justify-center shrink-0">
                   <Mail size={15} className="text-sport-orange" />
                 </div>
                 <div>
-                  <p className="text-xs font-bold text-white mb-0.5">{t('emailLabel')}</p>
+                  <p className="text-xs font-bold text-sport-fg mb-0.5">{t('emailLabel')}</p>
                   <a href="mailto:contact@xenotif.com" className="text-sm text-sport-gray hover:text-sport-orange transition-colors">
                     contact@xenotif.com
                   </a>
@@ -81,7 +81,7 @@ export default function ContactPage() {
                   <Clock size={15} className="text-sport-blue" />
                 </div>
                 <div>
-                  <p className="text-xs font-bold text-white mb-0.5">{t('responseLabel')}</p>
+                  <p className="text-xs font-bold text-sport-fg mb-0.5">{t('responseLabel')}</p>
                   <p className="text-sm text-sport-gray">{t('responseValue')}</p>
                 </div>
               </div>
@@ -90,7 +90,7 @@ export default function ContactPage() {
                   <MapPin size={15} className="text-emerald-400" />
                 </div>
                 <div>
-                  <p className="text-xs font-bold text-white mb-0.5">Xenotif®</p>
+                  <p className="text-xs font-bold text-sport-fg mb-0.5">Xenotif®</p>
                   <p className="text-sm text-sport-gray">xenotif.com</p>
                 </div>
               </div>
@@ -100,7 +100,7 @@ export default function ContactPage() {
           <div className="bg-sport-card border border-sport-border rounded-2xl p-5">
             <div className="flex items-center gap-2 mb-3">
               <Zap size={14} className="text-sport-orange" />
-              <p className="text-xs font-black text-white uppercase tracking-wider">{t('subscriberTitle')}</p>
+              <p className="text-xs font-black text-sport-fg uppercase tracking-wider">{t('subscriberTitle')}</p>
             </div>
             <p className="text-xs text-sport-gray mb-4 leading-relaxed">
               {t('subscriberDesc')}
@@ -121,7 +121,7 @@ export default function ContactPage() {
               <div className="w-16 h-16 bg-emerald-500/15 rounded-full flex items-center justify-center mx-auto mb-5">
                 <CheckCircle size={28} className="text-emerald-400" />
               </div>
-              <h2 className="text-xl font-black text-white mb-2">{t('successTitle')}</h2>
+              <h2 className="text-xl font-black text-sport-fg mb-2">{t('successTitle')}</h2>
               <p className="text-sport-gray text-sm mb-6">
                 {t('successDesc')}
               </p>
@@ -134,11 +134,11 @@ export default function ContactPage() {
             </div>
           ) : (
             <div className="bg-sport-card border border-sport-border rounded-2xl p-8">
-              <h2 className="text-lg font-black text-white mb-6">{t('formTitle')}</h2>
+              <h2 className="text-lg font-black text-sport-fg mb-6">{t('formTitle')}</h2>
               <form onSubmit={handleSubmit} className="space-y-5">
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-xs font-bold text-white mb-2 uppercase tracking-wider">{t('nameLabel')}</label>
+                    <label className="block text-xs font-bold text-sport-fg mb-2 uppercase tracking-wider">{t('nameLabel')}</label>
                     <input
                       type="text"
                       required
@@ -149,7 +149,7 @@ export default function ContactPage() {
                     />
                   </div>
                   <div>
-                    <label className="block text-xs font-bold text-white mb-2 uppercase tracking-wider">{t('emailLabel')}</label>
+                    <label className="block text-xs font-bold text-sport-fg mb-2 uppercase tracking-wider">{t('emailLabel')}</label>
                     <input
                       type="email"
                       required
@@ -162,7 +162,7 @@ export default function ContactPage() {
                 </div>
 
                 <div>
-                  <label className="block text-xs font-bold text-white mb-2 uppercase tracking-wider">{t('subjectLabel')}</label>
+                  <label className="block text-xs font-bold text-sport-fg mb-2 uppercase tracking-wider">{t('subjectLabel')}</label>
                   <select
                     value={form.subject}
                     onChange={set('subject')}
@@ -173,7 +173,7 @@ export default function ContactPage() {
                 </div>
 
                 <div>
-                  <label className="block text-xs font-bold text-white mb-2 uppercase tracking-wider">{t('messageLabel')}</label>
+                  <label className="block text-xs font-bold text-sport-fg mb-2 uppercase tracking-wider">{t('messageLabel')}</label>
                   <textarea
                     required
                     rows={6}

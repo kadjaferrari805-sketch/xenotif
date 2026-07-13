@@ -68,7 +68,7 @@ export function OfferBanner({
             <Zap size={18} aria-hidden="true" />
           </span>
           <div className="min-w-0">
-            <p className="text-sm font-black leading-tight text-white">{title}</p>
+            <p className="text-sm font-black leading-tight text-sport-fg">{title}</p>
             {subtitle && <p className="text-[11px] leading-tight text-sport-gray">{subtitle}</p>}
           </div>
         </div>

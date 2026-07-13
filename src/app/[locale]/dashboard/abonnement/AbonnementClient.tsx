@@ -170,10 +170,10 @@ export function AbonnementClient({ initialSub }: { initialSub: Sub | null }) {
   if (!sub) {
     return (
       <div className="p-6 md:p-8 max-w-2xl mx-auto">
-        <h1 className="text-2xl font-black text-white mb-8">{t('title')}</h1>
+        <h1 className="text-2xl font-black text-sport-fg mb-8">{t('title')}</h1>
         <div className="bg-sport-card border border-sport-border rounded-2xl p-8 text-center">
           <CreditCard size={32} className="text-sport-gray mx-auto mb-4" />
-          <p className="text-white font-bold mb-2">{t('noneTitle')}</p>
+          <p className="text-sport-fg font-bold mb-2">{t('noneTitle')}</p>
           <p className="text-sport-gray text-sm mb-6">{t('noneDesc')}</p>
           <Link href="/auth/signup?plan=pro" className="inline-flex items-center gap-2 bg-sport-orange text-white px-6 py-3 rounded-full font-bold text-sm hover:bg-orange-600 transition-all">
             {t('choosePlan')} <ArrowRight size={14} />
@@ -187,12 +187,12 @@ export function AbonnementClient({ initialSub }: { initialSub: Sub | null }) {
               value={syncEmail}
               onChange={e => setSyncEmail(e.target.value)}
               placeholder={t('syncEmailPlaceholder')}
-              className="w-full bg-sport-dark border border-sport-border rounded-xl px-4 py-2.5 text-white text-sm mb-3 focus:outline-none focus:border-sport-orange placeholder:text-sport-gray"
+              className="w-full bg-sport-dark border border-sport-border rounded-xl px-4 py-2.5 text-sport-fg text-sm mb-3 focus:outline-none focus:border-sport-orange placeholder:text-sport-gray"
             />
             <button
               onClick={syncSubscription}
               disabled={syncing}
-              className="inline-flex items-center gap-2 border border-sport-border text-white px-5 py-2.5 rounded-full text-sm font-bold hover:border-sport-gray disabled:opacity-60 transition-all"
+              className="inline-flex items-center gap-2 border border-sport-border text-sport-fg px-5 py-2.5 rounded-full text-sm font-bold hover:border-sport-gray disabled:opacity-60 transition-all"
             >
               {syncing ? t('syncing') : t('syncCta')}
             </button>
@@ -207,7 +207,7 @@ export function AbonnementClient({ initialSub }: { initialSub: Sub | null }) {
 
   return (
     <div className="p-6 md:p-8 max-w-2xl mx-auto pb-24 md:pb-8">
-      <h1 className="text-2xl font-black text-white mb-8">{t('title')}</h1>
+      <h1 className="text-2xl font-black text-sport-fg mb-8">{t('title')}</h1>
 
       {/* Cancel confirm modal */}
       {showCancel && (
@@ -215,14 +215,14 @@ export function AbonnementClient({ initialSub }: { initialSub: Sub | null }) {
           <div className="bg-sport-card border border-red-500/30 rounded-2xl p-6 w-full max-w-md">
             <div className="flex items-center gap-3 mb-4">
               <AlertTriangle size={20} className="text-red-400 shrink-0" />
-              <h3 className="text-lg font-black text-white">{t('confirmCancelTitle')}</h3>
+              <h3 className="text-lg font-black text-sport-fg">{t('confirmCancelTitle')}</h3>
             </div>
             <p className="text-sport-gray text-sm leading-relaxed mb-2">
-              {t.rich('cancelIntro', { plan: planName, o: (c) => <strong className="text-white">{c}</strong> })}
+              {t.rich('cancelIntro', { plan: planName, o: (c) => <strong className="text-sport-fg">{c}</strong> })}
             </p>
             {periodEnd && (
               <p className="text-sport-gray text-sm mb-6">
-                {t.rich('accessUntilDate', { date: periodEnd.toLocaleDateString(dateLocale, { day: 'numeric', month: 'long', year: 'numeric' }), o: (c) => <strong className="text-white">{c}</strong> })}
+                {t.rich('accessUntilDate', { date: periodEnd.toLocaleDateString(dateLocale, { day: 'numeric', month: 'long', year: 'numeric' }), o: (c) => <strong className="text-sport-fg">{c}</strong> })}
               </p>
             )}
             {cancelError && (
@@ -230,7 +230,7 @@ export function AbonnementClient({ initialSub }: { initialSub: Sub | null }) {
             )}
             <div className="flex gap-3">
               <button onClick={() => setShowCancel(false)}
-                className="flex-1 border border-sport-border text-sport-gray py-2.5 rounded-full text-sm font-bold hover:text-white transition-all">
+                className="flex-1 border border-sport-border text-sport-gray py-2.5 rounded-full text-sm font-bold hover:text-sport-fg transition-all">
                 {t('cancel')}
               </button>
               <button onClick={cancelSubscription} disabled={cancelLoading}
@@ -246,11 +246,11 @@ export function AbonnementClient({ initialSub }: { initialSub: Sub | null }) {
       <div className="bg-sport-card border border-sport-border rounded-2xl p-6 mb-6">
         <div className="flex items-start justify-between flex-wrap gap-4 mb-5">
           <div>
-            <h2 className="text-lg font-black text-white mb-1">{t('plan', { plan: planName })}</h2>
+            <h2 className="text-lg font-black text-sport-fg mb-1">{t('plan', { plan: planName })}</h2>
             <StatusBadge status={isCanceled ? 'canceled' : sub.status} label={statusLabel(isCanceled ? 'canceled' : sub.status)} />
           </div>
           <div className="text-right">
-            <p className="text-2xl font-black text-white">{'9,99 €'}</p>
+            <p className="text-2xl font-black text-sport-fg">{'9,99 €'}</p>
             <p className="text-[11px] text-sport-gray">{t('perMonth')}</p>
           </div>
         </div>
@@ -259,7 +259,7 @@ export function AbonnementClient({ initialSub }: { initialSub: Sub | null }) {
           {isTrialing && daysLeft !== null && (
             <div className="flex items-center gap-3 text-sm">
               <Calendar size={15} className="text-blue-400 shrink-0" />
-              <span className="text-sport-gray">{t.rich('trialEndsIn', { days: daysLeft, o: (c) => <strong className="text-white">{c}</strong> })}</span>
+              <span className="text-sport-gray">{t.rich('trialEndsIn', { days: daysLeft, o: (c) => <strong className="text-sport-fg">{c}</strong> })}</span>
             </div>
           )}
           {periodEnd && (
@@ -267,7 +267,7 @@ export function AbonnementClient({ initialSub }: { initialSub: Sub | null }) {
               <Calendar size={15} className="text-sport-orange shrink-0" />
               <span className="text-sport-gray">
                 {isCanceled ? t('accessUntilLabel') : t('nextRenewal')} :{' '}
-                <strong className="text-white">{periodEnd.toLocaleDateString(dateLocale, { day: 'numeric', month: 'long', year: 'numeric' })}</strong>
+                <strong className="text-sport-fg">{periodEnd.toLocaleDateString(dateLocale, { day: 'numeric', month: 'long', year: 'numeric' })}</strong>
               </span>
             </div>
           )}
@@ -280,7 +280,7 @@ export function AbonnementClient({ initialSub }: { initialSub: Sub | null }) {
 
       {/* Features */}
       <div className="bg-sport-card border border-sport-border rounded-2xl p-6 mb-6">
-        <h3 className="text-sm font-black text-white mb-4">{t('includedTitle')}</h3>
+        <h3 className="text-sm font-black text-sport-fg mb-4">{t('includedTitle')}</h3>
         <ul className="space-y-2.5">
           {(t.raw('featuresPro') as string[]).map(item => (
             <li key={item} className="flex items-center gap-2.5 text-sm text-sport-gray">
@@ -293,7 +293,7 @@ export function AbonnementClient({ initialSub }: { initialSub: Sub | null }) {
 
       {/* Paiement & factures — affichés directement sur le site */}
       <div className="bg-sport-card border border-sport-border rounded-2xl p-6 mb-6">
-        <h3 className="text-sm font-black text-white mb-4">{t('billingTitle')}</h3>
+        <h3 className="text-sm font-black text-sport-fg mb-4">{t('billingTitle')}</h3>
 
         {sub.status && !billingLoaded ? (
           <div className="animate-pulse space-y-3" aria-hidden="true">
@@ -306,20 +306,20 @@ export function AbonnementClient({ initialSub }: { initialSub: Sub | null }) {
             {billing?.card ? (
               <div className="flex items-center gap-3 text-sm mb-5">
                 <CreditCard size={16} className="text-sport-gray shrink-0" />
-                <span className="text-white capitalize">{billing.card.brand} •••• {billing.card.last4}</span>
+                <span className="text-sport-fg capitalize">{billing.card.brand} •••• {billing.card.last4}</span>
                 <span className="text-sport-gray text-xs">{t('expires')} {String(billing.card.exp_month).padStart(2, '0')}/{billing.card.exp_year}</span>
               </div>
             ) : (
               <p className="text-sport-gray text-sm mb-5">{t('noCard')}</p>
             )}
 
-            <p className="text-[11px] font-bold text-white uppercase tracking-wider mb-3">{t('invoicesTitle')}</p>
+            <p className="text-[11px] font-bold text-sport-fg uppercase tracking-wider mb-3">{t('invoicesTitle')}</p>
             {billing && billing.invoices.length > 0 ? (
               <div className="space-y-2.5">
                 {billing.invoices.map(inv => (
                   <div key={inv.id} className="flex items-center justify-between gap-3 text-sm border-b border-sport-border pb-2.5 last:border-0">
                     <span className="text-sport-gray">{new Date(inv.date).toLocaleDateString(dateLocale, { day: 'numeric', month: 'short', year: 'numeric' })}</span>
-                    <span className="flex-1 text-right text-white font-semibold">{inv.amount.toFixed(2)} {inv.currency === 'EUR' ? '€' : inv.currency}</span>
+                    <span className="flex-1 text-right text-sport-fg font-semibold">{inv.amount.toFixed(2)} {inv.currency === 'EUR' ? '€' : inv.currency}</span>
                     {inv.pdf
                       ? <a href={inv.pdf} target="_blank" rel="noopener noreferrer" className="shrink-0 text-sport-orange text-xs font-bold hover:underline">{t('download')}</a>
                       : <span className="shrink-0 text-sport-gray text-xs">—</span>}
@@ -338,7 +338,7 @@ export function AbonnementClient({ initialSub }: { initialSub: Sub | null }) {
         <button
           onClick={openPortal}
           disabled={portalLoading}
-          className="w-full border border-sport-border text-white py-3.5 rounded-full font-bold text-sm hover:border-sport-orange hover:text-sport-orange transition-all inline-flex items-center justify-center gap-2 disabled:opacity-60"
+          className="w-full border border-sport-border text-sport-fg py-3.5 rounded-full font-bold text-sm hover:border-sport-orange hover:text-sport-orange transition-all inline-flex items-center justify-center gap-2 disabled:opacity-60"
         >
           {portalLoading ? <><span className="w-4 h-4 border-2 border-white/40 border-t-white rounded-full animate-spin" />{t('loading')}</> : <><CreditCard size={14} /> {t('updateCard')}</>}
         </button>

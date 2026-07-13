@@ -6,7 +6,7 @@ export function ChallengesCard({ titleKey, challenges }: { titleKey: 'weeklyTitl
   const t = useTranslations('gamification')
   return (
     <div className="bg-sport-card border border-sport-border rounded-2xl p-6">
-      <h3 className="text-sm font-black text-white mb-4">{t(titleKey)}</h3>
+      <h3 className="text-sm font-black text-sport-fg mb-4">{t(titleKey)}</h3>
       <div className="space-y-4">
         {challenges.map(c => {
           const pct = Math.min(100, Math.round((c.current / c.target) * 100))

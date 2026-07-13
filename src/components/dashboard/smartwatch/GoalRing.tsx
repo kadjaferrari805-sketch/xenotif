@@ -32,7 +32,7 @@ export function GoalRing({ label, value, goal, unit, color, icon }: GoalRingProp
 
       <div>
         <div className="flex items-baseline justify-between mb-2">
-          <span className="text-xl font-black text-white">
+          <span className="text-xl font-black text-sport-fg">
             {value >= 1000 ? `${(value / 1000).toFixed(1)}k` : value}
           </span>
           <span className="text-xs text-sport-gray">

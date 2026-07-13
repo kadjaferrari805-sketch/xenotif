@@ -5,20 +5,40 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
 
-  /* Xenotif Sport Palette */
-  --color-sport-dark: #0A0B0F;
-  --color-sport-card: #0F1117;
-  --color-sport-border: #1E2028;
+  /* Xenotif Sport Palette — sport-dark/card/border/gray/fg sont réactifs au
+     thème (valeurs définies plus bas, en clair et en sombre). Les couleurs de
+     marque (orange/blue/lime) restent fixes dans les deux thèmes. */
+  --color-sport-dark: var(--val-sport-dark);
+  --color-sport-card: var(--val-sport-card);
+  --color-sport-border: var(--val-sport-border);
   --color-sport-orange: #FF4500;
   --color-sport-blue: #2563EB;
   --color-sport-lime: #A3FF00;
-  --color-sport-gray: #9CA3AF;
-  --color-sport-titane: #9CA3AF;
+  --color-sport-gray: var(--val-sport-gray);
+  --color-sport-titane: var(--val-sport-gray);
+  /* Texte/halo « premier plan » : blanc en sombre, quasi-noir en clair. */
+  --color-sport-fg: var(--val-sport-fg);
 }
 
-:root {
+:root,
+[data-theme="dark"] {
   --background: #0A0B0F;
   --foreground: #ffffff;
+  --val-sport-dark: #0A0B0F;
+  --val-sport-card: #0F1117;
+  --val-sport-border: #1E2028;
+  --val-sport-gray: #9CA3AF;
+  --val-sport-fg: #ffffff;
+}
+
+[data-theme="light"] {
+  --background: #F7F7F8;
+  --foreground: #0A0B0F;
+  --val-sport-dark: #F7F7F8;
+  --val-sport-card: #ffffff;
+  --val-sport-border: #E4E6EB;
+  --val-sport-gray: #5B6472;
+  --val-sport-fg: #0A0B0F;
 }
 
 @layer base {
@@ -27,14 +47,14 @@
   }
   body {
     background-color: var(--color-sport-dark);
-    color: #ffffff;
+    color: var(--color-sport-fg);
     font-size: 14px;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
   h1, h2, h3 {
     @apply font-extrabold;
-    color: #ffffff;
+    color: var(--color-sport-fg);
   }
 
   /* Skip link — visible only on keyboard focus */
@@ -73,20 +93,25 @@
     color: var(--color-sport-orange);
   }
   .section-title {
-    @apply text-3xl md:text-4xl font-black text-center text-white leading-tight;
+    @apply text-3xl md:text-4xl font-black text-center text-sport-fg leading-tight;
   }
   .section-sub {
     @apply text-sm text-center leading-relaxed;
     color: var(--color-sport-gray);
   }
   .btn-primary {
-    @apply relative overflow-hidden inline-flex items-center justify-center gap-2 bg-sport-orange text-white px-6 py-3.5 rounded-full font-bold text-sm shadow-lg shadow-sport-orange/30 hover:bg-orange-600 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-sport-orange/40 active:translate-y-0 active:scale-95 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sport-orange/60 focus-visible:ring-offset-2 focus-visible:ring-offset-sport-dark;
+    @apply relative overflow-hidden inline-flex items-center justify-center gap-2 bg-sport-orange text-sport-fg px-6 py-3.5 rounded-full font-bold text-sm shadow-lg shadow-sport-orange/30 hover:bg-orange-600 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-sport-orange/40 active:translate-y-0 active:scale-95 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sport-orange/60 focus-visible:ring-offset-2 focus-visible:ring-offset-sport-dark;
   }
   .btn-secondary {
+    @apply relative overflow-hidden inline-flex items-center justify-center gap-2 text-sport-fg border-2 border-sport-fg/30 px-6 py-3.5 rounded-full font-bold text-sm shadow-lg shadow-black/20 hover:border-sport-fg hover:bg-sport-fg/10 hover:-translate-y-0.5 hover:shadow-xl active:translate-y-0 active:scale-95 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sport-fg/40 focus-visible:ring-offset-2 focus-visible:ring-offset-sport-dark;
+  }
+  /* Variante fixe (blanc dans les deux thèmes) pour usage sur photo/vidéo de
+     fond (ex. Hero) où le fond n'est pas la surface réactive de la page. */
+  .btn-secondary-photo {
     @apply relative overflow-hidden inline-flex items-center justify-center gap-2 text-white border-2 border-white/30 px-6 py-3.5 rounded-full font-bold text-sm shadow-lg shadow-black/20 hover:border-white hover:bg-white/10 hover:-translate-y-0.5 hover:shadow-xl active:translate-y-0 active:scale-95 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40 focus-visible:ring-offset-2 focus-visible:ring-offset-sport-dark;
   }
   /* Balayage lumineux premium au survol (clipé par le pill via overflow-hidden). */
-  .btn-primary::after, .btn-secondary::after {
+  .btn-primary::after, .btn-secondary::after, .btn-secondary-photo::after {
     content: '';
     position: absolute;
     top: 0;
@@ -98,9 +123,9 @@
     transition: left 0.6s cubic-bezier(0.16, 1, 0.3, 1);
     pointer-events: none;
   }
-  .btn-primary:hover::after, .btn-secondary:hover::after { left: 130%; }
+  .btn-primary:hover::after, .btn-secondary:hover::after, .btn-secondary-photo:hover::after { left: 130%; }
   @media (prefers-reduced-motion: reduce) {
-    .btn-primary::after, .btn-secondary::after { display: none; }
+    .btn-primary::after, .btn-secondary::after, .btn-secondary-photo::after { display: none; }
   }
   .card-base {
     @apply bg-sport-card border border-sport-border rounded-2xl;
@@ -318,7 +343,7 @@ html.preloaded #preloader { display: none; }
   font-weight: 800;
   letter-spacing: 0.26em;
   font-size: 1.55rem;
-  color: #fff;
+  color: var(--color-sport-fg);
   padding-left: 0.26em; /* compense le letter-spacing à droite */
 }
 #preloader .pl-word .pl-r { color: var(--color-sport-orange); }
@@ -333,7 +358,7 @@ html.preloaded #preloader { display: none; }
   width: 168px;
   height: 3px;
   border-radius: 9999px;
-  background: rgba(255, 255, 255, 0.1);
+  background: color-mix(in srgb, var(--color-sport-fg) 10%, transparent);
   overflow: hidden;
 }
 #preloader .pl-bar i {

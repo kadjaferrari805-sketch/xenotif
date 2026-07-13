@@ -26,7 +26,7 @@ export default async function DashboardLayout({ children }: { children: React.Re
   const initials = (fullName ?? user.email ?? 'U').slice(0, 2).toUpperCase()
 
   return (
-    <div className="min-h-screen bg-sport-dark text-white flex">
+    <div className="min-h-screen bg-sport-dark text-sport-fg flex">
       <DashboardGuard />
 
       {/* Sidebar */}
@@ -43,7 +43,7 @@ export default async function DashboardLayout({ children }: { children: React.Re
               {initials}
             </div>
             <div className="min-w-0 flex-1">
-              <p className="text-sm font-bold text-white truncate">{fullName ?? t('athlete')}</p>
+              <p className="text-sm font-bold text-sport-fg truncate">{fullName ?? t('athlete')}</p>
               <p className="text-[11px] text-sport-gray truncate">{user.email}</p>
             </div>
             <NotificationBell align="left" />
@@ -57,7 +57,7 @@ export default async function DashboardLayout({ children }: { children: React.Re
               <li key={href}>
                 <Link
                   href={href}
-                  className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-semibold text-sport-gray hover:text-white hover:bg-white/5 transition-all group"
+                  className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-semibold text-sport-gray hover:text-sport-fg hover:bg-sport-fg/5 transition-all group"
                 >
                   <Icon size={16} className="shrink-0 group-hover:text-sport-orange transition-colors" aria-hidden="true" />
                   {t(`nav.${key}`)}

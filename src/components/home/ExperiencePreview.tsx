@@ -51,7 +51,7 @@ export function ExperiencePreview() {
                 {tiles.map(({ Icon, label, value, color }) => (
                   <div key={label} className="rounded-xl border border-sport-border bg-sport-card p-3">
                     <Icon size={16} className={`${color} mb-1.5`} aria-hidden="true" />
-                    <p className="text-xl font-black tabular-nums text-white">{value}</p>
+                    <p className="text-xl font-black tabular-nums text-sport-fg">{value}</p>
                     <p className="text-[10px] leading-tight text-sport-gray">{label}</p>
                   </div>
                 ))}
@@ -89,7 +89,7 @@ export function ExperiencePreview() {
                       <Icon size={18} className="text-sport-orange" aria-hidden="true" />
                     </div>
                     <div>
-                      <h3 className="font-black text-white">{p.title}</h3>
+                      <h3 className="font-black text-sport-fg">{p.title}</h3>
                       <p className="mt-0.5 text-sm leading-relaxed text-sport-gray">{p.desc}</p>
                     </div>
                   </motion.li>

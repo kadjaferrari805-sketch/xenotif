@@ -90,7 +90,7 @@ export function CoachClient() {
             <Bot size={18} className="text-sport-orange" />
           </div>
           <div>
-            <h1 className="text-base font-black text-white flex items-center gap-2">
+            <h1 className="text-base font-black text-sport-fg flex items-center gap-2">
               {t('title')}
               <span className="inline-flex items-center gap-1 text-[9px] font-black uppercase tracking-widest bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 px-2 py-0.5 rounded-full">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
@@ -103,7 +103,7 @@ export function CoachClient() {
         {messages.length > 0 && (
           <button
             onClick={() => setMessages([])}
-            className="inline-flex items-center gap-1.5 text-xs text-sport-gray hover:text-white transition-colors"
+            className="inline-flex items-center gap-1.5 text-xs text-sport-gray hover:text-sport-fg transition-colors"
           >
             <RefreshCw size={12} />
             {t('newSession')}
@@ -119,7 +119,7 @@ export function CoachClient() {
             <div className="w-20 h-20 rounded-2xl bg-sport-orange/10 border border-sport-orange/20 flex items-center justify-center mb-6">
               <Sparkles size={32} className="text-sport-orange" />
             </div>
-            <h2 className="text-xl font-black text-white mb-2">{t('emptyTitle')}</h2>
+            <h2 className="text-xl font-black text-sport-fg mb-2">{t('emptyTitle')}</h2>
             <p className="text-sport-gray text-sm max-w-sm mb-8">
               {t('emptySubtitle')}
             </p>
@@ -128,7 +128,7 @@ export function CoachClient() {
                 <button
                   key={s}
                   onClick={() => send(s)}
-                  className="text-left px-4 py-3 bg-sport-card border border-sport-border rounded-xl text-xs text-sport-gray hover:text-white hover:border-sport-orange/50 transition-all hover:-translate-y-0.5 leading-relaxed"
+                  className="text-left px-4 py-3 bg-sport-card border border-sport-border rounded-xl text-xs text-sport-gray hover:text-sport-fg hover:border-sport-orange/50 transition-all hover:-translate-y-0.5 leading-relaxed"
                 >
                   {s}
                 </button>
@@ -146,8 +146,8 @@ export function CoachClient() {
                 )}
                 <div className={`max-w-[80%] md:max-w-[70%] rounded-2xl px-4 py-3 text-sm leading-relaxed ${
                   msg.role === 'user'
-                    ? 'bg-sport-orange text-white rounded-br-sm'
-                    : 'bg-sport-card border border-sport-border text-white rounded-bl-sm'
+                    ? 'bg-sport-orange text-sport-fg rounded-br-sm'
+                    : 'bg-sport-card border border-sport-border text-sport-fg rounded-bl-sm'
                 }`}>
                   {msg.role === 'assistant' && !msg.content && streaming ? (
                     <span className="inline-flex gap-1 items-center text-sport-gray">
@@ -160,8 +160,8 @@ export function CoachClient() {
                   )}
                 </div>
                 {msg.role === 'user' && (
-                  <div className="w-8 h-8 rounded-xl bg-white/10 flex items-center justify-center shrink-0 mt-0.5">
-                    <User size={14} className="text-white" />
+                  <div className="w-8 h-8 rounded-xl bg-sport-fg/10 flex items-center justify-center shrink-0 mt-0.5">
+                    <User size={14} className="text-sport-fg" />
                   </div>
                 )}
               </div>
@@ -183,7 +183,7 @@ export function CoachClient() {
               onKeyDown={handleKeyDown}
               placeholder={t('placeholder')}
               disabled={streaming}
-              className="w-full bg-sport-card border border-sport-border rounded-2xl px-4 py-3 pr-12 text-white text-sm placeholder:text-sport-gray focus:outline-none focus:border-sport-orange transition-colors resize-none leading-relaxed disabled:opacity-60"
+              className="w-full bg-sport-card border border-sport-border rounded-2xl px-4 py-3 pr-12 text-sport-fg text-sm placeholder:text-sport-gray focus:outline-none focus:border-sport-orange transition-colors resize-none leading-relaxed disabled:opacity-60"
               style={{ maxHeight: '120px' }}
             />
           </div>
@@ -195,7 +195,7 @@ export function CoachClient() {
           >
             {streaming
               ? <span className="w-4 h-4 border-2 border-white/40 border-t-white rounded-full animate-spin" />
-              : <Send size={16} className="text-white" />
+              : <Send size={16} className="text-sport-fg" />
             }
           </button>
         </div>

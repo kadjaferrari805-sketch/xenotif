@@ -16,7 +16,7 @@ export function XpLevelBar({ xp, levelKey, xpInLevel, xpForNext, compact = false
           </div>
           <div>
             <p className="text-[10px] font-bold uppercase tracking-widest text-sport-gray leading-none">{t('level')}</p>
-            <p className="text-base font-black text-white leading-tight">{t(`levels.${levelKey}`)}</p>
+            <p className="text-base font-black text-sport-fg leading-tight">{t(`levels.${levelKey}`)}</p>
           </div>
         </div>
         <span className="text-sm font-black text-sport-orange tabular-nums">{xp} {t('xp')}</span>

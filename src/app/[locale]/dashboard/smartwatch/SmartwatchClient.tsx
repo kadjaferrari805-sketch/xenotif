@@ -131,7 +131,7 @@ export function SmartwatchClient({ initialData }: { initialData: DashboardData }
             <Watch size={20} className="text-sport-orange" />
           </div>
           <div>
-            <h1 className="text-xl md:text-2xl font-black text-white leading-none">{t('title')}</h1>
+            <h1 className="text-xl md:text-2xl font-black text-sport-fg leading-none">{t('title')}</h1>
             <p className="text-[11px] text-sport-gray">{t('subtitle')}</p>
           </div>
         </div>
@@ -140,7 +140,7 @@ export function SmartwatchClient({ initialData }: { initialData: DashboardData }
           <div className="w-20 h-20 rounded-full bg-sport-orange/10 border border-sport-orange/20 flex items-center justify-center mx-auto mb-6">
             <Watch size={36} className="text-sport-orange" />
           </div>
-          <h2 className="text-xl font-black text-white mb-2">{t('connectTitle')}</h2>
+          <h2 className="text-xl font-black text-sport-fg mb-2">{t('connectTitle')}</h2>
           <p className="text-sport-gray text-sm max-w-md mx-auto mb-6">
             {t('connectDesc')}
           </p>
@@ -172,7 +172,7 @@ export function SmartwatchClient({ initialData }: { initialData: DashboardData }
             <span className="text-sm">🔒</span>
           </div>
           <div>
-            <p className="text-xs font-bold text-white mb-1">{t('securityTitle')}</p>
+            <p className="text-xs font-bold text-sport-fg mb-1">{t('securityTitle')}</p>
             <p className="text-[11px] text-sport-gray leading-relaxed">
               {t('securityDescShort')}
             </p>
@@ -199,7 +199,7 @@ export function SmartwatchClient({ initialData }: { initialData: DashboardData }
               <Watch size={20} className="text-sport-orange" />
             </div>
             <div>
-              <h1 className="text-xl md:text-2xl font-black text-white leading-none">{t('title')}</h1>
+              <h1 className="text-xl md:text-2xl font-black text-sport-fg leading-none">{t('title')}</h1>
               <p className="text-[11px] text-sport-gray">{t('subtitle')}</p>
             </div>
           </div>
@@ -217,7 +217,7 @@ export function SmartwatchClient({ initialData }: { initialData: DashboardData }
             <button
               onClick={() => handleSync()}
               disabled={syncing}
-              className="flex items-center gap-2 bg-sport-card border border-sport-border hover:border-white/20 rounded-xl px-4 py-2 text-xs font-bold text-white transition-all"
+              className="flex items-center gap-2 bg-sport-card border border-sport-border hover:border-sport-fg/20 rounded-xl px-4 py-2 text-xs font-bold text-sport-fg transition-all"
             >
               {syncing ? <Loader2 size={13} className="animate-spin text-sport-orange" /> : <RefreshCw size={13} className="text-sport-orange" />}
               {t('sync')}
@@ -234,8 +234,8 @@ export function SmartwatchClient({ initialData }: { initialData: DashboardData }
             onClick={() => setTab(tb.id)}
             className={`flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-bold whitespace-nowrap transition-all flex-1 justify-center ${
               tab === tb.id
-                ? 'bg-sport-orange text-white shadow-lg shadow-sport-orange/20'
-                : 'text-sport-gray hover:text-white'
+                ? 'bg-sport-orange text-sport-fg shadow-lg shadow-sport-orange/20'
+                : 'text-sport-gray hover:text-sport-fg'
             }`}
           >
             {tb.icon}
@@ -258,7 +258,7 @@ export function SmartwatchClient({ initialData }: { initialData: DashboardData }
                 {rings.map(r => (
                   <div key={r.label}>
                     <div className="w-2 h-2 rounded-full mx-auto mb-1" style={{ background: r.color }} />
-                    <p className="text-xs font-black text-white">{r.value >= 1000 ? `${(r.value / 1000).toFixed(1)}k` : r.value}</p>
+                    <p className="text-xs font-black text-sport-fg">{r.value >= 1000 ? `${(r.value / 1000).toFixed(1)}k` : r.value}</p>
                     <p className="text-[9px] text-sport-gray">{r.label}</p>
                   </div>
                 ))}
@@ -282,7 +282,7 @@ export function SmartwatchClient({ initialData }: { initialData: DashboardData }
                     </div>
                     <p className="text-[10px] text-sport-gray leading-tight">{m.label}</p>
                   </div>
-                  <p className="text-lg font-black text-white leading-none">{m.value}</p>
+                  <p className="text-lg font-black text-sport-fg leading-none">{m.value}</p>
                   {m.unit && <p className="text-[10px] text-sport-gray">{m.unit}</p>}
                 </div>
               ))}
@@ -291,7 +291,7 @@ export function SmartwatchClient({ initialData }: { initialData: DashboardData }
 
           {/* Heart rate */}
           <div className="bg-sport-card border border-sport-border rounded-2xl p-5">
-            <p className="text-sm font-black text-white mb-4 flex items-center gap-2">
+            <p className="text-sm font-black text-sport-fg mb-4 flex items-center gap-2">
               <Heart size={14} className="text-red-400" /> {t('heartRateTitle')}
             </p>
             <HeartRateDisplay
@@ -304,14 +304,14 @@ export function SmartwatchClient({ initialData }: { initialData: DashboardData }
           {/* Weekly chart */}
           <div className="bg-sport-card border border-sport-border rounded-2xl p-5">
             <div className="flex items-center justify-between mb-4">
-              <p className="text-sm font-black text-white">{t('weeklyActivity')}</p>
+              <p className="text-sm font-black text-sport-fg">{t('weeklyActivity')}</p>
               <div className="flex gap-1">
                 {(['steps', 'calories', 'activeMinutes'] as const).map(m => (
                   <button
                     key={m}
                     onClick={() => setChartMetric(m)}
                     className={`text-[10px] font-bold px-2.5 py-1 rounded-lg transition-all ${
-                      chartMetric === m ? 'bg-sport-orange text-white' : 'text-sport-gray hover:text-white'
+                      chartMetric === m ? 'bg-sport-orange text-sport-fg' : 'text-sport-gray hover:text-sport-fg'
                     }`}
                   >
                     {t(`chartToggle.${m}`)}
@@ -328,7 +328,7 @@ export function SmartwatchClient({ initialData }: { initialData: DashboardData }
 
           {/* AI Recommendations */}
           <div className="bg-gradient-to-br from-sport-orange/10 via-sport-card to-sport-card border border-sport-orange/20 rounded-2xl p-5">
-            <p className="text-sm font-black text-white mb-4 flex items-center gap-2">
+            <p className="text-sm font-black text-sport-fg mb-4 flex items-center gap-2">
               <Brain size={14} className="text-sport-orange" /> {t('aiTitle')}
             </p>
             <div className="space-y-3">
@@ -347,7 +347,7 @@ export function SmartwatchClient({ initialData }: { initialData: DashboardData }
       {tab === 'devices' && (
         <div className="space-y-4">
           <div className="bg-sport-card border border-sport-border rounded-2xl p-4">
-            <p className="text-sm font-black text-white mb-1">{t('supportedTitle')}</p>
+            <p className="text-sm font-black text-sport-fg mb-1">{t('supportedTitle')}</p>
             <p className="text-xs text-sport-gray">{t('supportedDesc')}</p>
           </div>
 
@@ -373,7 +373,7 @@ export function SmartwatchClient({ initialData }: { initialData: DashboardData }
               <span className="text-sm">🔒</span>
             </div>
             <div>
-              <p className="text-xs font-bold text-white mb-1">{t('securityTitle')}</p>
+              <p className="text-xs font-bold text-sport-fg mb-1">{t('securityTitle')}</p>
               <p className="text-[11px] text-sport-gray leading-relaxed">
                 {t('securityDescLong')}
               </p>
@@ -386,7 +386,7 @@ export function SmartwatchClient({ initialData }: { initialData: DashboardData }
       {tab === 'history' && (
         <div className="space-y-3">
           <div className="flex items-center justify-between mb-2">
-            <p className="text-sm font-black text-white">{t('recentSessions')}</p>
+            <p className="text-sm font-black text-sport-fg">{t('recentSessions')}</p>
             <span className="text-[11px] text-sport-gray">{t('sessionsCount', { count: sessions.length })}</span>
           </div>
           {sessions.map(s => (
@@ -406,7 +406,7 @@ export function SmartwatchClient({ initialData }: { initialData: DashboardData }
       {tab === 'goals' && (
         <div className="space-y-4">
           <div className="bg-sport-card border border-sport-border rounded-2xl p-4 mb-2">
-            <p className="text-sm font-black text-white mb-1">{t('dailyGoals')}</p>
+            <p className="text-sm font-black text-sport-fg mb-1">{t('dailyGoals')}</p>
             <p className="text-xs text-sport-gray">{t('dailyGoalsDesc')}</p>
           </div>
 
@@ -426,7 +426,7 @@ export function SmartwatchClient({ initialData }: { initialData: DashboardData }
 
           {/* Weekly summary */}
           <div className="bg-gradient-to-r from-sport-orange/10 to-sport-card border border-sport-orange/20 rounded-2xl p-5">
-            <p className="text-sm font-black text-white mb-3 flex items-center gap-2">
+            <p className="text-sm font-black text-sport-fg mb-3 flex items-center gap-2">
               <TrendingUp size={14} className="text-sport-orange" /> {t('weekSummary')}
             </p>
             <div className="grid grid-cols-3 gap-3">
@@ -436,7 +436,7 @@ export function SmartwatchClient({ initialData }: { initialData: DashboardData }
                 { label: t('summary.activeMinutes'), value: weekly.reduce((a, d) => a + d.activeMinutes, 0).toString(),        unit: 'min' },
               ].map(s => (
                 <div key={s.label} className="text-center">
-                  <p className="text-xl font-black text-white">{s.value}</p>
+                  <p className="text-xl font-black text-sport-fg">{s.value}</p>
                   <p className="text-[10px] text-sport-gray">{s.unit}</p>
                   <p className="text-[9px] text-sport-gray mt-0.5">{s.label}</p>
                 </div>

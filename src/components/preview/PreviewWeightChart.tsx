@@ -11,7 +11,7 @@ export function PreviewWeightChart({ points, unit, goal }: { points: number[]; u
   return (
     <div className="bg-sport-card border border-sport-border rounded-2xl p-5">
       <div className="flex items-baseline justify-between mb-3">
-        <h3 className="text-sm font-black text-white">Suivi du poids</h3>
+        <h3 className="text-sm font-black text-sport-fg">Suivi du poids</h3>
         <span className="text-xs font-bold text-emerald-400">{delta} {unit}</span>
       </div>
       <svg viewBox={`0 0 ${w} ${h}`} className="w-full" role="img" aria-label="Évolution du poids">
