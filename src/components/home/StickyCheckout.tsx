@@ -25,19 +25,23 @@ export function StickyCheckout() {
       aria-label={t('ariaRegion')}
       className="fixed bottom-0 left-0 right-0 z-40 bg-sport-card/96 backdrop-blur-md border-t border-sport-border shadow-2xl pb-safe"
     >
-      <div className="max-w-6xl mx-auto px-4 py-3">
-        <div className="flex items-center gap-3">
-          {/* Accroche + réassurance essai gratuit — sur mobile, logo + accroche
-              masqués (pas la place à côté du bouton Pro + dismiss), seule la
-              réassurance "Sans engagement" reste visible. */}
-          <div className="flex items-center gap-2.5 shrink-0 mr-1">
+      <div className="max-w-6xl mx-auto px-3 md:px-4 py-3">
+        <div className="flex items-center gap-2 md:gap-3">
+          {/* Accroche + réassurance essai gratuit — même contenu (logo, accroche,
+              "Sans engagement") sur mobile et desktop, juste réduit sur mobile
+              (logo 20px, textes 9-10px, gaps serrés) pour tenir à côté du bouton
+              Pro + croix sur un écran de 375px de large. */}
+          <div className="flex items-center gap-1.5 md:gap-2.5 shrink-0 mr-0 md:mr-1">
+            <span className="md:hidden">
+              <XenotifMark size={20} />
+            </span>
             <span className="hidden md:block">
               <XenotifMark size={28} />
             </span>
             <div className="leading-tight">
-              <p className="hidden md:block font-black text-sport-fg text-xs">{t('lead')}</p>
-              <p className="flex items-center gap-1 text-[10px] text-[#1E7F5A] font-bold whitespace-nowrap">
-                <Zap size={9} aria-hidden="true" /> {t('trial')}
+              <p className="font-black text-sport-fg text-[10px] md:text-xs whitespace-nowrap">{t('lead')}</p>
+              <p className="flex items-center gap-1 text-[9px] md:text-[10px] text-[#1E7F5A] font-bold whitespace-nowrap">
+                <Zap size={8} aria-hidden="true" /> {t('trial')}
               </p>
             </div>
           </div>
@@ -47,9 +51,9 @@ export function StickyCheckout() {
             <Link
               href="/auth/signup?plan=pro"
               aria-label={t('proAria')}
-              className="flex-none inline-flex items-center justify-center gap-1.5 bg-sport-orange text-white px-4 py-2.5 rounded-full font-bold text-xs hover:bg-orange-600 active:scale-95 transition-all whitespace-nowrap shadow-lg shadow-sport-orange/20"
+              className="flex-none inline-flex items-center justify-center gap-1 md:gap-1.5 bg-sport-orange text-white px-3 md:px-4 py-2 md:py-2.5 rounded-full font-bold text-[11px] md:text-xs hover:bg-orange-600 active:scale-95 transition-all whitespace-nowrap shadow-lg shadow-sport-orange/20"
             >
-              {t('pro')} <ArrowRight size={12} aria-hidden="true" />
+              {t('pro')} <ArrowRight size={11} aria-hidden="true" />
             </Link>
           </div>
 
