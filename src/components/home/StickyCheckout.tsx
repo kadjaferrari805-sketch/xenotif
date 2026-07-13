@@ -43,7 +43,7 @@ export function StickyCheckout() {
             <Link
               href="/auth/signup?plan=pro"
               aria-label={t('proAria')}
-              className="flex-1 sm:flex-none inline-flex items-center justify-center gap-1.5 bg-sport-orange text-white px-4 py-2.5 rounded-full font-bold text-xs hover:bg-orange-600 active:scale-95 transition-all whitespace-nowrap shadow-lg shadow-sport-orange/20"
+              className="flex-none inline-flex items-center justify-center gap-1.5 bg-sport-orange text-white px-4 py-2.5 rounded-full font-bold text-xs hover:bg-orange-600 active:scale-95 transition-all whitespace-nowrap shadow-lg shadow-sport-orange/20"
             >
               {t('pro')} <ArrowRight size={12} aria-hidden="true" />
             </Link>
