@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion'
 import { useTranslations } from 'next-intl'
 import { Link } from '@/i18n/navigation'
-import { Flame, Clock, TrendingUp, Award, ArrowRight, Bot, Eye } from 'lucide-react'
+import { Flame, Clock, TrendingUp, Award, ArrowRight, ArrowLeft, Bot, Eye } from 'lucide-react'
 import { ActivityRings } from '@/components/dashboard/smartwatch/ActivityRings'
 import { WeeklyChart } from '@/components/dashboard/smartwatch/WeeklyChart'
 import { PreviewWeightChart } from './PreviewWeightChart'
@@ -30,7 +30,13 @@ export function PreviewDashboard() {
   return (
     <div className="min-h-screen bg-sport-dark text-white">
       {/* Bannière aperçu */}
-      <div className="bg-sport-orange/10 border-b border-sport-orange/30 px-6 py-2.5 text-center">
+      <div className="bg-sport-orange/10 border-b border-sport-orange/30 px-6 py-2.5 flex items-center justify-center relative">
+        <Link
+          href="/"
+          className="absolute left-6 inline-flex items-center gap-1.5 text-xs font-bold text-sport-orange hover:opacity-80 transition-opacity"
+        >
+          <ArrowLeft size={13} aria-hidden="true" /> {t('backToHome')}
+        </Link>
         <span className="inline-flex items-center gap-2 text-xs font-bold text-sport-orange">
           <Eye size={13} aria-hidden="true" /> {t('demoBanner')}
         </span>
