@@ -151,8 +151,8 @@ export default async function DisciplinePage({ params }: { params: Promise<{ slu
 
       {/* ── Hero ─────────────────────────────────────────────── */}
       <section className="relative h-[75vh] min-h-[520px] overflow-hidden" aria-label={t('heroAria', { name: title })}>
-        <Image src={photo} alt={t('heroAlt', { name: title })} fill sizes="100vw" className="object-cover" priority />
-        <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-r from-black/92 via-black/60 to-black/20" />
+        <Image src={photo} alt={t('heroAlt', { name: title })} fill sizes="100vw" className="object-cover brightness-110" priority />
+        <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/40 to-black/10" />
         <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-sport-dark via-transparent to-transparent" />
 
         <div className="absolute inset-0 flex flex-col justify-end px-6 pb-16">
@@ -486,9 +486,9 @@ export default async function DisciplinePage({ params }: { params: Promise<{ slu
                   alt={t('others.alt', { name: other.title })}
                   fill
                   sizes="(max-width: 640px) 100vw, 33vw"
-                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  className="object-cover brightness-110 group-hover:scale-105 transition-transform duration-500"
                 />
-                <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+                <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/15 to-transparent" />
                 <div className="absolute bottom-4 left-4">
                   <p className="text-sm font-bold text-white">{other.title}</p>
                   <p className="text-[10px] text-white/55 mt-0.5">{other.tag}</p>

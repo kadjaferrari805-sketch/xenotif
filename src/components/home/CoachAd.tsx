@@ -29,7 +29,7 @@ export function CoachAd() {
             width={1080}
             height={1080}
             sizes="(max-width: 768px) 90vw, 520px"
-            className="coach-3d relative w-full h-auto rounded-2xl ring-1 ring-white/10"
+            className="coach-3d relative w-full h-auto rounded-2xl ring-1 ring-white/10 brightness-105"
           />
         </div>
 

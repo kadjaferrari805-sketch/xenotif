@@ -74,9 +74,9 @@ export default function BoutiquePage() {
           fill
           priority
           sizes="100vw"
-          className="object-cover object-center"
+          className="object-cover object-center brightness-110"
         />
-        <div aria-hidden="true" className="absolute inset-0 bg-sport-dark/45" />
+        <div aria-hidden="true" className="absolute inset-0 bg-sport-dark/30" />
         <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-b from-sport-dark/20 via-transparent to-sport-dark" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(255,69,0,0.15),transparent)]" />
         <div className="absolute top-20 right-10 h-72 w-72 rounded-full bg-sport-orange/5 blur-3xl" />

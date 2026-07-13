@@ -69,9 +69,9 @@ export default async function BlogPage({
           fill
           priority
           sizes="100vw"
-          className="object-cover object-center"
+          className="object-cover object-center brightness-110"
         />
-        <div aria-hidden="true" className="absolute inset-0 bg-sport-dark/64" />
+        <div aria-hidden="true" className="absolute inset-0 bg-sport-dark/45" />
         <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-b from-sport-dark/35 via-transparent to-sport-dark" />
         <div
           className="absolute inset-0 opacity-5"

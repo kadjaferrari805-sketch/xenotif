@@ -114,10 +114,10 @@ export function VideoCard({ youtubeIds, title, description, duration, level, acc
               alt=""
               aria-hidden="true"
               onError={() => setImgError(true)}
-              className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              className="absolute inset-0 w-full h-full object-cover brightness-110 group-hover:scale-105 transition-transform duration-500"
               loading="lazy"
             />
-            <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
+            <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/5 to-transparent" />
             <div aria-hidden="true" className="absolute inset-0 flex items-center justify-center">
               <div className="w-16 h-16 rounded-full bg-sport-orange flex items-center justify-center shadow-2xl shadow-sport-orange/50 group-hover:scale-110 group-hover:bg-orange-500 transition-all duration-300 ring-4 ring-white/20">
                 <Play size={24} className="text-white ml-1" fill="white" />

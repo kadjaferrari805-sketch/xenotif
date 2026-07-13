@@ -36,13 +36,13 @@ export function AdBanner({
           sizes="100vw"
           quality={90}
           priority={priority}
-          className={`object-cover ${imgClass}`}
+          className={`object-cover brightness-110 ${imgClass}`}
         />
 
         {/* Dégradé bas (texte lisible) — allégé pour une image nette et claire. */}
-        <div aria-hidden="true" className="absolute inset-0 z-[1] bg-gradient-to-t from-black/78 via-black/18 to-transparent" />
+        <div aria-hidden="true" className="absolute inset-0 z-[1] bg-gradient-to-t from-black/60 via-black/12 to-transparent" />
         {/* Renfort léger à gauche (desktop, texte aligné à gauche) */}
-        <div aria-hidden="true" className="absolute inset-0 z-[1] hidden md:block bg-gradient-to-r from-black/62 via-black/12 to-transparent" />
+        <div aria-hidden="true" className="absolute inset-0 z-[1] hidden md:block bg-gradient-to-r from-black/45 via-black/8 to-transparent" />
 
         <div className="relative z-10 mx-auto w-full max-w-6xl px-6 pb-12 md:pb-0">
           <div className="max-w-2xl [text-shadow:0_2px_18px_rgba(0,0,0,0.65)]">

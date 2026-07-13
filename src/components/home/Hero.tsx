@@ -146,7 +146,7 @@ export function Hero() {
           fill
           sizes="100vw"
           // Mobile : focal un peu plus haut (sujet visible) ; desktop : centré.
-          className="object-cover object-[center_40%] md:object-center"
+          className="object-cover object-[center_40%] md:object-center brightness-110"
           priority
         />
         <video
@@ -158,7 +158,7 @@ export function Hero() {
           preload="none"
           aria-hidden="true"
           onPlaying={() => setVideoReady(true)}
-          className={`absolute inset-0 h-full w-full object-cover object-[center_40%] md:object-center transition-opacity duration-700 ${videoReady ? 'opacity-100' : 'opacity-0'}`}
+          className={`absolute inset-0 h-full w-full object-cover object-[center_40%] md:object-center brightness-110 transition-opacity duration-700 ${videoReady ? 'opacity-100' : 'opacity-0'}`}
         >
           <source src="/video/hero.webm" type="video/webm" />
           <source src="/video/hero.mp4" type="video/mp4" />
@@ -167,8 +167,8 @@ export function Hero() {
 
       {/* Dégradés — assombrissement réduit pour laisser voir l'image, renforcé
           uniquement à gauche/bas (zone du texte). */}
-      <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/35 to-transparent z-[1]" />
-      <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent z-[1]" />
+      <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/20 to-transparent z-[1]" />
+      <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/5 to-transparent z-[1]" />
       <div aria-hidden="true" className="absolute bottom-0 left-0 right-0 h-1/4 bg-gradient-to-t from-sport-dark to-transparent z-[1]" />
 
       {/* Main content */}

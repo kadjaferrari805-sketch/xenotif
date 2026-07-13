@@ -56,7 +56,7 @@ function VideoBlock({ url, poster, t }: { url?: string; poster?: string; t: Retu
         <>
           <div className="relative rounded-2xl overflow-hidden bg-sport-dark aspect-video">
             {inView && (
-              <video ref={videoRef} controls autoPlay muted loop playsInline preload="metadata" poster={poster} className="w-full h-full object-contain">
+              <video ref={videoRef} controls autoPlay muted loop playsInline preload="metadata" poster={poster} className="w-full h-full object-contain brightness-110">
                 <source src={url} type="video/mp4" />
               </video>
             )}

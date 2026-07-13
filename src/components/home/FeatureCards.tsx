@@ -47,9 +47,9 @@ export function FeatureCards() {
                   alt={cards[i].title}
                   fill
                   sizes="(max-width: 768px) 100vw, 33vw"
-                  className="object-cover"
+                  className="object-cover brightness-110"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-sport-card via-sport-card/25 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-sport-card via-sport-card/15 to-transparent" />
                 <div className="absolute bottom-3 left-3 w-11 h-11 rounded-2xl border border-sport-orange/30 bg-sport-dark/80 backdrop-blur flex items-center justify-center">
                   <Icon size={20} aria-hidden="true" className="text-sport-orange" />
                 </div>
