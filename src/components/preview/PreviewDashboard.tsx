@@ -57,7 +57,7 @@ export function PreviewDashboard() {
 
         <motion.div {...reveal} className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
           <div className="bg-sport-card border border-sport-border rounded-2xl p-6 flex items-center justify-center">
-            <ActivityRings rings={PREVIEW.rings.map(r => ({ ...r }))} size={180} />
+            <ActivityRings rings={PREVIEW.rings.map(r => ({ ...r }))} size={220} />
           </div>
           <div className="bg-sport-card border border-sport-border rounded-2xl p-6">
             <h3 className="text-sm font-black mb-4">{t('weekActivity')}</h3>

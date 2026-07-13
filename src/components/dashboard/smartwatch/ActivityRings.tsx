@@ -15,15 +15,15 @@ interface ActivityRingsProps {
   size?: number
 }
 
-export function ActivityRings({ rings, size = 180 }: ActivityRingsProps) {
+export function ActivityRings({ rings, size = 220 }: ActivityRingsProps) {
   const t = useTranslations('dashboard.smartwatch')
   const center = size / 2
   const strokeWidth = 14
   const gap = 6
 
   return (
-    <div className="relative flex items-center justify-center" style={{ width: size, height: size }}>
-      <svg width={size} height={size} className="rotate-[-90deg]">
+    <div className="relative mx-auto aspect-square w-full" style={{ maxWidth: size }}>
+      <svg viewBox={`0 0 ${size} ${size}`} className="w-full h-full rotate-[-90deg]">
         {rings.map((ring, i) => {
           const radius = center - strokeWidth / 2 - i * (strokeWidth + gap)
           const circumference = 2 * Math.PI * radius

@@ -253,7 +253,7 @@ export function SmartwatchClient({ initialData }: { initialData: DashboardData }
 
             {/* Rings */}
             <div className="bg-sport-card border border-sport-border rounded-2xl p-6 flex flex-col items-center gap-4">
-              <ActivityRings rings={rings} size={180} />
+              <ActivityRings rings={rings} size={220} />
               <div className="w-full grid grid-cols-3 gap-2 text-center">
                 {rings.map(r => (
                   <div key={r.label}>
