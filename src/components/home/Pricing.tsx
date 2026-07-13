@@ -144,7 +144,7 @@ export function Pricing() {
                 <ul className="space-y-3 mb-8 flex-1" aria-label={t('featuresAria', { name: tr.name })}>
                   {tr.features.map((feature) => (
                     <li key={feature} className="flex items-start gap-2.5 text-xs text-sport-gray">
-                      <CheckCircle size={14} aria-hidden="true" className={`shrink-0 mt-0.5 ${plan.highlight ? 'text-sport-orange' : 'text-[#1E7F5A]'}`} />
+                      <CheckCircle size={14} aria-hidden="true" className="shrink-0 mt-0.5 text-[#1E7F5A]" />
                       {feature}
                     </li>
                   ))}
