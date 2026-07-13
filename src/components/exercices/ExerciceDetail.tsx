@@ -259,7 +259,7 @@ function NotesCard({ slug, t, locale }: { slug: string; t: ReturnType<typeof use
           <ul className="space-y-2">
             {notes.map((n, i) => (
               <li key={i} className="text-sm text-sport-gray bg-sport-dark border border-sport-border rounded-xl px-4 py-2.5">
-                <span className="block text-[11px] text-sport-gray/70 mb-0.5">{new Date(n.ts).toLocaleDateString(locale)}</span>
+                <span className="block text-[11px] text-sport-gray mb-0.5">{new Date(n.ts).toLocaleDateString(locale)}</span>
                 {n.text}
               </li>
             ))}

@@ -17,7 +17,9 @@ const sizes = {
 type MarkVariant = 'biton' | 'mono-white'
 
 // Marque « X » : 4 segments épais et angulaires (bouts coupés nets), espace négatif au
-// centre. Bi-ton : segments gauche blancs, segments droite orange (#FF6A00).
+// centre. Bi-ton : segments gauche = couleur de premier plan réactive (blanc en sombre,
+// quasi-noir en clair), segments droite orange (#FF6A00). Le bi-ton mono-white garde les
+// deux moitiés blanches fixes (pour un fond toujours sombre/coloré, ex. bandeau photo).
 // SVG pur → reste rendable côté serveur (pas de 'use client').
 export function XenotifMark({
   size = 36,
@@ -28,7 +30,7 @@ export function XenotifMark({
   variant?: MarkVariant
   animated?: boolean
 }) {
-  const left = '#ffffff'
+  const left = variant === 'mono-white' ? '#ffffff' : 'currentColor'
   const right = variant === 'mono-white' ? '#ffffff' : '#FF6A00'
 
   return (
@@ -39,7 +41,7 @@ export function XenotifMark({
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       aria-hidden="true"
-      className={`xeno-mark${animated ? ' xeno-mark--animated' : ''}`}
+      className={`xeno-mark text-sport-fg${animated ? ' xeno-mark--animated' : ''}`}
     >
       {/* 2 segments gauche */}
       <polygon points="49.65,37.63 15.35,3.33 3.33,15.35 37.63,49.65" fill={left} />

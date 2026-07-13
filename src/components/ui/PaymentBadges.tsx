@@ -187,7 +187,7 @@ export function SecurePaymentBar() {
       <PaymentBadgesRow size="md" />
 
       {/* Stripe powered */}
-      <p className="text-[10px] text-sport-gray/60 flex items-center gap-1.5">
+      <p className="text-[10px] text-sport-gray flex items-center gap-1.5">
         <svg viewBox="0 0 60 25" width="36" height="15" aria-label="Stripe" role="img">
           <rect width="60" height="25" rx="4" fill="#635BFF" />
           <text x="10" y="17" fontFamily="Arial" fontWeight="700" fontSize="11" fill="white">stripe</text>
