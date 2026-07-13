@@ -223,7 +223,11 @@ export function getExerciceDetail(slug: string, locale: string): ExerciceDetail 
       videoUrl: MEDIA_OVERRIDES[slug]?.videoUrl ?? fileUrl(`videos/exercises/${slug}.mp4`),
       videoPoster: MEDIA_OVERRIDES[slug]?.videoPoster ?? fileUrl(`videos/exercises/${slug}.jpg`),
       gifUrl: MEDIA_OVERRIDES[slug]?.gifUrl ?? `/gifs/${pat}.gif`,
-      images: MEDIA_OVERRIDES[slug]?.images ?? [1, 2, 3, 4, 5].map((n) => `/steps/${pat}-${n}.jpg`),
+      images:
+        MEDIA_OVERRIDES[slug]?.images ??
+        ([1, 2, 3, 4, 5].map((n) => fileUrl(`steps/${slug}-${n}.jpg`)).every(Boolean)
+          ? [1, 2, 3, 4, 5].map((n) => `/steps/${slug}-${n}.jpg`)
+          : [1, 2, 3, 4, 5].map((n) => `/steps/${pat}-${n}.jpg`)),
     },
   }
 }

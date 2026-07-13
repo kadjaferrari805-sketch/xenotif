@@ -88,6 +88,29 @@ function VideoBlock({ url, poster, t }: { url?: string; poster?: string; t: Retu
   )
 }
 
+// ─── Aperçu en boucle (même vidéo réelle, muette, sans contrôles) ───────────
+function LoopBlock({ url, gifUrl, alt, t }: { url?: string; gifUrl?: string; alt: string; t: ReturnType<typeof useTranslations> }) {
+  const { ref, inView } = useInView({ triggerOnce: true, rootMargin: '200px' })
+  return (
+    <div ref={ref} className="relative w-full aspect-video rounded-2xl overflow-hidden bg-sport-dark border border-sport-border">
+      {url ? (
+        inView && (
+          <video autoPlay muted loop playsInline preload="metadata" className="w-full h-full object-contain">
+            <source src={url} type="video/mp4" />
+          </video>
+        )
+      ) : gifUrl ? (
+        <Image src={gifUrl} alt={alt} fill unoptimized className="object-contain" />
+      ) : (
+        <>
+          <div className="absolute inset-0 animate-pulse bg-white/[0.02]" />
+          <p className="text-sm text-sport-gray relative flex items-center justify-center h-full">{t('gifSoon')}</p>
+        </>
+      )}
+    </div>
+  )
+}
+
 // ─── Coach vocal (Web Speech API) ───────────────────────────────────────────
 function VoiceCoach({ text, locale, t }: { text: string; locale: string; t: ReturnType<typeof useTranslations> }) {
   const [supported, setSupported] = useState(true)
@@ -308,16 +331,7 @@ export function ExerciceDetail({ detail, locale }: { detail: Detail; locale: str
           <VideoBlock url={d.media.videoUrl} poster={d.media.videoPoster} t={t} />
         </Section>
         <Section icon={Play} title={t('sec_gif')}>
-          {d.media.gifUrl ? (
-            <div className="relative w-full aspect-video rounded-2xl overflow-hidden bg-gradient-to-b from-white to-[#e8e8ee] border border-sport-border">
-              <Image src={d.media.gifUrl} alt={d.name} fill unoptimized className="object-contain" />
-            </div>
-          ) : (
-            <div className="relative rounded-2xl overflow-hidden aspect-video bg-gradient-to-br from-sport-dark to-sport-card border border-sport-border flex items-center justify-center">
-              <div className="absolute inset-0 animate-pulse bg-white/[0.02]" />
-              <p className="text-sm text-sport-gray relative">{t('gifSoon')}</p>
-            </div>
-          )}
+          <LoopBlock url={d.media.videoUrl} gifUrl={d.media.gifUrl} alt={d.name} t={t} />
         </Section>
       </div>
 
