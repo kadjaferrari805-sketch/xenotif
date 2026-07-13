@@ -8,12 +8,13 @@ import { ClipboardList, Sparkles, TrendingUp } from 'lucide-react'
 
 // Section « 3 cartes » façon Strava : créative de marque en haut + icône
 // superposée + texte. Images locales dans public/home ; textes →
-// home.featureCards.cards. La carte « coach » utilise le mockup de la vraie
-// app (public/pub/coach-poche-<locale>.webp) plutôt qu'une créative abstraite.
+// home.featureCards.cards. La carte « coach » utilise un recadrage du
+// mockup réel de l'app (juste le téléphone, sans le texte marketing —
+// voir public/pub/coach-poche-<locale>.webp, source non recadrée).
 const CARDS = [
-  { Icon: ClipboardList, img: '/home/feature-programmes.jpg', position: 'object-center' },
-  { Icon: Sparkles, img: null, position: 'object-[70%_28%]' },
-  { Icon: TrendingUp, img: '/home/feature-progression.jpg', position: 'object-center' },
+  { Icon: ClipboardList, img: '/home/feature-programmes.jpg' },
+  { Icon: Sparkles, img: null },
+  { Icon: TrendingUp, img: '/home/feature-progression.jpg' },
 ]
 
 type Card = { title: string; desc: string }
@@ -33,7 +34,7 @@ export function FeatureCards() {
         </div>
 
         <div ref={ref} className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {CARDS.map(({ Icon, img, position }, i) => (
+          {CARDS.map(({ Icon, img }, i) => (
             <motion.div
               key={i}
               initial={{ opacity: 0, y: 24 }}
@@ -43,11 +44,11 @@ export function FeatureCards() {
             >
               <div className="relative aspect-[16/10] w-full">
                 <Image
-                  src={img ?? `/pub/coach-poche-${locale}.webp`}
+                  src={img ?? `/home/feature-coach-${locale}.webp`}
                   alt={cards[i].title}
                   fill
                   sizes="(max-width: 768px) 100vw, 33vw"
-                  className={`object-cover ${position}`}
+                  className="object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-sport-card via-sport-card/25 to-transparent" />
                 <div className="absolute bottom-3 left-3 w-11 h-11 rounded-2xl border border-sport-orange/30 bg-sport-dark/80 backdrop-blur flex items-center justify-center">
