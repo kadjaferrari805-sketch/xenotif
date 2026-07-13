@@ -27,12 +27,16 @@ export function StickyCheckout() {
     >
       <div className="max-w-6xl mx-auto px-4 py-3">
         <div className="flex items-center gap-3">
-          {/* Accroche + réassurance essai gratuit */}
-          <div className="hidden md:flex items-center gap-2.5 shrink-0 mr-1">
-            <XenotifMark size={28} />
+          {/* Accroche + réassurance essai gratuit — sur mobile, logo + accroche
+              masqués (pas la place à côté du bouton Pro + dismiss), seule la
+              réassurance "Sans engagement" reste visible. */}
+          <div className="flex items-center gap-2.5 shrink-0 mr-1">
+            <span className="hidden md:block">
+              <XenotifMark size={28} />
+            </span>
             <div className="leading-tight">
-              <p className="font-black text-sport-fg text-xs">{t('lead')}</p>
-              <p className="flex items-center gap-1 text-[10px] text-[#1E7F5A] font-bold">
+              <p className="hidden md:block font-black text-sport-fg text-xs">{t('lead')}</p>
+              <p className="flex items-center gap-1 text-[10px] text-[#1E7F5A] font-bold whitespace-nowrap">
                 <Zap size={9} aria-hidden="true" /> {t('trial')}
               </p>
             </div>
