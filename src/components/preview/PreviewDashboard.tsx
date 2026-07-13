@@ -32,16 +32,23 @@ export function PreviewDashboard() {
       {/* Bannière aperçu — le lien retour était en absolute left-6 avec le texte
           centré sur toute la largeur : sur mobile les deux se chevauchaient.
           Sous sm : ligne unique, lien retour à gauche / badge à droite (justify-between).
+          Texte plus petit + whitespace-nowrap sous sm : à 12px les deux blocs
+          (~357px) dépassaient la largeur dispo sur un vrai téléphone (~343-358px
+          à 375-390px), ce qui les faisait passer chacun sur 2 lignes.
           À partir de sm : lien en absolute à gauche, badge centré sur toute la largeur. */}
-      <div className="bg-sport-orange/10 border-b border-sport-orange/30 px-4 sm:px-6 py-2.5 flex flex-row items-center justify-between sm:justify-center gap-1.5 sm:gap-0 sm:relative">
+      <div className="bg-sport-orange/10 border-b border-sport-orange/30 px-3 sm:px-6 py-2.5 flex flex-row items-center justify-between sm:justify-center gap-1 sm:gap-0 sm:relative">
         <Link
           href="/"
-          className="sm:absolute sm:left-6 inline-flex items-center gap-1.5 text-xs font-bold text-sport-orange hover:opacity-80 transition-opacity"
+          className="sm:absolute sm:left-6 inline-flex items-center gap-1 sm:gap-1.5 whitespace-nowrap text-[10px] sm:text-xs font-bold text-sport-orange hover:opacity-80 transition-opacity"
         >
-          <ArrowLeft size={13} aria-hidden="true" /> {t('backToHome')}
+          <ArrowLeft size={11} className="sm:hidden" aria-hidden="true" />
+          <ArrowLeft size={13} className="hidden sm:block" aria-hidden="true" />
+          {t('backToHome')}
         </Link>
-        <span className="inline-flex items-center gap-2 text-xs font-bold text-sport-orange">
-          <Eye size={13} aria-hidden="true" /> {t('demoBanner')}
+        <span className="inline-flex items-center gap-1 sm:gap-2 whitespace-nowrap text-[10px] sm:text-xs font-bold text-sport-orange">
+          <Eye size={11} className="sm:hidden" aria-hidden="true" />
+          <Eye size={13} className="hidden sm:block" aria-hidden="true" />
+          {t('demoBanner')}
         </span>
       </div>
 
