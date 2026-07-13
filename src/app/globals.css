@@ -18,6 +18,11 @@
   --color-sport-titane: var(--val-sport-gray);
   /* Texte/halo « premier plan » : blanc en sombre, quasi-noir en clair. */
   --color-sport-fg: var(--val-sport-fg);
+  /* Accent vert du badge promo (ProOfferPill) — le badge repose sur un fond
+     dégradé translucide (emerald/lime/orange) posé sur sport-card/dark : un
+     vert pâle (correct en sombre) devient illisible sur le fond clair très
+     pâle du thème clair, d'où un vert plus saturé/foncé réactif ici. */
+  --color-promo-accent: var(--val-promo-accent);
 }
 
 :root,
@@ -29,6 +34,7 @@
   --val-sport-border: #1E2028;
   --val-sport-gray: #9CA3AF;
   --val-sport-fg: #ffffff;
+  --val-promo-accent: #6ee7b7;
 }
 
 [data-theme="light"] {
@@ -39,6 +45,7 @@
   --val-sport-border: #D3D5DB;
   --val-sport-gray: #24262B;
   --val-sport-fg: #0A0B0F;
+  --val-promo-accent: #047857;
 }
 
 @layer base {
