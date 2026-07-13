@@ -88,17 +88,13 @@ function VideoBlock({ url, poster, t }: { url?: string; poster?: string; t: Retu
   )
 }
 
-// ─── Aperçu en boucle (même vidéo réelle, muette, sans contrôles) ───────────
-function LoopBlock({ url, gifUrl, alt, t }: { url?: string; gifUrl?: string; alt: string; t: ReturnType<typeof useTranslations> }) {
+// ─── Aperçu figé (vraie frame extraite de la vidéo, pas de silhouette) ──────
+function LoopBlock({ photo, gifUrl, alt, t }: { photo?: string; gifUrl?: string; alt: string; t: ReturnType<typeof useTranslations> }) {
   const { ref, inView } = useInView({ triggerOnce: true, rootMargin: '200px' })
   return (
     <div ref={ref} className="relative w-full aspect-video rounded-2xl overflow-hidden bg-sport-dark border border-sport-border">
-      {url ? (
-        inView && (
-          <video autoPlay muted loop playsInline preload="metadata" className="w-full h-full object-contain">
-            <source src={url} type="video/mp4" />
-          </video>
-        )
+      {photo ? (
+        inView && <Image src={photo} alt={alt} fill sizes="(max-width:768px) 90vw, 45vw" className="object-contain" />
       ) : gifUrl ? (
         <Image src={gifUrl} alt={alt} fill unoptimized className="object-contain" />
       ) : (
@@ -331,7 +327,7 @@ export function ExerciceDetail({ detail, locale }: { detail: Detail; locale: str
           <VideoBlock url={d.media.videoUrl} poster={d.media.videoPoster} t={t} />
         </Section>
         <Section icon={Play} title={t('sec_gif')}>
-          <LoopBlock url={d.media.videoUrl} gifUrl={d.media.gifUrl} alt={d.name} t={t} />
+          <LoopBlock photo={d.media.images?.[2] ?? d.media.videoPoster} gifUrl={d.media.gifUrl} alt={d.name} t={t} />
         </Section>
       </div>
 
