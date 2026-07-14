@@ -18,6 +18,11 @@
   --color-sport-titane: var(--val-sport-gray);
   /* Texte/halo « premier plan » : blanc en sombre, quasi-noir en clair. */
   --color-sport-fg: var(--val-sport-fg);
+  /* Tuile photo produit boutique (fond blanc studio des photos Amazon) :
+     blanc fixe en sombre (contraste voulu contre la carte sombre), aligné
+     sur --val-sport-card en clair pour ne jamais se désynchroniser de la
+     carte, quelle que soit la teinte exacte choisie pour celle-ci. */
+  --color-product-tile: var(--val-product-tile);
 }
 
 :root,
@@ -29,6 +34,7 @@
   --val-sport-border: #1E2028;
   --val-sport-gray: #9CA3AF;
   --val-sport-fg: #ffffff;
+  --val-product-tile: #ffffff;
 }
 
 /* Thème clair : la passe "premium" avait éclairci LA PAGE elle-même
@@ -47,6 +53,7 @@
   --val-sport-border: #D3D5DB;
   --val-sport-gray: #24262B;
   --val-sport-fg: #0A0B0F;
+  --val-product-tile: var(--val-sport-card);
 }
 
 @layer base {

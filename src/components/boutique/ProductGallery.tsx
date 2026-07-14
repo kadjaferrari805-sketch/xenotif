@@ -46,7 +46,7 @@ export function ProductGallery({ images, alt, badge, discountLabel, imageFit, im
         onMouseEnter={() => setZoom(true)}
         onMouseLeave={() => setZoom(false)}
         onMouseMove={handleMove}
-        className={`group relative aspect-square overflow-hidden rounded-2xl border border-sport-border cursor-zoom-in ${lightTile ? 'bg-white' : 'bg-sport-card'}`}
+        className={`group relative aspect-square overflow-hidden rounded-2xl border border-sport-border cursor-zoom-in ${lightTile ? 'bg-product-tile' : 'bg-sport-card'}`}
       >
         <Image
           key={active}
@@ -84,7 +84,7 @@ export function ProductGallery({ images, alt, badge, discountLabel, imageFit, im
               onClick={() => setActive(i)}
               onMouseEnter={() => setActive(i)}
               aria-label={`Vue ${i + 1}`}
-              className={`relative h-16 w-16 shrink-0 overflow-hidden rounded-lg border-2 transition-all ${lightTile ? 'bg-white' : ''} ${
+              className={`relative h-16 w-16 shrink-0 overflow-hidden rounded-lg border-2 transition-all ${lightTile ? 'bg-product-tile' : ''} ${
                 i === active ? 'border-sport-orange ring-2 ring-sport-orange/30' : 'border-sport-border hover:border-sport-gray'
               }`}
             >
