@@ -195,7 +195,7 @@ function SignUpForm() {
               }`}
             >
               {plans[i].badge && (
-                <span className="absolute -top-2.5 left-1/2 -translate-x-1/2 text-[9px] font-black bg-emerald-500 text-white px-2 py-0.5 rounded-full whitespace-nowrap">
+                <span className="absolute -top-2.5 left-1/2 -translate-x-1/2 text-[9px] font-black bg-emerald-500 text-white/90 px-2 py-0.5 rounded-full whitespace-nowrap">
                   {plans[i].badge}
                 </span>
               )}
