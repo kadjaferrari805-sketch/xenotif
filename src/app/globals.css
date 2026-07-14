@@ -31,12 +31,20 @@
   --val-sport-fg: #ffffff;
 }
 
+/* Thème clair : passes précédentes de "réduction du blanc" (#F7F7F8→#EDEEF0→
+   #E2E3E7 pour la page, #ffffff→#F7F8FA→#EDEEF1 pour les cartes) avaient fini
+   par rapprocher page et carte au point de les rendre visuellement identiques
+   (delta ~11 sur 255) — plus de hiérarchie d'élévation, rendu "fade"/terne.
+   Rééquilibré vers un motif premium standard (page gris doux, cartes blanches
+   nettes, ex. GitHub/Linear/Stripe) : la carte redevient blanche (--val-
+   sport-card), ce qui élimine aussi la couture visible sur les tuiles produit
+   boutique (bg-white) qui tranchaient contre l'ancien fond de carte grisé. */
 [data-theme="light"] {
-  --background: #E2E3E7;
+  --background: #F1F2F4;
   --foreground: #0A0B0F;
-  --val-sport-dark: #E2E3E7;
-  --val-sport-card: #EDEEF1;
-  --val-sport-border: #D3D5DB;
+  --val-sport-dark: #F1F2F4;
+  --val-sport-card: #FFFFFF;
+  --val-sport-border: #E3E5E8;
   --val-sport-gray: #24262B;
   --val-sport-fg: #0A0B0F;
 }
