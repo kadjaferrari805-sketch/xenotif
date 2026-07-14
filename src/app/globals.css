@@ -37,20 +37,18 @@
   --val-product-tile: #ffffff;
 }
 
-/* Thème clair : la passe "premium" avait éclairci LA PAGE elle-même
-   (#E2E3E7→#F1F2F4) en même temps que la carte, alors que la page domine
-   largement le canevas visible sur mobile (grandes zones de padding entre
-   sections) — d'où la sensation de "encore trop de blanc" malgré la carte
-   assombrie à #F7F8FA juste avant. Page repassée à #E2E3E7 (valeur déjà
-   validée dans une passe précédente), carte gardée à #F7F8FA : delta page/
-   carte ~20/255 (vs ~11 dans l'ancien couple E2E3E7/EDEEF1 qui faisait
-   "fade"), donc hiérarchie toujours nette sans repasser par une page claire. */
+/* Thème clair : plusieurs allers-retours incrémentaux (#F1F2F4/#FFFFFF puis
+   #E2E3E7/#F7F8FA) restaient jugés "encore trop blancs" — palette assombrie
+   plus franchement cette fois plutôt qu'un nouvel ajustement marginal. Page
+   #D8DADE (gris net, plus de ~89% de luminosité comme avant), carte #EEF0F2
+   (delta ~24/255 conservé avec la page pour garder la hiérarchie carte >
+   page qui faisait défaut dans le couple E2E3E7/EDEEF1 jugé "fade"). */
 [data-theme="light"] {
-  --background: #E2E3E7;
+  --background: #D8DADE;
   --foreground: #0A0B0F;
-  --val-sport-dark: #E2E3E7;
-  --val-sport-card: #F7F8FA;
-  --val-sport-border: #D3D5DB;
+  --val-sport-dark: #D8DADE;
+  --val-sport-card: #EEF0F2;
+  --val-sport-border: #C5C8CD;
   --val-sport-gray: #24262B;
   --val-sport-fg: #0A0B0F;
   --val-product-tile: var(--val-sport-card);
