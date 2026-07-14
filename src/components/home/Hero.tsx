@@ -166,9 +166,12 @@ export function Hero() {
       </motion.div>
 
       {/* Dégradés — assombrissement réduit pour laisser voir l'image, renforcé
-          uniquement à gauche/bas (zone du texte). */}
-      <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/20 to-transparent z-[1]" />
-      <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/5 to-transparent z-[1]" />
+          uniquement à gauche/bas (zone du texte). Allégés une nouvelle fois
+          (/60→/50, /55→/45) pour un rendu plus vivant, la vidéo étant déjà
+          bien exposée (brightness-110) et ces dégradés ne couvrant que la
+          zone texte, pas tout le cadre. */}
+      <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-r from-black/50 via-black/15 to-transparent z-[1]" />
+      <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-black/45 via-black/5 to-transparent z-[1]" />
       <div aria-hidden="true" className="absolute bottom-0 left-0 right-0 h-1/4 bg-gradient-to-t from-sport-dark to-transparent z-[1]" />
 
       {/* Main content */}

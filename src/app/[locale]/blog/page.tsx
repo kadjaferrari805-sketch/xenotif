@@ -62,10 +62,10 @@ export default async function BlogPage({
       {/* Hero */}
       <section className="relative overflow-hidden border-b border-sport-border py-20 px-6">
         {/* Image Hero blog : espace d'écriture (laptop + journal + café) → thème blog.
-            Photo source sur bureau blanc — trop claire pour l'esthétique sombre du
-            site (brightness-110 + overlay /45 ne suffisaient pas à la faire lire comme
-            "premium"). Filtre retiré, overlay renforcé à /70 pour un rendu sombre
-            cohérent avec le hero de l'accueil et de la boutique. */}
+            Photo source sur bureau blanc. Overlay /70 (sans filtre) corrigeait le
+            rendu "fond blanc" mais rendait le hero trop sombre/terne à l'usage.
+            Overlay ramené à /55 : la photo reste bien visible/vivante sans repasser
+            par l'aspect plat blanc du réglage d'origine (brightness-110 + /45). */}
         <Image
           src="https://images.pexels.com/photos/6393017/pexels-photo-6393017.jpeg?auto=compress&cs=tinysrgb&w=1600"
           alt=""
@@ -74,8 +74,8 @@ export default async function BlogPage({
           sizes="100vw"
           className="object-cover object-center"
         />
-        <div aria-hidden="true" className="absolute inset-0 bg-sport-dark/70" />
-        <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-b from-sport-dark/50 via-transparent to-sport-dark" />
+        <div aria-hidden="true" className="absolute inset-0 bg-sport-dark/55" />
+        <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-b from-sport-dark/40 via-transparent to-sport-dark" />
         <div
           className="absolute inset-0 opacity-5"
           style={{ backgroundImage: 'radial-gradient(circle at 30% 50%, #FF4500 0%, transparent 50%), radial-gradient(circle at 70% 50%, #A3FF00 0%, transparent 50%)' }}
