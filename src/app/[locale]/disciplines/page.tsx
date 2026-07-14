@@ -55,7 +55,6 @@ export default async function DisciplinesHubPage({ params }: { params: Promise<{
               href={`/disciplines/${d.slug}`}
               className="group bg-sport-card border border-sport-border rounded-2xl p-6 hover:border-sport-orange/50 transition-all hover:-translate-y-0.5 flex items-center gap-4"
             >
-              <span className="text-3xl shrink-0" aria-hidden="true">{d.emoji}</span>
               <span className="flex-1 text-lg font-black group-hover:text-sport-orange transition-colors">{tn(`disc.${d.slug}`)}</span>
               <ArrowRight size={16} aria-hidden="true" className="text-sport-gray group-hover:text-sport-orange transition-colors" />
             </Link>

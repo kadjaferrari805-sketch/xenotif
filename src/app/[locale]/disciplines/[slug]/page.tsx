@@ -243,7 +243,6 @@ export default async function DisciplinePage({ params }: { params: Promise<{ slu
                   className={`rounded-2xl border p-6 ${COLOR_CARD[color]}`}
                 >
                   <div className="flex items-center gap-3 mb-5">
-                    <span className="text-2xl" aria-hidden="true">{section.emoji}</span>
                     <h3 className={`font-black text-base ${COLOR_TEXT[color]}`}>{section.title}</h3>
                   </div>
                   <ul className="space-y-3">
@@ -277,7 +276,6 @@ export default async function DisciplinePage({ params }: { params: Promise<{ slu
                   key={tip.title}
                   className="bg-sport-dark border border-sport-border rounded-2xl p-5 hover:border-sport-border/60 transition-all hover:-translate-y-1 group"
                 >
-                  <span className="text-3xl mb-4 block" aria-hidden="true">{tip.icon}</span>
                   <h3 className={`font-black text-sm mb-2 ${COLOR_TEXT[color]}`}>{tip.title}</h3>
                   <p className="text-xs text-sport-gray leading-relaxed">{tip.body}</p>
                 </div>
