@@ -31,20 +31,20 @@
   --val-sport-fg: #ffffff;
 }
 
-/* Thème clair : passes précédentes de "réduction du blanc" (#F7F7F8→#EDEEF0→
-   #E2E3E7 pour la page, #ffffff→#F7F8FA→#EDEEF1 pour les cartes) avaient fini
-   par rapprocher page et carte au point de les rendre visuellement identiques
-   (delta ~11 sur 255) — plus de hiérarchie d'élévation, rendu "fade"/terne.
-   Rééquilibré vers un motif premium standard (page gris doux, cartes blanches
-   nettes, ex. GitHub/Linear/Stripe) : la carte redevient blanche (--val-
-   sport-card), ce qui élimine aussi la couture visible sur les tuiles produit
-   boutique (bg-white) qui tranchaient contre l'ancien fond de carte grisé. */
+/* Thème clair : la passe "premium" avait éclairci LA PAGE elle-même
+   (#E2E3E7→#F1F2F4) en même temps que la carte, alors que la page domine
+   largement le canevas visible sur mobile (grandes zones de padding entre
+   sections) — d'où la sensation de "encore trop de blanc" malgré la carte
+   assombrie à #F7F8FA juste avant. Page repassée à #E2E3E7 (valeur déjà
+   validée dans une passe précédente), carte gardée à #F7F8FA : delta page/
+   carte ~20/255 (vs ~11 dans l'ancien couple E2E3E7/EDEEF1 qui faisait
+   "fade"), donc hiérarchie toujours nette sans repasser par une page claire. */
 [data-theme="light"] {
-  --background: #F1F2F4;
+  --background: #E2E3E7;
   --foreground: #0A0B0F;
-  --val-sport-dark: #F1F2F4;
-  --val-sport-card: #FFFFFF;
-  --val-sport-border: #E3E5E8;
+  --val-sport-dark: #E2E3E7;
+  --val-sport-card: #F7F8FA;
+  --val-sport-border: #D3D5DB;
   --val-sport-gray: #24262B;
   --val-sport-fg: #0A0B0F;
 }
