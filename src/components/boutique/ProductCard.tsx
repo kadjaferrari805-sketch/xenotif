@@ -51,7 +51,7 @@ export function ProductCard({ product, index = 0, source = 'shop' }: ProductCard
         <a href={product.amazon.affiliateUrl} target="_blank" rel="noopener noreferrer"
           onClick={() => trackProductClick(product, source)}
           className="group block overflow-hidden rounded-2xl border border-sport-border bg-sport-card transition-all duration-300">
-          <div className={`relative isolate h-52 overflow-hidden ${lightTile ? 'bg-product-tile' : 'bg-sport-border/20'}`}>
+          <div className={`relative isolate h-52 overflow-hidden ${lightTile ? 'bg-white' : 'bg-sport-border/20'}`}>
             <Image src={product.images[0] ?? ''} alt={product.name} fill
               className={`${lightTile ? 'object-contain p-3' : 'object-cover'} transition-transform duration-500 group-hover:scale-105`}
               style={product.imagePosition ? { objectPosition: product.imagePosition } : undefined}
@@ -94,7 +94,7 @@ export function ProductCard({ product, index = 0, source = 'shop' }: ProductCard
     <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3, delay: index * 0.05 }}>
       <Tilt3D max={14} className="relative rounded-2xl">
       <div className="group overflow-hidden rounded-2xl border border-sport-border bg-sport-card transition-all duration-300 flex flex-col">
-        <Link href={`/boutique/${product.slug}`} onClick={() => trackProductClick(product, source)} className={`relative block h-52 overflow-hidden ${lightTile ? 'bg-product-tile' : 'bg-sport-border/20'}`}>
+        <Link href={`/boutique/${product.slug}`} onClick={() => trackProductClick(product, source)} className={`relative block h-52 overflow-hidden ${lightTile ? 'bg-white' : 'bg-sport-border/20'}`}>
           <Image src={product.images[0] ?? ''} alt={product.name} fill className={`${lightTile ? 'object-contain p-3' : 'object-cover'} transition-transform duration-500 group-hover:scale-105`}
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw" />
           {product.badge && <span className="absolute top-3 left-3 rounded-full bg-sport-orange px-2.5 py-1 text-xs font-black text-white shadow-lg">{product.badge}</span>}
