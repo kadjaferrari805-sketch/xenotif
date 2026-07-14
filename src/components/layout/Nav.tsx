@@ -136,7 +136,6 @@ export function Nav() {
                             onClick={() => setMenuOpen(false)}
                             className="flex items-center gap-3 rounded-xl px-3 py-2 hover:bg-sport-fg/5 transition-colors group/disc"
                           >
-                            <span className="text-lg w-6 text-center" aria-hidden="true">{d.emoji}</span>
                             <span className="text-sm font-medium text-sport-gray group-hover/disc:text-sport-fg transition-colors">{t(`disc.${d.slug}`)}</span>
                           </Link>
                         ))}
@@ -256,7 +255,7 @@ export function Nav() {
                     <div className="grid grid-cols-2 gap-1">
                       {DISCIPLINES.map((d) => (
                         <Link key={d.slug} href={`/disciplines/${d.slug}`} onClick={() => setIsOpen(false)} className="flex items-center gap-2 rounded-lg px-2 py-2 text-sm text-sport-gray hover:text-sport-fg hover:bg-sport-fg/5 transition-colors">
-                          <span aria-hidden="true">{d.emoji}</span> {t(`disc.${d.slug}`)}
+                          {t(`disc.${d.slug}`)}
                         </Link>
                       ))}
                     </div>
