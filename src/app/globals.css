@@ -495,6 +495,32 @@ html.preloaded #preloader { display: none; }
   html.js-reveal footer [data-reveal]:nth-child(4) { transition-delay: 0.21s; }
 }
 
+/* ── Accordion (Radix) : hauteur pilotée par --radix-accordion-content-height ── */
+@keyframes accordion-down {
+  from { height: 0; }
+  to   { height: var(--radix-accordion-content-height); }
+}
+@keyframes accordion-up {
+  from { height: var(--radix-accordion-content-height); }
+  to   { height: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .accordion-content { animation: none !important; }
+}
+
+/* ── Toast (Radix) ── */
+@keyframes toast-in {
+  from { opacity: 0; transform: translateX(16px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes toast-out {
+  from { opacity: 1; transform: translateX(0); }
+  to   { opacity: 0; transform: translateX(16px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .toast-anim { animation: none !important; }
+}
+
 /* Compteur d'offre qui clignote (badge promo « Pro offert ») */
 @keyframes xeno-blink {
   0%, 55% { opacity: 1; }
