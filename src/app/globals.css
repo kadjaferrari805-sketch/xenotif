@@ -13,7 +13,7 @@
   --color-sport-dark: var(--val-sport-dark);
   --color-sport-card: var(--val-sport-card);
   --color-sport-border: var(--val-sport-border);
-  --color-sport-orange: #FF6A00;
+  --color-sport-orange: #FF6B00;
   /* sport-blue/sport-lime : dépréciés (palette officielle n'a plus de place
      pour un 2e/3e accent) - repointés vers les gris/noir de la nouvelle
      identité plutôt que réécrits sur ~54 fichiers appelants. */
@@ -23,20 +23,23 @@
   --color-sport-titane: var(--val-sport-gray);
   --color-sport-fg: var(--val-sport-fg);
   --color-sport-gray-light: #F5F5F5;
+  /* Gris ardoise "tech" (slate-900) - texte secondaire distinct du gris neutre
+     sport-gray, pour un rendu plus premium/dashboard (v2 refonte). */
+  --color-sport-slate: #111827;
   /* Footer : toujours noir, indépendant de la page (jamais réactif). */
-  --color-footer-bg: #0F0F0F;
+  --color-footer-bg: #000000;
 }
 
 :root {
   --background: #FFFFFF;
-  --foreground: #0F0F0F;
+  --foreground: #000000;
   --val-sport-dark: #FFFFFF;
   --val-sport-card: #FFFFFF;
   --val-sport-border: #D9D9D9;
   --val-sport-gray: #2A2A2A;
-  --val-sport-fg: #0F0F0F;
+  --val-sport-fg: #000000;
   --val-sport-blue: #2A2A2A;
-  --val-sport-lime: #0F0F0F;
+  --val-sport-lime: #000000;
 }
 
 @layer base {
@@ -62,7 +65,7 @@
     left: 1rem;
     z-index: 100;
     padding: 0.75rem 1.5rem;
-    background: #FF6A00;
+    background: #FF6B00;
     color: #ffffff;
     font-weight: 700;
     font-size: 0.875rem;
@@ -76,7 +79,7 @@
 
   /* Global focus-visible for keyboard navigation */
   :focus-visible {
-    outline: 2px solid #FF6A00;
+    outline: 2px solid #FF6B00;
     outline-offset: 2px;
     border-radius: 4px;
   }
@@ -97,12 +100,12 @@
     @apply text-sm text-center leading-relaxed;
     color: var(--color-sport-fg);
   }
-  /* Fond bouton = orange vif de marque #FF6A00, sur demande explicite (rendu
+  /* Fond bouton = orange vif de marque #FF6B00, sur demande explicite (rendu
      plus premium jugé prioritaire sur le contraste ici) - ATTENTION : blanc
-     sur #FF6A00 ne passe pas WCAG AA texte (~2.87:1, sous le seuil 4.5:1).
+     sur #FF6B00 ne passe pas WCAG AA texte (~2.86:1, sous le seuil 4.5:1).
      Écart de contraste assumé/documenté, pas un oubli. */
   .btn-primary {
-    @apply relative overflow-hidden inline-flex items-center justify-center gap-2 bg-sport-orange text-white px-6 py-3.5 rounded-full font-bold text-sm shadow-lg shadow-sport-orange/30 hover:bg-[#E65F00] hover:-translate-y-0.5 hover:shadow-xl hover:shadow-sport-orange/40 active:translate-y-0 active:scale-95 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sport-orange/60 focus-visible:ring-offset-2 focus-visible:ring-offset-sport-dark;
+    @apply relative overflow-hidden inline-flex items-center justify-center gap-2 bg-sport-orange text-white px-6 py-3.5 rounded-full font-bold text-sm shadow-lg shadow-sport-orange/30 hover:bg-[#E66000] hover:-translate-y-0.5 hover:shadow-xl hover:shadow-sport-orange/40 active:translate-y-0 active:scale-95 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sport-orange/60 focus-visible:ring-offset-2 focus-visible:ring-offset-sport-dark;
   }
   .btn-secondary {
     @apply relative overflow-hidden inline-flex items-center justify-center gap-2 bg-white text-sport-fg border-2 border-sport-fg px-6 py-3.5 rounded-full font-bold text-sm shadow-sm hover:bg-sport-fg/5 hover:-translate-y-0.5 hover:shadow-md active:translate-y-0 active:scale-95 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sport-fg/30 focus-visible:ring-offset-2 focus-visible:ring-offset-sport-dark;
@@ -170,7 +173,7 @@
   }
   /* Profondeur 3D subtile sur les titres */
   .text-3d {
-    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.35), 0 3px 8px rgba(0, 0, 0, 0.45), 0 0 28px rgba(255, 106, 0, 0.14);
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.35), 0 3px 8px rgba(0, 0, 0, 0.45), 0 0 28px rgba(255, 107, 0, 0.14);
   }
   /* Halo réactif (couleur du fond de page) pour détacher un texte en couleur
      de premier plan (sport-fg, réactif) d'une photo derrière lui - un simple
@@ -236,7 +239,7 @@
 .glow-orange {
   position: absolute;
   border-radius: 9999px;
-  background: radial-gradient(circle, rgba(255, 106, 0, 0.35) 0%, rgba(255, 106, 0, 0) 70%);
+  background: radial-gradient(circle, rgba(255, 107, 0, 0.35) 0%, rgba(255, 107, 0, 0) 70%);
   filter: blur(60px);
   pointer-events: none;
   animation: glow-drift 9s ease-in-out infinite;
@@ -244,7 +247,7 @@
 .glow-orange-soft {
   position: absolute;
   border-radius: 9999px;
-  background: radial-gradient(circle, rgba(255, 106, 0, 0.18) 0%, rgba(255, 106, 0, 0) 70%);
+  background: radial-gradient(circle, rgba(255, 107, 0, 0.18) 0%, rgba(255, 107, 0, 0) 70%);
   filter: blur(80px);
   pointer-events: none;
   animation: glow-drift 12s ease-in-out infinite reverse;
@@ -305,7 +308,7 @@
   /* Survol du lien logo (header) : léger lift + glow orange. */
   a:hover .xeno-mark {
     transform: translateY(-1px);
-    filter: drop-shadow(0 2px 10px rgba(255, 106, 0, 0.5));
+    filter: drop-shadow(0 2px 10px rgba(255, 107, 0, 0.5));
   }
 }
 
@@ -314,9 +317,9 @@
   to   { opacity: 1; transform: none; }
 }
 @keyframes xeno-pulse {
-  0%   { filter: drop-shadow(0 0 0 rgba(255, 106, 0, 0)); }
-  40%  { filter: drop-shadow(0 0 12px rgba(255, 106, 0, 0.55)); }
-  100% { filter: drop-shadow(0 0 0 rgba(255, 106, 0, 0)); }
+  0%   { filter: drop-shadow(0 0 0 rgba(255, 107, 0, 0)); }
+  40%  { filter: drop-shadow(0 0 12px rgba(255, 107, 0, 0.55)); }
+  100% { filter: drop-shadow(0 0 0 rgba(255, 107, 0, 0)); }
 }
 
 /* ===== Visuel pub Coach - rendu 3D (perspective + profondeur) ===== */
@@ -334,7 +337,7 @@
 /* Au survol : l'image se redresse et avance vers le visiteur. */
 .coach-3d-wrap:hover .coach-3d {
   transform: rotateY(-6deg) rotateX(2deg) scale(1.02);
-  box-shadow: -20px 24px 70px -20px rgba(255, 106, 0, .35);
+  box-shadow: -20px 24px 70px -20px rgba(255, 107, 0, .35);
 }
 @keyframes coach-float {
   0%, 100% { translate: 0 0; }
@@ -405,7 +408,7 @@ html.preloaded #preloader { display: none; }
   width: 340px;
   height: 340px;
   border-radius: 9999px;
-  background: rgba(255, 106, 0, 0.18);
+  background: rgba(255, 107, 0, 0.18);
   filter: blur(120px);
   animation: pl-glow 1s ease-out both;
 }

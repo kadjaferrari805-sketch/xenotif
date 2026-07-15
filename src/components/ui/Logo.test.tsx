@@ -8,14 +8,14 @@ describe('XenotifMark', () => {
     expect(container.querySelectorAll('polygon')).toHaveLength(4)
   })
 
-  it('utilise l’orange de marque (#FF6A00) pour les segments droite en bi-ton', () => {
+  it('utilise l’orange de marque (#FF6B00) pour les segments droite en bi-ton', () => {
     const { container } = render(<XenotifMark variant="biton" />)
-    expect(container.innerHTML).toContain('#FF6A00')
+    expect(container.innerHTML).toContain('#FF6B00')
   })
 
   it('n’utilise pas d’orange en mono-white', () => {
     const { container } = render(<XenotifMark variant="mono-white" />)
-    expect(container.innerHTML).not.toContain('#FF6A00')
+    expect(container.innerHTML).not.toContain('#FF6B00')
   })
 
   it('ajoute la classe d’animation quand animated', () => {

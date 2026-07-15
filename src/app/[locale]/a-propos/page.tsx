@@ -46,7 +46,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
         <div
           aria-hidden="true"
           className="absolute inset-0 opacity-5"
-          style={{ backgroundImage: 'radial-gradient(circle at 50% 50%, #FF6A00 0%, transparent 50%)' }}
+          style={{ backgroundImage: 'radial-gradient(circle at 50% 50%, #FF6B00 0%, transparent 50%)' }}
         />
         <div className="relative max-w-3xl mx-auto text-center">
           <span className="inline-block text-sport-orange font-bold text-sm uppercase tracking-widest mb-4">

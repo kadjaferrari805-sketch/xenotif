@@ -71,7 +71,7 @@ export function PreviewDashboard() {
           </div>
           <div className="bg-sport-card border border-sport-border rounded-2xl p-6">
             <h3 className="text-sm font-black mb-4">{t('weekActivity')}</h3>
-            <WeeklyChart data={PREVIEW.weekly.map(d => ({ ...d }))} metric="steps" color="#FF6A00" />
+            <WeeklyChart data={PREVIEW.weekly.map(d => ({ ...d }))} metric="steps" color="#FF6B00" />
           </div>
         </motion.div>
 

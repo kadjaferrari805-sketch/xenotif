@@ -83,7 +83,7 @@ export default function BoutiquePage() {
            que Hero.tsx), pas inset-0 complet (rendait la photo invisible en
            s'empilant avec la teinte /35 ci-dessus). */}
         <div aria-hidden="true" className="absolute bottom-0 left-0 right-0 h-1/4 bg-gradient-to-b from-transparent to-sport-dark" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(255,106,0,0.15),transparent)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(255,107,0,0.15),transparent)]" />
         <div aria-hidden="true" className="glow-orange-soft top-10 right-10 h-72 w-72" />
 
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6">

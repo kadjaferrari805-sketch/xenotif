@@ -64,7 +64,7 @@ function Zones({ zones, primary, secondary }: { zones: Zone[]; primary: Set<stri
         const isP = primary.has(z.id)
         const isS = !isP && secondary.has(z.id)
         if (z.rx < 1) return null
-        const fill = isP ? '#FF6A00' : isS ? 'rgba(255,106,0,0.38)' : 'rgba(255,255,255,0.06)'
+        const fill = isP ? '#FF6B00' : isS ? 'rgba(255,107,0,0.38)' : 'rgba(255,255,255,0.06)'
         return (
           <ellipse
             key={i}

@@ -21,7 +21,7 @@ type MarkVariant = 'biton' | 'mono-white'
 
 // Marque « X » : 4 segments épais et angulaires (bouts coupés nets), espace négatif au
 // centre. Bi-ton : segments gauche = couleur de premier plan réactive (blanc en sombre,
-// quasi-noir en clair), segments droite orange (#FF6A00). Le bi-ton mono-white garde les
+// quasi-noir en clair), segments droite orange (#FF6B00). Le bi-ton mono-white garde les
 // deux moitiés blanches fixes (pour un fond toujours sombre/coloré, ex. bandeau photo).
 // SVG pur → reste rendable côté serveur (pas de 'use client').
 export function XenotifMark({
@@ -38,7 +38,7 @@ export function XenotifMark({
   light?: boolean
 }) {
   const left = variant === 'mono-white' ? '#ffffff' : 'currentColor'
-  const right = variant === 'mono-white' ? '#ffffff' : '#FF6A00'
+  const right = variant === 'mono-white' ? '#ffffff' : '#FF6B00'
 
   return (
     <svg

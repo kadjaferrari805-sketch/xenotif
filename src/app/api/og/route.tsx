@@ -13,10 +13,10 @@ const orbitron = readFileSync(join(process.cwd(), 'src/app/_assets/Orbitron-Extr
 // Marque embarquée en data-URI (symbole X, 4 segments, sans texte → rendu fiable).
 const MARK =
   '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="180" height="180">' +
-  '<polygon points="49.65,37.63 15.35,3.33 3.33,15.35 37.63,49.65" fill="#0F0F0F"/>' +
-  '<polygon points="37.63,50.35 3.33,84.65 15.35,96.67 49.65,62.37" fill="#0F0F0F"/>' +
-  '<polygon points="62.37,49.65 96.67,15.35 84.65,3.33 50.35,37.63" fill="#FF6A00"/>' +
-  '<polygon points="50.35,62.37 84.65,96.67 96.67,84.65 62.37,50.35" fill="#FF6A00"/></svg>'
+  '<polygon points="49.65,37.63 15.35,3.33 3.33,15.35 37.63,49.65" fill="#000000"/>' +
+  '<polygon points="37.63,50.35 3.33,84.65 15.35,96.67 49.65,62.37" fill="#000000"/>' +
+  '<polygon points="62.37,49.65 96.67,15.35 84.65,3.33 50.35,37.63" fill="#FF6B00"/>' +
+  '<polygon points="50.35,62.37 84.65,96.67 96.67,84.65 62.37,50.35" fill="#FF6B00"/></svg>'
 const markSrc = `data:image/svg+xml;base64,${Buffer.from(MARK).toString('base64')}`
 
 export function GET() {
@@ -43,12 +43,12 @@ export function GET() {
             fontFamily: 'Orbitron',
             fontWeight: 800,
             fontSize: 96,
-            color: '#0F0F0F',
+            color: '#000000',
             letterSpacing: 2,
           }}
         >
           XENOTIF
-          <span style={{ fontSize: 36, color: '#FF6A00', marginLeft: 6 }}>®</span>
+          <span style={{ fontSize: 36, color: '#FF6B00', marginLeft: 6 }}>®</span>
         </div>
         <div
           style={{

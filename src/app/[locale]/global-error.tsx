@@ -3,7 +3,7 @@
 export default function GlobalError({ reset }: { reset: () => void }) {
   return (
     <html lang="fr">
-      <body style={{ background: '#FFFFFF', color: '#0F0F0F', fontFamily: 'system-ui', display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '100vh', margin: 0, textAlign: 'center', padding: '0 16px' }}>
+      <body style={{ background: '#FFFFFF', color: '#000000', fontFamily: 'system-ui', display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '100vh', margin: 0, textAlign: 'center', padding: '0 16px' }}>
         <div>
           <div style={{ fontSize: 64, marginBottom: 24 }}>⚠️</div>
           <h1 style={{ fontSize: 24, fontWeight: 900, marginBottom: 8 }}>Erreur critique</h1>
@@ -12,7 +12,7 @@ export default function GlobalError({ reset }: { reset: () => void }) {
           </p>
           <button
             onClick={reset}
-            style={{ background: '#FF6A00', color: '#fff', border: 'none', borderRadius: 12, padding: '12px 24px', fontWeight: 700, fontSize: 14, cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: 8 }}
+            style={{ background: '#FF6B00', color: '#fff', border: 'none', borderRadius: 12, padding: '12px 24px', fontWeight: 700, fontSize: 14, cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: 8 }}
           >
             🔄 Réessayer
           </button>

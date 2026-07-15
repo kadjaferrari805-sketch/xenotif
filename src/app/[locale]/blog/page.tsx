@@ -82,7 +82,7 @@ export default async function BlogPage({
         <div aria-hidden="true" className="absolute bottom-0 left-0 right-0 h-1/4 bg-gradient-to-b from-transparent to-sport-dark" />
         <div
           className="absolute inset-0 opacity-5"
-          style={{ backgroundImage: 'radial-gradient(circle at 50% 50%, #FF6A00 0%, transparent 50%)' }}
+          style={{ backgroundImage: 'radial-gradient(circle at 50% 50%, #FF6B00 0%, transparent 50%)' }}
         />
         <div aria-hidden="true" className="glow-orange-soft top-10 left-10 h-72 w-72" />
         <div className="relative max-w-4xl mx-auto text-center">
