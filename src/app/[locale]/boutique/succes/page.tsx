@@ -6,6 +6,8 @@ import { CheckCircle, Download, Package, ArrowRight } from 'lucide-react'
 import { getProductByIdLocalized } from '@/lib/boutique/products.en'
 import { MetaTrack } from '@/components/analytics/MetaTrack'
 import { GtagPurchase } from '@/components/analytics/GtagPurchase'
+import { Card } from '@/components/ui/Card'
+import { Button } from '@/components/ui/Button'
 
 export const dynamic = 'force-dynamic'
 
@@ -117,7 +119,7 @@ export default async function BoutiqueSuccesPage({
           </div>
         )}
 
-        <div className="card-base p-6 mb-6 text-left">
+        <Card className="p-6 mb-6 text-left hover:-translate-y-0 hover:shadow-sm">
           <h2 className="mb-4 font-black text-sport-fg">{t('whatNow')}</h2>
           <ul className="space-y-3">
             <li className="flex items-start gap-3 text-sm">
@@ -133,12 +135,12 @@ export default async function BoutiqueSuccesPage({
               </span>
             </li>
           </ul>
-        </div>
+        </Card>
 
         <div className="flex flex-col gap-3">
-          <Link href="/boutique" className="inline-flex items-center justify-center gap-2 rounded-2xl bg-sport-orange px-6 py-3.5 font-bold text-white hover:bg-orange-600 transition-all">
-            {t('continueShopping')} <ArrowRight size={16} />
-          </Link>
+          <Button asChild className="w-full">
+            <Link href="/boutique">{t('continueShopping')} <ArrowRight size={16} /></Link>
+          </Button>
           <Link href="/dashboard" className="text-sm font-semibold text-sport-gray hover:text-sport-fg transition-colors">
             {t('goDashboard')}
           </Link>

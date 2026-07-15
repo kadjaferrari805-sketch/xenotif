@@ -7,6 +7,10 @@ import { useCart } from '@/lib/boutique/cart'
 import { formatPrice } from '@/lib/boutique/products'
 import { useState } from 'react'
 import { trackMeta } from '@/lib/meta-pixel'
+import { Input } from '@/components/ui/Input'
+import { Alert } from '@/components/ui/Alert'
+import { Button } from '@/components/ui/Button'
+import { Loader } from '@/components/ui/Loader'
 
 export default function PanierPage() {
   const t = useTranslations('boutique.panier')
@@ -191,29 +195,23 @@ export default function PanierPage() {
 
                 {/* Email - relance panier + reçu */}
                 <div className="mb-3">
-                  <input
+                  <Input
                     type="email"
                     value={email}
                     onChange={e => setEmail(e.target.value)}
                     onBlur={() => void saveCartForRecovery()}
                     placeholder={t('emailPlaceholder')}
-                    className="w-full rounded-xl border border-sport-border bg-sport-dark px-3 py-2.5 text-sm text-sport-fg placeholder:text-sport-gray focus:outline-none focus:border-sport-orange transition-colors"
                   />
                 </div>
 
-                {error && (
-                  <div className="mb-3 rounded-xl border border-red-200 bg-red-50 px-3 py-2 text-xs text-red-600">
-                    ⚠️ {error}
-                  </div>
-                )}
+                {error && <Alert variant="error" className="mb-3">{error}</Alert>}
 
-                <button onClick={checkout} disabled={loading}
-                  className="w-full flex items-center justify-center gap-2 rounded-2xl bg-sport-orange py-4 font-bold text-white hover:bg-orange-600 transition-all disabled:opacity-60 hover:shadow-[0_0_20px_rgba(255,69,0,0.4)]">
+                <Button onClick={checkout} disabled={loading} className="w-full">
                   {loading
-                    ? <><span className="h-4 w-4 animate-spin rounded-full border-2 border-white/30 border-t-white" /> {t('redirecting')}</>
+                    ? <><Loader size={16} className="text-white" iconClassName="text-white" /> {t('redirecting')}</>
                     : <><Lock size={14} /> {t('payNow')}</>
                   }
-                </button>
+                </Button>
                 <div className="mt-3 flex flex-wrap justify-center gap-3 text-[10px] text-sport-gray">
                   {(t.raw('payTrust') as string[]).map((s) => <span key={s}>{s}</span>)}
                 </div>
