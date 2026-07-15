@@ -1,11 +1,15 @@
 import type { Metadata } from 'next'
 import { setRequestLocale, getTranslations } from 'next-intl/server'
-import { routing } from '@/i18n/routing'
 import { PreviewDashboard } from '@/components/preview/PreviewDashboard'
 
-export function generateStaticParams() {
-  return routing.locales.map((locale) => ({ locale }))
-}
+// Rendu à la demande (pas de generateStaticParams) : cette page a le plus
+// gros arbre de composants clients du site (anneaux SVG, graphiques,
+// plusieurs animations framer-motion) et s'est révélée sujette à un échec
+// silencieux de la génération statique - le build réussit mais fige la page
+// sur son état "Chargement..." au lieu du contenu réel (reproduit localement,
+// intermittent, cause probable Turbopack). En dynamique, chaque requête est
+// rendue à neuf côté serveur - immunisé contre ce mode d'échec.
+export const dynamic = 'force-dynamic'
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params
