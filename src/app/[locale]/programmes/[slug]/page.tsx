@@ -2,7 +2,7 @@ import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 import { getTranslations } from 'next-intl/server'
 import { Link } from '@/i18n/navigation'
-import { ArrowRight, CheckCircle, ChevronDown, Lock, Zap } from 'lucide-react'
+import { ArrowLeft, ArrowRight, CheckCircle, ChevronDown, Lock, Zap } from 'lucide-react'
 import { getLocalizedProgram, programSlugs, localesForProgram } from '@/lib/programs/registry'
 import { GuideBlocks } from '@/components/programs/GuideBlocks'
 
@@ -90,6 +90,9 @@ export default async function ProgramPage({ params }: { params: Promise<{ slug: 
 
       <section className="relative overflow-hidden border-b border-sport-border bg-gradient-to-br from-sport-orange/15 via-sport-dark to-sport-dark">
         <div className="max-w-3xl mx-auto px-6 py-16 md:py-20">
+          <Link href="/programmes" className="inline-flex items-center gap-1.5 text-xs font-bold text-sport-gray hover:text-sport-fg transition-colors mb-6">
+            <ArrowLeft size={13} aria-hidden="true" /> {t('backToHub')}
+          </Link>
           <p className="text-[11px] font-bold tracking-[2px] uppercase text-sport-orange mb-3">{t('eyebrow')}</p>
           <h1 className="text-4xl md:text-5xl font-black leading-tight mb-4">{program.title}</h1>
           <p className="text-lg text-sport-gray leading-relaxed mb-6">{program.subtitle}</p>
