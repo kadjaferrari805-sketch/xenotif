@@ -6,6 +6,9 @@ interface LogoProps {
   className?: string
   showText?: boolean
   animated?: boolean
+  /** Fond toujours sombre (ex. footer, noir fixe) : marque + wordmark en blanc fixe
+      plutôt que text-sport-fg (réactif, devenu noir - invisible sur fond noir). */
+  light?: boolean
 }
 
 const sizes = {
@@ -25,10 +28,14 @@ export function XenotifMark({
   size = 36,
   variant = 'biton',
   animated = false,
+  light = false,
 }: {
   size?: number
   variant?: MarkVariant
   animated?: boolean
+  /** Fond toujours sombre (footer) : moitié réactive en blanc fixe au lieu de
+      text-sport-fg (devenu noir). L'orange reste inchangé. */
+  light?: boolean
 }) {
   const left = variant === 'mono-white' ? '#ffffff' : 'currentColor'
   const right = variant === 'mono-white' ? '#ffffff' : '#FF6A00'
@@ -41,7 +48,7 @@ export function XenotifMark({
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       aria-hidden="true"
-      className={`xeno-mark text-sport-fg${animated ? ' xeno-mark--animated' : ''}`}
+      className={`xeno-mark ${light ? 'text-white' : 'text-sport-fg'}${animated ? ' xeno-mark--animated' : ''}`}
     >
       {/* 2 segments gauche */}
       <polygon points="49.65,37.63 15.35,3.33 3.33,15.35 37.63,49.65" fill={left} />
@@ -54,10 +61,10 @@ export function XenotifMark({
 }
 
 // Wordmark : XENOTIF en Orbitron, ® orange. « XENOTIF » reste un nœud texte distinct.
-export function XenotifWordmark({ className = '' }: { className?: string }) {
+export function XenotifWordmark({ className = '', light = false }: { className?: string; light?: boolean }) {
   return (
     <span
-      className={`font-[family-name:var(--font-orbitron)] font-extrabold tracking-[0.02em] uppercase text-sport-fg ${className}`}
+      className={`font-[family-name:var(--font-orbitron)] font-extrabold tracking-[0.02em] uppercase ${light ? 'text-white' : 'text-sport-fg'} ${className}`}
     >
       XENOTIF
       <sup className="align-super text-[0.5em] text-sport-orange ml-[0.06em]">®</sup>
@@ -72,13 +79,14 @@ export function Logo({
   className = '',
   showText = true,
   animated = false,
+  light = false,
 }: LogoProps) {
   const { mark, text, gap } = sizes[size]
 
   const inner = (
     <span className={`flex items-center ${gap} ${className}`}>
-      <XenotifMark size={mark} animated={animated} />
-      {showText && <XenotifWordmark className={text} />}
+      <XenotifMark size={mark} animated={animated} light={light} />
+      {showText && <XenotifWordmark className={text} light={light} />}
     </span>
   )
 

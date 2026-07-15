@@ -134,7 +134,7 @@ export function Footer() {
           {/* Brand */}
           <div data-reveal className="md:col-span-2">
             <div className="mb-5">
-              <Logo href="/" size="sm" />
+              <Logo href="/" size="sm" light />
             </div>
             <p className="text-xs text-white/60 leading-relaxed mb-6">
               {t('tagline')}
