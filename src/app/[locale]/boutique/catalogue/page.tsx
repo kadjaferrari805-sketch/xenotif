@@ -14,7 +14,11 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     'x-default': `${SITE}/boutique/catalogue`,
   }
   return {
-    title: t('catalogue.metaTitle'),
+    // `absolute` : metaTitle contient déjà "Xenotif®" - le template racine
+    // (`%s | Xenotif®`) dupliquerait la marque sans ce garde (trouvé en
+    // vérification live : même bug pré-existant sur a-propos/coaching/
+    // communaute/nutrition, corrigé partout dans le même commit).
+    title: { absolute: t('catalogue.metaTitle') },
     description: t('catalogue.metaDescription'),
     alternates: { canonical: languages[locale] ?? languages.fr, languages },
     openGraph: {

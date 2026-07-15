@@ -18,7 +18,9 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     'x-default': `${SITE}/a-propos`,
   }
   return {
-    title: t('metaTitle'),
+    // `absolute` : metaTitle contient déjà "- Xenotif®" - le template racine
+    // (`%s | Xenotif®`) dupliquerait la marque sans ce garde.
+    title: { absolute: t('metaTitle') },
     description: t('metaDescription'),
     alternates: { canonical: languages[locale] ?? languages.fr, languages },
     openGraph: {
