@@ -1,19 +1,19 @@
 import type { Guide } from '@/lib/boutique/guides'
 
-// Mass Gain Program — 12 weeks (EN mirror of prise-de-masse-12s.ts).
+// Mass Gain Program - 12 weeks (EN mirror of prise-de-masse-12s.ts).
 // Same structure; only the text is translated. ≈ 30 pages.
 export const priseDeMasse12sEn: Guide = {
   id: 'd1',
-  title: 'Mass Gain Program — 12 Weeks',
+  title: 'Mass Gain Program - 12 Weeks',
   subtitle: '4-day split, guided load progression, nutrition plan + macros',
-  author: 'XENOTIF Coach — Certified strength & conditioning and nutrition',
+  author: 'XENOTIF Coach - Certified strength & conditioning and nutrition',
   level: 'Beginner - Intermediate',
   duration: '12 weeks · 4 sessions/week · 84 sessions',
   coverImage: 'masse-cover.jpg',
   blocks: [
     { type: 'h1', text: 'Welcome to your mass-gain plan' },
-    { type: 'p', text: `12 weeks to transform your physique: more muscle, more strength, a denser silhouette. No "dirty" bulk that just makes you fat — here you build quality muscle through three levers: a slight caloric surplus, progressive overload in training, and careful recovery.` },
-    { type: 'p', text: `Keep this guide on your phone: every exercise has a QR code that opens its demo video. Follow the plan, log your loads, eat enough — and the muscle will follow.` },
+    { type: 'p', text: `12 weeks to transform your physique: more muscle, more strength, a denser silhouette. No "dirty" bulk that just makes you fat - here you build quality muscle through three levers: a slight caloric surplus, progressive overload in training, and careful recovery.` },
+    { type: 'p', text: `Keep this guide on your phone: every exercise has a QR code that opens its demo video. Follow the plan, log your loads, eat enough - and the muscle will follow.` },
     { type: 'meta', items: [
       { label: 'Goal', value: 'Gain 2 to 5 kg of muscle' },
       { label: 'Level', value: 'Beginner to intermediate' },
@@ -98,14 +98,14 @@ export const priseDeMasse12sEn: Guide = {
     { type: 'h2', text: 'Understanding your macros' },
     { type: 'p', text: `You don't need to weigh everything, but understanding the role of each macronutrient helps you build better mass-gain plates.` },
     { type: 'table', headers: ['Macro', 'Role', 'Per g', 'Priority for mass'], rows: [
-      ['Protein', 'Builds muscle', '4 kcal', 'HIGH — 1.8-2.2 g/kg'],
-      ['Carbs', 'Energy & muscle volume', '4 kcal', 'HIGH — around sessions'],
-      ['Fats', 'Hormones (testosterone)', '9 kcal', 'Moderate — 0.8-1 g/kg'],
+      ['Protein', 'Builds muscle', '4 kcal', 'HIGH - 1.8-2.2 g/kg'],
+      ['Carbs', 'Energy & muscle volume', '4 kcal', 'HIGH - around sessions'],
+      ['Fats', 'Hormones (testosterone)', '9 kcal', 'Moderate - 0.8-1 g/kg'],
     ] },
     { type: 'list', items: [
       `Protein: the building block. Without it, no construction, whatever else you do.`,
       `Carbs: your training fuel and the muscle's "volume" (glycogen).`,
-      `Fats: never go too low — they support your anabolic hormones.`,
+      `Fats: never go too low - they support your anabolic hormones.`,
     ] },
 
     { type: 'h1', text: 'Mass-gain recipes' },
@@ -189,21 +189,21 @@ export const priseDeMasse12sEn: Guide = {
 
     { type: 'h1', text: '12-week calendar' },
     { type: 'p', text: `Three progressive phases. Keep the same Upper/Lower split each week, but evolve reps and loads according to the phase.` },
-    { type: 'h2', text: 'Phase 1 — Adaptation & volume (W1 to W4)' },
+    { type: 'h2', text: 'Phase 1 - Adaptation & volume (W1 to W4)' },
     { type: 'table', headers: ['Week', 'Reps', 'Intensity', 'Note'], rows: [
       ['W1', '12 to 15', 'RPE 7', 'Technique first'],
       ['W2', '12 to 15', 'RPE 7-8', '+1 rep / set'],
       ['W3', '12 to 15', 'RPE 8', '+ light load'],
       ['W4', '12 to 15', 'RPE 8', 'Beat your W1 numbers'],
     ] },
-    { type: 'h2', text: 'Phase 2 — Hypertrophy (W5 to W8)' },
+    { type: 'h2', text: 'Phase 2 - Hypertrophy (W5 to W8)' },
     { type: 'table', headers: ['Week', 'Reps', 'Intensity', 'Note'], rows: [
       ['W5', '8 to 12', 'RPE 8', 'Increase the loads'],
       ['W6', '8 to 12', 'RPE 8', 'Light deload end of week'],
       ['W7', '8 to 12', 'RPE 8-9', '+ load'],
       ['W8', '8 to 12', 'RPE 9', 'Sets close to failure'],
     ] },
-    { type: 'h2', text: 'Phase 3 — Strength & density (W9 to W12)' },
+    { type: 'h2', text: 'Phase 3 - Strength & density (W9 to W12)' },
     { type: 'table', headers: ['Week', 'Reps', 'Intensity', 'Note'], rows: [
       ['W9', '6 to 8', 'RPE 8', 'Heavy loads, long rests'],
       ['W10', '6 to 8', 'RPE 8-9', '+ load'],
@@ -283,7 +283,7 @@ export const priseDeMasse12sEn: Guide = {
     { type: 'h2', text: "I'm a beginner, is this program for me?" },
     { type: 'p', text: `Yes. Start light to master the technique (use the bodyweight variations if needed), then add load progressively. Beginners progress very fast in the first months.` },
     { type: 'h2', text: 'Will I gain fat?' },
-    { type: 'p', text: `A little — that's normal and necessary to build muscle. With a moderate surplus (200-400 kcal) and plenty of protein, the gain stays mostly muscular.` },
+    { type: 'p', text: `A little - that's normal and necessary to build muscle. With a moderate surplus (200-400 kcal) and plenty of protein, the gain stays mostly muscular.` },
     { type: 'h2', text: 'Can I do it at home?' },
     { type: 'p', text: `Yes, with adjustable dumbbells and a barbell. Otherwise, swap in the bodyweight variations (weighted push-ups, lunges, pull-ups, dips) aiming for clean failure.` },
     { type: 'h2', text: 'Do I need supplements?' },
@@ -293,7 +293,7 @@ export const priseDeMasse12sEn: Guide = {
     { type: 'h2', text: 'Should I train to failure?' },
     { type: 'p', text: `Not on every set: keep 1 to 2 reps in reserve on most sets (RPE 8). Save failure for the last set of an isolation exercise. Always going to failure fatigues the nervous system and slows recovery.` },
     { type: 'h2', text: 'What if I miss a session?' },
-    { type: 'p', text: `Just pick up at the next scheduled session, don't try to make everything up. Over 12 weeks, one missed session changes nothing — quitting does.` },
+    { type: 'p', text: `Just pick up at the next scheduled session, don't try to make everything up. Over 12 weeks, one missed session changes nothing - quitting does.` },
     { type: 'h2', text: "I'm a 'hardgainer', I don't gain. What do I do?" },
     { type: 'p', text: `In 95% of cases, you eat less than you think. Increase portions, add a liquid shake between meals, and weigh yourself: if the scale doesn't move over 2 weeks, add 200 kcal.` },
 
@@ -302,7 +302,7 @@ export const priseDeMasse12sEn: Guide = {
     { type: 'list', items: [
       `Aim for 7 to 9 h of sleep: most muscle recovery happens at night.`,
       `Go to bed at a regular time; cut screens 30 min before.`,
-      `Chronic stress raises cortisol, which hampers muscle gain — learn to unwind.`,
+      `Chronic stress raises cortisol, which hampers muscle gain - learn to unwind.`,
       `Avoid excess alcohol: it disrupts sleep and protein synthesis.`,
       `Get morning daylight to set your internal clock.`,
     ] },
@@ -329,7 +329,7 @@ export const priseDeMasse12sEn: Guide = {
     ] },
 
     { type: 'h1', text: 'Supplements' },
-    { type: 'p', text: `None are mandatory — food comes first. But a few supplements have real, science-backed value.` },
+    { type: 'p', text: `None are mandatory - food comes first. But a few supplements have real, science-backed value.` },
     { type: 'table', headers: ['Supplement', 'Benefit', 'Dose'], rows: [
       ['Creatine monohydrate', 'Strength, volume, the most studied', '3 to 5 g / day'],
       ['Whey', 'Hit your protein easily', '1 to 2 scoops / day'],
@@ -340,13 +340,13 @@ export const priseDeMasse12sEn: Guide = {
 
     { type: 'h1', text: 'And after your 12 weeks?' },
     { type: 'p', text: `You've built muscle: now it's about keeping it and continuing to progress. Two options depending on your goal.` },
-    { type: 'h2', text: 'Option 1 — Reveal the muscle (cut)' },
+    { type: 'h2', text: 'Option 1 - Reveal the muscle (cut)' },
     { type: 'list', items: [
       `Move into a slight deficit (−300 to −500 kcal) to melt the fat gained during the bulk.`,
       `Keep protein high and strength training to preserve the muscle.`,
       `Follow up with the Weight Loss program to reveal your definition.`,
     ] },
-    { type: 'h2', text: 'Option 2 — Keep building' },
+    { type: 'h2', text: 'Option 2 - Keep building' },
     { type: 'list', items: [
       `Take a deload week, then start a new cycle with heavier loads.`,
       `Change a few exercises to vary the stimulus and avoid routine.`,

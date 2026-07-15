@@ -9,7 +9,7 @@ const ThemeContext = createContext<{ theme: Theme; toggleTheme: () => void } | n
 const STORAGE_KEY = 'xeno_theme'
 
 // Lit le thème déjà posé sur <html> par le script anti-flash du layout (avant
-// hydratation) — évite un flash au premier rendu client.
+// hydratation) - évite un flash au premier rendu client.
 function readInitialTheme(): Theme {
   if (typeof document === 'undefined') return 'dark'
   return document.documentElement.dataset.theme === 'light' ? 'light' : 'dark'

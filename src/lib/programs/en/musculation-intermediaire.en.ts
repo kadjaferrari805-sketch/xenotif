@@ -7,13 +7,13 @@ export const musculationIntermediaireEn: Guide = {
   id: 'musculation-intermediaire',
   title: 'Intermediate Strength Training Program',
   subtitle: '12 weeks to break through a plateau: more volume, more muscle, more strength',
-  author: 'XENOTIF Coach — Certified strength & conditioning',
+  author: 'XENOTIF Coach - Certified strength & conditioning',
   level: 'Intermediate',
   duration: '12 weeks · 4 to 5 sessions/week',
   coverImage: 'cover.jpg',
   blocks: [
     { type: 'h1', text: 'Level up' },
-    { type: 'p', text: `You've got the basics down and want to progress faster? This 12-week intermediate program increases your training volume, introduces a structured split (Push / Pull / Legs or Upper/Lower) and intensity techniques. The goal: more muscle, more strength, a denser physique — without plateauing.` },
+    { type: 'p', text: `You've got the basics down and want to progress faster? This 12-week intermediate program increases your training volume, introduces a structured split (Push / Pull / Legs or Upper/Lower) and intensity techniques. The goal: more muscle, more strength, a denser physique - without plateauing.` },
     { type: 'p', text: `Every exercise comes with a QR code linking to its demo video on XENOTIF®. Log your loads: at your level, precise progressive overload is what makes the difference.` },
     { type: 'meta', items: [
       { label: 'Goal', value: 'Hypertrophy & strength' },
@@ -37,11 +37,11 @@ export const musculationIntermediaireEn: Guide = {
       `You can train 4 to 5 times a week.`,
       `If not, start with the Beginner Strength Training program.`,
     ] },
-    { type: 'note', text: `Golden rule at the intermediate level: progress is no longer automatic. You have to force it — progressive overload, sufficient volume, and recovery and nutrition dialed in.` },
+    { type: 'note', text: `Golden rule at the intermediate level: progress is no longer automatic. You have to force it - progressive overload, sufficient volume, and recovery and nutrition dialed in.` },
 
     { type: 'h1', text: 'How it works' },
     { type: 'list', items: [
-      `Push / Pull / Legs split: push, pull, legs — repeated 1.5 to 2 times a week.`,
+      `Push / Pull / Legs split: push, pull, legs - repeated 1.5 to 2 times a week.`,
       `Volume: 12 to 20 sets per muscle group per week.`,
       `Sets × reps: "4 × 8" = 4 sets of 8 reps.`,
       `Tempo: 2-3 s on the eccentric (lowering), explosive but controlled on the concentric (lifting).`,
@@ -133,7 +133,7 @@ export const musculationIntermediaireEn: Guide = {
     ] },
 
     { type: 'h1', text: 'Your sessions in detail' },
-    { type: 'h2', text: 'Push — Chest / Shoulders / Triceps' },
+    { type: 'h2', text: 'Push - Chest / Shoulders / Triceps' },
     { type: 'table', headers: ['Exercise', 'Sets', 'Reps', 'Rest'], rows: [
       ['Barbell bench press', '4', '6 to 8', '150 s'],
       ['Incline dumbbell press', '4', '8 to 10', '120 s'],
@@ -141,7 +141,7 @@ export const musculationIntermediaireEn: Guide = {
       ['Lateral raises', '4', '12 to 15', '60 s'],
       ['Dips / triceps extension', '3', '10 to 12', '75 s'],
     ] },
-    { type: 'h2', text: 'Pull — Back / Biceps' },
+    { type: 'h2', text: 'Pull - Back / Biceps' },
     { type: 'table', headers: ['Exercise', 'Sets', 'Reps', 'Rest'], rows: [
       ['Pull-ups (or lat pulldown)', '4', '6 to 10', '150 s'],
       ['Barbell row', '4', '8 to 10', '120 s'],
@@ -149,7 +149,7 @@ export const musculationIntermediaireEn: Guide = {
       ['Face pull', '3', '15', '60 s'],
       ['Biceps curl + hammer curl', '4', '10 to 12', '60 s'],
     ] },
-    { type: 'h2', text: 'Legs — Legs / Glutes' },
+    { type: 'h2', text: 'Legs - Legs / Glutes' },
     { type: 'table', headers: ['Exercise', 'Sets', 'Reps', 'Rest'], rows: [
       ['Squat', '4', '6 to 8', '180 s'],
       ['Romanian deadlift', '4', '8 to 10', '150 s'],
@@ -159,7 +159,7 @@ export const musculationIntermediaireEn: Guide = {
     ] },
 
     { type: 'h1', text: '4-day variant (Upper / Lower)' },
-    { type: 'p', text: `Can only train 4 times a week? Swap the PPL for this Upper/Lower split (Monday/Tuesday/Thursday/Friday). Each half of the body gets trained 2× a week — great for frequency and recovery.` },
+    { type: 'p', text: `Can only train 4 times a week? Swap the PPL for this Upper/Lower split (Monday/Tuesday/Thursday/Friday). Each half of the body gets trained 2× a week - great for frequency and recovery.` },
     { type: 'h2', text: 'Upper body (A & B)' },
     { type: 'table', headers: ['Exercise', 'Sets', 'Reps', 'Rest'], rows: [
       ['Bench press / incline press', '4', '6 to 10', '150 s'],
@@ -269,7 +269,7 @@ export const musculationIntermediaireEn: Guide = {
     { type: 'p', text: `Yes: 2-3 sessions of moderate cardio (20-30 min) a week, kept separate from leg days if possible. Avoid excessive intense cardio, which hurts recovery.` },
 
     { type: 'h1', text: 'Conditioning & cardio' },
-    { type: 'p', text: `A bit of cardio improves your recovery between sets, boosts your work capacity, and keeps fat gain in check during the surplus — without hurting your gains if you dose it well.` },
+    { type: 'p', text: `A bit of cardio improves your recovery between sets, boosts your work capacity, and keeps fat gain in check during the surplus - without hurting your gains if you dose it well.` },
     { type: 'list', items: [
       `2 to 3 sessions of moderate cardio (20-30 min) a week, ideally on non-leg days.`,
       `Daily walking (8,000-10,000 steps): the foundation, with no impact on recovery.`,
@@ -319,7 +319,7 @@ export const musculationIntermediaireEn: Guide = {
       ['Caffeine', 'Performance & pre-workout energy', '3 mg/kg, 30-45 min before'],
       ['Omega-3 / Vitamin D', 'Recovery, joints, health', 'As needed'],
     ] },
-    { type: 'note', text: `The foundation is still nutrition and training. Supplements are just a small bonus — never rely on them to make up for a poor program or bad sleep.` },
+    { type: 'note', text: `The foundation is still nutrition and training. Supplements are just a small bonus - never rely on them to make up for a poor program or bad sleep.` },
 
     { type: 'h1', text: 'Tracking your progress' },
     { type: 'p', text: `Log your loads every session and your measurements every week.` },

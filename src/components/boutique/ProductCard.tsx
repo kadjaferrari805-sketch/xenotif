@@ -104,7 +104,7 @@ export function ProductCard({ product, index = 0, source = 'shop' }: ProductCard
             className={`absolute top-3 right-3 flex h-7 w-7 items-center justify-center rounded-full transition-all ${wishlisted ? 'bg-red-500 text-sport-fg' : 'bg-sport-dark/80 text-sport-gray hover:text-red-400'}`}>
             <Heart size={12} fill={wishlisted ? 'currentColor' : 'none'} />
           </button>
-          {/* Quick view overlay — span (pas de <a> imbriqué dans le <Link> image) */}
+          {/* Quick view overlay - span (pas de <a> imbriqué dans le <Link> image) */}
           <div className="absolute inset-0 bg-gradient-to-t from-sport-dark/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center pb-3">
             <span className="flex items-center gap-1.5 rounded-full bg-sport-fg/20 backdrop-blur-sm px-3 py-1.5 text-xs font-bold text-sport-fg">
               <Eye size={11} /> {t('card.detailsView')}

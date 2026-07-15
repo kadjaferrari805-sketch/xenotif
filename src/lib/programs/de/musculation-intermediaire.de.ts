@@ -2,19 +2,19 @@ import type { Guide } from '@/lib/boutique/guides'
 
 const D = 'https://xenotif.com/disciplines'
 
-// Muskelaufbau-Programm für Fortgeschrittene — 12 Wochen (DE-Mirror von musculation-intermediaire.ts).
+// Muskelaufbau-Programm für Fortgeschrittene - 12 Wochen (DE-Mirror von musculation-intermediaire.ts).
 // Gleiche Struktur; nur die Texte sind übersetzt. ≈ 30 Seiten.
 export const musculationIntermediaireDe: Guide = {
   id: 'musculation-intermediaire',
   title: 'Muskelaufbau-Programm für Fortgeschrittene',
   subtitle: 'In 12 Wochen den nächsten Schritt gehen: mehr Volumen, mehr Muskeln, mehr Kraft',
-  author: 'XENOTIF Coach — Zertifizierter Kraft- & Konditionstrainer',
+  author: 'XENOTIF Coach - Zertifizierter Kraft- & Konditionstrainer',
   level: 'Fortgeschritten',
   duration: '12 Wochen · 4-5 Einheiten/Woche',
   coverImage: 'cover.jpg',
   blocks: [
     { type: 'h1', text: 'Erreiche das nächste Level' },
-    { type: 'p', text: `Du beherrschst die Grundlagen und willst schneller vorankommen? Dieses 12-wöchige Programm für Fortgeschrittene erhöht das Trainingsvolumen, führt einen strukturierten Split ein (Push/Pull/Legs oder Oberkörper/Unterkörper) und arbeitet mit Intensivierungstechniken. Das Ziel: mehr Muskeln, mehr Kraft, eine dichtere Silhouette — ohne zu stagnieren.` },
+    { type: 'p', text: `Du beherrschst die Grundlagen und willst schneller vorankommen? Dieses 12-wöchige Programm für Fortgeschrittene erhöht das Trainingsvolumen, führt einen strukturierten Split ein (Push/Pull/Legs oder Oberkörper/Unterkörper) und arbeitet mit Intensivierungstechniken. Das Ziel: mehr Muskeln, mehr Kraft, eine dichtere Silhouette - ohne zu stagnieren.` },
     { type: 'p', text: `Jede Übung hat einen QR-Code zu ihrem Demovideo auf XENOTIF®. Notiere deine Gewichte: Auf deinem Niveau macht die präzise progressive Überlastung den Unterschied.` },
     { type: 'meta', items: [
       { label: 'Ziel', value: 'Hypertrophie & Kraft' },
@@ -38,11 +38,11 @@ export const musculationIntermediaireDe: Guide = {
       `Du kannst 4 bis 5 Mal pro Woche trainieren.`,
       `Falls nicht, starte mit dem Muskelaufbau-Programm für Anfänger.`,
     ] },
-    { type: 'note', text: `Die goldene Regel für Fortgeschrittene: Fortschritt passiert nicht mehr von selbst. Du musst ihn erzwingen — progressive Überlastung, ausreichend Volumen, Erholung und Ernährung müssen stimmen.` },
+    { type: 'note', text: `Die goldene Regel für Fortgeschrittene: Fortschritt passiert nicht mehr von selbst. Du musst ihn erzwingen - progressive Überlastung, ausreichend Volumen, Erholung und Ernährung müssen stimmen.` },
 
     { type: 'h1', text: 'So funktioniert\'s' },
     { type: 'list', items: [
-      `Push/Pull/Legs-Split: Drücken, Ziehen, Beine — 1,5- bis 2-mal pro Woche wiederholt.`,
+      `Push/Pull/Legs-Split: Drücken, Ziehen, Beine - 1,5- bis 2-mal pro Woche wiederholt.`,
       `Volumen: 12 bis 20 Sätze pro Muskelgruppe und Woche.`,
       `Sätze × Wiederholungen: „4 × 8" = 4 Sätze à 8 Wiederholungen.`,
       `Tempo: 2-3 s exzentrisch (Absenken), kontrolliert-explosiv konzentrisch (Hochdrücken).`,
@@ -134,7 +134,7 @@ export const musculationIntermediaireDe: Guide = {
     ] },
 
     { type: 'h1', text: 'Deine Einheiten im Detail' },
-    { type: 'h2', text: 'Push — Brust / Schultern / Trizeps' },
+    { type: 'h2', text: 'Push - Brust / Schultern / Trizeps' },
     { type: 'table', headers: ['Übung', 'Sätze', 'Wiederholungen', 'Pause'], rows: [
       ['Bankdrücken', '4', '6 bis 8', '150 s'],
       ['Schrägbankdrücken Kurzhantel', '4', '8 bis 10', '120 s'],
@@ -142,7 +142,7 @@ export const musculationIntermediaireDe: Guide = {
       ['Seitheben', '4', '12 bis 15', '60 s'],
       ['Dips / Trizepsstrecken', '3', '10 bis 12', '75 s'],
     ] },
-    { type: 'h2', text: 'Pull — Rücken / Bizeps' },
+    { type: 'h2', text: 'Pull - Rücken / Bizeps' },
     { type: 'table', headers: ['Übung', 'Sätze', 'Wiederholungen', 'Pause'], rows: [
       ['Klimmzüge (oder Latzug)', '4', '6 bis 10', '150 s'],
       ['Langhantelrudern', '4', '8 bis 10', '120 s'],
@@ -150,7 +150,7 @@ export const musculationIntermediaireDe: Guide = {
       ['Face Pull', '3', '15', '60 s'],
       ['Bizepscurl + Hammercurl', '4', '10 bis 12', '60 s'],
     ] },
-    { type: 'h2', text: 'Legs — Beine / Gesäß' },
+    { type: 'h2', text: 'Legs - Beine / Gesäß' },
     { type: 'table', headers: ['Übung', 'Sätze', 'Wiederholungen', 'Pause'], rows: [
       ['Kniebeuge', '4', '6 bis 8', '180 s'],
       ['Rumänisches Kreuzheben', '4', '8 bis 10', '150 s'],
@@ -160,7 +160,7 @@ export const musculationIntermediaireDe: Guide = {
     ] },
 
     { type: 'h1', text: '4-Tage-Variante (Oberkörper / Unterkörper)' },
-    { type: 'p', text: `Du kannst nur 4-mal pro Woche trainieren? Ersetze den PPL-Split durch diesen Oberkörper/Unterkörper-Split (Montag/Dienstag/Donnerstag/Freitag). Jede Körperhälfte wird 2× pro Woche trainiert — hervorragend für Trainingsfrequenz und Erholung.` },
+    { type: 'p', text: `Du kannst nur 4-mal pro Woche trainieren? Ersetze den PPL-Split durch diesen Oberkörper/Unterkörper-Split (Montag/Dienstag/Donnerstag/Freitag). Jede Körperhälfte wird 2× pro Woche trainiert - hervorragend für Trainingsfrequenz und Erholung.` },
     { type: 'h2', text: 'Oberkörper (A & B)' },
     { type: 'table', headers: ['Übung', 'Sätze', 'Wiederholungen', 'Pause'], rows: [
       ['Bankdrücken / Schrägbankdrücken', '4', '6 bis 10', '150 s'],
@@ -270,7 +270,7 @@ export const musculationIntermediaireDe: Guide = {
     { type: 'p', text: `Ja: 2-3 moderate Cardio-Einheiten (20-30 Min.) pro Woche, wenn möglich getrennt von den Beintagen. Vermeide zu viel intensives Cardio, das die Erholung beeinträchtigt.` },
 
     { type: 'h1', text: 'Konditionierung & Cardio' },
-    { type: 'p', text: `Etwas Cardio verbessert deine Erholung zwischen den Sätzen, deine Arbeitskapazität und hält das Fett während des Überschusses in Schach — ohne deine Fortschritte zu beeinträchtigen, wenn du es richtig dosierst.` },
+    { type: 'p', text: `Etwas Cardio verbessert deine Erholung zwischen den Sätzen, deine Arbeitskapazität und hält das Fett während des Überschusses in Schach - ohne deine Fortschritte zu beeinträchtigen, wenn du es richtig dosierst.` },
     { type: 'list', items: [
       `2 bis 3 moderate Cardio-Einheiten (20-30 Min.) pro Woche, idealerweise an Tagen ohne Beintraining.`,
       `Tägliches Gehen (8.000-10.000 Schritte): die Basis, ohne Auswirkung auf die Erholung.`,
@@ -320,7 +320,7 @@ export const musculationIntermediaireDe: Guide = {
       ['Koffein', 'Leistung & Energie vor dem Training', '3 mg/kg, 30-45 Min. vorher'],
       ['Omega-3 / Vitamin D', 'Erholung, Gelenke, Gesundheit', 'Nach Bedarf'],
     ] },
-    { type: 'note', text: `Die Basis bleiben Ernährung und Training. Nahrungsergänzungsmittel sind nur ein kleines Plus — verlasse dich nie darauf, ein schlechtes Programm oder schlechten Schlaf auszugleichen.` },
+    { type: 'note', text: `Die Basis bleiben Ernährung und Training. Nahrungsergänzungsmittel sind nur ein kleines Plus - verlasse dich nie darauf, ein schlechtes Programm oder schlechten Schlaf auszugleichen.` },
 
     { type: 'h1', text: 'Tracking deines Fortschritts' },
     { type: 'p', text: `Notiere deine Gewichte bei jeder Einheit und deine Maße jede Woche.` },

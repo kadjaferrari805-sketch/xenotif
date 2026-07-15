@@ -1,7 +1,7 @@
 import { getFreeProgram } from './lead-magnet'
 import { generateGuidePdf } from './boutique/guide-pdf'
 
-describe('lead magnet — free program', () => {
+describe('lead magnet - free program', () => {
   it('exposes a localized guide for fr/en/de (fallback fr)', () => {
     expect(getFreeProgram('fr').title).toMatch(/Découverte/i)
     expect(getFreeProgram('en').title).toMatch(/Starter/i)

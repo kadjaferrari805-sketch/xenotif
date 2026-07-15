@@ -25,7 +25,7 @@ describe('computeXp / xpToLevel', () => {
   })
 })
 
-describe('computeGamification — badges', () => {
+describe('computeGamification - badges', () => {
   it('débloque first à 1 séance, pas week', () => {
     const g = computeGamification({ workouts: [w('2026-06-10')], programSessionsCompleted: 0, now: NOW })
     expect(g.badges.find(b => b.id === 'first')!.earned).toBe(true)
@@ -43,7 +43,7 @@ describe('computeGamification — badges', () => {
   })
 })
 
-describe('computeGamification — défis', () => {
+describe('computeGamification - défis', () => {
   it('compte les minutes du mois courant', () => {
     const ws = [w('2026-06-03T10:00:00', 'm', 60), w('2026-06-20T10:00:00', 'm', 90), w('2026-05-30T10:00:00', 'm', 120)]
     const g = computeGamification({ workouts: ws, programSessionsCompleted: 0, now: NOW })

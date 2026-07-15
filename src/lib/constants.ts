@@ -22,7 +22,7 @@ export const FEATURES = [
     title: 'Running & Cardio',
     slug: 'running-cardio',
     description:
-      'Programmes de course adaptés à tous les niveaux — du 5K au marathon. Plans personnalisés avec coaching GPS et suivi de fréquence cardiaque.',
+      'Programmes de course adaptés à tous les niveaux - du 5K au marathon. Plans personnalisés avec coaching GPS et suivi de fréquence cardiaque.',
     tag: 'Cardio',
     levels: ['Débutant', 'Intermédiaire', 'Avancé', 'Élite'],
     stats: ['+4 200 coureurs', '120+ plans', '12 semaines moy.'],
@@ -33,7 +33,7 @@ export const FEATURES = [
     title: 'Musculation',
     slug: 'musculation',
     description:
-      'Prise de masse, sèche ou tonification — nos coaches certifiés construisent ton programme sur mesure selon ta morphologie.',
+      'Prise de masse, sèche ou tonification - nos coaches certifiés construisent ton programme sur mesure selon ta morphologie.',
     tag: 'Strength',
     levels: ['Débutant', 'Intermédiaire', 'Avancé', 'Élite'],
     stats: ['+3 800 membres', '90+ programmes', '8 semaines moy.'],
@@ -47,7 +47,7 @@ export const FEATURES = [
       'Séances courtes et intenses pour brûler un maximum de calories et booster ton métabolisme durablement en 20 à 30 min.',
     tag: 'Fat Burn',
     levels: ['Débutant', 'Intermédiaire', 'Avancé'],
-    stats: ['+2 100 membres', '60+ circuits', '20–30 min / séance'],
+    stats: ['+2 100 membres', '60+ circuits', '20-30 min / séance'],
   },
   {
     icon: 'bike',
@@ -66,7 +66,7 @@ export const FEATURES = [
     title: 'Natation',
     slug: 'natation',
     description:
-      'Techniques de nage, préparation triathlon, open water — progressez dans tous les styles avec des drills vidéo HD.',
+      'Techniques de nage, préparation triathlon, open water - progressez dans tous les styles avec des drills vidéo HD.',
     tag: 'Aquatique',
     levels: ['Débutant', 'Intermédiaire', 'Avancé', 'Triathlon'],
     stats: ['+900 nageurs', '30+ programmes', '10 semaines moy.'],
@@ -88,10 +88,10 @@ export const FEATURES = [
     title: 'Yoga',
     slug: 'yoga',
     description:
-      'Flexibilité, force intérieure et pleine conscience — des flows débutants au yoga avancé pour un corps et un esprit équilibrés.',
+      'Flexibilité, force intérieure et pleine conscience - des flows débutants au yoga avancé pour un corps et un esprit équilibrés.',
     tag: 'Bien-être',
     levels: ['Débutant', 'Intermédiaire', 'Avancé', 'Tous niveaux'],
-    stats: ['+2 000 pratiquants', '40+ séquences', '20–60 min / séance'],
+    stats: ['+2 000 pratiquants', '40+ séquences', '20-60 min / séance'],
   },
   {
     icon: 'target',
@@ -99,7 +99,7 @@ export const FEATURES = [
     title: 'Boxe',
     slug: 'boxing',
     description:
-      'Technique, cardio et puissance — des bases aux combinaisons avancées pour te transformer physiquement et mentalement.',
+      'Technique, cardio et puissance - des bases aux combinaisons avancées pour te transformer physiquement et mentalement.',
     tag: 'Combat',
     levels: ['Débutant', 'Intermédiaire', 'Avancé', 'Compétition'],
     stats: ['+1 200 boxeurs', '35+ programmes', '8 semaines moy.'],
@@ -110,10 +110,10 @@ export const FEATURES = [
     title: 'Stretching',
     slug: 'stretching',
     description:
-      'Mobilité, souplesse et récupération optimale — des routines d\'étirements guidées pour prévenir les blessures et performer.',
+      'Mobilité, souplesse et récupération optimale - des routines d\'étirements guidées pour prévenir les blessures et performer.',
     tag: 'Mobilité',
     levels: ['Débutant', 'Intermédiaire', 'Avancé', 'Tous niveaux'],
-    stats: ['+1 600 membres', '30+ routines', '10–30 min / séance'],
+    stats: ['+1 600 membres', '30+ routines', '10-30 min / séance'],
   },
   {
     icon: 'zap',
@@ -163,7 +163,7 @@ export const REVIEWS = [
     sport: 'Running · Marathon',
     date: 'Il y a 2 jours',
     rating: 5,
-    text: '"En 3 mois de programme Xenotif®, j\'ai battu mon record sur marathon de 18 minutes. Le coaching IA est bluffant — chaque séance est parfaitement calibrée à mon niveau."',
+    text: '"En 3 mois de programme Xenotif®, j\'ai battu mon record sur marathon de 18 minutes. Le coaching IA est bluffant - chaque séance est parfaitement calibrée à mon niveau."',
   },
   {
     name: 'Leila M.',
@@ -181,7 +181,7 @@ export const REVIEWS = [
     sport: 'CrossFit · Natation',
     date: 'Il y a 1 semaine',
     rating: 5,
-    text: '"Préparation triathlon avec Xenotif® — résultat incroyable. J\'ai terminé mon premier Ironman grâce à cette plateforme. Merci Xenotif® !"',
+    text: '"Préparation triathlon avec Xenotif® - résultat incroyable. J\'ai terminé mon premier Ironman grâce à cette plateforme. Merci Xenotif® !"',
   },
 ]
 

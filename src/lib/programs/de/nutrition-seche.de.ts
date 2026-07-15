@@ -1,18 +1,18 @@
 import type { Guide } from '@/lib/boutique/guides'
 
-// d2 — Ernährungsplan Definitionsphase 8 Wochen (DE-Mirror von nutrition-seche.ts).
+// d2 - Ernährungsplan Definitionsphase 8 Wochen (DE-Mirror von nutrition-seche.ts).
 // ERNÄHRUNGSprogramm: 56 Tage Menüs, 40+ Rezepte, Einkaufslisten, persönliche Makros, vegane Version.
 export const nutritionSecheDe: Guide = {
   id: 'd2',
-  title: 'Ernährungsplan Definitionsphase — 8 Wochen',
+  title: 'Ernährungsplan Definitionsphase - 8 Wochen',
   subtitle: '56 Tage Menüs, 40+ Rezepte, Einkaufslisten, persönliche Makros, vegane Version',
-  author: 'XENOTIF Coach — Zertifizierte Sporternährung',
+  author: 'XENOTIF Coach - Zertifizierte Sporternährung',
   level: 'Alle Niveaus',
   duration: '8 Wochen · 56 Tage Menüs',
   coverImage: 'seche-cover.jpg',
   blocks: [
     { type: 'h1', text: 'Willkommen zu deiner Definitionsphase' },
-    { type: 'p', text: `Dieser 8-Wochen-Plan hilft dir, deine Muskeldefinition durch Fettabbau zu zeigen — ohne den hart erarbeiteten Muskel zu opfern, ohne extreme Diät oder absurden Verzicht. Eine progressive, haltbare und wissenschaftlich fundierte Methode. Du findest darin die Berechnung deines Bedarfs, 56 Tage detaillierte Menüs, 40+ Rezepte, deine Einkaufslisten und eine vollständige vegane Version.` },
+    { type: 'p', text: `Dieser 8-Wochen-Plan hilft dir, deine Muskeldefinition durch Fettabbau zu zeigen - ohne den hart erarbeiteten Muskel zu opfern, ohne extreme Diät oder absurden Verzicht. Eine progressive, haltbare und wissenschaftlich fundierte Methode. Du findest darin die Berechnung deines Bedarfs, 56 Tage detaillierte Menüs, 40+ Rezepte, deine Einkaufslisten und eine vollständige vegane Version.` },
     { type: 'p', text: `Dieses Dokument ist dein Ernährungsplan für die Hosentasche: folge den Menüs Tag für Tag, kaufe mit den bereitgestellten Listen ein und lass die Definition Woche für Woche erscheinen.` },
     { type: 'meta', items: [
       { label: 'Ziel', value: 'Fett verlieren, Muskel halten' },
@@ -49,11 +49,11 @@ export const nutritionSecheDe: Guide = {
 
     { type: 'chapter', title: 'Deine persönlichen Makros', src: 'seche-1.jpg' },
     { type: 'p', text: `So berechnest du deinen Bedarf in 3 Schritten. Keine Feinwaage nötig: diese Richtwerte reichen für die große Mehrheit der Fälle.` },
-    { type: 'h2', text: 'Schritt 1 — Dein Erhalt' },
+    { type: 'h2', text: 'Schritt 1 - Dein Erhalt' },
     { type: 'p', text: `Schnellschätzung: Gewicht (kg) × 30 bis 33 (je nach Aktivität). Beispiel für 75 kg, mäßig aktiv: 75 × 31 ≈ 2 325 kcal/Tag Erhalt.` },
-    { type: 'h2', text: 'Schritt 2 — Dein Defizit' },
+    { type: 'h2', text: 'Schritt 2 - Dein Defizit' },
     { type: 'p', text: `Ziehe 15 bis 20 % ab: 2 325 − 18 % ≈ 1 900 kcal/Tag. Das ist dein Kalorienziel in der Definitionsphase.` },
-    { type: 'h2', text: 'Schritt 3 — In Makros aufteilen' },
+    { type: 'h2', text: 'Schritt 3 - In Makros aufteilen' },
     { type: 'table', headers: ['Makro', 'Berechnung', 'Beispiel (75 kg, 1 900 kcal)'], rows: [
       ['Eiweiß', '2,2 g/kg', '165 g (660 kcal)'],
       ['Fette', '0,8 g/kg', '60 g (540 kcal)'],
@@ -78,7 +78,7 @@ export const nutritionSecheDe: Guide = {
       `1 Genuss-Mahlzeit pro Woche, um langfristig durchzuhalten, ohne einzubrechen.`,
     ] },
 
-    { type: 'chapter', title: 'Mahlzeitenplan — 56 Tage', src: 'seche-2.jpg', intro: `Hier sind 8 Wochen gebrauchsfertige Menüs (≈1 800-1 900 kcal, passe die Portionen an DEINE Makros an). Jede Woche wechselt die Mahlzeiten, um Langeweile zu vermeiden. Alle Rezepte sind später detailliert. Vegane Version: siehe eigenes Kapitel.` },
+    { type: 'chapter', title: 'Mahlzeitenplan - 56 Tage', src: 'seche-2.jpg', intro: `Hier sind 8 Wochen gebrauchsfertige Menüs (≈1 800-1 900 kcal, passe die Portionen an DEINE Makros an). Jede Woche wechselt die Mahlzeiten, um Langeweile zu vermeiden. Alle Rezepte sind später detailliert. Vegane Version: siehe eigenes Kapitel.` },
     { type: 'h2', text: 'Woche 1' },
     { type: 'table', headers: ['Tag', 'Frühstück', 'Mittag', 'Abend'], rows: [
       ['Mo', 'Skyr-Haferflocken-Obst', 'Hähnchen-Reis-Brokkoli', 'Lachs-Süßkartoffel-Salat'],
@@ -159,7 +159,7 @@ export const nutritionSecheDe: Guide = {
       ['Sa', 'Skyr-Obst-Mandeln', 'Leichte Genuss-Mahlzeit', 'Suppe + harte Eier'],
       ['So', 'Rührei + Avocado', 'Hähnchen-Reis-Gemüse-Bowl', 'Weißfisch-Süßkartoffel-Salat'],
     ] },
-    { type: 'note', text: `Tipp: du kannst dasselbe Frühstück 2-3 Tage hintereinander behalten, um es einfach zu halten — die Vielfalt zählt über die Woche. Passe die PORTIONEN immer an DEINE Makros an (vorheriges Kapitel).` },
+    { type: 'note', text: `Tipp: du kannst dasselbe Frühstück 2-3 Tage hintereinander behalten, um es einfach zu halten - die Vielfalt zählt über die Woche. Passe die PORTIONEN immer an DEINE Makros an (vorheriges Kapitel).` },
 
     { type: 'chapter', title: 'Deine Einkaufslisten', src: 'seche-1.jpg', intro: `Kaufe 1 bis 2 Mal pro Woche mit diesen Listen ein. Die richtigen Lebensmittel kaufen = ohne Nachdenken richtig essen.` },
     { type: 'h2', text: 'Eiweiß' },
@@ -169,7 +169,7 @@ export const nutritionSecheDe: Guide = {
     { type: 'h2', text: 'Gemüse & Fette' },
     { type: 'list', items: [`Brokkoli, Zucchini, Spinat, grüne Bohnen, Paprika, Salat, Tomate`, `Olivenöl, Avocado, Mandeln, Walnüsse`, `Zitrone, Knoblauch, Kräuter, Gewürze (nach Belieben)`] },
 
-    { type: 'chapter', title: 'Rezepte — Frühstück', src: 'seche-2.jpg' },
+    { type: 'chapter', title: 'Rezepte - Frühstück', src: 'seche-2.jpg' },
     { type: 'h2', text: '1. Skyr-Haferflocken-Beeren' },
     { type: 'meta', items: [{ label: 'Kalorien', value: '≈ 350 kcal' }, { label: 'Eiweiß', value: '30 g' }] },
     { type: 'list', items: [`200 g Skyr`, `40 g Haferflocken`, `1 Handvoll Beeren`] },
@@ -191,7 +191,7 @@ export const nutritionSecheDe: Guide = {
     { type: 'list', items: [`2 Scheiben Vollkornbrot`, `1/2 Avocado`, `2 Eier`, `Zitrone, Pfeffer`] },
     { type: 'p', text: `Avocado auf das Brot zerdrücken, Eier zugeben (Spiegel- oder pochiert).` },
 
-    { type: 'h1', text: 'Rezepte — Mittag' },
+    { type: 'h1', text: 'Rezepte - Mittag' },
     { type: 'h2', text: '6. Hähnchen-Reis-Gemüse-Bowl' },
     { type: 'meta', items: [{ label: 'Kalorien', value: '≈ 480 kcal' }, { label: 'Eiweiß', value: '42 g' }] },
     { type: 'list', items: [`130 g Hähnchen`, `100 g Reis (roh)`, `Gemüse`, `Sojasoße`] },
@@ -209,7 +209,7 @@ export const nutritionSecheDe: Guide = {
     { type: 'list', items: [`140 g Rind 5%`, `80 g Quinoa (roh)`, `Grünes Gemüse`, `Gewürze`] },
     { type: 'p', text: `Rind anbraten, über dem Quinoa mit dem Gemüse servieren.` },
 
-    { type: 'h1', text: 'Rezepte — Abend' },
+    { type: 'h1', text: 'Rezepte - Abend' },
     { type: 'h2', text: '10. Lachs-Süßkartoffel-Salat' },
     { type: 'meta', items: [{ label: 'Kalorien', value: '≈ 500 kcal' }, { label: 'Eiweiß', value: '38 g' }] },
     { type: 'list', items: [`130 g Lachs`, `200 g Süßkartoffel`, `Grüner Salat`, `Olivenöl, Zitrone`] },
@@ -227,7 +227,7 @@ export const nutritionSecheDe: Guide = {
     { type: 'list', items: [`3 Eier`, `Spinat, Paprika`, `Grüner Salat`] },
     { type: 'p', text: `Gemüse anschwitzen, Eier angießen, mit einem Salat servieren.` },
 
-    { type: 'h1', text: 'Rezepte — Snacks' },
+    { type: 'h1', text: 'Rezepte - Snacks' },
     { type: 'h2', text: '14. Eiweiß-Skyr' },
     { type: 'meta', items: [{ label: 'Kalorien', value: '≈ 220 kcal' }, { label: 'Eiweiß', value: '28 g' }] },
     { type: 'list', items: [`250 g Skyr`, `Beeren`, `Zimt`] },
@@ -253,7 +253,7 @@ export const nutritionSecheDe: Guide = {
     { type: 'list', items: [`100 g Linsen (roh)`, `Karotte, Zwiebel, Tomate`, `Kreuzkümmel, Brühe`] },
     { type: 'p', text: `25 Min. köcheln lassen. Sättigend, ballaststoffreich, perfekt am Abend.` },
     { type: 'h2', text: '24 Express-Bonusrezepte' },
-    { type: 'p', text: `Wähle auch aus diesen schnellen Ideen (baue sie um deine Makros) — damit dir nie die Optionen ausgehen:` },
+    { type: 'p', text: `Wähle auch aus diesen schnellen Ideen (baue sie um deine Makros) - damit dir nie die Optionen ausgehen:` },
     { type: 'table', headers: ['Rezept', 'Typ', 'Eiweiß'], rows: [
       ['Hähnchen-Avocado-Wrap', 'Mittag', '35 g'],
       ['Gegrillte Pute-Zucchini', 'Abend', '40 g'],
@@ -282,7 +282,7 @@ export const nutritionSecheDe: Guide = {
     ] },
     { type: 'note', text: `Insgesamt mehr als 40 Rezepte: kombiniere sie frei mit den Menüs für 8 Wochen ohne je Langeweile.` },
 
-    { type: 'chapter', title: 'Batch Cooking & Organisation', src: 'seche-2.jpg', intro: `Das Geheimnis einer gelungenen Definitionsphase: nie unvorbereitet sein. Koche zweimal pro Woche in großen Mengen — du isst besser und greifst nicht zur erstbesten schnellen Option.` },
+    { type: 'chapter', title: 'Batch Cooking & Organisation', src: 'seche-2.jpg', intro: `Das Geheimnis einer gelungenen Definitionsphase: nie unvorbereitet sein. Koche zweimal pro Woche in großen Mengen - du isst besser und greifst nicht zur erstbesten schnellen Option.` },
     { type: 'list', items: [
       `Sonntag & Mittwoch: koche 1 kg Eiweiß (Hähnchen, Rind, Tofu) + 500 g Beilagen (Reis, Quinoa).`,
       `Schneide und wasche dein Gemüse im Voraus, lagere es in Boxen.`,
@@ -302,7 +302,7 @@ export const nutritionSecheDe: Guide = {
     { type: 'list', items: [
       `Ziele auf Vielfalt: kombiniere Getreide + Hülsenfrüchte für vollständige Proteine.`,
       `Ergänze B12 (vegan unverzichtbar) und achte auf dein Eisen.`,
-      `Hülsenfrüchte liefern auch sättigende Ballaststoffe — ideal in der Definitionsphase.`,
+      `Hülsenfrüchte liefern auch sättigende Ballaststoffe - ideal in der Definitionsphase.`,
     ] },
 
     { type: 'h1', text: 'Tipps für den Erfolg' },
@@ -338,7 +338,7 @@ export const nutritionSecheDe: Guide = {
     { type: 'h2', text: 'Kann ich diesen Plan ohne Training befolgen?' },
     { type: 'p', text: `Du wirst Gewicht verlieren, aber ein Teil davon ist Muskel. Für eine echte Definition (Fett verlieren und fit bleiben) behalte mindestens 2-3 Krafteinheiten pro Woche.` },
     { type: 'h2', text: 'Verdirbt die Genuss-Mahlzeit alles?' },
-    { type: 'p', text: `Nein: 1 Mahlzeit von 21 lässt ein wöchentliches Defizit bestehen. Sie bewahrt deine Motivation und dein Sozialleben — die echten Abbruchgründe.` },
+    { type: 'p', text: `Nein: 1 Mahlzeit von 21 lässt ein wöchentliches Defizit bestehen. Sie bewahrt deine Motivation und dein Sozialleben - die echten Abbruchgründe.` },
     { type: 'h2', text: 'Und nach den 8 Wochen?' },
     { type: 'p', text: `Erhöhe deine Kalorien schrittweise zurück zum Erhalt (+100 kcal/Woche), um den Jo-Jo-Effekt zu vermeiden, dann stabilisiere oder gehe in eine Masseaufbauphase.` },
 
@@ -359,7 +359,7 @@ export const nutritionSecheDe: Guide = {
     ] },
 
     { type: 'h1', text: 'Nützliche Ergänzungen in der Definitionsphase' },
-    { type: 'p', text: `Keine ist Pflicht — die Ernährung kommt zuerst. Aber einige helfen, das Defizit zu halten und den Muskel zu bewahren.` },
+    { type: 'p', text: `Keine ist Pflicht - die Ernährung kommt zuerst. Aber einige helfen, das Defizit zu halten und den Muskel zu bewahren.` },
     { type: 'table', headers: ['Ergänzung', 'Nutzen in der Definition', 'Dosis'], rows: [
       ['Whey / Iso', 'Eiweiß mit wenig Kalorien erreichen', '1 bis 2 Portionen/Tag'],
       ['Kreatin', 'Krafterhalt im Defizit', '3 bis 5 g/Tag'],

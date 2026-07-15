@@ -9,7 +9,7 @@ const noopSubscribe = () => () => {}
 // Le serveur ne connaît jamais le vrai thème (pas d'accès à localStorage), il
 // rend toujours comme si isLight=false. Le script anti-flash pose déjà le bon
 // data-theme avant hydratation, donc ThemeProvider lit la vraie valeur dès le
-// premier rendu client — mais l'afficher immédiatement ferait diverger le
+// premier rendu client - mais l'afficher immédiatement ferait diverger le
 // HTML client de celui du serveur (icône Sun vs Moon) et déclenche une erreur
 // d'hydratation React. getServerSnapshot force `false` au rendu serveur ET à
 // la passe d'hydratation client (React les compare), puis un re-rendu bascule

@@ -36,7 +36,7 @@ export async function POST(req: NextRequest) {
   const { provider } = await req.json() as { provider: WatchProvider }
 
   if (provider === 'apple_health') {
-    // Apple HealthKit works only via native app — return instructions
+    // Apple HealthKit works only via native app - return instructions
     return NextResponse.json({
       type: 'instructions',
       message: 'Télécharge l\'app Xenotif sur iOS et connecte ton Apple Watch depuis l\'onglet "Appareils".',
@@ -51,7 +51,7 @@ export async function POST(req: NextRequest) {
   const clientId = CLIENT_IDS[provider]
 
   if (!config || !clientId) {
-    // No credentials configured yet — demo mode connection
+    // No credentials configured yet - demo mode connection
     await supabase.from('smartwatch_connections').upsert({
       user_id:      user.id,
       provider,

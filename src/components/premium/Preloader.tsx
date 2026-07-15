@@ -1,6 +1,6 @@
 import { XenotifMark } from '@/components/ui/Logo'
 
-// Préchargement premium — rendu CÔTÉ SERVEUR (visible dès le 1er paint → aucun
+// Préchargement premium - rendu CÔTÉ SERVEUR (visible dès le 1er paint → aucun
 // flash de contenu) et animé 100 % en CSS (keyframes). Auto-disparition même
 // sans JS (animation `pl-out` forwards). Affiché UNE fois par session
 // (classe `html.preloaded` posée avant le paint par le script du layout) et

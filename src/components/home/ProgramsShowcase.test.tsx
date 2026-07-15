@@ -24,8 +24,8 @@ function makeProgram(over: Partial<Product> & { id: string; slug: string; name: 
 }
 
 const PROGRAMS: Product[] = [
-  makeProgram({ id: 'd1', slug: 'programme-prise-masse-12-semaines', name: 'Programme Prise de Masse — 12 Semaines', level: 'Intermédiaire', duration: '12 semaines' }),
-  makeProgram({ id: 'd3', slug: 'programme-hiit-6-semaines', name: 'Programme HIIT Brûle-Graisses — 6 Semaines', level: 'Débutant à avancé', duration: '6 semaines' }),
+  makeProgram({ id: 'd1', slug: 'programme-prise-masse-12-semaines', name: 'Programme Prise de Masse - 12 Semaines', level: 'Intermédiaire', duration: '12 semaines' }),
+  makeProgram({ id: 'd3', slug: 'programme-hiit-6-semaines', name: 'Programme HIIT Brûle-Graisses - 6 Semaines', level: 'Débutant à avancé', duration: '6 semaines' }),
 ]
 
 describe('ProgramsShowcase', () => {

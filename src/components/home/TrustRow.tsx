@@ -1,7 +1,7 @@
 import { useTranslations } from 'next-intl'
 import { ShieldCheck, Lock, XCircle, MessageCircle } from 'lucide-react'
 
-// Bandeau de réassurance sous le Hero (#13) — renforce la conversion.
+// Bandeau de réassurance sous le Hero (#13) - renforce la conversion.
 export function TrustRow() {
   const t = useTranslations('trust')
   const items = [

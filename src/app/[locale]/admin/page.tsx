@@ -115,25 +115,25 @@ export default async function AdminPage() {
                         <div className="w-8 h-8 bg-sport-orange/15 rounded-full flex items-center justify-center font-black text-sport-orange text-xs">
                           {(profile.full_name ?? 'U').slice(0, 2).toUpperCase()}
                         </div>
-                        <span className="text-sm font-semibold text-sport-fg">{profile.full_name ?? '—'}</span>
+                        <span className="text-sm font-semibold text-sport-fg">{profile.full_name ?? '-'}</span>
                       </div>
                     </td>
                     <td className="px-5 py-4">
                       {sub ? (
                         <span className="text-xs font-bold uppercase text-sport-orange">{sub.plan}</span>
-                      ) : <span className="text-sport-gray text-xs">—</span>}
+                      ) : <span className="text-sport-gray text-xs">-</span>}
                     </td>
                     <td className="px-5 py-4">
                       {statusInfo ? (
                         <span className={`inline-flex items-center gap-1.5 text-xs font-semibold ${statusInfo.cls}`}>
                           <StatusIcon size={12} aria-hidden="true" /> {statusInfo.label}
                         </span>
-                      ) : <span className="text-sport-gray text-xs">—</span>}
+                      ) : <span className="text-sport-gray text-xs">-</span>}
                     </td>
                     <td className="px-5 py-4 text-xs text-sport-gray">
                       {sub?.current_period_end
                         ? new Date(sub.current_period_end).toLocaleDateString('fr-FR')
-                        : '—'}
+                        : '-'}
                     </td>
                     <td className="px-5 py-4 text-xs text-sport-gray">
                       {new Date(profile.created_at).toLocaleDateString('fr-FR')}
@@ -162,10 +162,10 @@ export default async function AdminPage() {
       {/* Push broadcast */}
       <AdminPushForm />
 
-      {/* Avis clients — modération */}
+      {/* Avis clients - modération */}
       <AdminReviews />
 
-      {/* Transformations — modération */}
+      {/* Transformations - modération */}
       <AdminTransformations />
     </div>
   )

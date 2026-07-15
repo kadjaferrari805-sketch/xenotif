@@ -25,9 +25,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const t = await getTranslations({ locale, namespace: 'exercices' })
   const languages: Record<string, string> = { 'x-default': exUrl(slug, 'fr') }
   for (const l of localesForExercice(slug)) languages[l] = exUrl(slug, l)
-  const description = `${ex.name} — ${ex.muscles}. ${ex.technique}`.slice(0, 155)
+  const description = `${ex.name} - ${ex.muscles}. ${ex.technique}`.slice(0, 155)
   return {
-    title: `${ex.name} — ${t('metaSuffix')}`,
+    title: `${ex.name} - ${t('metaSuffix')}`,
     description,
     alternates: { canonical: exUrl(slug, locale), languages },
     openGraph: { title: `${ex.name} | Xenotif®`, description, url: exUrl(slug, locale), type: 'article' },

@@ -1,6 +1,6 @@
 import { getCampaignPush, getCampaignEmail, getDailyEmailTheme, normCampaignLocale } from './campaigns'
 
-describe('campaigns — push content', () => {
+describe('campaigns - push content', () => {
   const themes = ['boutique', 'guide', 'subscribe'] as const
 
   it('renvoie titre + corps + url + tag non vides pour chaque thème et chaque langue', () => {
@@ -26,7 +26,7 @@ describe('campaigns — push content', () => {
   })
 })
 
-describe('campaigns — email content', () => {
+describe('campaigns - email content', () => {
   const themes = ['boutique', 'guide', 'subscribe'] as const
   it('a subject/headline/body/cta/ctaUrl non vides en fr/en/de', () => {
     for (const theme of themes) {
@@ -38,7 +38,7 @@ describe('campaigns — email content', () => {
   })
 })
 
-describe('campaigns — rotation du thème quotidien', () => {
+describe('campaigns - rotation du thème quotidien', () => {
   it('abonné : ne propose jamais le thème abonnement', () => {
     for (let d = 0; d < 7; d++) {
       const day = new Date('2026-06-07T09:00:00Z'); day.setDate(7 + d)

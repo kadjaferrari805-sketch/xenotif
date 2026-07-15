@@ -15,7 +15,7 @@
     "subtitle": "Personalisierte Programme, geführte Video-Workouts, Echtzeit-Tracking und angepasste Ernährung. Dein Coach überall dabei, auch offline.",
     "cta": "Jetzt starten",
     "note": "Installiere die App mit einem Klick, ohne Store.",
-    "imageAlt": "XENOTIF App — dein Coach in der Tasche"
+    "imageAlt": "XENOTIF App - dein Coach in der Tasche"
   },
   "coachDemo": {
     "badge": "KI-Coach",
@@ -29,7 +29,7 @@
     "chips": [
       {
         "q": "Ich will abnehmen",
-        "a": "Perfekt. Ich schlage 3 HIIT-Einheiten/Woche (20–30 Min) + 2 Krafteinheiten mit leichtem Kaloriendefizit vor. Die Intensität passe ich an deine Tagesform an."
+        "a": "Perfekt. Ich schlage 3 HIIT-Einheiten/Woche (20-30 Min) + 2 Krafteinheiten mit leichtem Kaloriendefizit vor. Die Intensität passe ich an deine Tagesform an."
       },
       {
         "q": "Was nach dem Training essen?",
@@ -48,7 +48,7 @@
   "dashboardPreview": {
     "metaTitle": "Vorschau deines Mitgliederbereichs",
     "metaDescription": "Eine Vorschau deines künftigen XENOTIF®-Bereichs: Fortschritt, Aktivität, Gewicht, Ernährung, Abzeichen und KI-Coach.",
-    "demoBanner": "Vorschau — Demodaten",
+    "demoBanner": "Vorschau - Demodaten",
     "backToHome": "Zurück zur Startseite",
     "greeting": "Hallo {name} 👋",
     "subtitle": "Hier ist eine Vorschau deines Mitgliederbereichs.",
@@ -115,7 +115,7 @@
     "errConsent": "Zustimmung erforderlich.",
     "errImage": "Füge zwei Fotos hinzu (Bild, max. 5 MB).",
     "errServer": "Fehler. Erneut versuchen.",
-    "adminTitle": "Transformationen — Moderation",
+    "adminTitle": "Transformationen - Moderation",
     "approve": "Freigeben",
     "reject": "Ablehnen",
     "adminEmpty": "Keine ausstehenden Transformationen."
@@ -165,7 +165,7 @@
       "disciplines": "Disziplinen",
       "programmes": "Programme",
       "informations": "Informationen",
-      "copyright": "© 2026 Xenotif® — Alle Rechte vorbehalten",
+      "copyright": "© 2026 Xenotif® - Alle Rechte vorbehalten",
       "baseline": "Für Athleten gemacht · Angetrieben von KI",
       "links": {
         "about": "Über uns",
@@ -258,7 +258,7 @@
     "programs": {
       "label": "Premium-Programme",
       "title": "Unsere beliebtesten Programme",
-      "subtitle": "Komplette, sofort umsetzbare Pläne von unseren Coaches – garantierte Ergebnisse.",
+      "subtitle": "Komplette, sofort umsetzbare Pläne von unseren Coaches - garantierte Ergebnisse.",
       "eyebrow": "Digitales Programm",
       "discover": "Entdecken",
       "discoverAria": "Programm {name} entdecken",
@@ -274,7 +274,7 @@
     "leadPopup": {
       "eyebrow": "Gratis",
       "title": "Hol dir dein kostenloses Fitness-Programm",
-      "subtitle": "Ein 7-Tage-Einsteigerprogramm (PDF) — Training + Ernährung. Ohne Karte, ohne Verpflichtung.",
+      "subtitle": "Ein 7-Tage-Einsteigerprogramm (PDF) - Training + Ernährung. Ohne Karte, ohne Verpflichtung.",
       "perks": [
         "7 Tage geführtes Training",
         "Ernährungsplan + Rezepte",
@@ -284,7 +284,7 @@
       "cta": "Programm erhalten",
       "loading": "Wird gesendet…",
       "successTitle": "Geschafft! 🎉",
-      "successText": "Schau in dein Postfach — dein Programm wartet. Du kannst es auch sofort herunterladen:",
+      "successText": "Schau in dein Postfach - dein Programm wartet. Du kannst es auch sofort herunterladen:",
       "download": "PDF herunterladen",
       "signup": "Kostenloses Konto erstellen",
       "privacy": "Kein Spam. Abmeldung mit 1 Klick.",
@@ -308,7 +308,7 @@
     "experience": {
       "eyebrow": "Mitgliederbereich",
       "title": "Entdecke deinen XENOTIF-Bereich",
-      "subtitle": "Dashboard, messbarer Fortschritt, Belohnungen und ein KI-Coach — alles, was du mit der Anmeldung freischaltest. Teste die Demo, ganz ohne Konto.",
+      "subtitle": "Dashboard, messbarer Fortschritt, Belohnungen und ein KI-Coach - alles, was du mit der Anmeldung freischaltest. Teste die Demo, ganz ohne Konto.",
       "previewLabel": "Vorschau deines Bereichs",
       "ctaDemo": "Demo ansehen (ohne Konto)",
       "ctaSignup": "Kostenloses Konto erstellen",
@@ -335,13 +335,13 @@
     "sticky": {
       "lead": "Bereit, deinen Körper zu transformieren?",
       "trial": "Unverbindlich",
-      "pro": "Pro — 9,99 €/Monat",
-      "proAria": "Pro-Plan abonnieren — 9,99 Euro pro Monat",
+      "pro": "Pro - 9,99 €/Monat",
+      "proAria": "Pro-Plan abonnieren - 9,99 Euro pro Monat",
       "ariaRegion": "Schnellabonnement",
       "dismiss": "Abonnement-Leiste schließen"
     },
-    "metaTitle": "Xenotif® — Forme deinen Körper. Überwinde deine Grenzen.",
-    "metaDescription": "Die Premium-Fitnessplattform — 10 Disziplinen, personalisiertes KI-Coaching, 300+ Einheiten. Schließe dich 12.000+ Athleten an, die ihren Körper mit Xenotif® transformieren.",
+    "metaTitle": "Xenotif® - Forme deinen Körper. Überwinde deine Grenzen.",
+    "metaDescription": "Die Premium-Fitnessplattform - 10 Disziplinen, personalisiertes KI-Coaching, 300+ Einheiten. Schließe dich 12.000+ Athleten an, die ihren Körper mit Xenotif® transformieren.",
     "hero": {
       "eyebrow": "Die Premium-Sportplattform",
       "ctaPrimary": "Kostenlos starten",
@@ -409,7 +409,7 @@
         "slides": "Folien",
         "slide": "Folie {n} von {total}"
       },
-      "subheadline": "Strukturierte Programme, Ernährung und ein KI-Coach für Kraft, Running und HIIT. Schließ dich 12.000+ Athleten an — kostenlos starten, ohne Karte."
+      "subheadline": "Strukturierte Programme, Ernährung und ein KI-Coach für Kraft, Running und HIIT. Schließ dich 12.000+ Athleten an - kostenlos starten, ohne Karte."
     },
     "marquee": {
       "items": [
@@ -449,7 +449,7 @@
     "features": {
       "label": "Disziplinen",
       "title": "10 Disziplinen. 1 Plattform.",
-      "subtitle": "Von Cardio bis Kraft — jeder Sport, jedes Niveau, jedes Ziel",
+      "subtitle": "Von Cardio bis Kraft - jeder Sport, jedes Niveau, jedes Ziel",
       "discover": "Entdecken",
       "discoverAria": "Disziplin {name} entdecken",
       "prevAria": "Vorherige Disziplinen",
@@ -458,7 +458,7 @@
         {
           "title": "Running & Cardio",
           "tag": "Cardio",
-          "description": "Laufprogramme für alle Niveaus — vom 5-km-Lauf bis zum Marathon. Personalisierte Pläne mit GPS-Coaching und Herzfrequenz-Tracking.",
+          "description": "Laufprogramme für alle Niveaus - vom 5-km-Lauf bis zum Marathon. Personalisierte Pläne mit GPS-Coaching und Herzfrequenz-Tracking.",
           "stats": [
             "+4.200 Läufer",
             "120+ Pläne",
@@ -468,7 +468,7 @@
         {
           "title": "Krafttraining",
           "tag": "Kraft",
-          "description": "Masseaufbau, Definition oder Tonisierung — unsere zertifizierten Coaches erstellen dein maßgeschneidertes Programm passend zu deiner Morphologie.",
+          "description": "Masseaufbau, Definition oder Tonisierung - unsere zertifizierten Coaches erstellen dein maßgeschneidertes Programm passend zu deiner Morphologie.",
           "stats": [
             "+3.800 Mitglieder",
             "90+ Programme",
@@ -482,13 +482,13 @@
           "stats": [
             "+2.100 Mitglieder",
             "60+ Circuits",
-            "20–30 Min / Einheit"
+            "20-30 Min / Einheit"
           ]
         },
         {
           "title": "Radfahren",
           "tag": "Ausdauer",
-          "description": "Indoor- und Outdoor-Training mit Wattmessung. Vom Sportler bis zum Bergkletterer — ein Plan für jedes Profil.",
+          "description": "Indoor- und Outdoor-Training mit Wattmessung. Vom Sportler bis zum Bergkletterer - ein Plan für jedes Profil.",
           "stats": [
             "+1.500 Radfahrer",
             "45+ Pläne",
@@ -498,7 +498,7 @@
         {
           "title": "Schwimmen",
           "tag": "Wasser",
-          "description": "Schwimmtechniken, Triathlon-Vorbereitung, Open Water — verbessere dich in allen Stilen mit HD-Video-Drills.",
+          "description": "Schwimmtechniken, Triathlon-Vorbereitung, Open Water - verbessere dich in allen Stilen mit HD-Video-Drills.",
           "stats": [
             "+900 Schwimmer",
             "30+ Programme",
@@ -518,17 +518,17 @@
         {
           "title": "Yoga",
           "tag": "Wohlbefinden",
-          "description": "Flexibilität, innere Stärke und Achtsamkeit — von Anfänger-Flows bis zu fortgeschrittenem Yoga für einen ausgeglichenen Körper und Geist.",
+          "description": "Flexibilität, innere Stärke und Achtsamkeit - von Anfänger-Flows bis zu fortgeschrittenem Yoga für einen ausgeglichenen Körper und Geist.",
           "stats": [
             "+2.000 Praktizierende",
             "40+ Sequenzen",
-            "20–60 Min / Einheit"
+            "20-60 Min / Einheit"
           ]
         },
         {
           "title": "Boxen",
           "tag": "Kampf",
-          "description": "Technik, Cardio und Kraft — von den Grundlagen bis zu fortgeschrittenen Kombinationen, um dich körperlich und mental zu transformieren.",
+          "description": "Technik, Cardio und Kraft - von den Grundlagen bis zu fortgeschrittenen Kombinationen, um dich körperlich und mental zu transformieren.",
           "stats": [
             "+1.200 Boxer",
             "35+ Programme",
@@ -538,11 +538,11 @@
         {
           "title": "Stretching",
           "tag": "Mobilität",
-          "description": "Mobilität, Beweglichkeit und optimale Erholung — geführte Dehnroutinen, um Verletzungen vorzubeugen und Leistung zu bringen.",
+          "description": "Mobilität, Beweglichkeit und optimale Erholung - geführte Dehnroutinen, um Verletzungen vorzubeugen und Leistung zu bringen.",
           "stats": [
             "+1.600 Mitglieder",
             "30+ Routinen",
-            "10–30 Min / Einheit"
+            "10-30 Min / Einheit"
           ]
         },
         {
@@ -560,7 +560,7 @@
     "howItWorks": {
       "label": "So funktioniert's",
       "title": "Starte in 4 Schritten",
-      "subtitle": "Von der Anmeldung bis zu deinen ersten Ergebnissen — einfach, schnell, effektiv",
+      "subtitle": "Von der Anmeldung bis zu deinen ersten Ergebnissen - einfach, schnell, effektiv",
       "cta": "Jetzt starten",
       "ctaNote": "Kostenlos starten · Ohne Karte · Unverbindlich",
       "steps": [
@@ -585,7 +585,7 @@
     "intensity": {
       "label": "Niveaus",
       "title": "Ein Programm für jeden Athleten",
-      "subtitle": "Vom Anfänger bis zur Elite — Xenotif® passt sich dir an, nicht umgekehrt",
+      "subtitle": "Vom Anfänger bis zur Elite - Xenotif® passt sich dir an, nicht umgekehrt",
       "intensityLabel": "Intensität",
       "seePricing": "Preise ansehen",
       "levels": [
@@ -669,7 +669,7 @@
         {
           "sport": "Running · Marathon",
           "date": "Vor 2 Tagen",
-          "text": "\"In 3 Monaten Xenotif®-Programm habe ich meinen Marathon-Rekord um 18 Minuten verbessert. Das KI-Coaching ist verblüffend — jede Einheit ist perfekt auf mein Niveau abgestimmt.\""
+          "text": "\"In 3 Monaten Xenotif®-Programm habe ich meinen Marathon-Rekord um 18 Minuten verbessert. Das KI-Coaching ist verblüffend - jede Einheit ist perfekt auf mein Niveau abgestimmt.\""
         },
         {
           "sport": "HIIT · Krafttraining",
@@ -679,7 +679,7 @@
         {
           "sport": "CrossFit · Schwimmen",
           "date": "Vor 1 Woche",
-          "text": "\"Triathlon-Vorbereitung mit Xenotif® — unglaubliches Ergebnis. Dank dieser Plattform habe ich meinen ersten Ironman abgeschlossen. Danke Xenotif®!\""
+          "text": "\"Triathlon-Vorbereitung mit Xenotif® - unglaubliches Ergebnis. Dank dieser Plattform habe ich meinen ersten Ironman abgeschlossen. Danke Xenotif®!\""
         }
       ],
       "summary": {
@@ -708,7 +708,7 @@
       "giftBadge": "GRATIS 7-Tage-Programm",
       "titleTop": "BEREIT, DEINE",
       "titleBottom": "GRENZEN ZU ÜBERWINDEN?",
-      "desc": "Erhalte dein <b>7-Tage-Einsteiger-Programm</b> (PDF) — danach jede Woche: Ernährungstipps, Trainingstipps und exklusive WODs.",
+      "desc": "Erhalte dein <b>7-Tage-Einsteiger-Programm</b> (PDF) - danach jede Woche: Ernährungstipps, Trainingstipps und exklusive WODs.",
       "perks": [
         "Kostenlose Programme jede Woche",
         "WODs & Community-Challenges",
@@ -736,7 +736,7 @@
       "items": [
         {
           "q": "Ist Xenotif® für Anfänger geeignet?",
-          "a": "Absolut. Xenotif® bietet Programme für alle Niveaus, vom absoluten Anfänger bis zum erfahrenen Athleten. Unsere KI passt jedes Programm ab der Anmeldung an dein Profil an — Niveau, Ziele, Verfügbarkeit."
+          "a": "Absolut. Xenotif® bietet Programme für alle Niveaus, vom absoluten Anfänger bis zum erfahrenen Athleten. Unsere KI passt jedes Programm ab der Anmeldung an dein Profil an - Niveau, Ziele, Verfügbarkeit."
         },
         {
           "q": "Kann ich mein Abonnement jederzeit kündigen?",
@@ -748,11 +748,11 @@
         },
         {
           "q": "Brauche ich spezielle Ausrüstung?",
-          "a": "Nein. Xenotif® bietet Einheiten für jede Ausstattung — im Studio, zu Hause oder draußen. Bei der Wahl deines Programms gibst du an, worüber du verfügst."
+          "a": "Nein. Xenotif® bietet Einheiten für jede Ausstattung - im Studio, zu Hause oder draußen. Bei der Wahl deines Programms gibst du an, worüber du verfügst."
         },
         {
           "q": "Was umfasst die Geld-zurück-Garantie?",
-          "a": "Wenn du in den ersten 30 Tagen nicht zufrieden bist, erstatten wir dir den vollen Betrag — ohne Fragen. Kontaktiere uns einfach unter contact@xenotif.com."
+          "a": "Wenn du in den ersten 30 Tagen nicht zufrieden bist, erstatten wir dir den vollen Betrag - ohne Fragen. Kontaktiere uns einfach unter contact@xenotif.com."
         },
         {
           "q": "Funktionieren die Programme auf dem Handy?",
@@ -774,20 +774,20 @@
         },
         {
           "title": "Ein Coach in deiner Tasche",
-          "desc": "KI-Coach, Ernährungsplan und Tracking — Kraft, Running, HIIT. Alles an einem Ort, 24/7, auf dein Niveau abgestimmt."
+          "desc": "KI-Coach, Ernährungsplan und Tracking - Kraft, Running, HIIT. Alles an einem Ort, 24/7, auf dein Niveau abgestimmt."
         }
       ]
     },
     "challenges": {
       "eyebrow": "Xenotif Challenges",
       "title": "Nimm eine Challenge an. Bleib motiviert.",
-      "subtitle": "Ein klares Ziel, ein Zeitraum, ein Plan. Wähle deine Challenge und lass dich von Xenotif begleiten — Tag für Tag.",
+      "subtitle": "Ein klares Ziel, ein Zeitraum, ein Plan. Wähle deine Challenge und lass dich von Xenotif begleiten - Tag für Tag.",
       "seeAll": "Alle Challenges ansehen",
       "startChallenge": "Challenge annehmen",
-      "metaTitle": "Fitness-Challenges — 30 Tage, Cardio, Kraft, Definition",
+      "metaTitle": "Fitness-Challenges - 30 Tage, Cardio, Kraft, Definition",
       "metaDescription": "Nimm eine Fitness-Challenge mit Xenotif an: 30 Tage, Cardio-Woche, Kraft-Streak, Definitions-Sprint. Klares Ziel, tägliches Tracking, kostenlos starten.",
       "pageTitle": "Fitness-Challenges",
-      "pageSubtitle": "Ein Ziel, ein Zeitraum, ein Plan. Schließ dich 12.000+ Xenotif-Athleten an und nimm deine Challenge an — die App begleitet dich und hält dich Tag für Tag am Ball.",
+      "pageSubtitle": "Ein Ziel, ein Zeitraum, ein Plan. Schließ dich 12.000+ Xenotif-Athleten an und nimm deine Challenge an - die App begleitet dich und hält dich Tag für Tag am Ball.",
       "goalLabel": "Ziel",
       "items": [
         {
@@ -795,7 +795,7 @@
           "goal": "1 Workout pro Tag, 30 Tage",
           "duration": "30 Tage",
           "level": "Alle Level",
-          "desc": "Die Challenge, die zur Gewohnheit wird. 30 Tage, ein von der App geführtes Workout pro Tag — Kraft, Cardio oder Mobilität. Am Ende gehört Training zu deinem Leben."
+          "desc": "Die Challenge, die zur Gewohnheit wird. 30 Tage, ein von der App geführtes Workout pro Tag - Kraft, Cardio oder Mobilität. Am Ende gehört Training zu deinem Leben."
         },
         {
           "title": "Cardio-Woche",
@@ -826,7 +826,7 @@
       "cards": [
         {
           "title": "Programme, die dich führen",
-          "desc": "Kraft, Running, HIIT, Abnehmen — strukturierte Wochenpläne mit detaillierten Workouts und Ernährung."
+          "desc": "Kraft, Running, HIIT, Abnehmen - strukturierte Wochenpläne mit detaillierten Workouts und Ernährung."
         },
         {
           "title": "Ein KI-Coach, 24/7",
@@ -834,7 +834,7 @@
         },
         {
           "title": "Dein Fortschritt auf einen Blick",
-          "desc": "Verfolge Workouts, Gewicht und Leistung — sieh deine Ergebnisse und bleib motiviert."
+          "desc": "Verfolge Workouts, Gewicht und Leistung - sieh deine Ergebnisse und bleib motiviert."
         }
       ]
     },
@@ -858,7 +858,7 @@
       "forgot": "Passwort vergessen?",
       "noAccount": "Noch kein Konto?",
       "createAccount": "Konto erstellen →",
-      "secure": "Sichere SSL-Verbindung — Deine Daten sind geschützt",
+      "secure": "Sichere SSL-Verbindung - Deine Daten sind geschützt",
       "errorInvalid": "E-Mail oder Passwort falsch.",
       "panelTitle": "Mach da weiter, wo du aufgehört hast.",
       "panelSubtitle": "Deine Programme, dein KI-Coach und dein Fortschritt warten.",
@@ -885,7 +885,7 @@
       "hide": "Verbergen",
       "submitFree": "Mein kostenloses Konto erstellen",
       "submitPaid": "Kostenlose Testphase starten",
-      "trialReassure": "🎁 7 Tage gratis — heute keine Abbuchung, Kündigung mit 1 Klick",
+      "trialReassure": "🎁 7 Tage gratis - heute keine Abbuchung, Kündigung mit 1 Klick",
       "creating": "Konto wird erstellt…",
       "legalPrefix": "Mit der Erstellung eines Kontos akzeptierst du unser",
       "legalNotice": "Impressum",
@@ -950,14 +950,14 @@
   },
   "disciplines": {
     "back": "Zurück zu den Disziplinen",
-    "metaTitle": "{name} — Kompletter Leitfaden & Programme",
+    "metaTitle": "{name} - Kompletter Leitfaden & Programme",
     "ratingAria": "5-Sterne-Bewertung",
     "heroAria": "Disziplin {name}",
     "heroAlt": "Athlet, der {name} ausübt",
     "videos": {
       "eyebrow": "Videos & Tutorials",
       "title": "Lerne von den Besten",
-      "subtitle": "Technik-Tutorials, geführte Einheiten und Expertentipps — klicke, um ein Video zu starten.",
+      "subtitle": "Technik-Tutorials, geführte Einheiten und Expertentipps - klicke, um ein Video zu starten.",
       "unavailable": "Video nicht verfügbar",
       "locked": "Nur für PRO-Mitglieder",
       "playAria": "Video starten: {title}"
@@ -973,7 +973,7 @@
     "exercises": {
       "eyebrow": "Schlüsselübungen",
       "title": "Beherrsche die Grundlagen",
-      "subtitle": "Die wesentlichen Übungen, die du kennen musst — Technik, gezielte Muskeln und Ausführungstipps, um dich verletzungsfrei zu verbessern."
+      "subtitle": "Die wesentlichen Übungen, die du kennen musst - Technik, gezielte Muskeln und Ausführungstipps, um dich verletzungsfrei zu verbessern."
     },
     "levels": {
       "title": "Verfügbare Niveaus",
@@ -1017,13 +1017,13 @@
     }
   },
   "boutique": {
-    "metaTitle": "Shop — Ausrüstung, Supplements & Fitnessprogramme",
+    "metaTitle": "Shop - Ausrüstung, Supplements & Fitnessprogramme",
     "metaDescription": "Der Xenotif®-Shop: Sportausrüstung, bewährte Supplements, Smartwatches und digitale Programme, erstellt von unseren zertifizierten Coaches. Schnelle Lieferung, sichere Zahlung.",
-    "ogTitle": "Xenotif®-Shop — Ausrüstung, Supplements & Programme",
+    "ogTitle": "Xenotif®-Shop - Ausrüstung, Supplements & Programme",
     "ogDescription": "Profi-Ausrüstung, bewährte Supplements und digitale Programme, erstellt von unseren zertifizierten Coaches.",
     "badge": "🛒 Offizieller XENOTIF®-Shop",
     "heroTitle": "Ausrüstung <o>&</o><br></br><o>Programme</o> Premium",
-    "heroSubtitle": "Profi-Ausrüstung, bewährte Supplements und Programme, erstellt von unseren zertifizierten Coaches — alles, um deine Ziele zu erreichen.",
+    "heroSubtitle": "Profi-Ausrüstung, bewährte Supplements und Programme, erstellt von unseren zertifizierten Coaches - alles, um deine Ziele zu erreichen.",
     "searchPlaceholder": "Kettlebell, Whey, HIIT-Programm suchen...",
     "filters": "Filter",
     "stats": {
@@ -1062,12 +1062,12 @@
     "catalogue": {
       "badge": "📖 Kompletter Katalog",
       "title": "Der <o>komplette</o> Katalog",
-      "subtitle": "Alle unsere Produkte nach Sport sortiert — Krafttraining, Running, Radfahren, Schwimmen, HIIT und mehr.",
+      "subtitle": "Alle unsere Produkte nach Sport sortiert - Krafttraining, Running, Radfahren, Schwimmen, HIIT und mehr.",
       "link": "Gesamten Katalog ansehen",
       "back": "Zurück zum Shop",
       "seeAll": "Alle ansehen →",
-      "metaTitle": "Kompletter Katalog — Alle Xenotif®-Produkte",
-      "metaDescription": "Der komplette Xenotif®-Katalog: alle unsere Produkte auf einer Seite — Ausrüstung, Ernährung, Kleidung, Tech und Programme."
+      "metaTitle": "Kompletter Katalog - Alle Xenotif®-Produkte",
+      "metaDescription": "Der komplette Xenotif®-Katalog: alle unsere Produkte auf einer Seite - Ausrüstung, Ernährung, Kleidung, Tech und Programme."
     },
     "disciplinesFilter": {
       "musculation": "💪 Krafttraining",
@@ -1153,11 +1153,11 @@
       "seeShop": "Shop ansehen",
       "title": "Warenkorb",
       "itemsCount": "({count, plural, one {# Artikel} other {# Artikel}})",
-      "ownSection": "XENOTIF-Produkte — Sichere Zahlung",
+      "ownSection": "XENOTIF-Produkte - Sichere Zahlung",
       "digitalImmediate": "📥 Sofort-Download",
       "digitalTag": "📥 Digital",
-      "physicalDelivery": "📦 Lieferung 3–7 Tage",
-      "affiliateSection": "🔗 Amazon-Produkte — Auf Amazon.de bestellen",
+      "physicalDelivery": "📦 Lieferung 3-7 Tage",
+      "affiliateSection": "🔗 Amazon-Produkte - Auf Amazon.de bestellen",
       "affiliateNote": "Diese Produkte werden direkt auf Amazon.de bestellt, indem du auf den Button klickst.",
       "summary": "Zusammenfassung",
       "total": "Gesamt",
@@ -1176,7 +1176,7 @@
       "continueShopping": "← Weiter einkaufen"
     },
     "succes": {
-      "metaTitle": "Bestellung bestätigt — Xenotif®",
+      "metaTitle": "Bestellung bestätigt - Xenotif®",
       "title": "Bestellung bestätigt!",
       "subtitle": "Danke für deinen Einkauf. Eine Bestätigungs-E-Mail kommt in wenigen Minuten.",
       "downloadReady": "Dein Download ist bereit",
@@ -1185,7 +1185,7 @@
       "whatNow": "Und jetzt?",
       "digitalAbove": "Deine <o>digitalen Programme</o> sind sofort oben verfügbar.",
       "digitalEmail": "Deine <o>digitalen Programme</o> sind sofort in deiner E-Mail verfügbar.",
-      "physicalShipped": "Deine <o>physischen Produkte</o> werden innerhalb von 2–5 Werktagen versandt.",
+      "physicalShipped": "Deine <o>physischen Produkte</o> werden innerhalb von 2-5 Werktagen versandt.",
       "continueShopping": "Weiter einkaufen",
       "goDashboard": "Zum Dashboard →"
     },
@@ -1196,9 +1196,9 @@
     }
   },
   "blog": {
-    "metaTitle": "Fitness-Blog — Tipps, Leitfäden & Vergleiche",
+    "metaTitle": "Fitness-Blog - Tipps, Leitfäden & Vergleiche",
     "metaDescription": "Experten-Fitnesstipps, Ernährungs-Leitfäden, Material-Vergleiche und Trainingsprogramme. Alles, was du zum Fortschritt wissen musst, geschrieben von Xenotif®-Experten.",
-    "ogTitle": "Fitness-Blog — Tipps, Leitfäden & Vergleiche | Xenotif®",
+    "ogTitle": "Fitness-Blog - Tipps, Leitfäden & Vergleiche | Xenotif®",
     "ogDescription": "Experten-Fitnesstipps, Ernährungs-Leitfäden, Material-Vergleiche. Komm schneller voran mit Xenotif®.",
     "keywords": [
       "Fitness-Blog",
@@ -1437,9 +1437,9 @@
         "stretching": "Stretching",
         "nutrition": "Ernährung"
       },
-      "weeks": "{name} — 8 Wochen",
+      "weeks": "{name} - 8 Wochen",
       "sessionsCompleted": "{completed}/{total} Einheiten abgeschlossen",
-      "done": "Programm abgeschlossen — Glückwunsch! 🎉",
+      "done": "Programm abgeschlossen - Glückwunsch! 🎉",
       "videosAvailable": "{count} Videos verfügbar",
       "videosSubtitle": "Technik-Tutorials & geführte Einheiten",
       "phase": "Phase {n}",
@@ -1468,7 +1468,7 @@
       "error": "Entschuldigung, ein Fehler ist aufgetreten. Versuche es gleich erneut.",
       "placeholder": "Stell dem KI-Coach deine Frage…",
       "send": "Senden",
-      "disclaimer": "KI-Coach · Xenotif® — Ersetzt keine ärztliche Beratung"
+      "disclaimer": "KI-Coach · Xenotif® - Ersetzt keine ärztliche Beratung"
     },
     "abonnement": {
       "title": "Mein Abonnement",
@@ -1505,7 +1505,7 @@
         "E-Mail-Support"
       ],
       "managePayment": "Zahlung & Rechnungen verwalten",
-      "manageHint": "Karte ansehen/ändern, Rechnungen und kündigen — alles wird hier verwaltet.",
+      "manageHint": "Karte ansehen/ändern, Rechnungen und kündigen - alles wird hier verwaltet.",
       "billingTitle": "Zahlung & Rechnungen",
       "expires": "läuft ab",
       "noCard": "Keine Karte gespeichert.",
@@ -1606,7 +1606,7 @@
       "tapToStart": "Tippe auf den Bildschirm, um zu starten 👆",
       "tapHint": "Dein iPhone fragt nach einer Berechtigung für den Bewegungssensor. Tippe irgendwo, um das Tracking zu starten.",
       "denied": "Bewegungszugriff verweigert. Erlaube ihn in den Einstellungen deines Browsers und lade die Seite neu.",
-      "noSensor": "Kein Bewegungssensor erkannt — das Live-Tracking funktioniert auf dem Smartphone. 📱",
+      "noSensor": "Kein Bewegungssensor erkannt - das Live-Tracking funktioniert auf dem Smartphone. 📱",
       "startTracking": "Tracking starten",
       "move": "Bewegung",
       "exercise": "Übung",
@@ -1627,7 +1627,7 @@
         "goals": "Ziele"
       },
       "connectTitle": "Verbinde deine Uhr",
-      "connectDesc": "Synchronisiere deine Smartwatch, um deine echten Gesundheitsdaten anzuzeigen — Schritte, Kalorien, Herzfrequenz, Schlaf und vieles mehr.",
+      "connectDesc": "Synchronisiere deine Smartwatch, um deine echten Gesundheitsdaten anzuzeigen - Schritte, Kalorien, Herzfrequenz, Schlaf und vieles mehr.",
       "securityTitle": "Verschlüsselte Daten & DSGVO",
       "securityDescShort": "Deine Gesundheitsdaten werden verschlüsselt und auf sicheren Servern in Europa gespeichert. Keine Daten werden an Dritte weiterverkauft.",
       "securityDescLong": "Deine Gesundheitsdaten werden verschlüsselt und auf sicheren Servern in Europa gespeichert. Du kannst alle deine Daten jederzeit in deinem Profil löschen. Keine Daten werden an Dritte weiterverkauft.",
@@ -1670,11 +1670,11 @@
         "Sa",
         "So"
       ],
-      "aiTitle": "KI-Coach — Personalisierte Empfehlungen",
+      "aiTitle": "KI-Coach - Personalisierte Empfehlungen",
       "aiRecs": [
-        "Du hast heute 84% deines Schrittziels erreicht — ein 10-minütiger Sprint reicht, um das abzuschließen!",
+        "Du hast heute 84% deines Schrittziels erreicht - ein 10-minütiger Sprint reicht, um das abzuschließen!",
         "Dein Schlaf liegt leicht unter 7h. Geh heute Abend 30 Min früher ins Bett, um deine Erholung zu optimieren.",
-        "Hydration bei 87% — trink 250 ml vor deiner nächsten Einheit, um deine Leistung zu halten.",
+        "Hydration bei 87% - trink 250 ml vor deiner nächsten Einheit, um deine Leistung zu halten.",
         "Deine Ruheherzfrequenz von 58 bpm zeigt eine ausgezeichnete kardiovaskuläre Verfassung. Mach weiter so!"
       ],
       "supportedTitle": "Unterstützte Geräte",
@@ -1756,7 +1756,7 @@
     }
   },
   "about": {
-    "metaTitle": "Über uns — Xenotif®",
+    "metaTitle": "Über uns - Xenotif®",
     "metaDescription": "Die Mission von Xenotif®: sportliche Leistung für alle zugänglich machen, dank strukturierter Programme, eines intelligenten Coaches und einer motivierenden Community.",
     "eyebrow": "Über uns",
     "title": "Leistung, <o>für alle</o>",
@@ -1796,24 +1796,24 @@
     "backToHub": "Alle Programme",
     "startFree": "Kostenlos starten",
     "gateTitle": "Das komplette Programm wartet auf dich",
-    "gateDesc": "Tag-für-Tag-Kalender, alle detaillierten Einheiten, Ernährungsplan, Fortschritts-Tracking und KI-Coach — schalte alles frei, ohne Karte, für 7 Tage.",
+    "gateDesc": "Tag-für-Tag-Kalender, alle detaillierten Einheiten, Ernährungsplan, Fortschritts-Tracking und KI-Coach - schalte alles frei, ohne Karte, für 7 Tage.",
     "startTrial": "Kostenlose Testphase starten",
     "trialNote": "7 Tage gratis · unverbindlich · Kündigung mit 1 Klick",
     "technique": "Technik: ",
     "mistakes": "Häufige Fehler: ",
     "hubEyebrow": "Xenotif®-Programme",
     "hubTitle": "Unsere Trainingsprogramme",
-    "hubSubtitle": "Komplette, Woche für Woche strukturierte Programme — Ziele, detaillierte Einheiten, Ernährungsplan und Tracking. Kostenlos starten.",
+    "hubSubtitle": "Komplette, Woche für Woche strukturierte Programme - Ziele, detaillierte Einheiten, Ernährungsplan und Tracking. Kostenlos starten.",
     "seeProgram": "Programm ansehen",
     "hubMetaTitle": "Trainingsprogramme",
     "hubMetaDesc": "Komplette, strukturierte Fitnessprogramme: Muskelaufbau, Abnehmen, Krafttraining, HIIT, Ernährung. Tägliche Einheiten, Ernährung und Tracking.",
     "faqTitle": "Häufige Fragen",
     "faqQ1": "Für wen ist {title} gedacht?",
-    "faqA1": "Jede Übung wird Schritt für Schritt erklärt (Technik und zu vermeidende Fehler), und die Xenotif-App passt die Intensität an dein Niveau an — egal ob du gerade erst anfängst oder ein Plateau überwinden willst. Du machst in deinem eigenen Tempo Fortschritte.",
+    "faqA1": "Jede Übung wird Schritt für Schritt erklärt (Technik und zu vermeidende Fehler), und die Xenotif-App passt die Intensität an dein Niveau an - egal ob du gerade erst anfängst oder ein Plateau überwinden willst. Du machst in deinem eigenen Tempo Fortschritte.",
     "faqQ2": "Brauche ich Ausrüstung oder eine Fitnessstudio-Mitgliedschaft?",
     "faqA2": "Das hängt vom Programm ab: Einige lassen sich mit dem eigenen Körpergewicht zu Hause absolvieren, andere nutzen ein Fitnessstudio optimal. In jedem Fall bietet die App Varianten je nach verfügbarer Ausrüstung.",
     "faqQ3": "Wie lange dauert es, bis ich Ergebnisse sehe?",
-    "faqA3": "Mit Regelmäßigkeit stellen sich die ersten Empfindungen nach 2 bis 3 Wochen ein, sichtbare Ergebnisse nach 6 bis 8 Wochen. Der Schlüssel ist Beständigkeit — das Tracking und die Erinnerungen von Xenotif helfen dir, dranzubleiben.",
+    "faqA3": "Mit Regelmäßigkeit stellen sich die ersten Empfindungen nach 2 bis 3 Wochen ein, sichtbare Ergebnisse nach 6 bis 8 Wochen. Der Schlüssel ist Beständigkeit - das Tracking und die Erinnerungen von Xenotif helfen dir, dranzubleiben.",
     "faqQ4": "Ist das Programm wirklich kostenlos?",
     "faqA4": "Du schaltest das komplette Programm 7 Tage lang kostenlos frei, ohne Kreditkarte. Danach erhältst du mit dem Xenotif-Abo Zugriff auf alle Programme, das Fortschritts-Tracking und den KI-Coach. Kündigung mit einem Klick.",
     "faqQ5": "Kann ich diesem Programm über die Xenotif-App folgen?",
@@ -1829,12 +1829,12 @@
     "seeExercise": "Übung ansehen",
     "metaSuffix": "Technik, Zielmuskeln, zu vermeidende Fehler",
     "ctaTitle": "Setz es in die Praxis um",
-    "ctaDesc": "Diese Übung ist Teil der Xenotif-Programme — komplette Workouts, Fortschritts-Tracking und KI-Coach. Kostenlos starten, ohne Karte.",
+    "ctaDesc": "Diese Übung ist Teil der Xenotif-Programme - komplette Workouts, Fortschritts-Tracking und KI-Coach. Kostenlos starten, ohne Karte.",
     "ctaButton": "Kostenlos starten",
     "hubEyebrow": "Xenotif Übungen",
     "hubTitle": "Übungsbibliothek",
-    "hubSubtitle": "Schritt-für-Schritt-Technik, Zielmuskeln und zu vermeidende Fehler für jede Übung — Kraft, Cardio, Körpergewicht. Kostenlos.",
-    "hubMetaTitle": "Übungen — Technik, Zielmuskeln und Fehler",
+    "hubSubtitle": "Schritt-für-Schritt-Technik, Zielmuskeln und zu vermeidende Fehler für jede Übung - Kraft, Cardio, Körpergewicht. Kostenlos.",
+    "hubMetaTitle": "Übungen - Technik, Zielmuskeln und Fehler",
     "hubMetaDesc": "Xenotif-Übungsbibliothek: detaillierte Technik, beanspruchte Muskeln und häufige Fehler. Kraft, Cardio und Körpergewicht, einfach erklärt.",
     "hubFilteredBy": "Gefiltert nach {label}",
     "hubClearFilter": "Alle Übungen anzeigen",
@@ -1843,19 +1843,19 @@
   "outils": {
     "hubEyebrow": "Xenotif Tools",
     "hubTitle": "Fitness-Rechner",
-    "hubSubtitle": "Kalorien, BMI, Makros, 1RM — kostenlose Rechner für Ernährung und Kraft. Sofortiges Ergebnis, ohne Anmeldung.",
-    "hubMetaTitle": "Fitness-Rechner — Kalorien, BMI, Makros, 1RM",
+    "hubSubtitle": "Kalorien, BMI, Makros, 1RM - kostenlose Rechner für Ernährung und Kraft. Sofortiges Ergebnis, ohne Anmeldung.",
+    "hubMetaTitle": "Fitness-Rechner - Kalorien, BMI, Makros, 1RM",
     "hubMetaDesc": "Kostenlose Xenotif-Rechner: täglicher Kalorienbedarf (TDEE), BMI, Makro-Verteilung und 1RM. Sofortiges Ergebnis, Formeln erklärt.",
     "seeCalc": "Rechner öffnen",
     "backToHub": "Alle Rechner",
-    "disclaimer": "Richtwert — ersetzt keine medizinische oder professionelle Beratung.",
+    "disclaimer": "Richtwert - ersetzt keine medizinische oder professionelle Beratung.",
     "calories": {
       "title": "Kalorienrechner (TDEE)",
       "short": "Kalorien / TDEE",
       "subtitle": "Schätze deinen täglichen Kalorienbedarf aus Stoffwechsel und Aktivität.",
-      "metaTitle": "Kalorienrechner pro Tag (TDEE) — Kalorienbedarf",
+      "metaTitle": "Kalorienrechner pro Tag (TDEE) - Kalorienbedarf",
       "metaDesc": "Berechne deinen täglichen Kalorienbedarf (TDEE) mit der Mifflin-St-Jeor-Formel: Geschlecht, Alter, Gewicht, Größe und Aktivität. Kostenlos und sofort.",
-      "intro": "Dieser Rechner nutzt die Mifflin-St-Jeor-Formel, um deinen Grundumsatz (BMR) zu schätzen, und multipliziert ihn mit deinem Aktivitätsniveau, um deinen Gesamtumsatz (TDEE) zu erhalten — die Kalorien, um dein Gewicht zu halten.",
+      "intro": "Dieser Rechner nutzt die Mifflin-St-Jeor-Formel, um deinen Grundumsatz (BMR) zu schätzen, und multipliziert ihn mit deinem Aktivitätsniveau, um deinen Gesamtumsatz (TDEE) zu erhalten - die Kalorien, um dein Gewicht zu halten.",
       "sex": "Geschlecht",
       "male": "Mann",
       "female": "Frau",
@@ -1878,9 +1878,9 @@
       "title": "BMI-Rechner",
       "short": "BMI",
       "subtitle": "Dein Body-Mass-Index und seine Kategorie, sofort.",
-      "metaTitle": "BMI-Rechner — Body-Mass-Index",
+      "metaTitle": "BMI-Rechner - Body-Mass-Index",
       "metaDesc": "Berechne deinen BMI (Body-Mass-Index) aus Gewicht und Größe, mit der passenden Kategorie. Kostenlos und sofort.",
-      "intro": "Der BMI (Body-Mass-Index) ist dein Gewicht (kg) geteilt durch das Quadrat deiner Größe (m). Ein schneller Richtwert, der aber Muskel und Fett nicht unterscheidet — bei Sportlern mit Vorsicht zu deuten.",
+      "intro": "Der BMI (Body-Mass-Index) ist dein Gewicht (kg) geteilt durch das Quadrat deiner Größe (m). Ein schneller Richtwert, der aber Muskel und Fett nicht unterscheidet - bei Sportlern mit Vorsicht zu deuten.",
       "weight": "Gewicht (kg)",
       "height": "Größe (cm)",
       "result": "Dein BMI",
@@ -1894,7 +1894,7 @@
       "title": "Makro-Rechner",
       "short": "Makros",
       "subtitle": "Teile deine Kalorien in Protein, Kohlenhydrate und Fett je nach Ziel.",
-      "metaTitle": "Makro-Rechner — Protein, Kohlenhydrate, Fett",
+      "metaTitle": "Makro-Rechner - Protein, Kohlenhydrate, Fett",
       "metaDesc": "Berechne deine Makro-Verteilung (Protein, Kohlenhydrate, Fett) aus Gewicht, Kalorien und Ziel. Kostenlos und sofort.",
       "intro": "Dieser Rechner teilt deine Kalorien in Makronährstoffe: Protein nach Körpergewicht (zum Muskelerhalt), Fett bei ~25 % der Kalorien und den Rest als Kohlenhydrate für Energie.",
       "weight": "Gewicht (kg)",
@@ -1912,7 +1912,7 @@
       "title": "1RM-Rechner",
       "short": "1RM (Maximalkraft)",
       "subtitle": "Schätze deine Maximalkraft für 1 Wiederholung aus einem Satz.",
-      "metaTitle": "1RM-Rechner — Maximalkraft (One-Rep-Max)",
+      "metaTitle": "1RM-Rechner - Maximalkraft (One-Rep-Max)",
       "metaDesc": "Berechne dein 1RM (One-Rep-Max) aus dem gehobenen Gewicht und den Wiederholungen mit der Epley-Formel. Kostenlos und sofort.",
       "intro": "Das 1RM (One-Rep-Max) ist das Maximum, das du einmal heben kannst. Dieser Rechner schätzt es mit der Epley-Formel aus einem submaximalen Satz und zeigt deine Zielgewichte nach Prozent.",
       "weight": "Gehobenes Gewicht (kg)",
@@ -1923,14 +1923,14 @@
       "load": "Gewicht (kg)"
     },
     "ctaTitle": "Geh weiter mit Xenotif",
-    "ctaDesc": "Strukturierte Programme, Ernährungsplan und KI-Coach — um aus diesen Zahlen Ergebnisse zu machen. Kostenlos starten.",
+    "ctaDesc": "Strukturierte Programme, Ernährungsplan und KI-Coach - um aus diesen Zahlen Ergebnisse zu machen. Kostenlos starten.",
     "ctaButton": "Kostenlos starten"
   },
   "disciplinesHub": {
     "eyebrow": "Xenotif Disziplinen",
     "title": "Alle Disziplinen",
-    "subtitle": "Wähl deinen Sport — Kraft, Running, HIIT, Yoga, Schwimmen… jede Disziplin mit Programmen, Übungen und Tipps.",
-    "metaTitle": "Disziplinen — Kraft, Running, HIIT, Yoga…",
+    "subtitle": "Wähl deinen Sport - Kraft, Running, HIIT, Yoga, Schwimmen… jede Disziplin mit Programmen, Übungen und Tipps.",
+    "metaTitle": "Disziplinen - Kraft, Running, HIIT, Yoga…",
     "metaDescription": "Alle Xenotif-Disziplinen: Kraft, Running, HIIT, CrossFit, Yoga, Schwimmen, Radfahren, Boxen, Stretching, Ernährung. Programme und Tipps pro Sport.",
     "see": "Entdecken"
   },
@@ -1988,7 +1988,7 @@
     "tipLabel_posture": "Haltung",
     "tip_posture": "Halte den Rücken angespannt und neutral, Blick nach vorn, Schultern tief.",
     "var_beginner": "Anfänger: reduziere Umfang oder Gewicht oder nutze eine unterstützte Variante.",
-    "var_intermediate": "Mittel: füge ein moderates Gewicht hinzu und verlangsame die exzentrische Phase (3–4 s).",
+    "var_intermediate": "Mittel: füge ein moderates Gewicht hinzu und verlangsame die exzentrische Phase (3-4 s).",
     "var_advanced": "Fortgeschritten: erhöhe das Gewicht, füge Pausen hinzu oder trainiere einseitig.",
     "var_home": "Zuhause: ersetze das Gewicht durch Bänder, Wasserflaschen oder Körpergewicht.",
     "var_gym": "Studio: nutze Langhanteln, Kurzhanteln oder Maschinen zum gezielten Belasten.",

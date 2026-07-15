@@ -5,7 +5,7 @@ import { Link } from '@/i18n/navigation'
 import { ArrowRight } from 'lucide-react'
 import { ChallengeCards } from '@/components/challenges/ChallengeCards'
 
-// Section home « Défis » — engagement/rétention (inspiré des challenges Strava).
+// Section home « Défis » - engagement/rétention (inspiré des challenges Strava).
 // Objectifs guidés reliés aux programmes ; renvoie vers la page /defis.
 export function Challenges() {
   const t = useTranslations('home.challenges')

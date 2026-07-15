@@ -7,13 +7,13 @@ export const musculationIntermediaire: Guide = {
   id: 'musculation-intermediaire',
   title: 'Programme Musculation Intermédiaire',
   subtitle: '12 semaines pour passer un cap : plus de volume, plus de muscle, plus de force',
-  author: 'XENOTIF Coach — Préparation physique certifiée',
+  author: 'XENOTIF Coach - Préparation physique certifiée',
   level: 'Intermédiaire',
   duration: '12 semaines · 4 à 5 séances/sem',
   coverImage: 'cover.jpg',
   blocks: [
     { type: 'h1', text: 'Passe au niveau supérieur' },
-    { type: 'p', text: `Tu maîtrises les bases et tu cherches à progresser plus vite ? Ce programme intermédiaire de 12 semaines augmente le volume, introduit un split structuré (Push / Pull / Legs ou Haut/Bas) et des techniques d’intensification. Objectif : plus de muscle, plus de force, une silhouette plus dense — sans stagner.` },
+    { type: 'p', text: `Tu maîtrises les bases et tu cherches à progresser plus vite ? Ce programme intermédiaire de 12 semaines augmente le volume, introduit un split structuré (Push / Pull / Legs ou Haut/Bas) et des techniques d’intensification. Objectif : plus de muscle, plus de force, une silhouette plus dense - sans stagner.` },
     { type: 'p', text: `Chaque exercice possède un QR code vers sa vidéo de démonstration sur XENOTIF®. Note tes charges : à ton niveau, c’est la surcharge progressive précise qui fait la différence.` },
     { type: 'meta', items: [
       { label: 'Objectif', value: 'Hypertrophie & force' },
@@ -37,11 +37,11 @@ export const musculationIntermediaire: Guide = {
       `Tu peux t’entraîner 4 à 5 fois par semaine.`,
       `Sinon, commence par le programme Musculation Débutant.`,
     ] },
-    { type: 'note', text: `Règle d’or de l’intermédiaire : la progression n’est plus automatique. Tu dois la provoquer — surcharge progressive, volume suffisant, récupération et nutrition au rendez-vous.` },
+    { type: 'note', text: `Règle d’or de l’intermédiaire : la progression n’est plus automatique. Tu dois la provoquer - surcharge progressive, volume suffisant, récupération et nutrition au rendez-vous.` },
 
     { type: 'h1', text: 'Comment ça marche' },
     { type: 'list', items: [
-      `Split Push / Pull / Legs : poussée, tirage, jambes — répété 1,5 à 2 fois/semaine.`,
+      `Split Push / Pull / Legs : poussée, tirage, jambes - répété 1,5 à 2 fois/semaine.`,
       `Volume : 12 à 20 séries par groupe musculaire et par semaine.`,
       `Séries × répétitions : « 4 × 8 » = 4 séries de 8 répétitions.`,
       `Tempo : 2-3 s en excentrique (descente), explosif en concentrique (montée) contrôlé.`,
@@ -133,7 +133,7 @@ export const musculationIntermediaire: Guide = {
     ] },
 
     { type: 'h1', text: 'Tes séances en détail' },
-    { type: 'h2', text: 'Push — Pecs / Épaules / Triceps' },
+    { type: 'h2', text: 'Push - Pecs / Épaules / Triceps' },
     { type: 'table', headers: ['Exercice', 'Séries', 'Répétitions', 'Repos'], rows: [
       ['Développé couché', '4', '6 à 8', '150 s'],
       ['Développé incliné haltères', '4', '8 à 10', '120 s'],
@@ -141,7 +141,7 @@ export const musculationIntermediaire: Guide = {
       ['Élévations latérales', '4', '12 à 15', '60 s'],
       ['Dips / extension triceps', '3', '10 à 12', '75 s'],
     ] },
-    { type: 'h2', text: 'Pull — Dos / Biceps' },
+    { type: 'h2', text: 'Pull - Dos / Biceps' },
     { type: 'table', headers: ['Exercice', 'Séries', 'Répétitions', 'Repos'], rows: [
       ['Tractions (ou tirage vertical)', '4', '6 à 10', '150 s'],
       ['Rowing barre', '4', '8 à 10', '120 s'],
@@ -149,7 +149,7 @@ export const musculationIntermediaire: Guide = {
       ['Face pull', '3', '15', '60 s'],
       ['Curl biceps + marteau', '4', '10 à 12', '60 s'],
     ] },
-    { type: 'h2', text: 'Legs — Jambes / Fessiers' },
+    { type: 'h2', text: 'Legs - Jambes / Fessiers' },
     { type: 'table', headers: ['Exercice', 'Séries', 'Répétitions', 'Repos'], rows: [
       ['Squat', '4', '6 à 8', '180 s'],
       ['Soulevé de terre roumain', '4', '8 à 10', '150 s'],
@@ -159,7 +159,7 @@ export const musculationIntermediaire: Guide = {
     ] },
 
     { type: 'h1', text: 'Variante 4 jours (Haut / Bas)' },
-    { type: 'p', text: `Tu ne peux t’entraîner que 4 fois par semaine ? Remplace le PPL par ce split Haut/Bas (lundi/mardi/jeudi/vendredi). Chaque moitié du corps est travaillée 2× par semaine — excellent pour la fréquence et la récupération.` },
+    { type: 'p', text: `Tu ne peux t’entraîner que 4 fois par semaine ? Remplace le PPL par ce split Haut/Bas (lundi/mardi/jeudi/vendredi). Chaque moitié du corps est travaillée 2× par semaine - excellent pour la fréquence et la récupération.` },
     { type: 'h2', text: 'Haut du corps (A & B)' },
     { type: 'table', headers: ['Exercice', 'Séries', 'Répétitions', 'Repos'], rows: [
       ['Développé couché / incliné', '4', '6 à 10', '150 s'],
@@ -269,7 +269,7 @@ export const musculationIntermediaire: Guide = {
     { type: 'p', text: `Oui : 2-3 séances de cardio modéré (20-30 min) par semaine, séparées des séances de jambes si possible. Évite l’excès de cardio intense qui nuit à la récupération.` },
 
     { type: 'h1', text: 'Conditionnement & cardio' },
-    { type: 'p', text: `Un peu de cardio améliore ta récupération entre les séries, ta capacité de travail et garde le gras à distance pendant le surplus — sans nuire à tes gains si tu le dose bien.` },
+    { type: 'p', text: `Un peu de cardio améliore ta récupération entre les séries, ta capacité de travail et garde le gras à distance pendant le surplus - sans nuire à tes gains si tu le dose bien.` },
     { type: 'list', items: [
       `2 à 3 séances de cardio modéré (20-30 min) par semaine, idéalement les jours sans jambes.`,
       `Marche quotidienne (8 000-10 000 pas) : la base, sans impact sur la récupération.`,
@@ -319,7 +319,7 @@ export const musculationIntermediaire: Guide = {
       ['Caféine', 'Performance & énergie pré-training', '3 mg/kg, 30-45 min avant'],
       ['Oméga-3 / Vitamine D', 'Récupération, articulations, santé', 'Selon besoins'],
     ] },
-    { type: 'note', text: `La base reste l’alimentation et l’entraînement. Les compléments ne sont qu’un petit plus — ne compte jamais sur eux pour compenser un mauvais programme ou un mauvais sommeil.` },
+    { type: 'note', text: `La base reste l’alimentation et l’entraînement. Les compléments ne sont qu’un petit plus - ne compte jamais sur eux pour compenser un mauvais programme ou un mauvais sommeil.` },
 
     { type: 'h1', text: 'Suivi de ta progression' },
     { type: 'p', text: `Note tes charges chaque séance et tes mesures chaque semaine.` },

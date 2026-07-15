@@ -70,7 +70,7 @@ export async function proxy(request: NextRequest) {
 
   // 4. Protéger /dashboard et /admin.
   //    On préserve le préfixe de locale dans la redirection : /en/dashboard → /en/auth/signin.
-  // NB : exclut /dashboard-preview (aperçu public) — on protège le segment exact /dashboard et /dashboard/*.
+  // NB : exclut /dashboard-preview (aperçu public) - on protège le segment exact /dashboard et /dashboard/*.
   if ((path === '/dashboard' || path.startsWith('/dashboard/') || path === '/admin' || path.startsWith('/admin/')) && !user) {
     const url = request.nextUrl.clone()
     url.pathname = `${localePrefix}/auth/signin`

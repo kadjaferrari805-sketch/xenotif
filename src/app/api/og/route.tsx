@@ -7,7 +7,7 @@ import { join } from 'node:path'
 export const runtime = 'nodejs'
 export const dynamic = 'force-static'
 
-// Orbitron ExtraBold — TTF statique (les polices variables font planter le parseur de @vercel/og).
+// Orbitron ExtraBold - TTF statique (les polices variables font planter le parseur de @vercel/og).
 const orbitron = readFileSync(join(process.cwd(), 'src/app/_assets/Orbitron-ExtraBold.ttf'))
 
 // Marque embarquée en data-URI (symbole X, 4 segments, sans texte → rendu fiable).

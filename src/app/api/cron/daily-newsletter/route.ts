@@ -9,7 +9,7 @@ export const maxDuration = 300
 
 type Recipient = { email: string; name: string; locale: string; isSubscriber: boolean }
 
-// Newsletter quotidienne — 1 email/jour à thème tournant (motivation / boutique /
+// Newsletter quotidienne - 1 email/jour à thème tournant (motivation / boutique /
 // guide / abonnement), localisé fr/en/de selon profiles.locale.
 // Audience : TOUS les inscrits du site (comptes auth) + la liste newsletter
 // (emails capturés sans compte). Les abonnés actifs/essai ne reçoivent pas le
@@ -57,7 +57,7 @@ export async function GET(request: Request) {
     if (list.users.length < 200) break
   }
 
-  // 2) Liste newsletter (emails sans compte) — locale si la colonne existe.
+  // 2) Liste newsletter (emails sans compte) - locale si la colonne existe.
   const { data: leads } = await supabase.from('newsletter_subscribers').select('*')
   for (const row of (leads ?? []) as { email?: string; locale?: string }[]) {
     if (!row.email) continue

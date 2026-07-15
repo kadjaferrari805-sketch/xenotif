@@ -6,12 +6,12 @@ import { createServiceClient } from '@/lib/supabase/server'
 import { MetaTrack } from '@/components/analytics/MetaTrack'
 
 export const metadata: Metadata = {
-  title: 'Paiement confirmé — Xenotif®',
+  title: 'Paiement confirmé - Xenotif®',
   robots: { index: false, follow: false },
 }
 
 const NEXT_STEPS = [
-  { num: '1', text: 'Vérifie ta boîte mail — un email de confirmation t\'a été envoyé.' },
+  { num: '1', text: 'Vérifie ta boîte mail - un email de confirmation t\'a été envoyé.' },
   { num: '2', text: 'Crée ton profil sportif pour que l\'IA personnalise ton programme.' },
   { num: '3', text: 'Choisis ta première discipline et lance ta première séance.' },
 ]
@@ -71,7 +71,7 @@ export default async function SuccessPage({
 
   return (
     <main className="min-h-[80vh] flex flex-col items-center justify-center px-6 py-20 bg-sport-dark">
-      {/* Signal « essai démarré » (Meta — dédup via eventId côté Pixel + CAPI).
+      {/* Signal « essai démarré » (Meta - dédup via eventId côté Pixel + CAPI).
           La conversion d'ACHAT (GA4/Ads) part côté serveur au 1er vrai paiement
           (fin d'essai) : webhook invoice.paid → GA4 Measurement Protocol. */}
       {session_id && <MetaTrack event="Subscribe" eventId={session_id} />}

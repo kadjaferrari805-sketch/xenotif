@@ -7,13 +7,13 @@ export const musculationDebutantDe: Guide = {
   id: 'musculation-debutant',
   title: 'Krafttraining-Programm für Anfänger',
   subtitle: '8 Wochen für ein solides Fundament in Kraft und Muskelaufbau',
-  author: 'XENOTIF Coach — Kraft- und Fitnesstraining zertifiziert',
+  author: 'XENOTIF Coach - Kraft- und Fitnesstraining zertifiziert',
   level: 'Anfänger',
   duration: '8 Wochen · 3 Einheiten/Woche',
   coverImage: 'cover.jpg',
   blocks: [
-    { type: 'h1', text: 'Willkommen — du startest mit dem Krafttraining' },
-    { type: 'p', text: `Dieses Programm ist für echte Anfänger gemacht: keine Erfahrung nötig. In 8 Wochen lernst du die grundlegenden Bewegungsmuster, wirst stärker, baust Muskeln auf und etablierst eine Routine, die du langfristig durchhältst. Technik und Regelmäßigkeit stehen vor dem Gewicht — so machst du schnelle und verletzungsfreie Fortschritte.` },
+    { type: 'h1', text: 'Willkommen - du startest mit dem Krafttraining' },
+    { type: 'p', text: `Dieses Programm ist für echte Anfänger gemacht: keine Erfahrung nötig. In 8 Wochen lernst du die grundlegenden Bewegungsmuster, wirst stärker, baust Muskeln auf und etablierst eine Routine, die du langfristig durchhältst. Technik und Regelmäßigkeit stehen vor dem Gewicht - so machst du schnelle und verletzungsfreie Fortschritte.` },
     { type: 'p', text: `Behalte diesen Leitfaden auf deinem Handy: Jede Übung hat einen QR-Code, der ihr Demovideo auf XENOTIF® öffnet. Bei Unsicherheit über eine Bewegung, scanne ihn einfach.` },
     { type: 'meta', items: [
       { label: 'Ziel', value: 'Kraft, Muskelaufbau & technische Grundlagen' },
@@ -87,7 +87,7 @@ export const musculationDebutantDe: Guide = {
     ] },
     { type: 'h2', text: 'Deine Makros verstehen' },
     { type: 'table', headers: ['Makro', 'Rolle', 'Pro g', 'Priorität'], rows: [
-      ['Eiweiß', 'Baut Muskeln auf', '4 kcal', 'HOCH — 1,6-2 g/kg'],
+      ['Eiweiß', 'Baut Muskeln auf', '4 kcal', 'HOCH - 1,6-2 g/kg'],
       ['Kohlenhydrate', 'Energie fürs Training', '4 kcal', 'Rund um die Einheiten'],
       ['Fette', 'Hormone, Gesundheit', '9 kcal', 'Moderat, auf Qualität achten'],
     ] },
@@ -132,11 +132,11 @@ export const musculationDebutantDe: Guide = {
     { type: 'h2', text: 'Typische Woche' },
     { type: 'table', headers: ['Tag', 'Einheit', 'Dauer'], rows: [
       ['Montag', 'Ganzkörper A', '45 Min.'],
-      ['Dienstag', 'Ruhe / Gehen', '—'],
+      ['Dienstag', 'Ruhe / Gehen', '-'],
       ['Mittwoch', 'Ganzkörper B', '45 Min.'],
-      ['Donnerstag', 'Ruhe / Gehen', '—'],
+      ['Donnerstag', 'Ruhe / Gehen', '-'],
       ['Freitag', 'Ganzkörper C', '45 Min.'],
-      ['Wochenende', 'Ruhe + Tracking', '—'],
+      ['Wochenende', 'Ruhe + Tracking', '-'],
     ] },
 
     { type: 'h1', text: 'Deine Einheiten im Detail' },
@@ -276,7 +276,7 @@ export const musculationDebutantDe: Guide = {
 
     { type: 'h1', text: 'Häufige Fragen' },
     { type: 'h2', text: 'Werde ich „zu muskulös"?' },
-    { type: 'p', text: `Nein. Muskelaufbau ist langsam und erfordert jahrelange Anstrengung. Krafttraining macht dich straffer, stärker und gesünder — nicht aus Versehen „riesig".` },
+    { type: 'p', text: `Nein. Muskelaufbau ist langsam und erfordert jahrelange Anstrengung. Krafttraining macht dich straffer, stärker und gesünder - nicht aus Versehen „riesig".` },
     { type: 'h2', text: 'Cardio oder Krafttraining zum Fettabbau?' },
     { type: 'p', text: `Beides, aber Krafttraining ist essenziell: es erhält bzw. baut Muskeln auf, die deinen Grundumsatz erhöhen. Kombiniere Krafttraining + etwas Gehen/Cardio + kontrollierte Ernährung.` },
     { type: 'h2', text: 'Kann ich es zu Hause machen?' },
@@ -295,10 +295,10 @@ export const musculationDebutantDe: Guide = {
     { type: 'list', items: [
       `Steige auf das Programm Krafttraining Fortgeschritten (Mittelstufe) um, für mehr Volumen und einen fortgeschritteneren Trainingssplit.`,
       `Wenn dein Ziel Muskelaufbau ist: mach weiter mit Masseaufbau (leichter Überschuss).`,
-      `Wenn dein Ziel Definition ist: mach weiter mit Gewichtsverlust (leichtes Defizit) — die aufgebaute Kraft hilft dir, deine Muskeln zu erhalten.`,
+      `Wenn dein Ziel Definition ist: mach weiter mit Gewichtsverlust (leichtes Defizit) - die aufgebaute Kraft hilft dir, deine Muskeln zu erhalten.`,
       `In jedem Fall: hör nicht auf. Regelmäßigkeit über Monate hinweg macht den ganzen Unterschied.`,
     ] },
-    { type: 'note', text: `Nimm nach diesen 8 Wochen erneut deine Maße und ein Foto auf und vergleiche sie mit deinem Ausgangspunkt. Das ist deine wahre Belohnung — und deine beste Motivation, weiterzumachen.` },
+    { type: 'note', text: `Nimm nach diesen 8 Wochen erneut deine Maße und ein Foto auf und vergleiche sie mit deinem Ausgangspunkt. Das ist deine wahre Belohnung - und deine beste Motivation, weiterzumachen.` },
 
     { type: 'h1', text: 'Dehnen & Mobilität' },
     { type: 'p', text: `5-10 Min. nach jeder Einheit. Halte jede Position 20-30 s, ohne zu wippen.` },

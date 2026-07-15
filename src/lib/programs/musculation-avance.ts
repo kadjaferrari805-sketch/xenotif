@@ -7,7 +7,7 @@ export const musculationAvance: Guide = {
   id: 'musculation-avance',
   title: 'Programme Musculation Avancé',
   subtitle: '12 semaines de haute intensité pour franchir un plateau et maximiser le muscle',
-  author: 'XENOTIF Coach — Préparation physique certifiée',
+  author: 'XENOTIF Coach - Préparation physique certifiée',
   level: 'Avancé',
   duration: '12 semaines · 5 à 6 séances/sem',
   coverImage: 'cover.jpg',
@@ -38,7 +38,7 @@ export const musculationAvance: Guide = {
       `Tu sais ce qu’est le RPE/RIR et tu tiens un carnet d’entraînement.`,
       `Sinon, le programme Musculation Intermédiaire est plus adapté.`,
     ] },
-    { type: 'note', text: `Règle d’or de l’avancé : tu ne progresses plus « tout seul ». La progression vient de la précision — gestion du volume, de l’intensité, de la fatigue et des points faibles.` },
+    { type: 'note', text: `Règle d’or de l’avancé : tu ne progresses plus « tout seul ». La progression vient de la précision - gestion du volume, de l’intensité, de la fatigue et des points faibles.` },
 
     { type: 'h1', text: 'Comment ça marche' },
     { type: 'list', items: [
@@ -272,7 +272,7 @@ export const musculationAvance: Guide = {
     { type: 'p', text: `Passe en PPL 3 jours ou Haut/Bas 4 jours en gardant l’intensité. Mieux vaut 4 séances productives que 6 bâclées par manque de récupération.` },
 
     { type: 'h1', text: 'Cardio & conditionnement' },
-    { type: 'p', text: `Le cardio bien dosé soutient ta récupération (meilleure circulation, capacité de travail) et limite la prise de gras sur les blocs en surplus — sans cannibaliser tes gains si tu respectes ces repères.` },
+    { type: 'p', text: `Le cardio bien dosé soutient ta récupération (meilleure circulation, capacité de travail) et limite la prise de gras sur les blocs en surplus - sans cannibaliser tes gains si tu respectes ces repères.` },
     { type: 'list', items: [
       `Marche quotidienne (8 000-12 000 pas) : la base, zéro impact sur la récupération.`,
       `2 à 3 séances de cardio modéré (zone 2, 25-35 min) par semaine, à distance des jambes.`,

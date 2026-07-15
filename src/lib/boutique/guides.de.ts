@@ -1,4 +1,4 @@
-// Contenu des guides PDF — version allemande (mirror DE de guides.ts).
+// Contenu des guides PDF - version allemande (mirror DE de guides.ts).
 // Structure identique ; seuls les textes sont traduits.
 
 import type { Guide } from './guides'

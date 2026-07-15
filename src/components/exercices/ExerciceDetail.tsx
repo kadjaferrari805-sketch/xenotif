@@ -287,7 +287,7 @@ export function ExerciceDetail({ detail, locale }: { detail: Detail; locale: str
 
   return (
     <div className="space-y-6">
-      {/* Header — badges cliquables, filtrent la bibliothèque d'exercices */}
+      {/* Header - badges cliquables, filtrent la bibliothèque d'exercices */}
       <div className="flex flex-wrap items-center gap-3">
         <Link
           href={{ pathname: '/exercices', query: { level: d.difficulty } }}
@@ -327,7 +327,7 @@ export function ExerciceDetail({ detail, locale }: { detail: Detail; locale: str
             <div key={i} className="rounded-xl overflow-hidden">
               <div className="relative aspect-square rounded-xl overflow-hidden bg-gradient-to-b from-white to-[#e8e8ee] border border-sport-border">
                 {d.media.images?.[i] ? (
-                  <Image src={d.media.images[i]} alt={`${label} — ${d.name}`} fill sizes="(max-width:768px) 45vw, 18vw" className="object-contain" />
+                  <Image src={d.media.images[i]} alt={`${label} - ${d.name}`} fill sizes="(max-width:768px) 45vw, 18vw" className="object-contain" />
                 ) : (
                   <div className="absolute inset-0 flex items-center justify-center"><span className="text-2xl font-black text-sport-orange/40">{i + 1}</span></div>
                 )}
@@ -382,7 +382,7 @@ export function ExerciceDetail({ detail, locale }: { detail: Detail; locale: str
         <Section icon={Lightbulb} title={t('sec_tips')}>
           <ul className="space-y-2.5">
             {tips.map((tip, i) => (
-              <li key={i} className="text-sm text-sport-gray"><strong className="text-sport-fg">{tip.label} — </strong>{tip.text}</li>
+              <li key={i} className="text-sm text-sport-gray"><strong className="text-sport-fg">{tip.label} - </strong>{tip.text}</li>
             ))}
           </ul>
         </Section>

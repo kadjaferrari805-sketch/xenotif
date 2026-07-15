@@ -8,7 +8,7 @@ import { Footer } from '@/components/layout/Footer'
 import { FreeProgramPopup } from '@/components/home/FreeProgramPopup'
 
 // Décide d'afficher (ou non) le chrome marketing (Nav/Footer) selon la route.
-// Côté CLIENT via usePathname() — contrairement à headers() côté serveur, ce
+// Côté CLIENT via usePathname() - contrairement à headers() côté serveur, ce
 // hook ne force PAS le rendu dynamique, ce qui laisse les pages publiques se
 // prérendre en statique. Le pathname inclut le préfixe locale pour /en
 // (ex. /en/dashboard) → on teste avec includes() pour couvrir fr + en.

@@ -1,4 +1,4 @@
-// GA4 Measurement Protocol — envoi d'événements côté serveur.
+// GA4 Measurement Protocol - envoi d'événements côté serveur.
 // Sert à tracer le VRAI paiement d'abonnement (fin d'essai, via webhook Stripe,
 // sans page visitée). Nécessite GA4_API_SECRET (GA4 → Admin → Flux de données →
 // Protocole de mesure → créer un secret). Sans secret ou sans client_id, no-op.

@@ -34,7 +34,7 @@ export default function PanierPage() {
           locale,
         }),
       })
-    } catch { /* silencieux — ne bloque jamais l'achat */ }
+    } catch { /* silencieux - ne bloque jamais l'achat */ }
   }
 
   async function checkout() {
@@ -91,7 +91,7 @@ export default function PanierPage() {
         <div className="grid gap-8 lg:grid-cols-3">
           <div className="lg:col-span-2 space-y-6">
 
-            {/* Produits XENOTIF — paiement Stripe */}
+            {/* Produits XENOTIF - paiement Stripe */}
             {ownItems.length > 0 && (
               <div>
                 <p className="mb-3 text-xs font-bold uppercase tracking-wider text-sport-gray flex items-center gap-2">
@@ -179,7 +179,7 @@ export default function PanierPage() {
                 <div className="space-y-2 text-sm mb-4">
                   {ownItems.map(({ product, quantity }) => (
                     <div key={product.id} className="flex justify-between text-sport-gray">
-                      <span className="truncate flex-1 mr-2 text-xs">{product.name.split('—')[0]?.trim()} ×{quantity}</span>
+                      <span className="truncate flex-1 mr-2 text-xs">{product.name.split('-')[0]?.trim()} ×{quantity}</span>
                       <span className="font-semibold text-sport-fg flex-shrink-0">{formatPrice(product.price_cents * quantity)}</span>
                     </div>
                   ))}
@@ -189,7 +189,7 @@ export default function PanierPage() {
                   </div>
                 </div>
 
-                {/* Email — relance panier + reçu */}
+                {/* Email - relance panier + reçu */}
                 <div className="mb-3">
                   <input
                     type="email"

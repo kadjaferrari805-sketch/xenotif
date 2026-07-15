@@ -7,7 +7,7 @@ export const musculationAvanceEn: Guide = {
   id: 'musculation-avance',
   title: 'Advanced Muscle-Building Program',
   subtitle: '12 weeks of high intensity to break through a plateau and maximize muscle',
-  author: 'XENOTIF Coach — Certified strength & conditioning coach',
+  author: 'XENOTIF Coach - Certified strength & conditioning coach',
   level: 'Advanced',
   duration: '12 weeks · 5 to 6 sessions/week',
   coverImage: 'cover.jpg',
@@ -38,7 +38,7 @@ export const musculationAvanceEn: Guide = {
       `You know what RPE/RIR means and you keep a training log.`,
       `If not, the Intermediate Muscle-Building program is a better fit.`,
     ] },
-    { type: 'note', text: `Golden rule for advanced lifters: progress no longer happens "on its own." Gains now come from precision — managing volume, intensity, fatigue, and weak points.` },
+    { type: 'note', text: `Golden rule for advanced lifters: progress no longer happens "on its own." Gains now come from precision - managing volume, intensity, fatigue, and weak points.` },
 
     { type: 'h1', text: 'How it works' },
     { type: 'list', items: [
@@ -202,7 +202,7 @@ export const musculationAvanceEn: Guide = {
     { type: 'exercise', name: 'Biceps curl', muscles: 'Biceps', level: 'Beginner', video: `${D}/musculation`, technique: `Elbows fixed, strong contraction at the top, slow eccentric. Ideal for a rest-pause finisher.`, mistakes: `Using momentum, elbows drifting forward, partial range.` },
     { type: 'exercise', name: 'Cable triceps extension', muscles: 'Triceps', level: 'Beginner', video: `${D}/musculation`, technique: `Elbows pinned to your sides, extend fully, control the return. Keep constant tension.`, mistakes: `Elbows flaring out, torso helping the movement, short range.` },
     { type: 'exercise', name: 'Incline dumbbell press', muscles: 'Upper chest, shoulders', level: 'Intermediate', video: `${D}/musculation`, technique: `Bench at ~30°, lower until you feel the stretch, press while slightly bringing the dumbbells together. Excellent for an upper chest that's often lagging.`, mistakes: `Bench angle too steep, short range, elbows locking out.` },
-    { type: 'exercise', name: 'Bulgarian split squat', muscles: 'Quads, glutes, balance', level: 'Intermediate', video: `${D}/musculation`, technique: `Rear foot elevated on a bench, lower the hips straight down, front knee tracking in line, then drive up through the front heel. Unilateral — ideal for fixing imbalances.`, mistakes: `Torso leaning too far forward, knee caving inward, pushing off the back leg.` },
+    { type: 'exercise', name: 'Bulgarian split squat', muscles: 'Quads, glutes, balance', level: 'Intermediate', video: `${D}/musculation`, technique: `Rear foot elevated on a bench, lower the hips straight down, front knee tracking in line, then drive up through the front heel. Unilateral - ideal for fixing imbalances.`, mistakes: `Torso leaning too far forward, knee caving inward, pushing off the back leg.` },
     { type: 'exercise', name: 'Cable pullover', muscles: 'Lats, chest', level: 'Intermediate', video: `${D}/musculation`, technique: `Arms nearly straight, bring the bar/rope from the hips upward while keeping tension on the back, then return under control. Stretches and isolates the lats.`, mistakes: `Bending the elbows (turns it into a triceps move), short range, jerky reps.` },
     { type: 'exercise', name: 'Weighted hip thrust', muscles: 'Glutes, hamstrings', level: 'Intermediate', video: `${D}/musculation`, technique: `Upper back on a bench, barbell across the hips, drive through the heels until fully aligned, squeeze the glutes hard at the top, controlled descent.`, mistakes: `Lower-back hyperextension, incomplete range, feet poorly positioned.` },
 
@@ -261,7 +261,7 @@ export const musculationAvanceEn: Guide = {
 
     { type: 'h1', text: 'Frequently asked questions' },
     { type: 'h2', text: 'How much volume is optimal?' },
-    { type: 'p', text: `16 to 22 sets per muscle group per week for most advanced lifters. Start at the low end of the range and increase it if you're recovering well. More isn't always better — what counts is the volume you can actually recover from.` },
+    { type: 'p', text: `16 to 22 sets per muscle group per week for most advanced lifters. Start at the low end of the range and increase it if you're recovering well. More isn't always better - what counts is the volume you can actually recover from.` },
     { type: 'h2', text: 'RIR or RPE?' },
     { type: 'p', text: `Two sides of the same coin. RIR = reps in reserve; RPE = 10 − RIR. RIR 2 = RPE 8. Use whichever one clicks better for you to autoregulate.` },
     { type: 'h2', text: 'Should I train to failure?' },
@@ -272,7 +272,7 @@ export const musculationAvanceEn: Guide = {
     { type: 'p', text: `Switch to a 3-day PPL or a 4-day upper/lower split while keeping the intensity high. 4 productive sessions beat 6 rushed ones with poor recovery.` },
 
     { type: 'h1', text: 'Cardio & conditioning' },
-    { type: 'p', text: `Well-dosed cardio supports your recovery (better circulation, work capacity) and limits fat gain during surplus blocks — without cannibalizing your gains if you stick to these benchmarks.` },
+    { type: 'p', text: `Well-dosed cardio supports your recovery (better circulation, work capacity) and limits fat gain during surplus blocks - without cannibalizing your gains if you stick to these benchmarks.` },
     { type: 'list', items: [
       `Daily walking (8,000-12,000 steps): the foundation, zero impact on recovery.`,
       `2 to 3 moderate cardio sessions (zone 2, 25-35 min) per week, spaced away from leg day.`,

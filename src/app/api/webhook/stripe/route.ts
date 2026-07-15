@@ -86,7 +86,7 @@ export async function POST(req: NextRequest) {
             }
           }
 
-          // API Conversions Meta — achat boutique (déduplication via session.id côté Pixel)
+          // API Conversions Meta - achat boutique (déduplication via session.id côté Pixel)
           if (buyerEmail && (session.amount_total ?? 0) > 0) {
             await sendMetaConversion({
               eventName: 'Purchase',
@@ -160,7 +160,7 @@ export async function POST(req: NextRequest) {
           cancel_at_period_end: false,
         }, { onConflict: 'user_id' })
 
-        // Email de confirmation — TOUJOURS (nouvel utilisateur OU compte existant).
+        // Email de confirmation - TOUJOURS (nouvel utilisateur OU compte existant).
         if (userEmail) {
           let setupLink = `${process.env.NEXT_PUBLIC_URL}/dashboard`
           if (isNewUser) {
@@ -170,7 +170,7 @@ export async function POST(req: NextRequest) {
           await sendWelcomeEmail({ email: userEmail, name: customerName, plan, setupLink, locale })
         }
 
-        // API Conversions Meta — abonnement (essai) démarré (déduplication via session.id côté Pixel).
+        // API Conversions Meta - abonnement (essai) démarré (déduplication via session.id côté Pixel).
         // Signaux de correspondance (fbp/fbc/IP/UA) captés au checkout → bien meilleur match.
         await sendMetaConversion({
           eventName: 'Subscribe',
@@ -302,7 +302,7 @@ export async function POST(req: NextRequest) {
             items: [{ item_id: plan, item_name: `Abonnement ${plan}` }],
           })
         }
-        // API Conversions Meta — vrai paiement (fin d'essai) : Meta optimise alors sur
+        // API Conversions Meta - vrai paiement (fin d'essai) : Meta optimise alors sur
         // les vrais payeurs, pas seulement les débuts d'essai. Dédup via invoice.id.
         await sendMetaConversion({
           eventName: 'Purchase',

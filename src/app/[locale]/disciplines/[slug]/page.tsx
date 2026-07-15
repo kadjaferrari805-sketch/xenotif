@@ -331,7 +331,7 @@ export default async function DisciplinePage({ params }: { params: Promise<{ slu
       <section className="py-20 px-6 bg-sport-dark">
         <div className="max-w-5xl mx-auto grid md:grid-cols-5 gap-12">
 
-          {/* Left — Levels + Program */}
+          {/* Left - Levels + Program */}
           <div className="md:col-span-3 space-y-12">
 
             {/* Levels */}
@@ -408,7 +408,7 @@ export default async function DisciplinePage({ params }: { params: Promise<{ slu
             )}
           </div>
 
-          {/* Right — Sticky CTA */}
+          {/* Right - Sticky CTA */}
           <aside className="md:col-span-2" aria-label={t('cta.title')}>
             <div className="sticky top-24 bg-sport-card border border-sport-border rounded-2xl p-7">
               <div className={`w-12 h-12 rounded-xl border flex items-center justify-center mb-5 ${COLOR_CARD[color]}`}>

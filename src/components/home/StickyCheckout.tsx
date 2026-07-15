@@ -27,7 +27,7 @@ export function StickyCheckout() {
     >
       <div className="max-w-6xl mx-auto px-3 md:px-4 py-3">
         <div className="flex items-center gap-2 md:gap-3">
-          {/* Accroche + réassurance essai gratuit — même contenu (logo, accroche,
+          {/* Accroche + réassurance essai gratuit - même contenu (logo, accroche,
               "Sans engagement") sur mobile et desktop, juste réduit sur mobile
               (logo 20px, textes 9-10px, gaps serrés) pour tenir à côté du bouton
               Pro + croix sur un écran de 375px de large. */}

@@ -5,7 +5,7 @@ import { useTranslations } from 'next-intl'
 
 const INPUT = 'w-full bg-sport-dark border border-sport-border rounded-xl px-4 py-3 text-sport-fg focus:border-sport-orange outline-none transition-colors'
 
-// Calculateur d'IMC (indice de masse corporelle) — calcul + catégorie live.
+// Calculateur d'IMC (indice de masse corporelle) - calcul + catégorie live.
 export function ImcCalc() {
   const t = useTranslations('outils')
   const [weight, setWeight] = useState(75)
@@ -35,7 +35,7 @@ export function ImcCalc() {
 
       <div className="rounded-2xl border border-sport-orange/30 bg-gradient-to-br from-sport-orange/15 via-sport-card to-sport-card p-8 flex flex-col items-center justify-center text-center">
         <p className="text-xs font-bold uppercase tracking-wider text-sport-gray mb-1">{t('imc.result')}</p>
-        <p className="text-5xl font-black text-sport-fg">{imc > 0 ? imc.toFixed(1) : '—'}</p>
+        <p className="text-5xl font-black text-sport-fg">{imc > 0 ? imc.toFixed(1) : '-'}</p>
         <p className={`mt-3 text-lg font-black ${cat.color}`}>{imc > 0 ? t(`imc.${cat.key}`) : ''}</p>
       </div>
     </div>

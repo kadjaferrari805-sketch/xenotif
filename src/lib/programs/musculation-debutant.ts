@@ -7,12 +7,12 @@ export const musculationDebutant: Guide = {
   id: 'musculation-debutant',
   title: 'Programme Musculation Débutant',
   subtitle: '8 semaines pour poser des bases solides en force et en muscle',
-  author: 'XENOTIF Coach — Préparation physique certifiée',
+  author: 'XENOTIF Coach - Préparation physique certifiée',
   level: 'Débutant',
   duration: '8 semaines · 3 séances/sem',
   coverImage: 'cover.jpg',
   blocks: [
-    { type: 'h1', text: 'Bienvenue — tu débutes la musculation' },
+    { type: 'h1', text: 'Bienvenue - tu débutes la musculation' },
     { type: 'p', text: `Ce programme est conçu pour les vrais débutants : aucune expérience requise. En 8 semaines, tu vas apprendre les mouvements fondamentaux, gagner en force, prendre du muscle et créer une routine durable. On privilégie la technique et la régularité plutôt que la charge : c’est ainsi qu’on progresse vite et sans se blesser.` },
     { type: 'p', text: `Garde ce guide sur ton téléphone : chaque exercice possède un QR code qui ouvre sa vidéo de démonstration sur XENOTIF®. En cas de doute sur un mouvement, scanne-le.` },
     { type: 'meta', items: [
@@ -87,7 +87,7 @@ export const musculationDebutant: Guide = {
     ] },
     { type: 'h2', text: 'Comprendre tes macros' },
     { type: 'table', headers: ['Macro', 'Rôle', 'Par g', 'Priorité'], rows: [
-      ['Protéines', 'Construisent le muscle', '4 kcal', 'HAUTE — 1,6-2 g/kg'],
+      ['Protéines', 'Construisent le muscle', '4 kcal', 'HAUTE - 1,6-2 g/kg'],
       ['Glucides', 'Énergie à l’entraînement', '4 kcal', 'Autour des séances'],
       ['Lipides', 'Hormones, santé', '9 kcal', 'Modérée, qualité'],
     ] },
@@ -132,11 +132,11 @@ export const musculationDebutant: Guide = {
     { type: 'h2', text: 'Semaine type' },
     { type: 'table', headers: ['Jour', 'Séance', 'Durée'], rows: [
       ['Lundi', 'Full body A', '45 min'],
-      ['Mardi', 'Repos / marche', '—'],
+      ['Mardi', 'Repos / marche', '-'],
       ['Mercredi', 'Full body B', '45 min'],
-      ['Jeudi', 'Repos / marche', '—'],
+      ['Jeudi', 'Repos / marche', '-'],
       ['Vendredi', 'Full body C', '45 min'],
-      ['Week-end', 'Repos + suivi', '—'],
+      ['Week-end', 'Repos + suivi', '-'],
     ] },
 
     { type: 'h1', text: 'Tes séances en détail' },
@@ -276,7 +276,7 @@ export const musculationDebutant: Guide = {
 
     { type: 'h1', text: 'Questions fréquentes' },
     { type: 'h2', text: 'Vais-je devenir « trop musclé(e) » ?' },
-    { type: 'p', text: `Non. Construire du muscle est lent et demande des années d’efforts. La musculation te rendra plus tonique, plus fort(e) et en meilleure santé — pas « énorme » par accident.` },
+    { type: 'p', text: `Non. Construire du muscle est lent et demande des années d’efforts. La musculation te rendra plus tonique, plus fort(e) et en meilleure santé - pas « énorme » par accident.` },
     { type: 'h2', text: 'Cardio ou muscu pour perdre du gras ?' },
     { type: 'p', text: `Les deux, mais la muscu est essentielle : elle préserve/construit le muscle, qui augmente ta dépense au repos. Combine muscu + un peu de marche/cardio + alimentation maîtrisée.` },
     { type: 'h2', text: 'Je peux le faire à la maison ?' },
@@ -298,7 +298,7 @@ export const musculationDebutant: Guide = {
       `Si ton objectif est de t’affiner : enchaîne avec Perte de Poids (léger déficit), la muscu acquise t’aidera à garder ton muscle.`,
       `Dans tous les cas : ne t’arrête pas. La régularité sur des mois fait toute la différence.`,
     ] },
-    { type: 'note', text: `Refais tes mesures et une photo après ces 8 semaines, et compare à ton point de départ. C’est ta vraie récompense — et ta meilleure motivation pour continuer.` },
+    { type: 'note', text: `Refais tes mesures et une photo après ces 8 semaines, et compare à ton point de départ. C’est ta vraie récompense - et ta meilleure motivation pour continuer.` },
 
     { type: 'h1', text: 'Étirements & mobilité' },
     { type: 'p', text: `5-10 min après chaque séance. Tiens chaque position 20-30 s, sans à-coups.` },

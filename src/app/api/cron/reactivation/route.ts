@@ -14,7 +14,7 @@ const WINBACK_PUSH: Record<string, { title: string; body: string }> = {
 }
 
 /**
- * Cron de réactivation (win-back). Cible les abonnés RÉSILIÉS (status 'canceled' —
+ * Cron de réactivation (win-back). Cible les abonnés RÉSILIÉS (status 'canceled' -
  * leur accès payant est donc terminé), pas encore relancés. Envoie un email
  * (+ push best-effort) une seule fois grâce à la colonne reactivation_sent_at.
  *

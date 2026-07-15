@@ -6,7 +6,7 @@ import { useTranslations } from 'next-intl'
 const INPUT = 'w-full bg-sport-dark border border-sport-border rounded-xl px-4 py-3 text-sport-fg focus:border-sport-orange outline-none transition-colors'
 const PCTS = [100, 95, 90, 85, 80, 75, 70, 65, 60]
 
-// Calculateur de 1RM (charge max sur 1 rép) — formule Epley + table par %.
+// Calculateur de 1RM (charge max sur 1 rép) - formule Epley + table par %.
 export function OneRmCalc() {
   const t = useTranslations('outils')
   const [weight, setWeight] = useState(80)

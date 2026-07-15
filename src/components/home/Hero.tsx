@@ -131,7 +131,7 @@ export function Hero() {
     >
       {/* Screen reader announcement */}
       <div aria-live="polite" aria-atomic="true" className="sr-only">
-        {slides[current].tag} — {slides[current].headline} {slides[current].accent}
+        {slides[current].tag} - {slides[current].headline} {slides[current].accent}
       </div>
 
       {/* Fond vidéo cinématique (boucle muette) avec parallaxe légère.
@@ -165,7 +165,7 @@ export function Hero() {
         </video>
       </motion.div>
 
-      {/* Dégradés — assombrissement réduit pour laisser voir l'image, renforcé
+      {/* Dégradés - assombrissement réduit pour laisser voir l'image, renforcé
           uniquement à gauche/bas (zone du texte). Allégés une nouvelle fois
           (/60→/50, /55→/45) pour un rendu plus vivant, la vidéo étant déjà
           bien exposée (brightness-110) et ces dégradés ne couvrant que la
@@ -250,7 +250,7 @@ export function Hero() {
               {t('subheadline')}
             </motion.p>
 
-            {/* Preuve sociale (note + nombre d'athlètes) — au-dessus des CTA */}
+            {/* Preuve sociale (note + nombre d'athlètes) - au-dessus des CTA */}
             <motion.div
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}

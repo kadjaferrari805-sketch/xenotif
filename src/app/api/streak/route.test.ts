@@ -3,7 +3,7 @@
  */
 // Environnement Node requis (et non le jsdom par défaut du projet, cf.
 // jest.config.ts) : les Route Handlers importent `next/server`, qui référence
-// les globals Fetch API (Request/Response/Headers) natifs à Node — absents de
+// les globals Fetch API (Request/Response/Headers) natifs à Node - absents de
 // jsdom. Node les fournit nativement, sans polyfill.
 import { GET } from './route'
 

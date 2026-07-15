@@ -17,13 +17,13 @@ function formatDuration(seconds: number): string {
 }
 
 function formatDistance(meters: number): string {
-  if (meters === 0) return '—'
+  if (meters === 0) return '-'
   if (meters >= 1000) return `${(meters / 1000).toFixed(1)} km`
   return `${meters} m`
 }
 
 function formatPace(paceSeconds: number | null): string {
-  if (!paceSeconds) return '—'
+  if (!paceSeconds) return '-'
   const m = Math.floor(paceSeconds / 60)
   const s = paceSeconds % 60
   return `${m}:${s.toString().padStart(2, '0')}/km`
@@ -74,7 +74,7 @@ export function SessionCard({ session }: SessionCardProps) {
         <div className="bg-sport-dark rounded-xl px-3 py-2 flex items-center gap-2">
           <Heart size={12} className="text-red-400 shrink-0" />
           <div>
-            <p className="text-xs font-black text-sport-fg">{session.avg_heart_rate ?? '—'}</p>
+            <p className="text-xs font-black text-sport-fg">{session.avg_heart_rate ?? '-'}</p>
             <p className="text-[9px] text-sport-gray">{t('session.bpmAvg')}</p>
           </div>
         </div>

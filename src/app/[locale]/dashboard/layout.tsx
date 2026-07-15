@@ -90,7 +90,7 @@ export default async function DashboardLayout({ children }: { children: React.Re
         {children}
       </main>
 
-      {/* Mobile bottom nav — colonnes égales (flex-1) pour un espacement régulier
+      {/* Mobile bottom nav - colonnes égales (flex-1) pour un espacement régulier
           entre les 7 items, libellés courts dédiés (dashboard.navShort) pour éviter
           les doublons visuels (ex. "Mon Programme"/"Mon Profil" tronqués donnaient
           tous les deux "Mon"). */}

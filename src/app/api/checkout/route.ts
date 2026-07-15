@@ -4,7 +4,7 @@ import { parseGaClientId } from '@/lib/ga-measurement'
 
 const PLAN_CONFIG = {
   pro: {
-    name: 'Xenotif® — Plan Pro',
+    name: 'Xenotif® - Plan Pro',
     description: 'Accès illimité à toutes les disciplines & programmes, coach IA personnalisé, suivi & statistiques, vidéos HD, rappels quotidiens, synchronisation montre.',
     unit_monthly: 999,
     unit_annual: 9588,
@@ -66,7 +66,7 @@ export async function POST(req: NextRequest) {
               unit_amount: isAnnual ? config.unit_annual : config.unit_monthly,
               recurring: { interval: isAnnual ? 'year' : 'month' },
               product_data: {
-                name: `${config.name}${isAnnual ? ' — Annuel' : ''}`,
+                name: `${config.name}${isAnnual ? ' - Annuel' : ''}`,
                 description: config.description,
               },
             },

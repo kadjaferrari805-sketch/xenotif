@@ -17,7 +17,7 @@ export function CoachAd() {
   return (
     <section className="px-6 py-20 bg-sport-dark" aria-label={t('title')}>
       <div className="max-w-5xl mx-auto grid md:grid-cols-[1.15fr_0.85fr] gap-10 md:gap-14 items-center">
-        {/* Image pub — rendu 3D (perspective + profondeur) + glow orange */}
+        {/* Image pub - rendu 3D (perspective + profondeur) + glow orange */}
         <div className="coach-3d-wrap relative mx-auto w-full max-w-lg">
           <div
             className="absolute -inset-4 bg-sport-orange/20 blur-3xl rounded-[2rem]"

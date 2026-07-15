@@ -16,28 +16,28 @@ const BASE_URL = process.env.NEXT_PUBLIC_URL ?? 'https://xenotif.com'
 const CHROME = {
   fr: {
     tagline: 'Performance · Coaching IA',
-    preheader: 'Xenotif® — Forge ton corps. Dépasse tes limites.',
+    preheader: 'Xenotif® - Forge ton corps. Dépasse tes limites.',
     shop: 'Boutique',
     contact: 'Contact',
-    copyright: '© 2026 Xenotif® — Tous droits réservés. Forge ton corps. Dépasse tes limites.',
+    copyright: '© 2026 Xenotif® - Tous droits réservés. Forge ton corps. Dépasse tes limites.',
   },
   en: {
     tagline: 'Performance · AI Coaching',
-    preheader: 'Xenotif® — Forge your body. Push your limits.',
+    preheader: 'Xenotif® - Forge your body. Push your limits.',
     shop: 'Shop',
     contact: 'Contact',
-    copyright: '© 2026 Xenotif® — All rights reserved. Forge your body. Push your limits.',
+    copyright: '© 2026 Xenotif® - All rights reserved. Forge your body. Push your limits.',
   },
   de: {
     tagline: 'Performance · KI-Coaching',
-    preheader: 'Xenotif® — Forme deinen Körper. Überschreite deine Grenzen.',
+    preheader: 'Xenotif® - Forme deinen Körper. Überschreite deine Grenzen.',
     shop: 'Shop',
     contact: 'Kontakt',
-    copyright: '© 2026 Xenotif® — Alle Rechte vorbehalten. Forme deinen Körper. Überschreite deine Grenzen.',
+    copyright: '© 2026 Xenotif® - Alle Rechte vorbehalten. Forme deinen Körper. Überschreite deine Grenzen.',
   },
 } as const
 
-// Gabarit email premium — layout table-based (compatible Outlook, Gmail, Apple Mail).
+// Gabarit email premium - layout table-based (compatible Outlook, Gmail, Apple Mail).
 function wrap(content: string, locale: EmailLocale, preheader?: string) {
   const x = CHROME[locale]
   const ph = preheader ?? x.preheader
@@ -103,17 +103,17 @@ export async function sendWelcomeEmail({
     '📊 Suivi & statistiques de progression', '🎥 Vidéos d\'entraînement HD', '🔔 Rappels & motivation quotidienne',
   ]
   const c = en ? {
-    subject: `Welcome to Xenotif® — your ${planLabel} membership is active!`,
+    subject: `Welcome to Xenotif® - your ${planLabel} membership is active!`,
     h1: `Welcome${first ? `, ${first}` : ''}! 💪`,
-    intro: `Your <strong style="color:#F97316;">${planLabel} membership</strong> is now active. Welcome aboard — let's get to work!`,
+    intro: `Your <strong style="color:#F97316;">${planLabel} membership</strong> is now active. Welcome aboard - let's get to work!`,
     createTitle: 'Create your access in 1 click:',
     cta: 'Go to my dashboard →',
     linkNote: `This link expires in 24h. If clicking doesn't work, copy-paste the URL into your browser.`,
     includedTitle: `Included in your ${planLabel} plan:`,
   } : {
-    subject: `Bienvenue sur Xenotif® — ton abonnement ${planLabel} est actif !`,
+    subject: `Bienvenue sur Xenotif® - ton abonnement ${planLabel} est actif !`,
     h1: `Bienvenue${first ? `, ${first}` : ''} ! 💪`,
-    intro: `Ton <strong style="color:#F97316;">abonnement ${planLabel}</strong> est maintenant actif. Bienvenue — au travail !`,
+    intro: `Ton <strong style="color:#F97316;">abonnement ${planLabel}</strong> est maintenant actif. Bienvenue - au travail !`,
     createTitle: 'Crée ton accès en 1 clic :',
     cta: 'Accéder à mon espace →',
     linkNote: `Ce lien expire dans 24h. Si tu as du mal à cliquer, copie-colle l'URL dans ton navigateur.`,
@@ -220,9 +220,9 @@ type DailyMessage = {
 const DAILY_MESSAGES: Record<EmailLocale, DailyMessage[]> = {
   fr: [
     {
-      subject: '☀️ Nouveau départ — ta semaine commence aujourd\'hui !',
+      subject: '☀️ Nouveau départ - ta semaine commence aujourd\'hui !',
       quote: '« Le succès n\'est pas final, l\'échec n\'est pas fatal : c\'est le courage de continuer qui compte. »',
-      quoteAuthor: '— Winston Churchill',
+      quoteAuthor: '- Winston Churchill',
       headline: 'Lance ta semaine du bon pied !',
       body: 'Le dimanche, c\'est le moment idéal pour poser les bases de ta semaine. Une courte séance aujourd\'hui et tu arrives lundi avec de l\'énergie et de la confiance.',
       challenge: 'Défi du jour : 15 min de mobilité ou une marche active pour préparer ton corps.',
@@ -230,166 +230,166 @@ const DAILY_MESSAGES: Record<EmailLocale, DailyMessage[]> = {
     {
       subject: '💪 Lundi = jour J. Prêt(e) à tout donner ?',
       quote: '« Ce n\'est pas l\'envie qui manque, c\'est la discipline qui fait la différence. »',
-      quoteAuthor: '— Xenotif®',
+      quoteAuthor: '- Xenotif®',
       headline: 'Lundi, c\'est ton jour de force.',
       body: 'Les champions ne choisissent pas leurs jours. Ils s\'entraînent parce qu\'ils savent que chaque effort compte, même les jours sans motivation.',
       challenge: 'Défi du jour : complète une séance muscu ou cardio complète sur ton tableau de bord.',
     },
     {
-      subject: '🔥 Mardi — garde le rythme, ne lâche rien !',
+      subject: '🔥 Mardi - garde le rythme, ne lâche rien !',
       quote: '« La douleur d\'aujourd\'hui est la force de demain. »',
-      quoteAuthor: '— Arnold Schwarzenegger',
+      quoteAuthor: '- Arnold Schwarzenegger',
       headline: 'Le momentum est de ton côté.',
       body: 'Après le lundi, le mardi c\'est là où les engagements se testent. Ceux qui restent constants maintenant seront ceux qui voient des résultats dans 30 jours.',
       challenge: 'Défi du jour : ajoute 5 % de charge ou 2 répétitions à ton exercice principal.',
     },
     {
-      subject: '⚡ Mi-semaine — tu es à mi-chemin, continue !',
+      subject: '⚡ Mi-semaine - tu es à mi-chemin, continue !',
       quote: '« Ton corps peut tout. C\'est ton esprit qu\'il faut convaincre. »',
-      quoteAuthor: '— Xenotif®',
+      quoteAuthor: '- Xenotif®',
       headline: 'Mercredi : le cap de la semaine.',
       body: 'La mi-semaine est souvent le moment où la fatigue se fait sentir. Mais c\'est aussi le moment où les vrais athlètes font la différence. Reste dans ta routine.',
       challenge: 'Défi du jour : séance cardio courte ou yoga pour récupérer et rester actif(ve).',
     },
     {
-      subject: '🎯 Jeudi — presque vendredi, pousse encore !',
+      subject: '🎯 Jeudi - presque vendredi, pousse encore !',
       quote: '« Chaque rep, chaque set, chaque goutte de sueur te rapproche de ton objectif. »',
-      quoteAuthor: '— Xenotif®',
+      quoteAuthor: '- Xenotif®',
       headline: 'L\'effort d\'aujourd\'hui fait la transformation de demain.',
-      body: 'Jeudi c\'est le sprint final de la semaine. Tu as déjà fait le plus dur. Aujourd\'hui, donne le reste — ton futur toi te remerciera.',
+      body: 'Jeudi c\'est le sprint final de la semaine. Tu as déjà fait le plus dur. Aujourd\'hui, donne le reste - ton futur toi te remerciera.',
       challenge: 'Défi du jour : termine une séance complète et note tes progrès dans ton suivi.',
     },
     {
-      subject: '🏆 Vendredi — termine la semaine en beauté !',
+      subject: '🏆 Vendredi - termine la semaine en beauté !',
       quote: '« Les résultats ne viennent pas du talent, mais de la constance. »',
-      quoteAuthor: '— Dwayne Johnson',
+      quoteAuthor: '- Dwayne Johnson',
       headline: 'Finisher le vendredi, c\'est le meilleur sentiment.',
-      body: 'Une semaine complète d\'entraînement — c\'est 52 semaines par an de progression. Ceux qui s\'entraînent le vendredi sont ceux qui transforment leur corps durablement.',
-      challenge: 'Défi du jour : séance intensive, repousse tes limites — c\'est le dernier effort de la semaine !',
+      body: 'Une semaine complète d\'entraînement - c\'est 52 semaines par an de progression. Ceux qui s\'entraînent le vendredi sont ceux qui transforment leur corps durablement.',
+      challenge: 'Défi du jour : séance intensive, repousse tes limites - c\'est le dernier effort de la semaine !',
     },
     {
-      subject: '🌟 Samedi actif — profite et reste en mouvement !',
+      subject: '🌟 Samedi actif - profite et reste en mouvement !',
       quote: '« Le corps réalise ce que l\'esprit croit. »',
-      quoteAuthor: '— Napoleon Hill',
+      quoteAuthor: '- Napoleon Hill',
       headline: 'Samedi : récupération active ou nouveau challenge.',
       body: 'Le week-end n\'est pas une pause, c\'est une opportunité. Une petite séance ou une activité sportive dehors te gardera dans la dynamique et boostera ton humeur toute la journée.',
-      challenge: 'Défi du jour : sport en plein air, nage, vélo ou séance légère — 30 min suffisent !',
+      challenge: 'Défi du jour : sport en plein air, nage, vélo ou séance légère - 30 min suffisent !',
     },
   ],
   en: [
     {
-      subject: '☀️ Fresh start — your week begins today!',
+      subject: '☀️ Fresh start - your week begins today!',
       quote: '“Success is not final, failure is not fatal: it is the courage to continue that counts.”',
-      quoteAuthor: '— Winston Churchill',
+      quoteAuthor: '- Winston Churchill',
       headline: 'Kick off your week the right way!',
       body: 'Sunday is the perfect time to set the foundation for your week. A short session today and you\'ll start Monday with energy and confidence.',
       challenge: 'Today\'s challenge: 15 min of mobility or a brisk walk to prime your body.',
     },
     {
       subject: '💪 Monday = game day. Ready to give it all?',
-      quote: '“It\'s not motivation you lack — it\'s discipline that makes the difference.”',
-      quoteAuthor: '— Xenotif®',
+      quote: '“It\'s not motivation you lack - it\'s discipline that makes the difference.”',
+      quoteAuthor: '- Xenotif®',
       headline: 'Monday is your strength day.',
-      body: 'Champions don\'t pick their days. They train because they know every effort counts — even on the days motivation is missing.',
+      body: 'Champions don\'t pick their days. They train because they know every effort counts - even on the days motivation is missing.',
       challenge: 'Today\'s challenge: complete a full strength or cardio session on your dashboard.',
     },
     {
-      subject: '🔥 Tuesday — keep the pace, don\'t let up!',
+      subject: '🔥 Tuesday - keep the pace, don\'t let up!',
       quote: '“The pain of today is the strength of tomorrow.”',
-      quoteAuthor: '— Arnold Schwarzenegger',
+      quoteAuthor: '- Arnold Schwarzenegger',
       headline: 'Momentum is on your side.',
       body: 'After Monday, Tuesday is where commitments get tested. Those who stay consistent now are the ones who see results in 30 days.',
       challenge: 'Today\'s challenge: add 5% load or 2 reps to your main exercise.',
     },
     {
-      subject: '⚡ Midweek — you\'re halfway there, keep going!',
+      subject: '⚡ Midweek - you\'re halfway there, keep going!',
       quote: '“Your body can do anything. It\'s your mind you have to convince.”',
-      quoteAuthor: '— Xenotif®',
+      quoteAuthor: '- Xenotif®',
       headline: 'Wednesday: the turning point of the week.',
       body: 'Midweek is often when fatigue sets in. But it\'s also when real athletes make the difference. Stick to your routine.',
       challenge: 'Today\'s challenge: a short cardio session or yoga to recover and stay active.',
     },
     {
-      subject: '🎯 Thursday — almost Friday, push a little more!',
+      subject: '🎯 Thursday - almost Friday, push a little more!',
       quote: '“Every rep, every set, every drop of sweat brings you closer to your goal.”',
-      quoteAuthor: '— Xenotif®',
+      quoteAuthor: '- Xenotif®',
       headline: 'Today\'s effort is tomorrow\'s transformation.',
-      body: 'Thursday is the week\'s final sprint. You\'ve already done the hardest part. Today, give the rest — your future self will thank you.',
+      body: 'Thursday is the week\'s final sprint. You\'ve already done the hardest part. Today, give the rest - your future self will thank you.',
       challenge: 'Today\'s challenge: finish a full session and log your progress in your tracker.',
     },
     {
-      subject: '🏆 Friday — finish the week strong!',
+      subject: '🏆 Friday - finish the week strong!',
       quote: '“Success isn\'t about talent, it\'s about consistency.”',
-      quoteAuthor: '— Dwayne Johnson',
+      quoteAuthor: '- Dwayne Johnson',
       headline: 'Finishing on Friday is the best feeling.',
-      body: 'A full week of training — that\'s 52 weeks a year of progress. Those who train on Friday are the ones who transform their bodies for good.',
-      challenge: 'Today\'s challenge: an intense session, push your limits — it\'s the week\'s last effort!',
+      body: 'A full week of training - that\'s 52 weeks a year of progress. Those who train on Friday are the ones who transform their bodies for good.',
+      challenge: 'Today\'s challenge: an intense session, push your limits - it\'s the week\'s last effort!',
     },
     {
-      subject: '🌟 Active Saturday — enjoy it and keep moving!',
+      subject: '🌟 Active Saturday - enjoy it and keep moving!',
       quote: '“The body achieves what the mind believes.”',
-      quoteAuthor: '— Napoleon Hill',
+      quoteAuthor: '- Napoleon Hill',
       headline: 'Saturday: active recovery or a new challenge.',
       body: 'The weekend isn\'t a break, it\'s an opportunity. A short session or some outdoor activity will keep your momentum and boost your mood all day.',
-      challenge: 'Today\'s challenge: outdoor sport, swimming, cycling or a light session — 30 min is enough!',
+      challenge: 'Today\'s challenge: outdoor sport, swimming, cycling or a light session - 30 min is enough!',
     },
   ],
   de: [
     {
-      subject: '☀️ Neustart — deine Woche beginnt heute!',
+      subject: '☀️ Neustart - deine Woche beginnt heute!',
       quote: '„Erfolg ist nicht endgültig, Misserfolg ist nicht fatal: Es zählt der Mut weiterzumachen.“',
-      quoteAuthor: '— Winston Churchill',
+      quoteAuthor: '- Winston Churchill',
       headline: 'Starte stark in deine Woche!',
       body: 'Der Sonntag ist ideal, um die Basis für deine Woche zu legen. Eine kurze Einheit heute und du startest am Montag mit Energie und Selbstvertrauen.',
       challenge: 'Tages-Challenge: 15 Min Mobilität oder ein zügiger Spaziergang, um deinen Körper vorzubereiten.',
     },
     {
       subject: '💪 Montag = der Tag. Bereit, alles zu geben?',
-      quote: '„Es fehlt nicht an Lust — es ist die Disziplin, die den Unterschied macht.“',
-      quoteAuthor: '— Xenotif®',
+      quote: '„Es fehlt nicht an Lust - es ist die Disziplin, die den Unterschied macht.“',
+      quoteAuthor: '- Xenotif®',
       headline: 'Montag ist dein Krafttag.',
-      body: 'Champions wählen ihre Tage nicht. Sie trainieren, weil sie wissen, dass jeder Einsatz zählt — auch an Tagen ohne Motivation.',
+      body: 'Champions wählen ihre Tage nicht. Sie trainieren, weil sie wissen, dass jeder Einsatz zählt - auch an Tagen ohne Motivation.',
       challenge: 'Tages-Challenge: absolviere eine komplette Kraft- oder Cardio-Einheit auf deinem Dashboard.',
     },
     {
-      subject: '🔥 Dienstag — halt das Tempo, bleib dran!',
+      subject: '🔥 Dienstag - halt das Tempo, bleib dran!',
       quote: '„Der Schmerz von heute ist die Kraft von morgen.“',
-      quoteAuthor: '— Arnold Schwarzenegger',
+      quoteAuthor: '- Arnold Schwarzenegger',
       headline: 'Das Momentum ist auf deiner Seite.',
       body: 'Nach dem Montag wird am Dienstag die Verbindlichkeit getestet. Wer jetzt beständig bleibt, sieht in 30 Tagen Ergebnisse.',
       challenge: 'Tages-Challenge: füge 5 % Last oder 2 Wiederholungen zu deiner Hauptübung hinzu.',
     },
     {
-      subject: '⚡ Wochenmitte — du bist auf halbem Weg, weiter so!',
+      subject: '⚡ Wochenmitte - du bist auf halbem Weg, weiter so!',
       quote: '„Dein Körper kann alles. Es ist dein Kopf, den du überzeugen musst.“',
-      quoteAuthor: '— Xenotif®',
+      quoteAuthor: '- Xenotif®',
       headline: 'Mittwoch: der Wendepunkt der Woche.',
       body: 'Die Wochenmitte ist oft der Moment, in dem die Müdigkeit kommt. Aber genau dann machen echte Athleten den Unterschied. Bleib in deiner Routine.',
       challenge: 'Tages-Challenge: eine kurze Cardio-Einheit oder Yoga, um zu regenerieren und aktiv zu bleiben.',
     },
     {
-      subject: '🎯 Donnerstag — fast Freitag, gib noch mehr!',
+      subject: '🎯 Donnerstag - fast Freitag, gib noch mehr!',
       quote: '„Jede Wiederholung, jeder Satz, jeder Schweißtropfen bringt dich deinem Ziel näher.“',
-      quoteAuthor: '— Xenotif®',
+      quoteAuthor: '- Xenotif®',
       headline: 'Der Einsatz von heute ist die Veränderung von morgen.',
-      body: 'Donnerstag ist der Endspurt der Woche. Das Schwierigste hast du schon geschafft. Gib heute den Rest — dein zukünftiges Ich wird es dir danken.',
+      body: 'Donnerstag ist der Endspurt der Woche. Das Schwierigste hast du schon geschafft. Gib heute den Rest - dein zukünftiges Ich wird es dir danken.',
       challenge: 'Tages-Challenge: beende eine komplette Einheit und trag deinen Fortschritt ein.',
     },
     {
-      subject: '🏆 Freitag — beende die Woche stark!',
+      subject: '🏆 Freitag - beende die Woche stark!',
       quote: '„Erfolg kommt nicht vom Talent, sondern von der Beständigkeit.“',
-      quoteAuthor: '— Dwayne Johnson',
+      quoteAuthor: '- Dwayne Johnson',
       headline: 'Am Freitag abzuschließen ist das beste Gefühl.',
-      body: 'Eine komplette Trainingswoche — das sind 52 Wochen Fortschritt im Jahr. Wer freitags trainiert, verändert seinen Körper dauerhaft.',
-      challenge: 'Tages-Challenge: eine intensive Einheit, überschreite deine Grenzen — der letzte Einsatz der Woche!',
+      body: 'Eine komplette Trainingswoche - das sind 52 Wochen Fortschritt im Jahr. Wer freitags trainiert, verändert seinen Körper dauerhaft.',
+      challenge: 'Tages-Challenge: eine intensive Einheit, überschreite deine Grenzen - der letzte Einsatz der Woche!',
     },
     {
-      subject: '🌟 Aktiver Samstag — genieß ihn und bleib in Bewegung!',
+      subject: '🌟 Aktiver Samstag - genieß ihn und bleib in Bewegung!',
       quote: '„Der Körper erreicht, was der Geist glaubt.“',
-      quoteAuthor: '— Napoleon Hill',
+      quoteAuthor: '- Napoleon Hill',
       headline: 'Samstag: aktive Erholung oder eine neue Challenge.',
       body: 'Das Wochenende ist keine Pause, sondern eine Chance. Eine kurze Einheit oder Aktivität draußen hält dein Momentum und hebt deine Laune den ganzen Tag.',
-      challenge: 'Tages-Challenge: Sport draußen, Schwimmen, Radfahren oder eine leichte Einheit — 30 Min reichen!',
+      challenge: 'Tages-Challenge: Sport draußen, Schwimmen, Radfahren oder eine leichte Einheit - 30 Min reichen!',
     },
   ],
 }
@@ -492,7 +492,7 @@ export async function sendCancellationEmail({
   const en = locale === 'en'
   const first = name ? name.split(' ')[0] : ''
   const c = en ? {
-    subject: 'Cancellation confirmed — Xenotif®',
+    subject: 'Cancellation confirmed - Xenotif®',
     h1: `Cancellation confirmed${first ? `, ${first}` : ''}`,
     intro: 'Your cancellation has been processed. You keep full access until the end of your billing period.',
     sad: 'We\'re sad to see you go. 😢',
@@ -500,7 +500,7 @@ export async function sendCancellationEmail({
     cta: 'Reactivate my subscription',
     questions: 'Questions? Reply to this email or contact us at',
   } : {
-    subject: 'Résiliation confirmée — Xenotif®',
+    subject: 'Résiliation confirmée - Xenotif®',
     h1: `Résiliation confirmée${first ? `, ${first}` : ''}`,
     intro: 'Ta résiliation a bien été prise en compte. Tu gardes un accès complet jusqu\'à la fin de ta période de facturation.',
     sad: 'On est tristes de te voir partir. 😢',
@@ -540,7 +540,7 @@ export async function sendCancellationEmail({
   })
 }
 
-// Email de réactivation (win-back) — envoyé aux abonnés résiliés (status 'canceled')
+// Email de réactivation (win-back) - envoyé aux abonnés résiliés (status 'canceled')
 // par le cron /api/cron/reactivation. On rappelle ce qu'ils manquent + que leur
 // progression est sauvegardée, et on invite à réactiver. Aucun faux code promo.
 export async function sendReactivationEmail({
@@ -559,21 +559,21 @@ export async function sendReactivationEmail({
     '📊 Le suivi & les statistiques de progression', '🎥 Les vidéos d\'entraînement HD', '🔥 Les défis quotidiens, l\'XP & les badges',
   ]
   const c = en ? {
-    subject: `We saved your spot 💪 — come back to Xenotif®`,
+    subject: `We saved your spot 💪 - come back to Xenotif®`,
     h1: `We miss you${first ? `, ${first}` : ''} 💪`,
     intro: 'Your account and all your progress are still here, exactly where you left them. Whenever you\'re ready, you can pick up right where you stopped.',
     missingTitle: 'Here\'s what\'s waiting for you:',
-    nudge: 'No card needed to look around — and reactivating takes one click. Your best shape is still ahead of you.',
+    nudge: 'No card needed to look around - and reactivating takes one click. Your best shape is still ahead of you.',
     cta: 'Reactivate my access →',
-    ps: 'Stopped for a reason? Just reply to this email — we read every message and we\'d love your feedback.',
+    ps: 'Stopped for a reason? Just reply to this email - we read every message and we\'d love your feedback.',
   } : {
-    subject: `On t'a gardé ta place 💪 — reviens sur Xenotif®`,
+    subject: `On t'a gardé ta place 💪 - reviens sur Xenotif®`,
     h1: `Tu nous manques${first ? `, ${first}` : ''} 💪`,
     intro: 'Ton compte et toute ta progression sont toujours là, exactement où tu les as laissés. Dès que tu es prêt(e), tu peux reprendre là où tu t\'es arrêté(e).',
     missingTitle: 'Voilà ce qui t\'attend :',
-    nudge: 'Pas besoin de carte pour jeter un œil — et réactiver, c\'est un clic. Ta meilleure forme est encore devant toi.',
+    nudge: 'Pas besoin de carte pour jeter un œil - et réactiver, c\'est un clic. Ta meilleure forme est encore devant toi.',
     cta: 'Réactiver mon accès →',
-    ps: 'Tu as arrêté pour une raison ? Réponds simplement à cet email — on lit chaque message et ton retour nous intéresse.',
+    ps: 'Tu as arrêté pour une raison ? Réponds simplement à cet email - on lit chaque message et ton retour nous intéresse.',
   }
 
   await resend.emails.send({
@@ -607,7 +607,7 @@ export async function sendReactivationEmail({
   })
 }
 
-// Séquence d'onboarding (essai gratuit 7 j) — 3 emails envoyés par le cron
+// Séquence d'onboarding (essai gratuit 7 j) - 3 emails envoyés par le cron
 // /api/cron/onboarding à J+1 (prise en main), J+3 (tirer le max), J+6 (l'essai
 // se termine → passage PRO). Une seule fonction, contenu selon `step`.
 export async function sendOnboardingEmail({
@@ -624,7 +624,7 @@ export async function sendOnboardingEmail({
     1: {
       subject: 'Tes premiers pas sur Xenotif® 💪',
       h1: `Prêt(e) à démarrer${first ? `, ${first}` : ''} ?`,
-      intro: 'Bienvenue ! Ton essai gratuit est lancé. Voici comment en tirer parti dès aujourd\'hui — 5 minutes suffisent.',
+      intro: 'Bienvenue ! Ton essai gratuit est lancé. Voici comment en tirer parti dès aujourd\'hui - 5 minutes suffisent.',
       cardTitle: 'Tes 3 premières actions :',
       items: ['🏋️ Lance ta première séance guidée', '🤖 Pose une question à ton coach IA', '🎯 Choisis une discipline et fixe ton objectif'],
       cta: 'Ouvrir mon espace →',
@@ -633,7 +633,7 @@ export async function sendOnboardingEmail({
     },
     2: {
       subject: '3 leviers pour progresser plus vite 🚀',
-      h1: `Tu y es${first ? `, ${first}` : ''} — passe la vitesse supérieure`,
+      h1: `Tu y es${first ? `, ${first}` : ''} - passe la vitesse supérieure`,
       intro: 'Maintenant que tu as pris tes marques, voilà ce qui fait vraiment la différence sur la durée.',
       cardTitle: 'Tire le maximum de ton accès :',
       items: ['📋 Suis un programme structuré (pas à pas)', '📊 Garde un œil sur ton suivi & tes stats', '🔥 Gagne de l\'XP, relève les défis, débloque des badges'],
@@ -644,10 +644,10 @@ export async function sendOnboardingEmail({
     3: {
       subject: 'Ton essai gratuit se termine bientôt ⏳',
       h1: `Ne perds pas ton élan${first ? `, ${first}` : ''}`,
-      intro: 'Ton essai gratuit touche à sa fin. Passe en PRO pour garder l\'accès complet — toute ta progression est conservée.',
+      intro: 'Ton essai gratuit touche à sa fin. Passe en PRO pour garder l\'accès complet - toute ta progression est conservée.',
       cardTitle: 'En restant PRO, tu gardes :',
       items: ['🤖 Le coach IA personnalisé', '🏋️ Les 10 disciplines & tous les programmes', '📊 Le suivi, les stats & la gamification', '🎥 Les vidéos d\'entraînement HD'],
-      cta: 'Passer en PRO — 9,99€/mois →',
+      cta: 'Passer en PRO - 9,99€/mois →',
       ctaUrl: `${BASE_URL}/dashboard/abonnement`,
       foot: 'Sans engagement : tu peux résilier à tout moment en un clic.',
     },
@@ -656,7 +656,7 @@ export async function sendOnboardingEmail({
     1: {
       subject: 'Your first steps on Xenotif® 💪',
       h1: `Ready to start${first ? `, ${first}` : ''}?`,
-      intro: 'Welcome! Your free trial is live. Here\'s how to make the most of it today — 5 minutes is enough.',
+      intro: 'Welcome! Your free trial is live. Here\'s how to make the most of it today - 5 minutes is enough.',
       cardTitle: 'Your first 3 actions:',
       items: ['🏋️ Start your first guided session', '🤖 Ask your AI coach a question', '🎯 Pick a discipline and set your goal'],
       cta: 'Open my dashboard →',
@@ -665,7 +665,7 @@ export async function sendOnboardingEmail({
     },
     2: {
       subject: '3 levers to progress faster 🚀',
-      h1: `You\'re in${first ? `, ${first}` : ''} — shift up a gear`,
+      h1: `You\'re in${first ? `, ${first}` : ''} - shift up a gear`,
       intro: 'Now that you\'ve found your feet, here\'s what really makes the difference over time.',
       cardTitle: 'Get the most from your access:',
       items: ['📋 Follow a structured program (step by step)', '📊 Keep an eye on your tracking & stats', '🔥 Earn XP, take on challenges, unlock badges'],
@@ -676,10 +676,10 @@ export async function sendOnboardingEmail({
     3: {
       subject: 'Your free trial ends soon ⏳',
       h1: `Don\'t lose your momentum${first ? `, ${first}` : ''}`,
-      intro: 'Your free trial is coming to an end. Go PRO to keep full access — all your progress is saved.',
+      intro: 'Your free trial is coming to an end. Go PRO to keep full access - all your progress is saved.',
       cardTitle: 'By staying PRO, you keep:',
       items: ['🤖 Your personalized AI coach', '🏋️ The 10 disciplines & every program', '📊 Tracking, stats & gamification', '🎥 HD training videos'],
-      cta: 'Go PRO — €9.99/month →',
+      cta: 'Go PRO - €9.99/month →',
       ctaUrl: `${BASE_URL}/dashboard/abonnement`,
       foot: 'No commitment: cancel anytime in one click.',
     },
@@ -810,14 +810,14 @@ export async function sendDigitalDeliveryEmail({
     confirmed: '&#10003; Order confirmed',
     h1: `${plural ? 'Your guides are ready' : 'Your guide is ready'} 📘`,
     hello: name ? `Thanks ${name.split(' ')[0]} 🙌` : 'Thanks for your trust 🙌',
-    intro: (hello: string) => `${hello} — your guide${plural ? 's are' : ' is'} available right away. Download ${plural ? 'them' : 'it'} below: ${plural ? 'they\'re' : 'it\'s'} yours forever.`,
+    intro: (hello: string) => `${hello} - your guide${plural ? 's are' : ' is'} available right away. Download ${plural ? 'them' : 'it'} below: ${plural ? 'they\'re' : 'it\'s'} yours forever.`,
     perks: '🔒 Secure link &nbsp;·&nbsp; ♾️ Lifetime access &nbsp;·&nbsp; 📱 All devices',
-    note: `Keep this email: you can re-download your guide${plural ? 's' : ''} anytime via this link. A question? Just reply to this email — our team responds within 24&nbsp;h.`,
+    note: `Keep this email: you can re-download your guide${plural ? 's' : ''} anytime via this link. A question? Just reply to this email - our team responds within 24&nbsp;h.`,
     reviewTitle: 'Enjoyed your guide? ⭐',
     reviewBody: 'Your honest review helps the whole community choose with confidence. It only takes a minute.',
     reviewCta: '★&nbsp;&nbsp;Leave my review',
     subject: 'Your Xenotif® guide is ready 📘',
-    preheader: `Your Xenotif® guide${plural ? 's are' : ' is'} available — download your PDF now.`,
+    preheader: `Your Xenotif® guide${plural ? 's are' : ' is'} available - download your PDF now.`,
   } : {
     badgeGuide: 'Guide PDF · Xenotif®',
     format: 'Format PDF · Accès à vie · Compatible tous appareils',
@@ -825,14 +825,14 @@ export async function sendDigitalDeliveryEmail({
     confirmed: '&#10003; Commande confirmée',
     h1: `${plural ? 'Tes guides sont prêts' : 'Ton guide est prêt'} 📘`,
     hello: name ? `Merci ${name.split(' ')[0]} 🙌` : 'Merci pour ta confiance 🙌',
-    intro: (hello: string) => `${hello} — ${plural ? 'tes guides sont disponibles' : 'ton guide est disponible'} immédiatement. Télécharge${plural ? '-les' : '-le'} ci-dessous : ${plural ? 'ils sont' : 'il est'} à toi pour toujours.`,
+    intro: (hello: string) => `${hello} - ${plural ? 'tes guides sont disponibles' : 'ton guide est disponible'} immédiatement. Télécharge${plural ? '-les' : '-le'} ci-dessous : ${plural ? 'ils sont' : 'il est'} à toi pour toujours.`,
     perks: '🔒 Lien sécurisé &nbsp;·&nbsp; ♾️ Accès à vie &nbsp;·&nbsp; 📱 Tous appareils',
-    note: `Conserve cet email : tu peux retélécharger ${plural ? 'tes guides' : 'ton guide'} à tout moment via ce lien. Une question ? Réponds simplement à cet email — notre équipe te répond sous 24&nbsp;h.`,
+    note: `Conserve cet email : tu peux retélécharger ${plural ? 'tes guides' : 'ton guide'} à tout moment via ce lien. Une question ? Réponds simplement à cet email - notre équipe te répond sous 24&nbsp;h.`,
     reviewTitle: 'Ton guide te plaît ? ⭐',
     reviewBody: 'Ton avis honnête aide toute la communauté à choisir en confiance. Ça ne te prend qu\'une minute.',
     reviewCta: '★&nbsp;&nbsp;Donner mon avis',
     subject: 'Ton guide Xenotif® est prêt 📘',
-    preheader: `${plural ? 'Tes guides Xenotif®' : 'Ton guide Xenotif®'} est disponible — télécharge ton PDF maintenant.`,
+    preheader: `${plural ? 'Tes guides Xenotif®' : 'Ton guide Xenotif®'} est disponible - télécharge ton PDF maintenant.`,
   }
 
   const itemsHtml = items.map(i => {
@@ -908,15 +908,15 @@ export async function sendAccountCreatedEmail({
   const en = locale === 'en'
   const first = name ? name.split(' ')[0] : ''
   const c = en ? {
-    subject: 'Welcome to Xenotif® — your account is ready!',
+    subject: 'Welcome to Xenotif® - your account is ready!',
     h1: `Welcome${first ? `, ${first}` : ''}! 💪`,
-    intro: `Your Xenotif® account is created and you're signed in. Start free with <strong style="color:#F97316;">Strength Training</strong> — go PRO anytime to unlock all 10 disciplines, the AI coach and smartwatch sync.`,
+    intro: `Your Xenotif® account is created and you're signed in. Start free with <strong style="color:#F97316;">Strength Training</strong> - go PRO anytime to unlock all 10 disciplines, the AI coach and smartwatch sync.`,
     cta: 'Go to my dashboard →',
     note: 'See you inside!',
   } : {
-    subject: 'Bienvenue sur Xenotif® — ton compte est prêt !',
+    subject: 'Bienvenue sur Xenotif® - ton compte est prêt !',
     h1: `Bienvenue${first ? `, ${first}` : ''} ! 💪`,
-    intro: `Ton compte Xenotif® est créé et tu es connecté(e). Commence gratuitement avec la <strong style="color:#F97316;">Musculation</strong> — passe à PRO quand tu veux pour débloquer les 10 disciplines, le coach IA et la montre connectée.`,
+    intro: `Ton compte Xenotif® est créé et tu es connecté(e). Commence gratuitement avec la <strong style="color:#F97316;">Musculation</strong> - passe à PRO quand tu veux pour débloquer les 10 disciplines, le coach IA et la montre connectée.`,
     cta: 'Accéder à mon espace →',
     note: 'À tout de suite !',
   }

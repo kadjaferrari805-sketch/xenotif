@@ -6,14 +6,14 @@ const D = 'https://xenotif.com/disciplines'
 export const fitnessMaison: Guide = {
   id: 'fitness-maison',
   title: 'Programme Fitness Maison',
-  subtitle: '8 semaines, 100 % au poids du corps, zéro matériel — où que tu sois',
-  author: 'XENOTIF Coach — Préparation physique certifiée',
+  subtitle: '8 semaines, 100 % au poids du corps, zéro matériel - où que tu sois',
+  author: 'XENOTIF Coach - Préparation physique certifiée',
   level: 'Débutant - Intermédiaire',
   duration: '8 semaines · 4 séances/sem',
   coverImage: 'cover.jpg',
   blocks: [
     { type: 'h1', text: 'Ta salle de sport, c’est chez toi' },
-    { type: 'p', text: `Pas de salle, pas de matériel, pas d’excuse. Ce programme de 8 semaines se fait entièrement au poids du corps, dans 2 m², à la maison ou en voyage. Tu vas tonifier ton corps, gagner en force fonctionnelle, brûler du gras et créer une routine indestructible — avec pour seul équipement ton propre corps.` },
+    { type: 'p', text: `Pas de salle, pas de matériel, pas d’excuse. Ce programme de 8 semaines se fait entièrement au poids du corps, dans 2 m², à la maison ou en voyage. Tu vas tonifier ton corps, gagner en force fonctionnelle, brûler du gras et créer une routine indestructible - avec pour seul équipement ton propre corps.` },
     { type: 'p', text: `Chaque exercice possède un QR code vers sa vidéo de démonstration sur XENOTIF®. En cas de doute, scanne-le.` },
     { type: 'meta', items: [
       { label: 'Objectif', value: 'Tonifier, brûler, renforcer' },
@@ -38,7 +38,7 @@ export const fitnessMaison: Guide = {
       `Progresse en passant aux variantes plus difficiles indiquées.`,
       `Fais ton bilan chaque dimanche (suivi + checklist).`,
     ] },
-    { type: 'note', text: `Règle d’or du poids du corps : sans charges, tu progresses par la difficulté des variantes, le tempo, le nombre de répétitions et la densité (moins de repos). La progression existe bel et bien — il suffit de la provoquer.` },
+    { type: 'note', text: `Règle d’or du poids du corps : sans charges, tu progresses par la difficulté des variantes, le tempo, le nombre de répétitions et la densité (moins de repos). La progression existe bel et bien - il suffit de la provoquer.` },
 
     { type: 'h1', text: 'Comment ça marche' },
     { type: 'list', items: [
@@ -87,7 +87,7 @@ export const fitnessMaison: Guide = {
     ] },
     { type: 'h2', text: 'Comprendre tes macros' },
     { type: 'table', headers: ['Macro', 'Rôle', 'Par g', 'Priorité'], rows: [
-      ['Protéines', 'Muscle & satiété', '4 kcal', 'HAUTE — 1,6-2 g/kg'],
+      ['Protéines', 'Muscle & satiété', '4 kcal', 'HAUTE - 1,6-2 g/kg'],
       ['Glucides', 'Énergie', '4 kcal', 'Autour des séances'],
       ['Lipides', 'Hormones, santé', '9 kcal', 'Modérée, qualité'],
     ] },
@@ -137,10 +137,10 @@ export const fitnessMaison: Guide = {
     { type: 'table', headers: ['Jour', 'Séance', 'Durée'], rows: [
       ['Lundi', 'Renforcement A (bas + core)', '35 min'],
       ['Mardi', 'Circuit HIIT', '25 min'],
-      ['Mercredi', 'Repos / marche', '—'],
+      ['Mercredi', 'Repos / marche', '-'],
       ['Jeudi', 'Renforcement B (haut + core)', '35 min'],
       ['Vendredi', 'Circuit cardio full body', '30 min'],
-      ['Week-end', 'Repos actif + suivi', '—'],
+      ['Week-end', 'Repos actif + suivi', '-'],
     ] },
 
     { type: 'h2', text: 'Détail jour par jour (semaines 1 à 4)' },
@@ -156,7 +156,7 @@ export const fitnessMaison: Guide = {
     ] },
 
     { type: 'h1', text: 'Tes séances en détail' },
-    { type: 'h2', text: 'Renforcement A — Bas du corps & core' },
+    { type: 'h2', text: 'Renforcement A - Bas du corps & core' },
     { type: 'table', headers: ['Exercice', 'Séries', 'Répétitions', 'Repos'], rows: [
       ['Squats', '4', '15 à 20', '45 s'],
       ['Fentes alternées', '3', '12 / jambe', '45 s'],
@@ -164,7 +164,7 @@ export const fitnessMaison: Guide = {
       ['Chaise contre le mur', '3', '40 s', '40 s'],
       ['Gainage planche', '3', '40 s', '40 s'],
     ] },
-    { type: 'h2', text: 'Renforcement B — Haut du corps & core' },
+    { type: 'h2', text: 'Renforcement B - Haut du corps & core' },
     { type: 'table', headers: ['Exercice', 'Séries', 'Répétitions', 'Repos'], rows: [
       ['Pompes (variante adaptée)', '4', 'Max propre', '45 s'],
       ['Dips sur chaise', '3', '12', '45 s'],
@@ -202,7 +202,7 @@ export const fitnessMaison: Guide = {
     { type: 'exercise', name: 'Pont fessier une jambe', muscles: 'Fessiers, ischios, gainage', level: 'Intermédiaire', video: `${D}/musculation`, technique: `Pont fessier classique mais une jambe tendue en l’air. Pousse dans le talon au sol, monte le bassin bien à l’horizontale, serre le fessier. Change de jambe.`, mistakes: `Bassin qui se tord, hyperextension lombaire, amplitude courte.` },
 
     { type: 'h1', text: 'Cardio, marche & NEAT' },
-    { type: 'p', text: `Au-delà des séances, ton activité quotidienne (NEAT) fait une énorme différence sur la dépense d’énergie et la perte de gras — sans fatiguer ni nécessiter de matériel.` },
+    { type: 'p', text: `Au-delà des séances, ton activité quotidienne (NEAT) fait une énorme différence sur la dépense d’énergie et la perte de gras - sans fatiguer ni nécessiter de matériel.` },
     { type: 'list', items: [
       `Vise 8 000 à 10 000 pas par jour : marche, escaliers, trajets à pied.`,
       `2 à 3 marches rapides de 30 min/semaine, idéalement les jours de repos.`,
@@ -335,7 +335,7 @@ export const fitnessMaison: Guide = {
     { type: 'list', items: [
       `Performance : plus de répétitions, variantes plus dures, gainage plus long, moins de repos.`,
       `Photos : même lumière, même angle, même heure, toutes les 4 semaines.`,
-      `Mensurations : tour de taille, hanches, cuisses, bras — souvent plus parlantes que le poids.`,
+      `Mensurations : tour de taille, hanches, cuisses, bras - souvent plus parlantes que le poids.`,
       `Sensations : énergie, sommeil, vêtements plus amples, posture améliorée.`,
       `Ne te pèse qu’une fois par semaine, à jeun, le même jour : le poids fluctue au quotidien.`,
     ] },

@@ -9,7 +9,7 @@ import { ClipboardList, Sparkles, TrendingUp } from 'lucide-react'
 // Section « 3 cartes » façon Strava : créative de marque en haut + icône
 // superposée + texte. Les 3 images sont de vrais recadrages du mockup app
 // (public/pub/coach-poche-<locale>.webp, source non recadrée) : écran
-// d'accueil, programmes, objectifs/progression — voir public/home/feature-*.
+// d'accueil, programmes, objectifs/progression - voir public/home/feature-*.
 const CARDS = [
   { Icon: ClipboardList, imgKey: 'programmes' },
   { Icon: Sparkles, imgKey: 'coach' },

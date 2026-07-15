@@ -34,22 +34,22 @@ export interface Guide {
 }
 
 // ──────────────────────────────────────────────────────────────────────
-// d1 — Programme Prise de Masse 12 semaines
+// d1 - Programme Prise de Masse 12 semaines
 // ──────────────────────────────────────────────────────────────────────
 const masse: Guide = priseDeMasse12s
 
 // ──────────────────────────────────────────────────────────────────────
-// d2 — Plan Nutrition Sèche 8 semaines
+// d2 - Plan Nutrition Sèche 8 semaines
 // ──────────────────────────────────────────────────────────────────────
 const seche: Guide = nutritionSeche
 
 // ──────────────────────────────────────────────────────────────────────
-// d3 — Programme HIIT 6 semaines
+// d3 - Programme HIIT 6 semaines
 // ──────────────────────────────────────────────────────────────────────
 const hiit: Guide = hiit6s
 
 // ──────────────────────────────────────────────────────────────────────
-// d4 — Guide Running : du 5K au Marathon (contenu boutique, voir programs/)
+// d4 - Guide Running : du 5K au Marathon (contenu boutique, voir programs/)
 // ──────────────────────────────────────────────────────────────────────
 const running: Guide = runningGuide
 

@@ -256,7 +256,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           {post.content.map((block, index) => renderBlock(block, index, ctx))}
         </article>
 
-        {/* CTA conversion — essai gratuit (toutes les fiches) + lien interne discipline */}
+        {/* CTA conversion - essai gratuit (toutes les fiches) + lien interne discipline */}
         <section className="px-6 pb-14">
           <div className="max-w-3xl mx-auto rounded-3xl border border-sport-orange/30 bg-gradient-to-br from-sport-orange/15 via-sport-card to-sport-card p-8 md:p-10 text-center">
             <h2 className="text-2xl md:text-3xl font-black text-sport-fg mb-3">{t('cta.title')}</h2>

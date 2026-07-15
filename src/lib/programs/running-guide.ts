@@ -1,13 +1,13 @@
 import type { Guide } from '@/lib/boutique/guides'
 
-// d4 — Guide Running : du 5K au Marathon (FR). Plans 5K/10K/semi/marathon,
+// d4 - Guide Running : du 5K au Marathon (FR). Plans 5K/10K/semi/marathon,
 // nutrition course, prévention blessures, mental de compétiteur, renforcement.
 // Gabarit premium XENOTIF® : couverture running, en-têtes image+titre. ≈30 pages.
 export const runningGuide: Guide = {
   id: 'd4',
-  title: 'Guide Running — Du 5K au Marathon',
+  title: 'Guide Running - Du 5K au Marathon',
   subtitle: 'Plans 5K / 10K / semi / marathon, nutrition course, prévention blessures, mental',
-  author: 'XENOTIF Coach — Entraîneur athlétisme FFA',
+  author: 'XENOTIF Coach - Entraîneur athlétisme FFA',
   level: 'Débutant → Confirmé',
   duration: '4 plans · 5K à marathon',
   coverImage: 'run-cover.jpg',
@@ -362,7 +362,7 @@ export const runningGuide: Guide = {
     { type: 'note', text: `Entraîne ton mental à l’entraînement : les sorties longues et les fins de fractionné sont l’endroit idéal pour pratiquer tes mantras et la segmentation. Le jour J, ce ne sera qu’une habitude de plus.` },
 
     { type: 'h1', text: 'Équipement essentiel' },
-    { type: 'p', text: `Bonne nouvelle : courir coûte peu. En dehors des chaussures (chapitre dédié), voici l’équipement utile, classé par priorité — n’investis pas tout d’un coup.` },
+    { type: 'p', text: `Bonne nouvelle : courir coûte peu. En dehors des chaussures (chapitre dédié), voici l’équipement utile, classé par priorité - n’investis pas tout d’un coup.` },
     { type: 'table', headers: ['Équipement', 'Priorité', 'À quoi ça sert'], rows: [
       ['Chaussures adaptées', 'Indispensable', 'Confort et prévention des blessures'],
       ['Chaussettes techniques', 'Indispensable', 'Évacuer la transpiration, éviter les ampoules'],
@@ -385,7 +385,7 @@ export const runningGuide: Guide = {
     { type: 'h2', text: 'Combien de temps avant un marathon ?' },
     { type: 'p', text: `Si tu cours déjà ~1 h confortablement, 12 semaines suffisent. Sinon, fais d’abord le plan 10K puis semi avant de te lancer sur marathon.` },
     { type: 'h2', text: 'Que faire en cas de douleur ?' },
-    { type: 'p', text: `Une gêne musculaire passagère : adapte. Une douleur articulaire ou qui persiste : repose-toi et consulte. Ne « pousse » jamais à travers une vraie douleur — c’est l’arrêt garanti.` },
+    { type: 'p', text: `Une gêne musculaire passagère : adapte. Une douleur articulaire ou qui persiste : repose-toi et consulte. Ne « pousse » jamais à travers une vraie douleur - c’est l’arrêt garanti.` },
     { type: 'h2', text: 'Faut-il faire du renforcement ?' },
     { type: 'p', text: `Oui, 1-2×/semaine. C’est ce qui te rend plus rapide ET plus résistant aux blessures. Le renforcement n’est pas optionnel pour progresser durablement.` },
     { type: 'h2', text: 'Tapis de course ou extérieur ?' },

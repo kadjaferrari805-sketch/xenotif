@@ -4,7 +4,7 @@ import { useTranslations } from 'next-intl'
 import { ReviewForm } from './ReviewForm'
 import type { Eligibility } from '@/lib/reviews/types'
 
-// Invitation à laisser un témoignage plateforme — affichée uniquement aux abonnés éligibles
+// Invitation à laisser un témoignage plateforme - affichée uniquement aux abonnés éligibles
 // (dashboard). N'affiche PAS la liste des avis : c'est une simple incitation.
 export function ReviewInvite() {
   const t = useTranslations('reviews')

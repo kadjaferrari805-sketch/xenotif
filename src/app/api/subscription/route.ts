@@ -38,7 +38,7 @@ export async function GET() {
       })
     }
 
-    // Not in DB — fetch from Stripe by email and sync
+    // Not in DB - fetch from Stripe by email and sync
     const secretKey = process.env.STRIPE_SECRET_KEY
     if (!secretKey) return NextResponse.json(null)
 

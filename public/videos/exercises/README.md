@@ -1,7 +1,7 @@
 # Vidéos de démonstration des exercices
 
 Dépose ici une vidéo `.mp4` (fond blanc studio conseillé) nommée par le **slug**
-de l'exercice — elle est jouée automatiquement sur `/exercices/<slug>`.
+de l'exercice - elle est jouée automatiquement sur `/exercices/<slug>`.
 
 - Vidéo : `public/videos/exercises/<slug>.mp4`
 - Poster (optionnel) : `public/videos/exercises/<slug>.jpg`

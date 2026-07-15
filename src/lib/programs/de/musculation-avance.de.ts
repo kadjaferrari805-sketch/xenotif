@@ -7,7 +7,7 @@ export const musculationAvanceDe: Guide = {
   id: 'musculation-avance',
   title: 'Fortgeschrittenes Krafttraining-Programm',
   subtitle: '12 Wochen mit hoher Intensität, um dein Plateau zu durchbrechen und den Muskelaufbau zu maximieren',
-  author: 'XENOTIF Coach — Athletiktraining zertifiziert',
+  author: 'XENOTIF Coach - Athletiktraining zertifiziert',
   level: 'Fortgeschritten',
   duration: '12 Wochen · 5 bis 6 Einheiten/Woche',
   coverImage: 'cover.jpg',
@@ -38,7 +38,7 @@ export const musculationAvanceDe: Guide = {
       `Du weißt, was RPE/RIR bedeutet, und führst ein Trainingstagebuch.`,
       `Falls nicht, ist das Programm Krafttraining Mittelstufe besser geeignet.`,
     ] },
-    { type: 'note', text: `Goldene Regel für Fortgeschrittene: Du machst keine Fortschritte mehr „von allein". Fortschritt entsteht durch Präzision — im Umgang mit Volumen, Intensität, Ermüdung und Schwachstellen.` },
+    { type: 'note', text: `Goldene Regel für Fortgeschrittene: Du machst keine Fortschritte mehr „von allein". Fortschritt entsteht durch Präzision - im Umgang mit Volumen, Intensität, Ermüdung und Schwachstellen.` },
 
     { type: 'h1', text: 'So funktioniert\'s' },
     { type: 'list', items: [
@@ -272,7 +272,7 @@ export const musculationAvanceDe: Guide = {
     { type: 'p', text: `Wechsle zu PPL an 3 Tagen oder Oberkörper/Unterkörper an 4 Tagen und behalte die Intensität bei. Lieber 4 produktive Einheiten als 6 schlampige aus Erholungsmangel.` },
 
     { type: 'h1', text: 'Cardio & Konditionierung' },
-    { type: 'p', text: `Richtig dosiertes Cardio unterstützt deine Erholung (bessere Durchblutung, Arbeitskapazität) und begrenzt die Fettzunahme in Überschussphasen — ohne deine Gains zu kannibalisieren, solange du diese Richtwerte einhältst.` },
+    { type: 'p', text: `Richtig dosiertes Cardio unterstützt deine Erholung (bessere Durchblutung, Arbeitskapazität) und begrenzt die Fettzunahme in Überschussphasen - ohne deine Gains zu kannibalisieren, solange du diese Richtwerte einhältst.` },
     { type: 'list', items: [
       `Tägliches Gehen (8.000-12.000 Schritte): die Basis, ohne jeden Einfluss auf die Erholung.`,
       `2 bis 3 Einheiten moderates Cardio (Zone 2, 25-35 Min.) pro Woche, mit Abstand zum Beintraining.`,

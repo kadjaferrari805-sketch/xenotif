@@ -1,19 +1,19 @@
 import type { Guide } from '@/lib/boutique/guides'
 
-// d2 — Plan Nutrition Sèche 8 Semaines (FR). Programme NUTRITION (pas muscu) :
+// d2 - Plan Nutrition Sèche 8 Semaines (FR). Programme NUTRITION (pas muscu) :
 // 56 jours de menus, 40+ recettes, listes de courses, macros perso, version vegan.
 // Gabarit premium XENOTIF® : couverture food, en-têtes image+titre, ≈30+ pages.
 export const nutritionSeche: Guide = {
   id: 'd2',
-  title: 'Plan Nutrition Sèche — 8 Semaines',
+  title: 'Plan Nutrition Sèche - 8 Semaines',
   subtitle: '56 jours de menus, 40+ recettes, listes de courses, macros perso, version vegan',
-  author: 'XENOTIF Coach — Nutrition du sport certifiée',
+  author: 'XENOTIF Coach - Nutrition du sport certifiée',
   level: 'Tous niveaux',
   duration: '8 semaines · 56 jours de menus',
   coverImage: 'seche-cover.jpg',
   blocks: [
     { type: 'h1', text: 'Bienvenue dans ta sèche' },
-    { type: 'p', text: `Ce plan de 8 semaines va t’aider à révéler ta définition musculaire en perdant du gras — sans sacrifier le muscle durement gagné, sans régime extrême ni privation absurde. Une méthode progressive, tenable et basée sur la science. Tu y trouveras le calcul de tes besoins, 56 jours de menus détaillés, 40+ recettes, tes listes de courses et une version vegan complète.` },
+    { type: 'p', text: `Ce plan de 8 semaines va t’aider à révéler ta définition musculaire en perdant du gras - sans sacrifier le muscle durement gagné, sans régime extrême ni privation absurde. Une méthode progressive, tenable et basée sur la science. Tu y trouveras le calcul de tes besoins, 56 jours de menus détaillés, 40+ recettes, tes listes de courses et une version vegan complète.` },
     { type: 'p', text: `Ce document est ton plan alimentaire de poche : suis les menus jour par jour, prépare tes courses avec les listes fournies, et laisse la définition apparaître semaine après semaine.` },
     { type: 'meta', items: [
       { label: 'Objectif', value: 'Perdre du gras, garder le muscle' },
@@ -50,11 +50,11 @@ export const nutritionSeche: Guide = {
 
     { type: 'chapter', title: 'Tes macros personnalisés', src: 'seche-1.jpg' },
     { type: 'p', text: `Voici comment calculer tes besoins en 3 étapes. Pas besoin de balance de précision : ces repères suffisent pour la grande majorité des cas.` },
-    { type: 'h2', text: 'Étape 1 — Ta maintenance' },
+    { type: 'h2', text: 'Étape 1 - Ta maintenance' },
     { type: 'p', text: `Estimation rapide : poids (kg) × 30 à 33 (selon ton activité). Exemple pour 75 kg, modérément actif : 75 × 31 ≈ 2 325 kcal/jour de maintenance.` },
-    { type: 'h2', text: 'Étape 2 — Ton déficit' },
+    { type: 'h2', text: 'Étape 2 - Ton déficit' },
     { type: 'p', text: `Retire 15 à 20 % : 2 325 − 18 % ≈ 1 900 kcal/jour. C’est ton objectif calorique de sèche.` },
-    { type: 'h2', text: 'Étape 3 — Répartir en macros' },
+    { type: 'h2', text: 'Étape 3 - Répartir en macros' },
     { type: 'table', headers: ['Macro', 'Calcul', 'Exemple (75 kg, 1 900 kcal)'], rows: [
       ['Protéines', '2,2 g/kg', '165 g (660 kcal)'],
       ['Lipides', '0,8 g/kg', '60 g (540 kcal)'],
@@ -79,7 +79,7 @@ export const nutritionSeche: Guide = {
       `1 repas plaisir par semaine pour tenir sur la durée sans craquer.`,
     ] },
 
-    { type: 'chapter', title: 'Plan de repas — 56 jours', src: 'seche-2.jpg', intro: `Voici 8 semaines de menus prêts à suivre (≈1 800-1 900 kcal, ajuste les portions à TES macros). Chaque semaine alterne les repas pour éviter la lassitude. Toutes les recettes sont détaillées plus loin. Version vegan : voir le chapitre dédié.` },
+    { type: 'chapter', title: 'Plan de repas - 56 jours', src: 'seche-2.jpg', intro: `Voici 8 semaines de menus prêts à suivre (≈1 800-1 900 kcal, ajuste les portions à TES macros). Chaque semaine alterne les repas pour éviter la lassitude. Toutes les recettes sont détaillées plus loin. Version vegan : voir le chapitre dédié.` },
     { type: 'h2', text: 'Semaine 1' },
     { type: 'table', headers: ['Jour', 'Petit-déj', 'Déjeuner', 'Dîner'], rows: [
       ['Lun', 'Skyr-avoine-fruits', 'Poulet-riz-brocoli', 'Saumon-patate douce-salade'],
@@ -160,7 +160,7 @@ export const nutritionSeche: Guide = {
       ['Sam', 'Skyr-fruits-amandes', 'Repas plaisir léger', 'Soupe + œufs durs'],
       ['Dim', 'Œufs brouillés + avocat', 'Bowl poulet-riz-légumes', 'Poisson blanc-patate douce-salade'],
     ] },
-    { type: 'note', text: `Astuce : tu peux garder le même petit-déjeuner 2-3 jours d’affilée pour simplifier — la variété compte sur la semaine. Ajuste toujours les PORTIONS à TES macros (chapitre précédent).` },
+    { type: 'note', text: `Astuce : tu peux garder le même petit-déjeuner 2-3 jours d’affilée pour simplifier - la variété compte sur la semaine. Ajuste toujours les PORTIONS à TES macros (chapitre précédent).` },
 
     { type: 'chapter', title: 'Tes listes de courses', src: 'seche-1.jpg', intro: `Fais tes courses 1 à 2 fois par semaine avec ces listes. Acheter les bons aliments = manger correctement sans réfléchir.` },
     { type: 'h2', text: 'Protéines' },
@@ -170,7 +170,7 @@ export const nutritionSeche: Guide = {
     { type: 'h2', text: 'Légumes & lipides' },
     { type: 'list', items: [`Brocoli, courgette, épinards, haricots verts, poivron, salade, tomate`, `Huile d’olive, avocat, amandes, noix`, `Citron, ail, herbes, épices (à volonté)`] },
 
-    { type: 'chapter', title: 'Recettes — Petits-déjeuners', src: 'seche-2.jpg' },
+    { type: 'chapter', title: 'Recettes - Petits-déjeuners', src: 'seche-2.jpg' },
     { type: 'h2', text: '1. Skyr-avoine-fruits rouges' },
     { type: 'meta', items: [{ label: 'Calories', value: '≈ 350 kcal' }, { label: 'Protéines', value: '30 g' }] },
     { type: 'list', items: [`200 g de skyr`, `40 g de flocons d’avoine`, `1 poignée de fruits rouges`] },
@@ -192,7 +192,7 @@ export const nutritionSeche: Guide = {
     { type: 'list', items: [`2 tranches de pain complet`, `1/2 avocat`, `2 œufs`, `Citron, poivre`] },
     { type: 'p', text: `Écrase l’avocat sur le pain, ajoute les œufs (au plat ou pochés).` },
 
-    { type: 'h1', text: 'Recettes — Déjeuners' },
+    { type: 'h1', text: 'Recettes - Déjeuners' },
     { type: 'h2', text: '6. Bowl poulet-riz-légumes' },
     { type: 'meta', items: [{ label: 'Calories', value: '≈ 480 kcal' }, { label: 'Protéines', value: '42 g' }] },
     { type: 'list', items: [`130 g de poulet`, `100 g de riz (cru)`, `Légumes`, `Sauce soja`] },
@@ -210,7 +210,7 @@ export const nutritionSeche: Guide = {
     { type: 'list', items: [`140 g de bœuf 5%`, `80 g de quinoa (cru)`, `Légumes verts`, `Épices`] },
     { type: 'p', text: `Saisis le bœuf, sers sur le quinoa avec les légumes.` },
 
-    { type: 'h1', text: 'Recettes — Dîners' },
+    { type: 'h1', text: 'Recettes - Dîners' },
     { type: 'h2', text: '10. Saumon-patate douce-salade' },
     { type: 'meta', items: [{ label: 'Calories', value: '≈ 500 kcal' }, { label: 'Protéines', value: '38 g' }] },
     { type: 'list', items: [`130 g de saumon`, `200 g de patate douce`, `Salade verte`, `Huile d’olive, citron`] },
@@ -228,7 +228,7 @@ export const nutritionSeche: Guide = {
     { type: 'list', items: [`3 œufs`, `Épinards, poivron`, `Salade verte`] },
     { type: 'p', text: `Fais revenir les légumes, verse les œufs, accompagne d’une salade.` },
 
-    { type: 'h1', text: 'Recettes — Collations' },
+    { type: 'h1', text: 'Recettes - Collations' },
     { type: 'h2', text: '14. Skyr protéiné' },
     { type: 'meta', items: [{ label: 'Calories', value: '≈ 220 kcal' }, { label: 'Protéines', value: '28 g' }] },
     { type: 'list', items: [`250 g de skyr`, `Fruits rouges`, `Cannelle`] },
@@ -254,7 +254,7 @@ export const nutritionSeche: Guide = {
     { type: 'list', items: [`100 g de lentilles (cru)`, `Carotte, oignon, tomate`, `Cumin, bouillon`] },
     { type: 'p', text: `Fais mijoter 25 min. Rassasiante, riche en fibres, parfaite le soir.` },
     { type: 'h2', text: '24 recettes express bonus' },
-    { type: 'p', text: `Pioche aussi dans ces idées rapides (compose avec tes macros) — de quoi ne jamais tourner en rond :` },
+    { type: 'p', text: `Pioche aussi dans ces idées rapides (compose avec tes macros) - de quoi ne jamais tourner en rond :` },
     { type: 'table', headers: ['Recette', 'Type', 'Protéines'], rows: [
       ['Poulet-avocat sur galette', 'Déjeuner', '35 g'],
       ['Dinde grillée-courgettes', 'Dîner', '40 g'],
@@ -283,7 +283,7 @@ export const nutritionSeche: Guide = {
     ] },
     { type: 'note', text: `Au total, plus de 40 recettes : combine-les librement avec les menus pour 8 semaines sans jamais te lasser.` },
 
-    { type: 'chapter', title: 'Batch cooking & organisation', src: 'seche-2.jpg', intro: `Le secret d’une sèche réussie : ne jamais être pris au dépourvu. Cuisine 2 fois par semaine en grande quantité — tu manges mieux et tu ne craques pas sur le premier plat rapide.` },
+    { type: 'chapter', title: 'Batch cooking & organisation', src: 'seche-2.jpg', intro: `Le secret d’une sèche réussie : ne jamais être pris au dépourvu. Cuisine 2 fois par semaine en grande quantité - tu manges mieux et tu ne craques pas sur le premier plat rapide.` },
     { type: 'list', items: [
       `Dimanche & mercredi : cuis 1 kg de protéines (poulet, bœuf, tofu) + 500 g de féculents (riz, quinoa).`,
       `Découpe et lave tes légumes à l’avance, stocke en boîtes.`,
@@ -303,7 +303,7 @@ export const nutritionSeche: Guide = {
     { type: 'list', items: [
       `Vise la variété : combine céréales + légumineuses pour des protéines complètes.`,
       `Complète en B12 (indispensable en vegan) et surveille le fer.`,
-      `Les légumineuses apportent aussi des fibres rassasiantes — idéal en sèche.`,
+      `Les légumineuses apportent aussi des fibres rassasiantes - idéal en sèche.`,
     ] },
 
     { type: 'h1', text: 'Conseils pour réussir' },
@@ -339,7 +339,7 @@ export const nutritionSeche: Guide = {
     { type: 'h2', text: 'Puis-je suivre ce plan sans m’entraîner ?' },
     { type: 'p', text: `Tu perdras du poids, mais une partie sera du muscle. Pour une vraie sèche (perdre du gras en gardant la forme), garde au moins 2-3 séances de renforcement par semaine.` },
     { type: 'h2', text: 'Le repas plaisir va-t-il tout gâcher ?' },
-    { type: 'p', text: `Non : 1 repas sur 21 reste un déficit hebdomadaire. Il préserve ta motivation et ta vie sociale — les vrais facteurs d’abandon.` },
+    { type: 'p', text: `Non : 1 repas sur 21 reste un déficit hebdomadaire. Il préserve ta motivation et ta vie sociale - les vrais facteurs d’abandon.` },
     { type: 'h2', text: 'Et après les 8 semaines ?' },
     { type: 'p', text: `Remonte tes calories progressivement vers ta maintenance (+100 kcal/sem) pour éviter l’effet yo-yo, puis stabilise ou enchaîne une phase de prise de masse.` },
 
@@ -360,7 +360,7 @@ export const nutritionSeche: Guide = {
     ] },
 
     { type: 'h1', text: 'Compléments utiles en sèche' },
-    { type: 'p', text: `Aucun n’est obligatoire — l’alimentation passe avant tout. Mais certains aident à tenir le déficit et préserver le muscle.` },
+    { type: 'p', text: `Aucun n’est obligatoire - l’alimentation passe avant tout. Mais certains aident à tenir le déficit et préserver le muscle.` },
     { type: 'table', headers: ['Complément', 'Intérêt en sèche', 'Dose'], rows: [
       ['Whey / iso', 'Atteindre ses protéines à peu de calories', '1 à 2 doses/jour'],
       ['Créatine', 'Maintien de la force pendant le déficit', '3 à 5 g/jour'],

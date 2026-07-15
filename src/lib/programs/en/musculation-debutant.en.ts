@@ -2,18 +2,18 @@ import type { Guide } from '@/lib/boutique/guides'
 
 const D = 'https://xenotif.com/disciplines'
 
-// EN mirror of musculation-debutant.ts — Beginner Strength Training Program. Premium XENOTIF® template (≈30 pages).
+// EN mirror of musculation-debutant.ts - Beginner Strength Training Program. Premium XENOTIF® template (≈30 pages).
 export const musculationDebutantEn: Guide = {
   id: 'musculation-debutant',
   title: 'Beginner Strength Training Program',
   subtitle: '8 weeks to build solid foundations in strength and muscle',
-  author: 'XENOTIF Coach — Certified strength & conditioning coach',
+  author: 'XENOTIF Coach - Certified strength & conditioning coach',
   level: 'Beginner',
   duration: '8 weeks · 3 sessions/week',
   coverImage: 'cover.jpg',
   blocks: [
-    { type: 'h1', text: "Welcome — you're starting strength training" },
-    { type: 'p', text: `This program is designed for true beginners: no experience required. In 8 weeks, you'll learn the fundamental movements, build strength, gain muscle, and create a routine that lasts. We prioritize technique and consistency over load — that's how you progress fast without getting hurt.` },
+    { type: 'h1', text: "Welcome - you're starting strength training" },
+    { type: 'p', text: `This program is designed for true beginners: no experience required. In 8 weeks, you'll learn the fundamental movements, build strength, gain muscle, and create a routine that lasts. We prioritize technique and consistency over load - that's how you progress fast without getting hurt.` },
     { type: 'p', text: `Keep this guide on your phone: every exercise has a QR code that opens its demo video on XENOTIF®. If you're ever unsure about a movement, scan it.` },
     { type: 'meta', items: [
       { label: 'Goal', value: 'Strength, muscle & foundational technique' },
@@ -87,7 +87,7 @@ export const musculationDebutantEn: Guide = {
     ] },
     { type: 'h2', text: 'Understanding your macros' },
     { type: 'table', headers: ['Macro', 'Role', 'Per g', 'Priority'], rows: [
-      ['Protein', 'Builds muscle', '4 kcal', 'HIGH — 1.6-2 g/kg'],
+      ['Protein', 'Builds muscle', '4 kcal', 'HIGH - 1.6-2 g/kg'],
       ['Carbs', 'Training energy', '4 kcal', 'Around sessions'],
       ['Fat', 'Hormones, health', '9 kcal', 'Moderate, quality sources'],
     ] },
@@ -116,7 +116,7 @@ export const musculationDebutantEn: Guide = {
     { type: 'list', items: [
       `Sleep 7 to 9 h: most muscle recovery happens at night.`,
       `Leave at least 1 rest day between full-body sessions.`,
-      `Soreness in the first few weeks is normal — it will fade.`,
+      `Soreness in the first few weeks is normal - it will fade.`,
       `Stretch for 5-10 min after every session.`,
     ] },
 
@@ -132,11 +132,11 @@ export const musculationDebutantEn: Guide = {
     { type: 'h2', text: 'Typical week' },
     { type: 'table', headers: ['Day', 'Session', 'Duration'], rows: [
       ['Monday', 'Full body A', '45 min'],
-      ['Tuesday', 'Rest / walk', '—'],
+      ['Tuesday', 'Rest / walk', '-'],
       ['Wednesday', 'Full body B', '45 min'],
-      ['Thursday', 'Rest / walk', '—'],
+      ['Thursday', 'Rest / walk', '-'],
       ['Friday', 'Full body C', '45 min'],
-      ['Weekend', 'Rest + tracking', '—'],
+      ['Weekend', 'Rest + tracking', '-'],
     ] },
 
     { type: 'h1', text: 'Your sessions in detail' },
@@ -276,7 +276,7 @@ export const musculationDebutantEn: Guide = {
 
     { type: 'h1', text: 'Frequently asked questions' },
     { type: 'h2', text: 'Will I get "too bulky"?' },
-    { type: 'p', text: `No. Building muscle is slow and takes years of effort. Strength training will make you more toned, stronger, and healthier — not accidentally "huge."` },
+    { type: 'p', text: `No. Building muscle is slow and takes years of effort. Strength training will make you more toned, stronger, and healthier - not accidentally "huge."` },
     { type: 'h2', text: 'Cardio or strength training to lose fat?' },
     { type: 'p', text: `Both, but strength training is essential: it preserves/builds muscle, which raises your resting energy expenditure. Combine strength training + some walking/cardio + controlled nutrition.` },
     { type: 'h2', text: 'Can I do this at home?' },
@@ -286,7 +286,7 @@ export const musculationDebutantEn: Guide = {
     { type: 'h2', text: 'Do I need supplements?' },
     { type: 'p', text: `No, not to get started. If you want them: whey (to hit your protein target) and creatine (3-5 g/day). Everything else is secondary.` },
     { type: 'h2', text: 'How many rest days?' },
-    { type: 'p', text: `At least 1 day between each full-body session, which fits the 3-sessions-a-week format (e.g. Monday/Wednesday/Friday). Rest isn't wasted time — it's when your muscle actually rebuilds.` },
+    { type: 'p', text: `At least 1 day between each full-body session, which fits the 3-sessions-a-week format (e.g. Monday/Wednesday/Friday). Rest isn't wasted time - it's when your muscle actually rebuilds.` },
     { type: 'h2', text: 'What if an exercise hurts?' },
     { type: 'p', text: `Tell the difference between normal muscular sensation and abnormal joint or sharp pain. If it hurts, stop the exercise, lighten the load, review your technique (scan the video), or swap it for a variation. See a professional if it persists.` },
 
@@ -295,10 +295,10 @@ export const musculationDebutantEn: Guide = {
     { type: 'list', items: [
       `Move on to the Intermediate Strength Training program for more volume and a more advanced split.`,
       `If your goal is muscle: follow up with Muscle Gain (slight surplus).`,
-      `If your goal is leaning out: follow up with Weight Loss (slight deficit) — the strength you've built will help you keep your muscle.`,
+      `If your goal is leaning out: follow up with Weight Loss (slight deficit) - the strength you've built will help you keep your muscle.`,
       `Either way: don't stop. Consistency over months makes all the difference.`,
     ] },
-    { type: 'note', text: `Retake your measurements and a photo after these 8 weeks, and compare them to where you started. That's your real reward — and your best motivation to keep going.` },
+    { type: 'note', text: `Retake your measurements and a photo after these 8 weeks, and compare them to where you started. That's your real reward - and your best motivation to keep going.` },
 
     { type: 'h1', text: 'Stretching & mobility' },
     { type: 'p', text: `5-10 min after every session. Hold each position 20-30 s, no bouncing.` },

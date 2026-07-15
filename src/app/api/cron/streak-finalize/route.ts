@@ -6,7 +6,7 @@ export const runtime = 'nodejs'
 export const dynamic = 'force-dynamic'
 
 // Finalise chaque semaine terminée (série, gels, reset) pour tous les users
-// ayant une ligne user_streaks — même sans ouverture de l'app. getStreak est
+// ayant une ligne user_streaks - même sans ouverture de l'app. getStreak est
 // idempotent (gardé par last_finalized_week).
 export async function GET(request: Request) {
   const authHeader = request.headers.get('Authorization')

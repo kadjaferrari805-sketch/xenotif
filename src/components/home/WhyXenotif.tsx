@@ -5,7 +5,7 @@ import { useTranslations } from 'next-intl'
 import { useInView } from 'react-intersection-observer'
 import { Dumbbell, ShieldCheck, Sparkles } from 'lucide-react'
 
-// Section « Pourquoi Xenotif » — 3 piliers à voix de marque tranchée (inspiré du
+// Section « Pourquoi Xenotif » - 3 piliers à voix de marque tranchée (inspiré du
 // « no BS network » de Strava). Positionne Xenotif contre les apps de comptage.
 // Structure (icône) constante ; textes → home.whyXenotif.pillars.
 const PILLAR_STYLE = [

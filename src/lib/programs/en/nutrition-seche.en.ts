@@ -1,18 +1,18 @@
 import type { Guide } from '@/lib/boutique/guides'
 
-// d2 — Cutting Nutrition Plan 8 weeks (EN mirror of nutrition-seche.ts).
+// d2 - Cutting Nutrition Plan 8 weeks (EN mirror of nutrition-seche.ts).
 // NUTRITION program: 56 days of menus, 40+ recipes, shopping lists, custom macros, vegan version.
 export const nutritionSecheEn: Guide = {
   id: 'd2',
-  title: 'Cutting Nutrition Plan — 8 Weeks',
+  title: 'Cutting Nutrition Plan - 8 Weeks',
   subtitle: '56 days of menus, 40+ recipes, shopping lists, custom macros, vegan version',
-  author: 'XENOTIF Coach — Certified sports nutrition',
+  author: 'XENOTIF Coach - Certified sports nutrition',
   level: 'All levels',
   duration: '8 weeks · 56 days of menus',
   coverImage: 'seche-cover.jpg',
   blocks: [
     { type: 'h1', text: 'Welcome to your cut' },
-    { type: 'p', text: `This 8-week plan will help you reveal your muscle definition by losing fat — without sacrificing the muscle you worked hard for, with no extreme diet or absurd deprivation. A progressive, sustainable, science-based method. Inside you'll find how to calculate your needs, 56 days of detailed menus, 40+ recipes, your shopping lists and a complete vegan version.` },
+    { type: 'p', text: `This 8-week plan will help you reveal your muscle definition by losing fat - without sacrificing the muscle you worked hard for, with no extreme diet or absurd deprivation. A progressive, sustainable, science-based method. Inside you'll find how to calculate your needs, 56 days of detailed menus, 40+ recipes, your shopping lists and a complete vegan version.` },
     { type: 'p', text: `This document is your pocket meal plan: follow the menus day by day, prep your groceries with the lists provided, and let the definition appear week after week.` },
     { type: 'meta', items: [
       { label: 'Goal', value: 'Lose fat, keep muscle' },
@@ -45,15 +45,15 @@ export const nutritionSecheEn: Guide = {
       `High protein: 2 to 2.4 g per kg to protect lean mass.`,
       `Keeping up strength training: it's the signal that tells the body to hold onto muscle.`,
     ] },
-    { type: 'p', text: `Carbs and fats fill the rest of your calories: they give you the energy to train and support your hormones. You don't cut them out — you adjust them.` },
+    { type: 'p', text: `Carbs and fats fill the rest of your calories: they give you the energy to train and support your hormones. You don't cut them out - you adjust them.` },
 
     { type: 'chapter', title: 'Your custom macros', src: 'seche-1.jpg' },
     { type: 'p', text: `Here's how to calculate your needs in 3 steps. No precision scale needed: these benchmarks are enough for the vast majority of cases.` },
-    { type: 'h2', text: 'Step 1 — Your maintenance' },
+    { type: 'h2', text: 'Step 1 - Your maintenance' },
     { type: 'p', text: `Quick estimate: bodyweight (kg) × 30 to 33 (depending on your activity). Example for 75 kg, moderately active: 75 × 31 ≈ 2,325 kcal/day maintenance.` },
-    { type: 'h2', text: 'Step 2 — Your deficit' },
+    { type: 'h2', text: 'Step 2 - Your deficit' },
     { type: 'p', text: `Subtract 15 to 20%: 2,325 − 18% ≈ 1,900 kcal/day. That's your cutting calorie target.` },
-    { type: 'h2', text: 'Step 3 — Split into macros' },
+    { type: 'h2', text: 'Step 3 - Split into macros' },
     { type: 'table', headers: ['Macro', 'Calculation', 'Example (75 kg, 1,900 kcal)'], rows: [
       ['Protein', '2.2 g/kg', '165 g (660 kcal)'],
       ['Fats', '0.8 g/kg', '60 g (540 kcal)'],
@@ -78,7 +78,7 @@ export const nutritionSecheEn: Guide = {
       `1 treat meal per week to last the distance without cracking.`,
     ] },
 
-    { type: 'chapter', title: 'Meal plan — 56 days', src: 'seche-2.jpg', intro: `Here are 8 weeks of ready-to-follow menus (≈1,800-1,900 kcal, adjust portions to YOUR macros). Each week rotates meals to avoid boredom. All recipes are detailed later. Vegan version: see the dedicated chapter.` },
+    { type: 'chapter', title: 'Meal plan - 56 days', src: 'seche-2.jpg', intro: `Here are 8 weeks of ready-to-follow menus (≈1,800-1,900 kcal, adjust portions to YOUR macros). Each week rotates meals to avoid boredom. All recipes are detailed later. Vegan version: see the dedicated chapter.` },
     { type: 'h2', text: 'Week 1' },
     { type: 'table', headers: ['Day', 'Breakfast', 'Lunch', 'Dinner'], rows: [
       ['Mon', 'Skyr-oats-fruit', 'Chicken-rice-broccoli', 'Salmon-sweet potato-salad'],
@@ -159,7 +159,7 @@ export const nutritionSecheEn: Guide = {
       ['Sat', 'Skyr-fruit-almonds', 'Light treat meal', 'Soup + boiled eggs'],
       ['Sun', 'Scrambled eggs + avocado', 'Chicken-rice-veg bowl', 'White fish-sweet potato-salad'],
     ] },
-    { type: 'note', text: `Tip: you can keep the same breakfast 2-3 days in a row to simplify — variety matters across the week. Always adjust the PORTIONS to YOUR macros (previous chapter).` },
+    { type: 'note', text: `Tip: you can keep the same breakfast 2-3 days in a row to simplify - variety matters across the week. Always adjust the PORTIONS to YOUR macros (previous chapter).` },
 
     { type: 'chapter', title: 'Your shopping lists', src: 'seche-1.jpg', intro: `Shop 1 to 2 times a week with these lists. Buying the right foods = eating well without thinking.` },
     { type: 'h2', text: 'Protein' },
@@ -169,7 +169,7 @@ export const nutritionSecheEn: Guide = {
     { type: 'h2', text: 'Vegetables & fats' },
     { type: 'list', items: [`Broccoli, zucchini, spinach, green beans, bell pepper, salad, tomato`, `Olive oil, avocado, almonds, walnuts`, `Lemon, garlic, herbs, spices (unlimited)`] },
 
-    { type: 'chapter', title: 'Recipes — Breakfasts', src: 'seche-2.jpg' },
+    { type: 'chapter', title: 'Recipes - Breakfasts', src: 'seche-2.jpg' },
     { type: 'h2', text: '1. Skyr-oats-berries' },
     { type: 'meta', items: [{ label: 'Calories', value: '≈ 350 kcal' }, { label: 'Protein', value: '30 g' }] },
     { type: 'list', items: [`200 g skyr`, `40 g oats`, `1 handful of berries`] },
@@ -191,7 +191,7 @@ export const nutritionSecheEn: Guide = {
     { type: 'list', items: [`2 slices of wholegrain bread`, `1/2 avocado`, `2 eggs`, `Lemon, pepper`] },
     { type: 'p', text: `Mash the avocado on the bread, add the eggs (fried or poached).` },
 
-    { type: 'h1', text: 'Recipes — Lunches' },
+    { type: 'h1', text: 'Recipes - Lunches' },
     { type: 'h2', text: '6. Chicken-rice-veg bowl' },
     { type: 'meta', items: [{ label: 'Calories', value: '≈ 480 kcal' }, { label: 'Protein', value: '42 g' }] },
     { type: 'list', items: [`130 g chicken`, `100 g rice (dry)`, `Vegetables`, `Soy sauce`] },
@@ -209,7 +209,7 @@ export const nutritionSecheEn: Guide = {
     { type: 'list', items: [`140 g 5% beef`, `80 g quinoa (dry)`, `Green vegetables`, `Spices`] },
     { type: 'p', text: `Sear the beef, serve over the quinoa with the vegetables.` },
 
-    { type: 'h1', text: 'Recipes — Dinners' },
+    { type: 'h1', text: 'Recipes - Dinners' },
     { type: 'h2', text: '10. Salmon-sweet potato-salad' },
     { type: 'meta', items: [{ label: 'Calories', value: '≈ 500 kcal' }, { label: 'Protein', value: '38 g' }] },
     { type: 'list', items: [`130 g salmon`, `200 g sweet potato`, `Green salad`, `Olive oil, lemon`] },
@@ -227,7 +227,7 @@ export const nutritionSecheEn: Guide = {
     { type: 'list', items: [`3 eggs`, `Spinach, bell pepper`, `Green salad`] },
     { type: 'p', text: `Sauté the vegetables, pour in the eggs, serve with a salad.` },
 
-    { type: 'h1', text: 'Recipes — Snacks' },
+    { type: 'h1', text: 'Recipes - Snacks' },
     { type: 'h2', text: '14. Protein skyr' },
     { type: 'meta', items: [{ label: 'Calories', value: '≈ 220 kcal' }, { label: 'Protein', value: '28 g' }] },
     { type: 'list', items: [`250 g skyr`, `Berries`, `Cinnamon`] },
@@ -253,7 +253,7 @@ export const nutritionSecheEn: Guide = {
     { type: 'list', items: [`100 g lentils (dry)`, `Carrot, onion, tomato`, `Cumin, stock`] },
     { type: 'p', text: `Simmer for 25 min. Filling, high in fiber, perfect in the evening.` },
     { type: 'h2', text: '24 bonus express recipes' },
-    { type: 'p', text: `Also pick from these quick ideas (build them around your macros) — so you never run out of options:` },
+    { type: 'p', text: `Also pick from these quick ideas (build them around your macros) - so you never run out of options:` },
     { type: 'table', headers: ['Recipe', 'Type', 'Protein'], rows: [
       ['Chicken-avocado wrap', 'Lunch', '35 g'],
       ['Grilled turkey-zucchini', 'Dinner', '40 g'],
@@ -282,7 +282,7 @@ export const nutritionSecheEn: Guide = {
     ] },
     { type: 'note', text: `In total, more than 40 recipes: combine them freely with the menus for 8 weeks without ever getting bored.` },
 
-    { type: 'chapter', title: 'Batch cooking & organization', src: 'seche-2.jpg', intro: `The secret to a successful cut: never be caught off guard. Cook twice a week in big batches — you eat better and don't cave to the first fast option.` },
+    { type: 'chapter', title: 'Batch cooking & organization', src: 'seche-2.jpg', intro: `The secret to a successful cut: never be caught off guard. Cook twice a week in big batches - you eat better and don't cave to the first fast option.` },
     { type: 'list', items: [
       `Sunday & Wednesday: cook 1 kg of protein (chicken, beef, tofu) + 500 g of starches (rice, quinoa).`,
       `Cut and wash your vegetables in advance, store in containers.`,
@@ -302,7 +302,7 @@ export const nutritionSecheEn: Guide = {
     { type: 'list', items: [
       `Aim for variety: combine grains + legumes for complete proteins.`,
       `Supplement B12 (essential when vegan) and watch your iron.`,
-      `Legumes also bring filling fiber — ideal on a cut.`,
+      `Legumes also bring filling fiber - ideal on a cut.`,
     ] },
 
     { type: 'h1', text: 'Tips to succeed' },
@@ -338,7 +338,7 @@ export const nutritionSecheEn: Guide = {
     { type: 'h2', text: 'Can I follow this plan without training?' },
     { type: 'p', text: `You'll lose weight, but some of it will be muscle. For a real cut (losing fat while staying fit), keep at least 2-3 strength sessions per week.` },
     { type: 'h2', text: 'Will the treat meal ruin everything?' },
-    { type: 'p', text: `No: 1 meal out of 21 still leaves a weekly deficit. It preserves your motivation and social life — the real drivers of quitting.` },
+    { type: 'p', text: `No: 1 meal out of 21 still leaves a weekly deficit. It preserves your motivation and social life - the real drivers of quitting.` },
     { type: 'h2', text: 'And after the 8 weeks?' },
     { type: 'p', text: `Raise your calories gradually back toward maintenance (+100 kcal/week) to avoid the yo-yo effect, then stabilize or move into a mass-gain phase.` },
 
@@ -359,7 +359,7 @@ export const nutritionSecheEn: Guide = {
     ] },
 
     { type: 'h1', text: 'Useful supplements on a cut' },
-    { type: 'p', text: `None are mandatory — food comes first. But some help you hold the deficit and preserve muscle.` },
+    { type: 'p', text: `None are mandatory - food comes first. But some help you hold the deficit and preserve muscle.` },
     { type: 'table', headers: ['Supplement', 'Benefit on a cut', 'Dose'], rows: [
       ['Whey / iso', 'Hit your protein with few calories', '1 to 2 scoops/day'],
       ['Creatine', 'Maintain strength during the deficit', '3 to 5 g/day'],

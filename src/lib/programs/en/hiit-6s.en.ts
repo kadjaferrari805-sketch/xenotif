@@ -1,18 +1,18 @@
 import type { Guide } from '@/lib/boutique/guides'
 
-// d3 — Fat-Burning HIIT Program 6 weeks (EN mirror of hiit-6s.ts).
+// d3 - Fat-Burning HIIT Program 6 weeks (EN mirror of hiit-6s.ts).
 // 24 sessions of 20-30 min, 100% bodyweight, no equipment, 3 levels, timers, video QR.
 export const hiit6sEn: Guide = {
   id: 'd3',
-  title: 'Fat-Burning HIIT Program — 6 Weeks',
+  title: 'Fat-Burning HIIT Program - 6 Weeks',
   subtitle: '24 sessions of 20-30 min, 100% bodyweight, no equipment at all',
-  author: 'XENOTIF Coach — CrossFit & strength-conditioning certified',
+  author: 'XENOTIF Coach - CrossFit & strength-conditioning certified',
   level: 'Beginner → Advanced',
   duration: '6 weeks · 24 sessions · 20-30 min',
   coverImage: 'hiit-cover.jpg',
   blocks: [
     { type: 'h1', text: 'Burn the most in the least time' },
-    { type: 'p', text: `In 6 weeks, this program will transform your fitness and melt fat — no gym, no equipment, wherever you are, in short but intense 20- to 30-minute sessions. Inside you'll find the 24 detailed sessions with their timers, the technique of every movement, and three levels to progress from beginner to advanced.` },
+    { type: 'p', text: `In 6 weeks, this program will transform your fitness and melt fat - no gym, no equipment, wherever you are, in short but intense 20- to 30-minute sessions. Inside you'll find the 24 detailed sessions with their timers, the technique of every movement, and three levels to progress from beginner to advanced.` },
     { type: 'p', text: `Every exercise has a QR code to its demo video. Keep the guide on your phone and start your timer: let's go.` },
     { type: 'meta', items: [
       { label: 'Goal', value: 'Burn fat, build cardio' },
@@ -31,7 +31,7 @@ export const hiit6sEn: Guide = {
     ] },
     { type: 'h2', text: 'How to use this guide' },
     { type: 'list', items: [
-      `Choose your level (beginner / intermediate / advanced) — see the dedicated chapter.`,
+      `Choose your level (beginner / intermediate / advanced) - see the dedicated chapter.`,
       `Follow the 24 sessions in order (4 per week).`,
       `Run an interval timer (work / rest) for each session.`,
       `Scan an exercise's QR code to review the technique.`,
@@ -72,42 +72,42 @@ export const hiit6sEn: Guide = {
     ] },
 
     { type: 'chapter', title: 'The 24 sessions', src: 'hiit-cover.jpg', intro: `Here are your 24 sessions (4 per week). Apply YOUR work/rest ratio (level chapter). Each line = one block to repeat for the number of rounds of your level. Warm up before, stretch after.` },
-    { type: 'h2', text: 'Week 1 — Adaptation' },
+    { type: 'h2', text: 'Week 1 - Adaptation' },
     { type: 'table', headers: ['Session', 'Blocks', 'Duration'], rows: [
       ['S1 · Full body', 'Squats · Knee push-ups · Mountain climbers · Plank', '20 min'],
       ['S2 · Cardio', 'Jumping jacks · High knees · Butt kicks · Lunges', '20 min'],
       ['S3 · Lower + core', 'Squats · Lunges · Glute bridge · Side plank', '20 min'],
       ['S4 · Upper + core', 'Push-ups · Chair dips · Pike push-ups · Plank', '20 min'],
     ] },
-    { type: 'h2', text: 'Week 2 — Volume' },
+    { type: 'h2', text: 'Week 2 - Volume' },
     { type: 'table', headers: ['Session', 'Blocks', 'Duration'], rows: [
       ['S5 · Full body', 'Jump squats · Push-ups · Mountain climbers · Burpees', '22 min'],
       ['S6 · Cardio', 'Jumping jacks · High knees · Skaters · Butt kicks', '22 min'],
       ['S7 · Lower + core', 'Jump lunges · Squats · Glute bridge · Leg raises', '22 min'],
       ['S8 · Upper + core', 'Push-ups · Dips · Diamond push-ups · Plank up-downs', '22 min'],
     ] },
-    { type: 'h2', text: 'Week 3 — Intensity' },
+    { type: 'h2', text: 'Week 3 - Intensity' },
     { type: 'table', headers: ['Session', 'Blocks', 'Duration'], rows: [
       ['S9 · Full body', 'Burpees · Jump squats · Mountain climbers · Push-ups', '25 min'],
       ['S10 · Cardio', 'High knees · Skaters · Jumping jacks · Sprint in place', '25 min'],
       ['S11 · Lower + core', 'Jump lunges · Squats · Single-leg glute bridge · Plank', '25 min'],
       ['S12 · Upper + core', 'Decline push-ups · Dips · Pike push-ups · Mountain climbers', '25 min'],
     ] },
-    { type: 'h2', text: 'Week 4 — Circuits' },
+    { type: 'h2', text: 'Week 4 - Circuits' },
     { type: 'table', headers: ['Session', 'Blocks', 'Duration'], rows: [
       ['S13 · Full body', 'Burpees · Jump lunges · Push-ups · Plank up-downs', '25 min'],
       ['S14 · Cardio', 'Sprint in place · Skaters · Jumping jacks · High knees', '25 min'],
       ['S15 · Lower + core', 'Jump squats · Lunges · Glute bridge · Leg raises', '25 min'],
       ['S16 · Upper + core', 'Push-ups · Diamond push-ups · Dips · Side plank', '25 min'],
     ] },
-    { type: 'h2', text: 'Week 5 — Peak' },
+    { type: 'h2', text: 'Week 5 - Peak' },
     { type: 'table', headers: ['Session', 'Blocks', 'Duration'], rows: [
       ['S17 · Full body', 'Burpees · Jump squats · Push-ups · Mountain climbers', '28 min'],
       ['S18 · Cardio', 'Sprint in place · High knees · Skaters · Jumping jacks', '28 min'],
       ['S19 · Lower + core', 'Jump lunges · Squats · Single-leg glute bridge · Plank', '28 min'],
       ['S20 · Upper + core', 'Decline push-ups · Diamond push-ups · Dips · Plank up-downs', '28 min'],
     ] },
-    { type: 'h2', text: 'Week 6 — Finish' },
+    { type: 'h2', text: 'Week 6 - Finish' },
     { type: 'table', headers: ['Session', 'Blocks', 'Duration'], rows: [
       ['S21 · Full body', 'Burpees · Jump squats · Push-ups · Plank up-downs', '30 min'],
       ['S22 · Cardio max', 'Sprint in place · Skaters · High knees · Jumping jacks', '30 min'],
@@ -120,10 +120,10 @@ export const hiit6sEn: Guide = {
     { type: 'p', text: `Every session follows the same structure. Detailed example of an intermediate "Full body" session (40 s work / 20 s rest, 4 rounds):` },
     { type: 'table', headers: ['Phase', 'Content', 'Duration'], rows: [
       ['Warm-up', 'Light cardio + mobility + activation', '5 min'],
-      ['Block 1', 'Burpees — 40 s / 20 s × 4', '4 min'],
-      ['Block 2', 'Jump squats — 40 s / 20 s × 4', '4 min'],
-      ['Block 3', 'Push-ups — 40 s / 20 s × 4', '4 min'],
-      ['Block 4', 'Mountain climbers — 40 s / 20 s × 4', '4 min'],
+      ['Block 1', 'Burpees - 40 s / 20 s × 4', '4 min'],
+      ['Block 2', 'Jump squats - 40 s / 20 s × 4', '4 min'],
+      ['Block 3', 'Push-ups - 40 s / 20 s × 4', '4 min'],
+      ['Block 4', 'Mountain climbers - 40 s / 20 s × 4', '4 min'],
       ['Cool-down', 'Walk + stretching', '5 min'],
     ] },
     { type: 'p', text: `Rest between blocks: 45 s (interm.). Total ≈ 26 min. Adapt ratios and rounds to YOUR level (chapter "Choose your level").` },
@@ -171,7 +171,7 @@ export const hiit6sEn: Guide = {
       `A protein source at every meal (preserves muscle).`,
       `Plenty of vegetables for volume and satiety.`,
       `Carbs around the HIIT session for energy.`,
-      `Cut liquid sugar and alcohol — the fastest win.`,
+      `Cut liquid sugar and alcohol - the fastest win.`,
       `Hydrate: HIIT makes you sweat a lot.`,
     ] },
     { type: 'h2', text: '4 express fat-burning recipes' },
@@ -193,7 +193,7 @@ export const hiit6sEn: Guide = {
     { type: 'p', text: `Shake. Handy right after training.` },
 
     { type: 'h1', text: 'Walking & NEAT' },
-    { type: 'p', text: `Beyond the HIIT sessions, your daily activity (NEAT) makes a big difference to energy expenditure — without fatigue or harming your recovery.` },
+    { type: 'p', text: `Beyond the HIIT sessions, your daily activity (NEAT) makes a big difference to energy expenditure - without fatigue or harming your recovery.` },
     { type: 'list', items: [
       `Aim for 8,000 to 10,000 steps/day: stairs, walking commutes, a walk after meals.`,
       `On non-HIIT days, do 30 min of brisk walking.`,
@@ -282,7 +282,7 @@ export const hiit6sEn: Guide = {
       ['Maximal', 'Very hard', 'Cannot speak', 'Sprints, finishers'],
     ] },
     { type: 'list', items: [
-      `On the effort: aim for "high to maximal" — you shouldn't be able to chat.`,
+      `On the effort: aim for "high to maximal" - you shouldn't be able to chat.`,
       `On recovery: come back down to "moderate", breathe deeply.`,
       `If you can hold a conversation during the effort, you're not pushing hard enough.`,
     ] },

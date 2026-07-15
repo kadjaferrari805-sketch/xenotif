@@ -36,11 +36,11 @@ export interface Product {
   featured?: boolean     // mis en avant dans la section « Produits vedette » de la boutique
 }
 
-// Tags affiliés Amazon (programme Associates EU) — un tag par marketplace.
+// Tags affiliés Amazon (programme Associates EU) - un tag par marketplace.
 export const AMAZON_TAG = 'xenotif-21'        // amazon.fr
 export const AMAZON_TAG_DE = 'xenotif21-21'   // amazon.de
 
-// Lien de recherche Amazon affilié — ne tombe jamais en 404 et conserve la commission.
+// Lien de recherche Amazon affilié - ne tombe jamais en 404 et conserve la commission.
 export function amazonSearchUrl(domain: string, keywords: string, tag: string = AMAZON_TAG): string {
   return `https://${domain}/s?k=${encodeURIComponent(keywords)}&tag=${tag}`
 }
@@ -54,7 +54,7 @@ export const PRODUCTS: Product[] = [
   // ─── ÉQUIPEMENTS ──────────────────────────────────────────────────
   {
     id: 'e1', slug: 'kettlebell-20kg-fonte-pro',
-    name: 'Kettlebell Fonte Pro 20 kg — CORENGTH',
+    name: 'Kettlebell Fonte Pro 20 kg - CORENGTH',
     brand: 'CORENGTH / Decathlon',
     description: 'Kettlebell fonte 20 kg avec base caoutchouc antidérapante et poignée sablée pour CrossFit, HIIT et musculation fonctionnelle.',
     longDescription: 'Conçue pour les athlètes exigeants, cette kettlebell en fonte à 80% recyclée offre une prise sablée pour un grip parfait même en sueur. La base caoutchouc protège le sol et assure une stabilité parfaite. Idéale pour swings, Turkish get-up, clean & press et snatch.',
@@ -63,16 +63,16 @@ export const PRODUCTS: Product[] = [
     badge: '⭐ Bestseller', category: 'Équipements', rating: 4.8, reviews: 2847, inStock: true,
     tags: ['kettlebell', 'crossfit', 'musculation', 'force'],
     disciplines: ['crossfit'],
-    features: ['20 kg — idéal CrossFit & HIIT', 'Fonte 80% recyclée', 'Base caoutchouc antidérapant', 'Poignée sablée grip optimal', 'Garantie 2 ans'],
+    features: ['20 kg - idéal CrossFit & HIIT', 'Fonte 80% recyclée', 'Base caoutchouc antidérapant', 'Poignée sablée grip optimal', 'Garantie 2 ans'],
     amazon: { asin: 'B07CWRS8BD', affiliateUrl: amazonUrl('kettlebell 20kg fonte') },
     isAffiliate: true,
   },
   {
     id: 'e2', slug: 'bandes-elastiques-portentum-5',
-    name: 'Kit Bandes Élastiques Résistance × 5 — PORTENTUM',
+    name: 'Kit Bandes Élastiques Résistance × 5 - PORTENTUM',
     brand: 'PORTENTUM',
     description: 'Set de 5 bandes de résistance pour musculation et fitness. Résistances progressives de 25 à 125 lbs. Idéal entraînement complet à la maison.',
-    longDescription: 'Le kit PORTENTUM comprend 5 bandes de résistance de couleurs différentes (de 25–65 lbs à 50–125 lbs) pour un entraînement progressif et complet. Parfaites pour la musculation, le crossfit, le yoga, la rééducation et le renforcement musculaire à la maison ou en déplacement. Durables, anti-glisse et faciles à transporter.',
+    longDescription: 'Le kit PORTENTUM comprend 5 bandes de résistance de couleurs différentes (de 25-65 lbs à 50-125 lbs) pour un entraînement progressif et complet. Parfaites pour la musculation, le crossfit, le yoga, la rééducation et le renforcement musculaire à la maison ou en déplacement. Durables, anti-glisse et faciles à transporter.',
     type: 'physical', price_cents: 3499, original_price_cents: 4999, stripe_price_id: 'price_bandes_elastiques',
     images: ['https://m.media-amazon.com/images/I/71MvBG9G1YL.jpg', 'https://m.media-amazon.com/images/I/71Ad47qr4TL.jpg'],
     badge: '🔥 Promo', category: 'Équipements', rating: 4.7, reviews: 1523, inStock: true,
@@ -87,7 +87,7 @@ export const PRODUCTS: Product[] = [
     name: 'Tapis Yoga Premium Antidérapant 10mm',
     brand: 'Gaiam',
     description: 'Tapis yoga double-face 10mm en TPE écologique. Antidérapant parfait, 183×61cm. Sangle transport incluse.',
-    longDescription: 'Le tapis Gaiam premium offre une épaisseur de 10mm pour un amorti parfait des articulations. Sa surface texturée double-face garantit une adhérence maximale sur tous sols. Le matériau TPE est exempt de PVC, latex et phtalates — idéal pour les pratiquants soucieux de l\'environnement.',
+    longDescription: 'Le tapis Gaiam premium offre une épaisseur de 10mm pour un amorti parfait des articulations. Sa surface texturée double-face garantit une adhérence maximale sur tous sols. Le matériau TPE est exempt de PVC, latex et phtalates - idéal pour les pratiquants soucieux de l\'environnement.',
     type: 'physical', price_cents: 3999, stripe_price_id: 'price_tapis_yoga',
     images: ['https://m.media-amazon.com/images/I/81lj2T18yTL.jpg'],
     badge: null, category: 'Équipements', rating: 4.6, reviews: 3241, inStock: true,
@@ -99,22 +99,22 @@ export const PRODUCTS: Product[] = [
   },
   {
     id: 'e4', slug: 'corde-sauter-crossfit-reebok',
-    name: 'Corde à Sauter Speed CrossFit — Reebok',
+    name: 'Corde à Sauter Speed CrossFit - Reebok',
     brand: 'Reebok',
-    description: 'Corde à sauter câble acier revêtu, roulements à billes aluminium. Réglable 2,5—3,5m. Parfaite pour HIIT et boxe.',
+    description: 'Corde à sauter câble acier revêtu, roulements à billes aluminium. Réglable 2,5-3,5m. Parfaite pour HIIT et boxe.',
     longDescription: 'La corde à sauter Reebok Speed est conçue pour les athlètes CrossFit et boxeurs. Câble acier ultra-léger, roulements à billes de précision pour une rotation fluide à haute vitesse. Poignées ergonomiques en aluminium brossé. Idéale pour double-unders et HIIT intensif.',
     type: 'physical', price_cents: 1799, stripe_price_id: 'price_corde_sauter',
     images: ['https://m.media-amazon.com/images/I/81Jxda2OOpL.jpg'],
     badge: '⚡ Pro', category: 'Équipements', rating: 4.5, reviews: 892, inStock: true,
     tags: ['corde à sauter', 'cardio', 'crossfit', 'boxe'],
     disciplines: ['hiit'],
-    features: ['Câble acier revêtu', 'Roulements alu précision', 'Réglable 2,5—3,5m', 'Poignées ergonomiques', 'Bag de transport'],
+    features: ['Câble acier revêtu', 'Roulements alu précision', 'Réglable 2,5-3,5m', 'Poignées ergonomiques', 'Bag de transport'],
     amazon: { asin: 'B07D7XR895', affiliateUrl: amazonUrl('corde à sauter speed rope crossfit') },
     isAffiliate: true,
   },
   {
     id: 'e5', slug: 'halteres-reglables-bowflex',
-    name: 'Haltères Réglables 2—24 kg — Bowflex SelectTech',
+    name: 'Haltères Réglables 2-24 kg - Bowflex SelectTech',
     brand: 'Bowflex',
     description: 'Remplacement de 15 paires d\'haltères. Sélection du poids en 2 secondes de 2 à 24 kg. Design ergonomique.',
     longDescription: 'Les haltères Bowflex SelectTech 552i sont la référence mondiale en matière d\'haltères réglables. Un simple tournage du sélecteur remplace jusqu\'à 15 paires d\'haltères classiques. Gain de place et de budget considérable. Structure en acier chromé avec revêtement antidérapant.',
@@ -129,7 +129,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     id: 'e6', slug: 'velo-appartement-domyos',
-    name: 'Vélo d\'Appartement Connecté — DOMYOS VC500',
+    name: 'Vélo d\'Appartement Connecté - DOMYOS VC500',
     brand: 'DOMYOS',
     description: 'Vélo cardio connecté avec 24 niveaux de résistance magnétique. Écran LCD. Selle et guidon réglables. Connecté apps fitness.',
     longDescription: 'Le vélo DOMYOS VC500 est idéal pour le cyclisme indoor. Résistance magnétique ultra-silencieuse, 24 niveaux progressifs. Compatible avec les applications Decathlon Coach, Zwift et Kinomap via Bluetooth. Selle confort large réglable en hauteur et profondeur. Console LCD affichant vitesse, distance, calories, fréquence cardiaque.',
@@ -144,16 +144,16 @@ export const PRODUCTS: Product[] = [
   },
   {
     id: 'e7', slug: 'roue-abdominale-pro-double',
-    name: 'Roue Abdominale Pro — Double Roue + Tapis Genoux',
+    name: 'Roue Abdominale Pro - Double Roue + Tapis Genoux',
     brand: 'PROIRON',
     description: 'Roue abdominale à double roulement avec tapis genoux. Renforce abdos, gainage et dos. Antidérapante, montage en 1 minute.',
-    longDescription: 'La roue abdominale PROIRON sollicite en profondeur toute la sangle abdominale, le dos et les épaules en un seul mouvement. Sa double roue large assure une stabilité parfaite pour un travail contrôlé, sans déséquilibre. Poignées ergonomiques antidérapantes pour un grip sûr même en sueur. Livrée avec un tapis de genoux pour protéger les articulations. Compacte, elle se range partout et se monte en moins d\'une minute — idéale pour renforcer le tronc à la maison.',
+    longDescription: 'La roue abdominale PROIRON sollicite en profondeur toute la sangle abdominale, le dos et les épaules en un seul mouvement. Sa double roue large assure une stabilité parfaite pour un travail contrôlé, sans déséquilibre. Poignées ergonomiques antidérapantes pour un grip sûr même en sueur. Livrée avec un tapis de genoux pour protéger les articulations. Compacte, elle se range partout et se monte en moins d\'une minute - idéale pour renforcer le tronc à la maison.',
     type: 'physical', price_cents: 1999, original_price_cents: 2999, stripe_price_id: 'price_roue_abdominale',
     images: ['https://m.media-amazon.com/images/I/61yzkeWY7BL.jpg'],
     badge: '🔥 Promo', category: 'Équipements', rating: 4.7, reviews: 1340, inStock: true,
     tags: ['roue abdominale', 'abdominaux', 'gainage', 'core'],
     disciplines: ['hiit'],
-    features: ['Double roue ultra-stable', 'Tapis de genoux inclus', 'Renforce abdos, dos & gainage', 'Poignées antidérapantes', 'Compacte — montage 1 min'],
+    features: ['Double roue ultra-stable', 'Tapis de genoux inclus', 'Renforce abdos, dos & gainage', 'Poignées antidérapantes', 'Compacte - montage 1 min'],
     amazon: { asin: 'B08PF38B9F', affiliateUrl: amazonUrl('roue abdominale ab wheel') },
     isAffiliate: true,
   },
@@ -161,7 +161,7 @@ export const PRODUCTS: Product[] = [
   // ─── NUTRITION ────────────────────────────────────────────────────
   {
     id: 'n1', slug: 'whey-myprotein-chocolat-1kg',
-    name: 'Impact Whey Protein Chocolat 1 kg — MyProtein',
+    name: 'Impact Whey Protein Chocolat 1 kg - MyProtein',
     brand: 'MyProtein',
     description: 'N°1 en Europe. 22g protéines, 103 kcal, 5g BCAAs par portion. Lait de vaches en pâturage. Goût chocolat intense.',
     longDescription: 'La whey la plus vendue en Europe depuis 15 ans. Formulée à partir de lactosérum ultra-filtré provenant de vaches de pâturages irlandais. Profil aminé complet avec 5g de BCAAs par portion. Se mélange parfaitement dans l\'eau ou le lait. Idéale en post-workout pour maximiser la synthèse protéique.',
@@ -177,10 +177,10 @@ export const PRODUCTS: Product[] = [
   },
   {
     id: 'n2', slug: 'creatine-monohydrate-myprotein-300g',
-    name: 'Créatine Monohydrate Pure 300g — MyProtein',
+    name: 'Créatine Monohydrate Pure 300g - MyProtein',
     brand: 'MyProtein',
     description: 'Créatine micronisée 99,9% pure. 60 doses. Certifiée Informed Sport. Force et puissance en 4 semaines.',
-    longDescription: 'La créatine monohydrate est le supplément le plus étudié en science du sport avec des centaines d\'études confirmant son efficacité. La version micronisée de MyProtein se dissout instantanément et est absorbée plus rapidement. Certifiée Informed Sport — testée antidopage. Sans goût pour se mélanger à n\'importe quelle boisson.',
+    longDescription: 'La créatine monohydrate est le supplément le plus étudié en science du sport avec des centaines d\'études confirmant son efficacité. La version micronisée de MyProtein se dissout instantanément et est absorbée plus rapidement. Certifiée Informed Sport - testée antidopage. Sans goût pour se mélanger à n\'importe quelle boisson.',
     type: 'physical', price_cents: 1999, stripe_price_id: 'price_creatine',
     images: ['https://m.media-amazon.com/images/I/71t8DCFhtuL.jpg', 'https://m.media-amazon.com/images/I/717FeA-SUUL.jpg'],
     badge: null, category: 'Nutrition', rating: 4.9, reviews: 45123, inStock: true,
@@ -192,7 +192,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     id: 'n3', slug: 'bcaa-myprotein-500g-fruit',
-    name: 'BCAA Xplode 2:1:1 Fruit Punch 500g — Olimp',
+    name: 'BCAA Xplode 2:1:1 Fruit Punch 500g - Olimp',
     brand: 'Olimp',
     description: 'BCAAs ratio 2:1:1. 7g par dose, 83 portions. Certifié vegan. Récupération, anti-catabolisme, endurance.',
     longDescription: 'Les BCAAs (acides aminés branchés) en ratio 2:1:1 optimisé : Leucine, Isoleucine, Valine. La Leucine stimule directement la synthèse protéique, l\'Isoleucine aide à l\'utilisation du glucose et la Valine réduit la fatigue centrale. Idéals pendant l\'entraînement pour préserver la masse musculaire.',
@@ -209,7 +209,7 @@ export const PRODUCTS: Product[] = [
   // ─── RECOVERY ─────────────────────────────────────────────────────
   {
     id: 'r1', slug: 'foam-roller-trigger-point',
-    name: 'Foam Roller Pro Massage — TriggerPoint GRID',
+    name: 'Foam Roller Pro Massage - TriggerPoint GRID',
     brand: 'TriggerPoint',
     description: 'Rouleau de massage multizone avec surface GRID brevetée. Simule les mains d\'un masseur. Récupération optimale.',
     longDescription: 'Le GRID de TriggerPoint est le foam roller de référence des professionnels. Sa surface à 3 zones distinctes (creux, tubulaire, plat) simule les doigts, paumes et pouces d\'un masseur. Le corps creux au centre assure la durabilité et l\'absorption de poids jusqu\'à 160kg. Inclus : accès à la bibliothèque vidéo complète.',
@@ -224,7 +224,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     id: 'r2', slug: 'pistolet-massage-theragun',
-    name: 'Pistolet de Massage Percussion — Theragun Mini',
+    name: 'Pistolet de Massage Percussion - Theragun Mini',
     brand: 'Therabody',
     description: 'Mini pistolet percussion 2400 RPM, 3 vitesses, silencieux. Batterie 150min. Compact et puissant pour récupération rapide.',
     longDescription: 'Le Theragun Mini est la version compacte du pistolet de massage professionnel plébiscité par les athlètes NBA, NFL et olympiques. 2400 percussions/minute pénétrant 16mm en profondeur pour activer la circulation et libérer les tensions musculaires. 3 vitesses adaptées. Fonctionnement ultra-silencieux. Autonomie de 150 minutes.',
@@ -335,7 +335,7 @@ export const PRODUCTS: Product[] = [
   // ─── PROGRAMMES DIGITAUX ──────────────────────────────────────────
   {
     id: 'd1', slug: 'programme-prise-masse-12-semaines',
-    name: 'Programme Prise de Masse — 12 Semaines Complet',
+    name: 'Programme Prise de Masse - 12 Semaines Complet',
     brand: 'XENOTIF Coach',
     description: '84 séances structurées, split 4j/semaine, progression de charge guidée. Plan nutrition + macros. PDF + vidéos.',
     longDescription: 'Le programme prise de masse le plus complet du marché français. 84 séances réparties sur 12 semaines avec progression en charge semaine par semaine. Includes : split musculaire détaillé, calcul macros personnalisé par morphotype, guide récupération, 40+ exercices illustrés en vidéo HD. Suivi de progression intégré sous Excel.',
@@ -353,7 +353,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     id: 'd2', slug: 'plan-nutrition-seche-8-semaines',
-    name: 'Plan Nutrition Sèche — 8 Semaines',
+    name: 'Plan Nutrition Sèche - 8 Semaines',
     brand: 'XENOTIF Coach',
     description: '56 jours de menus détaillés, 40+ recettes fitness, liste de courses, macros. Compatible vegan.',
     longDescription: 'Le plan nutrition sèche le plus téléchargé de la plateforme. 56 jours de menus variés calculés par notre nutritionniste certifiée. Chaque repas est optimisé pour maintenir la satiété tout en créant le déficit calorique nécessaire. Recettes simples et rapides (moins de 15 min). Compatible avec le régime vegan sur simple sélection.',
@@ -371,10 +371,10 @@ export const PRODUCTS: Product[] = [
   },
   {
     id: 'd3', slug: 'programme-hiit-6-semaines',
-    name: 'Programme HIIT Brûle-Graisses — 6 Semaines',
+    name: 'Programme HIIT Brûle-Graisses - 6 Semaines',
     brand: 'XENOTIF Coach',
-    description: '24 séances 20–30 min, 100% au poids du corps. Aucun matériel. Débutant → avancé. Résultats garantis.',
-    longDescription: 'Le programme HIIT XENOTIF est conçu par notre coach certifié CrossFit Level 2. 4 séances par semaine de 20 à 30 minutes maximum, 100% au poids du corps — aucun matériel requis. La progressivité garantit une adaptation optimale sans risque de blessure. Chaque séance inclut un timer intégré et des vidéos de démonstration.',
+    description: '24 séances 20-30 min, 100% au poids du corps. Aucun matériel. Débutant → avancé. Résultats garantis.',
+    longDescription: 'Le programme HIIT XENOTIF est conçu par notre coach certifié CrossFit Level 2. 4 séances par semaine de 20 à 30 minutes maximum, 100% au poids du corps - aucun matériel requis. La progressivité garantit une adaptation optimale sans risque de blessure. Chaque séance inclut un timer intégré et des vidéos de démonstration.',
     type: 'digital', price_cents: 1490, stripe_price_id: 'price_hiit_programme',
     images: [
       'https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=800&q=80',
@@ -382,14 +382,14 @@ export const PRODUCTS: Product[] = [
     badge: '🔥 Populaire', category: 'Programmes', rating: 4.7, reviews: 3654, inStock: true,
     tags: ['HIIT', 'brûle-graisses', 'poids du corps', 'cardio'],
     disciplines: ['hiit'],
-    features: ['24 séances 20–30 min', 'Sans matériel', 'Débutant → avancé', 'Timer intégré', 'Vidéos démo HD'],
+    features: ['24 séances 20-30 min', 'Sans matériel', 'Débutant → avancé', 'Timer intégré', 'Vidéos démo HD'],
     level: 'Débutant à avancé', duration: '6 semaines',
     download_url: '/downloads/programme-hiit.pdf',
     isAffiliate: false,
   },
   {
     id: 'd4', slug: 'guide-running-marathon-complet',
-    name: 'Guide Running — Du 5K au Marathon',
+    name: 'Guide Running - Du 5K au Marathon',
     brand: 'XENOTIF Coach',
     description: 'E-book 120 pages. Plans 5K/10K/semi/marathon. Nutrition course, prévention blessures, mental de compétiteur.',
     longDescription: 'Le guide running XENOTIF couvre tout le spectre du coureur moderne. Rédigé par un coach athlétisme FFA, il inclut des plans personnalisés pour 4 distances, des conseils nutrition avant/pendant/après course, un protocole anti-blessures en 7 points et une préparation mentale éprouvée. 120 pages richement illustrées.',
@@ -545,7 +545,7 @@ export const PRODUCTS: Product[] = [
     isAffiliate: true,
   },
 
-  // ─── SÉLECTION AMAZON — best-sellers fitness (affiliation) ─────────
+  // ─── SÉLECTION AMAZON - best-sellers fitness (affiliation) ─────────
   {
     id: 'a1', slug: 'barre-traction-porte',
     name: 'Barre de Traction de Porte Sans Vis',
@@ -580,7 +580,7 @@ export const PRODUCTS: Product[] = [
     id: 'a3', slug: 'anneaux-gymnastique-bois',
     name: 'Anneaux de Gymnastique Bois + Sangles',
     brand: 'WODFitters',
-    description: 'Paire d\'anneaux en bois avec sangles réglables numérotées. Dips, tractions, muscle-ups — calisthénie et CrossFit.',
+    description: 'Paire d\'anneaux en bois avec sangles réglables numérotées. Dips, tractions, muscle-ups - calisthénie et CrossFit.',
     longDescription: 'Les anneaux de gymnastique développent une force et une stabilité que les machines ne permettent pas. Bois véritable au grip naturel même en sueur, sangles longues (4,5 m) réglables et numérotées pour retrouver son réglage, boucles à serrage rapide. Pour dips, tractions, L-sit et muscle-ups.',
     type: 'physical', price_cents: 3490, stripe_price_id: 'price_aff_a3',
     images: ['https://m.media-amazon.com/images/I/71PITcaG7fL.jpg'],
@@ -671,7 +671,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 'b1', slug: 'gants-boxe-12oz', name: 'Gants de Boxe 12oz Cuir Synthétique', brand: 'RDX',
     description: 'Gants de boxe 12oz rembourrage multicouche, maintien du poignet, intérieur respirant. Sac, sparring et fitness boxing.',
-    longDescription: 'Gants polyvalents au rembourrage multicouche absorbant les chocs, fermeture velcro maintenant le poignet et doublure anti-odeur respirante — pour le sac, le sparring léger et les cours de boxe fitness.',
+    longDescription: 'Gants polyvalents au rembourrage multicouche absorbant les chocs, fermeture velcro maintenant le poignet et doublure anti-odeur respirante - pour le sac, le sparring léger et les cours de boxe fitness.',
     type: 'physical', price_cents: 2990, original_price_cents: 3990, stripe_price_id: 'price_aff_b1',
     images: ['https://m.media-amazon.com/images/I/81NFxVmdUgL.jpg', 'https://m.media-amazon.com/images/I/819BuFTxeAL.jpg', 'https://m.media-amazon.com/images/I/81XBBmN0aeL.jpg', 'https://m.media-amazon.com/images/I/81onie25j8L.jpg'],
     badge: '🥊 Best Seller', category: 'Équipements', rating: 4.7, reviews: 7320, inStock: true,
@@ -693,7 +693,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 'b3', slug: 'sac-frappe-120cm', name: 'Sac de Frappe Lesté 120cm + Chaîne', brand: 'Outshock',
     description: 'Sac de frappe 120cm garni, suspension chaîne et émerillon anti-torsion. Boxe, kickboxing et défoulement cardio.',
-    longDescription: 'Sac de frappe de 120 cm au garnissage dense et homogène, livré avec chaîne renforcée et émerillon anti-torsion. Surface résistante aux frappes répétées — pieds-poings, boxe et cardio défouloir.',
+    longDescription: 'Sac de frappe de 120 cm au garnissage dense et homogène, livré avec chaîne renforcée et émerillon anti-torsion. Surface résistante aux frappes répétées - pieds-poings, boxe et cardio défouloir.',
     type: 'physical', price_cents: 6990, original_price_cents: 8990, stripe_price_id: 'price_aff_b3',
     images: ['https://m.media-amazon.com/images/I/61EM8rkxDOL.jpg'],
     badge: '🥊 Pro', category: 'Équipements', rating: 4.6, reviews: 3210, inStock: true,

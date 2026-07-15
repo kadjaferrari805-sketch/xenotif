@@ -1,4 +1,4 @@
-// Contenu des guides PDF — version anglaise (mirror EN de guides.ts).
+// Contenu des guides PDF - version anglaise (mirror EN de guides.ts).
 // Structure identique ; seuls les textes sont traduits.
 
 import { GUIDES, type Guide } from './guides'

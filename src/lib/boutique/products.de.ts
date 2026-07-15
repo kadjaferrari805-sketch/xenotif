@@ -1,4 +1,4 @@
-/* ── Catalogue produits — version allemande ───────────────────── */
+/* ── Catalogue produits - version allemande ───────────────────── */
 /* On réutilise PRODUCTS (FR) pour tout le structurel (id, slug, prix, images,
    category-clé, amazon, disciplines…) et on ne surcharge que les champs texte. */
 
@@ -13,38 +13,38 @@ type ProductText = Pick<Product, 'name' | 'description' | 'features' | 'tags'> &
 
 const TEXT_DE: Record<string, ProductText> = {
   e1: {
-    name: 'Gusseisen-Kettlebell Pro 20 kg — CORENGTH',
+    name: 'Gusseisen-Kettlebell Pro 20 kg - CORENGTH',
     badge: '⭐ Bestseller',
     description: '20-kg-Kettlebell aus Gusseisen mit rutschfester Gummibasis und sandgestrahltem Griff für CrossFit, HIIT und funktionelles Krafttraining.',
     longDescription: 'Für anspruchsvolle Athleten konzipiert, bietet diese zu 80% recycelte Gusseisen-Kettlebell einen sandgestrahlten Griff für perfekten Halt auch beim Schwitzen. Die Gummibasis schützt den Boden und sorgt für perfekte Stabilität. Ideal für Swings, Turkish Get-ups, Clean & Press und Snatches.',
-    features: ['20 kg — ideal für CrossFit & HIIT', 'Zu 80% recyceltes Gusseisen', 'Rutschfeste Gummibasis', 'Sandgestrahlter Griff, optimaler Halt', '2 Jahre Garantie'],
+    features: ['20 kg - ideal für CrossFit & HIIT', 'Zu 80% recyceltes Gusseisen', 'Rutschfeste Gummibasis', 'Sandgestrahlter Griff, optimaler Halt', '2 Jahre Garantie'],
     tags: ['kettlebell', 'crossfit', 'kraft', 'training'],
   },
   e2: {
-    name: 'Widerstandsband-Set × 5 — PORTENTUM',
+    name: 'Widerstandsband-Set × 5 - PORTENTUM',
     badge: '🔥 Sale',
     description: 'Set aus 5 Widerstandsbändern für Kraft und Fitness. Progressiver Widerstand von 25 bis 125 lbs. Ideal für ein komplettes Heimtraining.',
-    longDescription: 'Das PORTENTUM-Set umfasst 5 Widerstandsbänder in verschiedenen Farben (von 25–65 lbs bis 50–125 lbs) für ein progressives, komplettes Training. Perfekt für Kraft, CrossFit, Yoga, Reha und Muskelkräftigung zu Hause oder unterwegs. Langlebig, rutschfest und leicht zu transportieren.',
+    longDescription: 'Das PORTENTUM-Set umfasst 5 Widerstandsbänder in verschiedenen Farben (von 25-65 lbs bis 50-125 lbs) für ein progressives, komplettes Training. Perfekt für Kraft, CrossFit, Yoga, Reha und Muskelkräftigung zu Hause oder unterwegs. Langlebig, rutschfest und leicht zu transportieren.',
     features: ['5 Stufen: 25 bis 125 lbs', 'Komplett Kraft & Fitness', 'Langlebig rutschfest', 'Ideal für zu Hause', 'Leicht zu transportieren'],
     tags: ['widerstandsbänder', 'widerstand', 'fitness', 'kraft'],
   },
   e3: {
     name: 'Premium rutschfeste Yogamatte 10 mm',
     description: 'Doppelseitige, umweltfreundliche TPE-Yogamatte mit 10 mm. Perfekt rutschfest, 183×61 cm. Tragegurt inklusive.',
-    longDescription: 'Die Gaiam-Premium-Matte bietet eine Dicke von 10 mm für perfekte Gelenkdämpfung. Ihre strukturierte doppelseitige Oberfläche garantiert maximalen Halt auf jedem Boden. Das TPE-Material ist frei von PVC, Latex und Phthalaten — ideal für umweltbewusste Praktizierende.',
+    longDescription: 'Die Gaiam-Premium-Matte bietet eine Dicke von 10 mm für perfekte Gelenkdämpfung. Ihre strukturierte doppelseitige Oberfläche garantiert maximalen Halt auf jedem Boden. Das TPE-Material ist frei von PVC, Latex und Phthalaten - ideal für umweltbewusste Praktizierende.',
     features: ['10 mm Premium-Komfort', 'Rutschfest doppelseitig', 'TPE, PVC- und latexfrei', '183×61 cm', 'Tragegurt inklusive'],
     tags: ['yogamatte', 'pilates', 'meditation', 'stretching'],
   },
   e4: {
-    name: 'Speed-CrossFit-Springseil — Reebok',
+    name: 'Speed-CrossFit-Springseil - Reebok',
     badge: '⚡ Pro',
-    description: 'Springseil mit beschichtetem Stahlkabel, Aluminium-Kugellager. Verstellbar 2,5—3,5 m. Perfekt für HIIT und Boxen.',
+    description: 'Springseil mit beschichtetem Stahlkabel, Aluminium-Kugellager. Verstellbar 2,5-3,5 m. Perfekt für HIIT und Boxen.',
     longDescription: 'Das Reebok-Speed-Springseil ist für CrossFit-Athleten und Boxer gemacht. Ultraleichtes Stahlkabel, Präzisions-Kugellager für reibungslose Rotation bei hoher Geschwindigkeit. Ergonomische Griffe aus gebürstetem Aluminium. Ideal für Double-Unders und intensives HIIT.',
-    features: ['Beschichtetes Stahlkabel', 'Präzisions-Aluminiumlager', 'Verstellbar 2,5—3,5 m', 'Ergonomische Griffe', 'Tragetasche'],
+    features: ['Beschichtetes Stahlkabel', 'Präzisions-Aluminiumlager', 'Verstellbar 2,5-3,5 m', 'Ergonomische Griffe', 'Tragetasche'],
     tags: ['springseil', 'cardio', 'crossfit', 'boxen'],
   },
   e5: {
-    name: 'Verstellbare Hanteln 2—24 kg — Bowflex SelectTech',
+    name: 'Verstellbare Hanteln 2-24 kg - Bowflex SelectTech',
     badge: '💪 Premium',
     description: 'Ersetzt 15 Hantelpaare. Wähle das Gewicht in 2 Sekunden von 2 bis 24 kg. Ergonomisches Design.',
     longDescription: 'Die Bowflex-SelectTech-552i-Hanteln sind die weltweite Referenz bei verstellbaren Hanteln. Eine einfache Drehung am Rad ersetzt bis zu 15 klassische Hantelpaare. Enorme Einsparung an Platz und Budget. Struktur aus verchromtem Stahl mit rutschfester Beschichtung.',
@@ -52,7 +52,7 @@ const TEXT_DE: Record<string, ProductText> = {
     tags: ['hanteln', 'kraft', 'home gym', 'training'],
   },
   e6: {
-    name: 'Vernetztes Heimtrainer-Fahrrad — DOMYOS VC500',
+    name: 'Vernetztes Heimtrainer-Fahrrad - DOMYOS VC500',
     badge: '🚴 Vernetzt',
     description: 'Vernetztes Cardio-Fahrrad mit 24 Stufen magnetischem Widerstand. LCD-Display. Verstellbarer Sitz und Lenker. Verbindet sich mit Fitness-Apps.',
     longDescription: 'Das DOMYOS-VC500-Fahrrad ist ideal für Indoor-Cycling. Ultraleiser magnetischer Widerstand, 24 progressive Stufen. Kompatibel mit Decathlon Coach, Zwift und Kinomap via Bluetooth. Breiter Komfortsitz, in Höhe und Tiefe verstellbar. LCD-Konsole zeigt Geschwindigkeit, Distanz, Kalorien und Herzfrequenz.',
@@ -60,15 +60,15 @@ const TEXT_DE: Record<string, ProductText> = {
     tags: ['fahrrad', 'cardio', 'indoor cycling', 'vernetzt'],
   },
   e7: {
-    name: 'Pro-Bauchroller — Doppelrad + Kniematte',
+    name: 'Pro-Bauchroller - Doppelrad + Kniematte',
     badge: '🔥 Sale',
     description: 'Bauchroller mit Doppellager und Kniematte. Stärkt Bauch, Rumpf und Rücken. Rutschfest, in einer Minute montiert.',
-    longDescription: 'Der PROIRON-Bauchroller trainiert in einer einzigen Bewegung tief deinen gesamten Rumpf, Rücken und die Schultern. Sein breites Doppelrad sorgt für perfekte Stabilität für kontrollierte Wiederholungen ohne Wackeln. Ergonomische rutschfeste Griffe geben sicheren Halt auch beim Schwitzen. Mit Kniematte zum Schutz deiner Gelenke. Kompakt, verstaubar überall und in unter einer Minute montiert — ideal für Rumpftraining zu Hause.',
-    features: ['Ultrastabiles Doppelrad', 'Kniematte inklusive', 'Stärkt Bauch, Rücken & Rumpf', 'Rutschfeste Griffe', 'Kompakt — 1-Min-Montage'],
+    longDescription: 'Der PROIRON-Bauchroller trainiert in einer einzigen Bewegung tief deinen gesamten Rumpf, Rücken und die Schultern. Sein breites Doppelrad sorgt für perfekte Stabilität für kontrollierte Wiederholungen ohne Wackeln. Ergonomische rutschfeste Griffe geben sicheren Halt auch beim Schwitzen. Mit Kniematte zum Schutz deiner Gelenke. Kompakt, verstaubar überall und in unter einer Minute montiert - ideal für Rumpftraining zu Hause.',
+    features: ['Ultrastabiles Doppelrad', 'Kniematte inklusive', 'Stärkt Bauch, Rücken & Rumpf', 'Rutschfeste Griffe', 'Kompakt - 1-Min-Montage'],
     tags: ['bauchroller', 'bauch', 'rumpf', 'kraft'],
   },
   n1: {
-    name: 'Impact Whey Protein Schokolade 1 kg — MyProtein',
+    name: 'Impact Whey Protein Schokolade 1 kg - MyProtein',
     badge: '🏆 Nr. 1 in Europa',
     description: 'Nr. 1 in Europa. 22 g Protein, 103 kcal, 5 g BCAAs pro Portion. Von grasgefütterten Kühen. Intensiver Schokoladengeschmack.',
     longDescription: 'Das meistverkaufte Whey in Europa seit 15 Jahren. Hergestellt aus ultragefiltertem Whey von irischen grasgefütterten Kühen. Komplettes Aminosäureprofil mit 5 g BCAAs pro Portion. Mischt sich perfekt in Wasser oder Milch. Ideal nach dem Training, um die Proteinsynthese zu maximieren.',
@@ -76,14 +76,14 @@ const TEXT_DE: Record<string, ProductText> = {
     tags: ['whey', 'protein', 'kraft', 'erholung'],
   },
   n2: {
-    name: 'Reines Kreatin-Monohydrat 300 g — MyProtein',
+    name: 'Reines Kreatin-Monohydrat 300 g - MyProtein',
     description: 'Zu 99,9% reines mikronisiertes Kreatin. 60 Dosen. Informed-Sport-zertifiziert. Kraft und Power in 4 Wochen.',
-    longDescription: 'Kreatin-Monohydrat ist das am besten untersuchte Supplement der Sportwissenschaft, mit Hunderten Studien, die seine Wirksamkeit bestätigen. Die mikronisierte Version von MyProtein löst sich sofort auf und wird schneller aufgenommen. Informed-Sport-zertifiziert — auf Doping getestet. Geschmacksneutral zum Einrühren in jedes Getränk.',
+    longDescription: 'Kreatin-Monohydrat ist das am besten untersuchte Supplement der Sportwissenschaft, mit Hunderten Studien, die seine Wirksamkeit bestätigen. Die mikronisierte Version von MyProtein löst sich sofort auf und wird schneller aufgenommen. Informed-Sport-zertifiziert - auf Doping getestet. Geschmacksneutral zum Einrühren in jedes Getränk.',
     features: ['99,9% Reinheit', '60 Portionen à 5 g', 'Informed-Sport-zertifiziert', 'Geschmacksneutral', 'Ergebnisse in 4 Wochen'],
     tags: ['kreatin', 'kraft', 'power', 'training'],
   },
   n3: {
-    name: 'BCAA Xplode 2:1:1 Fruit Punch 500 g — Olimp',
+    name: 'BCAA Xplode 2:1:1 Fruit Punch 500 g - Olimp',
     badge: '💊 Vegan',
     description: 'BCAAs im Verhältnis 2:1:1. 7 g pro Dosis, 83 Portionen. Vegan-zertifiziert. Erholung, Anti-Katabolismus, Ausdauer.',
     longDescription: 'BCAAs (verzweigtkettige Aminosäuren) im optimierten Verhältnis 2:1:1: Leucin, Isoleucin, Valin. Leucin stimuliert direkt die Proteinsynthese, Isoleucin unterstützt die Glukoseverwertung und Valin reduziert die zentrale Ermüdung. Ideal während des Trainings, um die Muskelmasse zu erhalten.',
@@ -91,7 +91,7 @@ const TEXT_DE: Record<string, ProductText> = {
     tags: ['bcaa', 'erholung', 'ausdauer', 'vegan'],
   },
   r1: {
-    name: 'Pro-Massage-Faszienrolle — TriggerPoint GRID',
+    name: 'Pro-Massage-Faszienrolle - TriggerPoint GRID',
     badge: '🔵 Pro',
     description: 'Multizonen-Massagerolle mit patentierter GRID-Oberfläche. Simuliert die Hände eines Masseurs. Optimale Erholung.',
     longDescription: 'Die TriggerPoint GRID ist die Faszienrolle der Wahl für Profis. Ihre Oberfläche mit 3 unterschiedlichen Zonen (hohl, röhrenförmig, flach) simuliert Finger, Handflächen und Daumen eines Masseurs. Der hohle Kern sorgt für Haltbarkeit und trägt Gewicht bis 160 kg. Inklusive Zugang zur kompletten Videobibliothek.',
@@ -99,7 +99,7 @@ const TEXT_DE: Record<string, ProductText> = {
     tags: ['faszienrolle', 'erholung', 'massage', 'mobilität'],
   },
   r2: {
-    name: 'Perkussions-Massagepistole — Theragun Mini',
+    name: 'Perkussions-Massagepistole - Theragun Mini',
     badge: '🏅 Profi-Athlet',
     description: 'Mini-Perkussionspistole 2400 U/min, 3 Geschwindigkeiten, leise. 150 Min Akku. Kompakt und kraftvoll für schnelle Erholung.',
     longDescription: 'Die Theragun Mini ist die kompakte Version der professionellen Massagepistole, die von NBA-, NFL- und Olympia-Athleten bevorzugt wird. 2400 Schläge/Minute, die 16 mm tief eindringen, um die Durchblutung anzukurbeln und Muskelverspannungen zu lösen. 3 angepasste Geschwindigkeiten. Ultraleiser Betrieb. 150 Minuten Akkulaufzeit.',
@@ -154,7 +154,7 @@ const TEXT_DE: Record<string, ProductText> = {
     tags: ['leggings', 'kompression', 'herren', 'running'],
   },
   d1: {
-    name: 'Masseaufbau-Programm — Komplett 12 Wochen',
+    name: 'Masseaufbau-Programm - Komplett 12 Wochen',
     badge: '📥 Bestseller',
     description: '84 strukturierte Einheiten, 4-Tage/Woche-Split, geführte Laststeigerung. Ernährungsplan + Makros. PDF + Videos.',
     longDescription: 'Das kompletteste Masseaufbau-Programm am Markt. 84 Einheiten über 12 Wochen mit Woche-für-Woche-Laststeigerung. Enthält: detaillierten Muskel-Split, personalisierte Makro-Berechnung nach Körpertyp, Erholungs-Leitfaden, 40+ Übungen in HD-Video illustriert. Integriertes Fortschritts-Tracking in Excel.',
@@ -163,7 +163,7 @@ const TEXT_DE: Record<string, ProductText> = {
     level: 'Fortgeschritten', duration: '12 Wochen',
   },
   d2: {
-    name: 'Definitions-Ernährungsplan — 8 Wochen',
+    name: 'Definitions-Ernährungsplan - 8 Wochen',
     badge: '📥 Sofort-PDF',
     description: '56 Tage detaillierte Menüs, 40+ Fitness-Rezepte, Einkaufsliste, Makros. Vegan-kompatibel.',
     longDescription: 'Der meistgeladene Definitions-Ernährungsplan der Plattform. 56 Tage abwechslungsreiche Menüs, berechnet von unserer zertifizierten Ernährungsberaterin. Jede Mahlzeit ist optimiert, um die Sättigung zu erhalten und gleichzeitig das nötige Kaloriendefizit zu schaffen. Einfache, schnelle Rezepte (unter 15 Min). Vegan-kompatibel mit einer einzigen Auswahl.',
@@ -172,16 +172,16 @@ const TEXT_DE: Record<string, ProductText> = {
     level: 'Alle Level', duration: '8 Wochen',
   },
   d3: {
-    name: 'Fettverbrennungs-HIIT-Programm — 6 Wochen',
+    name: 'Fettverbrennungs-HIIT-Programm - 6 Wochen',
     badge: '🔥 Beliebt',
-    description: '24 Einheiten à 20–30 Min, 100% Körpergewicht. Keine Ausrüstung. Anfänger → Fortgeschritten. Garantierte Ergebnisse.',
-    longDescription: 'Das XENOTIF-HIIT-Programm ist von unserem CrossFit-Level-2-zertifizierten Coach entwickelt. 4 Einheiten pro Woche à 20 bis maximal 30 Minuten, 100% Körpergewicht — keine Ausrüstung erforderlich. Der progressive Aufbau garantiert optimale Anpassung ohne Verletzungsrisiko. Jede Einheit enthält einen integrierten Timer und Demonstrationsvideos.',
-    features: ['24 Einheiten à 20–30 Min', 'Keine Ausrüstung', 'Anfänger → Fortgeschritten', 'Integrierter Timer', 'HD-Demovideos'],
+    description: '24 Einheiten à 20-30 Min, 100% Körpergewicht. Keine Ausrüstung. Anfänger → Fortgeschritten. Garantierte Ergebnisse.',
+    longDescription: 'Das XENOTIF-HIIT-Programm ist von unserem CrossFit-Level-2-zertifizierten Coach entwickelt. 4 Einheiten pro Woche à 20 bis maximal 30 Minuten, 100% Körpergewicht - keine Ausrüstung erforderlich. Der progressive Aufbau garantiert optimale Anpassung ohne Verletzungsrisiko. Jede Einheit enthält einen integrierten Timer und Demonstrationsvideos.',
+    features: ['24 Einheiten à 20-30 Min', 'Keine Ausrüstung', 'Anfänger → Fortgeschritten', 'Integrierter Timer', 'HD-Demovideos'],
     tags: ['HIIT', 'fettverbrennung', 'körpergewicht', 'cardio'],
     level: 'Anfänger bis Fortgeschritten', duration: '6 Wochen',
   },
   d4: {
-    name: 'Lauf-Leitfaden — Von 5 km bis Marathon',
+    name: 'Lauf-Leitfaden - Von 5 km bis Marathon',
     badge: '📥 120-Seiten-E-Book',
     description: '120-Seiten-E-Book. Pläne für 5 km/10 km/Halb/Marathon. Wettkampfernährung, Verletzungsprävention, Wettkämpfer-Mindset.',
     longDescription: 'Der XENOTIF-Lauf-Leitfaden deckt das gesamte Spektrum des modernen Läufers ab. Geschrieben von einem zertifizierten Leichtathletik-Coach, enthält er personalisierte Pläne für 4 Distanzen, Ernährungsrat vor/während/nach einem Wettkampf, ein 7-Punkte-Anti-Verletzungs-Protokoll und eine bewährte mentale Vorbereitung. 120 reich illustrierte Seiten.',
@@ -257,7 +257,7 @@ const TEXT_DE: Record<string, ProductText> = {
     name: 'Chlorbeständiger Badeanzug',
     badge: '🩱 Ausdauer',
     description: 'Chlorbeständiger Trainings-Badeanzug, schnelltrocknend, eng anliegend. Hält Hunderte Beckeneinheiten.',
-    longDescription: 'Für intensives Training gebaut, behält dieser Badeanzug aus chlorbeständigem Gewebe Form und Farbe Einheit für Einheit — wo ein normaler Anzug binnen Wochen ausleiert. Die eng anliegende Passform reduziert den Widerstand im Wasser, er trocknet schnell und die flachen Nähte verhindern Scheuern. Die langlebige Wahl für alle, die viele Bahnen ziehen.',
+    longDescription: 'Für intensives Training gebaut, behält dieser Badeanzug aus chlorbeständigem Gewebe Form und Farbe Einheit für Einheit - wo ein normaler Anzug binnen Wochen ausleiert. Die eng anliegende Passform reduziert den Widerstand im Wasser, er trocknet schnell und die flachen Nähte verhindern Scheuern. Die langlebige Wahl für alle, die viele Bahnen ziehen.',
     features: ['Chlorbeständiges Gewebe', 'Schnelltrocknend', 'Eng anliegend, widerstandsarm', 'Flache Nähte', 'Langlebig'],
     tags: ['badeanzug', 'schwimmen', 'chlorbeständig', 'becken'],
   },
@@ -278,7 +278,7 @@ const TEXT_DE: Record<string, ProductText> = {
   a3: {
     name: 'Turnringe aus Holz + Gurte',
     badge: '🆕 Neu',
-    description: 'Paar Holzringe mit nummerierten, verstellbaren Gurten. Dips, Klimmzüge, Muscle-ups — Calisthenics und CrossFit.',
+    description: 'Paar Holzringe mit nummerierten, verstellbaren Gurten. Dips, Klimmzüge, Muscle-ups - Calisthenics und CrossFit.',
     features: ['Holz mit natürlichem Grip', '4,5 m nummerierte Gurte', 'Schnellverschluss', 'Dips & Klimmzüge', 'Muscle-ups'],
     tags: ['turnringe', 'calisthenics', 'crossfit', 'street workout'],
   },

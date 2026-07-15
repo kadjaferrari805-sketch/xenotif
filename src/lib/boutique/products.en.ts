@@ -1,4 +1,4 @@
-/* ── Catalogue produits — version anglaise ────────────────────── */
+/* ── Catalogue produits - version anglaise ────────────────────── */
 /* On réutilise PRODUCTS (FR) pour tout le structurel (id, slug, prix, images,
    category-clé, amazon, disciplines…) et on ne surcharge que les champs texte. */
 
@@ -14,38 +14,38 @@ type ProductText = Pick<Product, 'name' | 'description' | 'features' | 'tags'> &
 
 const TEXT_EN: Record<string, ProductText> = {
   e1: {
-    name: 'Cast Iron Kettlebell Pro 20 kg — CORENGTH',
+    name: 'Cast Iron Kettlebell Pro 20 kg - CORENGTH',
     badge: '⭐ Bestseller',
     description: '20 kg cast-iron kettlebell with a non-slip rubber base and a sandblasted handle for CrossFit, HIIT and functional strength.',
     longDescription: 'Designed for demanding athletes, this 80% recycled cast-iron kettlebell offers a sandblasted grip for a perfect hold even when sweating. The rubber base protects the floor and ensures perfect stability. Ideal for swings, Turkish get-ups, clean & press and snatches.',
-    features: ['20 kg — ideal for CrossFit & HIIT', '80% recycled cast iron', 'Non-slip rubber base', 'Sandblasted handle, optimal grip', '2-year warranty'],
+    features: ['20 kg - ideal for CrossFit & HIIT', '80% recycled cast iron', 'Non-slip rubber base', 'Sandblasted handle, optimal grip', '2-year warranty'],
     tags: ['kettlebell', 'crossfit', 'strength', 'training'],
   },
   e2: {
-    name: 'Resistance Band Kit × 5 — PORTENTUM',
+    name: 'Resistance Band Kit × 5 - PORTENTUM',
     badge: '🔥 Sale',
     description: 'Set of 5 resistance bands for strength and fitness. Progressive resistance from 25 to 125 lbs. Ideal for a complete home workout.',
-    longDescription: 'The PORTENTUM kit includes 5 resistance bands in different colors (from 25–65 lbs to 50–125 lbs) for progressive, complete training. Perfect for strength, CrossFit, yoga, rehab and muscle strengthening at home or on the go. Durable, non-slip and easy to carry.',
+    longDescription: 'The PORTENTUM kit includes 5 resistance bands in different colors (from 25-65 lbs to 50-125 lbs) for progressive, complete training. Perfect for strength, CrossFit, yoga, rehab and muscle strengthening at home or on the go. Durable, non-slip and easy to carry.',
     features: ['5 levels: 25 to 125 lbs', 'Complete strength & fitness', 'Durable non-slip', 'Ideal at home', 'Easy to carry'],
     tags: ['resistance bands', 'resistance', 'fitness', 'strength'],
   },
   e3: {
     name: 'Premium Non-Slip Yoga Mat 10mm',
     description: 'Double-sided 10mm eco-friendly TPE yoga mat. Perfectly non-slip, 183×61cm. Carry strap included.',
-    longDescription: 'The Gaiam premium mat offers a 10mm thickness for perfect joint cushioning. Its textured double-sided surface guarantees maximum grip on any floor. The TPE material is free of PVC, latex and phthalates — ideal for environmentally conscious practitioners.',
+    longDescription: 'The Gaiam premium mat offers a 10mm thickness for perfect joint cushioning. Its textured double-sided surface guarantees maximum grip on any floor. The TPE material is free of PVC, latex and phthalates - ideal for environmentally conscious practitioners.',
     features: ['10mm premium comfort', 'Non-slip double-sided', 'TPE, PVC- and latex-free', '183×61 cm', 'Carry strap included'],
     tags: ['yoga mat', 'pilates', 'meditation', 'stretching'],
   },
   e4: {
-    name: 'Speed CrossFit Jump Rope — Reebok',
+    name: 'Speed CrossFit Jump Rope - Reebok',
     badge: '⚡ Pro',
-    description: 'Coated steel cable jump rope, aluminum ball bearings. Adjustable 2.5—3.5m. Perfect for HIIT and boxing.',
+    description: 'Coated steel cable jump rope, aluminum ball bearings. Adjustable 2.5-3.5m. Perfect for HIIT and boxing.',
     longDescription: 'The Reebok Speed jump rope is designed for CrossFit athletes and boxers. Ultra-light steel cable, precision ball bearings for smooth high-speed rotation. Ergonomic brushed-aluminum handles. Ideal for double-unders and intense HIIT.',
-    features: ['Coated steel cable', 'Precision aluminum bearings', 'Adjustable 2.5—3.5m', 'Ergonomic handles', 'Carry bag'],
+    features: ['Coated steel cable', 'Precision aluminum bearings', 'Adjustable 2.5-3.5m', 'Ergonomic handles', 'Carry bag'],
     tags: ['jump rope', 'cardio', 'crossfit', 'boxing'],
   },
   e5: {
-    name: 'Adjustable Dumbbells 2—24 kg — Bowflex SelectTech',
+    name: 'Adjustable Dumbbells 2-24 kg - Bowflex SelectTech',
     badge: '💪 Premium',
     description: 'Replaces 15 pairs of dumbbells. Select the weight in 2 seconds from 2 to 24 kg. Ergonomic design.',
     longDescription: 'The Bowflex SelectTech 552i dumbbells are the world reference in adjustable dumbbells. A simple turn of the dial replaces up to 15 pairs of classic dumbbells. Huge savings in space and budget. Chromed steel structure with a non-slip coating.',
@@ -53,7 +53,7 @@ const TEXT_EN: Record<string, ProductText> = {
     tags: ['dumbbells', 'strength', 'home gym', 'training'],
   },
   e6: {
-    name: 'Connected Exercise Bike — DOMYOS VC500',
+    name: 'Connected Exercise Bike - DOMYOS VC500',
     badge: '🚴 Connected',
     description: 'Connected cardio bike with 24 levels of magnetic resistance. LCD screen. Adjustable seat and handlebars. Connects to fitness apps.',
     longDescription: 'The DOMYOS VC500 bike is ideal for indoor cycling. Ultra-quiet magnetic resistance, 24 progressive levels. Compatible with Decathlon Coach, Zwift and Kinomap via Bluetooth. Wide comfort seat adjustable in height and depth. LCD console showing speed, distance, calories and heart rate.',
@@ -61,15 +61,15 @@ const TEXT_EN: Record<string, ProductText> = {
     tags: ['bike', 'cardio', 'indoor cycling', 'connected'],
   },
   e7: {
-    name: 'Pro Ab Wheel Roller — Dual Wheel + Knee Mat',
+    name: 'Pro Ab Wheel Roller - Dual Wheel + Knee Mat',
     badge: '🔥 Sale',
     description: 'Dual-bearing ab wheel with a knee mat. Strengthens abs, core and back. Non-slip, assembles in a minute.',
-    longDescription: 'The PROIRON ab wheel deeply works your entire core, back and shoulders in a single movement. Its wide dual wheel ensures perfect stability for controlled reps without wobble. Ergonomic non-slip handles give a secure grip even when sweating. Comes with a knee mat to protect your joints. Compact, it stores anywhere and assembles in under a minute — ideal for core training at home.',
-    features: ['Ultra-stable dual wheel', 'Knee mat included', 'Strengthens abs, back & core', 'Non-slip handles', 'Compact — 1-min assembly'],
+    longDescription: 'The PROIRON ab wheel deeply works your entire core, back and shoulders in a single movement. Its wide dual wheel ensures perfect stability for controlled reps without wobble. Ergonomic non-slip handles give a secure grip even when sweating. Comes with a knee mat to protect your joints. Compact, it stores anywhere and assembles in under a minute - ideal for core training at home.',
+    features: ['Ultra-stable dual wheel', 'Knee mat included', 'Strengthens abs, back & core', 'Non-slip handles', 'Compact - 1-min assembly'],
     tags: ['ab wheel', 'abs', 'core', 'strength'],
   },
   n1: {
-    name: 'Impact Whey Protein Chocolate 1 kg — MyProtein',
+    name: 'Impact Whey Protein Chocolate 1 kg - MyProtein',
     badge: '🏆 #1 in Europe',
     description: '#1 in Europe. 22g protein, 103 kcal, 5g BCAAs per serving. From grass-fed cows. Intense chocolate flavor.',
     longDescription: 'The best-selling whey in Europe for 15 years. Made from ultra-filtered whey from Irish grass-fed cows. Complete amino acid profile with 5g of BCAAs per serving. Mixes perfectly in water or milk. Ideal post-workout to maximize protein synthesis.',
@@ -77,14 +77,14 @@ const TEXT_EN: Record<string, ProductText> = {
     tags: ['whey', 'protein', 'strength', 'recovery'],
   },
   n2: {
-    name: 'Pure Creatine Monohydrate 300g — MyProtein',
+    name: 'Pure Creatine Monohydrate 300g - MyProtein',
     description: '99.9% pure micronized creatine. 60 doses. Informed Sport certified. Strength and power in 4 weeks.',
-    longDescription: 'Creatine monohydrate is the most studied supplement in sports science, with hundreds of studies confirming its effectiveness. MyProtein\'s micronized version dissolves instantly and is absorbed faster. Informed Sport certified — anti-doping tested. Unflavored to mix into any drink.',
+    longDescription: 'Creatine monohydrate is the most studied supplement in sports science, with hundreds of studies confirming its effectiveness. MyProtein\'s micronized version dissolves instantly and is absorbed faster. Informed Sport certified - anti-doping tested. Unflavored to mix into any drink.',
     features: ['99.9% purity', '60 servings of 5g', 'Informed Sport certified', 'Unflavored', 'Results in 4 weeks'],
     tags: ['creatine', 'strength', 'power', 'training'],
   },
   n3: {
-    name: 'BCAA Xplode 2:1:1 Fruit Punch 500g — Olimp',
+    name: 'BCAA Xplode 2:1:1 Fruit Punch 500g - Olimp',
     badge: '💊 Vegan',
     description: 'BCAAs in a 2:1:1 ratio. 7g per dose, 83 servings. Vegan certified. Recovery, anti-catabolism, endurance.',
     longDescription: 'BCAAs (branched-chain amino acids) in an optimized 2:1:1 ratio: Leucine, Isoleucine, Valine. Leucine directly stimulates protein synthesis, Isoleucine helps glucose utilization and Valine reduces central fatigue. Ideal during training to preserve muscle mass.',
@@ -92,7 +92,7 @@ const TEXT_EN: Record<string, ProductText> = {
     tags: ['bcaa', 'recovery', 'endurance', 'vegan'],
   },
   r1: {
-    name: 'Pro Massage Foam Roller — TriggerPoint GRID',
+    name: 'Pro Massage Foam Roller - TriggerPoint GRID',
     badge: '🔵 Pro',
     description: 'Multi-zone massage roller with a patented GRID surface. Simulates a masseur\'s hands. Optimal recovery.',
     longDescription: 'The TriggerPoint GRID is the foam roller of choice for professionals. Its 3-distinct-zone surface (hollow, tubular, flat) simulates a masseur\'s fingers, palms and thumbs. The hollow core ensures durability and supports weight up to 160kg. Includes access to the full video library.',
@@ -100,7 +100,7 @@ const TEXT_EN: Record<string, ProductText> = {
     tags: ['foam roller', 'recovery', 'massage', 'mobility'],
   },
   r2: {
-    name: 'Percussion Massage Gun — Theragun Mini',
+    name: 'Percussion Massage Gun - Theragun Mini',
     badge: '🏅 Pro Athlete',
     description: 'Mini percussion gun 2400 RPM, 3 speeds, quiet. 150min battery. Compact and powerful for fast recovery.',
     longDescription: 'The Theragun Mini is the compact version of the professional massage gun favored by NBA, NFL and Olympic athletes. 2400 percussions/minute penetrating 16mm deep to boost circulation and release muscle tension. 3 adapted speeds. Ultra-quiet operation. 150-minute battery life.',
@@ -155,7 +155,7 @@ const TEXT_EN: Record<string, ProductText> = {
     tags: ['leggings', 'compression', 'men', 'running'],
   },
   d1: {
-    name: 'Muscle Gain Program — Complete 12 Weeks',
+    name: 'Muscle Gain Program - Complete 12 Weeks',
     badge: '📥 Bestseller',
     description: '84 structured sessions, 4-day/week split, guided load progression. Nutrition plan + macros. PDF + videos.',
     longDescription: 'The most complete muscle-gain program on the market. 84 sessions over 12 weeks with week-by-week load progression. Includes: detailed muscle split, personalized macro calculation by body type, recovery guide, 40+ exercises illustrated in HD video. Built-in progress tracking in Excel.',
@@ -164,7 +164,7 @@ const TEXT_EN: Record<string, ProductText> = {
     level: 'Intermediate', duration: '12 weeks',
   },
   d2: {
-    name: 'Cutting Nutrition Plan — 8 Weeks',
+    name: 'Cutting Nutrition Plan - 8 Weeks',
     badge: '📥 Instant PDF',
     description: '56 days of detailed menus, 40+ fitness recipes, shopping list, macros. Vegan compatible.',
     longDescription: 'The most downloaded cutting nutrition plan on the platform. 56 days of varied menus calculated by our certified nutritionist. Each meal is optimized to maintain satiety while creating the necessary caloric deficit. Simple, fast recipes (under 15 min). Vegan-compatible with a single selection.',
@@ -173,16 +173,16 @@ const TEXT_EN: Record<string, ProductText> = {
     level: 'All levels', duration: '8 weeks',
   },
   d3: {
-    name: 'Fat-Burning HIIT Program — 6 Weeks',
+    name: 'Fat-Burning HIIT Program - 6 Weeks',
     badge: '🔥 Popular',
-    description: '24 sessions of 20–30 min, 100% bodyweight. No equipment. Beginner → advanced. Guaranteed results.',
-    longDescription: 'The XENOTIF HIIT program is designed by our CrossFit Level 2 certified coach. 4 sessions per week of 20 to 30 minutes maximum, 100% bodyweight — no equipment required. The progressive build guarantees optimal adaptation without injury risk. Each session includes a built-in timer and demonstration videos.',
-    features: ['24 sessions of 20–30 min', 'No equipment', 'Beginner → advanced', 'Built-in timer', 'HD demo videos'],
+    description: '24 sessions of 20-30 min, 100% bodyweight. No equipment. Beginner → advanced. Guaranteed results.',
+    longDescription: 'The XENOTIF HIIT program is designed by our CrossFit Level 2 certified coach. 4 sessions per week of 20 to 30 minutes maximum, 100% bodyweight - no equipment required. The progressive build guarantees optimal adaptation without injury risk. Each session includes a built-in timer and demonstration videos.',
+    features: ['24 sessions of 20-30 min', 'No equipment', 'Beginner → advanced', 'Built-in timer', 'HD demo videos'],
     tags: ['HIIT', 'fat-burning', 'bodyweight', 'cardio'],
     level: 'Beginner to advanced', duration: '6 weeks',
   },
   d4: {
-    name: 'Running Guide — From 5K to Marathon',
+    name: 'Running Guide - From 5K to Marathon',
     badge: '📥 120-page e-book',
     description: '120-page e-book. 5K/10K/half/marathon plans. Race nutrition, injury prevention, competitor mindset.',
     longDescription: 'The XENOTIF running guide covers the full spectrum of the modern runner. Written by a certified athletics coach, it includes personalized plans for 4 distances, nutrition advice before/during/after a race, a 7-point anti-injury protocol and a proven mental preparation. 120 richly illustrated pages.',
@@ -258,12 +258,12 @@ const TEXT_EN: Record<string, ProductText> = {
     name: 'Chlorine-Resistant Swimsuit',
     badge: '🩱 Endurance',
     description: 'Chlorine-resistant training swimsuit, quick-drying, snug fit. Lasts hundreds of pool sessions.',
-    longDescription: 'Built for intensive training, this chlorine-resistant fabric swimsuit keeps its shape and colors session after session — where a regular suit sags within weeks. The snug fit reduces drag in the water, it dries quickly and the flat seams prevent chafing. The durable choice for anyone clocking up the laps.',
+    longDescription: 'Built for intensive training, this chlorine-resistant fabric swimsuit keeps its shape and colors session after session - where a regular suit sags within weeks. The snug fit reduces drag in the water, it dries quickly and the flat seams prevent chafing. The durable choice for anyone clocking up the laps.',
     features: ['Chlorine-resistant fabric', 'Quick-drying', 'Snug low-drag fit', 'Flat seams', 'Long-lasting'],
     tags: ['swimsuit', 'swimming', 'chlorine-resistant', 'pool'],
   },
   a1: {
-    name: 'Doorway Pull-Up Bar — No Screws',
+    name: 'Doorway Pull-Up Bar - No Screws',
     badge: '🔥 Best Seller',
     description: 'Multi-grip pull-up bar for door frames, no drilling. Up to 130 kg. Train back, biceps and core at home.',
     features: ['No screws or drilling', 'Multi-grip', 'Up to 130 kg', 'Non-slip foam', 'Reinforced steel'],
@@ -279,7 +279,7 @@ const TEXT_EN: Record<string, ProductText> = {
   a3: {
     name: 'Wooden Gymnastic Rings + Straps',
     badge: '🆕 New',
-    description: 'Pair of wooden rings with numbered adjustable straps. Dips, pull-ups, muscle-ups — calisthenics and CrossFit.',
+    description: 'Pair of wooden rings with numbered adjustable straps. Dips, pull-ups, muscle-ups - calisthenics and CrossFit.',
     features: ['Natural-grip wood', '4.5 m numbered straps', 'Quick-lock buckles', 'Dips & pull-ups', 'Muscle-ups'],
     tags: ['gymnastic rings', 'calisthenics', 'crossfit', 'street workout'],
   },

@@ -291,7 +291,7 @@ export function AbonnementClient({ initialSub }: { initialSub: Sub | null }) {
         </ul>
       </div>
 
-      {/* Paiement & factures — affichés directement sur le site */}
+      {/* Paiement & factures - affichés directement sur le site */}
       <div className="bg-sport-card border border-sport-border rounded-2xl p-6 mb-6">
         <h3 className="text-sm font-black text-sport-fg mb-4">{t('billingTitle')}</h3>
 
@@ -322,7 +322,7 @@ export function AbonnementClient({ initialSub }: { initialSub: Sub | null }) {
                     <span className="flex-1 text-right text-sport-fg font-semibold">{inv.amount.toFixed(2)} {inv.currency === 'EUR' ? '€' : inv.currency}</span>
                     {inv.pdf
                       ? <a href={inv.pdf} target="_blank" rel="noopener noreferrer" className="shrink-0 text-sport-orange text-xs font-bold hover:underline">{t('download')}</a>
-                      : <span className="shrink-0 text-sport-gray text-xs">—</span>}
+                      : <span className="shrink-0 text-sport-gray text-xs">-</span>}
                   </div>
                 ))}
               </div>

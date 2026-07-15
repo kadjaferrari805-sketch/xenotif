@@ -16,7 +16,7 @@ interface ProductGalleryProps {
 /**
  * Galerie produit premium : grande image + miniatures + zoom au survol
  * (loupe interne « inner-zoom » : l'image grossit autour du curseur).
- * Sur mobile, le zoom au survol ne s'applique pas — la navigation se fait
+ * Sur mobile, le zoom au survol ne s'applique pas - la navigation se fait
  * via les miniatures défilantes. Style cohérent e-commerce haut de gamme.
  */
 export function ProductGallery({ images, alt, badge, discountLabel, imageFit, imagePosition, lightTile }: ProductGalleryProps) {

@@ -6,14 +6,14 @@ const D = 'https://xenotif.com/disciplines'
 export const fitnessMaisonEn: Guide = {
   id: 'fitness-maison',
   title: 'Home Fitness Program',
-  subtitle: '8 weeks, 100% bodyweight, zero equipment — wherever you are',
-  author: 'XENOTIF Coach — Certified Strength & Conditioning',
+  subtitle: '8 weeks, 100% bodyweight, zero equipment - wherever you are',
+  author: 'XENOTIF Coach - Certified Strength & Conditioning',
   level: 'Beginner - Intermediate',
   duration: '8 weeks · 4 sessions/week',
   coverImage: 'cover.jpg',
   blocks: [
     { type: 'h1', text: 'Your home is your gym' },
-    { type: 'p', text: `No gym, no equipment, no excuses. This 8-week program is done entirely with bodyweight training, in just 2 m² of space, at home or on the road. You'll tone your body, build functional strength, burn fat, and build an unbreakable routine — with your own body as the only equipment you need.` },
+    { type: 'p', text: `No gym, no equipment, no excuses. This 8-week program is done entirely with bodyweight training, in just 2 m² of space, at home or on the road. You'll tone your body, build functional strength, burn fat, and build an unbreakable routine - with your own body as the only equipment you need.` },
     { type: 'p', text: `Every exercise has a QR code linking to its demo video on XENOTIF®. If you're ever unsure, scan it.` },
     { type: 'meta', items: [
       { label: 'Goal', value: 'Tone, burn, strengthen' },
@@ -38,7 +38,7 @@ export const fitnessMaisonEn: Guide = {
       `Progress by moving to the harder variations listed.`,
       `Review your week every Sunday (tracker + checklist).`,
     ] },
-    { type: 'note', text: `Golden rule of bodyweight training: without added weight, you progress through variation difficulty, tempo, rep count, and density (less rest). Progression is real — you just have to create it.` },
+    { type: 'note', text: `Golden rule of bodyweight training: without added weight, you progress through variation difficulty, tempo, rep count, and density (less rest). Progression is real - you just have to create it.` },
 
     { type: 'h1', text: 'How it works' },
     { type: 'list', items: [
@@ -87,7 +87,7 @@ export const fitnessMaisonEn: Guide = {
     ] },
     { type: 'h2', text: 'Understanding your macros' },
     { type: 'table', headers: ['Macro', 'Role', 'Per g', 'Priority'], rows: [
-      ['Protein', 'Muscle & satiety', '4 kcal', 'HIGH — 1.6-2 g/kg'],
+      ['Protein', 'Muscle & satiety', '4 kcal', 'HIGH - 1.6-2 g/kg'],
       ['Carbs', 'Energy', '4 kcal', 'Around sessions'],
       ['Fats', 'Hormones, health', '9 kcal', 'Moderate, quality'],
     ] },
@@ -137,10 +137,10 @@ export const fitnessMaisonEn: Guide = {
     { type: 'table', headers: ['Day', 'Session', 'Duration'], rows: [
       ['Monday', 'Strength A (lower body + core)', '35 min'],
       ['Tuesday', 'HIIT circuit', '25 min'],
-      ['Wednesday', 'Rest / walk', '—'],
+      ['Wednesday', 'Rest / walk', '-'],
       ['Thursday', 'Strength B (upper body + core)', '35 min'],
       ['Friday', 'Full-body cardio circuit', '30 min'],
-      ['Weekend', 'Active rest + tracking', '—'],
+      ['Weekend', 'Active rest + tracking', '-'],
     ] },
 
     { type: 'h2', text: 'Day-by-day breakdown (weeks 1 to 4)' },
@@ -156,7 +156,7 @@ export const fitnessMaisonEn: Guide = {
     ] },
 
     { type: 'h1', text: 'Your sessions in detail' },
-    { type: 'h2', text: 'Strength A — Lower body & core' },
+    { type: 'h2', text: 'Strength A - Lower body & core' },
     { type: 'table', headers: ['Exercise', 'Sets', 'Reps', 'Rest'], rows: [
       ['Squats', '4', '15 to 20', '45 s'],
       ['Alternating lunges', '3', '12 / leg', '45 s'],
@@ -164,7 +164,7 @@ export const fitnessMaisonEn: Guide = {
       ['Wall sit', '3', '40 s', '40 s'],
       ['Plank', '3', '40 s', '40 s'],
     ] },
-    { type: 'h2', text: 'Strength B — Upper body & core' },
+    { type: 'h2', text: 'Strength B - Upper body & core' },
     { type: 'table', headers: ['Exercise', 'Sets', 'Reps', 'Rest'], rows: [
       ['Push-ups (adapted variation)', '4', 'Clean max', '45 s'],
       ['Chair dips', '3', '12', '45 s'],
@@ -202,12 +202,12 @@ export const fitnessMaisonEn: Guide = {
     { type: 'exercise', name: 'Single-leg glute bridge', muscles: 'Glutes, hamstrings, core', level: 'Intermediate', video: `${D}/musculation`, technique: `Classic glute bridge but with one leg extended in the air. Push through the grounded heel, lift the hips level, squeeze the glute. Switch legs.`, mistakes: `Hips twisting, lower-back hyperextension, short range.` },
 
     { type: 'h1', text: 'Cardio, walking & NEAT' },
-    { type: 'p', text: `Beyond your sessions, your daily activity (NEAT) makes a huge difference to energy expenditure and fat loss — without causing fatigue or requiring any equipment.` },
+    { type: 'p', text: `Beyond your sessions, your daily activity (NEAT) makes a huge difference to energy expenditure and fat loss - without causing fatigue or requiring any equipment.` },
     { type: 'list', items: [
       `Aim for 8,000 to 10,000 steps a day: walking, stairs, trips on foot.`,
       `2 to 3 brisk 30-min walks a week, ideally on rest days.`,
       `Break it up: 3 × 10 min of walking is worth a 30-min block.`,
-      `First thing in the morning, fasted, with music or a podcast — the best time to make it stick.`,
+      `First thing in the morning, fasted, with music or a podcast - the best time to make it stick.`,
     ] },
     { type: 'table', headers: ['Activity', 'Duration', 'Frequency', 'Effect'], rows: [
       ['Walking (NEAT)', 'Throughout the day', 'Daily', 'Expenditure, recovery'],
@@ -239,7 +239,7 @@ export const fitnessMaisonEn: Guide = {
     ] },
 
     { type: 'h1', text: 'Plan B: 10-minute express session' },
-    { type: 'p', text: `No time? A short session always beats no session — it keeps the habit alive. Run this circuit twice, 40 s work / 20 s transition, 1 min rest between rounds.` },
+    { type: 'p', text: `No time? A short session always beats no session - it keeps the habit alive. Run this circuit twice, 40 s work / 20 s transition, 1 min rest between rounds.` },
     { type: 'table', headers: ['Exercise', 'Duration', 'Rest'], rows: [
       ['Squats', '40 s', '20 s'],
       ['Push-ups', '40 s', '20 s'],
@@ -259,7 +259,7 @@ export const fitnessMaisonEn: Guide = {
 
     { type: 'h1', text: 'Mistakes to avoid' },
     { type: 'list', items: [
-      `Believing you can't progress without equipment: false — use the 5 progression levers.`,
+      `Believing you can't progress without equipment: false - use the 5 progression levers.`,
       `Rushing technique to go faster: quality comes first, especially in bodyweight training.`,
       `Doing cardio only: keep 2 strength sessions a week.`,
       `Skipping the warm-up, especially before jump-based circuits.`,
@@ -335,7 +335,7 @@ export const fitnessMaisonEn: Guide = {
     { type: 'list', items: [
       `Performance: more reps, harder variations, longer plank holds, less rest.`,
       `Photos: same lighting, same angle, same time of day, every 4 weeks.`,
-      `Measurements: waist, hips, thighs, arms — often more telling than weight.`,
+      `Measurements: waist, hips, thighs, arms - often more telling than weight.`,
       `How you feel: energy, sleep, looser clothes, improved posture.`,
       `Weigh yourself only once a week, fasted, on the same day: weight fluctuates daily.`,
     ] },

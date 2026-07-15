@@ -37,7 +37,7 @@ export async function POST(req: Request) {
   const webhook = await stripe.webhookEndpoints.create({
     url: WEBHOOK_URL,
     enabled_events: EVENTS as Stripe.WebhookEndpointCreateParams.EnabledEvent[],
-    description: 'Xenotif® — auto-configured',
+    description: 'Xenotif® - auto-configured',
   })
 
   const signingSecret = webhook.secret ?? ''

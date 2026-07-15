@@ -43,7 +43,7 @@ export function CustomerReviews({ kind, productId }: Props) {
   if (reviews === null) return null
   // Aucun avis encore → on n'affiche RIEN au public (pas de section « aucun avis »).
   // Seul un utilisateur éligible (acheteur du guide / abonné) voit une invitation
-  // à laisser le premier avis — sinon le CTA de l'email mènerait à une page sans formulaire.
+  // à laisser le premier avis - sinon le CTA de l'email mènerait à une page sans formulaire.
   if (empty && !done && !canReview) return null
 
   const body = (
@@ -103,7 +103,7 @@ export function CustomerReviews({ kind, productId }: Props) {
 
   // Variante plateforme (accueil) : le composant porte lui-même sa section décorative
   // (filet + espacement + fond) pour que TOUT disparaisse ensemble quand il n'y a pas
-  // d'avis — sinon une bande vide resterait visible sur la page.
+  // d'avis - sinon une bande vide resterait visible sur la page.
   if (isPlatform) {
     return (
       <section className="px-6 pb-16 bg-sport-dark">

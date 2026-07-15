@@ -1,6 +1,6 @@
 import crypto from 'crypto'
 
-// API de Conversions Meta (CAPI) — envoi serveur-side des conversions.
+// API de Conversions Meta (CAPI) - envoi serveur-side des conversions.
 // Complète le Pixel (client) : plus fiable (non bloqué par Safari/adblockers).
 // La déduplication avec le Pixel se fait via un event_id partagé (on utilise
 // l'ID de session Stripe, identique côté client et serveur).
@@ -19,7 +19,7 @@ type ConversionInput = {
   email?: string | null
   value?: number
   currency?: string
-  // Signaux de correspondance (Event Match Quality) — NON hachés (Meta les veut bruts).
+  // Signaux de correspondance (Event Match Quality) - NON hachés (Meta les veut bruts).
   // Captés au checkout (cookies _fbp/_fbc + IP/UA) et relayés côté serveur.
   fbp?: string | null
   fbc?: string | null

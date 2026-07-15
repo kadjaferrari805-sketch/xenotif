@@ -158,9 +158,9 @@ function equipmentFrom(name: string, muscles: string): string[] {
 }
 
 const STATS: Record<Difficulty, ExerciceStats> = {
-  debutant: { sets: 3, reps: '12–15', rest: '60 s', duration: '~8 min', calories: '40–60 kcal' },
-  intermediaire: { sets: 4, reps: '8–12', rest: '75 s', duration: '~10 min', calories: '60–90 kcal' },
-  avance: { sets: 5, reps: '5–8', rest: '90–120 s', duration: '~12 min', calories: '90–130 kcal' },
+  debutant: { sets: 3, reps: '12-15', rest: '60 s', duration: '~8 min', calories: '40-60 kcal' },
+  intermediaire: { sets: 4, reps: '8-12', rest: '75 s', duration: '~10 min', calories: '60-90 kcal' },
+  avance: { sets: 5, reps: '5-8', rest: '90-120 s', duration: '~12 min', calories: '90-130 kcal' },
 }
 
 // Exercices similaires : partagent au moins un muscle primaire.

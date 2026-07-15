@@ -19,7 +19,7 @@ type EmailCopy = {
 // principal ; la création de compte est le CTA secondaire.
 const COPY: Record<string, EmailCopy> = {
   fr: {
-    subject: 'Ton programme 7 jours est prêt 🎁 — Bienvenue chez Xenotif®',
+    subject: 'Ton programme 7 jours est prêt 🎁 - Bienvenue chez Xenotif®',
     heading: 'Bienvenue dans la communauté ! 💪',
     intro: `Tu fais maintenant partie des <strong style="color:#fff;">12 000+ athlètes</strong> qui transforment leur corps avec Xenotif®. Ton programme découverte 7 jours t'attend juste ici :`,
     programButton: '🎁 Télécharger mon programme (PDF)',
@@ -29,7 +29,7 @@ const COPY: Record<string, EmailCopy> = {
     footer: `Tu reçois cet email car tu t'es inscrit(e) sur xenotif.com.<br />Pour te désabonner, réponds à cet email avec "STOP".`,
   },
   en: {
-    subject: 'Your 7-day program is ready 🎁 — Welcome to Xenotif®',
+    subject: 'Your 7-day program is ready 🎁 - Welcome to Xenotif®',
     heading: 'Welcome to the community! 💪',
     intro: `You're now part of the <strong style="color:#fff;">12,000+ athletes</strong> transforming their body with Xenotif®. Your 7-day starter program is right here:`,
     programButton: '🎁 Download my program (PDF)',
@@ -39,7 +39,7 @@ const COPY: Record<string, EmailCopy> = {
     footer: `You're receiving this email because you signed up on xenotif.com.<br />To unsubscribe, reply to this email with "STOP".`,
   },
   de: {
-    subject: 'Dein 7-Tage-Programm ist da 🎁 — Willkommen bei Xenotif®',
+    subject: 'Dein 7-Tage-Programm ist da 🎁 - Willkommen bei Xenotif®',
     heading: 'Willkommen in der Community! 💪',
     intro: `Du gehörst jetzt zu den <strong style="color:#fff;">12.000+ Athleten</strong>, die ihren Körper mit Xenotif® transformieren. Dein 7-Tage-Einsteiger-Programm wartet genau hier:`,
     programButton: '🎁 Mein Programm herunterladen (PDF)',

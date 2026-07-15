@@ -13,7 +13,7 @@ export const runtime = 'nodejs'
  * Sécurité : on exige une session Stripe Checkout PAYÉE qui contient bien
  * le produit demandé (les ids des produits digitaux sont stockés dans
  * session.metadata.digital_ids au moment du checkout). Le PDF est généré
- * à la volée — aucun fichier n'est exposé publiquement.
+ * à la volée - aucun fichier n'est exposé publiquement.
  */
 export async function POST() {
   return NextResponse.json({ error: 'Méthode non autorisée' }, { status: 405 })

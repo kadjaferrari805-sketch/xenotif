@@ -34,7 +34,7 @@ export function ExperiencePreview() {
         <SectionHeader id="home-experience" label={t('eyebrow')} title={t('title')} subtitle={t('subtitle')} />
 
         <div className="mt-12 grid gap-10 lg:grid-cols-2 lg:items-center">
-          {/* Aperçu — cadre app premium avec effet 3D */}
+          {/* Aperçu - cadre app premium avec effet 3D */}
           <Tilt3D className="relative rounded-3xl" max={8}>
             <div className="rounded-3xl border border-sport-border bg-sport-dark p-5 shadow-2xl shadow-black/40">
               <div className="mb-4 flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-sport-gray">

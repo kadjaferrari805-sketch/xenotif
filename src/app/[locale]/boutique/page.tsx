@@ -51,7 +51,7 @@ export default function BoutiquePage() {
     [products],
   )
 
-  // ─── Sélections Amazon (affiliation) — chaque section ≥ 10 produits ───
+  // ─── Sélections Amazon (affiliation) - chaque section ≥ 10 produits ───
   const affiliate = useMemo(() => products.filter((p) => p.isAffiliate && p.amazon), [products])
   const featured = useMemo(() => affiliate.filter((p) => p.featured), [affiliate])
 
@@ -59,7 +59,7 @@ export default function BoutiquePage() {
     { icon: ShoppingBag, label: t('stats.products'), value: `${products.length}+` },
     { icon: Star, label: t('stats.rating'), value: '4.8/5' },
     { icon: TrendingUp, label: t('stats.customers'), value: t('stats.customersValue') },
-    { icon: Zap, label: t('stats.delivery'), value: '24–48h' },
+    { icon: Zap, label: t('stats.delivery'), value: '24-48h' },
   ]
 
   return (
@@ -148,7 +148,7 @@ export default function BoutiquePage() {
           </Link>
         </div>
         {/* Mobile : carrousel horizontal full-bleed (swipe fluide, snap, défilement
-            rapide — pas de scroll-snap-stop pour laisser filer les flicks).
+            rapide - pas de scroll-snap-stop pour laisser filer les flicks).
             sm+ : grille e-commerce classique. */}
         <div className="-mx-4 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-2 disc-scroll scroll-smooth sm:mx-0 sm:grid sm:gap-6 sm:overflow-visible sm:px-0 sm:pb-0 sm:snap-none sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {bestsellers.map((p, i) => (

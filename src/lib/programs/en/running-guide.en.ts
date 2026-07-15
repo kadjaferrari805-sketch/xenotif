@@ -1,12 +1,12 @@
 import type { Guide } from '@/lib/boutique/guides'
 
-// d4 — Running Guide: from 5K to Marathon (EN mirror of running-guide.ts).
+// d4 - Running Guide: from 5K to Marathon (EN mirror of running-guide.ts).
 // 5K/10K/half/marathon plans, run nutrition, injury prevention, competitor mindset.
 export const runningGuideEn: Guide = {
   id: 'd4',
-  title: 'Running Guide — From 5K to Marathon',
+  title: 'Running Guide - From 5K to Marathon',
   subtitle: '5K / 10K / half / marathon plans, run nutrition, injury prevention, mindset',
-  author: 'XENOTIF Coach — Certified athletics coach',
+  author: 'XENOTIF Coach - Certified athletics coach',
   level: 'Beginner → Experienced',
   duration: '4 plans · 5K to marathon',
   coverImage: 'run-cover.jpg',
@@ -361,7 +361,7 @@ export const runningGuideEn: Guide = {
     { type: 'note', text: `Train your mind in training: long runs and the end of intervals are the ideal place to practice your mantras and segmentation. On race day, it'll just be one more habit.` },
 
     { type: 'h1', text: 'Essential equipment' },
-    { type: 'p', text: `Good news: running is cheap. Beyond the shoes (dedicated chapter), here's the useful gear, ranked by priority — don't buy it all at once.` },
+    { type: 'p', text: `Good news: running is cheap. Beyond the shoes (dedicated chapter), here's the useful gear, ranked by priority - don't buy it all at once.` },
     { type: 'table', headers: ['Equipment', 'Priority', `What it's for`], rows: [
       ['Suitable shoes', 'Essential', 'Comfort and injury prevention'],
       ['Technical socks', 'Essential', 'Wick sweat, avoid blisters'],
@@ -384,7 +384,7 @@ export const runningGuideEn: Guide = {
     { type: 'h2', text: 'How long before a marathon?' },
     { type: 'p', text: `If you already run ~1 h comfortably, 12 weeks is enough. Otherwise, do the 10K then half plans first before tackling a marathon.` },
     { type: 'h2', text: `What to do if I'm in pain?` },
-    { type: 'p', text: `A passing muscular ache: adapt. A joint pain or one that persists: rest and see a professional. Never "push" through real pain — it's a guaranteed stop.` },
+    { type: 'p', text: `A passing muscular ache: adapt. A joint pain or one that persists: rest and see a professional. Never "push" through real pain - it's a guaranteed stop.` },
     { type: 'h2', text: 'Do I need to strength train?' },
     { type: 'p', text: `Yes, 1-2×/week. It's what makes you faster AND more injury-resistant. Strength work isn't optional for lasting progress.` },
     { type: 'h2', text: 'Treadmill or outdoors?' },

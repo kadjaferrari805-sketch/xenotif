@@ -67,7 +67,7 @@ export default async function ProgramPage({ params }: { params: Promise<{ slug: 
   }
 
   // FAQ localisée (5 questions communes, titre du programme interpolé). Rendue à
-  // l'écran ET en FAQPage schema — le markup doit refléter du contenu visible.
+  // l'écran ET en FAQPage schema - le markup doit refléter du contenu visible.
   const faq = [1, 2, 3, 4, 5].map((n) => ({
     q: t(`faqQ${n}` as 'faqQ1', { title: program.title }),
     a: t(`faqA${n}` as 'faqA1', { title: program.title }),

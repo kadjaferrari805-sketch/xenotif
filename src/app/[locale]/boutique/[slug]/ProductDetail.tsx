@@ -135,7 +135,7 @@ export function ProductDetail({ product }: { product: Product }) {
               )}
             </div>
 
-            {/* Réassurance (paiement, livraison, accès) — chips visibles sous le CTA */}
+            {/* Réassurance (paiement, livraison, accès) - chips visibles sous le CTA */}
             <div className="mt-6 flex flex-wrap gap-2">
               {(t.raw(
                 product.isAffiliate ? 'detail.shippingAffiliate'
@@ -161,7 +161,7 @@ export function ProductDetail({ product }: { product: Product }) {
           </div>
         </div>
 
-        {/* Avis clients — uniquement sur nos produits digitaux (achat vérifiable).
+        {/* Avis clients - uniquement sur nos produits digitaux (achat vérifiable).
             La section porte elle-même son séparateur et disparaît s'il n'y a pas d'avis. */}
         {product.type === 'digital' && (
           <CustomerReviews kind="product" productId={product.id} />

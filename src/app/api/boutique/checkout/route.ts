@@ -7,7 +7,7 @@ const PRODUCT_MAP = new Map(PRODUCTS.filter(p => !p.isAffiliate).map(p => [p.id,
 
 export async function POST(req: NextRequest) {
   if (!process.env.STRIPE_SECRET_KEY) {
-    return NextResponse.json({ error: 'Paiement non configuré — contactez le support' }, { status: 503 })
+    return NextResponse.json({ error: 'Paiement non configuré - contactez le support' }, { status: 503 })
   }
 
   try {

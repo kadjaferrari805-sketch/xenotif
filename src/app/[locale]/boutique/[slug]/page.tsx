@@ -18,7 +18,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
   // Titre court : le template du layout ajoute « | Xenotif® ». Le prix dans le
   // titre améliore le taux de clic depuis Google.
-  const title = `${product.name} — ${formatPrice(product.price_cents)}`
+  const title = `${product.name} - ${formatPrice(product.price_cents)}`
   const description = product.description
   const path = `/boutique/${product.slug}`
   const languages: Record<string, string> = {

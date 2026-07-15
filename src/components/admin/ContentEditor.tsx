@@ -59,7 +59,7 @@ export function ContentEditor({ slug, initial }: { slug: string; initial: Editor
         <textarea className={FIELD} rows={3} placeholder="Stats (une par ligne)" value={L.statsText} onChange={e => setField(tab, 'statsText', e.target.value)} />
         <textarea className={FIELD} rows={3} placeholder="Niveaux (un par ligne)" value={L.levelsText} onChange={e => setField(tab, 'levelsText', e.target.value)} />
         <div>
-          <label className="block text-xs font-bold uppercase tracking-wider text-sport-gray mb-2">Sections (JSON) — {tab}</label>
+          <label className="block text-xs font-bold uppercase tracking-wider text-sport-gray mb-2">Sections (JSON) - {tab}</label>
           <textarea className={`${FIELD} font-mono text-xs`} rows={14} value={L.sectionsJson} onChange={e => setField(tab, 'sectionsJson', e.target.value)} />
         </div>
       </div>

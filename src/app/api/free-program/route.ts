@@ -8,7 +8,7 @@ export const runtime = 'nodejs'
  * Lead magnet gratuit : « Programme Découverte 7 jours » en PDF.
  *   GET /api/free-program?locale=fr
  *
- * Aucune authentification — c'est une ressource offerte pour capturer l'email
+ * Aucune authentification - c'est une ressource offerte pour capturer l'email
  * (le formulaire newsletter enregistre l'email AVANT d'exposer ce lien). Le PDF
  * est généré à la volée avec le générateur premium existant (guide-pdf.ts).
  */

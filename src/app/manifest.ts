@@ -1,10 +1,10 @@
 import type { MetadataRoute } from 'next'
 
-// Manifest PWA — rend Xenotif installable sur mobile (« Ajouter à l'écran d'accueil »).
+// Manifest PWA - rend Xenotif installable sur mobile (« Ajouter à l'écran d'accueil »).
 // Servi sur /manifest.webmanifest et référencé via la metadata du layout.
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: 'Xenotif® — Coaching fitness premium',
+    name: 'Xenotif® - Coaching fitness premium',
     short_name: 'Xenotif',
     description:
       "La plateforme fitness premium : programmes guidés, coaching IA personnalisé et suivi d'activité en temps réel.",

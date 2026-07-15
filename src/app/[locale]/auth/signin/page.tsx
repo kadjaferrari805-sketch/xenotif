@@ -33,7 +33,7 @@ export default function SignInPage() {
 
   return (
     <div className="min-h-screen bg-sport-dark flex">
-      {/* Volet marque (desktop) — approche Strava : présence de marque + preuve */}
+      {/* Volet marque (desktop) - approche Strava : présence de marque + preuve */}
       <aside className="hidden md:flex md:w-1/2 relative overflow-hidden border-r border-sport-border bg-gradient-to-br from-sport-orange/20 via-sport-dark to-sport-dark">
         <div className="relative z-10 flex flex-col justify-between p-12 w-full">
           <Logo href="/" size="md" />

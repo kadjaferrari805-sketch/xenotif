@@ -2,19 +2,19 @@ import type { Guide } from '@/lib/boutique/guides'
 
 const D = 'https://xenotif.com/disciplines'
 
-// d3 — Programme HIIT Brûle-Graisses 6 Semaines (FR). 24 séances 20-30 min,
+// d3 - Programme HIIT Brûle-Graisses 6 Semaines (FR). 24 séances 20-30 min,
 // 100% poids du corps, sans matériel, 3 niveaux, timers, QR vidéo. ≈30 pages.
 export const hiit6s: Guide = {
   id: 'd3',
-  title: 'Programme HIIT Brûle-Graisses — 6 Semaines',
+  title: 'Programme HIIT Brûle-Graisses - 6 Semaines',
   subtitle: '24 séances de 20-30 min, 100 % au poids du corps, sans aucun matériel',
-  author: 'XENOTIF Coach — Certifié CrossFit & préparation physique',
+  author: 'XENOTIF Coach - Certifié CrossFit & préparation physique',
   level: 'Débutant → Avancé',
   duration: '6 semaines · 24 séances · 20-30 min',
   coverImage: 'hiit-cover.jpg',
   blocks: [
     { type: 'h1', text: 'Brûle un maximum en un minimum de temps' },
-    { type: 'p', text: `En 6 semaines, ce programme va transformer ta condition physique et faire fondre la graisse — sans salle, sans matériel, où que tu sois, en séances courtes mais intenses de 20 à 30 minutes. Tu y trouveras les 24 séances détaillées avec leurs minuteurs, la technique de chaque mouvement, et trois niveaux pour progresser de débutant à avancé.` },
+    { type: 'p', text: `En 6 semaines, ce programme va transformer ta condition physique et faire fondre la graisse - sans salle, sans matériel, où que tu sois, en séances courtes mais intenses de 20 à 30 minutes. Tu y trouveras les 24 séances détaillées avec leurs minuteurs, la technique de chaque mouvement, et trois niveaux pour progresser de débutant à avancé.` },
     { type: 'p', text: `Chaque exercice a un QR code vers sa vidéo de démonstration sur XENOTIF®. Garde le guide sur ton téléphone et lance ton minuteur : c’est parti.` },
     { type: 'meta', items: [
       { label: 'Objectif', value: 'Brûler du gras, gagner du souffle' },
@@ -33,7 +33,7 @@ export const hiit6s: Guide = {
     ] },
     { type: 'h2', text: 'Comment utiliser ce guide' },
     { type: 'list', items: [
-      `Choisis ton niveau (débutant / intermédiaire / avancé) — voir le chapitre dédié.`,
+      `Choisis ton niveau (débutant / intermédiaire / avancé) - voir le chapitre dédié.`,
       `Suis les 24 séances dans l’ordre (4 par semaine).`,
       `Lance un minuteur d’intervalles (effort / récup) pour chaque séance.`,
       `Scanne le QR d’un exercice pour revoir la technique.`,
@@ -74,42 +74,42 @@ export const hiit6s: Guide = {
     ] },
 
     { type: 'chapter', title: 'Les 24 séances', src: 'hiit-cover.jpg', intro: `Voici tes 24 séances (4 par semaine). Applique TON ratio effort/récup (chapitre niveau). Chaque ligne = un bloc à répéter selon le nombre de tours de ton niveau. Échauffe-toi avant, étire-toi après.` },
-    { type: 'h2', text: 'Semaine 1 — Adaptation' },
+    { type: 'h2', text: 'Semaine 1 - Adaptation' },
     { type: 'table', headers: ['Séance', 'Blocs', 'Durée'], rows: [
       ['S1 · Full body', 'Squats · Pompes genoux · Mountain climbers · Gainage', '20 min'],
       ['S2 · Cardio', 'Jumping jacks · Montées de genoux · Talons-fesses · Fentes', '20 min'],
       ['S3 · Bas + core', 'Squats · Fentes · Pont fessier · Gainage latéral', '20 min'],
       ['S4 · Haut + core', 'Pompes · Dips chaise · Pompes piké · Gainage', '20 min'],
     ] },
-    { type: 'h2', text: 'Semaine 2 — Volume' },
+    { type: 'h2', text: 'Semaine 2 - Volume' },
     { type: 'table', headers: ['Séance', 'Blocs', 'Durée'], rows: [
       ['S5 · Full body', 'Squats sautés · Pompes · Mountain climbers · Burpees', '22 min'],
       ['S6 · Cardio', 'Jumping jacks · High knees · Skaters · Talons-fesses', '22 min'],
       ['S7 · Bas + core', 'Fentes sautées · Squats · Pont fessier · Relevés de jambes', '22 min'],
       ['S8 · Haut + core', 'Pompes · Dips · Pompes diamant · Gainage dynamique', '22 min'],
     ] },
-    { type: 'h2', text: 'Semaine 3 — Intensité' },
+    { type: 'h2', text: 'Semaine 3 - Intensité' },
     { type: 'table', headers: ['Séance', 'Blocs', 'Durée'], rows: [
       ['S9 · Full body', 'Burpees · Squats sautés · Mountain climbers · Pompes', '25 min'],
       ['S10 · Cardio', 'High knees · Skaters · Jumping jacks · Sprint sur place', '25 min'],
       ['S11 · Bas + core', 'Fentes sautées · Squats · Pont fessier 1 jambe · Gainage', '25 min'],
       ['S12 · Haut + core', 'Pompes déclinées · Dips · Pompes piké · Mountain climbers', '25 min'],
     ] },
-    { type: 'h2', text: 'Semaine 4 — Circuits' },
+    { type: 'h2', text: 'Semaine 4 - Circuits' },
     { type: 'table', headers: ['Séance', 'Blocs', 'Durée'], rows: [
       ['S13 · Full body', 'Burpees · Fentes sautées · Pompes · Gainage dynamique', '25 min'],
       ['S14 · Cardio', 'Sprint sur place · Skaters · Jumping jacks · High knees', '25 min'],
       ['S15 · Bas + core', 'Squats sautés · Fentes · Pont fessier · Relevés de jambes', '25 min'],
       ['S16 · Haut + core', 'Pompes · Pompes diamant · Dips · Gainage latéral', '25 min'],
     ] },
-    { type: 'h2', text: 'Semaine 5 — Pic' },
+    { type: 'h2', text: 'Semaine 5 - Pic' },
     { type: 'table', headers: ['Séance', 'Blocs', 'Durée'], rows: [
       ['S17 · Full body', 'Burpees · Squats sautés · Pompes · Mountain climbers', '28 min'],
       ['S18 · Cardio', 'Sprint sur place · High knees · Skaters · Jumping jacks', '28 min'],
       ['S19 · Bas + core', 'Fentes sautées · Squats · Pont fessier 1 jambe · Gainage', '28 min'],
       ['S20 · Haut + core', 'Pompes déclinées · Pompes diamant · Dips · Gainage dynamique', '28 min'],
     ] },
-    { type: 'h2', text: 'Semaine 6 — Finition' },
+    { type: 'h2', text: 'Semaine 6 - Finition' },
     { type: 'table', headers: ['Séance', 'Blocs', 'Durée'], rows: [
       ['S21 · Full body', 'Burpees · Squats sautés · Pompes · Gainage dynamique', '30 min'],
       ['S22 · Cardio max', 'Sprint sur place · Skaters · High knees · Jumping jacks', '30 min'],
@@ -122,10 +122,10 @@ export const hiit6s: Guide = {
     { type: 'p', text: `Chaque séance suit la même structure. Exemple détaillé d’une séance « Full body » niveau intermédiaire (40 s effort / 20 s récup, 4 tours) :` },
     { type: 'table', headers: ['Phase', 'Contenu', 'Durée'], rows: [
       ['Échauffement', 'Cardio léger + mobilité + activation', '5 min'],
-      ['Bloc 1', 'Burpees — 40 s / 20 s × 4', '4 min'],
-      ['Bloc 2', 'Squats sautés — 40 s / 20 s × 4', '4 min'],
-      ['Bloc 3', 'Pompes — 40 s / 20 s × 4', '4 min'],
-      ['Bloc 4', 'Mountain climbers — 40 s / 20 s × 4', '4 min'],
+      ['Bloc 1', 'Burpees - 40 s / 20 s × 4', '4 min'],
+      ['Bloc 2', 'Squats sautés - 40 s / 20 s × 4', '4 min'],
+      ['Bloc 3', 'Pompes - 40 s / 20 s × 4', '4 min'],
+      ['Bloc 4', 'Mountain climbers - 40 s / 20 s × 4', '4 min'],
       ['Retour au calme', 'Marche + étirements', '5 min'],
     ] },
     { type: 'p', text: `Repos entre les blocs : 45 s (interm.). Total ≈ 26 min. Adapte les ratios et tours à TON niveau (chapitre « Choisis ton niveau »).` },
@@ -173,7 +173,7 @@ export const hiit6s: Guide = {
       `Une source de protéines à chaque repas (préserve le muscle).`,
       `Beaucoup de légumes pour le volume et la satiété.`,
       `Des glucides autour de la séance HIIT pour l’énergie.`,
-      `Réduis le sucre liquide et l’alcool — la victoire la plus rapide.`,
+      `Réduis le sucre liquide et l’alcool - la victoire la plus rapide.`,
       `Hydrate-toi : le HIIT fait beaucoup transpirer.`,
     ] },
     { type: 'h2', text: '4 recettes express brûle-graisses' },
@@ -195,7 +195,7 @@ export const hiit6s: Guide = {
     { type: 'p', text: `Secoue. Pratique juste après l’entraînement.` },
 
     { type: 'h1', text: 'Marche & NEAT' },
-    { type: 'p', text: `Au-delà des séances HIIT, ton activité quotidienne (NEAT) fait une grosse différence sur la dépense — sans fatiguer ni nuire à ta récupération.` },
+    { type: 'p', text: `Au-delà des séances HIIT, ton activité quotidienne (NEAT) fait une grosse différence sur la dépense - sans fatiguer ni nuire à ta récupération.` },
     { type: 'list', items: [
       `Vise 8 000 à 10 000 pas/jour : escaliers, trajets à pied, marche après les repas.`,
       `Les jours sans HIIT, fais 30 min de marche rapide.`,
@@ -284,7 +284,7 @@ export const hiit6s: Guide = {
       ['Maximale', 'Très dur', 'Impossible de parler', 'Sprints, finishers'],
     ] },
     { type: 'list', items: [
-      `Sur l’effort : vise « élevée à maximale » — tu ne dois pas pouvoir discuter.`,
+      `Sur l’effort : vise « élevée à maximale » - tu ne dois pas pouvoir discuter.`,
       `Sur la récup : redescends en « modérée », respire profondément.`,
       `Si tu tiens une conversation pendant l’effort, c’est que tu ne pousses pas assez.`,
     ] },

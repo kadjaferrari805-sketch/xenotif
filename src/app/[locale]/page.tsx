@@ -33,19 +33,19 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       <FaqSchema />
       <AppRatingSchema />
       <Hero />
-      {/* Ce que tu obtiens — 3 cartes (façon Strava) */}
+      {/* Ce que tu obtiens - 3 cartes (façon Strava) */}
       <FeatureCards />
-      {/* Pourquoi Xenotif — 3 piliers de différenciation */}
+      {/* Pourquoi Xenotif - 3 piliers de différenciation */}
       <WhyXenotif />
-      {/* Bande vidéo pleine largeur — créative de marque « coureur » */}
+      {/* Bande vidéo pleine largeur - créative de marque « coureur » */}
       <VideoBand />
-      {/* Aperçu de l'espace membre — « dive into details » */}
+      {/* Aperçu de l'espace membre - « dive into details » */}
       <ExperiencePreview />
       {/* Abonnement */}
       <Pricing />
       {/* Preuve sociale */}
       <Reviews />
-      {/* Vitrine compacte — produits affiliés recommandés (bas de home) */}
+      {/* Vitrine compacte - produits affiliés recommandés (bas de home) */}
       <ProductShowcase section="recommended" products={recommended} dark />
       <FAQ />
       <Newsletter />

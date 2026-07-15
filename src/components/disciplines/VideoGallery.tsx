@@ -8,7 +8,7 @@ import { VideoCard } from './VideoCard'
 
 type Video = { youtubeIds: string[]; title: string; description: string; duration: string; level: string }
 
-// Gating DUR par vidéo : on n'embed (lecteur YouTube) que les vidéos autorisées —
+// Gating DUR par vidéo : on n'embed (lecteur YouTube) que les vidéos autorisées -
 // PRO/essai, ou vidéo `min_plan === 'free'`. Les autres → carte cadenassée SANS lecteur
 // (le contenu vidéo n'est pas dans le DOM → réellement non lisible).
 export function VideoGallery({ videos, videoMinPlans, accentColor }: { videos: Video[]; videoMinPlans: string[]; accentColor: string }) {

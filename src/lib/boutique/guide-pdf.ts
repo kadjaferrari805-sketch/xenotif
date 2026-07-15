@@ -75,9 +75,9 @@ interface Ctx {
 
 // Mention légale de couverture, localisée (fr par défaut).
 const COVER_NOTICE: Record<string, string> = {
-  fr: 'Guide officiel — © Xenotif® — Réservé à ton usage personnel.',
-  en: 'Official guide — © Xenotif® — For your personal use only.',
-  de: 'Offizieller Leitfaden — © Xenotif® — Nur für deinen persönlichen Gebrauch.',
+  fr: 'Guide officiel - © Xenotif® - Réservé à ton usage personnel.',
+  en: 'Official guide - © Xenotif® - For your personal use only.',
+  de: 'Offizieller Leitfaden - © Xenotif® - Nur für deinen persönlichen Gebrauch.',
 }
 
 const lh = (size: number) => size * 1.42

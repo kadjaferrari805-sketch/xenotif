@@ -1,19 +1,19 @@
 import type { Guide } from '@/lib/boutique/guides'
 
-// Masseaufbau-Programm — 12 Wochen (DE-Mirror von prise-de-masse-12s.ts).
+// Masseaufbau-Programm - 12 Wochen (DE-Mirror von prise-de-masse-12s.ts).
 // Gleiche Struktur; nur die Texte sind übersetzt. ≈ 30 Seiten.
 export const priseDeMasse12sDe: Guide = {
   id: 'd1',
-  title: 'Masseaufbau-Programm — 12 Wochen',
+  title: 'Masseaufbau-Programm - 12 Wochen',
   subtitle: '4-Tage-Split, geführte Lastprogression, Ernährungsplan + Makros',
-  author: 'XENOTIF Coach — Zertifiziertes Kraft- & Ernährungscoaching',
+  author: 'XENOTIF Coach - Zertifiziertes Kraft- & Ernährungscoaching',
   level: 'Anfänger - Fortgeschrittene',
   duration: '12 Wochen · 4 Einheiten/Woche · 84 Einheiten',
   coverImage: 'masse-cover.jpg',
   blocks: [
     { type: 'h1', text: 'Willkommen zu deinem Masseaufbau' },
-    { type: 'p', text: `12 Wochen, um deinen Körper umzubauen: mehr Muskeln, mehr Kraft, eine dichtere Silhouette. Kein „schmutziger" Masseaufbau, der dich nur aufschwemmt — hier baust du Qualitätsmuskeln über drei Hebel auf: einen leichten Kalorienüberschuss, progressive Überlastung im Training und sorgfältige Erholung.` },
-    { type: 'p', text: `Behalte diesen Leitfaden auf deinem Handy: Jede Übung hat einen QR-Code, der ihr Demovideo öffnet. Folge dem Plan, notiere deine Lasten, iss genug — und der Muskel folgt.` },
+    { type: 'p', text: `12 Wochen, um deinen Körper umzubauen: mehr Muskeln, mehr Kraft, eine dichtere Silhouette. Kein „schmutziger" Masseaufbau, der dich nur aufschwemmt - hier baust du Qualitätsmuskeln über drei Hebel auf: einen leichten Kalorienüberschuss, progressive Überlastung im Training und sorgfältige Erholung.` },
+    { type: 'p', text: `Behalte diesen Leitfaden auf deinem Handy: Jede Übung hat einen QR-Code, der ihr Demovideo öffnet. Folge dem Plan, notiere deine Lasten, iss genug - und der Muskel folgt.` },
     { type: 'meta', items: [
       { label: 'Ziel', value: '2 bis 5 kg Muskeln aufbauen' },
       { label: 'Niveau', value: 'Anfänger bis Fortgeschrittene' },
@@ -98,9 +98,9 @@ export const priseDeMasse12sDe: Guide = {
     { type: 'h2', text: 'Deine Makros verstehen' },
     { type: 'p', text: `Du musst nicht alles abwiegen, aber die Rolle jedes Makronährstoffs zu verstehen hilft dir, bessere Masseaufbau-Teller zusammenzustellen.` },
     { type: 'table', headers: ['Makro', 'Rolle', 'Pro g', 'Priorität bei Masse'], rows: [
-      ['Eiweiß', 'Baut Muskeln auf', '4 kcal', 'HOCH — 1,8-2,2 g/kg'],
-      ['Kohlenhydrate', 'Energie & Muskelvolumen', '4 kcal', 'HOCH — rund ums Training'],
-      ['Fette', 'Hormone (Testosteron)', '9 kcal', 'Moderat — 0,8-1 g/kg'],
+      ['Eiweiß', 'Baut Muskeln auf', '4 kcal', 'HOCH - 1,8-2,2 g/kg'],
+      ['Kohlenhydrate', 'Energie & Muskelvolumen', '4 kcal', 'HOCH - rund ums Training'],
+      ['Fette', 'Hormone (Testosteron)', '9 kcal', 'Moderat - 0,8-1 g/kg'],
     ] },
     { type: 'list', items: [
       `Eiweiß: der Baustein. Ohne ihn kein Aufbau, egal was sonst.`,
@@ -189,21 +189,21 @@ export const priseDeMasse12sDe: Guide = {
 
     { type: 'h1', text: '12-Wochen-Kalender' },
     { type: 'p', text: `Drei progressive Phasen. Behalte jede Woche denselben Oberkörper/Unterkörper-Split, aber entwickle Wiederholungen und Lasten je nach Phase.` },
-    { type: 'h2', text: 'Phase 1 — Anpassung & Volumen (W1 bis W4)' },
+    { type: 'h2', text: 'Phase 1 - Anpassung & Volumen (W1 bis W4)' },
     { type: 'table', headers: ['Woche', 'Wdh.', 'Intensität', 'Hinweis'], rows: [
       ['W1', '12 bis 15', 'RPE 7', 'Technik zuerst'],
       ['W2', '12 bis 15', 'RPE 7-8', '+1 Wdh. / Satz'],
       ['W3', '12 bis 15', 'RPE 8', '+ leichte Last'],
       ['W4', '12 bis 15', 'RPE 8', 'Schlag deine W1-Werte'],
     ] },
-    { type: 'h2', text: 'Phase 2 — Hypertrophie (W5 bis W8)' },
+    { type: 'h2', text: 'Phase 2 - Hypertrophie (W5 bis W8)' },
     { type: 'table', headers: ['Woche', 'Wdh.', 'Intensität', 'Hinweis'], rows: [
       ['W5', '8 bis 12', 'RPE 8', 'Lasten erhöhen'],
       ['W6', '8 bis 12', 'RPE 8', 'Leichter Deload am Wochenende'],
       ['W7', '8 bis 12', 'RPE 8-9', '+ Last'],
       ['W8', '8 bis 12', 'RPE 9', 'Sätze nah am Versagen'],
     ] },
-    { type: 'h2', text: 'Phase 3 — Kraft & Dichte (W9 bis W12)' },
+    { type: 'h2', text: 'Phase 3 - Kraft & Dichte (W9 bis W12)' },
     { type: 'table', headers: ['Woche', 'Wdh.', 'Intensität', 'Hinweis'], rows: [
       ['W9', '6 bis 8', 'RPE 8', 'Schwere Lasten, lange Pausen'],
       ['W10', '6 bis 8', 'RPE 8-9', '+ Last'],
@@ -283,7 +283,7 @@ export const priseDeMasse12sDe: Guide = {
     { type: 'h2', text: 'Ich bin Anfänger, ist dieses Programm für mich?' },
     { type: 'p', text: `Ja. Beginne leicht, um die Technik zu beherrschen (nutze bei Bedarf die Körpergewichtsvarianten), dann steigere die Last allmählich. Anfänger machen in den ersten Monaten sehr schnell Fortschritte.` },
     { type: 'h2', text: 'Werde ich Fett zunehmen?' },
-    { type: 'p', text: `Etwas — das ist normal und nötig, um Muskeln aufzubauen. Mit moderatem Überschuss (200-400 kcal) und viel Eiweiß bleibt die Zunahme überwiegend muskulär.` },
+    { type: 'p', text: `Etwas - das ist normal und nötig, um Muskeln aufzubauen. Mit moderatem Überschuss (200-400 kcal) und viel Eiweiß bleibt die Zunahme überwiegend muskulär.` },
     { type: 'h2', text: 'Kann ich es zu Hause machen?' },
     { type: 'p', text: `Ja, mit verstellbaren Kurzhanteln und einer Langhantel. Sonst ersetze durch die Körpergewichtsvarianten (Liegestütze mit Last, Ausfallschritte, Klimmzüge, Dips) und ziele auf sauberes Versagen.` },
     { type: 'h2', text: 'Brauche ich Nahrungsergänzung?' },
@@ -293,7 +293,7 @@ export const priseDeMasse12sDe: Guide = {
     { type: 'h2', text: 'Muss ich bis zum Versagen gehen?' },
     { type: 'p', text: `Nicht in jedem Satz: behalte in den meisten Sätzen 1 bis 2 Wiederholungen in Reserve (RPE 8). Hebe das Versagen für den letzten Satz einer Isolationsübung auf. Ständig bis zum Versagen zu gehen ermüdet das Nervensystem und bremst die Erholung.` },
     { type: 'h2', text: 'Was, wenn ich eine Einheit verpasse?' },
-    { type: 'p', text: `Mach einfach bei der nächsten geplanten Einheit weiter, versuche nicht, alles nachzuholen. Über 12 Wochen ändert eine verpasste Einheit nichts — das Aufgeben schon.` },
+    { type: 'p', text: `Mach einfach bei der nächsten geplanten Einheit weiter, versuche nicht, alles nachzuholen. Über 12 Wochen ändert eine verpasste Einheit nichts - das Aufgeben schon.` },
     { type: 'h2', text: 'Ich bin „Hardgainer", ich nehme nicht zu. Was tun?' },
     { type: 'p', text: `In 95 % der Fälle isst du weniger, als du denkst. Erhöhe die Portionen, ergänze einen flüssigen Shake zwischen den Mahlzeiten und wiege dich: bewegt sich die Waage über 2 Wochen nicht, füge 200 kcal hinzu.` },
 
@@ -302,7 +302,7 @@ export const priseDeMasse12sDe: Guide = {
     { type: 'list', items: [
       `Ziele auf 7 bis 9 h Schlaf: der Großteil der Muskelerholung findet nachts statt.`,
       `Geh zu regelmäßigen Zeiten ins Bett; schalte Bildschirme 30 Min. vorher aus.`,
-      `Chronischer Stress hebt das Cortisol, das den Muskelaufbau bremst — lerne abzuschalten.`,
+      `Chronischer Stress hebt das Cortisol, das den Muskelaufbau bremst - lerne abzuschalten.`,
       `Vermeide übermäßigen Alkohol: er stört Schlaf und Proteinsynthese.`,
       `Hol dir morgens Tageslicht, um deine innere Uhr zu stellen.`,
     ] },
@@ -329,7 +329,7 @@ export const priseDeMasse12sDe: Guide = {
     ] },
 
     { type: 'h1', text: 'Nahrungsergänzung' },
-    { type: 'p', text: `Keine ist Pflicht — die Ernährung kommt zuerst. Aber einige Mittel haben echten, wissenschaftlich belegten Wert.` },
+    { type: 'p', text: `Keine ist Pflicht - die Ernährung kommt zuerst. Aber einige Mittel haben echten, wissenschaftlich belegten Wert.` },
     { type: 'table', headers: ['Ergänzung', 'Nutzen', 'Dosis'], rows: [
       ['Kreatin-Monohydrat', 'Kraft, Volumen, am besten untersucht', '3 bis 5 g / Tag'],
       ['Whey', 'Eiweiß leicht erreichen', '1 bis 2 Portionen / Tag'],
@@ -340,13 +340,13 @@ export const priseDeMasse12sDe: Guide = {
 
     { type: 'h1', text: 'Und nach deinen 12 Wochen?' },
     { type: 'p', text: `Du hast Muskeln aufgebaut: jetzt geht es darum, sie zu erhalten und weiter Fortschritte zu machen. Zwei Optionen je nach Ziel.` },
-    { type: 'h2', text: 'Option 1 — Den Muskel zeigen (Definition)' },
+    { type: 'h2', text: 'Option 1 - Den Muskel zeigen (Definition)' },
     { type: 'list', items: [
       `Wechsle in ein leichtes Defizit (−300 bis −500 kcal), um das in der Masse aufgebaute Fett zu schmelzen.`,
       `Halte Eiweiß hoch und das Krafttraining, um den Muskel zu bewahren.`,
       `Mach mit dem Abnehm-Programm weiter, um deine Definition zu zeigen.`,
     ] },
-    { type: 'h2', text: 'Option 2 — Weiter aufbauen' },
+    { type: 'h2', text: 'Option 2 - Weiter aufbauen' },
     { type: 'list', items: [
       `Mach eine Deload-Woche, dann starte einen neuen Zyklus mit schwereren Lasten.`,
       `Wechsle einige Übungen, um die Reize zu variieren und Routine zu vermeiden.`,

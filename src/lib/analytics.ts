@@ -12,7 +12,7 @@ export function trackProductClick(product: Product, source = 'shop'): void {
   const price = product.price_cents / 100
   const w = window as unknown as { gtag?: Gtag }
 
-  // GA4 — événement e-commerce standard « select_item ».
+  // GA4 - événement e-commerce standard « select_item ».
   w.gtag?.('event', 'select_item', {
     item_list_name: source,
     items: [
@@ -38,7 +38,7 @@ export function trackProductClick(product: Product, source = 'shop'): void {
     })
   }
 
-  // Meta Pixel — intérêt produit.
+  // Meta Pixel - intérêt produit.
   trackMeta('ViewContent', {
     content_ids: [product.id],
     content_type: 'product',
@@ -74,7 +74,7 @@ export function trackPurchase(opts: {
     items: opts.items ?? [],
   })
 
-  // Google Ads — conversion dédiée, si l'ID (AW-…) et le label sont configurés
+  // Google Ads - conversion dédiée, si l'ID (AW-…) et le label sont configurés
   // en env (NEXT_PUBLIC_GOOGLE_ADS_ID + NEXT_PUBLIC_GOOGLE_ADS_PURCHASE_LABEL).
   // Complète l'import GA4→Ads pour un suivi de conversion direct.
   const adsId = process.env.NEXT_PUBLIC_GOOGLE_ADS_ID

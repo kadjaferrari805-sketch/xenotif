@@ -99,7 +99,7 @@ export function AppDownload({ triggerClassName, label, labelClassName, iconSize 
             <h2 className="text-xl font-black text-sport-fg mb-2">{t('title')}</h2>
             <p className="text-sport-gray text-sm leading-relaxed mb-6">{t('subtitle')}</p>
 
-            {/* QR code (statique) — à scanner avec le téléphone */}
+            {/* QR code (statique) - à scanner avec le téléphone */}
             <div className="mx-auto mb-3 w-44 h-44 rounded-2xl bg-white p-3">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src="/app-qr.svg" alt={t('qrAlt')} width={176} height={176} className="h-full w-full" />
@@ -121,10 +121,10 @@ export function AppDownload({ triggerClassName, label, labelClassName, iconSize 
             {/* Instructions par plateforme */}
             <div className="space-y-2 text-left rounded-2xl border border-sport-border bg-sport-dark/50 p-4">
               <p className="text-xs text-sport-gray leading-relaxed">
-                <span className="font-bold text-sport-fg">{t('iosTitle')}</span> — {t('iosStep')}
+                <span className="font-bold text-sport-fg">{t('iosTitle')}</span> - {t('iosStep')}
               </p>
               <p className="text-xs text-sport-gray leading-relaxed">
-                <span className="font-bold text-sport-fg">{t('androidTitle')}</span> — {t('androidStep')}
+                <span className="font-bold text-sport-fg">{t('androidTitle')}</span> - {t('androidStep')}
               </p>
             </div>
           </div>

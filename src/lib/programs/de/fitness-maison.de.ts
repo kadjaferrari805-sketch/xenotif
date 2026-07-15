@@ -2,18 +2,18 @@ import type { Guide } from '@/lib/boutique/guides'
 
 const D = 'https://xenotif.com/disciplines'
 
-// fitness-maison — Heim-Fitness-Programm ohne Geräte (DE-Mirror von fitness-maison.ts). Premium-Vorlage XENOTIF® (≈30 Seiten).
+// fitness-maison - Heim-Fitness-Programm ohne Geräte (DE-Mirror von fitness-maison.ts). Premium-Vorlage XENOTIF® (≈30 Seiten).
 export const fitnessMaisonDe: Guide = {
   id: 'fitness-maison',
   title: 'Heim-Fitness-Programm',
-  subtitle: '8 Wochen, 100 % Körpergewicht, keine Ausrüstung nötig — wo immer du bist',
-  author: 'XENOTIF Coach — Athletiktraining zertifiziert',
+  subtitle: '8 Wochen, 100 % Körpergewicht, keine Ausrüstung nötig - wo immer du bist',
+  author: 'XENOTIF Coach - Athletiktraining zertifiziert',
   level: 'Anfänger - Mittel',
   duration: '8 Wochen · 4 Einheiten/Woche',
   coverImage: 'cover.jpg',
   blocks: [
     { type: 'h1', text: 'Dein Zuhause ist dein Fitnessstudio' },
-    { type: 'p', text: `Kein Studio, keine Geräte, keine Ausrede. Dieses 8-Wochen-Programm läuft komplett mit dem eigenen Körpergewicht, auf 2 m², zuhause oder unterwegs. Du straffst deinen Körper, baust funktionelle Kraft auf, verbrennst Fett und schaffst dir eine Routine, die hält — mit deinem Körper als einziger Ausrüstung.` },
+    { type: 'p', text: `Kein Studio, keine Geräte, keine Ausrede. Dieses 8-Wochen-Programm läuft komplett mit dem eigenen Körpergewicht, auf 2 m², zuhause oder unterwegs. Du straffst deinen Körper, baust funktionelle Kraft auf, verbrennst Fett und schaffst dir eine Routine, die hält - mit deinem Körper als einziger Ausrüstung.` },
     { type: 'p', text: `Jede Übung hat einen QR-Code zu ihrem Demovideo auf XENOTIF®. Bei Unsicherheit einfach scannen.` },
     { type: 'meta', items: [
       { label: 'Ziel', value: 'Straffen, verbrennen, kräftigen' },
@@ -25,10 +25,10 @@ export const fitnessMaisonDe: Guide = {
     ] },
     { type: 'h2', text: 'Programmziele' },
     { type: 'list', items: [
-      `Den ganzen Körper straffen und kräftigen — ganz ohne Geräte.`,
+      `Den ganzen Körper straffen und kräftigen - ganz ohne Geräte.`,
       `Fett verbrennen mit kurzen, intensiven Zirkeln.`,
       `Funktionelle Kraft, Beweglichkeit und Ausdauer verbessern.`,
-      `Eine Routine aufbauen, die du überall durchhältst — ganz ohne Zwang.`,
+      `Eine Routine aufbauen, die du überall durchhältst - ganz ohne Zwang.`,
     ] },
     { type: 'h2', text: 'So nutzt du diesen Leitfaden' },
     { type: 'list', items: [
@@ -38,7 +38,7 @@ export const fitnessMaisonDe: Guide = {
       `Steigere dich, indem du zu den angegebenen schwereren Varianten wechselst.`,
       `Zieh jeden Sonntag Bilanz (Tracking + Checkliste).`,
     ] },
-    { type: 'note', text: `Goldene Regel für Körpergewichtstraining: Ohne Zusatzgewichte steigerst du dich über die Schwierigkeit der Variante, das Tempo, die Anzahl der Wiederholungen und die Dichte (weniger Pause). Fortschritt ist also durchaus möglich — du musst ihn nur gezielt herbeiführen.` },
+    { type: 'note', text: `Goldene Regel für Körpergewichtstraining: Ohne Zusatzgewichte steigerst du dich über die Schwierigkeit der Variante, das Tempo, die Anzahl der Wiederholungen und die Dichte (weniger Pause). Fortschritt ist also durchaus möglich - du musst ihn nur gezielt herbeiführen.` },
 
     { type: 'h1', text: 'So funktioniert es' },
     { type: 'list', items: [
@@ -72,7 +72,7 @@ export const fitnessMaisonDe: Guide = {
 
     { type: 'photo', src: 'nutrition.jpg', caption: 'Der Erfolg entsteht auch auf dem Teller.' },
     { type: 'h1', text: 'Ernährung' },
-    { type: 'p', text: `Egal welches Ziel du hast (straffen, definieren, kräftigen) — die Basis bleibt gleich: genug Eiweiß, einfache Lebensmittel und eine zu deinem Ziel passende Kalorienzufuhr.` },
+    { type: 'p', text: `Egal welches Ziel du hast (straffen, definieren, kräftigen) - die Basis bleibt gleich: genug Eiweiß, einfache Lebensmittel und eine zu deinem Ziel passende Kalorienzufuhr.` },
     { type: 'meta', items: [
       { label: 'Zum Definieren', value: 'Leichtes Defizit (−300/−500 kcal)' },
       { label: 'Zum Kräftigen', value: 'Erhaltung bis leichter Überschuss' },
@@ -87,7 +87,7 @@ export const fitnessMaisonDe: Guide = {
     ] },
     { type: 'h2', text: 'Deine Makros verstehen' },
     { type: 'table', headers: ['Makro', 'Rolle', 'Pro g', 'Priorität'], rows: [
-      ['Eiweiß', 'Muskeln & Sättigung', '4 kcal', 'HOCH — 1,6-2 g/kg'],
+      ['Eiweiß', 'Muskeln & Sättigung', '4 kcal', 'HOCH - 1,6-2 g/kg'],
       ['Kohlenhydrate', 'Energie', '4 kcal', 'Rund um die Einheiten'],
       ['Fette', 'Hormone, Gesundheit', '9 kcal', 'Moderat, Qualität'],
     ] },
@@ -137,10 +137,10 @@ export const fitnessMaisonDe: Guide = {
     { type: 'table', headers: ['Tag', 'Einheit', 'Dauer'], rows: [
       ['Montag', 'Kräftigung A (Unterkörper + Core)', '35 Min.'],
       ['Dienstag', 'HIIT-Zirkel', '25 Min.'],
-      ['Mittwoch', 'Pause / Gehen', '—'],
+      ['Mittwoch', 'Pause / Gehen', '-'],
       ['Donnerstag', 'Kräftigung B (Oberkörper + Core)', '35 Min.'],
       ['Freitag', 'Ganzkörper-Cardio-Zirkel', '30 Min.'],
-      ['Wochenende', 'Aktive Pause + Tracking', '—'],
+      ['Wochenende', 'Aktive Pause + Tracking', '-'],
     ] },
 
     { type: 'h2', text: 'Tag für Tag im Detail (Wochen 1 bis 4)' },
@@ -156,7 +156,7 @@ export const fitnessMaisonDe: Guide = {
     ] },
 
     { type: 'h1', text: 'Deine Einheiten im Detail' },
-    { type: 'h2', text: 'Kräftigung A — Unterkörper & Core' },
+    { type: 'h2', text: 'Kräftigung A - Unterkörper & Core' },
     { type: 'table', headers: ['Übung', 'Sätze', 'Wiederholungen', 'Pause'], rows: [
       ['Kniebeugen', '4', '15 bis 20', '45 s'],
       ['Abwechselnde Ausfallschritte', '3', '12 / Bein', '45 s'],
@@ -164,7 +164,7 @@ export const fitnessMaisonDe: Guide = {
       ['Wandsitz', '3', '40 s', '40 s'],
       ['Plank', '3', '40 s', '40 s'],
     ] },
-    { type: 'h2', text: 'Kräftigung B — Oberkörper & Core' },
+    { type: 'h2', text: 'Kräftigung B - Oberkörper & Core' },
     { type: 'table', headers: ['Übung', 'Sätze', 'Wiederholungen', 'Pause'], rows: [
       ['Liegestütze (passende Variante)', '4', 'Saubere Maximalzahl', '45 s'],
       ['Stuhl-Dips', '3', '12', '45 s'],
@@ -202,7 +202,7 @@ export const fitnessMaisonDe: Guide = {
     { type: 'exercise', name: 'Einbeiniges Hüftheben', muscles: 'Gesäß, Beinbeuger, Core', level: 'Mittel', video: `${D}/musculation`, technique: `Klassisches Hüftheben, aber ein Bein gestreckt in der Luft. Durch die Ferse am Boden drücken, das Becken sauber waagerecht anheben, Gesäß anspannen. Bein wechseln.`, mistakes: `Verdrehtes Becken, Hohlkreuz im unteren Rücken, kurzer Bewegungsumfang.` },
 
     { type: 'h1', text: 'Cardio, Gehen & NEAT' },
-    { type: 'p', text: `Über die Einheiten hinaus macht deine tägliche Aktivität (NEAT) einen riesigen Unterschied beim Energieverbrauch und Fettabbau — ohne zu ermüden und ohne Geräte.` },
+    { type: 'p', text: `Über die Einheiten hinaus macht deine tägliche Aktivität (NEAT) einen riesigen Unterschied beim Energieverbrauch und Fettabbau - ohne zu ermüden und ohne Geräte.` },
     { type: 'list', items: [
       `Ziele auf 8 000 bis 10 000 Schritte am Tag: Gehen, Treppen, Wege zu Fuß.`,
       `2 bis 3 zügige Spaziergänge à 30 Min. pro Woche, idealerweise an Ruhetagen.`,
@@ -249,7 +249,7 @@ export const fitnessMaisonDe: Guide = {
     ] },
 
     { type: 'h1', text: 'HIIT zuhause' },
-    { type: 'p', text: `HIIT ist dein bester Verbündeter, um Fett zu verbrennen — ohne Geräte und ohne viel Platz. Das Prinzip: kurze, intensive Belastungen, unterbrochen von Erholungsphasen.` },
+    { type: 'p', text: `HIIT ist dein bester Verbündeter, um Fett zu verbrennen - ohne Geräte und ohne viel Platz. Das Prinzip: kurze, intensive Belastungen, unterbrochen von Erholungsphasen.` },
     { type: 'list', items: [
       `Klassisches Format: 40 s Belastung / 20 s Pause, 4 bis 5 Übungen, 3 bis 5 Runden.`,
       `Während der Belastung solltest du keine Unterhaltung führen können.`,
@@ -259,7 +259,7 @@ export const fitnessMaisonDe: Guide = {
 
     { type: 'h1', text: 'Zu vermeidende Fehler' },
     { type: 'list', items: [
-      `Glauben, ohne Geräte gäbe es keinen Fortschritt: falsch — nutze die 5 Progressionshebel.`,
+      `Glauben, ohne Geräte gäbe es keinen Fortschritt: falsch - nutze die 5 Progressionshebel.`,
       `Die Technik vernachlässigen, um schneller zu sein: Qualität geht vor, gerade beim Körpergewichtstraining.`,
       `Nur Cardio machen: behalte 2 Kräftigungseinheiten pro Woche bei.`,
       `Das Aufwärmen auslassen, besonders vor Zirkeln mit Sprüngen.`,
@@ -300,7 +300,7 @@ export const fitnessMaisonDe: Guide = {
     { type: 'p', text: `Beides. Kräftigung erhält den Muskel, HIIT und Gehen erhöhen den Verbrauch. Und vor allem: die Ernährung. Das Programm kombiniert bereits alles.` },
 
     { type: 'h1', text: 'Sicherheit & Impact' },
-    { type: 'p', text: `Training zuhause ist sehr sicher. Hier ein paar Anhaltspunkte, um intensiv zu trainieren, ohne dich zu verletzen — auch auf hartem Boden oder in einer Wohnung.` },
+    { type: 'p', text: `Training zuhause ist sehr sicher. Hier ein paar Anhaltspunkte, um intensiv zu trainieren, ohne dich zu verletzen - auch auf hartem Boden oder in einer Wohnung.` },
     { type: 'list', items: [
       `Wärme dich immer auf, besonders vor Sprungbewegungen.`,
       `Weiche Landung auf dem Vorfuß, Knie gebeugt, bei jedem Sprung.`,
@@ -335,7 +335,7 @@ export const fitnessMaisonDe: Guide = {
     { type: 'list', items: [
       `Leistung: mehr Wiederholungen, schwerere Varianten, längerer Plank, weniger Pause.`,
       `Fotos: gleiches Licht, gleicher Winkel, gleiche Uhrzeit, alle 4 Wochen.`,
-      `Maße: Taillenumfang, Hüfte, Oberschenkel, Arme — oft aussagekräftiger als das Gewicht.`,
+      `Maße: Taillenumfang, Hüfte, Oberschenkel, Arme - oft aussagekräftiger als das Gewicht.`,
       `Gefühl: Energie, Schlaf, weiter sitzende Kleidung, verbesserte Haltung.`,
       `Wiege dich nur einmal pro Woche, nüchtern, am selben Tag: das Gewicht schwankt täglich.`,
     ] },
@@ -370,6 +370,6 @@ export const fitnessMaisonDe: Guide = {
       `Behalte deine „Plan B"-Heimroutine für Tage ohne Studio bei.`,
     ] },
 
-    { type: 'note', text: `8 Wochen ganz ohne Ausrede — das ist bereits ein Sieg. Mach erneut deine Maße und dein Foto, vergleiche mit deinem Ausgangspunkt und bleib am Ball. Erstelle dein Konto auf xenotif.com.` },
+    { type: 'note', text: `8 Wochen ganz ohne Ausrede - das ist bereits ein Sieg. Mach erneut deine Maße und dein Foto, vergleiche mit deinem Ausgangspunkt und bleib am Ball. Erstelle dein Konto auf xenotif.com.` },
   ],
 }

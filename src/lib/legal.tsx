@@ -48,7 +48,7 @@ const RELATED = {
 // ─── Contenu FR ──────────────────────────────────────────────
 const FR: Record<LegalSlug, { metaTitle: string; metaDescription: string; eyebrow: string; title: string; intro: string; sections: LegalSection[] }> = {
   privacy: {
-    metaTitle: 'Politique de confidentialité — Xenotif®',
+    metaTitle: 'Politique de confidentialité - Xenotif®',
     metaDescription: 'Politique de confidentialité et protection des données (RGPD) de Xenotif®.',
     eyebrow: 'RGPD',
     title: 'Politique de confidentialité',
@@ -60,7 +60,7 @@ const FR: Record<LegalSlug, { metaTitle: string; metaDescription: string; eyebro
       { id: 'utilisation', title: 'Utilisation des données', body: (
         <>
           <p className="mb-2">Vos données sont utilisées pour :</p>
-          <p>— gérer votre compte, votre abonnement et vos commandes ;<br />— vous envoyer nos programmes, conseils et défis hebdomadaires ;<br />— vous informer des nouveautés Xenotif®.</p>
+          <p>- gérer votre compte, votre abonnement et vos commandes ;<br />- vous envoyer nos programmes, conseils et défis hebdomadaires ;<br />- vous informer des nouveautés Xenotif®.</p>
           <p className="mt-3">Nous ne vendons ni ne partageons vos données avec des tiers à des fins commerciales.</p>
         </>
       )},
@@ -79,14 +79,14 @@ const FR: Record<LegalSlug, { metaTitle: string; metaDescription: string; eyebro
     ],
   },
   legal: {
-    metaTitle: 'Mentions légales — Xenotif®',
+    metaTitle: 'Mentions légales - Xenotif®',
     metaDescription: 'Mentions légales de la plateforme sportive Xenotif®.',
     eyebrow: 'Légal',
     title: 'Mentions légales',
     intro: 'Informations relatives à l’éditeur et à l’hébergeur du site xenotif.com.',
     sections: [
       { id: 'editeur', title: 'Éditeur du site', body: (
-        <p><strong className="text-sport-fg">Xenotif LTD</strong> — société à responsabilité limitée (private limited company) immatriculée en Angleterre et au Pays de Galles.<br />Numéro de société (Companies House) : 17013934<br />Siège social : 20 Wenlock Road, Londres N1 7GU, Royaume-Uni<br />Directeur de la publication : Dave Ferrari<br />Email : {mail}<br />Site : <a href="https://xenotif.com" className={LINK} target="_blank" rel="noopener noreferrer">xenotif.com</a></p>
+        <p><strong className="text-sport-fg">Xenotif LTD</strong> - société à responsabilité limitée (private limited company) immatriculée en Angleterre et au Pays de Galles.<br />Numéro de société (Companies House) : 17013934<br />Siège social : 20 Wenlock Road, Londres N1 7GU, Royaume-Uni<br />Directeur de la publication : Dave Ferrari<br />Email : {mail}<br />Site : <a href="https://xenotif.com" className={LINK} target="_blank" rel="noopener noreferrer">xenotif.com</a></p>
       )},
       { id: 'hebergement', title: 'Hébergement', body: (
         <p><strong className="text-sport-fg">Vercel Inc.</strong><br />440 N Barranca Ave #4133, Covina, CA 91723, USA<br /><a href="https://vercel.com" className={LINK} target="_blank" rel="noopener noreferrer">vercel.com</a></p>
@@ -103,7 +103,7 @@ const FR: Record<LegalSlug, { metaTitle: string; metaDescription: string; eyebro
     ],
   },
   terms: {
-    metaTitle: 'Conditions générales de vente — Xenotif®',
+    metaTitle: 'Conditions générales de vente - Xenotif®',
     metaDescription: 'Conditions générales de vente des abonnements et produits Xenotif® (abonnements, guides digitaux, produits physiques).',
     eyebrow: 'CGV',
     title: 'Conditions générales de vente',
@@ -118,7 +118,7 @@ const FR: Record<LegalSlug, { metaTitle: string; metaDescription: string; eyebro
       { id: 'produits', title: '3. Produits et services', body: (
         <>
           <p className="mb-2">Xenotif® propose :</p>
-          <p>— des <strong className="text-sport-fg">abonnements</strong> donnant accès aux programmes, au coaching IA et au suivi (Plan Pro), facturés mensuellement ou annuellement ;<br />— des <strong className="text-sport-fg">guides et programmes digitaux</strong> (PDF), à accès immédiat après paiement ;<br />— des <strong className="text-sport-fg">produits physiques</strong> (équipement, accessoires).</p>
+          <p>- des <strong className="text-sport-fg">abonnements</strong> donnant accès aux programmes, au coaching IA et au suivi (Plan Pro), facturés mensuellement ou annuellement ;<br />- des <strong className="text-sport-fg">guides et programmes digitaux</strong> (PDF), à accès immédiat après paiement ;<br />- des <strong className="text-sport-fg">produits physiques</strong> (équipement, accessoires).</p>
         </>
       )},
       { id: 'prix', title: '4. Prix', body: (
@@ -169,19 +169,19 @@ const FR: Record<LegalSlug, { metaTitle: string; metaDescription: string; eyebro
 // ─── Contenu EN ──────────────────────────────────────────────
 const EN: Record<LegalSlug, { metaTitle: string; metaDescription: string; eyebrow: string; title: string; intro: string; sections: LegalSection[] }> = {
   privacy: {
-    metaTitle: 'Privacy Policy — Xenotif®',
+    metaTitle: 'Privacy Policy - Xenotif®',
     metaDescription: 'Xenotif® privacy policy and data protection (GDPR).',
     eyebrow: 'GDPR',
     title: 'Privacy Policy',
     intro: 'Xenotif® is committed to protecting your personal data and respecting your privacy.',
     sections: [
       { id: 'donnees', title: 'Data we collect', body: (
-        <p>We collect your email address when you sign up (newsletter or account), along with the information needed to manage your subscription and orders (name, email, and the training history you enter). No payment data is stored on our servers — payments are handled by Stripe.</p>
+        <p>We collect your email address when you sign up (newsletter or account), along with the information needed to manage your subscription and orders (name, email, and the training history you enter). No payment data is stored on our servers - payments are handled by Stripe.</p>
       )},
       { id: 'utilisation', title: 'How we use your data', body: (
         <>
           <p className="mb-2">Your data is used to:</p>
-          <p>— manage your account, subscription and orders;<br />— send you our weekly programs, tips and challenges;<br />— keep you informed about Xenotif® news.</p>
+          <p>- manage your account, subscription and orders;<br />- send you our weekly programs, tips and challenges;<br />- keep you informed about Xenotif® news.</p>
           <p className="mt-3">We never sell or share your data with third parties for commercial purposes.</p>
         </>
       )},
@@ -200,14 +200,14 @@ const EN: Record<LegalSlug, { metaTitle: string; metaDescription: string; eyebro
     ],
   },
   legal: {
-    metaTitle: 'Legal Notice — Xenotif®',
+    metaTitle: 'Legal Notice - Xenotif®',
     metaDescription: 'Legal notice for the Xenotif® sports platform.',
     eyebrow: 'Legal',
     title: 'Legal Notice',
     intro: 'Information about the publisher and host of the xenotif.com website.',
     sections: [
       { id: 'editeur', title: 'Site publisher', body: (
-        <p><strong className="text-sport-fg">Xenotif LTD</strong> — a private limited company registered in England and Wales.<br />Company number (Companies House): 17013934<br />Registered office: 20 Wenlock Road, London N1 7GU, United Kingdom<br />Publication director: Dave Ferrari<br />Email: {mail}<br />Site: <a href="https://xenotif.com" className={LINK} target="_blank" rel="noopener noreferrer">xenotif.com</a></p>
+        <p><strong className="text-sport-fg">Xenotif LTD</strong> - a private limited company registered in England and Wales.<br />Company number (Companies House): 17013934<br />Registered office: 20 Wenlock Road, London N1 7GU, United Kingdom<br />Publication director: Dave Ferrari<br />Email: {mail}<br />Site: <a href="https://xenotif.com" className={LINK} target="_blank" rel="noopener noreferrer">xenotif.com</a></p>
       )},
       { id: 'hebergement', title: 'Hosting', body: (
         <p><strong className="text-sport-fg">Vercel Inc.</strong><br />440 N Barranca Ave #4133, Covina, CA 91723, USA<br /><a href="https://vercel.com" className={LINK} target="_blank" rel="noopener noreferrer">vercel.com</a></p>
@@ -224,7 +224,7 @@ const EN: Record<LegalSlug, { metaTitle: string; metaDescription: string; eyebro
     ],
   },
   terms: {
-    metaTitle: 'Terms of Sale — Xenotif®',
+    metaTitle: 'Terms of Sale - Xenotif®',
     metaDescription: 'Terms of sale for Xenotif® subscriptions and products (subscriptions, digital guides, physical products).',
     eyebrow: 'Terms of Sale',
     title: 'Terms of Sale',
@@ -239,7 +239,7 @@ const EN: Record<LegalSlug, { metaTitle: string; metaDescription: string; eyebro
       { id: 'produits', title: '3. Products and services', body: (
         <>
           <p className="mb-2">Xenotif® offers:</p>
-          <p>— <strong className="text-sport-fg">subscriptions</strong> giving access to programs, AI coaching and tracking (Pro plan), billed monthly or annually;<br />— <strong className="text-sport-fg">digital guides and programs</strong> (PDF), available immediately after payment;<br />— <strong className="text-sport-fg">physical products</strong> (equipment, accessories).</p>
+          <p>- <strong className="text-sport-fg">subscriptions</strong> giving access to programs, AI coaching and tracking (Pro plan), billed monthly or annually;<br />- <strong className="text-sport-fg">digital guides and programs</strong> (PDF), available immediately after payment;<br />- <strong className="text-sport-fg">physical products</strong> (equipment, accessories).</p>
         </>
       )},
       { id: 'prix', title: '4. Prices', body: (
@@ -268,7 +268,7 @@ const EN: Record<LegalSlug, { metaTitle: string; metaDescription: string; eyebro
         <>
           <p>Beyond your legal rights, Xenotif® offers a <strong className="text-sport-fg">30-day commercial &quot;money-back&quot; guarantee</strong> on subscription (Pro) and digital guides.</p>
           <p className="mt-3">If you&apos;re not satisfied, simply email us at {mail} within 30 days of your payment (for a subscription: your first payment). We refund you <strong className="text-sport-fg">in full</strong>, no questions asked. The refund is issued within 14 days, using the same payment method.</p>
-          <p className="mt-3">This commercial guarantee is in addition to the legal guarantees and right of withdrawal — it does not replace them.</p>
+          <p className="mt-3">This commercial guarantee is in addition to the legal guarantees and right of withdrawal - it does not replace them.</p>
         </>
       )},
       { id: 'garanties', title: '11. Legal guarantees', body: (
@@ -290,7 +290,7 @@ const EN: Record<LegalSlug, { metaTitle: string; metaDescription: string; eyebro
 // ─── Contenu DE ──────────────────────────────────────────────
 const DE: Record<LegalSlug, { metaTitle: string; metaDescription: string; eyebrow: string; title: string; intro: string; sections: LegalSection[] }> = {
   privacy: {
-    metaTitle: 'Datenschutzerklärung — Xenotif®',
+    metaTitle: 'Datenschutzerklärung - Xenotif®',
     metaDescription: 'Datenschutzerklärung und Datenschutz (DSGVO) von Xenotif®.',
     eyebrow: 'DSGVO',
     title: 'Datenschutzerklärung',
@@ -302,7 +302,7 @@ const DE: Record<LegalSlug, { metaTitle: string; metaDescription: string; eyebro
       { id: 'utilisation', title: 'Verwendung der Daten', body: (
         <>
           <p className="mb-2">Deine Daten werden verwendet, um:</p>
-          <p>— dein Konto, dein Abonnement und deine Bestellungen zu verwalten;<br />— dir unsere wöchentlichen Programme, Tipps und Challenges zu senden;<br />— dich über Neuigkeiten von Xenotif® zu informieren.</p>
+          <p>- dein Konto, dein Abonnement und deine Bestellungen zu verwalten;<br />- dir unsere wöchentlichen Programme, Tipps und Challenges zu senden;<br />- dich über Neuigkeiten von Xenotif® zu informieren.</p>
           <p className="mt-3">Wir verkaufen oder teilen deine Daten niemals zu kommerziellen Zwecken mit Dritten.</p>
         </>
       )},
@@ -321,14 +321,14 @@ const DE: Record<LegalSlug, { metaTitle: string; metaDescription: string; eyebro
     ],
   },
   legal: {
-    metaTitle: 'Impressum — Xenotif®',
+    metaTitle: 'Impressum - Xenotif®',
     metaDescription: 'Impressum der Sportplattform Xenotif®.',
     eyebrow: 'Rechtliches',
     title: 'Impressum',
     intro: 'Informationen über den Betreiber und den Hoster der Website xenotif.com.',
     sections: [
       { id: 'editeur', title: 'Betreiber der Website', body: (
-        <p><strong className="text-sport-fg">Xenotif LTD</strong> — eine in England und Wales eingetragene Gesellschaft mit beschränkter Haftung (private limited company).<br />Handelsregisternummer (Companies House): 17013934<br />Eingetragener Sitz: 20 Wenlock Road, London N1 7GU, Vereinigtes Königreich<br />Verantwortlich für den Inhalt: Dave Ferrari<br />E-Mail: {mail}<br />Website: <a href="https://xenotif.com" className={LINK} target="_blank" rel="noopener noreferrer">xenotif.com</a></p>
+        <p><strong className="text-sport-fg">Xenotif LTD</strong> - eine in England und Wales eingetragene Gesellschaft mit beschränkter Haftung (private limited company).<br />Handelsregisternummer (Companies House): 17013934<br />Eingetragener Sitz: 20 Wenlock Road, London N1 7GU, Vereinigtes Königreich<br />Verantwortlich für den Inhalt: Dave Ferrari<br />E-Mail: {mail}<br />Website: <a href="https://xenotif.com" className={LINK} target="_blank" rel="noopener noreferrer">xenotif.com</a></p>
       )},
       { id: 'hebergement', title: 'Hosting', body: (
         <p><strong className="text-sport-fg">Vercel Inc.</strong><br />440 N Barranca Ave #4133, Covina, CA 91723, USA<br /><a href="https://vercel.com" className={LINK} target="_blank" rel="noopener noreferrer">vercel.com</a></p>
@@ -345,7 +345,7 @@ const DE: Record<LegalSlug, { metaTitle: string; metaDescription: string; eyebro
     ],
   },
   terms: {
-    metaTitle: 'Allgemeine Geschäftsbedingungen — Xenotif®',
+    metaTitle: 'Allgemeine Geschäftsbedingungen - Xenotif®',
     metaDescription: 'Allgemeine Geschäftsbedingungen für Abonnements und Produkte von Xenotif® (Abonnements, digitale Guides, physische Produkte).',
     eyebrow: 'AGB',
     title: 'Allgemeine Geschäftsbedingungen',
@@ -360,7 +360,7 @@ const DE: Record<LegalSlug, { metaTitle: string; metaDescription: string; eyebro
       { id: 'produits', title: '3. Produkte und Dienstleistungen', body: (
         <>
           <p className="mb-2">Xenotif® bietet:</p>
-          <p>— <strong className="text-sport-fg">Abonnements</strong>, die Zugang zu Programmen, KI-Coaching und Tracking bieten (Pro-Plan), monatlich oder jährlich abgerechnet;<br />— <strong className="text-sport-fg">digitale Guides und Programme</strong> (PDF), sofort nach Zahlung verfügbar;<br />— <strong className="text-sport-fg">physische Produkte</strong> (Ausrüstung, Zubehör).</p>
+          <p>- <strong className="text-sport-fg">Abonnements</strong>, die Zugang zu Programmen, KI-Coaching und Tracking bieten (Pro-Plan), monatlich oder jährlich abgerechnet;<br />- <strong className="text-sport-fg">digitale Guides und Programme</strong> (PDF), sofort nach Zahlung verfügbar;<br />- <strong className="text-sport-fg">physische Produkte</strong> (Ausrüstung, Zubehör).</p>
         </>
       )},
       { id: 'prix', title: '4. Preise', body: (
@@ -389,7 +389,7 @@ const DE: Record<LegalSlug, { metaTitle: string; metaDescription: string; eyebro
         <>
           <p>Über deine gesetzlichen Rechte hinaus bietet dir Xenotif® eine <strong className="text-sport-fg">30-tägige kommerzielle „Geld-zurück“-Garantie</strong> auf das Abonnement (Pro) und die digitalen Guides.</p>
           <p className="mt-3">Wenn du nicht zufrieden bist, schreib uns innerhalb von 30 Tagen nach deiner Zahlung einfach an {mail} (bei einem Abonnement: deine erste Zahlung). Wir erstatten dir <strong className="text-sport-fg">den vollen Betrag</strong>, ohne Nachfragen. Die Erstattung erfolgt innerhalb von 14 Tagen über dasselbe Zahlungsmittel.</p>
-          <p className="mt-3">Diese kommerzielle Garantie besteht zusätzlich zu den gesetzlichen Gewährleistungen und dem Widerrufsrecht — sie ersetzt sie nicht.</p>
+          <p className="mt-3">Diese kommerzielle Garantie besteht zusätzlich zu den gesetzlichen Gewährleistungen und dem Widerrufsrecht - sie ersetzt sie nicht.</p>
         </>
       )},
       { id: 'garanties', title: '11. Gesetzliche Gewährleistung', body: (

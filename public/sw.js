@@ -1,4 +1,4 @@
-// Service worker minimal — rend Xenotif installable en PWA (critère Chrome :
+// Service worker minimal - rend Xenotif installable en PWA (critère Chrome :
 // un SW avec un gestionnaire `fetch`). Aucune mise en cache : on laisse le
 // réseau gérer chaque requête → jamais de contenu obsolète (le site est SSG,
 // mis à jour au déploiement).

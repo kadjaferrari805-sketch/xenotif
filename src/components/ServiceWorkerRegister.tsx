@@ -2,7 +2,7 @@
 
 import { useEffect } from 'react'
 
-// Enregistre le service worker (PWA installable). Rendu nul — monté dans le layout.
+// Enregistre le service worker (PWA installable). Rendu nul - monté dans le layout.
 export function ServiceWorkerRegister() {
   useEffect(() => {
     if (typeof navigator !== 'undefined' && 'serviceWorker' in navigator) {

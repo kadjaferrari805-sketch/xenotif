@@ -27,14 +27,14 @@ export function VideoCard({ youtubeIds, title, description, duration, level, acc
   const fallbackThumb = `https://img.youtube.com/vi/${currentId}/hqdefault.jpg`
 
   // Réinitialise l'erreur d'image quand la vidéo active change
-  // (ajustement d'état pendant le rendu — pattern React recommandé, pas d'effet).
+  // (ajustement d'état pendant le rendu - pattern React recommandé, pas d'effet).
   const [prevIdx, setPrevIdx] = useState(currentIdx)
   if (prevIdx !== currentIdx) {
     setPrevIdx(currentIdx)
     setImgError(false)
   }
 
-  // Listen for YouTube IFrame API errors — auto-switch to next backup ID
+  // Listen for YouTube IFrame API errors - auto-switch to next backup ID
   useEffect(() => {
     if (!playing) return
 
@@ -51,7 +51,7 @@ export function VideoCard({ youtubeIds, title, description, duration, level, acc
             setAllFailed(true)                 // all IDs exhausted
           }
         }
-      } catch { /* non-YouTube postMessage — ignore */ }
+      } catch { /* non-YouTube postMessage - ignore */ }
     }
 
     window.addEventListener('message', onYTMessage)

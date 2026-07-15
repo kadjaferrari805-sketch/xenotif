@@ -39,7 +39,7 @@ export function AdBanner({
           className={`object-cover brightness-110 ${imgClass}`}
         />
 
-        {/* Dégradé bas (texte lisible) — allégé pour une image nette et claire. */}
+        {/* Dégradé bas (texte lisible) - allégé pour une image nette et claire. */}
         <div aria-hidden="true" className="absolute inset-0 z-[1] bg-gradient-to-t from-black/60 via-black/12 to-transparent" />
         {/* Renfort léger à gauche (desktop, texte aligné à gauche) */}
         <div aria-hidden="true" className="absolute inset-0 z-[1] hidden md:block bg-gradient-to-r from-black/45 via-black/8 to-transparent" />

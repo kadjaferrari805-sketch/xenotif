@@ -12,7 +12,7 @@ import {
 
 type State = 'loading' | 'unsupported' | 'on' | 'off' | 'denied'
 
-// Carte d'activation des notifications Web Push (PWA) — sur cet appareil/navigateur.
+// Carte d'activation des notifications Web Push (PWA) - sur cet appareil/navigateur.
 export function PushToggle() {
   const t = useTranslations('dashboard.notifications.push')
   const [state, setState] = useState<State>('loading')

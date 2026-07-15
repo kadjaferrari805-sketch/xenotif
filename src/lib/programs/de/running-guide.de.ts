@@ -1,18 +1,18 @@
 import type { Guide } from '@/lib/boutique/guides'
 
-// d4 — Lauf-Guide: vom 5K zum Marathon (DE-Mirror von running-guide.ts).
+// d4 - Lauf-Guide: vom 5K zum Marathon (DE-Mirror von running-guide.ts).
 // 5K/10K/Halb/Marathon-Pläne, Lauf-Ernährung, Verletzungsprävention, Wettkampf-Mentalität.
 export const runningGuideDe: Guide = {
   id: 'd4',
-  title: 'Lauf-Guide — Vom 5K zum Marathon',
+  title: 'Lauf-Guide - Vom 5K zum Marathon',
   subtitle: '5K / 10K / Halb / Marathon-Pläne, Lauf-Ernährung, Verletzungsprävention, Mentalität',
-  author: 'XENOTIF Coach — Zertifizierter Lauftrainer',
+  author: 'XENOTIF Coach - Zertifizierter Lauftrainer',
   level: 'Anfänger → Erfahren',
   duration: '4 Pläne · 5K bis Marathon',
   coverImage: 'run-cover.jpg',
   blocks: [
     { type: 'h1', text: 'Willkommen, Läufer' },
-    { type: 'p', text: `Ob du deine ersten 5 km laufen oder einen Marathon bezwingen willst — dieser Leitfaden begleitet dich den ganzen Weg. Er vereint 4 vollständige Trainingspläne (5K, 10K, Halbmarathon, Marathon), die Wissenschaft der Tempos, die Lauf-Ernährung, die Verletzungsprävention, das Krafttraining des Läufers und die Wettkampf-Mentalität.` },
+    { type: 'p', text: `Ob du deine ersten 5 km laufen oder einen Marathon bezwingen willst - dieser Leitfaden begleitet dich den ganzen Weg. Er vereint 4 vollständige Trainingspläne (5K, 10K, Halbmarathon, Marathon), die Wissenschaft der Tempos, die Lauf-Ernährung, die Verletzungsprävention, das Krafttraining des Läufers und die Wettkampf-Mentalität.` },
     { type: 'p', text: `Lies zuerst die Kapitel über Tempos und Technik: sie machen den Unterschied bei deinem Fortschritt und deiner Verletzungsprävention. Jede Kraftübung hat einen QR-Code zu ihrem Demovideo.` },
     { type: 'meta', items: [
       { label: 'Ziel', value: '5K bis Marathon laufen' },
@@ -361,7 +361,7 @@ export const runningGuideDe: Guide = {
     { type: 'note', text: `Trainiere deinen Kopf im Training: lange Läufe und das Ende von Intervallen sind der ideale Ort, um deine Mantras und das Segmentieren zu üben. Am Renntag ist es nur eine Gewohnheit mehr.` },
 
     { type: 'h1', text: 'Essenzielle Ausrüstung' },
-    { type: 'p', text: `Gute Nachricht: Laufen ist günstig. Abgesehen von den Schuhen (eigenes Kapitel) hier die nützliche Ausrüstung, nach Priorität sortiert — investiere nicht alles auf einmal.` },
+    { type: 'p', text: `Gute Nachricht: Laufen ist günstig. Abgesehen von den Schuhen (eigenes Kapitel) hier die nützliche Ausrüstung, nach Priorität sortiert - investiere nicht alles auf einmal.` },
     { type: 'table', headers: ['Ausrüstung', 'Priorität', 'Wozu'], rows: [
       ['Passende Schuhe', 'Unverzichtbar', 'Komfort und Verletzungsprävention'],
       ['Technische Socken', 'Unverzichtbar', 'Schweiß ableiten, Blasen vermeiden'],
@@ -384,7 +384,7 @@ export const runningGuideDe: Guide = {
     { type: 'h2', text: 'Wie lange vor einem Marathon?' },
     { type: 'p', text: `Wenn du bereits ~1 h bequem läufst, reichen 12 Wochen. Sonst mach erst die 10K- und Halb-Pläne, bevor du den Marathon angehst.` },
     { type: 'h2', text: 'Was tun bei Schmerzen?' },
-    { type: 'p', text: `Ein vorübergehendes Muskelproblem: anpassen. Ein Gelenkschmerz oder einer, der anhält: ruhe dich aus und lass dich beraten. „Drück" nie durch echten Schmerz — das ist der garantierte Stopp.` },
+    { type: 'p', text: `Ein vorübergehendes Muskelproblem: anpassen. Ein Gelenkschmerz oder einer, der anhält: ruhe dich aus und lass dich beraten. „Drück" nie durch echten Schmerz - das ist der garantierte Stopp.` },
     { type: 'h2', text: 'Muss ich Krafttraining machen?' },
     { type: 'p', text: `Ja, 1-2×/Woche. Das macht dich schneller UND widerstandsfähiger gegen Verletzungen. Krafttraining ist für dauerhaften Fortschritt nicht optional.` },
     { type: 'h2', text: 'Laufband oder draußen?' },

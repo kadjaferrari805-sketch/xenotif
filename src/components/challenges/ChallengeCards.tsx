@@ -50,7 +50,7 @@ export function ChallengeCards() {
           <Link
             href={c.href}
             className="mt-auto inline-flex items-center gap-2 text-sport-orange text-sm font-bold group-hover:gap-3 transition-all"
-            aria-label={`${t('startChallenge')} — ${items[i].title}`}
+            aria-label={`${t('startChallenge')} - ${items[i].title}`}
           >
             <Target size={14} aria-hidden="true" /> {t('startChallenge')} <ArrowRight size={14} aria-hidden="true" />
           </Link>

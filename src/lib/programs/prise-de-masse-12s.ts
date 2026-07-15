@@ -2,21 +2,21 @@ import type { Guide } from '@/lib/boutique/guides'
 
 const D = 'https://xenotif.com/disciplines'
 
-// Programme Prise de Masse — 12 semaines (FR). Gabarit premium XENOTIF® :
+// Programme Prise de Masse - 12 semaines (FR). Gabarit premium XENOTIF® :
 // couverture photo, photos de section, QR vidéo par exercice, plan nutrition,
 // calendrier, séances détaillées, suivi. ≈ 30 pages.
 export const priseDeMasse12s: Guide = {
   id: 'd1',
-  title: 'Programme Prise de Masse — 12 Semaines',
+  title: 'Programme Prise de Masse - 12 Semaines',
   subtitle: 'Split 4 jours/semaine, progression de charge guidée, plan nutrition + macros',
-  author: 'XENOTIF Coach — Préparation physique & nutrition certifiées',
+  author: 'XENOTIF Coach - Préparation physique & nutrition certifiées',
   level: 'Débutant - Intermédiaire',
   duration: '12 semaines · 4 séances/sem · 84 séances',
   coverImage: 'masse-cover.jpg',
   blocks: [
     { type: 'h1', text: 'Bienvenue dans ta prise de masse' },
-    { type: 'p', text: `12 semaines pour transformer ton physique : plus de muscle, plus de force, une silhouette plus dense. Pas de prise de masse « sale » qui te fait gonfler de gras — ici, on construit du muscle de qualité grâce à trois leviers : un léger surplus calorique, une surcharge progressive à l’entraînement, et une récupération soignée.` },
-    { type: 'p', text: `Garde ce guide sur ton téléphone : chaque exercice a un QR code qui ouvre sa vidéo de démonstration sur XENOTIF®. Suis le plan, note tes charges, mange suffisamment — et le muscle suivra.` },
+    { type: 'p', text: `12 semaines pour transformer ton physique : plus de muscle, plus de force, une silhouette plus dense. Pas de prise de masse « sale » qui te fait gonfler de gras - ici, on construit du muscle de qualité grâce à trois leviers : un léger surplus calorique, une surcharge progressive à l’entraînement, et une récupération soignée.` },
+    { type: 'p', text: `Garde ce guide sur ton téléphone : chaque exercice a un QR code qui ouvre sa vidéo de démonstration sur XENOTIF®. Suis le plan, note tes charges, mange suffisamment - et le muscle suivra.` },
     { type: 'meta', items: [
       { label: 'Objectif', value: 'Prendre 2 à 5 kg de muscle' },
       { label: 'Niveau', value: 'Débutant à intermédiaire' },
@@ -101,9 +101,9 @@ export const priseDeMasse12s: Guide = {
     { type: 'h2', text: 'Comprendre tes macros' },
     { type: 'p', text: `Tu n’as pas besoin de tout peser, mais comprendre le rôle de chaque macronutriment t’aide à composer de meilleures assiettes de prise de masse.` },
     { type: 'table', headers: ['Macro', 'Rôle', 'Par g', 'Priorité en masse'], rows: [
-      ['Protéines', 'Construisent le muscle', '4 kcal', 'HAUTE — 1,8-2,2 g/kg'],
-      ['Glucides', 'Énergie & volume musculaire', '4 kcal', 'HAUTE — autour des séances'],
-      ['Lipides', 'Hormones (testostérone)', '9 kcal', 'Modérée — 0,8-1 g/kg'],
+      ['Protéines', 'Construisent le muscle', '4 kcal', 'HAUTE - 1,8-2,2 g/kg'],
+      ['Glucides', 'Énergie & volume musculaire', '4 kcal', 'HAUTE - autour des séances'],
+      ['Lipides', 'Hormones (testostérone)', '9 kcal', 'Modérée - 0,8-1 g/kg'],
     ] },
     { type: 'list', items: [
       `Protéines : la brique. Sans elles, pas de construction, peu importe le reste.`,
@@ -192,21 +192,21 @@ export const priseDeMasse12s: Guide = {
 
     { type: 'h1', text: 'Calendrier des 12 semaines' },
     { type: 'p', text: `Trois phases progressives. Garde le même split Haut/Bas chaque semaine, mais fais évoluer répétitions et charges selon la phase.` },
-    { type: 'h2', text: 'Phase 1 — Adaptation & volume (S1 à S4)' },
+    { type: 'h2', text: 'Phase 1 - Adaptation & volume (S1 à S4)' },
     { type: 'table', headers: ['Semaine', 'Répétitions', 'Intensité', 'Note'], rows: [
       ['S1', '12 à 15', 'RPE 7', 'Technique avant tout'],
       ['S2', '12 à 15', 'RPE 7-8', '+1 rep / série'],
       ['S3', '12 à 15', 'RPE 8', '+ charge légère'],
       ['S4', '12 à 15', 'RPE 8', 'Bats tes perfs S1'],
     ] },
-    { type: 'h2', text: 'Phase 2 — Hypertrophie (S5 à S8)' },
+    { type: 'h2', text: 'Phase 2 - Hypertrophie (S5 à S8)' },
     { type: 'table', headers: ['Semaine', 'Répétitions', 'Intensité', 'Note'], rows: [
       ['S5', '8 à 12', 'RPE 8', 'Augmente les charges'],
       ['S6', '8 à 12', 'RPE 8', 'Deload léger en fin de semaine'],
       ['S7', '8 à 12', 'RPE 8-9', '+ charge'],
       ['S8', '8 à 12', 'RPE 9', 'Séries au plus proche de l’échec'],
     ] },
-    { type: 'h2', text: 'Phase 3 — Force & densité (S9 à S12)' },
+    { type: 'h2', text: 'Phase 3 - Force & densité (S9 à S12)' },
     { type: 'table', headers: ['Semaine', 'Répétitions', 'Intensité', 'Note'], rows: [
       ['S9', '6 à 8', 'RPE 8', 'Charges lourdes, repos longs'],
       ['S10', '6 à 8', 'RPE 8-9', '+ charge'],
@@ -296,7 +296,7 @@ export const priseDeMasse12s: Guide = {
     { type: 'h2', text: 'Faut-il aller jusqu’à l’échec ?' },
     { type: 'p', text: `Pas à chaque série : garde 1 à 2 répétitions en réserve sur la plupart des séries (RPE 8). Réserve l’échec à la dernière série d’un exercice d’isolation. Aller systématiquement à l’échec fatigue le système nerveux et freine la récupération.` },
     { type: 'h2', text: 'Que faire si je rate une séance ?' },
-    { type: 'p', text: `Reprends simplement à la séance suivante du planning, ne tente pas de tout rattraper. Sur 12 semaines, une séance manquée ne change rien — l’abandon, si.` },
+    { type: 'p', text: `Reprends simplement à la séance suivante du planning, ne tente pas de tout rattraper. Sur 12 semaines, une séance manquée ne change rien - l’abandon, si.` },
     { type: 'h2', text: 'Je suis « hardgainer », je ne prends pas. Que faire ?' },
     { type: 'p', text: `Dans 95 % des cas, tu manges moins que tu ne crois. Augmente les portions, ajoute un shake liquide entre les repas, et pèse-toi : si le poids ne monte pas sur 2 semaines, ajoute 200 kcal.` },
 
@@ -305,7 +305,7 @@ export const priseDeMasse12s: Guide = {
     { type: 'list', items: [
       `Vise 7 à 9 h de sommeil : la majorité de la récupération musculaire a lieu la nuit.`,
       `Couche-toi à heure régulière ; coupe les écrans 30 min avant.`,
-      `Le stress chronique élève le cortisol, qui freine la prise de muscle — apprends à décompresser.`,
+      `Le stress chronique élève le cortisol, qui freine la prise de muscle - apprends à décompresser.`,
       `Évite l’excès d’alcool : il perturbe le sommeil et la synthèse protéique.`,
       `Expose-toi à la lumière du jour le matin pour caler ton horloge interne.`,
     ] },
@@ -332,7 +332,7 @@ export const priseDeMasse12s: Guide = {
     ] },
 
     { type: 'h1', text: 'Compléments alimentaires' },
-    { type: 'p', text: `Aucun n’est obligatoire — l’alimentation passe avant tout. Mais quelques compléments ont un réel intérêt, prouvé par la science.` },
+    { type: 'p', text: `Aucun n’est obligatoire - l’alimentation passe avant tout. Mais quelques compléments ont un réel intérêt, prouvé par la science.` },
     { type: 'table', headers: ['Complément', 'Intérêt', 'Dose'], rows: [
       ['Créatine monohydrate', 'Force, volume, le + étudié', '3 à 5 g / jour'],
       ['Whey', 'Atteindre ses protéines facilement', '1 à 2 doses / jour'],
@@ -343,13 +343,13 @@ export const priseDeMasse12s: Guide = {
 
     { type: 'h1', text: 'Et après tes 12 semaines ?' },
     { type: 'p', text: `Tu as construit du muscle : il s’agit maintenant de le conserver et de continuer à progresser. Deux options selon ton objectif.` },
-    { type: 'h2', text: 'Option 1 — Révéler le muscle (sèche)' },
+    { type: 'h2', text: 'Option 1 - Révéler le muscle (sèche)' },
     { type: 'list', items: [
       `Passe en léger déficit (−300 à −500 kcal) pour faire fondre le gras pris pendant la masse.`,
       `Garde les protéines hautes et l’entraînement en force pour conserver le muscle.`,
       `Enchaîne avec le programme Perte de Poids pour révéler ta définition.`,
     ] },
-    { type: 'h2', text: 'Option 2 — Continuer à construire' },
+    { type: 'h2', text: 'Option 2 - Continuer à construire' },
     { type: 'list', items: [
       `Fais une semaine de deload, puis relance un cycle avec des charges plus lourdes.`,
       `Change quelques exercices pour varier les stimuli et éviter la routine.`,

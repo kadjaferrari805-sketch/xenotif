@@ -1,18 +1,18 @@
 import type { Guide } from '@/lib/boutique/guides'
 
-// d3 — HIIT Fettverbrennungs-Programm 6 Wochen (DE-Mirror von hiit-6s.ts).
+// d3 - HIIT Fettverbrennungs-Programm 6 Wochen (DE-Mirror von hiit-6s.ts).
 // 24 Einheiten à 20-30 Min., 100% Körpergewicht, ohne Ausrüstung, 3 Level, Timer, Video-QR.
 export const hiit6sDe: Guide = {
   id: 'd3',
-  title: 'HIIT Fettverbrennungs-Programm — 6 Wochen',
+  title: 'HIIT Fettverbrennungs-Programm - 6 Wochen',
   subtitle: '24 Einheiten à 20-30 Min., 100% Körpergewicht, ganz ohne Ausrüstung',
-  author: 'XENOTIF Coach — CrossFit & Athletiktraining zertifiziert',
+  author: 'XENOTIF Coach - CrossFit & Athletiktraining zertifiziert',
   level: 'Anfänger → Fortgeschritten',
   duration: '6 Wochen · 24 Einheiten · 20-30 Min.',
   coverImage: 'hiit-cover.jpg',
   blocks: [
     { type: 'h1', text: 'Verbrenne das Maximum in der kürzesten Zeit' },
-    { type: 'p', text: `In 6 Wochen verwandelt dieses Programm deine Fitness und lässt Fett schmelzen — ohne Studio, ohne Ausrüstung, wo immer du bist, in kurzen, aber intensiven Einheiten von 20 bis 30 Minuten. Du findest darin die 24 detaillierten Einheiten mit ihren Timern, die Technik jeder Bewegung und drei Level, um vom Anfänger zum Fortgeschrittenen zu kommen.` },
+    { type: 'p', text: `In 6 Wochen verwandelt dieses Programm deine Fitness und lässt Fett schmelzen - ohne Studio, ohne Ausrüstung, wo immer du bist, in kurzen, aber intensiven Einheiten von 20 bis 30 Minuten. Du findest darin die 24 detaillierten Einheiten mit ihren Timern, die Technik jeder Bewegung und drei Level, um vom Anfänger zum Fortgeschrittenen zu kommen.` },
     { type: 'p', text: `Jede Übung hat einen QR-Code zu ihrem Demovideo. Behalte den Leitfaden auf deinem Handy und starte deinen Timer: los geht's.` },
     { type: 'meta', items: [
       { label: 'Ziel', value: 'Fett verbrennen, Ausdauer aufbauen' },
@@ -31,7 +31,7 @@ export const hiit6sDe: Guide = {
     ] },
     { type: 'h2', text: 'So nutzt du diesen Leitfaden' },
     { type: 'list', items: [
-      `Wähle dein Level (Anfänger / Mittel / Fortgeschritten) — siehe eigenes Kapitel.`,
+      `Wähle dein Level (Anfänger / Mittel / Fortgeschritten) - siehe eigenes Kapitel.`,
       `Folge den 24 Einheiten der Reihe nach (4 pro Woche).`,
       `Starte einen Intervall-Timer (Belastung / Erholung) für jede Einheit.`,
       `Scanne den QR-Code einer Übung, um die Technik zu sehen.`,
@@ -72,42 +72,42 @@ export const hiit6sDe: Guide = {
     ] },
 
     { type: 'chapter', title: 'Die 24 Einheiten', src: 'hiit-cover.jpg', intro: `Hier sind deine 24 Einheiten (4 pro Woche). Wende DEIN Belastungs-/Erholungsverhältnis an (Level-Kapitel). Jede Zeile = ein Block, der für die Rundenzahl deines Levels wiederholt wird. Wärme dich vorher auf, dehne dich danach.` },
-    { type: 'h2', text: 'Woche 1 — Anpassung' },
+    { type: 'h2', text: 'Woche 1 - Anpassung' },
     { type: 'table', headers: ['Einheit', 'Blöcke', 'Dauer'], rows: [
       ['E1 · Ganzkörper', 'Kniebeugen · Knie-Liegestütze · Mountain Climbers · Plank', '20 Min.'],
       ['E2 · Cardio', 'Hampelmänner · High Knees · Anfersen · Ausfallschritte', '20 Min.'],
       ['E3 · Unten + Core', 'Kniebeugen · Ausfallschritte · Hüftheben · Side-Plank', '20 Min.'],
       ['E4 · Oben + Core', 'Liegestütze · Stuhl-Dips · Pike-Liegestütze · Plank', '20 Min.'],
     ] },
-    { type: 'h2', text: 'Woche 2 — Volumen' },
+    { type: 'h2', text: 'Woche 2 - Volumen' },
     { type: 'table', headers: ['Einheit', 'Blöcke', 'Dauer'], rows: [
       ['E5 · Ganzkörper', 'Sprungkniebeugen · Liegestütze · Mountain Climbers · Burpees', '22 Min.'],
       ['E6 · Cardio', 'Hampelmänner · High Knees · Skaters · Anfersen', '22 Min.'],
       ['E7 · Unten + Core', 'Sprung-Ausfallschritte · Kniebeugen · Hüftheben · Beinheben', '22 Min.'],
       ['E8 · Oben + Core', 'Liegestütze · Dips · Diamant-Liegestütze · Plank Up-Downs', '22 Min.'],
     ] },
-    { type: 'h2', text: 'Woche 3 — Intensität' },
+    { type: 'h2', text: 'Woche 3 - Intensität' },
     { type: 'table', headers: ['Einheit', 'Blöcke', 'Dauer'], rows: [
       ['E9 · Ganzkörper', 'Burpees · Sprungkniebeugen · Mountain Climbers · Liegestütze', '25 Min.'],
       ['E10 · Cardio', 'High Knees · Skaters · Hampelmänner · Sprint auf der Stelle', '25 Min.'],
       ['E11 · Unten + Core', 'Sprung-Ausfallschritte · Kniebeugen · Einbeiniges Hüftheben · Plank', '25 Min.'],
       ['E12 · Oben + Core', 'Decline-Liegestütze · Dips · Pike-Liegestütze · Mountain Climbers', '25 Min.'],
     ] },
-    { type: 'h2', text: 'Woche 4 — Zirkel' },
+    { type: 'h2', text: 'Woche 4 - Zirkel' },
     { type: 'table', headers: ['Einheit', 'Blöcke', 'Dauer'], rows: [
       ['E13 · Ganzkörper', 'Burpees · Sprung-Ausfallschritte · Liegestütze · Plank Up-Downs', '25 Min.'],
       ['E14 · Cardio', 'Sprint auf der Stelle · Skaters · Hampelmänner · High Knees', '25 Min.'],
       ['E15 · Unten + Core', 'Sprungkniebeugen · Ausfallschritte · Hüftheben · Beinheben', '25 Min.'],
       ['E16 · Oben + Core', 'Liegestütze · Diamant-Liegestütze · Dips · Side-Plank', '25 Min.'],
     ] },
-    { type: 'h2', text: 'Woche 5 — Spitze' },
+    { type: 'h2', text: 'Woche 5 - Spitze' },
     { type: 'table', headers: ['Einheit', 'Blöcke', 'Dauer'], rows: [
       ['E17 · Ganzkörper', 'Burpees · Sprungkniebeugen · Liegestütze · Mountain Climbers', '28 Min.'],
       ['E18 · Cardio', 'Sprint auf der Stelle · High Knees · Skaters · Hampelmänner', '28 Min.'],
       ['E19 · Unten + Core', 'Sprung-Ausfallschritte · Kniebeugen · Einbeiniges Hüftheben · Plank', '28 Min.'],
       ['E20 · Oben + Core', 'Decline-Liegestütze · Diamant-Liegestütze · Dips · Plank Up-Downs', '28 Min.'],
     ] },
-    { type: 'h2', text: 'Woche 6 — Finish' },
+    { type: 'h2', text: 'Woche 6 - Finish' },
     { type: 'table', headers: ['Einheit', 'Blöcke', 'Dauer'], rows: [
       ['E21 · Ganzkörper', 'Burpees · Sprungkniebeugen · Liegestütze · Plank Up-Downs', '30 Min.'],
       ['E22 · Cardio max', 'Sprint auf der Stelle · Skaters · High Knees · Hampelmänner', '30 Min.'],
@@ -120,10 +120,10 @@ export const hiit6sDe: Guide = {
     { type: 'p', text: `Jede Einheit folgt derselben Struktur. Detailliertes Beispiel einer „Ganzkörper"-Einheit auf mittlerem Level (40 s Belastung / 20 s Erholung, 4 Runden):` },
     { type: 'table', headers: ['Phase', 'Inhalt', 'Dauer'], rows: [
       ['Aufwärmen', 'Leichtes Cardio + Mobilität + Aktivierung', '5 Min.'],
-      ['Block 1', 'Burpees — 40 s / 20 s × 4', '4 Min.'],
-      ['Block 2', 'Sprungkniebeugen — 40 s / 20 s × 4', '4 Min.'],
-      ['Block 3', 'Liegestütze — 40 s / 20 s × 4', '4 Min.'],
-      ['Block 4', 'Mountain Climbers — 40 s / 20 s × 4', '4 Min.'],
+      ['Block 1', 'Burpees - 40 s / 20 s × 4', '4 Min.'],
+      ['Block 2', 'Sprungkniebeugen - 40 s / 20 s × 4', '4 Min.'],
+      ['Block 3', 'Liegestütze - 40 s / 20 s × 4', '4 Min.'],
+      ['Block 4', 'Mountain Climbers - 40 s / 20 s × 4', '4 Min.'],
       ['Cool-down', 'Gehen + Dehnen', '5 Min.'],
     ] },
     { type: 'p', text: `Pause zwischen den Blöcken: 45 s (Mittel). Gesamt ≈ 26 Min. Passe Verhältnisse und Runden an DEIN Level an (Kapitel „Wähle dein Level").` },
@@ -171,7 +171,7 @@ export const hiit6sDe: Guide = {
       `Eine Eiweißquelle bei jeder Mahlzeit (bewahrt den Muskel).`,
       `Viel Gemüse für Volumen und Sättigung.`,
       `Kohlenhydrate rund um die HIIT-Einheit für Energie.`,
-      `Flüssigen Zucker und Alkohol streichen — der schnellste Sieg.`,
+      `Flüssigen Zucker und Alkohol streichen - der schnellste Sieg.`,
       `Trinke: HIIT lässt dich stark schwitzen.`,
     ] },
     { type: 'h2', text: '4 Express-Fettverbrennungsrezepte' },
@@ -193,7 +193,7 @@ export const hiit6sDe: Guide = {
     { type: 'p', text: `Schütteln. Praktisch direkt nach dem Training.` },
 
     { type: 'h1', text: 'Gehen & NEAT' },
-    { type: 'p', text: `Über die HIIT-Einheiten hinaus macht deine Alltagsaktivität (NEAT) einen großen Unterschied beim Verbrauch — ohne zu ermüden oder deine Erholung zu beeinträchtigen.` },
+    { type: 'p', text: `Über die HIIT-Einheiten hinaus macht deine Alltagsaktivität (NEAT) einen großen Unterschied beim Verbrauch - ohne zu ermüden oder deine Erholung zu beeinträchtigen.` },
     { type: 'list', items: [
       `Ziele auf 8 000 bis 10 000 Schritte/Tag: Treppen, Wege zu Fuß, ein Spaziergang nach den Mahlzeiten.`,
       `An Tagen ohne HIIT mach 30 Min. zügiges Gehen.`,
@@ -282,7 +282,7 @@ export const hiit6sDe: Guide = {
       ['Maximal', 'Sehr hart', 'Sprechen unmöglich', 'Sprints, Finisher'],
     ] },
     { type: 'list', items: [
-      `In der Belastung: ziele auf „hoch bis maximal" — du solltest nicht plaudern können.`,
+      `In der Belastung: ziele auf „hoch bis maximal" - du solltest nicht plaudern können.`,
       `In der Erholung: komm runter auf „moderat", atme tief.`,
       `Wenn du während der Belastung eine Unterhaltung führen kannst, gibst du nicht genug.`,
     ] },

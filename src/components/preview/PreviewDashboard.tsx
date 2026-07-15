@@ -29,7 +29,7 @@ export function PreviewDashboard() {
   ]
   return (
     <div className="min-h-screen bg-sport-dark text-sport-fg">
-      {/* Bannière aperçu — le lien retour était en absolute left-6 avec le texte
+      {/* Bannière aperçu - le lien retour était en absolute left-6 avec le texte
           centré sur toute la largeur : sur mobile les deux se chevauchaient.
           Sous sm : ligne unique, lien retour à gauche / badge à droite (justify-between).
           Texte plus petit + whitespace-nowrap sous sm : à 12px les deux blocs

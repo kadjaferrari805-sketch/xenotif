@@ -6,7 +6,7 @@ import { useTranslations } from 'next-intl'
 const INPUT = 'w-full bg-sport-dark border border-sport-border rounded-xl px-4 py-3 text-sport-fg focus:border-sport-orange outline-none transition-colors'
 const ACT_FACTORS = [1.2, 1.375, 1.55, 1.725, 1.9]
 
-// Calculateur de besoin calorique (TDEE) — formule Mifflin-St Jeor, calcul live.
+// Calculateur de besoin calorique (TDEE) - formule Mifflin-St Jeor, calcul live.
 export function CaloriesCalc() {
   const t = useTranslations('outils')
   const [sex, setSex] = useState<'male' | 'female'>('male')

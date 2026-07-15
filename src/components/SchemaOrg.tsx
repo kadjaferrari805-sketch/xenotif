@@ -1,4 +1,4 @@
-// Server-safe JSON-LD schema components — no hooks, pure rendering
+// Server-safe JSON-LD schema components - no hooks, pure rendering
 
 export function OrganizationSchema() {
   const schema = {
@@ -13,7 +13,7 @@ export function OrganizationSchema() {
       height: 512,
     },
     description:
-      'La plateforme fitness premium — 10 disciplines, coaching IA personnalisé, 300+ séances. Rejoins 12 000+ athlètes qui transforment leur corps avec Xenotif®.',
+      'La plateforme fitness premium - 10 disciplines, coaching IA personnalisé, 300+ séances. Rejoins 12 000+ athlètes qui transforment leur corps avec Xenotif®.',
     sameAs: [
       'https://www.instagram.com/xenotif',
       'https://www.youtube.com/@xenotif',
