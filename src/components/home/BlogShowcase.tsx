@@ -15,10 +15,10 @@ import type { BlogPost } from '@/lib/blog/posts'
 // triés par date) arrivent en props depuis la page serveur.
 const CATEGORY_COLORS: Record<string, string> = {
   Musculation: 'bg-sport-orange/10 text-sport-orange border-sport-orange/20',
-  Nutrition: 'bg-green-500/10 text-[#1E7F5A] border-green-500/20',
-  Running: 'bg-blue-500/10 text-blue-400 border-blue-500/20',
-  HIIT: 'bg-red-500/10 text-red-400 border-red-500/20',
-  Récupération: 'bg-purple-500/10 text-purple-400 border-purple-500/20',
+  Nutrition: 'bg-green-50 text-[#1E7F5A] border-green-200',
+  Running: 'bg-blue-50 text-blue-600 border-blue-200',
+  HIIT: 'bg-red-50 text-red-600 border-red-200',
+  Récupération: 'bg-purple-50 text-purple-600 border-purple-200',
   Matériel: 'bg-sport-lime/10 text-sport-lime border-sport-lime/20',
 }
 
@@ -47,7 +47,7 @@ export function BlogShowcase({ posts }: { posts: BlogPost[] }) {
                 <Tilt3D max={12} className="relative rounded-2xl h-full">
                   <Link
                     href={`/blog/${post.slug}`}
-                    className="group flex h-full flex-col overflow-hidden rounded-2xl border border-sport-border bg-sport-card transition-all duration-300 hover:border-sport-orange/30 hover:shadow-xl hover:shadow-sport-orange/5"
+                    className="group flex h-full flex-col overflow-hidden card-base transition-all duration-300 hover:border-sport-orange/30 hover:shadow-xl hover:shadow-sport-orange/5"
                   >
                     <div className="relative h-44 overflow-hidden">
                       <Image
@@ -58,7 +58,7 @@ export function BlogShowcase({ posts }: { posts: BlogPost[] }) {
                         style={{ objectPosition: post.coverPosition }}
                         className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                       />
-                      <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-sport-dark/80 via-transparent to-transparent" />
+                      <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
                       <span className={`absolute top-3 left-3 text-[11px] font-bold px-2.5 py-1 rounded-full border ${colorClass}`}>
                         {tb(`categories.${post.category}`)}
                       </span>

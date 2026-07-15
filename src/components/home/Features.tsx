@@ -26,7 +26,7 @@ const ICON_MAP: Record<string, React.ReactNode> = {
 }
 
 const ACCENT: Record<string, { icon: string; tag: string; glow: string; border: string }> = {
-  orange: { icon: 'text-sport-orange bg-sport-orange/15 border-sport-orange/25', tag: 'bg-sport-orange text-sport-fg',         glow: 'hover:shadow-sport-orange/20', border: 'hover:border-sport-orange/50' },
+  orange: { icon: 'text-sport-orange bg-sport-orange/15 border-sport-orange/25', tag: 'bg-sport-orange text-white',         glow: 'hover:shadow-sport-orange/20', border: 'hover:border-sport-orange/50' },
   blue:   { icon: 'text-sport-blue bg-sport-blue/15 border-sport-blue/25',       tag: 'bg-sport-blue text-sport-fg',           glow: 'hover:shadow-sport-blue/20',   border: 'hover:border-sport-blue/50' },
   lime:   { icon: 'text-sport-lime bg-sport-lime/15 border-sport-lime/25',        tag: 'bg-sport-lime text-[#0A0B0F]',       glow: 'hover:shadow-sport-lime/15',   border: 'hover:border-sport-lime/50' },
 }
@@ -111,7 +111,7 @@ export function Features() {
                     className="object-cover group-hover:scale-108 transition-transform duration-700 ease-out"
                   />
                   {/* Dark gradient */}
-                  <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-sport-dark via-sport-dark/30 to-transparent" />
+                  <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent" />
                   {/* Top label */}
                   <div className="absolute top-3 right-3">
                     <span className={`text-[10px] font-bold px-2.5 py-1 rounded-full ${accent.tag}`}>

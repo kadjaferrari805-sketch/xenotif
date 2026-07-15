@@ -12,7 +12,7 @@ import { Carousel } from '@/components/ui/Carousel'
 // Style structurel par niveau (emoji, couleurs, largeur de barre). Les textes
 // (label, desc, detail) viennent de messages → home.intensity.levels.
 const LEVEL_STYLE = [
-  { id: 'debutant',      emoji: '🌱', border: 'border-emerald-500/30',  text: 'text-[#1E7F5A]', bar: 'bg-emerald-500',  width: '25%' },
+  { id: 'debutant',      emoji: '🌱', border: 'border-emerald-200',  text: 'text-[#1E7F5A]', bar: 'bg-emerald-500',  width: '25%' },
   { id: 'intermediaire', emoji: '⚡', border: 'border-sport-blue/30',   text: 'text-sport-blue',  bar: 'bg-sport-blue',   width: '55%' },
   { id: 'avance',        emoji: '🔥', border: 'border-sport-orange/30', text: 'text-sport-orange', bar: 'bg-sport-orange', width: '80%' },
   { id: 'elite',         emoji: '🏆', border: 'border-sport-lime/30',   text: 'text-sport-lime',  bar: 'bg-sport-lime',   width: '100%' },

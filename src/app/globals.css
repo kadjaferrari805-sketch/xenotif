@@ -5,46 +5,38 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
 
-  /* Xenotif Sport Palette - sport-dark/card/border/gray/fg sont réactifs au
-     thème (valeurs définies plus bas, en clair et en sombre). Les couleurs de
-     marque (orange/blue/lime) restent fixes dans les deux thèmes. */
+  /* Xenotif Premium Palette - thème clair unique (refonte identité visuelle).
+     Blanc dominant, noir structurant, orange accent unique. sport-dark/card
+     sont désormais tous deux blancs (page vs surface de carte, distingués
+     par l'ombre, pas par la couleur) ; sport-border/gray/fg sont les gris
+     structurels de la nouvelle palette. */
   --color-sport-dark: var(--val-sport-dark);
   --color-sport-card: var(--val-sport-card);
   --color-sport-border: var(--val-sport-border);
-  --color-sport-orange: #FF4500;
-  --color-sport-blue: #2563EB;
-  --color-sport-lime: #A3FF00;
+  --color-sport-orange: #FF6A00;
+  /* sport-blue/sport-lime : dépréciés (palette officielle n'a plus de place
+     pour un 2e/3e accent) - repointés vers les gris/noir de la nouvelle
+     identité plutôt que réécrits sur ~54 fichiers appelants. */
+  --color-sport-blue: var(--val-sport-blue);
+  --color-sport-lime: var(--val-sport-lime);
   --color-sport-gray: var(--val-sport-gray);
   --color-sport-titane: var(--val-sport-gray);
-  /* Texte/halo « premier plan » : blanc en sombre, quasi-noir en clair. */
   --color-sport-fg: var(--val-sport-fg);
+  --color-sport-gray-light: #F5F5F5;
+  /* Footer : toujours noir, indépendant de la page (jamais réactif). */
+  --color-footer-bg: #0F0F0F;
 }
 
-:root,
-[data-theme="dark"] {
-  --background: #0A0B0F;
-  --foreground: #ffffff;
-  --val-sport-dark: #0A0B0F;
-  --val-sport-card: #0F1117;
-  --val-sport-border: #1E2028;
-  --val-sport-gray: #9CA3AF;
-  --val-sport-fg: #ffffff;
-}
-
-/* Thème clair : plusieurs allers-retours incrémentaux (#F1F2F4/#FFFFFF puis
-   #E2E3E7/#F7F8FA) restaient jugés "encore trop blancs" - palette assombrie
-   plus franchement cette fois plutôt qu'un nouvel ajustement marginal. Page
-   #D8DADE (gris net, plus de ~89% de luminosité comme avant), carte #EEF0F2
-   (delta ~24/255 conservé avec la page pour garder la hiérarchie carte >
-   page qui faisait défaut dans le couple E2E3E7/EDEEF1 jugé "fade"). */
-[data-theme="light"] {
-  --background: #D8DADE;
-  --foreground: #0A0B0F;
-  --val-sport-dark: #D8DADE;
-  --val-sport-card: #EEF0F2;
-  --val-sport-border: #C5C8CD;
-  --val-sport-gray: #24262B;
-  --val-sport-fg: #0A0B0F;
+:root {
+  --background: #FFFFFF;
+  --foreground: #0F0F0F;
+  --val-sport-dark: #FFFFFF;
+  --val-sport-card: #FFFFFF;
+  --val-sport-border: #D9D9D9;
+  --val-sport-gray: #2A2A2A;
+  --val-sport-fg: #0F0F0F;
+  --val-sport-blue: #2A2A2A;
+  --val-sport-lime: #0F0F0F;
 }
 
 @layer base {
@@ -70,7 +62,7 @@
     left: 1rem;
     z-index: 100;
     padding: 0.75rem 1.5rem;
-    background: #FF4500;
+    background: #FF6A00;
     color: #ffffff;
     font-weight: 700;
     font-size: 0.875rem;
@@ -84,7 +76,7 @@
 
   /* Global focus-visible for keyboard navigation */
   :focus-visible {
-    outline: 2px solid #FF4500;
+    outline: 2px solid #FF6A00;
     outline-offset: 2px;
     border-radius: 4px;
   }
@@ -105,11 +97,15 @@
     @apply text-sm text-center leading-relaxed;
     color: var(--color-sport-fg);
   }
+  /* Fond bouton = #C25100 (pas #FF6A00 direct) : blanc sur #FF6A00 ne passe pas
+     WCAG AA texte (2.87:1, sous le seuil 4.5:1) - #C25100 conserve la teinte
+     orange de marque tout en offrant 4.7:1 avec le texte blanc. #FF6A00 reste
+     la couleur d'accent pour les icônes/textes larges/badges. */
   .btn-primary {
-    @apply relative overflow-hidden inline-flex items-center justify-center gap-2 bg-sport-orange text-sport-fg px-6 py-3.5 rounded-full font-bold text-sm shadow-lg shadow-sport-orange/30 hover:bg-orange-600 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-sport-orange/40 active:translate-y-0 active:scale-95 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sport-orange/60 focus-visible:ring-offset-2 focus-visible:ring-offset-sport-dark;
+    @apply relative overflow-hidden inline-flex items-center justify-center gap-2 bg-[#C25100] text-white px-6 py-3.5 rounded-full font-bold text-sm shadow-lg shadow-sport-orange/30 hover:bg-[#A84600] hover:-translate-y-0.5 hover:shadow-xl hover:shadow-sport-orange/40 active:translate-y-0 active:scale-95 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sport-orange/60 focus-visible:ring-offset-2 focus-visible:ring-offset-sport-dark;
   }
   .btn-secondary {
-    @apply relative overflow-hidden inline-flex items-center justify-center gap-2 text-sport-fg border-2 border-sport-fg/30 px-6 py-3.5 rounded-full font-bold text-sm shadow-lg shadow-black/20 hover:border-sport-fg hover:bg-sport-fg/10 hover:-translate-y-0.5 hover:shadow-xl active:translate-y-0 active:scale-95 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sport-fg/40 focus-visible:ring-offset-2 focus-visible:ring-offset-sport-dark;
+    @apply relative overflow-hidden inline-flex items-center justify-center gap-2 bg-white text-sport-fg border-2 border-sport-fg px-6 py-3.5 rounded-full font-bold text-sm shadow-sm hover:bg-sport-fg/5 hover:-translate-y-0.5 hover:shadow-md active:translate-y-0 active:scale-95 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sport-fg/30 focus-visible:ring-offset-2 focus-visible:ring-offset-sport-dark;
   }
   /* Variante fixe (blanc dans les deux thèmes) pour usage sur photo/vidéo de
      fond (ex. Hero) où le fond n'est pas la surface réactive de la page. */
@@ -134,11 +130,47 @@
     .btn-primary::after, .btn-secondary::after, .btn-secondary-photo::after { display: none; }
   }
   .card-base {
-    @apply bg-sport-card border border-sport-border rounded-2xl;
+    @apply bg-sport-card border border-sport-border rounded-2xl shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300;
+  }
+  .input-base {
+    @apply w-full bg-sport-gray-light border border-sport-border rounded-xl px-4 py-3 text-sport-fg text-sm placeholder:text-sport-gray/60 transition-all duration-200 focus:outline-none focus:border-sport-orange focus:ring-2 focus:ring-sport-orange/20;
+  }
+  .table-base {
+    @apply w-full text-sm border-separate border-spacing-0;
+  }
+  .table-base th {
+    @apply text-left text-xs font-bold uppercase tracking-wider text-sport-gray px-4 py-3 border-b border-sport-border;
+  }
+  .table-base td {
+    @apply px-4 py-3 border-b border-sport-border;
+  }
+  .table-base tr:hover td {
+    @apply bg-sport-gray-light;
+  }
+  .section-white {
+    @apply bg-white py-20 md:py-28;
+  }
+  .section-tint {
+    @apply bg-sport-gray-light py-20 md:py-28;
+  }
+  .h1 {
+    @apply text-4xl md:text-6xl font-extrabold text-sport-fg leading-tight tracking-tight;
+  }
+  .h2 {
+    @apply text-3xl md:text-4xl font-extrabold text-sport-fg leading-tight tracking-tight;
+  }
+  .h3 {
+    @apply text-xl md:text-2xl font-bold text-sport-fg leading-snug;
+  }
+  .subtitle {
+    @apply text-base md:text-lg text-sport-gray leading-relaxed font-medium;
+  }
+  .body-text {
+    @apply text-sm md:text-base text-sport-gray leading-relaxed;
   }
   /* Profondeur 3D subtile sur les titres */
   .text-3d {
-    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.35), 0 3px 8px rgba(0, 0, 0, 0.45), 0 0 28px rgba(249, 115, 22, 0.14);
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.35), 0 3px 8px rgba(0, 0, 0, 0.45), 0 0 28px rgba(255, 106, 0, 0.14);
   }
   /* Halo réactif (couleur du fond de page) pour détacher un texte en couleur
      de premier plan (sport-fg, réactif) d'une photo derrière lui - un simple
@@ -344,7 +376,7 @@ html.preloaded #preloader { display: none; }
   width: 340px;
   height: 340px;
   border-radius: 9999px;
-  background: rgba(255, 69, 0, 0.18);
+  background: rgba(255, 106, 0, 0.18);
   filter: blur(120px);
   animation: pl-glow 1s ease-out both;
 }

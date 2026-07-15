@@ -26,11 +26,11 @@ export function getDailyNotifications(locale: string | null | undefined, date: D
   const guide = getCampaignPush('guide', locale)
   const sub = getCampaignPush('subscribe', locale)
   return [
-    { hour: 8, icon: 'flame', color: '#FF4500', title: mot.title, body: mot.body, href: '/dashboard/programme' },
+    { hour: 8, icon: 'flame', color: '#FF6A00', title: mot.title, body: mot.body, href: '/dashboard/programme' },
     { hour: 12, icon: 'shop', color: '#38bdf8', title: boutique.title, body: boutique.body, href: boutique.url },
-    { hour: 15, icon: 'book', color: '#A3FF00', title: guide.title, body: guide.body, href: guide.url },
+    { hour: 15, icon: 'book', color: '#2A2A2A', title: guide.title, body: guide.body, href: guide.url },
     { hour: 18, icon: 'moon', color: '#818cf8', title: eve.title, body: eve.body, href: '/dashboard' },
-    { hour: 20, icon: 'rocket', color: '#FF4500', title: sub.title, body: sub.body, href: sub.url },
+    { hour: 20, icon: 'rocket', color: '#FF6A00', title: sub.title, body: sub.body, href: sub.url },
   ]
 }
 

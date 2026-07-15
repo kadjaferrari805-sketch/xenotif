@@ -28,10 +28,10 @@ const FREE_TXT: Record<string, { title: string; sub: string; cta: string }> = {
 }
 
 const STATUS_CLS: Record<string, string> = {
-  trialing: 'bg-blue-500/15 text-blue-400 border-blue-500/30',
-  active:   'bg-emerald-500/15 text-[#1E7F5A] border-emerald-500/30',
-  canceled: 'bg-red-500/15 text-red-400 border-red-500/30',
-  past_due: 'bg-orange-500/15 text-orange-400 border-orange-500/30',
+  trialing: 'bg-blue-50 text-blue-700 border-blue-200',
+  active:   'bg-emerald-50 text-[#1E7F5A] border-emerald-200',
+  canceled: 'bg-red-50 text-red-700 border-red-200',
+  past_due: 'bg-orange-50 text-orange-700 border-orange-200',
   free:     'bg-sport-fg/10 text-sport-gray border-sport-border',
 }
 
@@ -197,7 +197,7 @@ export default async function DashboardPage() {
           { icon: Flame,      label: t('overview.statSessionsWeek'), value: sessionsThisWeek.toString(), color: 'text-sport-orange' },
           { icon: CheckCircle,label: t('overview.statModules'),      value: totalSessions.toString(), color: 'text-[#1E7F5A]' },
           { icon: TrendingUp, label: t('overview.statActiveDays'),   value: activeDays.toString(),    color: 'text-sport-blue' },
-          { icon: Award,      label: t('overview.statBadges'),       value: totalSessions >= 5 ? '1' : '0', color: 'text-yellow-400' },
+          { icon: Award,      label: t('overview.statBadges'),       value: totalSessions >= 5 ? '1' : '0', color: 'text-yellow-600' },
         ].map(({ icon: Icon, label, value, color }) => (
           <div key={label} className="bg-sport-card border border-sport-border rounded-xl p-4">
             <Icon size={18} className={`${color} mb-2`} aria-hidden="true" />

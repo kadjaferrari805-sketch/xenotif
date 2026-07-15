@@ -72,7 +72,7 @@ export function SessionCard({ session }: SessionCardProps) {
           </div>
         </div>
         <div className="bg-sport-dark rounded-xl px-3 py-2 flex items-center gap-2">
-          <Heart size={12} className="text-red-400 shrink-0" />
+          <Heart size={12} className="text-red-600 shrink-0" />
           <div>
             <p className="text-xs font-black text-sport-fg">{session.avg_heart_rate ?? '-'}</p>
             <p className="text-[9px] text-sport-gray">{t('session.bpmAvg')}</p>

@@ -16,10 +16,10 @@ type Invoice = { id: string; date: string; amount: number; currency: string; pdf
 type Billing = { card: Card | null; invoices: Invoice[] }
 
 const STATUS_CLS: Record<string, string> = {
-  trialing: 'bg-blue-500/15 text-blue-400 border-blue-500/30',
-  active:   'bg-emerald-500/15 text-[#1E7F5A] border-emerald-500/30',
-  canceled: 'bg-red-500/15 text-red-400 border-red-500/30',
-  past_due: 'bg-orange-500/15 text-orange-400 border-orange-500/30',
+  trialing: 'bg-blue-50 text-blue-700 border-blue-200',
+  active:   'bg-emerald-50 text-[#1E7F5A] border-emerald-200',
+  canceled: 'bg-red-50 text-red-700 border-red-200',
+  past_due: 'bg-orange-50 text-orange-700 border-orange-200',
 }
 
 function StatusBadge({ status, label }: { status: string; label: string }) {
@@ -212,9 +212,9 @@ export function AbonnementClient({ initialSub }: { initialSub: Sub | null }) {
       {/* Cancel confirm modal */}
       {showCancel && (
         <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="bg-sport-card border border-red-500/30 rounded-2xl p-6 w-full max-w-md">
+          <div className="bg-sport-card border border-red-200 rounded-2xl p-6 w-full max-w-md">
             <div className="flex items-center gap-3 mb-4">
-              <AlertTriangle size={20} className="text-red-400 shrink-0" />
+              <AlertTriangle size={20} className="text-red-600 shrink-0" />
               <h3 className="text-lg font-black text-sport-fg">{t('confirmCancelTitle')}</h3>
             </div>
             <p className="text-sport-gray text-sm leading-relaxed mb-2">
@@ -226,7 +226,7 @@ export function AbonnementClient({ initialSub }: { initialSub: Sub | null }) {
               </p>
             )}
             {cancelError && (
-              <p role="alert" className="text-red-400 text-xs bg-red-400/10 border border-red-400/20 rounded-lg px-3 py-2 mb-4">{cancelError}</p>
+              <p role="alert" className="text-red-600 text-xs bg-red-50 border border-red-200 rounded-lg px-3 py-2 mb-4">{cancelError}</p>
             )}
             <div className="flex gap-3">
               <button onClick={() => setShowCancel(false)}
@@ -258,7 +258,7 @@ export function AbonnementClient({ initialSub }: { initialSub: Sub | null }) {
         <div className="space-y-3 border-t border-sport-border pt-5">
           {isTrialing && daysLeft !== null && (
             <div className="flex items-center gap-3 text-sm">
-              <Calendar size={15} className="text-blue-400 shrink-0" />
+              <Calendar size={15} className="text-blue-600 shrink-0" />
               <span className="text-sport-gray">{t.rich('trialEndsIn', { days: daysLeft, o: (c) => <strong className="text-sport-fg">{c}</strong> })}</span>
             </div>
           )}
@@ -344,20 +344,20 @@ export function AbonnementClient({ initialSub }: { initialSub: Sub | null }) {
         </button>
         <p className="text-[11px] text-sport-gray text-center">{t('updateCardHint')}</p>
         {portalError && (
-          <p className="text-xs text-orange-400 bg-orange-400/10 border border-orange-400/20 rounded-xl px-4 py-3 leading-relaxed">{portalError}</p>
+          <p className="text-xs text-orange-700 bg-orange-50 border border-orange-200 rounded-xl px-4 py-3 leading-relaxed">{portalError}</p>
         )}
 
         {(isTrialing || isActive) && !isCanceled && (
           <button
             onClick={() => setShowCancel(true)}
-            className="w-full border border-red-500/30 text-red-400 py-3.5 rounded-full font-bold text-sm hover:bg-red-500/5 hover:border-red-500/50 transition-all inline-flex items-center justify-center gap-2"
+            className="w-full border border-red-300 text-red-600 py-3.5 rounded-full font-bold text-sm hover:bg-red-50 hover:border-red-400 transition-all inline-flex items-center justify-center gap-2"
           >
             <X size={14} /> {t('unsubscribe')}
           </button>
         )}
 
         {isCanceled && (
-          <div className="text-center p-4 bg-emerald-500/5 border border-emerald-500/20 rounded-xl">
+          <div className="text-center p-4 bg-emerald-500/5 border border-emerald-200 rounded-xl">
             <p className="text-[#1E7F5A] text-sm font-semibold">{t('cancelConfirmed')}</p>
             <p className="text-sport-gray text-xs mt-1">{t('cancelConfirmedDesc')}</p>
             {sub.cancel_at_period_end && sub.status !== 'canceled' ? (
@@ -379,7 +379,7 @@ export function AbonnementClient({ initialSub }: { initialSub: Sub | null }) {
               </Link>
             )}
             {reactivateError && (
-              <p role="alert" className="text-red-400 text-xs mt-3">{reactivateError}</p>
+              <p role="alert" className="text-red-600 text-xs mt-3">{reactivateError}</p>
             )}
           </div>
         )}

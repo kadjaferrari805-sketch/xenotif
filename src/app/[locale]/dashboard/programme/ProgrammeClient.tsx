@@ -22,9 +22,9 @@ const DISCIPLINES = [
 ]
 
 const COLOR: Record<string, string> = {
-  orange: 'bg-sport-orange text-sport-fg border-sport-orange',
-  blue: 'bg-sport-blue text-sport-fg border-sport-blue',
-  lime: 'bg-sport-lime text-[#0A0B0F] border-sport-lime',
+  orange: 'bg-sport-orange text-white border-sport-orange',
+  blue: 'bg-sport-blue text-white border-sport-blue',
+  lime: 'bg-sport-lime text-white border-sport-lime',
 }
 
 function ProgrammeContent({ isPro, freeSlugs, userId, initialProgress }: { isPro: boolean; freeSlugs: string[]; userId: string; initialProgress: Record<string, boolean> }) {
@@ -117,7 +117,7 @@ function ProgrammeContent({ isPro, freeSlugs, userId, initialProgress }: { isPro
       </div>
 
       {!selectedUnlocked && (
-        <div className="rounded-2xl border border-sport-border bg-sport-card p-8 text-center">
+        <div className="card-base p-8 text-center">
           <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-sport-orange/15 border border-sport-orange/30">
             <Lock size={20} className="text-sport-orange" aria-hidden="true" />
           </div>

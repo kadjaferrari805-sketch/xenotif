@@ -7,7 +7,6 @@ import { Link } from '@/i18n/navigation'
 import { Menu, X, ChevronDown, ArrowRight, Dumbbell, ClipboardList, Trophy, Calculator } from 'lucide-react'
 import { Logo } from '@/components/ui/Logo'
 import { LanguageSwitcher } from './LanguageSwitcher'
-import { ThemeToggle } from './ThemeToggle'
 import { AppDownload } from './AppDownload'
 import { createClient } from '@/lib/supabase/client'
 import { DISCIPLINE_SLUGS as DISCIPLINES } from '@/lib/disciplines-nav'
@@ -90,7 +89,7 @@ export function Nav() {
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
       className={`sticky top-0 z-50 transition-all duration-300 pt-safe border-b ${
-        scrolled ? 'bg-sport-dark/80 backdrop-blur-xl border-sport-fg/10 shadow-lg shadow-black/30' : 'bg-sport-dark border-sport-fg/10'
+        scrolled ? 'bg-sport-dark/85 backdrop-blur-xl border-sport-fg/10 shadow-md shadow-black/10' : 'bg-sport-dark border-sport-fg/10'
       }`}
     >
       <div className={`max-w-6xl mx-auto px-6 flex items-center justify-between gap-4 transition-all duration-300 ${scrolled ? 'h-14' : 'h-16'}`}>
@@ -122,7 +121,7 @@ export function Nav() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: 8 }}
                   transition={{ duration: 0.18, ease: [0.16, 1, 0.3, 1] }}
-                  className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-[680px] max-w-[calc(100vw-2rem)] bg-sport-dark/95 backdrop-blur-xl border border-sport-fg/10 rounded-2xl shadow-2xl shadow-black/50 p-5"
+                  className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-[680px] max-w-[calc(100vw-2rem)] bg-sport-dark/95 backdrop-blur-xl border border-sport-fg/10 rounded-2xl shadow-2xl shadow-black/15 p-5"
                 >
                   <div className="grid grid-cols-3 gap-5">
                     <div className="col-span-2">
@@ -185,14 +184,16 @@ export function Nav() {
         <div className="flex items-center justify-end gap-3 shrink-0">
           <div className="hidden md:flex items-center gap-2">
             <LanguageSwitcher />
-            <ThemeToggle />
           </div>
           {user ? (
             <Link href="/dashboard" aria-label={t('monEspace')} className="inline-flex items-center justify-center rounded-full border border-sport-border bg-sport-card/70 p-1 hover:border-sport-orange/50 transition-all active:scale-95">
               <span className="flex h-8 w-8 items-center justify-center rounded-full bg-sport-orange/20 border border-sport-orange/40 text-sport-orange font-black text-xs">{initials}</span>
             </Link>
           ) : (
-            <Link href="/auth/signin" className="text-sm text-sport-gray hover:text-sport-fg transition-colors">{t('connexion')}</Link>
+            <>
+              <Link href="/auth/signin" className="hidden sm:inline text-sm text-sport-gray hover:text-sport-fg transition-colors">{t('connexion')}</Link>
+              <Link href="/auth/signup" className="btn-primary px-5 py-2 text-xs">{t('rejoindre')}</Link>
+            </>
           )}
           <AppDownload
             triggerClassName="hidden md:inline-flex items-center justify-center h-9 w-9 rounded-full border border-sport-border text-sport-fg/90 hover:text-sport-fg hover:border-sport-fg/30 transition-all"
@@ -269,13 +270,17 @@ export function Nav() {
                 </Link>
               ))}
               {!user && (
-                <Link href="/auth/signin" onClick={() => setIsOpen(false)} className="text-sm font-medium text-sport-gray hover:text-sport-fg transition-colors py-3">
-                  {t('connexion')}
-                </Link>
+                <>
+                  <Link href="/auth/signin" onClick={() => setIsOpen(false)} className="text-sm font-medium text-sport-gray hover:text-sport-fg transition-colors py-3">
+                    {t('connexion')}
+                  </Link>
+                  <Link href="/auth/signup" onClick={() => setIsOpen(false)} className="btn-primary w-full mt-1">
+                    {t('rejoindre')}
+                  </Link>
+                </>
               )}
-              <div className="pt-4 mt-2 border-t border-sport-border flex items-center justify-between gap-3">
+              <div className="pt-4 mt-2 border-t border-sport-border flex items-center justify-center gap-3">
                 <LanguageSwitcher />
-                <ThemeToggle />
               </div>
             </div>
           </motion.div>

@@ -115,7 +115,7 @@ export function Catalogue() {
             <input
               value={search} onChange={e => setSearch(e.target.value)}
               placeholder={t('searchPlaceholder')}
-              className="w-full rounded-2xl border border-sport-border bg-sport-card pl-12 pr-10 py-4 text-sport-fg placeholder:text-sport-gray focus:outline-none focus:border-sport-orange transition-colors text-sm"
+              className="w-full card-base pl-12 pr-10 py-4 text-sport-fg placeholder:text-sport-gray focus:outline-none focus:border-sport-orange transition-colors text-sm"
             />
             {search && (
               <button onClick={() => setSearch('')} aria-label={t('reset')} className="absolute right-4 top-1/2 -translate-y-1/2 text-sport-gray hover:text-sport-fg">
@@ -135,14 +135,14 @@ export function Catalogue() {
             <div className="min-w-0 flex-1 flex items-center gap-2 overflow-x-auto scrollbar-hide snap-x snap-proximity scroll-pl-4 sm:scroll-pl-6 scroll-smooth" role="tablist" aria-label={t('filterDiscipline')}>
               <button
                 role="tab" aria-selected={discipline === 'all'} onClick={() => setDiscipline('all')}
-                className={`snap-start shrink-0 rounded-full px-4 py-2 text-sm font-bold transition-all ${discipline === 'all' ? 'bg-sport-orange text-sport-fg shadow-lg shadow-sport-orange/20' : 'border border-sport-border text-sport-gray hover:text-sport-fg hover:border-sport-fg/20'}`}
+                className={`snap-start shrink-0 rounded-full px-4 py-2 text-sm font-bold transition-all ${discipline === 'all' ? 'bg-sport-orange text-white shadow-lg shadow-sport-orange/20' : 'border border-sport-border text-sport-gray hover:text-sport-fg hover:border-sport-fg/20'}`}
               >
                 {t('allDisciplines')}
               </button>
               {available.map(id => (
                 <button
                   key={id} role="tab" aria-selected={discipline === id} onClick={() => setDiscipline(id)}
-                  className={`snap-start shrink-0 rounded-full px-4 py-2 text-sm font-bold whitespace-nowrap transition-all ${discipline === id ? 'bg-sport-orange text-sport-fg shadow-lg shadow-sport-orange/20' : 'border border-sport-border text-sport-gray hover:text-sport-fg hover:border-sport-fg/20'}`}
+                  className={`snap-start shrink-0 rounded-full px-4 py-2 text-sm font-bold whitespace-nowrap transition-all ${discipline === id ? 'bg-sport-orange text-white shadow-lg shadow-sport-orange/20' : 'border border-sport-border text-sport-gray hover:text-sport-fg hover:border-sport-fg/20'}`}
                 >
                   {t(`disciplinesFilter.${id}`)}
                 </button>
@@ -216,7 +216,7 @@ export function Catalogue() {
 
         {/* Amazon disclaimer */}
         {shown > 0 && (
-          <div className="mt-14 rounded-2xl border border-sport-border bg-sport-card/30 p-4 text-center">
+          <div className="mt-14 card-base/30 p-4 text-center">
             <p className="text-xs text-sport-gray">{t('amazonDisclaimer')}</p>
           </div>
         )}

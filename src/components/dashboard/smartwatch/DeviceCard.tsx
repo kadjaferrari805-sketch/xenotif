@@ -61,7 +61,7 @@ export function DeviceCard({ provider, connection, onConnect, onDisconnect, onSy
 
       {/* Connected badge */}
       {isConnected && (
-        <div className="absolute top-3 right-3 flex items-center gap-1.5 bg-emerald-500/15 border border-emerald-500/30 rounded-full px-2.5 py-1">
+        <div className="absolute top-3 right-3 flex items-center gap-1.5 bg-emerald-50 border border-emerald-200 rounded-full px-2.5 py-1">
           <CheckCircle2 size={10} className="text-[#1E7F5A]" />
           <span className="text-[10px] text-[#1E7F5A] font-bold">{t('connected')}</span>
         </div>
@@ -113,7 +113,7 @@ export function DeviceCard({ provider, connection, onConnect, onDisconnect, onSy
               <button
                 onClick={handleDisconnect}
                 disabled={loading !== null}
-                className="flex items-center justify-center gap-1.5 text-xs font-bold py-2 px-3 rounded-xl bg-red-500/10 border border-red-500/20 text-red-400 hover:bg-red-500/20 transition-all"
+                className="flex items-center justify-center gap-1.5 text-xs font-bold py-2 px-3 rounded-xl bg-red-50 border border-red-200 text-red-600 hover:bg-red-500/20 transition-all"
               >
                 {loading === 'disconnect' ? <Loader2 size={12} className="animate-spin" /> : <Unplug size={12} />}
               </button>

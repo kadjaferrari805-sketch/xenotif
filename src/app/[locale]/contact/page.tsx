@@ -86,7 +86,7 @@ export default function ContactPage() {
                 </div>
               </div>
               <div className="flex items-start gap-3">
-                <div className="w-9 h-9 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center shrink-0">
+                <div className="w-9 h-9 rounded-xl bg-emerald-50 border border-emerald-200 flex items-center justify-center shrink-0">
                   <MapPin size={15} className="text-[#1E7F5A]" />
                 </div>
                 <div>
@@ -117,8 +117,8 @@ export default function ContactPage() {
         {/* Form column */}
         <div className="md:col-span-3">
           {success ? (
-            <div className="bg-sport-card border border-emerald-500/30 rounded-2xl p-10 text-center">
-              <div className="w-16 h-16 bg-emerald-500/15 rounded-full flex items-center justify-center mx-auto mb-5">
+            <div className="bg-sport-card border border-emerald-200 rounded-2xl p-10 text-center">
+              <div className="w-16 h-16 bg-emerald-50 rounded-full flex items-center justify-center mx-auto mb-5">
                 <CheckCircle size={28} className="text-[#1E7F5A]" />
               </div>
               <h2 className="text-xl font-black text-sport-fg mb-2">{t('successTitle')}</h2>
@@ -185,7 +185,7 @@ export default function ContactPage() {
                 </div>
 
                 {error && (
-                  <p role="alert" className="text-red-400 text-xs bg-red-400/10 border border-red-400/20 rounded-lg px-4 py-2.5">
+                  <p role="alert" className="text-red-600 text-xs bg-red-50 border border-red-200 rounded-lg px-4 py-2.5">
                     {error}
                   </p>
                 )}

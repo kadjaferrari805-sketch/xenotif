@@ -46,7 +46,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       {/* Preuve sociale */}
       <Reviews />
       {/* Vitrine compacte - produits affiliés recommandés (bas de home) */}
-      <ProductShowcase section="recommended" products={recommended} dark />
+      <ProductShowcase section="recommended" products={recommended} />
       <FAQ />
       <Newsletter />
       <StickyCheckout />

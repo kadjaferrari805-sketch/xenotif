@@ -15,8 +15,8 @@ const ACTIVE_MIN_GOAL = 30
 const MOVING_WINDOW_MS = 4000 // « en mouvement » si un pas a été détecté il y a < 4 s
 
 // Couleurs façon Apple Fitness (palette de marque)
-const C_MOVE = '#FF4500'   // calories (anneau externe)
-const C_EXER = '#A3FF00'   // minutes actives (anneau médian)
+const C_MOVE = '#FF6A00'   // calories (anneau externe)
+const C_EXER = '#2A2A2A'   // minutes actives (anneau médian)
 const C_STEP = '#38bdf8'   // pas (anneau interne)
 
 type Status = 'init' | 'needtap' | 'running' | 'denied' | 'nosensor'
@@ -229,7 +229,7 @@ export function TodayActivity({ initialSteps, initialActiveSec, weekly, dateLabe
           </div>
 
           {status === 'running' ? (
-            <span className={`inline-flex shrink-0 items-center gap-1.5 rounded-full border px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider ${moving ? 'border-red-500/40 bg-red-500/10 text-red-400' : 'border-sport-lime/40 bg-sport-lime/10 text-sport-lime'}`}>
+            <span className={`inline-flex shrink-0 items-center gap-1.5 rounded-full border px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider ${moving ? 'border-red-500/40 bg-red-50 text-red-600' : 'border-sport-lime/40 bg-sport-lime/10 text-sport-lime'}`}>
               <span className={`h-1.5 w-1.5 rounded-full ${moving ? 'bg-red-500 animate-pulse' : 'bg-sport-lime'}`} />
               {t('liveBadge')}
             </span>
@@ -313,8 +313,8 @@ export function TodayActivity({ initialSteps, initialActiveSec, weekly, dateLabe
           )}
 
           {status === 'denied' && (
-            <div className="flex flex-col items-center gap-3 rounded-2xl border border-red-500/20 bg-red-500/5 px-4 py-4 text-center">
-              <p className="max-w-xs text-[11px] leading-relaxed text-red-400">{t('denied')}</p>
+            <div className="flex flex-col items-center gap-3 rounded-2xl border border-red-200 bg-red-500/5 px-4 py-4 text-center">
+              <p className="max-w-xs text-[11px] leading-relaxed text-red-600">{t('denied')}</p>
               <button
                 onClick={start}
                 className="inline-flex items-center justify-center gap-2 rounded-xl bg-sport-lime px-5 py-2.5 text-sm font-black text-sport-dark transition-all hover:brightness-110"

@@ -30,10 +30,10 @@ export default async function AdminPage() {
   const cancelCount  = subs.filter(s => s.status === 'canceled').length
 
   const STATUS_MAP: Record<string, { label: string; Icon: typeof CheckCircle; cls: string }> = {
-    trialing: { label: 'Essai',  Icon: Clock,       cls: 'text-blue-400' },
+    trialing: { label: 'Essai',  Icon: Clock,       cls: 'text-blue-600' },
     active:   { label: 'Actif',  Icon: CheckCircle, cls: 'text-[#1E7F5A]' },
-    canceled: { label: 'Annulé', Icon: XCircle,     cls: 'text-red-400' },
-    past_due: { label: 'Impayé', Icon: XCircle,     cls: 'text-orange-400' },
+    canceled: { label: 'Annulé', Icon: XCircle,     cls: 'text-red-600' },
+    past_due: { label: 'Impayé', Icon: XCircle,     cls: 'text-orange-600' },
   }
 
   return (
@@ -44,7 +44,7 @@ export default async function AdminPage() {
           <h1 className="text-3xl font-black text-sport-fg">Admin Panel</h1>
           <p className="text-sport-gray text-sm mt-1">Vue d&apos;ensemble de la plateforme Xenotif®</p>
         </div>
-        <span className="text-[10px] font-black uppercase tracking-widest bg-red-500/15 text-red-400 border border-red-500/30 px-3 py-1.5 rounded-full">
+        <span className="text-[10px] font-black uppercase tracking-widest bg-red-50 text-red-600 border border-red-200 px-3 py-1.5 rounded-full">
           Accès restreint
         </span>
       </div>
@@ -53,8 +53,8 @@ export default async function AdminPage() {
       <div className="grid grid-cols-2 md:grid-cols-4 gap-5 mb-10">
         {[
           { Icon: Users,       label: 'Utilisateurs total', value: (profiles ?? []).length.toString(), color: 'text-sport-blue',   bg: 'bg-sport-blue/10' },
-          { Icon: TrendingUp,  label: 'Abonnements actifs',  value: activeCount.toString(),            color: 'text-[#1E7F5A]', bg: 'bg-emerald-400/10' },
-          { Icon: Clock,       label: 'Essais en cours',     value: trialCount.toString(),             color: 'text-blue-400',    bg: 'bg-blue-400/10' },
+          { Icon: TrendingUp,  label: 'Abonnements actifs',  value: activeCount.toString(),            color: 'text-[#1E7F5A]', bg: 'bg-emerald-50' },
+          { Icon: Clock,       label: 'Essais en cours',     value: trialCount.toString(),             color: 'text-blue-600',    bg: 'bg-blue-50' },
           { Icon: Euro,        label: 'Revenu MRR (€)',      value: `${totalRevenue.toFixed(2)} €`,    color: 'text-sport-orange', bg: 'bg-sport-orange/10' },
         ].map(({ Icon, label, value, color, bg }) => (
           <div key={label} className="bg-sport-card border border-sport-border rounded-2xl p-5">
@@ -95,21 +95,21 @@ export default async function AdminPage() {
         </div>
 
         <div className="overflow-x-auto">
-          <table className="w-full">
+          <table className="table-base">
             <thead>
-              <tr className="border-b border-sport-border">
+              <tr>
                 {['Utilisateur', 'Plan', 'Statut', 'Fin période', 'Inscrit le'].map(h => (
-                  <th key={h} className="px-5 py-3 text-left text-[10px] font-bold uppercase tracking-widest text-sport-gray">{h}</th>
+                  <th key={h}>{h}</th>
                 ))}
               </tr>
             </thead>
-            <tbody className="divide-y divide-sport-border">
+            <tbody>
               {(profiles ?? []).map((profile) => {
                 const sub = subs.find(s => s.user_id === profile.id)
                 const statusInfo = STATUS_MAP[sub?.status ?? '']
                 const StatusIcon = statusInfo?.Icon
                 return (
-                  <tr key={profile.id} className="hover:bg-white/[0.02] transition-colors">
+                  <tr key={profile.id}>
                     <td className="px-5 py-4">
                       <div className="flex items-center gap-3">
                         <div className="w-8 h-8 bg-sport-orange/15 rounded-full flex items-center justify-center font-black text-sport-orange text-xs">
@@ -151,7 +151,7 @@ export default async function AdminPage() {
       </div>
 
       {/* Édition du contenu (CMS) */}
-      <Link href="/admin/content" className="mt-10 flex items-center justify-between rounded-2xl border border-sport-border bg-sport-card px-6 py-5 hover:border-sport-orange/40 transition-all">
+      <Link href="/admin/content" className="mt-10 flex items-center justify-between card-base px-6 py-5 hover:border-sport-orange/40 transition-all">
         <span className="text-sm font-black text-sport-fg">Éditer le contenu des disciplines</span>
         <span className="text-xs text-sport-orange font-bold">Ouvrir →</span>
       </Link>

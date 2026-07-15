@@ -45,8 +45,11 @@ const DISC_ICONS: Record<string, React.ReactNode> = {
 }
 
 const COLOR_TEXT:  Record<string, string> = { orange: 'text-sport-orange',    blue: 'text-sport-blue',   lime: 'text-sport-lime' }
+// Variante hero (texte sur photo sombre) : blue/lime sont désormais des gris/noir
+// (dépréciés), illisibles sur l'overlay sombre du hero - reste blanc là uniquement.
+const COLOR_TEXT_HERO: Record<string, string> = { orange: 'text-sport-orange', blue: 'text-white', lime: 'text-white' }
 const COLOR_CARD:  Record<string, string> = { orange: 'bg-sport-orange/10 border-sport-orange/25', blue: 'bg-sport-blue/10 border-sport-blue/25', lime: 'bg-sport-lime/10 border-sport-lime/25' }
-const COLOR_PILL:  Record<string, string> = { orange: 'bg-sport-orange text-sport-fg', blue: 'bg-sport-blue text-sport-fg', lime: 'bg-sport-lime text-[#0A0B0F]' }
+const COLOR_PILL:  Record<string, string> = { orange: 'bg-sport-orange text-white', blue: 'bg-sport-blue text-white', lime: 'bg-sport-lime text-white' }
 const COLOR_VIDEO: Record<string, string> = { orange: 'bg-sport-orange/15 text-sport-orange', blue: 'bg-sport-blue/15 text-sport-blue', lime: 'bg-sport-lime/15 text-sport-lime' }
 
 /* ── Metadata ────────────────────────────────────────────────── */
@@ -181,7 +184,7 @@ export default async function DisciplinePage({ params }: { params: Promise<{ slu
 
             {/* Tagline */}
             {content && (
-              <p className={`text-lg md:text-xl font-bold mb-4 ${COLOR_TEXT[color]}`}>
+              <p className={`text-lg md:text-xl font-bold mb-4 ${COLOR_TEXT_HERO[color]}`}>
                 {content.tagline}
               </p>
             )}
@@ -191,7 +194,7 @@ export default async function DisciplinePage({ params }: { params: Promise<{ slu
             <div className="flex flex-wrap gap-5 mt-6">
               {stats.map((s) => (
                 <div key={s} className="flex items-center gap-2">
-                  <CheckCircle size={14} aria-hidden="true" className={COLOR_TEXT[color]} />
+                  <CheckCircle size={14} aria-hidden="true" className={COLOR_TEXT_HERO[color]} />
                   <span className="text-sm font-semibold text-white">{s}</span>
                 </div>
               ))}
@@ -202,7 +205,7 @@ export default async function DisciplinePage({ params }: { params: Promise<{ slu
 
       {/* ── Video Gallery ─────────────────────────────────────── */}
       {content?.videos && (
-        <section aria-labelledby="videos-title" className="py-20 px-6 bg-sport-card border-b border-sport-border">
+        <section aria-labelledby="videos-title" className="section-tint px-6 border-b border-sport-border">
           <div className="max-w-5xl mx-auto">
             <div className="flex items-center gap-3 mb-2">
               <div className={`w-9 h-9 rounded-xl flex items-center justify-center ${COLOR_CARD[color]}`}>
@@ -224,7 +227,7 @@ export default async function DisciplinePage({ params }: { params: Promise<{ slu
 
       {/* ── Guide complet ─────────────────────────────────────── */}
       {content?.guide && (
-        <section aria-labelledby="guide-title" className="py-20 px-6 bg-sport-dark">
+        <section aria-labelledby="guide-title" className="section-white px-6">
           <div className="max-w-5xl mx-auto">
             <div className="flex items-center gap-3 mb-2">
               <div className={`w-9 h-9 rounded-xl flex items-center justify-center ${COLOR_CARD[color]}`}>
@@ -262,7 +265,7 @@ export default async function DisciplinePage({ params }: { params: Promise<{ slu
 
       {/* ── Expert Tips ───────────────────────────────────────── */}
       {content?.tips && (
-        <section aria-labelledby="tips-title" className="py-20 px-6 bg-sport-card border-y border-sport-border">
+        <section aria-labelledby="tips-title" className="section-tint px-6 border-y border-sport-border">
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-12">
               <p className={`text-[11px] font-bold tracking-[2px] uppercase mb-3 ${COLOR_TEXT[color]}`}>{t('tips.eyebrow')}</p>
@@ -287,7 +290,7 @@ export default async function DisciplinePage({ params }: { params: Promise<{ slu
 
       {/* ── Exercices ─────────────────────────────────────────── */}
       {content?.exercises && content.exercises.length > 0 && (
-        <section aria-labelledby="exercises-title" className="py-20 px-6 bg-sport-dark border-b border-sport-border">
+        <section aria-labelledby="exercises-title" className="section-white px-6 border-b border-sport-border">
           <div className="max-w-5xl mx-auto">
             <div className="flex items-center gap-3 mb-2">
               <div className={`w-9 h-9 rounded-xl flex items-center justify-center ${COLOR_CARD[color]}`}>
@@ -328,7 +331,7 @@ export default async function DisciplinePage({ params }: { params: Promise<{ slu
       )}
 
       {/* ── Programme détaillé + CTA ─────────────────────────── */}
-      <section className="py-20 px-6 bg-sport-dark">
+      <section className="section-tint px-6">
         <div className="max-w-5xl mx-auto grid md:grid-cols-5 gap-12">
 
           {/* Left - Levels + Program */}
@@ -452,7 +455,7 @@ export default async function DisciplinePage({ params }: { params: Promise<{ slu
 
       {/* ── FAQ ───────────────────────────────────────────────── */}
       {content?.faq && content.faq.length > 0 && (
-        <section aria-labelledby="faq-disc-title" className="py-20 px-6 bg-sport-card border-t border-sport-border">
+        <section aria-labelledby="faq-disc-title" className="section-white px-6 border-t border-sport-border">
           <div className="max-w-3xl mx-auto">
             <div className="text-center mb-12">
               <p className={`text-[11px] font-bold tracking-[2px] uppercase mb-3 ${COLOR_TEXT[color]}`}>{t('faq.eyebrow')}</p>
@@ -466,7 +469,7 @@ export default async function DisciplinePage({ params }: { params: Promise<{ slu
       )}
 
       {/* ── Other disciplines ─────────────────────────────────── */}
-      <section aria-labelledby="autres-disciplines-title" className="py-16 px-6 bg-sport-dark border-t border-sport-border">
+      <section aria-labelledby="autres-disciplines-title" className="section-tint px-6 border-t border-sport-border">
         <div className="max-w-5xl mx-auto">
           <h2 id="autres-disciplines-title" className="text-2xl font-black text-sport-fg mb-8">
             {t('others.title')}

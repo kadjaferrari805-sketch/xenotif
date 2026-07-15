@@ -45,7 +45,7 @@ export function PushToggle() {
   if (state === 'loading' || state === 'unsupported') return null
 
   return (
-    <div className="rounded-2xl border border-sport-border bg-sport-card p-4 mb-6 flex items-center gap-3">
+    <div className="card-base p-4 mb-6 flex items-center gap-3">
       <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-sport-orange/15 border border-sport-orange/30 text-sport-orange">
         <Smartphone size={18} aria-hidden="true" />
       </div>

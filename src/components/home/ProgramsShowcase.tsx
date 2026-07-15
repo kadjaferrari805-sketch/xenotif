@@ -44,7 +44,7 @@ export function ProgramsShowcase({ programs }: { programs: Product[] }) {
                         sizes="(max-width: 640px) 80vw, 290px"
                         className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                       />
-                      <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-sport-dark via-sport-dark/20 to-transparent" />
+                      <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
                       {p.badge && (
                         <span className="absolute top-3 left-3 rounded-full bg-sport-orange px-2.5 py-1 text-[11px] font-black text-white shadow-lg">
                           {p.badge}

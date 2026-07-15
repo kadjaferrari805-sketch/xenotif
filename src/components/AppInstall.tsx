@@ -70,7 +70,7 @@ export function AppInstall() {
   if (installed || done) {
     return (
       <Card>
-        <div className="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-emerald-500/15 border border-emerald-500/30">
+        <div className="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-emerald-50 border border-emerald-200">
           <Check size={28} className="text-[#1E7F5A]" aria-hidden="true" />
         </div>
         <h1 className="text-2xl font-black text-sport-fg mb-2">

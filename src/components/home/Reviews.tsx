@@ -32,7 +32,7 @@ export function Reviews() {
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 })
 
   return (
-    <section aria-labelledby="avis-title" className="py-24 px-6 bg-sport-dark">
+    <section aria-labelledby="avis-title" className="section-white px-6">
       <div className="max-w-6xl mx-auto">
         <SectionHeader
           id="avis-title"
@@ -59,7 +59,7 @@ export function Reviews() {
               </div>
 
               {/* Result badge */}
-              <div className="inline-flex items-center gap-1.5 bg-emerald-500/10 border border-emerald-500/25 text-[#1E7F5A] text-[10px] font-bold px-2.5 py-1 rounded-full mb-4 w-fit">
+              <div className="inline-flex items-center gap-1.5 bg-emerald-50 border border-emerald-500/25 text-[#1E7F5A] text-[10px] font-bold px-2.5 py-1 rounded-full mb-4 w-fit">
                 <TrendingUp size={10} aria-hidden="true" />
                 {results[i]}
               </div>

@@ -20,7 +20,7 @@ export function DashboardSignOut({ iconOnly = false }: { iconOnly?: boolean }) {
       <button
         onClick={signOut}
         aria-label={t('signOut')}
-        className="w-8 h-8 flex items-center justify-center rounded-full text-sport-gray hover:text-red-400 hover:bg-red-400/10 transition-all"
+        className="w-8 h-8 flex items-center justify-center rounded-full text-sport-gray hover:text-red-600 hover:bg-red-50 transition-all"
       >
         <LogOut size={15} />
       </button>
@@ -30,7 +30,7 @@ export function DashboardSignOut({ iconOnly = false }: { iconOnly?: boolean }) {
   return (
     <button
       onClick={signOut}
-      className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-semibold text-sport-gray hover:text-red-400 hover:bg-red-400/5 transition-all"
+      className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-semibold text-sport-gray hover:text-red-600 hover:bg-red-400/5 transition-all"
     >
       <LogOut size={16} aria-hidden="true" />
       {t('signOut')}

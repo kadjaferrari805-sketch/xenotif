@@ -93,7 +93,7 @@ export function NotificationBell({ align = 'right' }: { align?: 'left' | 'right'
         <div
           role="dialog"
           aria-label={t('title')}
-          className={`absolute ${align === 'left' ? 'left-0' : 'right-0'} mt-2 w-80 max-w-[calc(100vw-2rem)] rounded-2xl border border-sport-border bg-sport-card shadow-2xl z-50 overflow-hidden`}
+          className={`absolute ${align === 'left' ? 'left-0' : 'right-0'} mt-2 w-80 max-w-[calc(100vw-2rem)] card-base shadow-2xl z-50 overflow-hidden`}
         >
           <div className="flex items-center justify-between px-4 py-3 border-b border-sport-border">
             <p className="text-sm font-black text-sport-fg">{t('title')}</p>

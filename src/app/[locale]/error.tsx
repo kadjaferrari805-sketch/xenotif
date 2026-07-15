@@ -10,8 +10,8 @@ export default function Error({ error, reset }: { error: Error & { digest?: stri
 
   return (
     <div className="flex min-h-screen flex-col items-center justify-center bg-sport-dark px-4 text-center">
-      <div className="mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-red-500/20 border border-red-500/30">
-        <AlertTriangle size={36} className="text-red-400" />
+      <div className="mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-red-500/20 border border-red-200">
+        <AlertTriangle size={36} className="text-red-600" />
       </div>
       <h1 className="mb-2 text-2xl font-black text-sport-fg">Une erreur est survenue</h1>
       <p className="mb-8 text-sport-gray max-w-md">

@@ -37,8 +37,8 @@ export function AdminTransformations() {
                 <p className="text-sm font-bold text-sport-fg">{it.displayName ?? t('defaultName')}{it.weeks ? ` · ${t('weeks', { weeks: it.weeks })}` : ''}</p>
                 {it.caption && <p className="text-xs text-sport-gray truncate">{it.caption}</p>}
               </div>
-              <button onClick={() => moderate(it.id, 'approved')} aria-label={t('approve')} className="w-9 h-9 rounded-lg bg-emerald-500/15 text-[#1E7F5A] flex items-center justify-center hover:bg-emerald-500/25"><Check size={16} /></button>
-              <button onClick={() => moderate(it.id, 'rejected')} aria-label={t('reject')} className="w-9 h-9 rounded-lg bg-red-500/15 text-red-400 flex items-center justify-center hover:bg-red-500/25"><X size={16} /></button>
+              <button onClick={() => moderate(it.id, 'approved')} aria-label={t('approve')} className="w-9 h-9 rounded-lg bg-emerald-50 text-[#1E7F5A] flex items-center justify-center hover:bg-emerald-500/25"><Check size={16} /></button>
+              <button onClick={() => moderate(it.id, 'rejected')} aria-label={t('reject')} className="w-9 h-9 rounded-lg bg-red-50 text-red-600 flex items-center justify-center hover:bg-red-500/25"><X size={16} /></button>
             </div>
           ))}
         </div>

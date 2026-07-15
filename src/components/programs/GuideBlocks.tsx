@@ -55,7 +55,7 @@ export async function GuideBlocks({ blocks }: { blocks: GuideBlock[] }) {
                   </thead>
                   <tbody>
                     {b.rows.map((r, j) => (
-                      <tr key={j} className="border-b border-sport-border/50">
+                      <tr key={j} className="border-b border-sport-border/50 hover:bg-sport-gray-light transition-colors">
                         {r.map((c, k) => (
                           <td key={k} className={`py-2 pr-4 align-top ${k === 0 ? 'font-bold text-sport-fg' : 'text-sport-gray'}`}>{c}</td>
                         ))}

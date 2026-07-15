@@ -25,11 +25,11 @@ export function ExperiencePreview() {
     { Icon: Flame, label: td('statSessions'), value: PREVIEW.stats.sessionsWeek, color: 'text-sport-orange' },
     { Icon: Clock, label: td('statHours'), value: `${PREVIEW.stats.hours}h`, color: 'text-sport-blue' },
     { Icon: CalendarCheck, label: td('statActiveDays'), value: PREVIEW.stats.activeDays, color: 'text-[#1E7F5A]' },
-    { Icon: Award, label: td('statBadges'), value: PREVIEW.stats.badges, color: 'text-yellow-400' },
+    { Icon: Award, label: td('statBadges'), value: PREVIEW.stats.badges, color: 'text-yellow-600' },
   ]
 
   return (
-    <section aria-labelledby="home-experience" className="border-y border-sport-border bg-sport-card px-6 py-20">
+    <section aria-labelledby="home-experience" className="section-white px-6">
       <div className="mx-auto max-w-6xl">
         <SectionHeader id="home-experience" label={t('eyebrow')} title={t('title')} subtitle={t('subtitle')} />
 
@@ -60,7 +60,7 @@ export function ExperiencePreview() {
                 {PREVIEW.badges.map((b) => (
                   <span
                     key={b.label}
-                    className="flex h-11 w-11 items-center justify-center rounded-xl border border-yellow-400/30 bg-yellow-400/10 text-xl"
+                    className="flex h-11 w-11 items-center justify-center rounded-xl border border-yellow-400/30 bg-yellow-50 text-xl"
                     title={b.label}
                     aria-hidden="true"
                   >

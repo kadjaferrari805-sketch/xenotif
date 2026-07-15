@@ -45,7 +45,7 @@ export function MacrosCalc() {
                 key={g}
                 type="button"
                 onClick={() => setGoal(g)}
-                className={`rounded-xl py-2.5 text-xs font-bold border transition-colors ${goal === g ? 'bg-sport-orange text-sport-fg border-sport-orange' : 'bg-sport-dark text-sport-gray border-sport-border hover:border-sport-fg/30'}`}
+                className={`rounded-xl py-2.5 text-xs font-bold border transition-colors ${goal === g ? 'bg-sport-orange text-white border-sport-orange' : 'bg-sport-dark text-sport-gray border-sport-border hover:border-sport-fg/30'}`}
               >
                 {t(`macros.${g}`)}
               </button>

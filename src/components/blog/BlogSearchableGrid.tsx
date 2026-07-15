@@ -14,10 +14,10 @@ import type { BlogPost } from '@/lib/blog/posts'
 // le SEO est préservé, la recherche est une amélioration progressive.
 const CATEGORY_COLORS: Record<string, string> = {
   Musculation: 'bg-sport-orange/10 text-sport-orange border-sport-orange/20',
-  Nutrition: 'bg-green-500/10 text-[#1E7F5A] border-green-500/20',
-  Running: 'bg-blue-500/10 text-blue-400 border-blue-500/20',
-  HIIT: 'bg-red-500/10 text-red-400 border-red-500/20',
-  Récupération: 'bg-purple-500/10 text-purple-400 border-purple-500/20',
+  Nutrition: 'bg-green-50 text-[#1E7F5A] border-green-200',
+  Running: 'bg-blue-50 text-blue-600 border-blue-200',
+  HIIT: 'bg-red-50 text-red-600 border-red-200',
+  Récupération: 'bg-purple-50 text-purple-600 border-purple-200',
   Matériel: 'bg-sport-lime/10 text-sport-lime border-sport-lime/20',
 }
 
@@ -85,11 +85,11 @@ export function BlogSearchableGrid({ posts }: { posts: BlogPost[] }) {
               <Tilt3D max={13} className="relative h-full rounded-2xl">
                 <Link
                   href={`/blog/${post.slug}`}
-                  className="group block h-full overflow-hidden rounded-2xl border border-sport-border bg-sport-card hover:border-sport-orange/30 transition-all duration-300 hover:shadow-xl hover:shadow-sport-orange/5"
+                  className="group block h-full overflow-hidden card-base hover:border-sport-orange/30 transition-all duration-300 hover:shadow-xl hover:shadow-sport-orange/5"
                 >
                   <div className="relative h-52 overflow-hidden">
                     <Image src={post.coverImage} alt={post.title} fill className="object-cover transition-transform duration-500 group-hover:scale-105" style={{ objectPosition: post.coverPosition }} sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-sport-dark/80 via-transparent to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
                     <span className={`absolute top-3 left-3 text-xs font-bold px-2.5 py-1 rounded-full border ${colorClass}`}>
                       {t(`categories.${post.category}`)}
                     </span>

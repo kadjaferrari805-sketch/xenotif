@@ -68,10 +68,10 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 const CATEGORY_COLORS: Record<string, string> = {
   Musculation: 'bg-sport-orange/10 text-sport-orange border-sport-orange/20',
-  Nutrition: 'bg-green-500/10 text-[#1E7F5A] border-green-500/20',
-  Running: 'bg-blue-500/10 text-blue-400 border-blue-500/20',
-  HIIT: 'bg-red-500/10 text-red-400 border-red-500/20',
-  Récupération: 'bg-purple-500/10 text-purple-400 border-purple-500/20',
+  Nutrition: 'bg-green-50 text-[#1E7F5A] border-green-200',
+  Running: 'bg-blue-50 text-blue-600 border-blue-200',
+  HIIT: 'bg-red-50 text-red-600 border-red-200',
+  Récupération: 'bg-purple-50 text-purple-600 border-purple-200',
   Matériel: 'bg-lime-500/10 text-sport-lime border-lime-500/20',
 }
 
@@ -247,7 +247,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         <div className="max-w-4xl mx-auto px-6 mb-10">
           <div className="relative rounded-2xl overflow-hidden h-72 md:h-96">
             <Image src={post.coverImage} alt={post.title} fill priority className="object-cover" style={{ objectPosition: post.coverPosition }} sizes="(max-width: 896px) 100vw, 896px" />
-            <div className="absolute inset-0 bg-gradient-to-t from-sport-dark/40 via-transparent to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
           </div>
         </div>
 
@@ -312,7 +312,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                 {relatedPosts.map(related => {
                   const relColor = CATEGORY_COLORS[related.category] ?? 'bg-sport-orange/10 text-sport-orange border-sport-orange/20'
                   return (
-                    <Link key={related.slug} href={`/blog/${related.slug}`} className="group block overflow-hidden rounded-2xl border border-sport-border bg-sport-card hover:border-sport-orange/30 transition-all duration-300 hover:-translate-y-1">
+                    <Link key={related.slug} href={`/blog/${related.slug}`} className="group block overflow-hidden card-base hover:border-sport-orange/30 transition-all duration-300 hover:-translate-y-1">
                       <div className="relative h-44 overflow-hidden">
                         <Image src={related.coverImage} alt={related.title} fill className="object-cover transition-transform duration-500 group-hover:scale-105" style={{ objectPosition: related.coverPosition }} sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" />
                         <span className={`absolute top-3 left-3 text-xs font-bold px-2 py-0.5 rounded-full border ${relColor}`}>{t(`categories.${related.category}`)}</span>

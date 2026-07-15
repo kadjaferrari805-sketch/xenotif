@@ -214,7 +214,7 @@ export function FreeProgramPopup() {
                       placeholder={t('emailPlaceholder')}
                       className="w-full rounded-xl border border-sport-border bg-sport-dark px-4 py-3 text-sm text-sport-fg placeholder:text-sport-gray focus:border-sport-orange/60 focus:outline-none"
                     />
-                    {status === 'error' && <p className="mt-2 text-xs text-red-400">{errorMsg}</p>}
+                    {status === 'error' && <p className="mt-2 text-xs text-red-600">{errorMsg}</p>}
                     <button
                       type="submit"
                       disabled={status === 'loading'}

@@ -60,7 +60,7 @@ export function FAQ() {
   const items = t.raw('items') as FaqItem[]
 
   return (
-    <section id="faq" aria-labelledby="faq-title" className="py-24 px-6 bg-sport-card border-y border-sport-border">
+    <section id="faq" aria-labelledby="faq-title" className="section-white px-6">
       <div className="max-w-2xl mx-auto">
         <SectionHeader
           id="faq-title"

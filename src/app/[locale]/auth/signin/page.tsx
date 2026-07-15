@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { useTranslations } from 'next-intl'
 import { Logo } from '@/components/ui/Logo'
 import { Link, useRouter } from '@/i18n/navigation'
-import { ArrowRight, Eye, EyeOff, Zap, CheckCircle } from 'lucide-react'
+import { ArrowRight, Eye, EyeOff, Zap, CheckCircle, AlertCircle } from 'lucide-react'
 import { createClient } from '@/lib/supabase/client'
 
 export default function SignInPage() {
@@ -76,7 +76,7 @@ export default function SignInPage() {
                   value={email}
                   onChange={e => setEmail(e.target.value)}
                   placeholder="ton@email.com"
-                  className="w-full bg-sport-dark border border-sport-border rounded-xl px-4 py-3 text-sport-fg text-sm placeholder:text-sport-gray focus:outline-none focus:border-sport-orange transition-colors"
+                  className="input-base"
                 />
               </div>
 
@@ -90,7 +90,7 @@ export default function SignInPage() {
                     value={password}
                     onChange={e => setPassword(e.target.value)}
                     placeholder="••••••••"
-                    className="w-full bg-sport-dark border border-sport-border rounded-xl px-4 py-3 pr-12 text-sport-fg text-sm placeholder:text-sport-gray focus:outline-none focus:border-sport-orange transition-colors"
+                    className="input-base pr-12"
                   />
                   <button
                     type="button"
@@ -103,12 +103,16 @@ export default function SignInPage() {
                 </div>
               </div>
 
-              {error && <p role="alert" className="text-red-400 text-xs bg-red-400/10 border border-red-400/20 rounded-lg px-4 py-2.5">{error}</p>}
+              {error && (
+                <p role="alert" className="flex items-center gap-2 text-red-600 text-xs bg-red-50 border border-red-200 rounded-xl px-4 py-3">
+                  <AlertCircle size={14} className="shrink-0" aria-hidden="true" /> {error}
+                </p>
+              )}
 
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full bg-sport-orange text-white py-3.5 rounded-full font-bold text-sm hover:bg-orange-600 active:scale-95 transition-all inline-flex items-center justify-center gap-2 disabled:opacity-60 shadow-lg shadow-sport-orange/25"
+                className="btn-primary w-full disabled:opacity-60"
               >
                 {loading ? <><span className="w-4 h-4 border-2 border-white/40 border-t-white rounded-full animate-spin" />{t('submitting')}</> : <>{t('submit')} <ArrowRight size={14} /></>}
               </button>

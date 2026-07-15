@@ -50,7 +50,7 @@ export function ProductCard({ product, index = 0, source = 'shop' }: ProductCard
         <Tilt3D max={14} className="relative rounded-2xl">
         <a href={product.amazon.affiliateUrl} target="_blank" rel="noopener noreferrer"
           onClick={() => trackProductClick(product, source)}
-          className="group block overflow-hidden rounded-2xl border border-sport-border bg-sport-card transition-all duration-300">
+          className="group block overflow-hidden card-base transition-all duration-300">
           <div className={`relative isolate h-52 overflow-hidden ${lightTile ? 'bg-white' : 'bg-sport-border/20'}`}>
             <Image src={product.images[0] ?? ''} alt={product.name} fill
               className={`${lightTile ? 'object-contain p-3' : 'object-cover'} transition-transform duration-500 group-hover:scale-105`}
@@ -59,7 +59,7 @@ export function ProductCard({ product, index = 0, source = 'shop' }: ProductCard
             {product.badge && <span className="absolute top-3 left-3 rounded-full bg-sport-orange px-2.5 py-1 text-xs font-black text-white shadow-lg">{product.badge}</span>}
             {discount && <span className="absolute top-3 right-10 rounded-full bg-red-500 px-2 py-0.5 text-xs font-black text-white">-{discount}%</span>}
             <span className="absolute top-3 right-3 flex h-7 w-7 items-center justify-center rounded-full bg-sport-dark/80 text-xs">🔗</span>
-            <div className="absolute inset-0 bg-gradient-to-t from-sport-dark/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center pb-4">
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center pb-4">
               <span className="flex items-center gap-1.5 rounded-full bg-sport-orange px-4 py-2 text-xs font-bold text-white">
                 <ExternalLink size={12} /> {t('card.amazonView')}
               </span>
@@ -93,7 +93,7 @@ export function ProductCard({ product, index = 0, source = 'shop' }: ProductCard
   return (
     <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3, delay: index * 0.05 }}>
       <Tilt3D max={14} className="relative rounded-2xl">
-      <div className="group overflow-hidden rounded-2xl border border-sport-border bg-sport-card transition-all duration-300 flex flex-col">
+      <div className="group overflow-hidden card-base transition-all duration-300 flex flex-col">
         <Link href={`/boutique/${product.slug}`} onClick={() => trackProductClick(product, source)} className={`relative block h-52 overflow-hidden ${lightTile ? 'bg-white' : 'bg-sport-border/20'}`}>
           <Image src={product.images[0] ?? ''} alt={product.name} fill className={`${lightTile ? 'object-contain p-3' : 'object-cover'} transition-transform duration-500 group-hover:scale-105`}
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw" />
@@ -101,12 +101,12 @@ export function ProductCard({ product, index = 0, source = 'shop' }: ProductCard
           {discount && <span className="absolute top-3 right-10 rounded-full bg-red-500 px-2 py-0.5 text-xs font-black text-white">-{discount}%</span>}
           {/* Wishlist */}
           <button onClick={e => { e.preventDefault(); toggle(product.id) }}
-            className={`absolute top-3 right-3 flex h-7 w-7 items-center justify-center rounded-full transition-all ${wishlisted ? 'bg-red-500 text-sport-fg' : 'bg-sport-dark/80 text-sport-gray hover:text-red-400'}`}>
+            className={`absolute top-3 right-3 flex h-7 w-7 items-center justify-center rounded-full transition-all ${wishlisted ? 'bg-red-500 text-white' : 'bg-sport-dark/80 text-sport-gray hover:text-red-600'}`}>
             <Heart size={12} fill={wishlisted ? 'currentColor' : 'none'} />
           </button>
           {/* Quick view overlay - span (pas de <a> imbriqué dans le <Link> image) */}
-          <div className="absolute inset-0 bg-gradient-to-t from-sport-dark/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center pb-3">
-            <span className="flex items-center gap-1.5 rounded-full bg-sport-fg/20 backdrop-blur-sm px-3 py-1.5 text-xs font-bold text-sport-fg">
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center pb-3">
+            <span className="flex items-center gap-1.5 rounded-full bg-white/20 backdrop-blur-sm px-3 py-1.5 text-xs font-bold text-white">
               <Eye size={11} /> {t('card.detailsView')}
             </span>
           </div>

@@ -40,7 +40,7 @@ export function TransformationForm() {
 
   if (done) {
     return (
-      <div className="bg-sport-card border border-emerald-500/30 rounded-2xl p-6 flex items-center gap-3">
+      <div className="bg-sport-card border border-emerald-200 rounded-2xl p-6 flex items-center gap-3">
         <CheckCircle size={20} className="text-[#1E7F5A] shrink-0" aria-hidden="true" />
         <p className="text-sm text-sport-fg">{t('success')}</p>
       </div>
@@ -76,7 +76,7 @@ export function TransformationForm() {
         <input type="checkbox" checked={consent} onChange={e => setConsent(e.target.checked)} className="mt-0.5 accent-sport-orange" />
         <span className="text-xs text-sport-gray leading-relaxed">{t('consentLabel')}</span>
       </label>
-      {error && <p role="alert" className="text-red-400 text-xs mb-3">{error}</p>}
+      {error && <p role="alert" className="text-red-600 text-xs mb-3">{error}</p>}
       <button onClick={submit} disabled={!canSubmit}
         className="inline-flex items-center gap-2 bg-sport-orange text-white px-6 py-3 rounded-full font-bold text-sm hover:bg-orange-600 disabled:opacity-50 transition-all">
         {loading ? t('sending') : t('submit')}

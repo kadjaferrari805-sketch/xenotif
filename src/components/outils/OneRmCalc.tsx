@@ -45,7 +45,7 @@ export function OneRmCalc() {
           </thead>
           <tbody>
             {PCTS.map((p) => (
-              <tr key={p} className="border-b border-sport-border/50">
+              <tr key={p} className="border-b border-sport-border/50 hover:bg-sport-gray-light transition-colors">
                 <td className="py-2 font-bold text-sport-fg">{p} %</td>
                 <td className="py-2 text-right text-sport-gray">{r((oneRm * p) / 100)} kg</td>
               </tr>

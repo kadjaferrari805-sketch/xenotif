@@ -15,8 +15,8 @@ export function PreviewWeightChart({ points, unit, goal }: { points: number[]; u
         <span className="text-xs font-bold text-[#1E7F5A]">{delta} {unit}</span>
       </div>
       <svg viewBox={`0 0 ${w} ${h}`} className="w-full" role="img" aria-label="Évolution du poids">
-        <path d={d} fill="none" stroke="#FF4500" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-        <circle cx={x(points.length - 1)} cy={y(last)} r="3.5" fill="#FF4500" />
+        <path d={d} fill="none" stroke="#FF6A00" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+        <circle cx={x(points.length - 1)} cy={y(last)} r="3.5" fill="#FF6A00" />
       </svg>
       <div className="flex items-center justify-between mt-2 text-[11px] text-sport-gray">
         <span>{last} {unit}</span>

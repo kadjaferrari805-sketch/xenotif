@@ -4,7 +4,7 @@ import { Suspense, useState, useEffect } from 'react'
 import { useTranslations, useLocale } from 'next-intl'
 import { useSearchParams } from 'next/navigation'
 import { Link, useRouter } from '@/i18n/navigation'
-import { ArrowRight, CheckCircle, Zap, Eye, EyeOff, Lock, ShieldCheck } from 'lucide-react'
+import { ArrowRight, CheckCircle, Zap, Eye, EyeOff, Lock, ShieldCheck, AlertCircle } from 'lucide-react'
 import { createClient } from '@/lib/supabase/client'
 import { trackMeta } from '@/lib/meta-pixel'
 import { trackSignUp } from '@/lib/analytics'
@@ -26,7 +26,7 @@ const PRO_VALUE: Record<Period, number> = { monthly: 9.99, annual: 95.88 }
 
 type PlanText = { name: string; period: string; badge: string; features: string[] }
 
-const INPUT = 'w-full bg-sport-dark border border-sport-border rounded-xl px-4 py-3 text-sport-fg text-sm placeholder:text-sport-gray focus:outline-none focus:border-sport-orange transition-colors'
+const INPUT = 'input-base'
 
 function SignUpForm() {
   const t = useTranslations('auth.signup')
@@ -130,7 +130,7 @@ function SignUpForm() {
   if (done) {
     return (
       <div className="text-center py-4">
-        <div className="w-16 h-16 bg-emerald-500/10 border border-emerald-500/30 rounded-full flex items-center justify-center mx-auto mb-5">
+        <div className="w-16 h-16 bg-emerald-50 border border-emerald-200 rounded-full flex items-center justify-center mx-auto mb-5">
           <CheckCircle size={28} className="text-[#1E7F5A]" />
         </div>
         <h2 className="text-xl font-black text-sport-fg mb-3">{t('doneTitle')}</h2>
@@ -167,14 +167,14 @@ function SignUpForm() {
           <button
             type="button"
             onClick={() => setPeriod('monthly')}
-            className={`px-5 py-2 rounded-full text-sm font-bold transition-all ${period === 'monthly' ? 'bg-sport-orange text-sport-fg' : 'text-sport-gray hover:text-sport-fg'}`}
+            className={`px-5 py-2 rounded-full text-sm font-bold transition-all ${period === 'monthly' ? 'bg-sport-orange text-white' : 'text-sport-gray hover:text-sport-fg'}`}
           >
             {t('monthly')}
           </button>
           <button
             type="button"
             onClick={() => setPeriod('annual')}
-            className={`px-5 py-2 rounded-full text-sm font-bold transition-all flex items-center gap-2 ${period === 'annual' ? 'bg-sport-orange text-sport-fg' : 'text-sport-gray hover:text-sport-fg'}`}
+            className={`px-5 py-2 rounded-full text-sm font-bold transition-all flex items-center gap-2 ${period === 'annual' ? 'bg-sport-orange text-white' : 'text-sport-gray hover:text-sport-fg'}`}
           >
             {t('annual')}
             <span className="text-[10px] font-black bg-emerald-500 text-white px-2 py-0.5 rounded-full">{t('save')}</span>
@@ -260,12 +260,14 @@ function SignUpForm() {
             </div>
 
             {error && (
-              <p role="alert" className="text-red-400 text-xs bg-red-400/10 border border-red-400/20 rounded-lg px-4 py-2.5">{error}</p>
+              <p role="alert" className="flex items-center gap-2 text-red-600 text-xs bg-red-50 border border-red-200 rounded-xl px-4 py-3">
+                <AlertCircle size={14} className="shrink-0" aria-hidden="true" /> {error}
+              </p>
             )}
 
             {/* Réassurance au point de décision : essai gratuit + aucun débit + résiliation. */}
             {selectedPlan !== 'gratuit' && (
-              <div className="rounded-xl bg-emerald-500/10 border border-emerald-500/25 px-4 py-3">
+              <div className="rounded-xl bg-emerald-50 border border-emerald-500/25 px-4 py-3">
                 <p className="text-xs font-bold text-[#1E7F5A] text-center mb-2">{t('trialReassure')}</p>
                 <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1 text-[10px] text-sport-gray">
                   <span className="inline-flex items-center gap-1"><Lock size={10} aria-hidden="true" className="text-[#1E7F5A]" /> {tt('securePayment')}</span>
@@ -278,7 +280,7 @@ function SignUpForm() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full bg-sport-orange text-white py-3.5 rounded-full font-bold text-sm hover:bg-orange-600 active:scale-95 transition-all inline-flex items-center justify-center gap-2 disabled:opacity-60 shadow-lg shadow-sport-orange/25"
+              className="btn-primary w-full disabled:opacity-60"
             >
               {loading
                 ? <><span className="w-4 h-4 border-2 border-white/40 border-t-white rounded-full animate-spin" />{t('creating')}</>

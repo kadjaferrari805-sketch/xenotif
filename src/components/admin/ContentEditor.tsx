@@ -48,7 +48,7 @@ export function ContentEditor({ slug, initial }: { slug: string; initial: Editor
 
       <div className="flex gap-2">
         {LOCALES.map(l => (
-          <button key={l} onClick={() => setTab(l)} className={`px-4 py-1.5 rounded-full text-xs font-bold border ${tab === l ? 'bg-sport-orange text-sport-fg border-sport-orange' : 'border-sport-border text-sport-gray'}`}>{l.toUpperCase()}</button>
+          <button key={l} onClick={() => setTab(l)} className={`px-4 py-1.5 rounded-full text-xs font-bold border ${tab === l ? 'bg-sport-orange text-white border-sport-orange' : 'border-sport-border text-sport-gray'}`}>{l.toUpperCase()}</button>
         ))}
       </div>
 
@@ -73,7 +73,7 @@ export function ContentEditor({ slug, initial }: { slug: string; initial: Editor
         <button onClick={save} disabled={saving} className="bg-sport-orange text-white px-6 py-3 rounded-full font-bold text-sm hover:bg-orange-600 disabled:opacity-60 transition-all">
           {saving ? 'Enregistrement…' : 'Enregistrer'}
         </button>
-        {msg && <span className={`text-sm font-semibold ${msg.ok ? 'text-[#1E7F5A]' : 'text-red-400'}`}>{msg.text}</span>}
+        {msg && <span className={`text-sm font-semibold ${msg.ok ? 'text-[#1E7F5A]' : 'text-red-600'}`}>{msg.text}</span>}
       </div>
     </div>
   )

@@ -129,9 +129,6 @@ export default async function RootLayout({
             si JS (sans flash) ; (2) `html.preloaded` si le préchargeur a déjà été vu
             cette session → on ne le rejoue pas (affiché une seule fois / session). */}
         <script dangerouslySetInnerHTML={{ __html: "(function(){var d=document.documentElement;d.classList.add('js-reveal');try{if(sessionStorage.getItem('xeno_pl'))d.classList.add('preloaded');else sessionStorage.setItem('xeno_pl','1');}catch(e){}})()" }} />
-        {/* Thème clair/sombre : posé avant le paint pour éviter tout flash.
-            Préférence enregistrée (xeno_theme) sinon préférence système. */}
-        <script dangerouslySetInnerHTML={{ __html: "(function(){try{var t=localStorage.getItem('xeno_theme');if(t!=='light'&&t!=='dark'){t=window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';}document.documentElement.dataset.theme=t;}catch(e){document.documentElement.dataset.theme='dark';}})()" }} />
         {/* Google Consent Mode v2 - DOIT être posé avant gtag/fbq. Défaut : accordé
             partout, SAUF UE/EEE/UK/CH (region) où c'est refusé tant que l'utilisateur
             n'a pas accepté. Un choix déjà stocké est ré-appliqué immédiatement, et

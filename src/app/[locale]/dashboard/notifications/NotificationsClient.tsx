@@ -61,7 +61,7 @@ export function NotificationsClient() {
             <Link
               key={i}
               href={n.href}
-              className="flex items-center gap-4 rounded-2xl border border-sport-border bg-sport-card p-4 hover:border-sport-orange/40 transition-all group"
+              className="flex items-center gap-4 card-base p-4 hover:border-sport-orange/40 transition-all group"
             >
               <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl" style={{ background: `${n.color}1f`, border: `1px solid ${n.color}40` }}>
                 <Icon size={18} style={{ color: n.color }} aria-hidden="true" />

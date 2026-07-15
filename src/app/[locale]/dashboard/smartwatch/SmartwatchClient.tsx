@@ -168,7 +168,7 @@ export function SmartwatchClient({ initialData }: { initialData: DashboardData }
         </div>
 
         <div className="bg-sport-card border border-sport-border rounded-2xl p-4 flex items-start gap-3">
-          <div className="w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center shrink-0">
+          <div className="w-8 h-8 rounded-lg bg-emerald-50 border border-emerald-200 flex items-center justify-center shrink-0">
             <span className="text-sm">🔒</span>
           </div>
           <div>
@@ -183,8 +183,8 @@ export function SmartwatchClient({ initialData }: { initialData: DashboardData }
   }
 
   const rings = [
-    { value: today.active_minutes,  max: goals.active_minutes_daily, color: '#FF4500', label: t('rings.activity'), unit: 'min' },
-    { value: today.calories_burned, max: goals.calories_daily,       color: '#A3FF00', label: t('rings.calories'), unit: 'kcal' },
+    { value: today.active_minutes,  max: goals.active_minutes_daily, color: '#FF6A00', label: t('rings.activity'), unit: 'min' },
+    { value: today.calories_burned, max: goals.calories_daily,       color: '#2A2A2A', label: t('rings.calories'), unit: 'kcal' },
     { value: today.steps,           max: goals.steps_daily,          color: '#38bdf8', label: t('rings.steps'),    unit: '' },
   ]
 
@@ -207,7 +207,7 @@ export function SmartwatchClient({ initialData }: { initialData: DashboardData }
 
         <div className="flex items-center gap-2 flex-wrap">
           {connectedDevice && (
-            <div className="flex items-center gap-1.5 bg-emerald-500/10 border border-emerald-500/20 rounded-full px-3 py-1.5">
+            <div className="flex items-center gap-1.5 bg-emerald-50 border border-emerald-200 rounded-full px-3 py-1.5">
               <Wifi size={11} className="text-[#1E7F5A]" />
               <span className="text-[11px] text-[#1E7F5A] font-bold">{t('synced')}</span>
             </div>
@@ -234,7 +234,7 @@ export function SmartwatchClient({ initialData }: { initialData: DashboardData }
             onClick={() => setTab(tb.id)}
             className={`flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-bold whitespace-nowrap transition-all flex-1 justify-center ${
               tab === tb.id
-                ? 'bg-sport-orange text-sport-fg shadow-lg shadow-sport-orange/20'
+                ? 'bg-sport-orange text-white shadow-lg shadow-sport-orange/20'
                 : 'text-sport-gray hover:text-sport-fg'
             }`}
           >
@@ -268,12 +268,12 @@ export function SmartwatchClient({ initialData }: { initialData: DashboardData }
             {/* Today metrics grid */}
             <div className="grid grid-cols-2 gap-3">
               {[
-                { icon: <Footprints size={15} className="text-sky-400" />,   label: t('metrics.stepsToday'),    value: today.steps.toLocaleString(numLocale), unit: `/ ${(goals.steps_daily / 1000).toFixed(0)}k`, color: '#38bdf8' },
-                { icon: <Flame size={15} className="text-sport-orange" />,    label: t('metrics.caloriesBurned'), value: today.calories_burned.toString(),      unit: 'kcal',                                    color: '#FF4500' },
-                { icon: <MapPin size={15} className="text-purple-400" />,     label: t('metrics.distance'),       value: `${(today.distance_meters / 1000).toFixed(1)}`, unit: 'km',                             color: '#a78bfa' },
-                { icon: <Droplets size={15} className="text-cyan-400" />,     label: t('metrics.hydration'),      value: `${today.hydration_ml}`,               unit: 'ml',                                      color: '#22d3ee' },
-                { icon: <Moon size={15} className="text-indigo-400" />,       label: t('metrics.sleep'),          value: formatSleep(today.sleep_minutes),      unit: today.sleep_score ? t('sleepScore', { score: today.sleep_score }) : '', color: '#818cf8' },
-                { icon: <Zap size={15} className="text-sport-lime" />,        label: t('metrics.activeMinutes'),  value: today.active_minutes.toString(),       unit: `/ ${goals.active_minutes_daily} min`,     color: '#A3FF00' },
+                { icon: <Footprints size={15} className="text-sky-600" />,   label: t('metrics.stepsToday'),    value: today.steps.toLocaleString(numLocale), unit: `/ ${(goals.steps_daily / 1000).toFixed(0)}k`, color: '#38bdf8' },
+                { icon: <Flame size={15} className="text-sport-orange" />,    label: t('metrics.caloriesBurned'), value: today.calories_burned.toString(),      unit: 'kcal',                                    color: '#FF6A00' },
+                { icon: <MapPin size={15} className="text-purple-600" />,     label: t('metrics.distance'),       value: `${(today.distance_meters / 1000).toFixed(1)}`, unit: 'km',                             color: '#a78bfa' },
+                { icon: <Droplets size={15} className="text-cyan-600" />,     label: t('metrics.hydration'),      value: `${today.hydration_ml}`,               unit: 'ml',                                      color: '#22d3ee' },
+                { icon: <Moon size={15} className="text-indigo-600" />,       label: t('metrics.sleep'),          value: formatSleep(today.sleep_minutes),      unit: today.sleep_score ? t('sleepScore', { score: today.sleep_score }) : '', color: '#818cf8' },
+                { icon: <Zap size={15} className="text-sport-lime" />,        label: t('metrics.activeMinutes'),  value: today.active_minutes.toString(),       unit: `/ ${goals.active_minutes_daily} min`,     color: '#2A2A2A' },
               ].map(m => (
                 <div key={m.label} className="bg-sport-card border border-sport-border rounded-xl p-3 flex flex-col gap-1.5">
                   <div className="flex items-center gap-2">
@@ -292,7 +292,7 @@ export function SmartwatchClient({ initialData }: { initialData: DashboardData }
           {/* Heart rate */}
           <div className="bg-sport-card border border-sport-border rounded-2xl p-5">
             <p className="text-sm font-black text-sport-fg mb-4 flex items-center gap-2">
-              <Heart size={14} className="text-red-400" /> {t('heartRateTitle')}
+              <Heart size={14} className="text-red-600" /> {t('heartRateTitle')}
             </p>
             <HeartRateDisplay
               avg={today.heart_rate_avg ?? 72}
@@ -311,7 +311,7 @@ export function SmartwatchClient({ initialData }: { initialData: DashboardData }
                     key={m}
                     onClick={() => setChartMetric(m)}
                     className={`text-[10px] font-bold px-2.5 py-1 rounded-lg transition-all ${
-                      chartMetric === m ? 'bg-sport-orange text-sport-fg' : 'text-sport-gray hover:text-sport-fg'
+                      chartMetric === m ? 'bg-sport-orange text-white' : 'text-sport-gray hover:text-sport-fg'
                     }`}
                   >
                     {t(`chartToggle.${m}`)}
@@ -322,7 +322,7 @@ export function SmartwatchClient({ initialData }: { initialData: DashboardData }
             <WeeklyChart
               data={weekly}
               metric={chartMetric}
-              color={chartMetric === 'steps' ? '#38bdf8' : chartMetric === 'calories' ? '#FF4500' : '#A3FF00'}
+              color={chartMetric === 'steps' ? '#38bdf8' : chartMetric === 'calories' ? '#FF6A00' : '#2A2A2A'}
             />
           </div>
 
@@ -369,7 +369,7 @@ export function SmartwatchClient({ initialData }: { initialData: DashboardData }
 
           {/* Security note */}
           <div className="bg-sport-card border border-sport-border rounded-2xl p-4 flex items-start gap-3">
-            <div className="w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center shrink-0">
+            <div className="w-8 h-8 rounded-lg bg-emerald-50 border border-emerald-200 flex items-center justify-center shrink-0">
               <span className="text-sm">🔒</span>
             </div>
             <div>
@@ -412,8 +412,8 @@ export function SmartwatchClient({ initialData }: { initialData: DashboardData }
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <GoalRing label={t('goalLabels.steps')}        value={today.steps}           goal={goals.steps_daily}          unit={t('goalUnitSteps')} color="#38bdf8" icon="👟" />
-            <GoalRing label={t('goalLabels.calories')}     value={today.calories_burned} goal={goals.calories_daily}       unit="kcal"               color="#FF4500" icon="🔥" />
-            <GoalRing label={t('goalLabels.activeMinutes')} value={today.active_minutes}  goal={goals.active_minutes_daily} unit="min"                color="#A3FF00" icon="⚡" />
+            <GoalRing label={t('goalLabels.calories')}     value={today.calories_burned} goal={goals.calories_daily}       unit="kcal"               color="#FF6A00" icon="🔥" />
+            <GoalRing label={t('goalLabels.activeMinutes')} value={today.active_minutes}  goal={goals.active_minutes_daily} unit="min"                color="#2A2A2A" icon="⚡" />
             <GoalRing label={t('goalLabels.sleep')}        value={today.sleep_minutes}   goal={goals.sleep_minutes_daily}  unit="min"                color="#818cf8" icon="🌙" />
             <GoalRing label={t('goalLabels.hydration')}    value={today.hydration_ml}    goal={goals.water_ml_daily}       unit="ml"                 color="#22d3ee" icon="💧" />
             <GoalRing label={t('goalLabels.sessionsWeek')} value={sessions.filter(s => {

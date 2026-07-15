@@ -9,7 +9,7 @@ export async function Paywall() {
 
   return (
     <div className="p-6 md:p-10 max-w-xl mx-auto pb-24 md:pb-10">
-      <div className="rounded-2xl border border-sport-border bg-sport-card p-8 text-center">
+      <div className="card-base p-8 text-center">
         <div className="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-sport-orange/15 border border-sport-orange/30">
           <Lock size={24} className="text-sport-orange" aria-hidden="true" />
         </div>

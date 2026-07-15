@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { useTranslations } from 'next-intl'
 import { Logo } from '@/components/ui/Logo'
 import { Link } from '@/i18n/navigation'
-import { ArrowLeft, CheckCircle } from 'lucide-react'
+import { ArrowLeft, CheckCircle, AlertCircle } from 'lucide-react'
 import { createClient } from '@/lib/supabase/client'
 
 export default function ForgotPasswordPage() {
@@ -34,7 +34,7 @@ export default function ForgotPasswordPage() {
         <div className="bg-sport-card border border-sport-border rounded-2xl p-8">
           {done ? (
             <div className="text-center">
-              <div className="w-16 h-16 bg-emerald-500/10 border border-emerald-500/30 rounded-full flex items-center justify-center mx-auto mb-5">
+              <div className="w-16 h-16 bg-emerald-50 border border-emerald-200 rounded-full flex items-center justify-center mx-auto mb-5">
                 <CheckCircle size={28} className="text-[#1E7F5A]" />
               </div>
               <h2 className="text-xl font-black text-sport-fg mb-3">{t('doneTitle')}</h2>
@@ -65,16 +65,20 @@ export default function ForgotPasswordPage() {
                     value={email}
                     onChange={e => setEmail(e.target.value)}
                     placeholder="ton@email.com"
-                    className="w-full bg-sport-dark border border-sport-border rounded-xl px-4 py-3 text-sport-fg text-sm placeholder:text-sport-gray focus:outline-none focus:border-sport-orange transition-colors"
+                    className="input-base"
                   />
                 </div>
 
-                {error && <p role="alert" className="text-red-400 text-xs bg-red-400/10 border border-red-400/20 rounded-lg px-4 py-2.5">{error}</p>}
+                {error && (
+                  <p role="alert" className="flex items-center gap-2 text-red-600 text-xs bg-red-50 border border-red-200 rounded-xl px-4 py-3">
+                    <AlertCircle size={14} className="shrink-0" aria-hidden="true" /> {error}
+                  </p>
+                )}
 
                 <button
                   type="submit"
                   disabled={loading}
-                  className="w-full bg-sport-orange text-white py-3.5 rounded-full font-bold text-sm hover:bg-orange-600 active:scale-95 transition-all inline-flex items-center justify-center gap-2 disabled:opacity-60"
+                  className="btn-primary w-full disabled:opacity-60"
                 >
                   {loading ? <><span className="w-4 h-4 border-2 border-white/40 border-t-white rounded-full animate-spin" />{t('submitting')}</> : t('submit')}
                 </button>

@@ -44,7 +44,7 @@ function PlanButton({
       aria-label={t('subscribeAria', { name })}
       className={`w-full py-3.5 px-6 rounded-full font-bold text-sm transition-all inline-flex items-center justify-center gap-2 active:scale-95 ${
         highlight
-          ? 'bg-sport-orange text-sport-fg hover:bg-orange-600 shadow-lg shadow-sport-orange/25'
+          ? 'bg-sport-orange text-white hover:bg-[#E65F00] shadow-lg shadow-sport-orange/25'
           : 'border border-sport-border text-sport-fg hover:border-sport-gray hover:bg-sport-fg/5'
       }`}
     >
@@ -62,7 +62,7 @@ export function Pricing() {
   const [period, setPeriod] = useState<Period>('annual')
 
   return (
-    <section id="tarifs" aria-labelledby="tarifs-title" className="py-24 px-6 bg-sport-card border-y border-sport-border">
+    <section id="tarifs" aria-labelledby="tarifs-title" className="section-tint px-6">
       <div className="max-w-6xl mx-auto">
         <SectionHeader
           id="tarifs-title"
@@ -80,13 +80,13 @@ export function Pricing() {
         <div className="flex items-center justify-center gap-4 mt-8">
           <button
             onClick={() => setPeriod('monthly')}
-            className={`px-5 py-2 rounded-full text-sm font-bold transition-all ${period === 'monthly' ? 'bg-sport-orange text-sport-fg' : 'text-sport-gray hover:text-sport-fg'}`}
+            className={`px-5 py-2 rounded-full text-sm font-bold transition-all ${period === 'monthly' ? 'bg-sport-orange text-white' : 'text-sport-gray hover:text-sport-fg'}`}
           >
             {t('monthly')}
           </button>
           <button
             onClick={() => setPeriod('annual')}
-            className={`px-5 py-2 rounded-full text-sm font-bold transition-all flex items-center gap-2 ${period === 'annual' ? 'bg-sport-orange text-sport-fg' : 'text-sport-gray hover:text-sport-fg'}`}
+            className={`px-5 py-2 rounded-full text-sm font-bold transition-all flex items-center gap-2 ${period === 'annual' ? 'bg-sport-orange text-white' : 'text-sport-gray hover:text-sport-fg'}`}
           >
             {t('annual')}
             <span className="text-[10px] font-black bg-emerald-500 text-white px-2 py-0.5 rounded-full">{t('save')}</span>
@@ -108,7 +108,7 @@ export function Pricing() {
                 className={`relative flex h-full flex-col rounded-2xl border p-8 transition-all ${
                   plan.highlight
                     ? 'bg-sport-dark border-sport-orange shadow-2xl shadow-sport-orange/15 ring-1 ring-sport-orange/40'
-                    : 'bg-sport-dark border-sport-border'
+                    : 'bg-sport-dark border-sport-border shadow-sm hover:shadow-md'
                 }`}
               >
                 {tr.badge && plan.id !== 'gratuit' && (

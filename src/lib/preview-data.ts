@@ -3,9 +3,9 @@
 export const PREVIEW = {
   name: 'Alex',
   rings: [
-    { value: 8420, max: 10000, color: '#FF4500', label: 'Pas', unit: 'pas' },
-    { value: 612, max: 700, color: '#A3FF00', label: 'Calories', unit: 'kcal' },
-    { value: 47, max: 60, color: '#2563EB', label: 'Minutes actives', unit: 'min' },
+    { value: 8420, max: 10000, color: '#FF6A00', label: 'Pas', unit: 'pas' },
+    { value: 612, max: 700, color: '#2A2A2A', label: 'Calories', unit: 'kcal' },
+    { value: 47, max: 60, color: '#8A8A8A', label: 'Minutes actives', unit: 'min' },
   ],
   weekly: [
     { day: 'Lun', steps: 7200, calories: 480, activeMinutes: 38, heartRate: 128 },

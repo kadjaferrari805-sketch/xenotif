@@ -33,17 +33,16 @@ export function VideoBand() {
         <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: 'url(/home/runner-poster.jpg)' }} />
       )}
 
-      {/* Overlay pour lisibilité + fondu avec les sections sombres */}
-      <div className="absolute inset-0 bg-gradient-to-t from-sport-dark via-sport-dark/45 to-sport-dark/75" />
+      {/* Overlay sombre littéral (pas le token sport-dark, désormais blanc) pour
+          la lisibilité du texte blanc sur la vidéo/photo - même traitement que
+          Hero.tsx. */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/45 to-black/75" />
 
       <div className="relative z-10 text-center px-6 max-w-3xl">
         <p className="text-[11px] font-black tracking-[3px] uppercase text-sport-orange mb-4">{t('eyebrow')}</p>
-        <h2 className="text-3xl md:text-6xl font-black text-sport-fg leading-tight mb-5 drop-shadow-lg">{t('title')}</h2>
-        <p className="text-lg text-sport-fg/85 mb-8 max-w-xl mx-auto drop-shadow">{t('subtitle')}</p>
-        <Link
-          href="/auth/signup?plan=pro"
-          className="inline-flex items-center gap-2 bg-sport-orange text-white px-8 py-4 rounded-full font-bold text-sm hover:bg-orange-600 active:scale-95 transition-all shadow-xl shadow-sport-orange/30"
-        >
+        <h2 className="text-3xl md:text-6xl font-black text-white leading-tight mb-5 drop-shadow-lg">{t('title')}</h2>
+        <p className="text-lg text-white/85 mb-8 max-w-xl mx-auto drop-shadow">{t('subtitle')}</p>
+        <Link href="/auth/signup?plan=pro" className="btn-primary inline-flex items-center gap-2">
           {t('cta')} <ArrowRight size={16} aria-hidden="true" />
         </Link>
       </div>

@@ -96,7 +96,7 @@ export function ProductDetail({ product }: { product: Product }) {
             </div>
 
             {/* Features */}
-            <div className="rounded-2xl border border-sport-border bg-sport-card p-4 mb-8">
+            <div className="card-base p-4 mb-8">
               <p className="text-xs font-bold uppercase tracking-wider text-sport-gray mb-3">{t('detail.included')}</p>
               <ul className="space-y-2">
                 {product.features.map(f => (

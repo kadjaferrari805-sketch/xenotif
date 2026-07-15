@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { useTranslations } from 'next-intl'
 import { Logo } from '@/components/ui/Logo'
 import { useRouter } from '@/i18n/navigation'
-import { Eye, EyeOff, CheckCircle } from 'lucide-react'
+import { Eye, EyeOff, CheckCircle, AlertCircle } from 'lucide-react'
 import { createClient } from '@/lib/supabase/client'
 
 export default function ResetPasswordPage() {
@@ -35,7 +35,7 @@ export default function ResetPasswordPage() {
         <div className="bg-sport-card border border-sport-border rounded-2xl p-8">
           {done ? (
             <div className="text-center">
-              <div className="w-16 h-16 bg-emerald-500/10 border border-emerald-500/30 rounded-full flex items-center justify-center mx-auto mb-5">
+              <div className="w-16 h-16 bg-emerald-50 border border-emerald-200 rounded-full flex items-center justify-center mx-auto mb-5">
                 <CheckCircle size={28} className="text-[#1E7F5A]" />
               </div>
               <h2 className="text-xl font-black text-sport-fg mb-3">{t('doneTitle')}</h2>
@@ -58,7 +58,7 @@ export default function ResetPasswordPage() {
                       value={password}
                       onChange={e => setPassword(e.target.value)}
                       placeholder={t('passwordPlaceholder')}
-                      className="w-full bg-sport-dark border border-sport-border rounded-xl px-4 py-3 pr-12 text-sport-fg text-sm placeholder:text-sport-gray focus:outline-none focus:border-sport-orange transition-colors"
+                      className="input-base pr-12"
                     />
                     <button type="button" onClick={() => setShowPwd(v => !v)} className="absolute right-3 top-1/2 -translate-y-1/2 text-sport-gray hover:text-sport-fg p-1">
                       {showPwd ? <EyeOff size={16} /> : <Eye size={16} />}
@@ -66,12 +66,16 @@ export default function ResetPasswordPage() {
                   </div>
                 </div>
 
-                {error && <p role="alert" className="text-red-400 text-xs bg-red-400/10 border border-red-400/20 rounded-lg px-4 py-2.5">{error}</p>}
+                {error && (
+                  <p role="alert" className="flex items-center gap-2 text-red-600 text-xs bg-red-50 border border-red-200 rounded-xl px-4 py-3">
+                    <AlertCircle size={14} className="shrink-0" aria-hidden="true" /> {error}
+                  </p>
+                )}
 
                 <button
                   type="submit"
                   disabled={loading}
-                  className="w-full bg-sport-orange text-white py-3.5 rounded-full font-bold text-sm hover:bg-orange-600 active:scale-95 transition-all inline-flex items-center justify-center gap-2 disabled:opacity-60"
+                  className="btn-primary w-full disabled:opacity-60"
                 >
                   {loading ? <><span className="w-4 h-4 border-2 border-white/40 border-t-white rounded-full animate-spin" />{t('submitting')}</> : t('submit')}
                 </button>

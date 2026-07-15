@@ -96,7 +96,7 @@ export function CartSidebar({ open, onClose }: CartSidebarProps) {
                       <div className="flex flex-1 flex-col justify-between min-w-0">
                         <div className="flex items-start justify-between gap-2">
                           <p className="text-sm font-bold text-sport-fg line-clamp-2 flex-1">{product.name}</p>
-                          <button onClick={() => removeItem(product.id)} className="flex-shrink-0 text-sport-gray hover:text-red-400 transition-colors">
+                          <button onClick={() => removeItem(product.id)} className="flex-shrink-0 text-sport-gray hover:text-red-600 transition-colors">
                             <Trash2 size={14} />
                           </button>
                         </div>

@@ -68,7 +68,7 @@ export default async function BoutiqueSuccesPage({
       )}
       <div className="w-full max-w-md">
         <div className="mb-8 flex justify-center">
-          <div className="flex h-20 w-20 items-center justify-center rounded-full bg-emerald-500/20 border border-emerald-500/30">
+          <div className="flex h-20 w-20 items-center justify-center rounded-full bg-emerald-500/20 border border-emerald-200">
             <CheckCircle size={40} className="text-[#1E7F5A]" />
           </div>
         </div>
@@ -103,7 +103,7 @@ export default async function BoutiqueSuccesPage({
                         rel="noopener noreferrer"
                         className={`flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-xs font-bold transition-colors ${
                           l.code === locale
-                            ? 'bg-sport-orange text-sport-fg hover:bg-orange-600'
+                            ? 'bg-sport-orange text-white hover:bg-orange-600'
                             : 'border border-sport-border text-sport-fg hover:border-sport-orange/50'
                         }`}
                       >
@@ -117,7 +117,7 @@ export default async function BoutiqueSuccesPage({
           </div>
         )}
 
-        <div className="rounded-2xl border border-sport-border bg-sport-card p-6 mb-6 text-left">
+        <div className="card-base p-6 mb-6 text-left">
           <h2 className="mb-4 font-black text-sport-fg">{t('whatNow')}</h2>
           <ul className="space-y-3">
             <li className="flex items-start gap-3 text-sm">

@@ -25,7 +25,7 @@ export function PreviewDashboard() {
     { Icon: Flame, label: t('statSessions'), value: PREVIEW.stats.sessionsWeek, color: 'text-sport-orange' },
     { Icon: Clock, label: t('statHours'), value: `${PREVIEW.stats.hours}h`, color: 'text-sport-blue' },
     { Icon: TrendingUp, label: t('statActiveDays'), value: PREVIEW.stats.activeDays, color: 'text-[#1E7F5A]' },
-    { Icon: Award, label: t('statBadges'), value: PREVIEW.stats.badges, color: 'text-yellow-400' },
+    { Icon: Award, label: t('statBadges'), value: PREVIEW.stats.badges, color: 'text-yellow-600' },
   ]
   return (
     <div className="min-h-screen bg-sport-dark text-sport-fg">
@@ -71,7 +71,7 @@ export function PreviewDashboard() {
           </div>
           <div className="bg-sport-card border border-sport-border rounded-2xl p-6">
             <h3 className="text-sm font-black mb-4">{t('weekActivity')}</h3>
-            <WeeklyChart data={PREVIEW.weekly.map(d => ({ ...d }))} metric="steps" color="#FF4500" />
+            <WeeklyChart data={PREVIEW.weekly.map(d => ({ ...d }))} metric="steps" color="#FF6A00" />
           </div>
         </motion.div>
 
@@ -111,9 +111,9 @@ export function PreviewDashboard() {
           <h3 className="text-sm font-black mb-5">{t('badges')}</h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {PREVIEW.badges.map(b => (
-              <div key={b.label} className="rounded-xl p-4 text-center bg-yellow-400/10 border border-yellow-400/30">
+              <div key={b.label} className="rounded-xl p-4 text-center bg-yellow-50 border border-yellow-400/30">
                 <span className="text-3xl block mb-2">{b.icon}</span>
-                <p className="text-[10px] font-black text-yellow-400 leading-tight">{b.label}</p>
+                <p className="text-[10px] font-black text-yellow-600 leading-tight">{b.label}</p>
               </div>
             ))}
           </div>

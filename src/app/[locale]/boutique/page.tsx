@@ -78,9 +78,9 @@ export default function BoutiquePage() {
           sizes="100vw"
           className="object-cover object-center"
         />
-        <div aria-hidden="true" className="absolute inset-0 bg-sport-dark/35" />
-        <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-b from-sport-dark/22 via-transparent to-sport-dark" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(255,69,0,0.15),transparent)]" />
+        <div aria-hidden="true" className="absolute inset-0 bg-black/35" />
+        <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-b from-black/22 via-transparent to-sport-dark" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(255,106,0,0.15),transparent)]" />
         <div className="absolute top-20 right-10 h-72 w-72 rounded-full bg-sport-orange/5 blur-3xl" />
 
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6">
@@ -90,11 +90,11 @@ export default function BoutiquePage() {
               {t('badge')}
             </motion.div>
             <motion.h1 data-no-reveal initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}
-              className="photo-text-halo text-3xl font-black leading-tight tracking-tight text-sport-fg sm:text-5xl lg:text-6xl mb-4 px-2">
+              className="text-3xl font-black leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl mb-4 px-2">
               {t.rich('heroTitle', { o: (c) => <span className="text-sport-orange">{c}</span>, br: () => <br /> })}
             </motion.h1>
             <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}
-              className="photo-text-halo text-base sm:text-lg text-sport-fg max-w-2xl mx-auto mb-9">
+              className="text-base sm:text-lg text-white/80 max-w-2xl mx-auto mb-9">
               {t('heroSubtitle')}
             </motion.p>
 
@@ -177,7 +177,7 @@ export default function BoutiquePage() {
         </div>
 
         {/* Amazon disclaimer */}
-        <div className="mt-10 rounded-2xl border border-sport-border bg-sport-card/30 p-4 text-center">
+        <div className="mt-10 card-base/30 p-4 text-center">
           <p className="text-xs text-sport-gray">{t('amazonDisclaimer')}</p>
         </div>
       </section>

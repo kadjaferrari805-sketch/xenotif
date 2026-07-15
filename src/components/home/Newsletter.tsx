@@ -44,7 +44,7 @@ export function Newsletter() {
   }
 
   return (
-    <section id="newsletter" aria-labelledby="newsletter-title" className="py-24 px-6 bg-sport-dark relative overflow-hidden">
+    <section id="newsletter" aria-labelledby="newsletter-title" className="section-tint relative overflow-hidden px-6">
       {/* Background glows */}
       <div aria-hidden="true" className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-sport-orange/6 rounded-full blur-3xl pointer-events-none" />
       <div aria-hidden="true" className="absolute bottom-0 right-0 w-96 h-96 bg-sport-blue/5 rounded-full blur-3xl pointer-events-none" />
@@ -136,7 +136,7 @@ export function Newsletter() {
               <button
                 type="submit"
                 disabled={loading}
-                className="bg-sport-orange text-white px-6 py-3.5 rounded-full font-bold text-sm shadow-lg shadow-sport-orange/30 hover:bg-orange-600 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-sport-orange/40 active:translate-y-0 active:scale-95 transition-all flex items-center gap-2 justify-center whitespace-nowrap disabled:opacity-60 disabled:cursor-not-allowed"
+                className="btn-primary justify-center whitespace-nowrap disabled:opacity-60 disabled:cursor-not-allowed"
               >
                 {loading ? t('sending') : <> {t('submit')} <ArrowRight size={14} aria-hidden="true" /></>}
               </button>
@@ -150,7 +150,7 @@ export function Newsletter() {
             role="alert"
             initial={{ opacity: 0, y: -4 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-red-400 text-xs mt-3"
+            className="text-red-600 text-xs mt-3"
           >
             {error}
           </motion.p>

@@ -25,7 +25,7 @@ export function FeatureCards() {
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.15 })
 
   return (
-    <section aria-labelledby="features-title" className="py-24 px-6 bg-sport-dark">
+    <section aria-labelledby="features-title" className="section-white px-6">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-14">
           <p className="text-[11px] font-black tracking-[3px] uppercase text-sport-orange mb-3">{t('eyebrow')}</p>

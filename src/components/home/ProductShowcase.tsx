@@ -13,20 +13,15 @@ import type { Product } from '@/lib/boutique/products'
 export function ProductShowcase({
   section,
   products,
-  dark = false,
 }: {
   section: 'recommended'
   products: Product[]
-  dark?: boolean
 }) {
   const t = useTranslations('home.productShowcase')
   if (products.length === 0) return null
 
   return (
-    <section
-      aria-labelledby={`shop-${section}`}
-      className={`px-6 py-20 ${dark ? 'bg-sport-dark' : 'bg-sport-card border-y border-sport-border'}`}
-    >
+    <section aria-labelledby={`shop-${section}`} className="section-tint px-6">
       <div className="max-w-6xl mx-auto">
         <SectionHeader
           id={`shop-${section}`}

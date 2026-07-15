@@ -16,7 +16,7 @@ import type { ExerciceDetail as Detail } from '@/lib/exercices/details'
 
 const SPEECH_LANG: Record<string, string> = { fr: 'fr-FR', en: 'en-US', de: 'de-DE' }
 const DIFF_STYLE: Record<string, string> = {
-  debutant: 'text-[#1E7F5A] border-emerald-500/30 bg-emerald-500/10',
+  debutant: 'text-[#1E7F5A] border-emerald-200 bg-emerald-50',
   intermediaire: 'text-sport-blue border-sport-blue/30 bg-sport-blue/10',
   avance: 'text-sport-orange border-sport-orange/30 bg-sport-orange/10',
 }
@@ -68,7 +68,7 @@ function VideoBlock({ url, poster, t }: { url?: string; poster?: string; t: Retu
                 key={r}
                 type="button"
                 onClick={() => setSpeed(r)}
-                className={`text-[11px] font-bold px-2.5 py-1 rounded-full border transition-colors ${rate === r ? 'bg-sport-orange text-sport-fg border-sport-orange' : 'border-sport-border text-sport-gray hover:text-sport-fg'}`}
+                className={`text-[11px] font-bold px-2.5 py-1 rounded-full border transition-colors ${rate === r ? 'bg-sport-orange text-white border-sport-orange' : 'border-sport-border text-sport-gray hover:text-sport-fg'}`}
               >
                 {r}×
               </button>
@@ -153,7 +153,7 @@ function Timer({ t }: { t: ReturnType<typeof useTranslations> }) {
             key={m}
             type="button"
             onClick={() => switchMode(m)}
-            className={`text-xs font-bold px-3 py-1.5 rounded-full border transition-colors ${mode === m ? 'bg-sport-orange text-sport-fg border-sport-orange' : 'border-sport-border text-sport-gray hover:text-sport-fg'}`}
+            className={`text-xs font-bold px-3 py-1.5 rounded-full border transition-colors ${mode === m ? 'bg-sport-orange text-white border-sport-orange' : 'border-sport-border text-sport-gray hover:text-sport-fg'}`}
           >
             {m === 'countdown' ? t('timer_countdown') : t('timer_stopwatch')}
           </button>

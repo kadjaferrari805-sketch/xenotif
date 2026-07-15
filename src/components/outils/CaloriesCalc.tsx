@@ -30,7 +30,7 @@ export function CaloriesCalc() {
                 key={s}
                 type="button"
                 onClick={() => setSex(s)}
-                className={`rounded-xl py-3 text-sm font-bold border transition-colors ${sex === s ? 'bg-sport-orange text-sport-fg border-sport-orange' : 'bg-sport-dark text-sport-gray border-sport-border hover:border-sport-fg/30'}`}
+                className={`rounded-xl py-3 text-sm font-bold border transition-colors ${sex === s ? 'bg-sport-orange text-white border-sport-orange' : 'bg-sport-dark text-sport-gray border-sport-border hover:border-sport-fg/30'}`}
               >
                 {t(`calories.${s}`)}
               </button>

@@ -65,7 +65,7 @@ export function ReviewForm({ type, productId, initial, onPublished }: Props) {
           placeholder={t('commentPlaceholder')}
           className="w-full bg-sport-dark border border-sport-border rounded-xl px-4 py-3 text-sport-fg text-sm resize-none focus:outline-none focus:border-sport-orange placeholder:text-sport-gray" />
       </div>
-      {error && <p role="alert" className="text-red-400 text-xs">{error}</p>}
+      {error && <p role="alert" className="text-red-600 text-xs">{error}</p>}
       <button type="submit" disabled={loading}
         className="bg-sport-orange text-white px-6 py-2.5 rounded-full font-bold text-sm hover:bg-orange-600 disabled:opacity-60 transition-all">
         {loading ? t('submitting') : t('submit')}
