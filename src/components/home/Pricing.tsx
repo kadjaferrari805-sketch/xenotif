@@ -9,15 +9,20 @@ import { useRouter } from '@/i18n/navigation'
 import { SectionHeader } from '@/components/ui/SectionHeader'
 import { Tilt3D } from '@/components/premium/Tilt3D'
 import { ProOfferPill, PRO_OFFER_TXT } from '@/components/promo/ProOfferPill'
+import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '@/components/ui/Accordion'
 
-type PlanId = 'gratuit' | 'pro'
+type PlanId = 'gratuit' | 'pro' | 'elite'
 type Period = 'monthly' | 'annual'
 
 // Données structurelles (id, prix, mise en avant). Les textes (nom, période,
 // badge, description, fonctionnalités, CTA) viennent de messages → home.pricing.plans.
+// Elite : pas de Price ID Stripe (aucun palier payant réel derrière) - prix
+// affiché "sur devis" (home.pricing.elitePrice), le CTA renvoie vers /contact
+// plutôt qu'un checkout, jamais vers /auth/signup?plan=elite.
 const PLANS: { id: PlanId; priceMonthly: string; priceAnnual: string; totalAnnual?: string; highlight: boolean }[] = [
   { id: 'gratuit', priceMonthly: '0 €',     priceAnnual: '0 €',     highlight: false },
   { id: 'pro',     priceMonthly: '9,99 €',  priceAnnual: '7,99 €',  totalAnnual: '95,88 €',  highlight: true },
+  { id: 'elite',   priceMonthly: '',        priceAnnual: '',        highlight: false },
 ]
 
 type PlanText = { name: string; period: string; badge: string; description: string; cta: string; features: string[] }
@@ -37,6 +42,18 @@ function PlanButton({
 }) {
   const router = useRouter()
   const t = useTranslations('home.pricing')
+
+  if (planId === 'elite') {
+    return (
+      <button
+        onClick={() => router.push('/contact?sujet=elite')}
+        aria-label={t('subscribeAria', { name })}
+        className="w-full py-3.5 px-6 rounded-full font-bold text-sm transition-all inline-flex items-center justify-center gap-2 active:scale-95 border border-sport-border text-sport-fg hover:border-sport-gray hover:bg-sport-fg/5"
+      >
+        {cta} <ArrowRight size={14} aria-hidden="true" />
+      </button>
+    )
+  }
 
   return (
     <button
@@ -127,8 +144,8 @@ export function Pricing() {
 
                 <div className="mb-8 pb-8 border-b border-sport-border">
                   <div className="flex items-baseline gap-2">
-                    <span className="text-4xl font-black text-sport-fg">
-                      {period === 'annual' ? plan.priceAnnual : plan.priceMonthly}
+                    <span className={plan.id === 'elite' ? 'text-2xl font-black text-sport-fg' : 'text-4xl font-black text-sport-fg'}>
+                      {plan.id === 'elite' ? t('elitePrice') : period === 'annual' ? plan.priceAnnual : plan.priceMonthly}
                     </span>
                     <span className="text-sport-gray text-xs">{tr.period}</span>
                   </div>
@@ -137,7 +154,7 @@ export function Pricing() {
                       {t.rich('billed', { total: plan.totalAnnual, b: (c) => <strong className="text-sport-fg">{c}</strong> })}
                     </p>
                   )}
-                  {plan.id !== 'gratuit' && (
+                  {plan.id === 'pro' && (
                     <p className="text-[10px] text-[#1E7F5A] mt-1.5 font-semibold">
                       {t('freeTrialNote')}
                     </p>
@@ -176,7 +193,20 @@ export function Pricing() {
           })}
         </div>
 
-        <p className="text-center text-sport-gray text-xs mt-12 pt-8 border-t border-sport-border">
+        {/* FAQ dédiée tarifs */}
+        <div className="max-w-2xl mx-auto mt-16 pt-12 border-t border-sport-border">
+          <h3 className="text-xl font-black text-sport-fg text-center mb-6">{t('faqTitle')}</h3>
+          <Accordion type="single" collapsible className="card-base px-6">
+            {(t.raw('faq') as { question: string; answer: string }[]).map((item, i) => (
+              <AccordionItem key={item.question} value={`faq-${i}`}>
+                <AccordionTrigger>{item.question}</AccordionTrigger>
+                <AccordionContent>{item.answer}</AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
+        </div>
+
+        <p className="text-center text-sport-gray text-xs mt-8">
           {t('footnote')}
         </p>
       </div>

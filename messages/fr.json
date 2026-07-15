@@ -657,6 +657,40 @@
             "Rappels & motivation quotidienne",
             "Support par email"
           ]
+        },
+        {
+          "name": "Elite",
+          "period": "",
+          "badge": "",
+          "description": "Coaching humain, programme 100% sur-mesure et accompagnement prioritaire.",
+          "cta": "Nous contacter",
+          "features": [
+            "Tout Pro inclus",
+            "Coaching humain 1-to-1 (sur demande)",
+            "Programme 100% sur-mesure",
+            "Accompagnement prioritaire",
+            "Bilan mensuel personnalisé"
+          ]
+        }
+      ],
+      "elitePrice": "Sur devis",
+      "faqTitle": "Questions fréquentes",
+      "faq": [
+        {
+          "question": "Puis-je annuler à tout moment ?",
+          "answer": "Oui. L'abonnement Pro est sans engagement et se résilie en 1 clic depuis ton espace membre, à tout moment - aucun frais caché."
+        },
+        {
+          "question": "Que se passe-t-il après les 7 jours d'essai ?",
+          "answer": "Tu passes automatiquement au tarif Pro choisi (mensuel ou annuel), sauf si tu annules avant la fin de l'essai. Aucun débit n'a lieu pendant les 7 jours."
+        },
+        {
+          "question": "Puis-je changer de formule (mensuel/annuel) plus tard ?",
+          "answer": "Oui, à tout moment depuis la page Abonnement de ton espace membre."
+        },
+        {
+          "question": "Comment fonctionne le plan Elite ?",
+          "answer": "Le plan Elite est un accompagnement sur-mesure (coaching humain, suivi prioritaire) : contacte-nous pour en discuter, aucune carte bancaire requise à cette étape."
         }
       ]
     },

@@ -657,6 +657,40 @@
             "Daily reminders & motivation",
             "Email support"
           ]
+        },
+        {
+          "name": "Elite",
+          "period": "",
+          "badge": "",
+          "description": "Human coaching, a fully tailored program and priority support.",
+          "cta": "Contact us",
+          "features": [
+            "Everything in Pro",
+            "1-to-1 human coaching (on request)",
+            "100% tailored program",
+            "Priority support",
+            "Personalized monthly review"
+          ]
+        }
+      ],
+      "elitePrice": "Custom pricing",
+      "faqTitle": "Frequently asked questions",
+      "faq": [
+        {
+          "question": "Can I cancel anytime?",
+          "answer": "Yes. The Pro plan has no commitment and cancels in one click from your member area, anytime - no hidden fees."
+        },
+        {
+          "question": "What happens after the 7-day trial?",
+          "answer": "You automatically move to the Pro rate you chose (monthly or annual), unless you cancel before the trial ends. No charge happens during the 7 days."
+        },
+        {
+          "question": "Can I switch plans (monthly/annual) later?",
+          "answer": "Yes, anytime from the Subscription page in your member area."
+        },
+        {
+          "question": "How does the Elite plan work?",
+          "answer": "Elite is a fully tailored support plan (human coaching, priority follow-up): contact us to discuss it, no credit card required at this stage."
         }
       ]
     },

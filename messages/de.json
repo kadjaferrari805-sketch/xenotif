@@ -657,6 +657,40 @@
             "Tägliche Erinnerungen & Motivation",
             "E-Mail-Support"
           ]
+        },
+        {
+          "name": "Elite",
+          "period": "",
+          "badge": "",
+          "description": "Persönliches Coaching, ein 100% individuelles Programm und prioritäre Betreuung.",
+          "cta": "Kontaktiere uns",
+          "features": [
+            "Alles aus Pro enthalten",
+            "1-zu-1-Coaching durch Menschen (auf Anfrage)",
+            "100% individuelles Programm",
+            "Prioritäre Betreuung",
+            "Persönliche monatliche Bilanz"
+          ]
+        }
+      ],
+      "elitePrice": "Auf Anfrage",
+      "faqTitle": "Häufige Fragen",
+      "faq": [
+        {
+          "question": "Kann ich jederzeit kündigen?",
+          "answer": "Ja. Das Pro-Abo ist unverbindlich und lässt sich jederzeit mit einem Klick im Mitgliederbereich kündigen - keine versteckten Kosten."
+        },
+        {
+          "question": "Was passiert nach den 7 Testtagen?",
+          "answer": "Du wechselst automatisch zum gewählten Pro-Tarif (monatlich oder jährlich), außer du kündigst vor Ende der Testphase. Während der 7 Tage erfolgt keine Abbuchung."
+        },
+        {
+          "question": "Kann ich später zwischen monatlich/jährlich wechseln?",
+          "answer": "Ja, jederzeit über die Abonnement-Seite in deinem Mitgliederbereich."
+        },
+        {
+          "question": "Wie funktioniert der Elite-Plan?",
+          "answer": "Elite ist eine individuelle Betreuung (persönliches Coaching, prioritäre Begleitung): Kontaktiere uns, um darüber zu sprechen - in diesem Schritt ist keine Kreditkarte nötig."
         }
       ]
     },
