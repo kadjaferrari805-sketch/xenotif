@@ -28,7 +28,7 @@ export function getDailyNotifications(locale: string | null | undefined, date: D
   return [
     { hour: 8, icon: 'flame', color: '#FF6B00', title: mot.title, body: mot.body, href: '/dashboard/programme' },
     { hour: 12, icon: 'shop', color: '#38bdf8', title: boutique.title, body: boutique.body, href: boutique.url },
-    { hour: 15, icon: 'book', color: '#2A2A2A', title: guide.title, body: guide.body, href: guide.url },
+    { hour: 15, icon: 'book', color: '#A3FF00', title: guide.title, body: guide.body, href: guide.url },
     { hour: 18, icon: 'moon', color: '#818cf8', title: eve.title, body: eve.body, href: '/dashboard' },
     { hour: 20, icon: 'rocket', color: '#FF6B00', title: sub.title, body: sub.body, href: sub.url },
   ]

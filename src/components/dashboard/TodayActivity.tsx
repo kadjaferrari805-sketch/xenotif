@@ -16,7 +16,7 @@ const MOVING_WINDOW_MS = 4000 // « en mouvement » si un pas a été détecté 
 
 // Couleurs façon Apple Fitness (palette de marque)
 const C_MOVE = '#FF6B00'   // calories (anneau externe)
-const C_EXER = '#2A2A2A'   // minutes actives (anneau médian)
+const C_EXER = '#A3FF00'   // minutes actives (anneau médian)
 const C_STEP = '#38bdf8'   // pas (anneau interne)
 
 type Status = 'init' | 'needtap' | 'running' | 'denied' | 'nosensor'

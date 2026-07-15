@@ -5,41 +5,39 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
 
-  /* Xenotif Premium Palette - thème clair unique (refonte identité visuelle).
-     Blanc dominant, noir structurant, orange accent unique. sport-dark/card
-     sont désormais tous deux blancs (page vs surface de carte, distingués
-     par l'ombre, pas par la couleur) ; sport-border/gray/fg sont les gris
-     structurels de la nouvelle palette. */
+  /* Xenotif Sport Palette - retour au thème sombre d'origine (sur demande
+     explicite : "remets la palette dark d'avant"), avec le reste de la
+     refonte v2 conservé (nouvelles pages, bibliothèque de composants,
+     corrections). Valeurs identiques à la palette sombre historique
+     (avant bb16098d) - fond quasi-noir, carte légèrement plus claire,
+     texte blanc. Orange conservé à #FF6B00 (choix explicite le plus récent),
+     bleu/lime restaurés en accents fixes (le thème sombre a la place pour
+     les deux, contrairement au thème clair qui les avait dépréciés). */
   --color-sport-dark: var(--val-sport-dark);
   --color-sport-card: var(--val-sport-card);
   --color-sport-border: var(--val-sport-border);
   --color-sport-orange: #FF6B00;
-  /* sport-blue/sport-lime : dépréciés (palette officielle n'a plus de place
-     pour un 2e/3e accent) - repointés vers les gris/noir de la nouvelle
-     identité plutôt que réécrits sur ~54 fichiers appelants. */
-  --color-sport-blue: var(--val-sport-blue);
-  --color-sport-lime: var(--val-sport-lime);
+  --color-sport-blue: #2563EB;
+  --color-sport-lime: #A3FF00;
   --color-sport-gray: var(--val-sport-gray);
   --color-sport-titane: var(--val-sport-gray);
   --color-sport-fg: var(--val-sport-fg);
-  --color-sport-gray-light: #F5F5F5;
-  /* Gris ardoise "tech" (slate-900) - texte secondaire distinct du gris neutre
-     sport-gray, pour un rendu plus premium/dashboard (v2 refonte). */
+  --color-sport-gray-light: #171B23;
+  /* Gris ardoise "tech" (slate-900) - conservé du v2, toujours utile comme
+     texte secondaire alternatif en thème sombre. */
   --color-sport-slate: #111827;
-  /* Footer : toujours noir, indépendant de la page (jamais réactif). */
+  /* Footer : toujours quasi-noir, indépendant de la page (jamais réactif). */
   --color-footer-bg: #000000;
 }
 
 :root {
-  --background: #FFFFFF;
-  --foreground: #000000;
-  --val-sport-dark: #FFFFFF;
-  --val-sport-card: #FFFFFF;
-  --val-sport-border: #D9D9D9;
-  --val-sport-gray: #2A2A2A;
-  --val-sport-fg: #000000;
-  --val-sport-blue: #2A2A2A;
-  --val-sport-lime: #000000;
+  --background: #0A0B0F;
+  --foreground: #ffffff;
+  --val-sport-dark: #0A0B0F;
+  --val-sport-card: #0F1117;
+  --val-sport-border: #1E2028;
+  --val-sport-gray: #9CA3AF;
+  --val-sport-fg: #ffffff;
 }
 
 @layer base {
@@ -108,7 +106,7 @@
     @apply relative overflow-hidden inline-flex items-center justify-center gap-2 bg-sport-orange text-white px-6 py-3.5 rounded-full font-bold text-sm shadow-lg shadow-sport-orange/30 hover:bg-[#E66000] hover:-translate-y-0.5 hover:shadow-xl hover:shadow-sport-orange/40 active:translate-y-0 active:scale-95 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sport-orange/60 focus-visible:ring-offset-2 focus-visible:ring-offset-sport-dark;
   }
   .btn-secondary {
-    @apply relative overflow-hidden inline-flex items-center justify-center gap-2 bg-white text-sport-fg border-2 border-sport-fg px-6 py-3.5 rounded-full font-bold text-sm shadow-sm hover:bg-sport-fg/5 hover:-translate-y-0.5 hover:shadow-md active:translate-y-0 active:scale-95 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sport-fg/30 focus-visible:ring-offset-2 focus-visible:ring-offset-sport-dark;
+    @apply relative overflow-hidden inline-flex items-center justify-center gap-2 bg-transparent text-sport-fg border-2 border-sport-fg px-6 py-3.5 rounded-full font-bold text-sm shadow-sm hover:bg-sport-fg/5 hover:-translate-y-0.5 hover:shadow-md active:translate-y-0 active:scale-95 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sport-fg/30 focus-visible:ring-offset-2 focus-visible:ring-offset-sport-dark;
   }
   /* Variante fixe (blanc dans les deux thèmes) pour usage sur photo/vidéo de
      fond (ex. Hero) où le fond n'est pas la surface réactive de la page. */
@@ -151,10 +149,10 @@
     @apply bg-sport-gray-light;
   }
   .section-white {
-    @apply bg-white py-20 md:py-28;
+    @apply bg-sport-dark py-20 md:py-28;
   }
   .section-tint {
-    @apply bg-sport-gray-light py-20 md:py-28;
+    @apply bg-sport-card py-20 md:py-28;
   }
   .h1 {
     @apply text-4xl md:text-6xl font-extrabold text-sport-fg leading-tight tracking-tight;

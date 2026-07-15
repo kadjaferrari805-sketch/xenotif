@@ -184,7 +184,7 @@ export function SmartwatchClient({ initialData }: { initialData: DashboardData }
 
   const rings = [
     { value: today.active_minutes,  max: goals.active_minutes_daily, color: '#FF6B00', label: t('rings.activity'), unit: 'min' },
-    { value: today.calories_burned, max: goals.calories_daily,       color: '#2A2A2A', label: t('rings.calories'), unit: 'kcal' },
+    { value: today.calories_burned, max: goals.calories_daily,       color: '#A3FF00', label: t('rings.calories'), unit: 'kcal' },
     { value: today.steps,           max: goals.steps_daily,          color: '#38bdf8', label: t('rings.steps'),    unit: '' },
   ]
 
@@ -268,12 +268,12 @@ export function SmartwatchClient({ initialData }: { initialData: DashboardData }
             {/* Today metrics grid */}
             <div className="grid grid-cols-2 gap-3">
               {[
-                { icon: <Footprints size={15} className="text-sky-600" />,   label: t('metrics.stepsToday'),    value: today.steps.toLocaleString(numLocale), unit: `/ ${(goals.steps_daily / 1000).toFixed(0)}k`, color: '#38bdf8' },
+                { icon: <Footprints size={15} className="text-sky-400" />,   label: t('metrics.stepsToday'),    value: today.steps.toLocaleString(numLocale), unit: `/ ${(goals.steps_daily / 1000).toFixed(0)}k`, color: '#38bdf8' },
                 { icon: <Flame size={15} className="text-sport-orange" />,    label: t('metrics.caloriesBurned'), value: today.calories_burned.toString(),      unit: 'kcal',                                    color: '#FF6B00' },
-                { icon: <MapPin size={15} className="text-purple-600" />,     label: t('metrics.distance'),       value: `${(today.distance_meters / 1000).toFixed(1)}`, unit: 'km',                             color: '#a78bfa' },
-                { icon: <Droplets size={15} className="text-cyan-600" />,     label: t('metrics.hydration'),      value: `${today.hydration_ml}`,               unit: 'ml',                                      color: '#22d3ee' },
-                { icon: <Moon size={15} className="text-indigo-600" />,       label: t('metrics.sleep'),          value: formatSleep(today.sleep_minutes),      unit: today.sleep_score ? t('sleepScore', { score: today.sleep_score }) : '', color: '#818cf8' },
-                { icon: <Zap size={15} className="text-sport-lime" />,        label: t('metrics.activeMinutes'),  value: today.active_minutes.toString(),       unit: `/ ${goals.active_minutes_daily} min`,     color: '#2A2A2A' },
+                { icon: <MapPin size={15} className="text-purple-400" />,     label: t('metrics.distance'),       value: `${(today.distance_meters / 1000).toFixed(1)}`, unit: 'km',                             color: '#a78bfa' },
+                { icon: <Droplets size={15} className="text-cyan-400" />,     label: t('metrics.hydration'),      value: `${today.hydration_ml}`,               unit: 'ml',                                      color: '#22d3ee' },
+                { icon: <Moon size={15} className="text-indigo-400" />,       label: t('metrics.sleep'),          value: formatSleep(today.sleep_minutes),      unit: today.sleep_score ? t('sleepScore', { score: today.sleep_score }) : '', color: '#818cf8' },
+                { icon: <Zap size={15} className="text-sport-lime" />,        label: t('metrics.activeMinutes'),  value: today.active_minutes.toString(),       unit: `/ ${goals.active_minutes_daily} min`,     color: '#A3FF00' },
               ].map(m => (
                 <div key={m.label} className="bg-sport-card border border-sport-border rounded-xl p-3 flex flex-col gap-1.5">
                   <div className="flex items-center gap-2">
@@ -292,7 +292,7 @@ export function SmartwatchClient({ initialData }: { initialData: DashboardData }
           {/* Heart rate */}
           <div className="bg-sport-card border border-sport-border rounded-2xl p-5">
             <p className="text-sm font-black text-sport-fg mb-4 flex items-center gap-2">
-              <Heart size={14} className="text-red-600" /> {t('heartRateTitle')}
+              <Heart size={14} className="text-red-400" /> {t('heartRateTitle')}
             </p>
             <HeartRateDisplay
               avg={today.heart_rate_avg ?? 72}
@@ -322,7 +322,7 @@ export function SmartwatchClient({ initialData }: { initialData: DashboardData }
             <WeeklyChart
               data={weekly}
               metric={chartMetric}
-              color={chartMetric === 'steps' ? '#38bdf8' : chartMetric === 'calories' ? '#FF6B00' : '#2A2A2A'}
+              color={chartMetric === 'steps' ? '#38bdf8' : chartMetric === 'calories' ? '#FF6B00' : '#A3FF00'}
             />
           </div>
 
@@ -413,7 +413,7 @@ export function SmartwatchClient({ initialData }: { initialData: DashboardData }
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <GoalRing label={t('goalLabels.steps')}        value={today.steps}           goal={goals.steps_daily}          unit={t('goalUnitSteps')} color="#38bdf8" icon="👟" />
             <GoalRing label={t('goalLabels.calories')}     value={today.calories_burned} goal={goals.calories_daily}       unit="kcal"               color="#FF6B00" icon="🔥" />
-            <GoalRing label={t('goalLabels.activeMinutes')} value={today.active_minutes}  goal={goals.active_minutes_daily} unit="min"                color="#2A2A2A" icon="⚡" />
+            <GoalRing label={t('goalLabels.activeMinutes')} value={today.active_minutes}  goal={goals.active_minutes_daily} unit="min"                color="#A3FF00" icon="⚡" />
             <GoalRing label={t('goalLabels.sleep')}        value={today.sleep_minutes}   goal={goals.sleep_minutes_daily}  unit="min"                color="#818cf8" icon="🌙" />
             <GoalRing label={t('goalLabels.hydration')}    value={today.hydration_ml}    goal={goals.water_ml_daily}       unit="ml"                 color="#22d3ee" icon="💧" />
             <GoalRing label={t('goalLabels.sessionsWeek')} value={sessions.filter(s => {
