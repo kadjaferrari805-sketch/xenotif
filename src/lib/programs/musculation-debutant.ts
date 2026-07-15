@@ -10,7 +10,7 @@ export const musculationDebutant: Guide = {
   author: 'XENOTIF Coach - Préparation physique certifiée',
   level: 'Débutant',
   duration: '8 semaines · 3 séances/sem',
-  coverImage: 'cover.jpg',
+  coverImage: 'musculation-debutant-cover.jpg',
   blocks: [
     { type: 'h1', text: 'Bienvenue - tu débutes la musculation' },
     { type: 'p', text: `Ce programme est conçu pour les vrais débutants : aucune expérience requise. En 8 semaines, tu vas apprendre les mouvements fondamentaux, gagner en force, prendre du muscle et créer une routine durable. On privilégie la technique et la régularité plutôt que la charge : c’est ainsi qu’on progresse vite et sans se blesser.` },

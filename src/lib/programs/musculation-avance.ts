@@ -10,7 +10,7 @@ export const musculationAvance: Guide = {
   author: 'XENOTIF Coach - Préparation physique certifiée',
   level: 'Avancé',
   duration: '12 semaines · 5 à 6 séances/sem',
-  coverImage: 'cover.jpg',
+  coverImage: 'musculation-avance-cover.jpg',
   blocks: [
     { type: 'h1', text: 'Franchis ton plateau' },
     { type: 'p', text: `Tu t’entraînes depuis des années et la progression ralentit ? Ce programme avancé combine volume élevé, intensité maîtrisée, périodisation et techniques d’intensification pour relancer la croissance musculaire et casser les plateaux. C’est exigeant : il s’adresse aux pratiquants confirmés capables de gérer une charge de travail conséquente et leur récupération.` },

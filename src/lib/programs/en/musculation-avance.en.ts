@@ -10,7 +10,7 @@ export const musculationAvanceEn: Guide = {
   author: 'XENOTIF Coach - Certified strength & conditioning coach',
   level: 'Advanced',
   duration: '12 weeks · 5 to 6 sessions/week',
-  coverImage: 'cover.jpg',
+  coverImage: 'musculation-avance-cover.jpg',
   blocks: [
     { type: 'h1', text: 'Break through your plateau' },
     { type: 'p', text: `Training for years now and your progress is slowing down? This advanced program combines high volume, controlled intensity, periodization, and intensity techniques to reignite muscle growth and break through plateaus. It's demanding: built for seasoned lifters who can handle a serious training load and manage their recovery.` },

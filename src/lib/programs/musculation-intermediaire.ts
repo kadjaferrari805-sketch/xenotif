@@ -10,7 +10,7 @@ export const musculationIntermediaire: Guide = {
   author: 'XENOTIF Coach - Préparation physique certifiée',
   level: 'Intermédiaire',
   duration: '12 semaines · 4 à 5 séances/sem',
-  coverImage: 'cover.jpg',
+  coverImage: 'musculation-intermediaire-cover.jpg',
   blocks: [
     { type: 'h1', text: 'Passe au niveau supérieur' },
     { type: 'p', text: `Tu maîtrises les bases et tu cherches à progresser plus vite ? Ce programme intermédiaire de 12 semaines augmente le volume, introduit un split structuré (Push / Pull / Legs ou Haut/Bas) et des techniques d’intensification. Objectif : plus de muscle, plus de force, une silhouette plus dense - sans stagner.` },

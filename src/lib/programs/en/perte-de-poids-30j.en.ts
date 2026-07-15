@@ -9,7 +9,7 @@ export const perteDePoids30jEn: Guide = {
   author: 'XENOTIF Coach - Certified strength & nutrition coaching',
   level: 'Beginner - Intermediate',
   duration: '30 days · 5 sessions/week',
-  coverImage: 'cover.jpg',
+  coverImage: 'perte-de-poids-cover.jpg',
   blocks: [
     // ── INTRO ──────────────────────────────────────────────
     { type: 'h1', text: 'Welcome to your 30-day challenge' },

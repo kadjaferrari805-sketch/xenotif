@@ -20,7 +20,7 @@ const perteDePoids30j: Guide = {
   author: 'XENOTIF Coach - Préparation physique & nutrition certifiées',
   level: 'Débutant - Intermédiaire',
   duration: '30 jours · 5 séances/sem',
-  coverImage: 'cover.jpg',
+  coverImage: 'perte-de-poids-cover.jpg',
   blocks: [
     // ── INTRO ──────────────────────────────────────────────
     { type: 'h1', text: 'Bienvenue dans ton défi 30 jours' },

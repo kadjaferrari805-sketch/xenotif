@@ -10,7 +10,7 @@ export const musculationIntermediaireEn: Guide = {
   author: 'XENOTIF Coach - Certified strength & conditioning',
   level: 'Intermediate',
   duration: '12 weeks · 4 to 5 sessions/week',
-  coverImage: 'cover.jpg',
+  coverImage: 'musculation-intermediaire-cover.jpg',
   blocks: [
     { type: 'h1', text: 'Level up' },
     { type: 'p', text: `You've got the basics down and want to progress faster? This 12-week intermediate program increases your training volume, introduces a structured split (Push / Pull / Legs or Upper/Lower) and intensity techniques. The goal: more muscle, more strength, a denser physique - without plateauing.` },

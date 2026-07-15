@@ -10,7 +10,7 @@ export const musculationDebutantEn: Guide = {
   author: 'XENOTIF Coach - Certified strength & conditioning coach',
   level: 'Beginner',
   duration: '8 weeks · 3 sessions/week',
-  coverImage: 'cover.jpg',
+  coverImage: 'musculation-debutant-cover.jpg',
   blocks: [
     { type: 'h1', text: "Welcome - you're starting strength training" },
     { type: 'p', text: `This program is designed for true beginners: no experience required. In 8 weeks, you'll learn the fundamental movements, build strength, gain muscle, and create a routine that lasts. We prioritize technique and consistency over load - that's how you progress fast without getting hurt.` },

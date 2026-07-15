@@ -10,7 +10,7 @@ export const musculationAvanceDe: Guide = {
   author: 'XENOTIF Coach - Athletiktraining zertifiziert',
   level: 'Fortgeschritten',
   duration: '12 Wochen · 5 bis 6 Einheiten/Woche',
-  coverImage: 'cover.jpg',
+  coverImage: 'musculation-avance-cover.jpg',
   blocks: [
     { type: 'h1', text: 'Durchbrich dein Plateau' },
     { type: 'p', text: `Du trainierst seit Jahren und der Fortschritt verlangsamt sich? Dieses fortgeschrittene Programm kombiniert hohes Volumen, kontrollierte Intensität, Periodisierung und Intensivierungstechniken, um das Muskelwachstum neu anzukurbeln und Plateaus zu durchbrechen. Es ist anspruchsvoll: Es richtet sich an erfahrene Athleten, die ein hohes Arbeitspensum und die dazugehörige Erholung managen können.` },

@@ -10,7 +10,7 @@ export const musculationDebutantDe: Guide = {
   author: 'XENOTIF Coach - Kraft- und Fitnesstraining zertifiziert',
   level: 'Anfänger',
   duration: '8 Wochen · 3 Einheiten/Woche',
-  coverImage: 'cover.jpg',
+  coverImage: 'musculation-debutant-cover.jpg',
   blocks: [
     { type: 'h1', text: 'Willkommen - du startest mit dem Krafttraining' },
     { type: 'p', text: `Dieses Programm ist für echte Anfänger gemacht: keine Erfahrung nötig. In 8 Wochen lernst du die grundlegenden Bewegungsmuster, wirst stärker, baust Muskeln auf und etablierst eine Routine, die du langfristig durchhältst. Technik und Regelmäßigkeit stehen vor dem Gewicht - so machst du schnelle und verletzungsfreie Fortschritte.` },

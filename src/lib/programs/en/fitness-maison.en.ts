@@ -10,7 +10,7 @@ export const fitnessMaisonEn: Guide = {
   author: 'XENOTIF Coach - Certified Strength & Conditioning',
   level: 'Beginner - Intermediate',
   duration: '8 weeks · 4 sessions/week',
-  coverImage: 'cover.jpg',
+  coverImage: 'fitness-maison-cover.jpg',
   blocks: [
     { type: 'h1', text: 'Your home is your gym' },
     { type: 'p', text: `No gym, no equipment, no excuses. This 8-week program is done entirely with bodyweight training, in just 2 m² of space, at home or on the road. You'll tone your body, build functional strength, burn fat, and build an unbreakable routine - with your own body as the only equipment you need.` },

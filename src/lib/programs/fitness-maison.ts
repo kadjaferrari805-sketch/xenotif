@@ -10,7 +10,7 @@ export const fitnessMaison: Guide = {
   author: 'XENOTIF Coach - Préparation physique certifiée',
   level: 'Débutant - Intermédiaire',
   duration: '8 semaines · 4 séances/sem',
-  coverImage: 'cover.jpg',
+  coverImage: 'fitness-maison-cover.jpg',
   blocks: [
     { type: 'h1', text: 'Ta salle de sport, c’est chez toi' },
     { type: 'p', text: `Pas de salle, pas de matériel, pas d’excuse. Ce programme de 8 semaines se fait entièrement au poids du corps, dans 2 m², à la maison ou en voyage. Tu vas tonifier ton corps, gagner en force fonctionnelle, brûler du gras et créer une routine indestructible - avec pour seul équipement ton propre corps.` },

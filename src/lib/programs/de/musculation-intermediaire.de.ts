@@ -11,7 +11,7 @@ export const musculationIntermediaireDe: Guide = {
   author: 'XENOTIF Coach - Zertifizierter Kraft- & Konditionstrainer',
   level: 'Fortgeschritten',
   duration: '12 Wochen · 4-5 Einheiten/Woche',
-  coverImage: 'cover.jpg',
+  coverImage: 'musculation-intermediaire-cover.jpg',
   blocks: [
     { type: 'h1', text: 'Erreiche das nächste Level' },
     { type: 'p', text: `Du beherrschst die Grundlagen und willst schneller vorankommen? Dieses 12-wöchige Programm für Fortgeschrittene erhöht das Trainingsvolumen, führt einen strukturierten Split ein (Push/Pull/Legs oder Oberkörper/Unterkörper) und arbeitet mit Intensivierungstechniken. Das Ziel: mehr Muskeln, mehr Kraft, eine dichtere Silhouette - ohne zu stagnieren.` },

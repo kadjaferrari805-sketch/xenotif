@@ -10,7 +10,7 @@ export const fitnessMaisonDe: Guide = {
   author: 'XENOTIF Coach - Athletiktraining zertifiziert',
   level: 'Anfänger - Mittel',
   duration: '8 Wochen · 4 Einheiten/Woche',
-  coverImage: 'cover.jpg',
+  coverImage: 'fitness-maison-cover.jpg',
   blocks: [
     { type: 'h1', text: 'Dein Zuhause ist dein Fitnessstudio' },
     { type: 'p', text: `Kein Studio, keine Geräte, keine Ausrede. Dieses 8-Wochen-Programm läuft komplett mit dem eigenen Körpergewicht, auf 2 m², zuhause oder unterwegs. Du straffst deinen Körper, baust funktionelle Kraft auf, verbrennst Fett und schaffst dir eine Routine, die hält - mit deinem Körper als einziger Ausrüstung.` },

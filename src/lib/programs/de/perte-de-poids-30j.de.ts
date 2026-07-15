@@ -10,7 +10,7 @@ export const perteDePoids30jDe: Guide = {
   author: 'XENOTIF Coach - Athletiktraining & Ernährung zertifiziert',
   level: 'Anfänger - Mittel',
   duration: '30 Tage · 5 Einheiten/Woche',
-  coverImage: 'cover.jpg',
+  coverImage: 'perte-de-poids-cover.jpg',
   blocks: [
     // ── EINLEITUNG ─────────────────────────────────────────
     { type: 'h1', text: 'Willkommen zu deiner 30-Tage-Challenge' },
