@@ -4,6 +4,9 @@ import { useState, useEffect } from 'react'
 import { useTranslations, useLocale } from 'next-intl'
 import { Link } from '@/i18n/navigation'
 import { CheckCircle, AlertTriangle, CreditCard, Calendar, ArrowRight, ShieldCheck, X, RotateCcw } from 'lucide-react'
+import { Loader } from '@/components/ui/Loader'
+import { Alert } from '@/components/ui/Alert'
+import { Input } from '@/components/ui/Input'
 
 export type Sub = {
   plan: string; status: string; trial_end: string | null;
@@ -162,7 +165,7 @@ export function AbonnementClient({ initialSub }: { initialSub: Sub | null }) {
   if (loading) {
     return (
       <div className="p-8 flex items-center justify-center min-h-[50vh]">
-        <div className="w-6 h-6 border-2 border-sport-orange/40 border-t-sport-orange rounded-full animate-spin" />
+        <Loader size={24} />
       </div>
     )
   }
@@ -182,12 +185,12 @@ export function AbonnementClient({ initialSub }: { initialSub: Sub | null }) {
           {/* Récupération d'un abonnement déjà payé mais non rattaché */}
           <div className="mt-6 pt-6 border-t border-sport-border">
             <p className="text-xs text-sport-gray mb-3">{t('syncHint')}</p>
-            <input
+            <Input
               type="email"
               value={syncEmail}
               onChange={e => setSyncEmail(e.target.value)}
               placeholder={t('syncEmailPlaceholder')}
-              className="w-full bg-sport-dark border border-sport-border rounded-xl px-4 py-2.5 text-sport-fg text-sm mb-3 focus:outline-none focus:border-sport-orange placeholder:text-sport-gray"
+              className="mb-3"
             />
             <button
               onClick={syncSubscription}
@@ -225,9 +228,7 @@ export function AbonnementClient({ initialSub }: { initialSub: Sub | null }) {
                 {t.rich('accessUntilDate', { date: periodEnd.toLocaleDateString(dateLocale, { day: 'numeric', month: 'long', year: 'numeric' }), o: (c) => <strong className="text-sport-fg">{c}</strong> })}
               </p>
             )}
-            {cancelError && (
-              <p role="alert" className="text-red-600 text-xs bg-red-50 border border-red-200 rounded-lg px-3 py-2 mb-4">{cancelError}</p>
-            )}
+            {cancelError && <Alert variant="error" className="mb-4">{cancelError}</Alert>}
             <div className="flex gap-3">
               <button onClick={() => setShowCancel(false)}
                 className="flex-1 border border-sport-border text-sport-gray py-2.5 rounded-full text-sm font-bold hover:text-sport-fg transition-all">
@@ -235,7 +236,7 @@ export function AbonnementClient({ initialSub }: { initialSub: Sub | null }) {
               </button>
               <button onClick={cancelSubscription} disabled={cancelLoading}
                 className="flex-1 bg-red-500 text-white py-2.5 rounded-full text-sm font-bold hover:bg-red-600 disabled:opacity-60 transition-all inline-flex items-center justify-center gap-2">
-                {cancelLoading ? <><span className="w-3.5 h-3.5 border-2 border-white/40 border-t-white rounded-full animate-spin" />{t('cancelling')}</> : t('confirmCancel')}
+                {cancelLoading ? <><Loader size={14} className="text-white" iconClassName="text-white" />{t('cancelling')}</> : t('confirmCancel')}
               </button>
             </div>
           </div>
@@ -340,12 +341,10 @@ export function AbonnementClient({ initialSub }: { initialSub: Sub | null }) {
           disabled={portalLoading}
           className="w-full border border-sport-border text-sport-fg py-3.5 rounded-full font-bold text-sm hover:border-sport-orange hover:text-sport-orange transition-all inline-flex items-center justify-center gap-2 disabled:opacity-60"
         >
-          {portalLoading ? <><span className="w-4 h-4 border-2 border-white/40 border-t-white rounded-full animate-spin" />{t('loading')}</> : <><CreditCard size={14} /> {t('updateCard')}</>}
+          {portalLoading ? <><Loader size={16} className="text-current" iconClassName="text-current" />{t('loading')}</> : <><CreditCard size={14} /> {t('updateCard')}</>}
         </button>
         <p className="text-[11px] text-sport-gray text-center">{t('updateCardHint')}</p>
-        {portalError && (
-          <p className="text-xs text-orange-700 bg-orange-50 border border-orange-200 rounded-xl px-4 py-3 leading-relaxed">{portalError}</p>
-        )}
+        {portalError && <Alert variant="warning">{portalError}</Alert>}
 
         {(isTrialing || isActive) && !isCanceled && (
           <button
@@ -368,7 +367,7 @@ export function AbonnementClient({ initialSub }: { initialSub: Sub | null }) {
                   className="mt-4 w-full bg-sport-orange text-white py-3 rounded-full font-bold text-sm hover:bg-orange-600 disabled:opacity-60 transition-all inline-flex items-center justify-center gap-2"
                 >
                   {reactivateLoading
-                    ? <><span className="w-3.5 h-3.5 border-2 border-white/40 border-t-white rounded-full animate-spin" />{t('reactivating')}</>
+                    ? <><Loader size={14} className="text-white" iconClassName="text-white" />{t('reactivating')}</>
                     : <><RotateCcw size={14} /> {t('reactivate')}</>}
                 </button>
                 <p className="text-[11px] text-sport-gray mt-2">{t('reactivateHint')}</p>
