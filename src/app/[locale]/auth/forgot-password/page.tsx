@@ -4,8 +4,13 @@ import { useState } from 'react'
 import { useTranslations } from 'next-intl'
 import { Logo } from '@/components/ui/Logo'
 import { Link } from '@/i18n/navigation'
-import { ArrowLeft, CheckCircle, AlertCircle } from 'lucide-react'
+import { ArrowLeft, CheckCircle } from 'lucide-react'
 import { createClient } from '@/lib/supabase/client'
+import { Card } from '@/components/ui/Card'
+import { Input, Label } from '@/components/ui/Input'
+import { Alert } from '@/components/ui/Alert'
+import { Button } from '@/components/ui/Button'
+import { Loader } from '@/components/ui/Loader'
 
 export default function ForgotPasswordPage() {
   const t = useTranslations('auth.forgot')
@@ -31,7 +36,7 @@ export default function ForgotPasswordPage() {
       <div className="w-full max-w-md">
         <div className="flex justify-center mb-10"><Logo href="/" size="md" /></div>
 
-        <div className="bg-sport-card border border-sport-border rounded-2xl p-8">
+        <Card className="p-8 hover:-translate-y-0 hover:shadow-sm">
           {done ? (
             <div className="text-center">
               <div className="w-16 h-16 bg-emerald-50 border border-emerald-200 rounded-full flex items-center justify-center mx-auto mb-5">
@@ -58,34 +63,25 @@ export default function ForgotPasswordPage() {
 
               <form onSubmit={handleSubmit} className="space-y-5">
                 <div>
-                  <label className="block text-xs font-bold text-sport-fg mb-2 uppercase tracking-wider">{t('emailLabel')}</label>
-                  <input
+                  <Label className="uppercase tracking-wider">{t('emailLabel')}</Label>
+                  <Input
                     type="email"
                     required
                     value={email}
                     onChange={e => setEmail(e.target.value)}
                     placeholder="ton@email.com"
-                    className="input-base"
                   />
                 </div>
 
-                {error && (
-                  <p role="alert" className="flex items-center gap-2 text-red-600 text-xs bg-red-50 border border-red-200 rounded-xl px-4 py-3">
-                    <AlertCircle size={14} className="shrink-0" aria-hidden="true" /> {error}
-                  </p>
-                )}
+                {error && <Alert variant="error">{error}</Alert>}
 
-                <button
-                  type="submit"
-                  disabled={loading}
-                  className="btn-primary w-full disabled:opacity-60"
-                >
-                  {loading ? <><span className="w-4 h-4 border-2 border-white/40 border-t-white rounded-full animate-spin" />{t('submitting')}</> : t('submit')}
-                </button>
+                <Button type="submit" disabled={loading} className="w-full disabled:opacity-60">
+                  {loading ? <><Loader size={16} className="text-white" iconClassName="text-white" />{t('submitting')}</> : t('submit')}
+                </Button>
               </form>
             </>
           )}
-        </div>
+        </Card>
       </div>
     </div>
   )

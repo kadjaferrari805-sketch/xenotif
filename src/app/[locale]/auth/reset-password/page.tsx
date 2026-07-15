@@ -4,8 +4,13 @@ import { useState } from 'react'
 import { useTranslations } from 'next-intl'
 import { Logo } from '@/components/ui/Logo'
 import { useRouter } from '@/i18n/navigation'
-import { Eye, EyeOff, CheckCircle, AlertCircle } from 'lucide-react'
+import { Eye, EyeOff, CheckCircle } from 'lucide-react'
 import { createClient } from '@/lib/supabase/client'
+import { Card } from '@/components/ui/Card'
+import { Input, Label } from '@/components/ui/Input'
+import { Alert } from '@/components/ui/Alert'
+import { Button } from '@/components/ui/Button'
+import { Loader } from '@/components/ui/Loader'
 
 export default function ResetPasswordPage() {
   const t = useTranslations('auth.reset')
@@ -32,7 +37,7 @@ export default function ResetPasswordPage() {
       <div className="w-full max-w-md">
         <div className="flex justify-center mb-10"><Logo href="/" size="md" /></div>
 
-        <div className="bg-sport-card border border-sport-border rounded-2xl p-8">
+        <Card className="p-8 hover:-translate-y-0 hover:shadow-sm">
           {done ? (
             <div className="text-center">
               <div className="w-16 h-16 bg-emerald-50 border border-emerald-200 rounded-full flex items-center justify-center mx-auto mb-5">
@@ -50,15 +55,15 @@ export default function ResetPasswordPage() {
 
               <form onSubmit={handleSubmit} className="space-y-5">
                 <div>
-                  <label className="block text-xs font-bold text-sport-fg mb-2 uppercase tracking-wider">{t('passwordLabel')}</label>
+                  <Label className="uppercase tracking-wider">{t('passwordLabel')}</Label>
                   <div className="relative">
-                    <input
+                    <Input
                       type={showPwd ? 'text' : 'password'}
                       required
                       value={password}
                       onChange={e => setPassword(e.target.value)}
                       placeholder={t('passwordPlaceholder')}
-                      className="input-base pr-12"
+                      className="pr-12"
                     />
                     <button type="button" onClick={() => setShowPwd(v => !v)} className="absolute right-3 top-1/2 -translate-y-1/2 text-sport-gray hover:text-sport-fg p-1">
                       {showPwd ? <EyeOff size={16} /> : <Eye size={16} />}
@@ -66,23 +71,15 @@ export default function ResetPasswordPage() {
                   </div>
                 </div>
 
-                {error && (
-                  <p role="alert" className="flex items-center gap-2 text-red-600 text-xs bg-red-50 border border-red-200 rounded-xl px-4 py-3">
-                    <AlertCircle size={14} className="shrink-0" aria-hidden="true" /> {error}
-                  </p>
-                )}
+                {error && <Alert variant="error">{error}</Alert>}
 
-                <button
-                  type="submit"
-                  disabled={loading}
-                  className="btn-primary w-full disabled:opacity-60"
-                >
-                  {loading ? <><span className="w-4 h-4 border-2 border-white/40 border-t-white rounded-full animate-spin" />{t('submitting')}</> : t('submit')}
-                </button>
+                <Button type="submit" disabled={loading} className="w-full disabled:opacity-60">
+                  {loading ? <><Loader size={16} className="text-white" iconClassName="text-white" />{t('submitting')}</> : t('submit')}
+                </Button>
               </form>
             </>
           )}
-        </div>
+        </Card>
       </div>
     </div>
   )

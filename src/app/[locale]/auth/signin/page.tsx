@@ -4,8 +4,13 @@ import { useState } from 'react'
 import { useTranslations } from 'next-intl'
 import { Logo } from '@/components/ui/Logo'
 import { Link, useRouter } from '@/i18n/navigation'
-import { ArrowRight, Eye, EyeOff, Zap, CheckCircle, AlertCircle } from 'lucide-react'
+import { ArrowRight, Eye, EyeOff, Zap, CheckCircle } from 'lucide-react'
 import { createClient } from '@/lib/supabase/client'
+import { Card } from '@/components/ui/Card'
+import { Input, Label } from '@/components/ui/Input'
+import { Alert } from '@/components/ui/Alert'
+import { Button } from '@/components/ui/Button'
+import { Loader } from '@/components/ui/Loader'
 
 export default function SignInPage() {
   const t = useTranslations('auth.signin')
@@ -60,7 +65,7 @@ export default function SignInPage() {
             <Logo href="/" size="md" />
           </div>
 
-          <div className="bg-sport-card border border-sport-border rounded-2xl p-8">
+          <Card className="p-8 hover:-translate-y-0 hover:shadow-sm">
             <div className="text-center mb-8">
               <h1 className="text-2xl font-black text-sport-fg mb-2">{t('title')}</h1>
               <p className="text-sport-gray text-sm">{t('subtitle')}</p>
@@ -68,29 +73,28 @@ export default function SignInPage() {
 
             <form onSubmit={handleSubmit} className="space-y-5">
               <div>
-                <label htmlFor="email" className="block text-xs font-bold text-sport-fg mb-2 uppercase tracking-wider">{t('emailLabel')}</label>
-                <input
+                <Label htmlFor="email" className="uppercase tracking-wider">{t('emailLabel')}</Label>
+                <Input
                   id="email"
                   type="email"
                   required
                   value={email}
                   onChange={e => setEmail(e.target.value)}
                   placeholder="ton@email.com"
-                  className="input-base"
                 />
               </div>
 
               <div>
-                <label htmlFor="password" className="block text-xs font-bold text-sport-fg mb-2 uppercase tracking-wider">{t('passwordLabel')}</label>
+                <Label htmlFor="password" className="uppercase tracking-wider">{t('passwordLabel')}</Label>
                 <div className="relative">
-                  <input
+                  <Input
                     id="password"
                     type={showPwd ? 'text' : 'password'}
                     required
                     value={password}
                     onChange={e => setPassword(e.target.value)}
                     placeholder="••••••••"
-                    className="input-base pr-12"
+                    className="pr-12"
                   />
                   <button
                     type="button"
@@ -103,19 +107,11 @@ export default function SignInPage() {
                 </div>
               </div>
 
-              {error && (
-                <p role="alert" className="flex items-center gap-2 text-red-600 text-xs bg-red-50 border border-red-200 rounded-xl px-4 py-3">
-                  <AlertCircle size={14} className="shrink-0" aria-hidden="true" /> {error}
-                </p>
-              )}
+              {error && <Alert variant="error">{error}</Alert>}
 
-              <button
-                type="submit"
-                disabled={loading}
-                className="btn-primary w-full disabled:opacity-60"
-              >
-                {loading ? <><span className="w-4 h-4 border-2 border-white/40 border-t-white rounded-full animate-spin" />{t('submitting')}</> : <>{t('submit')} <ArrowRight size={14} /></>}
-              </button>
+              <Button type="submit" disabled={loading} className="w-full disabled:opacity-60">
+                {loading ? <><Loader size={16} className="text-white" iconClassName="text-white" />{t('submitting')}</> : <>{t('submit')} <ArrowRight size={14} /></>}
+              </Button>
             </form>
 
             <div className="mt-5 text-center">
@@ -132,7 +128,7 @@ export default function SignInPage() {
                 </Link>
               </p>
             </div>
-          </div>
+          </Card>
 
           <div className="mt-6 flex items-center justify-center gap-2 text-[11px] text-sport-gray">
             <Zap size={12} className="text-sport-orange" />

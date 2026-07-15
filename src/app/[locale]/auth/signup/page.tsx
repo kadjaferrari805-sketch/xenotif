@@ -4,12 +4,17 @@ import { Suspense, useState, useEffect } from 'react'
 import { useTranslations, useLocale } from 'next-intl'
 import { useSearchParams } from 'next/navigation'
 import { Link, useRouter } from '@/i18n/navigation'
-import { ArrowRight, CheckCircle, Zap, Eye, EyeOff, Lock, ShieldCheck, AlertCircle } from 'lucide-react'
+import { ArrowRight, CheckCircle, Zap, Eye, EyeOff, Lock, ShieldCheck } from 'lucide-react'
 import { createClient } from '@/lib/supabase/client'
 import { trackMeta } from '@/lib/meta-pixel'
 import { trackSignUp } from '@/lib/analytics'
 import { Logo } from '@/components/ui/Logo'
 import { ProOfferPill, PRO_OFFER_TXT } from '@/components/promo/ProOfferPill'
+import { Card } from '@/components/ui/Card'
+import { Input, Label } from '@/components/ui/Input'
+import { Alert } from '@/components/ui/Alert'
+import { Button } from '@/components/ui/Button'
+import { Loader } from '@/components/ui/Loader'
 
 type PlanId = 'gratuit' | 'pro'
 type Period = 'monthly' | 'annual'
@@ -25,8 +30,6 @@ const PLANS: { id: PlanId; priceMonthly: string; priceAnnual: string; totalAnnua
 const PRO_VALUE: Record<Period, number> = { monthly: 9.99, annual: 95.88 }
 
 type PlanText = { name: string; period: string; badge: string; features: string[] }
-
-const INPUT = 'input-base'
 
 function SignUpForm() {
   const t = useTranslations('auth.signup')
@@ -222,23 +225,23 @@ function SignUpForm() {
         </div>
 
         {/* Registration form */}
-        <div className="bg-sport-card border border-sport-border rounded-2xl p-8">
+        <Card className="p-8 hover:-translate-y-0 hover:shadow-sm">
           <form onSubmit={handleSubmit} className="space-y-5">
 
             <div>
-              <label htmlFor="fullName" className="block text-xs font-bold text-sport-fg mb-2 uppercase tracking-wider">{t('fullNameLabel')}</label>
-              <input id="fullName" type="text" required value={form.fullName} onChange={set('fullName')} placeholder={t('fullNamePlaceholder')} className={INPUT} />
+              <Label htmlFor="fullName" className="uppercase tracking-wider">{t('fullNameLabel')}</Label>
+              <Input id="fullName" type="text" required value={form.fullName} onChange={set('fullName')} placeholder={t('fullNamePlaceholder')} />
             </div>
 
             <div>
-              <label htmlFor="email" className="block text-xs font-bold text-sport-fg mb-2 uppercase tracking-wider">{t('emailLabel')}</label>
-              <input id="email" type="email" required value={form.email} onChange={set('email')} placeholder="ton@email.com" className={INPUT} />
+              <Label htmlFor="email" className="uppercase tracking-wider">{t('emailLabel')}</Label>
+              <Input id="email" type="email" required value={form.email} onChange={set('email')} placeholder="ton@email.com" />
             </div>
 
             <div>
-              <label htmlFor="password" className="block text-xs font-bold text-sport-fg mb-2 uppercase tracking-wider">{t('passwordLabel')}</label>
+              <Label htmlFor="password" className="uppercase tracking-wider">{t('passwordLabel')}</Label>
               <div className="relative">
-                <input
+                <Input
                   id="password"
                   type={showPwd ? 'text' : 'password'}
                   required
@@ -246,7 +249,7 @@ function SignUpForm() {
                   value={form.password}
                   onChange={set('password')}
                   placeholder={t('passwordPlaceholder')}
-                  className={`${INPUT} pr-12`}
+                  className="pr-12"
                 />
                 <button
                   type="button"
@@ -259,11 +262,7 @@ function SignUpForm() {
               </div>
             </div>
 
-            {error && (
-              <p role="alert" className="flex items-center gap-2 text-red-600 text-xs bg-red-50 border border-red-200 rounded-xl px-4 py-3">
-                <AlertCircle size={14} className="shrink-0" aria-hidden="true" /> {error}
-              </p>
-            )}
+            {error && <Alert variant="error">{error}</Alert>}
 
             {/* Réassurance au point de décision : essai gratuit + aucun débit + résiliation. */}
             {selectedPlan !== 'gratuit' && (
@@ -277,18 +276,14 @@ function SignUpForm() {
               </div>
             )}
 
-            <button
-              type="submit"
-              disabled={loading}
-              className="btn-primary w-full disabled:opacity-60"
-            >
+            <Button type="submit" disabled={loading} className="w-full disabled:opacity-60">
               {loading
-                ? <><span className="w-4 h-4 border-2 border-white/40 border-t-white rounded-full animate-spin" />{t('creating')}</>
+                ? <><Loader size={16} className="text-white" iconClassName="text-white" />{t('creating')}</>
                 : selectedPlan === 'gratuit'
                   ? <>{t('submitFree')} <ArrowRight size={14} /></>
                   : <>{t('submitPaid')} <ArrowRight size={14} /></>
               }
-            </button>
+            </Button>
 
             <p className="text-[10px] text-sport-gray text-center leading-relaxed">
               {t('legalPrefix')}{' '}
@@ -306,7 +301,7 @@ function SignUpForm() {
               </Link>
             </p>
           </div>
-        </div>
+        </Card>
 
         <div className="mt-6 flex items-center justify-center gap-2 text-[11px] text-sport-gray">
           <Zap size={12} className="text-sport-orange" />
