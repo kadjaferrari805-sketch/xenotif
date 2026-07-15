@@ -156,7 +156,11 @@ export default async function DisciplinePage({ params }: { params: Promise<{ slu
       <section className="relative h-[75vh] min-h-[520px] overflow-hidden" aria-label={t('heroAria', { name: title })}>
         <Image src={photo} alt={t('heroAlt', { name: title })} fill sizes="100vw" className="object-cover brightness-110" priority />
         <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/40 to-black/10" />
-        <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-sport-dark via-transparent to-transparent" />
+        {/* Fondu de raccord avec la page - bande basse seulement (h-24, sous le
+           pb-16 du texte), pas inset-0 complet (le texte est ancré en bas de la
+           section via justify-end pb-16 - un fondu pleine hauteur le rendait
+           illisible en le blanchissant). */}
+        <div aria-hidden="true" className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-sport-dark to-transparent" />
 
         <div className="absolute inset-0 flex flex-col justify-end px-6 pb-16">
           <div className="max-w-5xl mx-auto w-full">

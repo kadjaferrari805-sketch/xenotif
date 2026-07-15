@@ -75,7 +75,11 @@ export default async function BlogPage({
           className="object-cover object-center"
         />
         <div aria-hidden="true" className="absolute inset-0 bg-black/55" />
-        <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-sport-dark" />
+        {/* Fondu de raccord avec la page (blanche) - limité à la bande basse (h-1/4,
+           même technique que Hero.tsx) : un inset-0 complet empilé sur la teinte /55
+           ci-dessus rendait la photo presque entièrement invisible (bas 100% blanc
+           opaque recouvrant aussi la teinte noire). */}
+        <div aria-hidden="true" className="absolute bottom-0 left-0 right-0 h-1/4 bg-gradient-to-b from-transparent to-sport-dark" />
         <div
           className="absolute inset-0 opacity-5"
           style={{ backgroundImage: 'radial-gradient(circle at 50% 50%, #FF6A00 0%, transparent 50%)' }}
