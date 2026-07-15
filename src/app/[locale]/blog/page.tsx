@@ -84,6 +84,7 @@ export default async function BlogPage({
           className="absolute inset-0 opacity-5"
           style={{ backgroundImage: 'radial-gradient(circle at 50% 50%, #FF6A00 0%, transparent 50%)' }}
         />
+        <div aria-hidden="true" className="glow-orange-soft top-10 left-10 h-72 w-72" />
         <div className="relative max-w-4xl mx-auto text-center">
           <span className="inline-block text-sport-orange font-bold text-sm uppercase tracking-widest mb-4">
             {t('eyebrow')}

@@ -97,12 +97,12 @@
     @apply text-sm text-center leading-relaxed;
     color: var(--color-sport-fg);
   }
-  /* Fond bouton = #C25100 (pas #FF6A00 direct) : blanc sur #FF6A00 ne passe pas
-     WCAG AA texte (2.87:1, sous le seuil 4.5:1) - #C25100 conserve la teinte
-     orange de marque tout en offrant 4.7:1 avec le texte blanc. #FF6A00 reste
-     la couleur d'accent pour les icônes/textes larges/badges. */
+  /* Fond bouton = orange vif de marque #FF6A00, sur demande explicite (rendu
+     plus premium jugé prioritaire sur le contraste ici) - ATTENTION : blanc
+     sur #FF6A00 ne passe pas WCAG AA texte (~2.87:1, sous le seuil 4.5:1).
+     Écart de contraste assumé/documenté, pas un oubli. */
   .btn-primary {
-    @apply relative overflow-hidden inline-flex items-center justify-center gap-2 bg-[#C25100] text-white px-6 py-3.5 rounded-full font-bold text-sm shadow-lg shadow-sport-orange/30 hover:bg-[#A84600] hover:-translate-y-0.5 hover:shadow-xl hover:shadow-sport-orange/40 active:translate-y-0 active:scale-95 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sport-orange/60 focus-visible:ring-offset-2 focus-visible:ring-offset-sport-dark;
+    @apply relative overflow-hidden inline-flex items-center justify-center gap-2 bg-sport-orange text-white px-6 py-3.5 rounded-full font-bold text-sm shadow-lg shadow-sport-orange/30 hover:bg-[#E65F00] hover:-translate-y-0.5 hover:shadow-xl hover:shadow-sport-orange/40 active:translate-y-0 active:scale-95 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sport-orange/60 focus-visible:ring-offset-2 focus-visible:ring-offset-sport-dark;
   }
   .btn-secondary {
     @apply relative overflow-hidden inline-flex items-center justify-center gap-2 bg-white text-sport-fg border-2 border-sport-fg px-6 py-3.5 rounded-full font-bold text-sm shadow-sm hover:bg-sport-fg/5 hover:-translate-y-0.5 hover:shadow-md active:translate-y-0 active:scale-95 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sport-fg/30 focus-visible:ring-offset-2 focus-visible:ring-offset-sport-dark;
@@ -214,14 +214,43 @@
   .marquee-track { animation: none; }
 }
 
-/* ── Subtle ambient glow on section transitions ─────────────── */
+/* ── Ambient glow on section transitions ──────────────────────
+   Halo décoratif (absolute, pointer-events-none, ::before ou <div> dédié) sur
+   les sections premium (hero, CTA, cartes mises en avant) : pulsation douce
+   opacité + échelle et légère dérive de position, façon SaaS haut de gamme.
+   .glow-orange / .glow-orange-soft : teinte fixe, à placer sur un élément
+   positionné en absolute (blur déjà inclus). */
 @keyframes pulse-glow {
   0%, 100% { opacity: 0.04; }
   50%       { opacity: 0.08; }
 }
-
 .ambient-glow {
   animation: pulse-glow 4s ease-in-out infinite;
+}
+
+@keyframes glow-drift {
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.55; }
+  33%      { transform: translate(3%, -4%) scale(1.08); opacity: 0.85; }
+  66%      { transform: translate(-3%, 3%) scale(0.96); opacity: 0.65; }
+}
+.glow-orange {
+  position: absolute;
+  border-radius: 9999px;
+  background: radial-gradient(circle, rgba(255, 106, 0, 0.35) 0%, rgba(255, 106, 0, 0) 70%);
+  filter: blur(60px);
+  pointer-events: none;
+  animation: glow-drift 9s ease-in-out infinite;
+}
+.glow-orange-soft {
+  position: absolute;
+  border-radius: 9999px;
+  background: radial-gradient(circle, rgba(255, 106, 0, 0.18) 0%, rgba(255, 106, 0, 0) 70%);
+  filter: blur(80px);
+  pointer-events: none;
+  animation: glow-drift 12s ease-in-out infinite reverse;
+}
+@media (prefers-reduced-motion: reduce) {
+  .glow-orange, .glow-orange-soft { animation: none; }
 }
 
 /* ── Masquer la barre de défilement (rangées de puces horizontales) ── */

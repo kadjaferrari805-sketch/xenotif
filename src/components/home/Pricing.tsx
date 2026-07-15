@@ -101,6 +101,9 @@ export function Pricing() {
             return (
               <div key={plan.id} className="w-full max-w-[360px] pt-5">
               <Tilt3D max={plan.highlight ? 16 : 12} className="relative h-full rounded-2xl">
+              {plan.highlight && (
+                <div aria-hidden="true" className="glow-orange-soft -inset-6 -z-10" />
+              )}
               <motion.div
                 initial={{ opacity: 0, y: 28 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}

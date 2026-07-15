@@ -45,8 +45,8 @@ export function Newsletter() {
 
   return (
     <section id="newsletter" aria-labelledby="newsletter-title" className="section-tint relative overflow-hidden px-6">
-      {/* Background glows */}
-      <div aria-hidden="true" className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-sport-orange/6 rounded-full blur-3xl pointer-events-none" />
+      {/* Background glows - dégradé orange animé (dérive + pulsation lente) */}
+      <div aria-hidden="true" className="glow-orange top-0 left-1/2 -translate-x-1/2 w-[700px] h-[350px]" />
       <div aria-hidden="true" className="absolute bottom-0 right-0 w-96 h-96 bg-sport-blue/5 rounded-full blur-3xl pointer-events-none" />
 
       <div className="relative max-w-2xl mx-auto text-center">

@@ -123,15 +123,18 @@ export function PreviewDashboard() {
           <ChallengesCard titleKey="weeklyTitle" challenges={[...PREVIEW.gamification.weekly]} />
         </motion.div>
 
-        <motion.div {...reveal} className="bg-gradient-to-br from-sport-orange/20 via-sport-card to-sport-card border border-sport-orange/30 rounded-2xl p-6 text-center">
-          <div className="w-12 h-12 mx-auto rounded-2xl bg-sport-orange/15 border border-sport-orange/30 flex items-center justify-center mb-3">
-            <Bot size={22} className="text-sport-orange" aria-hidden="true" />
+        <motion.div {...reveal} className="relative overflow-hidden bg-gradient-to-br from-sport-orange/20 via-sport-card to-sport-card border border-sport-orange/30 rounded-2xl p-6 text-center">
+          <div aria-hidden="true" className="glow-orange-soft -top-10 -right-10 h-48 w-48" />
+          <div className="relative">
+            <div className="w-12 h-12 mx-auto rounded-2xl bg-sport-orange/15 border border-sport-orange/30 flex items-center justify-center mb-3">
+              <Bot size={22} className="text-sport-orange" aria-hidden="true" />
+            </div>
+            <h3 className="text-lg font-black">{t('ctaTitle')}</h3>
+            <p className="text-sport-gray text-sm mt-1 mb-5 max-w-md mx-auto">{t('ctaSubtitle')}</p>
+            <Link href="/auth/signup" className="inline-flex items-center gap-2 bg-sport-orange text-white px-7 py-3.5 rounded-full font-bold text-sm hover:bg-orange-600 transition-all">
+              {t('ctaButton')} <ArrowRight size={15} aria-hidden="true" />
+            </Link>
           </div>
-          <h3 className="text-lg font-black">{t('ctaTitle')}</h3>
-          <p className="text-sport-gray text-sm mt-1 mb-5 max-w-md mx-auto">{t('ctaSubtitle')}</p>
-          <Link href="/auth/signup" className="inline-flex items-center gap-2 bg-sport-orange text-white px-7 py-3.5 rounded-full font-bold text-sm hover:bg-orange-600 transition-all">
-            {t('ctaButton')} <ArrowRight size={15} aria-hidden="true" />
-          </Link>
         </motion.div>
       </div>
     </div>

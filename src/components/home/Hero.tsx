@@ -173,6 +173,8 @@ export function Hero() {
       <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-r from-black/50 via-black/15 to-transparent z-[1]" />
       <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-black/45 via-black/5 to-transparent z-[1]" />
       <div aria-hidden="true" className="absolute bottom-0 left-0 right-0 h-1/4 bg-gradient-to-t from-sport-dark to-transparent z-[1]" />
+      {/* Halo orange animé - accent premium discret derrière le texte/CTA. */}
+      <div aria-hidden="true" className="glow-orange z-[1] bottom-0 left-0 w-[500px] h-[400px]" />
 
       {/* Main content */}
       <div className="absolute inset-0 z-10 flex flex-col justify-center px-6">
