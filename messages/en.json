@@ -1967,9 +1967,40 @@
       "pct": "%",
       "load": "Load (kg)"
     },
+    "hydratation": {
+      "title": "Hydration calculator",
+      "short": "Hydration",
+      "subtitle": "Your recommended water intake based on your weight and activity level.",
+      "metaTitle": "Hydration calculator - daily water needs",
+      "metaDesc": "Calculate your recommended daily water intake based on your weight and physical activity level. Free and instant.",
+      "intro": "This calculator estimates your water needs from a baseline of 33 ml per kg of body weight, adjusted for your activity level (sweating during exercise increases your needs).",
+      "weight": "Weight (kg)",
+      "activity": "Activity level",
+      "act1": "Sedentary",
+      "act2": "Moderate (sport 3-5 days/week)",
+      "act3": "Intense (daily training)",
+      "result": "Recommended intake",
+      "unit": "L/day"
+    },
     "ctaTitle": "Go further with Xenotif",
     "ctaDesc": "Structured programs, nutrition plan and AI coach - to turn these numbers into results. Free to start.",
     "ctaButton": "Start free"
+  },
+  "nutritionPage": {
+    "metaTitle": "Nutrition - Calculators, tips and plans | Xenotif®",
+    "metaDescription": "Calculate your calories, macros and water needs, and discover our nutrition guides to progress faster. Free tools and expert articles.",
+    "eyebrow": "Nutrition",
+    "title": "Your nutrition, <o>driven by the numbers</o>",
+    "subtitle": "Calories, macros, hydration - calculate your real needs in an instant, then dig deeper with our nutrition guides.",
+    "calcTitle": "Nutrition calculators",
+    "calcSubtitle": "Instant results, no sign-up required.",
+    "calcCta": "See all calculators",
+    "articlesTitle": "Nutrition guides",
+    "articlesSubtitle": "The latest articles from our blog to go further.",
+    "articlesCta": "All nutrition articles",
+    "ctaTitle": "Ready to <o>structure your nutrition</o>?",
+    "ctaSubtitle": "Personalized nutrition plan and AI coach included with Xenotif® Pro.",
+    "ctaJoin": "Join Xenotif®"
   },
   "disciplinesHub": {
     "eyebrow": "Xenotif Disciplines",

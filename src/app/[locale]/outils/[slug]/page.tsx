@@ -8,6 +8,7 @@ import { CaloriesCalc } from '@/components/outils/CaloriesCalc'
 import { ImcCalc } from '@/components/outils/ImcCalc'
 import { MacrosCalc } from '@/components/outils/MacrosCalc'
 import { OneRmCalc } from '@/components/outils/OneRmCalc'
+import { HydratationCalc } from '@/components/outils/HydratationCalc'
 
 const SITE = 'https://xenotif.com'
 const LOCS = ['fr', 'en', 'de'] as const
@@ -17,6 +18,7 @@ const CALC = {
   imc: ImcCalc,
   macros: MacrosCalc,
   '1rm': OneRmCalc,
+  hydratation: HydratationCalc,
 } as const
 
 function outilUrl(slug: string, locale: string): string {

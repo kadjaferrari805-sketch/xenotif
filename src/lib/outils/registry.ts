@@ -7,6 +7,7 @@ export const OUTILS: Outil[] = [
   { slug: 'imc', key: 'imc', emoji: '⚖️' },
   { slug: 'macros', key: 'macros', emoji: '🍽️' },
   { slug: '1rm', key: 'oneRm', emoji: '🏋️' },
+  { slug: 'hydratation', key: 'hydratation', emoji: '💧' },
 ]
 
 export const outilSlugs = (): string[] => OUTILS.map((o) => o.slug)

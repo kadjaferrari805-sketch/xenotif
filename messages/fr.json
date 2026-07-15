@@ -1967,9 +1967,40 @@
       "pct": "%",
       "load": "Charge (kg)"
     },
+    "hydratation": {
+      "title": "Calcul d’hydratation",
+      "short": "Hydratation",
+      "subtitle": "Ton apport en eau recommandé selon ton poids et ton niveau d’activité.",
+      "metaTitle": "Calcul hydratation - besoin en eau par jour",
+      "metaDesc": "Calcule ton apport en eau journalier recommandé selon ton poids et ton niveau d’activité physique. Gratuit et instantané.",
+      "intro": "Ce calculateur estime ton besoin en eau à partir d’une base de 33 ml par kg de poids corporel, ajustée selon ton niveau d’activité (la transpiration à l’effort augmente les besoins).",
+      "weight": "Poids (kg)",
+      "activity": "Niveau d’activité",
+      "act1": "Sédentaire",
+      "act2": "Modéré (sport 3-5 j/semaine)",
+      "act3": "Intense (sport quotidien)",
+      "result": "Apport recommandé",
+      "unit": "L/jour"
+    },
     "ctaTitle": "Va plus loin avec Xenotif",
     "ctaDesc": "Programmes structurés, plan nutrition et coach IA - pour transformer ces chiffres en résultats. Gratuit pour commencer.",
     "ctaButton": "Commencer gratuitement"
+  },
+  "nutritionPage": {
+    "metaTitle": "Nutrition - Calculateurs, conseils et plans | Xenotif®",
+    "metaDescription": "Calcule tes calories, macros et besoins en eau, et découvre nos guides nutrition pour progresser plus vite. Outils gratuits et articles d'experts.",
+    "eyebrow": "Nutrition",
+    "title": "Ta nutrition, <o>pilotée par les chiffres</o>",
+    "subtitle": "Calorie, macros, hydratation - calcule tes besoins réels en un instant, puis approfondis avec nos guides nutrition.",
+    "calcTitle": "Calculateurs nutrition",
+    "calcSubtitle": "Résultat instantané, sans inscription.",
+    "calcCta": "Voir tous les calculateurs",
+    "articlesTitle": "Guides nutrition",
+    "articlesSubtitle": "Les derniers articles de notre blog pour aller plus loin.",
+    "articlesCta": "Tous les articles nutrition",
+    "ctaTitle": "Prêt à <o>structurer ta nutrition</o> ?",
+    "ctaSubtitle": "Plan nutrition personnalisé et coach IA inclus avec Xenotif® Pro.",
+    "ctaJoin": "Rejoindre Xenotif®"
   },
   "disciplinesHub": {
     "eyebrow": "Disciplines Xenotif",

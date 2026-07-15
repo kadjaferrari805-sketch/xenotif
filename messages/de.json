@@ -1967,9 +1967,40 @@
       "pct": "%",
       "load": "Gewicht (kg)"
     },
+    "hydratation": {
+      "title": "Hydrationsrechner",
+      "short": "Hydration",
+      "subtitle": "Deine empfohlene Wasserzufuhr basierend auf Gewicht und Aktivitätsniveau.",
+      "metaTitle": "Hydrationsrechner - täglicher Wasserbedarf",
+      "metaDesc": "Berechne deine empfohlene tägliche Wasserzufuhr basierend auf deinem Gewicht und deinem Aktivitätsniveau. Kostenlos und sofort.",
+      "intro": "Dieser Rechner schätzt deinen Wasserbedarf auf Basis von 33 ml pro kg Körpergewicht, angepasst an dein Aktivitätsniveau (Schwitzen beim Training erhöht den Bedarf).",
+      "weight": "Gewicht (kg)",
+      "activity": "Aktivitätsniveau",
+      "act1": "Sitzend",
+      "act2": "Moderat (Sport 3-5 Tage/Woche)",
+      "act3": "Intensiv (tägliches Training)",
+      "result": "Empfohlene Zufuhr",
+      "unit": "L/Tag"
+    },
     "ctaTitle": "Geh weiter mit Xenotif",
     "ctaDesc": "Strukturierte Programme, Ernährungsplan und KI-Coach - um aus diesen Zahlen Ergebnisse zu machen. Kostenlos starten.",
     "ctaButton": "Kostenlos starten"
+  },
+  "nutritionPage": {
+    "metaTitle": "Ernährung - Rechner, Tipps und Pläne | Xenotif®",
+    "metaDescription": "Berechne deine Kalorien, Makros und deinen Wasserbedarf und entdecke unsere Ernährungsguides für schnellere Fortschritte. Kostenlose Tools und Expertenartikel.",
+    "eyebrow": "Ernährung",
+    "title": "Deine Ernährung, <o>datenbasiert gesteuert</o>",
+    "subtitle": "Kalorien, Makros, Hydration - berechne deinen tatsächlichen Bedarf sofort und vertiefe ihn mit unseren Ernährungsguides.",
+    "calcTitle": "Ernährungsrechner",
+    "calcSubtitle": "Sofortiges Ergebnis, keine Anmeldung nötig.",
+    "calcCta": "Alle Rechner ansehen",
+    "articlesTitle": "Ernährungsguides",
+    "articlesSubtitle": "Die neuesten Artikel aus unserem Blog, um tiefer einzusteigen.",
+    "articlesCta": "Alle Ernährungsartikel",
+    "ctaTitle": "Bereit, <o>deine Ernährung zu strukturieren</o>?",
+    "ctaSubtitle": "Personalisierter Ernährungsplan und KI-Coach in Xenotif® Pro enthalten.",
+    "ctaJoin": "Xenotif® beitreten"
   },
   "disciplinesHub": {
     "eyebrow": "Xenotif Disziplinen",
