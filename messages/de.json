@@ -187,7 +187,9 @@
         "faq": "FAQ",
         "defis": "Challenges",
         "exercices": "Übungen",
-        "outils": "Rechner"
+        "outils": "Rechner",
+        "nutrition": "Ernährung",
+        "communaute": "Community"
       }
     },
     "skipLink": "Zum Hauptinhalt springen",
@@ -1792,6 +1794,45 @@
     "statsSubtitle": "Die Community, die jeden Tag Fortschritte macht.",
     "ctaTitle": "Bereit, <o>über dich hinauszuwachsen</o>?",
     "ctaSubtitle": "Schließe dich Tausenden von Sportlern an, die mit Xenotif® Fortschritte machen.",
+    "ctaJoin": "Xenotif® beitreten",
+    "ctaShop": "Den Shop entdecken"
+  },
+  "coaching": {
+    "metaTitle": "KI-Coaching - Xenotif®",
+    "metaDescription": "Ein intelligenter Coach, der sich an dein Niveau anpasst, deine Programme justiert und dich in Echtzeit begleitet. Rund um die Uhr verfügbar, in Xenotif® Pro enthalten.",
+    "eyebrow": "Coaching",
+    "title": "Ein Coach, der sich <o>dir anpasst</o>",
+    "subtitle": "Personalisierte Programme, Echtzeit-Tracking und sofortige Antworten: Dein KI-Coach begleitet dich bei jeder Einheit, rund um die Uhr.",
+    "featuresTitle": "So funktioniert's",
+    "features": [
+      { "title": "Maßgeschneiderte Pläne", "text": "Dein Coach passt deine Programme an dein Niveau, deine Ziele und deinen tatsächlichen Fortschritt an." },
+      { "title": "24/7 verfügbar", "text": "Eine Frage vor dem Training, technischer Rat gefragt? Sofortige Antwort, jederzeit." },
+      { "title": "Echtzeit-Tracking", "text": "Jede erfasste Einheit verfeinert die nächsten Empfehlungen - dein Coach lernt von dir." },
+      { "title": "Kontinuierliche Anpassung", "text": "Plateau, Verletzung, Wiedereinstieg: Das Programm passt sich automatisch an deine Situation an." }
+    ],
+    "previewTitle": "Teste den Coach jetzt",
+    "previewText": "Entdecke eine Vorschau des Mitgliederbereichs und des KI-Assistenten, ganz ohne Konto.",
+    "previewCta": "Vorschau ansehen",
+    "statsTitle": "Xenotif® in Zahlen",
+    "statsSubtitle": "Die Community, die jeden Tag Fortschritte macht.",
+    "ctaTitle": "Bereit, <o>smarter zu trainieren</o>?",
+    "ctaSubtitle": "Tritt Xenotif® bei und schalte noch heute deinen KI-Coach frei.",
+    "ctaJoin": "Xenotif® beitreten",
+    "ctaPreview": "Demo ansehen"
+  },
+  "communaute": {
+    "metaTitle": "Community - Xenotif®",
+    "metaDescription": "Schließe dich Tausenden von Sportlern an, die sich gegenseitig motivieren, ihre Fortschritte teilen und gemeinsam über sich hinauswachsen.",
+    "eyebrow": "Community",
+    "title": "Du bist <o>nie allein</o>",
+    "subtitle": "Tausende Sportler machen jeden Tag Fortschritte mit Xenotif® - Challenges, verifizierte Bewertungen und Motivation aus einer ganzen Community.",
+    "statsTitle": "Xenotif® in Zahlen",
+    "statsSubtitle": "Die Community, die jeden Tag Fortschritte macht.",
+    "reviewsTitle": "Sie machen Fortschritte mit uns",
+    "socialTitle": "Folge uns auch anderswo",
+    "socialSubtitle": "Tipps, Einblicke hinter die Kulissen und exklusive Challenges auf unseren Kanälen.",
+    "ctaTitle": "Bereit, <o>der Bewegung beizutreten</o>?",
+    "ctaSubtitle": "Erstelle noch heute kostenlos dein Konto.",
     "ctaJoin": "Xenotif® beitreten",
     "ctaShop": "Den Shop entdecken"
   },

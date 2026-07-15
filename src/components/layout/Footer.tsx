@@ -25,7 +25,8 @@ const PROG_LINKS = [
   { key: 'exercices',     href: '/exercices' },
   { key: 'outils',        href: '/outils' },
   { key: 'defis',         href: '/defis' },
-  { key: 'coachingIA',    href: '/dashboard/coach' },
+  { key: 'coachingIA',    href: '/coaching' },
+  { key: 'communaute',    href: '/communaute' },
   { key: 'preview',       href: '/dashboard-preview' },
   { key: 'tarifs',        href: '/#tarifs' },
 ] as const

@@ -187,7 +187,9 @@
         "faq": "FAQ",
         "defis": "Défis",
         "exercices": "Exercices",
-        "outils": "Calculateurs"
+        "outils": "Calculateurs",
+        "nutrition": "Nutrition",
+        "communaute": "Communauté"
       }
     },
     "skipLink": "Aller au contenu principal",
@@ -1792,6 +1794,45 @@
     "statsSubtitle": "La communauté qui progresse chaque jour.",
     "ctaTitle": "Prêt à <o>te dépasser</o> ?",
     "ctaSubtitle": "Rejoins des milliers de sportifs qui progressent avec Xenotif®.",
+    "ctaJoin": "Rejoindre Xenotif®",
+    "ctaShop": "Découvrir la boutique"
+  },
+  "coaching": {
+    "metaTitle": "Coaching IA - Xenotif®",
+    "metaDescription": "Un coach intelligent qui s'adapte à ton niveau, ajuste tes programmes et te suit en temps réel. Disponible 24h/24, inclus avec Xenotif® Pro.",
+    "eyebrow": "Coaching",
+    "title": "Un coach qui <o>s'adapte à toi</o>",
+    "subtitle": "Programmes personnalisés, suivi en temps réel et réponses instantanées : ton coach IA t'accompagne à chaque séance, 24h/24.",
+    "featuresTitle": "Comment ça marche",
+    "features": [
+      { "title": "Plans sur mesure", "text": "Ton coach ajuste tes programmes selon ton niveau, tes objectifs et ta progression réelle." },
+      { "title": "Disponible 24h/24", "text": "Une question avant une séance, besoin d'un conseil technique ? Réponse immédiate, à toute heure." },
+      { "title": "Suivi en temps réel", "text": "Chaque séance loggée affine les recommandations suivantes - ton coach apprend de toi." },
+      { "title": "Ajustement continu", "text": "Plateau, blessure, reprise : le programme s'adapte automatiquement à ta situation." }
+    ],
+    "previewTitle": "Essaie le coach dès maintenant",
+    "previewText": "Découvre un aperçu de l'espace membre et de l'assistant IA, sans créer de compte.",
+    "previewCta": "Voir l'aperçu",
+    "statsTitle": "Xenotif® en chiffres",
+    "statsSubtitle": "La communauté qui progresse chaque jour.",
+    "ctaTitle": "Prêt à <o>t'entraîner intelligemment</o> ?",
+    "ctaSubtitle": "Rejoins Xenotif® et débloque ton coach IA dès aujourd'hui.",
+    "ctaJoin": "Rejoindre Xenotif®",
+    "ctaPreview": "Voir la démo"
+  },
+  "communaute": {
+    "metaTitle": "Communauté - Xenotif®",
+    "metaDescription": "Rejoins des milliers de sportifs qui se motivent, partagent leurs progrès et se dépassent ensemble avec Xenotif®.",
+    "eyebrow": "Communauté",
+    "title": "Tu n'es <o>jamais seul·e</o>",
+    "subtitle": "Des milliers de sportifs progressent chaque jour avec Xenotif® - défis, avis vérifiés et une motivation qui vient de toute une communauté.",
+    "statsTitle": "Xenotif® en chiffres",
+    "statsSubtitle": "La communauté qui progresse chaque jour.",
+    "reviewsTitle": "Ils progressent avec nous",
+    "socialTitle": "Suis-nous ailleurs",
+    "socialSubtitle": "Conseils, coulisses et défis exclusifs sur nos réseaux.",
+    "ctaTitle": "Prêt à <o>rejoindre le mouvement</o> ?",
+    "ctaSubtitle": "Crée ton compte gratuitement et commence dès aujourd'hui.",
     "ctaJoin": "Rejoindre Xenotif®",
     "ctaShop": "Découvrir la boutique"
   },

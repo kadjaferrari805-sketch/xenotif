@@ -187,7 +187,9 @@
         "faq": "FAQ",
         "defis": "Challenges",
         "exercices": "Exercises",
-        "outils": "Calculators"
+        "outils": "Calculators",
+        "nutrition": "Nutrition",
+        "communaute": "Community"
       }
     },
     "skipLink": "Skip to main content",
@@ -1792,6 +1794,45 @@
     "statsSubtitle": "The community that progresses every day.",
     "ctaTitle": "Ready to <o>surpass yourself</o>?",
     "ctaSubtitle": "Join thousands of athletes progressing with Xenotif®.",
+    "ctaJoin": "Join Xenotif®",
+    "ctaShop": "Explore the shop"
+  },
+  "coaching": {
+    "metaTitle": "AI Coaching - Xenotif®",
+    "metaDescription": "A smart coach that adapts to your level, adjusts your programs and tracks you in real time. Available 24/7, included with Xenotif® Pro.",
+    "eyebrow": "Coaching",
+    "title": "A coach that <o>adapts to you</o>",
+    "subtitle": "Personalized programs, real-time tracking and instant answers: your AI coach is with you for every session, around the clock.",
+    "featuresTitle": "How it works",
+    "features": [
+      { "title": "Tailored plans", "text": "Your coach adjusts your programs based on your level, goals and actual progress." },
+      { "title": "Available 24/7", "text": "A question before a session, need technical advice? Instant answers, any time." },
+      { "title": "Real-time tracking", "text": "Every logged session refines the next recommendations - your coach learns from you." },
+      { "title": "Continuous adjustment", "text": "Plateau, injury, comeback: your program adapts automatically to your situation." }
+    ],
+    "previewTitle": "Try the coach right now",
+    "previewText": "Get a preview of the member area and the AI assistant, no account required.",
+    "previewCta": "See the preview",
+    "statsTitle": "Xenotif® by the numbers",
+    "statsSubtitle": "The community making progress every day.",
+    "ctaTitle": "Ready to <o>train smarter</o>?",
+    "ctaSubtitle": "Join Xenotif® and unlock your AI coach today.",
+    "ctaJoin": "Join Xenotif®",
+    "ctaPreview": "See the demo"
+  },
+  "communaute": {
+    "metaTitle": "Community - Xenotif®",
+    "metaDescription": "Join thousands of athletes who motivate each other, share their progress and push their limits together with Xenotif®.",
+    "eyebrow": "Community",
+    "title": "You're <o>never alone</o>",
+    "subtitle": "Thousands of athletes make progress every day with Xenotif® - challenges, verified reviews and motivation from a whole community.",
+    "statsTitle": "Xenotif® by the numbers",
+    "statsSubtitle": "The community making progress every day.",
+    "reviewsTitle": "They're making progress with us",
+    "socialTitle": "Follow us elsewhere",
+    "socialSubtitle": "Tips, behind-the-scenes and exclusive challenges on our socials.",
+    "ctaTitle": "Ready to <o>join the movement</o>?",
+    "ctaSubtitle": "Create your free account and get started today.",
     "ctaJoin": "Join Xenotif®",
     "ctaShop": "Explore the shop"
   },
