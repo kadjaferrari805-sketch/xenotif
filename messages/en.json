@@ -155,7 +155,10 @@
       "training": "Training",
       "resources": "Resources",
       "exercices": "Exercises",
-      "calculateurs": "Calculators"
+      "calculateurs": "Calculators",
+      "nutrition": "Nutrition",
+      "coaching": "Coaching",
+      "communaute": "Community"
     },
     "footer": {
       "ariaFooter": "Footer",

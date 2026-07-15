@@ -3,8 +3,8 @@
 import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useTranslations } from 'next-intl'
-import { Link } from '@/i18n/navigation'
-import { Menu, X, ChevronDown, ArrowRight, Dumbbell, ClipboardList, Trophy, Calculator } from 'lucide-react'
+import { Link, usePathname } from '@/i18n/navigation'
+import { Menu, X, ChevronDown, ArrowRight, Dumbbell, ClipboardList, Trophy, Calculator, Salad } from 'lucide-react'
 import { Logo } from '@/components/ui/Logo'
 import { LanguageSwitcher } from './LanguageSwitcher'
 import { AppDownload } from './AppDownload'
@@ -17,11 +17,14 @@ import type { User } from '@supabase/supabase-js'
 const RESOURCES = [
   { href: '/programmes', key: 'programmes', Icon: ClipboardList },
   { href: '/exercices', key: 'exercices', Icon: Dumbbell },
+  { href: '/nutrition', key: 'nutrition', Icon: Salad },
   { href: '/defis', key: 'defis', Icon: Trophy },
   { href: '/outils', key: 'calculateurs', Icon: Calculator },
 ] as const
 
 const NAV_LINKS = [
+  { href: '/coaching', key: 'coaching' },
+  { href: '/communaute', key: 'communaute' },
   { href: '/boutique', key: 'boutique' },
   { href: '/blog', key: 'blog' },
   { href: '/#tarifs', key: 'tarifs' },
@@ -30,6 +33,11 @@ const NAV_LINKS = [
 
 export function Nav() {
   const t = useTranslations('common.nav')
+  const pathname = usePathname()
+  // Header transparent uniquement au-dessus du Hero vidéo plein cadre de l'accueil,
+  // avant tout scroll - ailleurs (pas de photo/vidéo derrière) le header opaque
+  // habituel évite un texte blanc illisible sur fond blanc.
+  const isHome = pathname === '/'
   const [isOpen, setIsOpen] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const [mobileTrainOpen, setMobileTrainOpen] = useState(false)
@@ -80,6 +88,11 @@ export function Nav() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
+  // Header transparent (texte blanc) uniquement sur l'accueil avant le scroll,
+  // par-dessus le Hero vidéo plein cadre - dès qu'on scrolle ou qu'on est sur
+  // une page sans photo/vidéo derrière, on repasse au header opaque habituel.
+  const transparent = isHome && !scrolled
+
   const initials = (name || user?.email || 'U').slice(0, 2).toUpperCase()
 
   return (
@@ -89,16 +102,20 @@ export function Nav() {
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
       className={`sticky top-0 z-50 transition-all duration-300 pt-safe border-b ${
-        scrolled ? 'bg-sport-dark/85 backdrop-blur-xl border-sport-fg/10 shadow-md shadow-black/10' : 'bg-sport-dark border-sport-fg/10'
+        transparent
+          ? 'bg-transparent border-transparent'
+          : scrolled
+            ? 'bg-sport-dark/85 backdrop-blur-xl border-sport-fg/10 shadow-md shadow-black/10'
+            : 'bg-sport-dark border-sport-fg/10'
       }`}
     >
       <div className={`max-w-6xl mx-auto px-6 flex items-center justify-between gap-4 transition-all duration-300 ${scrolled ? 'h-14' : 'h-16'}`}>
         <div className="shrink-0">
-          <Logo href="/" size="sm" animated />
+          <Logo href="/" size="sm" animated light={transparent} />
         </div>
 
         {/* Desktop links */}
-        <div className="hidden md:flex flex-1 justify-center items-center gap-7 text-sm font-medium text-sport-gray whitespace-nowrap">
+        <div className={`hidden md:flex flex-1 justify-center items-center gap-7 text-sm font-medium whitespace-nowrap transition-colors duration-300 ${transparent ? 'text-white/85' : 'text-sport-gray'}`}>
           {/* Méga-menu Entraînement (Disciplines + Ressources) */}
           <div ref={menuRef} className="relative" onMouseEnter={() => setMenuOpen(true)} onMouseLeave={() => setMenuOpen(false)}>
             <button
@@ -106,7 +123,7 @@ export function Nav() {
               aria-haspopup="true"
               aria-expanded={menuOpen}
               onClick={() => setMenuOpen((v) => !v)}
-              className="inline-flex items-center gap-1 hover:text-sport-fg transition-colors py-1"
+              className={`inline-flex items-center gap-1 transition-colors py-1 ${transparent ? 'hover:text-white' : 'hover:text-sport-fg'}`}
             >
               {t('training')}
               <ChevronDown size={14} aria-hidden="true" className={`transition-transform duration-200 ${menuOpen ? 'rotate-180' : ''}`} />
@@ -173,7 +190,7 @@ export function Nav() {
           </div>
 
           {NAV_LINKS.map((link) => (
-            <Link key={link.href} href={link.href} className="hover:text-sport-fg transition-colors relative group py-1">
+            <Link key={link.href} href={link.href} className={`transition-colors relative group py-1 ${transparent ? 'hover:text-white' : 'hover:text-sport-fg'}`}>
               {t(link.key)}
               <span className="absolute bottom-0 left-0 w-0 h-px bg-sport-orange transition-all duration-300 group-hover:w-full" />
             </Link>
@@ -191,12 +208,14 @@ export function Nav() {
             </Link>
           ) : (
             <>
-              <Link href="/auth/signin" className="hidden sm:inline text-sm text-sport-gray hover:text-sport-fg transition-colors">{t('connexion')}</Link>
+              <Link href="/auth/signin" className={`hidden sm:inline text-sm transition-colors ${transparent ? 'text-white/85 hover:text-white' : 'text-sport-gray hover:text-sport-fg'}`}>{t('connexion')}</Link>
               <Link href="/auth/signup" className="btn-primary px-5 py-2 text-xs">{t('rejoindre')}</Link>
             </>
           )}
           <AppDownload
-            triggerClassName="hidden md:inline-flex items-center justify-center h-9 w-9 rounded-full border border-sport-border text-sport-fg/90 hover:text-sport-fg hover:border-sport-fg/30 transition-all"
+            triggerClassName={`hidden md:inline-flex items-center justify-center h-9 w-9 rounded-full border transition-all ${
+              transparent ? 'border-white/30 text-white/90 hover:text-white hover:border-white/60' : 'border-sport-border text-sport-fg/90 hover:text-sport-fg hover:border-sport-fg/30'
+            }`}
             labelClassName="hidden"
             iconSize={16}
           />
@@ -206,7 +225,7 @@ export function Nav() {
             aria-label={isOpen ? t('fermerMenu') : t('ouvrirMenu')}
             aria-expanded={isOpen}
             aria-controls="mobile-menu"
-            className="md:hidden text-sport-fg p-1"
+            className={`md:hidden p-1 transition-colors ${transparent ? 'text-white' : 'text-sport-fg'}`}
           >
             {isOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
