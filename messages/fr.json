@@ -1321,8 +1321,24 @@
       "Question sur mon abonnement",
       "Problème technique",
       "Coaching IA",
+      "Programme Elite (coaching sur-mesure)",
       "Demande de partenariat",
       "Autre"
+    ],
+    "faqTitle": "Questions fréquentes",
+    "faq": [
+      {
+        "question": "Sous combien de temps recevrai-je une réponse ?",
+        "answer": "Sous 24h en semaine. Les abonnés Pro/Elite peuvent aussi passer par le Coach IA depuis leur espace membre pour une aide instantanée."
+      },
+      {
+        "question": "Je veux annuler mon abonnement, dois-je passer par ce formulaire ?",
+        "answer": "Non - l'annulation se fait en 1 clic depuis la page Abonnement de ton espace membre, sans passer par le support."
+      },
+      {
+        "question": "Comment fonctionne le programme Elite ?",
+        "answer": "Sélectionne « Programme Elite » comme sujet et décris tes objectifs - on revient vers toi pour discuter d'un accompagnement sur-mesure."
+      }
     ]
   },
   "reviews": {
@@ -1916,6 +1932,7 @@
     "hubMetaTitle": "Exercices - technique, muscles ciblés et erreurs",
     "hubMetaDesc": "Bibliothèque d’exercices Xenotif : technique détaillée, muscles travaillés et erreurs fréquentes. Musculation, cardio et poids du corps, expliqués simplement.",
     "hubFilteredBy": "Filtré par {label}",
+    "hubFilterAll": "Tous",
     "hubClearFilter": "Voir tous les exercices",
     "hubNoResults": "Aucun exercice ne correspond à ce filtre."
   },

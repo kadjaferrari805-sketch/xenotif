@@ -1321,8 +1321,24 @@
       "Question about my subscription",
       "Technical issue",
       "AI Coaching",
+      "Elite plan (tailored coaching)",
       "Partnership request",
       "Other"
+    ],
+    "faqTitle": "Frequently asked questions",
+    "faq": [
+      {
+        "question": "How long until I get a reply?",
+        "answer": "Within 24h on weekdays. Pro/Elite subscribers can also use the AI Coach from their member area for instant help."
+      },
+      {
+        "question": "I want to cancel my subscription, do I need to use this form?",
+        "answer": "No - cancellation is one click away from the Subscription page in your member area, no need to contact support."
+      },
+      {
+        "question": "How does the Elite plan work?",
+        "answer": "Pick \"Elite plan\" as the subject and describe your goals - we'll get back to you to discuss tailored support."
+      }
     ]
   },
   "reviews": {
@@ -1916,6 +1932,7 @@
     "hubMetaTitle": "Exercises - technique, target muscles and mistakes",
     "hubMetaDesc": "Xenotif exercise library: detailed technique, muscles worked and common mistakes. Strength, cardio and bodyweight, explained simply.",
     "hubFilteredBy": "Filtered by {label}",
+    "hubFilterAll": "All",
     "hubClearFilter": "See all exercises",
     "hubNoResults": "No exercise matches this filter."
   },

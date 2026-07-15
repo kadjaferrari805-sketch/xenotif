@@ -26,6 +26,22 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 
 const norm = (s: string) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase()
 
+const LEVELS = ['debutant', 'intermediaire', 'avance'] as const
+const EQUIPMENT = ['none', 'dumbbells', 'barbell', 'kettlebell', 'cable', 'machine', 'pullupBar', 'bench', 'mat'] as const
+
+function levelHref(level: string, equipment?: string): string {
+  const params = new URLSearchParams()
+  params.set('level', level)
+  if (equipment) params.set('equipment', equipment)
+  return `/exercices?${params.toString()}`
+}
+function equipmentHref(equipment: string, level?: string): string {
+  const params = new URLSearchParams()
+  params.set('equipment', equipment)
+  if (level) params.set('level', level)
+  return `/exercices?${params.toString()}`
+}
+
 // Hub des exercices : page catégorie SEO + maillage vers chaque fiche exercice.
 // Filtrable par niveau / muscle / matériel via ?level=&muscle=&equipment=
 // (liens envoyés depuis les badges de la fiche exercice).
@@ -72,6 +88,51 @@ export default async function ExercicesHubPage({
         <p className="text-[11px] font-bold tracking-[2px] uppercase text-sport-orange mb-3">{t('hubEyebrow')}</p>
         <h1 className="text-4xl md:text-5xl font-black mb-4">{t('hubTitle')}</h1>
         <p className="text-lg text-sport-fg max-w-2xl mb-6">{t('hubSubtitle')}</p>
+
+        {/* Filtres visibles (niveau / matériel) - la fiche exercice envoie déjà des
+            liens ?level=&equipment=&muscle=, ce bloc les rend accessibles directement
+            depuis le hub. Filtre muscle laissé en deep-link uniquement (valeurs libres,
+            trop nombreuses pour une rangée de pastilles lisible). */}
+        <div className="flex flex-wrap gap-2 mb-4">
+          <Link
+            href="/exercices"
+            className={`text-xs font-bold px-3 py-1.5 rounded-full border transition-colors ${
+              !level && !equipment && !muscle
+                ? 'bg-sport-orange text-white border-sport-orange'
+                : 'border-sport-border text-sport-gray hover:text-sport-fg hover:border-sport-gray'
+            }`}
+          >
+            {t('hubFilterAll')}
+          </Link>
+          {LEVELS.map((l) => (
+            <Link
+              key={l}
+              href={levelHref(l, equipment)}
+              className={`text-xs font-bold px-3 py-1.5 rounded-full border transition-colors ${
+                level === l
+                  ? 'bg-sport-orange text-white border-sport-orange'
+                  : 'border-sport-border text-sport-gray hover:text-sport-fg hover:border-sport-gray'
+              }`}
+            >
+              {tDetail(`diff_${l}`)}
+            </Link>
+          ))}
+        </div>
+        <div className="flex flex-wrap gap-2 mb-6">
+          {EQUIPMENT.map((eq) => (
+            <Link
+              key={eq}
+              href={equipmentHref(eq, level)}
+              className={`text-xs font-bold px-3 py-1.5 rounded-full border transition-colors ${
+                equipment === eq
+                  ? 'bg-sport-fg text-sport-dark border-sport-fg'
+                  : 'border-sport-border text-sport-gray hover:text-sport-fg hover:border-sport-gray'
+              }`}
+            >
+              {tDetail(`eq_${eq}`)}
+            </Link>
+          ))}
+        </div>
 
         {filterLabel && (
           <Link

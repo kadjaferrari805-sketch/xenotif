@@ -5,6 +5,7 @@ import { useTranslations, useLocale } from 'next-intl'
 import { Link } from '@/i18n/navigation'
 import { Mail, Globe, PlayCircle, MessageCircle, ArrowRight, CheckCircle } from 'lucide-react'
 import { Logo } from '@/components/ui/Logo'
+import { AppDownload } from './AppDownload'
 
 // Noms de disciplines = noms propres/marque → laissés en FR en P1 (cohérent
 // avec les pages disciplines, dont le contenu est traduit en P2).
@@ -162,6 +163,10 @@ export function Footer() {
                 <Mail size={15} aria-hidden="true" />
               </a>
             </div>
+            <AppDownload
+              triggerClassName="mt-5 inline-flex items-center gap-2 rounded-lg bg-white/5 border border-white/10 px-3.5 py-2.5 text-xs font-bold text-white/70 hover:text-sport-orange hover:border-sport-orange/50 transition-colors"
+              iconSize={14}
+            />
           </div>
 
           {/* Disciplines */}

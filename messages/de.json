@@ -1321,8 +1321,24 @@
       "Frage zu meinem Abonnement",
       "Technisches Problem",
       "KI-Coaching",
+      "Elite-Plan (individuelles Coaching)",
       "Partnerschaftsanfrage",
       "Sonstiges"
+    ],
+    "faqTitle": "Häufige Fragen",
+    "faq": [
+      {
+        "question": "Wie lange dauert es, bis ich eine Antwort erhalte?",
+        "answer": "Innerhalb von 24h an Werktagen. Pro/Elite-Abonnenten können für sofortige Hilfe auch den KI-Coach im Mitgliederbereich nutzen."
+      },
+      {
+        "question": "Ich möchte mein Abo kündigen, muss ich dieses Formular nutzen?",
+        "answer": "Nein - die Kündigung erfolgt mit einem Klick über die Abonnement-Seite in deinem Mitgliederbereich, ganz ohne Support."
+      },
+      {
+        "question": "Wie funktioniert der Elite-Plan?",
+        "answer": "Wähle „Elite-Plan“ als Betreff und beschreibe deine Ziele - wir melden uns, um eine individuelle Betreuung zu besprechen."
+      }
     ]
   },
   "reviews": {
@@ -1916,6 +1932,7 @@
     "hubMetaTitle": "Übungen - Technik, Zielmuskeln und Fehler",
     "hubMetaDesc": "Xenotif-Übungsbibliothek: detaillierte Technik, beanspruchte Muskeln und häufige Fehler. Kraft, Cardio und Körpergewicht, einfach erklärt.",
     "hubFilteredBy": "Gefiltert nach {label}",
+    "hubFilterAll": "Alle",
     "hubClearFilter": "Alle Übungen anzeigen",
     "hubNoResults": "Keine Übung entspricht diesem Filter."
   },

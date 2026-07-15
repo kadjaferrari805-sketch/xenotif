@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 import { getTranslations } from 'next-intl/server'
 import { Link } from '@/i18n/navigation'
+import Image from 'next/image'
 import { ArrowRight } from 'lucide-react'
 import { programsForLocale } from '@/lib/programs/registry'
 
@@ -55,17 +56,31 @@ export default async function ProgramsHubPage({ params }: { params: Promise<{ lo
             <Link
               key={slug}
               href={`/programmes/${slug}`}
-              className="group bg-sport-card border border-sport-border rounded-2xl p-6 hover:border-sport-orange/50 transition-all hover:-translate-y-0.5"
+              className="group overflow-hidden bg-sport-card border border-sport-border rounded-2xl hover:border-sport-orange/50 transition-all hover:-translate-y-0.5"
             >
-              <h2 className="text-xl font-black mb-2 group-hover:text-sport-orange transition-colors">{guide.title}</h2>
-              <p className="text-sm text-sport-gray leading-relaxed mb-4">{guide.subtitle}</p>
-              <div className="flex flex-wrap gap-2 mb-4">
-                {guide.level && <span className="text-[10px] font-bold px-2.5 py-1 rounded-full bg-sport-orange/10 text-sport-orange">{guide.level}</span>}
-                {guide.duration && <span className="text-[10px] font-bold px-2.5 py-1 rounded-full bg-sport-dark border border-sport-border text-sport-gray">{guide.duration}</span>}
+              {guide.coverImage && (
+                <div className="relative h-40 overflow-hidden">
+                  <Image
+                    src={`/program-assets/${guide.coverImage}`}
+                    alt=""
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+                </div>
+              )}
+              <div className="p-6">
+                <h2 className="text-xl font-black mb-2 group-hover:text-sport-orange transition-colors">{guide.title}</h2>
+                <p className="text-sm text-sport-gray leading-relaxed mb-4">{guide.subtitle}</p>
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {guide.level && <span className="text-[10px] font-bold px-2.5 py-1 rounded-full bg-sport-orange/10 text-sport-orange">{guide.level}</span>}
+                  {guide.duration && <span className="text-[10px] font-bold px-2.5 py-1 rounded-full bg-sport-dark border border-sport-border text-sport-gray">{guide.duration}</span>}
+                </div>
+                <span className="inline-flex items-center gap-1.5 text-sport-orange text-sm font-bold">
+                  {t('seeProgram')} <ArrowRight size={14} aria-hidden="true" />
+                </span>
               </div>
-              <span className="inline-flex items-center gap-1.5 text-sport-orange text-sm font-bold">
-                {t('seeProgram')} <ArrowRight size={14} aria-hidden="true" />
-              </span>
             </Link>
           ))}
         </div>
