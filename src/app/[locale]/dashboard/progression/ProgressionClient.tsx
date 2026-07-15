@@ -10,6 +10,9 @@ import { XpLevelBar } from '@/components/gamification/XpLevelBar'
 import { ChallengesCard } from '@/components/gamification/ChallengesCard'
 import { BadgesGrid } from '@/components/gamification/BadgesGrid'
 import { TransformationForm } from '@/components/transformations/TransformationForm'
+import { Input, Select, Textarea, Label } from '@/components/ui/Input'
+import { Loader } from '@/components/ui/Loader'
+import { Progress } from '@/components/ui/Progress'
 
 type Workout = { discipline: string; duration_minutes: number; completed_at: string }
 type ProgressRow = { discipline: string; completed: boolean }
@@ -81,23 +84,20 @@ export function ProgressionClient({ userId, initialWorkouts, initialProgress }: 
             <h3 className="text-lg font-black text-sport-fg mb-5">{t('newSession')}</h3>
             <div className="space-y-4">
               <div>
-                <label className="block text-xs font-bold text-sport-fg mb-2 uppercase tracking-wider">{t('discipline')}</label>
-                <select value={form.discipline} onChange={e => setForm(f => ({ ...f, discipline: e.target.value }))}
-                  className="w-full bg-sport-dark border border-sport-border rounded-xl px-4 py-3 text-sport-fg text-sm focus:outline-none focus:border-sport-orange">
+                <Label className="uppercase tracking-wider">{t('discipline')}</Label>
+                <Select value={form.discipline} onChange={e => setForm(f => ({ ...f, discipline: e.target.value }))}>
                   {DISCIPLINES.map(s => <option key={s} value={s}>{discName(s)}</option>)}
-                </select>
+                </Select>
               </div>
               <div>
-                <label className="block text-xs font-bold text-sport-fg mb-2 uppercase tracking-wider">{t('durationMin')}</label>
-                <input type="number" min="5" max="300" value={form.duration}
-                  onChange={e => setForm(f => ({ ...f, duration: e.target.value }))}
-                  className="w-full bg-sport-dark border border-sport-border rounded-xl px-4 py-3 text-sport-fg text-sm focus:outline-none focus:border-sport-orange" />
+                <Label className="uppercase tracking-wider">{t('durationMin')}</Label>
+                <Input type="number" min="5" max="300" value={form.duration}
+                  onChange={e => setForm(f => ({ ...f, duration: e.target.value }))} />
               </div>
               <div>
-                <label className="block text-xs font-bold text-sport-fg mb-2 uppercase tracking-wider">{t('notesOptional')}</label>
-                <textarea value={form.notes} onChange={e => setForm(f => ({ ...f, notes: e.target.value }))}
-                  placeholder={t('notesPlaceholder')} rows={2}
-                  className="w-full bg-sport-dark border border-sport-border rounded-xl px-4 py-3 text-sport-fg text-sm resize-none focus:outline-none focus:border-sport-orange placeholder:text-sport-gray" />
+                <Label className="uppercase tracking-wider">{t('notesOptional')}</Label>
+                <Textarea value={form.notes} onChange={e => setForm(f => ({ ...f, notes: e.target.value }))}
+                  placeholder={t('notesPlaceholder')} rows={2} className="resize-none" />
               </div>
             </div>
             <div className="flex gap-3 mt-6">
@@ -107,7 +107,7 @@ export function ProgressionClient({ userId, initialWorkouts, initialProgress }: 
               </button>
               <button onClick={addWorkout} disabled={saving}
                 className="flex-1 bg-sport-orange text-white py-2.5 rounded-full text-sm font-bold hover:bg-orange-600 disabled:opacity-60 transition-all inline-flex items-center justify-center gap-2">
-                {saving ? <><span className="w-3.5 h-3.5 border-2 border-white/40 border-t-white rounded-full animate-spin" />{t('saving')}</> : t('save')}
+                {saving ? <><Loader size={14} className="text-white" iconClassName="text-white" />{t('saving')}</> : t('save')}
               </button>
             </div>
           </div>
@@ -140,9 +140,7 @@ export function ProgressionClient({ userId, initialWorkouts, initialProgress }: 
                 <span className="text-sm font-semibold text-sport-fg">{name}</span>
                 <span className="text-xs text-sport-gray">{done}/{total} · <strong className="text-sport-orange">{pct}%</strong></span>
               </div>
-              <div className="w-full bg-sport-dark rounded-full h-2">
-                <div className="bg-sport-orange h-2 rounded-full transition-all duration-700" style={{ width: `${pct}%` }} />
-              </div>
+              <Progress value={pct} barClassName="transition-transform duration-700" />
             </div>
           ))}
         </div>

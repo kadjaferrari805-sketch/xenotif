@@ -7,6 +7,7 @@ import { DashboardSignOut } from '@/components/dashboard/SignOut'
 import { DashboardGuard } from '@/components/dashboard/DashboardGuard'
 import { NotificationBell } from '@/components/dashboard/NotificationBell'
 import { Logo } from '@/components/ui/Logo'
+import { Avatar } from '@/components/ui/Avatar'
 
 const NAV = [
   { href: '/dashboard',              key: 'overview',     Icon: LayoutDashboard },
@@ -23,7 +24,6 @@ export default async function DashboardLayout({ children }: { children: React.Re
   if (!user) redirect('/auth/signin')
 
   const [t, fullName] = await Promise.all([getTranslations('dashboard'), getProfileName()])
-  const initials = (fullName ?? user.email ?? 'U').slice(0, 2).toUpperCase()
 
   return (
     <div className="min-h-screen bg-sport-dark text-sport-fg flex">
@@ -39,9 +39,7 @@ export default async function DashboardLayout({ children }: { children: React.Re
         {/* User */}
         <div className="px-6 py-5 border-b border-sport-border">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-full bg-sport-orange/20 border border-sport-orange/40 flex items-center justify-center font-black text-sport-orange text-sm">
-              {initials}
-            </div>
+            <Avatar name={fullName ?? user.email ?? 'U'} size={40} />
             <div className="min-w-0 flex-1">
               <p className="text-sm font-bold text-sport-fg truncate">{fullName ?? t('athlete')}</p>
               <p className="text-[11px] text-sport-gray truncate">{user.email}</p>
@@ -78,9 +76,7 @@ export default async function DashboardLayout({ children }: { children: React.Re
         <Logo href="/" size="sm" />
         <div className="flex items-center gap-2">
           <NotificationBell align="right" />
-          <div className="w-8 h-8 rounded-full bg-sport-orange/20 border border-sport-orange/40 flex items-center justify-center font-black text-sport-orange text-xs">
-            {initials}
-          </div>
+          <Avatar name={fullName ?? user.email ?? 'U'} size={32} />
           <DashboardSignOut iconOnly />
         </div>
       </div>

@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect } from 'react'
 import { useTranslations } from 'next-intl'
 import { Send, Zap, Bot, User, Sparkles, RefreshCw } from 'lucide-react'
+import { Loader } from '@/components/ui/Loader'
 
 type Message = { role: 'user' | 'assistant'; content: string }
 
@@ -194,7 +195,7 @@ export function CoachClient() {
             className="w-11 h-11 bg-sport-orange rounded-2xl flex items-center justify-center hover:bg-orange-600 active:scale-95 transition-all disabled:opacity-40 shrink-0"
           >
             {streaming
-              ? <span className="w-4 h-4 border-2 border-white/40 border-t-white rounded-full animate-spin" />
+              ? <Loader size={16} className="text-white" iconClassName="text-white" />
               : <Send size={16} className="text-sport-fg" />
             }
           </button>

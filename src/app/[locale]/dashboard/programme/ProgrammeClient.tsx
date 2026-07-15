@@ -7,6 +7,8 @@ import { CheckCircle, Circle, Play, ArrowRight, Lock } from 'lucide-react'
 import { createClient } from '@/lib/supabase/client'
 import { DISCIPLINE_CONTENT, type DisciplineContent } from '@/lib/disciplines'
 import { Link } from '@/i18n/navigation'
+import { Progress } from '@/components/ui/Progress'
+import { Skeleton } from '@/components/ui/Skeleton'
 
 const DISCIPLINES = [
   { slug: 'running-cardio', color: 'orange' },
@@ -139,9 +141,7 @@ function ProgrammeContent({ isPro, freeSlugs, userId, initialProgress }: { isPro
           </div>
           <span className="text-2xl font-black text-sport-orange">{pct}%</span>
         </div>
-        <div className="w-full bg-sport-dark rounded-full h-2">
-          <div className="bg-sport-orange h-2 rounded-full transition-all duration-500" style={{ width: `${pct}%` }} />
-        </div>
+        <Progress value={pct} />
         {pct === 100 && (
           <p className="text-[#1E7F5A] text-xs font-bold mt-3 flex items-center gap-1.5">
             <CheckCircle size={13} /> {t('done')}
@@ -171,7 +171,7 @@ function ProgrammeContent({ isPro, freeSlugs, userId, initialProgress }: { isPro
       {/* Program weeks */}
       {loading ? (
         <div className="space-y-4">
-          {[1,2,3,4].map(i => <div key={i} className="bg-sport-card border border-sport-border rounded-xl h-32 animate-pulse" />)}
+          {[1,2,3,4].map(i => <Skeleton key={i} className="h-32 rounded-xl border border-sport-border" />)}
         </div>
       ) : (
         <div className="space-y-4">

@@ -5,6 +5,10 @@ import { useTranslations } from 'next-intl'
 import { Link } from '@/i18n/navigation'
 import { User, Mail, Save, CheckCircle, Camera } from 'lucide-react'
 import { createClient } from '@/lib/supabase/client'
+import { Card } from '@/components/ui/Card'
+import { Input, Label } from '@/components/ui/Input'
+import { Button } from '@/components/ui/Button'
+import { Loader } from '@/components/ui/Loader'
 
 export function ProfilClient({ initialName, email, userId }: { initialName: string; email: string; userId: string }) {
   const t = useTranslations('dashboard')
@@ -30,7 +34,7 @@ export function ProfilClient({ initialName, email, userId }: { initialName: stri
       <h1 className="text-2xl font-black text-sport-fg mb-8">{t('profil.title')}</h1>
 
       {/* Avatar */}
-      <div className="bg-sport-card border border-sport-border rounded-2xl p-6 mb-6 flex items-center gap-6">
+      <Card className="p-6 mb-6 flex items-center gap-6 hover:-translate-y-0 hover:shadow-sm">
         <div className="relative">
           <div className="w-20 h-20 rounded-full bg-sport-orange/20 border-2 border-sport-orange/40 flex items-center justify-center font-black text-sport-orange text-2xl">
             {initials}
@@ -43,40 +47,36 @@ export function ProfilClient({ initialName, email, userId }: { initialName: stri
           <p className="text-sport-fg font-bold text-lg">{fullName || t('athlete')}</p>
           <p className="text-sport-gray text-sm">{email}</p>
         </div>
-      </div>
+      </Card>
 
       {/* Form */}
-      <div className="bg-sport-card border border-sport-border rounded-2xl p-6 mb-6">
+      <Card className="p-6 mb-6 hover:-translate-y-0 hover:shadow-sm">
         <h2 className="text-sm font-black text-sport-fg mb-5">{t('profil.personalInfo')}</h2>
 
         <div className="space-y-4">
           <div>
-            <label className="block text-xs font-bold text-sport-fg mb-2 uppercase tracking-wider">
-              {t('profil.fullName')}
-            </label>
+            <Label className="uppercase tracking-wider">{t('profil.fullName')}</Label>
             <div className="relative">
               <User size={15} className="absolute left-4 top-1/2 -translate-y-1/2 text-sport-gray" />
-              <input
+              <Input
                 type="text"
                 value={fullName}
                 onChange={e => setFullName(e.target.value)}
                 placeholder={t('profil.fullNamePlaceholder')}
-                className="w-full bg-sport-dark border border-sport-border rounded-xl pl-10 pr-4 py-3 text-sport-fg text-sm focus:outline-none focus:border-sport-orange placeholder:text-sport-gray transition-colors"
+                className="pl-10"
               />
             </div>
           </div>
 
           <div>
-            <label className="block text-xs font-bold text-sport-fg mb-2 uppercase tracking-wider">
-              {t('profil.email')}
-            </label>
+            <Label className="uppercase tracking-wider">{t('profil.email')}</Label>
             <div className="relative">
               <Mail size={15} className="absolute left-4 top-1/2 -translate-y-1/2 text-sport-gray" />
-              <input
+              <Input
                 type="email"
                 value={email}
                 disabled
-                className="w-full bg-sport-dark/50 border border-sport-border rounded-xl pl-10 pr-4 py-3 text-sport-gray text-sm cursor-not-allowed"
+                className="pl-10 disabled:opacity-50 disabled:cursor-not-allowed"
               />
             </div>
             <p className="text-[11px] text-sport-gray mt-1.5">
@@ -85,23 +85,19 @@ export function ProfilClient({ initialName, email, userId }: { initialName: stri
           </div>
         </div>
 
-        <button
-          onClick={save}
-          disabled={saving || saved}
-          className="mt-6 inline-flex items-center gap-2 bg-sport-orange text-white px-6 py-3 rounded-full font-bold text-sm hover:bg-orange-600 disabled:opacity-60 transition-all active:scale-95"
-        >
+        <Button onClick={save} disabled={saving || saved} className="mt-6">
           {saving ? (
-            <><span className="w-4 h-4 border-2 border-white/40 border-t-white rounded-full animate-spin" />{t('profil.saving')}</>
+            <><Loader size={14} className="text-white" iconClassName="text-white" />{t('profil.saving')}</>
           ) : saved ? (
             <><CheckCircle size={14} />{t('profil.saved')}</>
           ) : (
             <><Save size={14} />{t('profil.save')}</>
           )}
-        </button>
-      </div>
+        </Button>
+      </Card>
 
       {/* Security */}
-      <div className="bg-sport-card border border-sport-border rounded-2xl p-6">
+      <Card className="p-6 hover:-translate-y-0 hover:shadow-sm">
         <h2 className="text-sm font-black text-sport-fg mb-5">{t('profil.security')}</h2>
         <Link
           href="/auth/forgot-password"
@@ -109,7 +105,7 @@ export function ProfilClient({ initialName, email, userId }: { initialName: stri
         >
           {t('profil.changePassword')}
         </Link>
-      </div>
+      </Card>
     </div>
   )
 }
