@@ -1,6 +1,6 @@
 import { NextRequest } from 'next/server'
 import Anthropic from '@anthropic-ai/sdk'
-import { createClient } from '@/lib/supabase/server'
+import { getCurrentUser } from '@/lib/supabase/session'
 import { requirePro } from '@/lib/access'
 
 const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY! })
@@ -19,8 +19,10 @@ Règles :
 - Ne donne pas de conseils médicaux ; renvoie vers un professionnel de santé si nécessaire.`
 
 export async function POST(req: NextRequest) {
-  const supabase = await createClient()
-  const { data: { user } } = await supabase.auth.getUser()
+  // Passe par getCurrentUser plutôt que par un appel direct : c'est lui qui
+  // porte le repli sur l'en-tête Authorization, sans lequel l'app mobile
+  // recevait un 401 systématique. requirePro() en dépend déjà.
+  const user = await getCurrentUser()
   if (!user) return new Response('Non authentifié', { status: 401 })
 
   // Le coach IA est réservé aux abonnés (essai ou actif).
