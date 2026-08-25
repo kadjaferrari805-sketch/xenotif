@@ -32,7 +32,8 @@ import { getAllPostsLocalized } from '@/lib/blog/posts.en'
 import { getProductsLocalized } from '@/lib/boutique/products.en'
 import { getDisciplineContent, getDisciplineMeta } from '@/lib/disciplines'
 import { programsForLocale } from '@/lib/programs/registry'
-import { exercicesForLocale } from '@/lib/exercices/registry'
+import { exercicesForLocale, exerciceSlugs } from '@/lib/exercices/registry'
+import { getExerciceDetail } from '@/lib/exercices/details'
 import { OUTILS } from '@/lib/outils/registry'
 import { CHALLENGES } from '@/lib/challenges'
 import { BRAND, STATS, FEATURES, STEPS, REVIEWS, TRUST_ITEMS } from '@/lib/constants'
@@ -72,6 +73,15 @@ const bundles: Record<string, unknown> = {
   'disciplines.json': byLocale(disciplinesFor),
   'programs.json': byLocale((l) => programsForLocale(l)),
   'exercises.json': byLocale((l) => exercicesForLocale(l)),
+  // Metadonnees INDEPENDANTES DE LA LANGUE : `difficulty` et `equipment` y sont
+  // des slugs, la ou `ex.level` est un texte traduit ("Debutant"/"Beginner"/
+  // "Anfanger"). C'est sur elles que le site filtre son hub /exercices, et sans
+  // elles un filtre de niveau ne renvoie rien hors francais.
+  'exercise-details.json': byLocale((l) =>
+    exerciceSlugs()
+      .map((slug) => getExerciceDetail(slug, l))
+      .filter(Boolean),
+  ),
   // Non traduits : ce sont des structures, leurs libellés vivent dans messages/.
   'outils.json': OUTILS,
   'challenges.json': CHALLENGES,
