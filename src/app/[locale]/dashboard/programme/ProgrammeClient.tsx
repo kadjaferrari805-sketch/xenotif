@@ -81,10 +81,19 @@ function ProgrammeContent({ isPro, freeSlugs, userId, initialProgress }: { isPro
     const key = `${week}-${sessionName}`
     setProgress(prev => ({ ...prev, [key]: !completed }))
     const supabase = createClient()
+    // `program_slug: ''` — le site suit le PLAN ÉDITORIAL d'une discipline, un
+    // parcours de 4 semaines qui vit dans DISCIPLINE_CONTENT et ne correspond à
+    // aucune ligne de la table `programs`. La chaîne vide est donc sa valeur
+    // légitime, et c'est aussi la valeur par défaut de la colonne : les lignes
+    // écrites avant la migration s'y rangent d'elles-mêmes.
+    //
+    // Chaîne vide et non NULL : deux NULL ne sont pas considérés égaux dans un
+    // index unique, chaque upsert insérerait donc une ligne de plus au lieu de
+    // mettre à jour l'existante.
     await supabase.from('progress').upsert({
-      user_id: userId, discipline: selected, week, session_name: sessionName,
+      user_id: userId, discipline: selected, program_slug: '', week, session_name: sessionName,
       completed: !completed, completed_at: !completed ? new Date().toISOString() : null,
-    }, { onConflict: 'user_id,discipline,week,session_name' })
+    }, { onConflict: 'user_id,discipline,program_slug,week,session_name' })
   }
 
   const totalSessions = (content?.program ?? []).reduce((a, w) => a + w.sessions.length, 0)
