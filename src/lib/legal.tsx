@@ -55,7 +55,14 @@ const FR: Record<LegalSlug, { metaTitle: string; metaDescription: string; eyebro
     intro: "Xenotif® s'engage à protéger vos données personnelles et à respecter votre vie privée.",
     sections: [
       { id: 'donnees', title: 'Données collectées', body: (
-        <p>Nous collectons votre adresse email lors de votre inscription (newsletter ou compte), ainsi que les informations nécessaires à la gestion de votre abonnement et de vos commandes (nom, email, historique d&apos;entraînement que vous saisissez). Aucune donnée de paiement n&apos;est stockée sur nos serveurs : les paiements sont traités par Stripe.</p>
+        <p>Nous collectons votre adresse email lors de votre inscription (newsletter ou compte), ainsi que les informations nécessaires à la gestion de votre abonnement et de vos commandes (nom, email, historique d&apos;entraînement que vous saisissez). Aucune donnée de paiement n&apos;est stockée sur nos serveurs : sur le site, les paiements sont traités par Stripe ; dans l&apos;application iOS, ils le sont par Apple, via les achats intégrés.</p>
+      )},
+      { id: 'application', title: 'Données collectées dans l’application mobile', body: (
+        <>
+          <p className="mb-2">Outre les données ci-dessus, l&apos;application XENOTIF® collecte les éléments suivants, uniquement pour son fonctionnement :</p>
+          <p>- <strong className="text-sport-fg">Données de santé et d&apos;activité physique</strong> : si vous l&apos;y autorisez, l&apos;application lit dans Apple Santé (HealthKit) vos pas, calories, fréquence cardiaque et sommeil, afin d&apos;afficher votre progression et d&apos;adapter vos entraînements. L&apos;application n&apos;écrit rien dans Apple Santé. Ces données ne sont jamais utilisées à des fins publicitaires ou marketing, ni vendues, ni transmises à des tiers. Vous pouvez retirer cette autorisation à tout moment dans les réglages iOS.<br />- <strong className="text-sport-fg">Photo de profil</strong> : l&apos;image que vous choisissez dans votre photothèque pour illustrer votre compte. Elle sert uniquement à cela.<br />- <strong className="text-sport-fg">Identifiant d&apos;appareil</strong> : un jeton de notification, propre à votre installation de l&apos;application, enregistré avec votre identifiant de compte dans le seul but de vous envoyer les rappels d&apos;entraînement que vous avez activés. Désactiver les notifications supprime ce jeton.<br />- <strong className="text-sport-fg">Messages adressés au Coach IA</strong> : ils sont transmis en temps réel au modèle qui rédige la réponse ; ils ne sont pas conservés sur nos serveurs.</p>
+          <p className="mt-3">Aucune de ces données n&apos;est utilisée pour vous suivre à travers d&apos;autres applications ou d&apos;autres sites, ni partagée avec un courtier en données.</p>
+        </>
       )},
       { id: 'utilisation', title: 'Utilisation des données', body: (
         <>
@@ -176,7 +183,14 @@ const EN: Record<LegalSlug, { metaTitle: string; metaDescription: string; eyebro
     intro: 'Xenotif® is committed to protecting your personal data and respecting your privacy.',
     sections: [
       { id: 'donnees', title: 'Data we collect', body: (
-        <p>We collect your email address when you sign up (newsletter or account), along with the information needed to manage your subscription and orders (name, email, and the training history you enter). No payment data is stored on our servers - payments are handled by Stripe.</p>
+        <p>We collect your email address when you sign up (newsletter or account), along with the information needed to manage your subscription and orders (name, email, and the training history you enter). No payment data is stored on our servers - on the website, payments are handled by Stripe; in the iOS app, they are handled by Apple through in-app purchases.</p>
+      )},
+      { id: 'application', title: 'Data collected in the mobile app', body: (
+        <>
+          <p className="mb-2">In addition to the data above, the XENOTIF® app collects the following, solely so that it can work:</p>
+          <p>- <strong className="text-sport-fg">Health and fitness data</strong>: with your permission, the app reads your steps, calories, heart rate and sleep from Apple Health (HealthKit) in order to show your progress and tailor your workouts. The app never writes anything to Apple Health. This data is never used for advertising or marketing, never sold, and never shared with third parties. You can withdraw this permission at any time in iOS Settings.<br />- <strong className="text-sport-fg">Profile photo</strong>: the image you pick from your photo library for your account. It is used for nothing else.<br />- <strong className="text-sport-fg">Device identifier</strong>: a notification token, specific to your installation of the app, stored alongside your account identifier for the sole purpose of sending you the training reminders you have enabled. Turning notifications off deletes that token.<br />- <strong className="text-sport-fg">Messages sent to the AI Coach</strong>: they are passed in real time to the model that writes the reply; they are not retained on our servers.</p>
+          <p className="mt-3">None of this data is used to track you across other apps or websites, and none of it is shared with a data broker.</p>
+        </>
       )},
       { id: 'utilisation', title: 'How we use your data', body: (
         <>
@@ -297,7 +311,14 @@ const DE: Record<LegalSlug, { metaTitle: string; metaDescription: string; eyebro
     intro: 'Xenotif® verpflichtet sich, deine personenbezogenen Daten zu schützen und deine Privatsphäre zu respektieren.',
     sections: [
       { id: 'donnees', title: 'Erhobene Daten', body: (
-        <p>Wir erheben deine E-Mail-Adresse bei deiner Anmeldung (Newsletter oder Konto) sowie die zur Verwaltung deines Abonnements und deiner Bestellungen erforderlichen Informationen (Name, E-Mail, von dir eingegebene Trainingshistorie). Auf unseren Servern werden keine Zahlungsdaten gespeichert: Zahlungen werden von Stripe abgewickelt.</p>
+        <p>Wir erheben deine E-Mail-Adresse bei deiner Anmeldung (Newsletter oder Konto) sowie die zur Verwaltung deines Abonnements und deiner Bestellungen erforderlichen Informationen (Name, E-Mail, von dir eingegebene Trainingshistorie). Auf unseren Servern werden keine Zahlungsdaten gespeichert: Auf der Website werden Zahlungen von Stripe abgewickelt, in der iOS-App von Apple über In-App-Käufe.</p>
+      )},
+      { id: 'application', title: 'In der mobilen App erhobene Daten', body: (
+        <>
+          <p className="mb-2">Zusätzlich zu den oben genannten Daten erhebt die XENOTIF®-App die folgenden Daten, ausschließlich damit sie funktioniert:</p>
+          <p>- <strong className="text-sport-fg">Gesundheits- und Fitnessdaten</strong>: Mit deiner Erlaubnis liest die App deine Schritte, Kalorien, Herzfrequenz und deinen Schlaf aus Apple Health (HealthKit), um deinen Fortschritt anzuzeigen und deine Trainings anzupassen. Die App schreibt nichts in Apple Health. Diese Daten werden niemals für Werbung oder Marketing verwendet, niemals verkauft und niemals an Dritte weitergegeben. Du kannst diese Erlaubnis jederzeit in den iOS-Einstellungen widerrufen.<br />- <strong className="text-sport-fg">Profilbild</strong>: das Bild, das du aus deiner Fotomediathek für dein Konto auswählst. Es wird für nichts anderes verwendet.<br />- <strong className="text-sport-fg">Gerätekennung</strong>: ein Benachrichtigungs-Token, das für deine Installation der App spezifisch ist und zusammen mit deiner Kontokennung gespeichert wird — einzig um dir die von dir aktivierten Trainingserinnerungen zu senden. Wenn du Benachrichtigungen deaktivierst, wird dieses Token gelöscht.<br />- <strong className="text-sport-fg">Nachrichten an den KI-Coach</strong>: Sie werden in Echtzeit an das Modell übermittelt, das die Antwort verfasst; auf unseren Servern werden sie nicht gespeichert.</p>
+          <p className="mt-3">Keine dieser Daten wird verwendet, um dich über andere Apps oder Websites hinweg zu verfolgen, und keine wird an einen Datenbroker weitergegeben.</p>
+        </>
       )},
       { id: 'utilisation', title: 'Verwendung der Daten', body: (
         <>
