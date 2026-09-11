@@ -1,3 +1,4 @@
+import { timingSafeEqual } from 'node:crypto'
 import { NextResponse } from 'next/server'
 import Stripe from 'stripe'
 
@@ -12,10 +13,20 @@ const EVENTS = [
   'invoice.payment_failed',
 ]
 
+function sameSecret(provided: string, expected: string): boolean {
+  const a = Buffer.from(provided)
+  const b = Buffer.from(expected)
+  return a.length === b.length && timingSafeEqual(a, b)
+}
+
 export async function POST(req: Request) {
-  // Require internal setup secret to protect this endpoint
-  const { secret } = await req.json().catch(() => ({}))
-  if (secret !== process.env.SETUP_SECRET) {
+  // Fermée par défaut : sans SETUP_SECRET configuré, la route est désactivée.
+  // Avant, `secret !== process.env.SETUP_SECRET` valait `undefined !== undefined`
+  // pour un corps vide : n'importe qui pouvait recréer le webhook Stripe et
+  // réécrire STRIPE_WEBHOOK_SECRET en production.
+  const expected = process.env.SETUP_SECRET
+  const { secret } = (await req.json().catch(() => ({}))) as { secret?: unknown }
+  if (!expected || typeof secret !== 'string' || !sameSecret(secret, expected)) {
     return NextResponse.json({ error: 'Non autorisé' }, { status: 401 })
   }
 

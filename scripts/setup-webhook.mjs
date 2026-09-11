@@ -1,8 +1,18 @@
 /**
  * Auto-registers the Stripe webhook and sets STRIPE_WEBHOOK_SECRET in Vercel.
- * Runs automatically after each production build.
+ * Lancé après chaque build (vercel.json), mais n'agit QUE pour un build de
+ * production (VERCEL_ENV === 'production').
  * Requires: STRIPE_SECRET_KEY, VERCEL_TOKEN (both set in Vercel env).
  */
+
+// Hors production, rien : un build de preview utilisait sa propre clé Stripe
+// pour modifier le portail client et, faute de STRIPE_WEBHOOK_SECRET, pouvait
+// recréer le webhook de l'URL de production puis réécrire la variable
+// STRIPE_WEBHOOK_SECRET de production. Variable absente = pas production.
+if (process.env.VERCEL_ENV !== 'production') {
+  console.log(`[setup-webhook] VERCEL_ENV=${process.env.VERCEL_ENV ?? 'absent'} — aucune action hors production`)
+  process.exit(0)
+}
 
 const VERCEL_PROJECT_ID = 'prj_pL3t9KgP44lzourq5Vusk4FEOhi6'
 const VERCEL_TEAM_ID    = 'team_UPv0ZcLiLb5ewMjzOMCQbkkN'
@@ -143,5 +153,6 @@ if (vercelToken && secret) {
     console.log('[setup-webhook] STRIPE_WEBHOOK_SECRET added to Vercel ✓')
   }
 } else {
-  console.log(`[setup-webhook] Add this to Vercel env vars manually:\nSTRIPE_WEBHOOK_SECRET=${secret}`)
+  // Le secret n'est jamais écrit dans les logs de build.
+  console.log(`[setup-webhook] VERCEL_TOKEN absent : récupère le secret de signature du webhook ${webhook.id} dans le dashboard Stripe et ajoute STRIPE_WEBHOOK_SECRET à la main.`)
 }
