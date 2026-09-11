@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import Stripe from 'stripe'
 import { parseGaClientId } from '@/lib/ga-measurement'
+import { getCurrentUser } from '@/lib/supabase/session'
 
 const PLAN_CONFIG = {
   pro: {
@@ -21,9 +22,17 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Configuration serveur manquante.' }, { status: 500 })
     }
 
-    const { plan, period = 'monthly', locale: rawLocale, email, userId } = await req.json() as {
-      plan: string; period?: string; locale?: string; email?: string; userId?: string
+    const { plan, period = 'monthly', locale: rawLocale, email: rawEmail } = await req.json() as {
+      plan: string; period?: string; locale?: string; email?: string
     }
+
+    // Identité du compte : UNIQUEMENT la session serveur. Un `userId` fourni par le
+    // client devenait `client_reference_id`, et le webhook écrasait alors la ligne
+    // d'abonnement du compte désigné. Sans session (confirmation e-mail active), on
+    // pré-remplit seulement l'e-mail : le webhook rattache par e-mail, avec ses gardes.
+    const user = await getCurrentUser()
+    const userId = user?.id
+    const email = user?.email ?? (typeof rawEmail === 'string' && rawEmail.trim() ? rawEmail.trim() : undefined)
     // Stripe Checkout supporte fr/en/de → on garde la langue du site (avant : de tombait en fr).
     const locale = rawLocale === 'en' ? 'en' : rawLocale === 'de' ? 'de' : 'fr'
 

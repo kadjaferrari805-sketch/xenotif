@@ -3,6 +3,7 @@ import Stripe from 'stripe'
 import { createClient } from '@/lib/supabase/server'
 import { createServiceClient } from '@/lib/supabase/server'
 import { isInAppTrial, appTrialEnd } from '@/lib/access'
+import { isClaimableBy, linkSubscriptionToUser, subscriptionRow } from '@/lib/billing/stripe-subscription'
 
 export async function GET() {
   try {
@@ -38,9 +39,10 @@ export async function GET() {
       })
     }
 
-    // Not in DB - fetch from Stripe by email and sync
+    // Pas en base : recherche Stripe par l'email du compte, puis rattachement.
+    // Sans email, `customers.list` sans filtre renverrait le client de quelqu'un d'autre.
     const secretKey = process.env.STRIPE_SECRET_KEY
-    if (!secretKey) return NextResponse.json(null)
+    if (!secretKey || !user.email) return NextResponse.json(null)
 
     const stripe = new Stripe(secretKey)
     const customers = await stripe.customers.list({ email: user.email, limit: 1 })
@@ -53,25 +55,13 @@ export async function GET() {
       status: 'all',
     })
     const stripeSub = subs.data[0]
-    if (!stripeSub) return NextResponse.json(null)
+    // Un abonnement créé pour un autre compte n'est jamais rattaché ici.
+    if (!stripeSub || !isClaimableBy(stripeSub, user.id)) return NextResponse.json(null)
 
-    const plan = 'pro' // palier unique
+    const outcome = await linkSubscriptionToUser(service, user.id, stripeSub)
+    if (outcome !== 'linked') return NextResponse.json(null)
 
-    const row = {
-      user_id: user.id,
-      stripe_customer_id: customer.id,
-      stripe_subscription_id: stripeSub.id,
-      plan,
-      status: stripeSub.status,
-      trial_end: stripeSub.trial_end ? new Date(stripeSub.trial_end * 1000).toISOString() : null,
-      current_period_end: new Date((stripeSub.items.data[0]?.current_period_end ?? 0) * 1000).toISOString(),
-      cancel_at_period_end: stripeSub.cancel_at_period_end,
-    }
-
-    // Sync to Supabase so next load is instant
-    await service.from('subscriptions').upsert(row, { onConflict: 'user_id' })
-
-    return NextResponse.json(row)
+    return NextResponse.json(subscriptionRow(stripeSub, user.id))
   } catch (err) {
     console.error('GET /api/subscription error:', err)
     return NextResponse.json(null)

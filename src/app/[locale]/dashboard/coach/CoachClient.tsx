@@ -1,14 +1,16 @@
 'use client'
 
 import { useState, useRef, useEffect } from 'react'
-import { useTranslations } from 'next-intl'
+import { useLocale, useTranslations } from 'next-intl'
 import { Send, Zap, Bot, User, Sparkles, RefreshCw } from 'lucide-react'
 import { Loader } from '@/components/ui/Loader'
+import { MAX_USER_CHARS } from '@/lib/coach/guard'
 
 type Message = { role: 'user' | 'assistant'; content: string }
 
 export function CoachClient() {
   const t = useTranslations('dashboard.coach')
+  const locale = useLocale()
   const suggestions = t.raw('suggestions') as string[]
   const [messages, setMessages] = useState<Message[]>([])
   const [input, setInput] = useState('')
@@ -35,7 +37,7 @@ export function CoachClient() {
       const res = await fetch('/api/coach', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ messages: next }),
+        body: JSON.stringify({ messages: next, locale }),
       })
       // Toute réponse non-200 (free user 403, rate-limit 429, API 502…) porte un
       // corps de texte d'erreur : sans ce garde, il serait streamé comme une réponse
@@ -183,6 +185,7 @@ export function CoachClient() {
               onChange={e => setInput(e.target.value)}
               onKeyDown={handleKeyDown}
               placeholder={t('placeholder')}
+              maxLength={MAX_USER_CHARS}
               disabled={streaming}
               className="w-full bg-sport-card border border-sport-border rounded-2xl px-4 py-3 pr-12 text-sport-fg text-sm placeholder:text-sport-gray focus:outline-none focus:border-sport-orange transition-colors resize-none leading-relaxed disabled:opacity-60"
               style={{ maxHeight: '120px' }}
