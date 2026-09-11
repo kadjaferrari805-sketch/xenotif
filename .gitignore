@@ -50,3 +50,6 @@ next-env.d.ts
 
 # Brainstorm visual companion
 .superpowers/
+
+# Sources IA des créas pub (lourdes, régénérables) : seul final/ est versionné
+docs/marketing/creatives/higgsfield/base/
