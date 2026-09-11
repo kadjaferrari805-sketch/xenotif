@@ -2,7 +2,7 @@
 // Sert à tracer le VRAI paiement d'abonnement (fin d'essai, via webhook Stripe,
 // sans page visitée). Nécessite GA4_API_SECRET (GA4 → Admin → Flux de données →
 // Protocole de mesure → créer un secret). Sans secret ou sans client_id, no-op.
-const GA4_MEASUREMENT_ID = 'G-3H3JTM404V'
+import { getGa4MeasurementId } from '@/lib/env/deployment'
 
 // Le _ga cookie a la forme "GA1.1.1234567890.1234567890" → client_id = les 2
 // derniers segments ("1234567890.1234567890").
@@ -20,10 +20,13 @@ export async function sendGa4Purchase(params: {
   items?: { item_id: string; item_name: string }[]
 }): Promise<void> {
   const apiSecret = process.env.GA4_API_SECRET
-  if (!apiSecret || !params.clientId) return
+  // Hors production, getGa4MeasurementId() renvoie null tant qu'aucune propriété
+  // dédiée n'est configurée : aucune donnée de preview dans GA4 production.
+  const measurementId = getGa4MeasurementId()
+  if (!apiSecret || !params.clientId || !measurementId) return
   try {
     await fetch(
-      `https://www.google-analytics.com/mp/collect?measurement_id=${GA4_MEASUREMENT_ID}&api_secret=${apiSecret}`,
+      `https://www.google-analytics.com/mp/collect?measurement_id=${measurementId}&api_secret=${apiSecret}`,
       {
         method: 'POST',
         body: JSON.stringify({

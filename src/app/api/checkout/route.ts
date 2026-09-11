@@ -1,7 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server'
-import Stripe from 'stripe'
 import { parseGaClientId } from '@/lib/ga-measurement'
 import { getCurrentUser } from '@/lib/supabase/session'
+import { createStripeClientOrNull } from '@/lib/stripe/server'
+import { getPublicBaseUrl } from '@/lib/env/deployment'
 
 const PLAN_CONFIG = {
   pro: {
@@ -16,8 +17,10 @@ type PlanKey = keyof typeof PLAN_CONFIG
 
 export async function POST(req: NextRequest) {
   try {
-    const secretKey = process.env.STRIPE_SECRET_KEY
-    if (!secretKey) {
+    // Garde d'environnement : une clé LIVE hors production lève ici, avant tout
+    // appel Stripe (cf. src/lib/env/deployment.ts).
+    const stripe = createStripeClientOrNull()
+    if (!stripe) {
       console.error('STRIPE_SECRET_KEY is not set')
       return NextResponse.json({ error: 'Configuration serveur manquante.' }, { status: 500 })
     }
@@ -41,8 +44,8 @@ export async function POST(req: NextRequest) {
     }
 
     const config = PLAN_CONFIG[plan as PlanKey]
-    const stripe = new Stripe(secretKey)
-    const baseUrl = process.env.NEXT_PUBLIC_URL ?? 'https://xenotif.com'
+    // URL de retour de l'environnement courant : preview → preview, production → production.
+    const baseUrl = getPublicBaseUrl()
     const isAnnual = period === 'annual'
 
     const priceId = isAnnual ? process.env.STRIPE_PRICE_PRO_ANNUAL : process.env.STRIPE_PRICE_PRO

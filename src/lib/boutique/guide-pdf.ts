@@ -1,6 +1,7 @@
 import { PDFDocument, StandardFonts, rgb, type PDFFont, type PDFPage, type PDFImage } from 'pdf-lib'
 import QRCode from 'qrcode'
 import type { Guide } from './guides'
+import { getDeploymentEnv, getPublicBaseUrl } from '@/lib/env/deployment'
 
 // Charge un asset image (public/program-assets) pour l'embarquer dans le PDF.
 // fs en local / runtime Node ; fetch depuis le site en repli (déploiement).
@@ -11,7 +12,13 @@ async function loadAssetBytes(name: string): Promise<Uint8Array | null> {
     return new Uint8Array(await readFile(join(process.cwd(), 'public', 'program-assets', name)))
   } catch {
     try {
-      const res = await fetch(`https://xenotif.com/program-assets/${name}`)
+      // Repli : on lit l'asset du déploiement courant, pas de la production.
+      // Une preview est protégée par le SSO Vercel : on y joint le secret de
+      // contournement pour l'automatisation quand il est disponible.
+      const headers: Record<string, string> = {}
+      const bypass = process.env.VERCEL_AUTOMATION_BYPASS_SECRET
+      if (bypass && getDeploymentEnv() !== 'production') headers['x-vercel-protection-bypass'] = bypass
+      const res = await fetch(`${getPublicBaseUrl()}/program-assets/${name}`, { headers })
       if (res.ok) return new Uint8Array(await res.arrayBuffer())
     } catch { /* ignore */ }
     return null

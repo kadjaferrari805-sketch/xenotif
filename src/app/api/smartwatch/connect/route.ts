@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createClient } from '@/lib/supabase/server'
+import { getPublicBaseUrl } from '@/lib/env/deployment'
 import type { WatchProvider } from '@/lib/smartwatch/types'
 
 const OAUTH_CONFIGS: Record<string, { authUrl: string; scopes: string }> = {
@@ -64,7 +65,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ type: 'demo', message: 'Connecté en mode démonstration' })
   }
 
-  const redirectUri = `${process.env.NEXT_PUBLIC_URL ?? 'https://xenotif.com'}/api/smartwatch/callback`
+  const redirectUri = `${getPublicBaseUrl()}/api/smartwatch/callback`
   const state = Buffer.from(JSON.stringify({ user_id: user.id, provider })).toString('base64')
 
   const params = new URLSearchParams({

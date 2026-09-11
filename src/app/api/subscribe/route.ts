@@ -1,8 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { Resend } from 'resend'
 import { createAdminClient } from '@/lib/supabase/admin'
+import { getPublicBaseUrl } from '@/lib/env/deployment'
 
-const SITE = 'https://xenotif.com'
+const SITE = getPublicBaseUrl()
 
 type EmailCopy = {
   subject: string

@@ -4,12 +4,13 @@ import { sendAbandonedCartEmail } from '@/lib/emails'
 import { sendPushToUser } from '@/lib/push'
 import { sendWebPushToUser } from '@/lib/web-push'
 import { PRODUCTS, formatPrice } from '@/lib/boutique/products'
+import { getPublicBaseUrl } from '@/lib/env/deployment'
 
 export const runtime = 'nodejs'
 export const dynamic = 'force-dynamic'
 
 const PRODUCT_BY_ID = new Map(PRODUCTS.map(p => [p.id, p]))
-const BASE_URL = process.env.NEXT_PUBLIC_URL ?? 'https://xenotif.com'
+const BASE_URL = getPublicBaseUrl()
 
 // Texte court du push de relance panier, par langue.
 const CART_PUSH: Record<string, { title: string; body: string }> = {

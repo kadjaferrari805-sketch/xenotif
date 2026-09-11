@@ -16,6 +16,7 @@ import { ScrollReveal } from '@/components/premium/ScrollReveal'
 import { Preloader } from '@/components/premium/Preloader'
 import { ConsentBanner } from '@/components/consent/ConsentBanner'
 import { EU_COUNTRIES } from '@/lib/consent'
+import { getGa4MeasurementId } from '@/lib/env/deployment'
 
 // Liste des codes pays UE/EEE/UK/CH pour le paramètre `region` du Consent Mode v2.
 const EU_REGION = EU_COUNTRIES.map((c) => `'${c}'`).join(',')
@@ -29,6 +30,9 @@ const META_PIXEL_ID = process.env.NEXT_PUBLIC_META_PIXEL_ID
 // Google Ads : tag de conversion (AW-XXXXXXXXX). Activé uniquement si l'ID est
 // défini en env (comme le Meta Pixel) → aucun identifiant en dur.
 const GOOGLE_ADS_ID = process.env.NEXT_PUBLIC_GOOGLE_ADS_ID
+// GA4 : identifiant de production hors d'une propriété dédiée, et analytics
+// désactivée hors production (aucune visite de preview dans les statistiques).
+const GA4_MEASUREMENT_ID = getGa4MeasurementId()
 const LOCALE_OG: Record<string, string> = {
   fr: 'fr_FR',
   en: 'en_US',
@@ -151,19 +155,24 @@ export default async function RootLayout({
         <OrganizationSchema />
         <WebsiteSchema />
 
-        {/* Google Analytics GA4 */}
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-3H3JTM404V"
-          strategy="lazyOnload"
-        />
-        <Script id="ga4-init" strategy="lazyOnload">
-          {`
+        {/* Google Analytics GA4 - chargé uniquement si un identifiant est prévu
+            pour cet environnement (production, ou NEXT_PUBLIC_GA4_MEASUREMENT_ID). */}
+        {GA4_MEASUREMENT_ID && (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${GA4_MEASUREMENT_ID}`}
+              strategy="lazyOnload"
+            />
+            <Script id="ga4-init" strategy="lazyOnload">
+              {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', 'G-3H3JTM404V');${GOOGLE_ADS_ID ? `\n            gtag('config', '${GOOGLE_ADS_ID}');` : ''}
+            gtag('config', '${GA4_MEASUREMENT_ID}');${GOOGLE_ADS_ID ? `\n            gtag('config', '${GOOGLE_ADS_ID}');` : ''}
           `}
-        </Script>
+            </Script>
+          </>
+        )}
 
         {/* Meta Pixel (Facebook/Instagram Ads) - actif si NEXT_PUBLIC_META_PIXEL_ID est défini.
             Script d'init dans le layout (server) pour un chargement fiable, comme GA. */}

@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server'
 import Stripe from 'stripe'
 import { createClient, createServiceClient } from '@/lib/supabase/server'
 import { isClaimableBy, linkSubscriptionToUser, LIVE_STATUSES, toDbStatus } from '@/lib/billing/stripe-subscription'
+import { createStripeClient } from '@/lib/stripe/server'
 
 export const runtime = 'nodejs'
 
@@ -22,7 +23,7 @@ export async function POST() {
     if (!user) return NextResponse.json({ error: 'unauthorized' }, { status: 401 })
     if (!user.email) return NextResponse.json({ error: 'no_email' }, { status: 400 })
 
-    const stripe = new Stripe(secretKey)
+    const stripe = createStripeClient()
 
     const customers = await stripe.customers.list({ email: user.email, limit: 10 })
     let found: Stripe.Subscription | null = null

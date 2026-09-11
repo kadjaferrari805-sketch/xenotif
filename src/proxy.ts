@@ -2,6 +2,7 @@ import { createServerClient } from '@supabase/ssr'
 import { NextResponse, type NextRequest } from 'next/server'
 import createMiddleware from 'next-intl/middleware'
 import { routing } from '@/i18n/routing'
+import { assertSupabaseEnvironment } from '@/lib/env/deployment'
 
 // Middleware next-intl : gère la détection de locale (Accept-Language → cookie NEXT_LOCALE),
 // les redirections de préfixe (/en/dashboard) et les rewrites pour la locale par défaut (fr, sans préfixe).
@@ -49,6 +50,13 @@ export async function proxy(request: NextRequest) {
   // 3. Initialiser Supabase en lisant depuis request.cookies et en écrivant
   //    directement sur i18nResponse (évite de créer un nouveau NextResponse qui
   //    écraserait les headers/cookies posés par next-intl).
+  // Garde : hors production, le projet Supabase de production est refusé, dès
+  // le proxy (donc avant tout rendu de page protégée).
+  assertSupabaseEnvironment({
+    url: process.env.NEXT_PUBLIC_SUPABASE_URL,
+    keys: [process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY],
+  })
+
   const supabase = createServerClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,

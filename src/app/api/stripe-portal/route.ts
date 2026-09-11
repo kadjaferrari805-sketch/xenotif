@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server'
-import Stripe from 'stripe'
 import { createClient, createServiceClient } from '@/lib/supabase/server'
+import { createStripeClient } from '@/lib/stripe/server'
+import { getPublicBaseUrl } from '@/lib/env/deployment'
 
 export async function POST() {
   try {
@@ -20,8 +21,10 @@ export async function POST() {
       return NextResponse.json({ error: 'Aucun abonnement Stripe trouvé.' }, { status: 404 })
     }
 
-    const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!)
-    const baseUrl = process.env.NEXT_PUBLIC_URL ?? 'https://xenotif.com'
+    // Garde d'environnement : clé TEST obligatoire hors production, et retour
+    // vers l'URL de l'environnement courant.
+    const stripe = createStripeClient()
+    const baseUrl = getPublicBaseUrl()
 
     const portal = await stripe.billingPortal.sessions.create({
       customer: sub.stripe_customer_id,

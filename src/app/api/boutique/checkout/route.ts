@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
-import Stripe from 'stripe'
+import type Stripe from 'stripe'
 import { PRODUCTS } from '@/lib/boutique/products'
+import { createStripeClient } from '@/lib/stripe/server'
 
 // Map slug → product pour validation et price_data inline
 const PRODUCT_MAP = new Map(PRODUCTS.filter(p => !p.isAffiliate).map(p => [p.id, p]))
@@ -52,7 +53,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Aucun produit Xenotif dans le panier' }, { status: 400 })
     }
 
-    const stripe = new Stripe(process.env.STRIPE_SECRET_KEY)
+    const stripe = createStripeClient()
 
     // Ids des programmes digitaux achetés → utilisés pour la livraison (email
     // + téléchargement sécurisé du guide PDF après paiement).

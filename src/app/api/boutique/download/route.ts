@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import Stripe from 'stripe'
+import { createStripeClient } from '@/lib/stripe/server'
 import { getProductById } from '@/lib/boutique/products'
 import { getGuideLocalized } from '@/lib/boutique/guides.en'
 import { generateGuidePdf } from '@/lib/boutique/guide-pdf'
@@ -40,7 +40,7 @@ export async function GET(req: NextRequest) {
   }
 
   try {
-    const stripe = new Stripe(process.env.STRIPE_SECRET_KEY)
+    const stripe = createStripeClient()
     const session = await stripe.checkout.sessions.retrieve(sessionId)
 
     if (session.payment_status !== 'paid') {

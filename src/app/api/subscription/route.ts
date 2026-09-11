@@ -1,9 +1,9 @@
 import { NextResponse } from 'next/server'
-import Stripe from 'stripe'
 import { createClient } from '@/lib/supabase/server'
 import { createServiceClient } from '@/lib/supabase/server'
 import { isInAppTrial, appTrialEnd } from '@/lib/access'
 import { isClaimableBy, linkSubscriptionToUser, subscriptionRow } from '@/lib/billing/stripe-subscription'
+import { createStripeClient } from '@/lib/stripe/server'
 
 export async function GET() {
   try {
@@ -44,7 +44,7 @@ export async function GET() {
     const secretKey = process.env.STRIPE_SECRET_KEY
     if (!secretKey || !user.email) return NextResponse.json(null)
 
-    const stripe = new Stripe(secretKey)
+    const stripe = createStripeClient()
     const customers = await stripe.customers.list({ email: user.email, limit: 1 })
     const customer = customers.data[0]
     if (!customer) return NextResponse.json(null)
