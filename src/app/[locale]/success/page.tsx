@@ -4,6 +4,7 @@ import { CheckCircle, ArrowRight, Zap } from 'lucide-react'
 import Stripe from 'stripe'
 import { createServiceClient } from '@/lib/supabase/server'
 import { MetaTrack } from '@/components/analytics/MetaTrack'
+import { findUserIdByEmail, linkSubscriptionToUser } from '@/lib/billing/stripe-subscription'
 
 export const metadata: Metadata = {
   title: 'Paiement confirmé - Xenotif®',
@@ -38,24 +39,12 @@ async function syncSubscription(sessionId: string): Promise<void> {
       const { data: byId } = await service.auth.admin.getUserById(refUserId)
       if (byId?.user) userId = byId.user.id
     }
-    if (!userId && email) {
-      const { data: users } = await service.auth.admin.listUsers({ perPage: 200 })
-      userId = users?.users?.find(u => u.email?.toLowerCase() === email.toLowerCase())?.id ?? null
-    }
+    if (!userId && email) userId = await findUserIdByEmail(service, email)
     if (!userId) return
 
-    const plan = session.metadata?.plan ?? 'pro'
-
-    await service.from('subscriptions').upsert({
-      user_id: userId,
-      stripe_customer_id: typeof session.customer === 'string' ? session.customer : session.customer.id,
-      stripe_subscription_id: sub.id,
-      plan,
-      status: sub.status,
-      trial_end: sub.trial_end ? new Date(sub.trial_end * 1000).toISOString() : null,
-      current_period_end: new Date((sub.items.data[0]?.current_period_end ?? 0) * 1000).toISOString(),
-      cancel_at_period_end: sub.cancel_at_period_end,
-    }, { onConflict: 'user_id' })
+    // Mêmes gardes que le webhook : jamais d'écrasement d'un abonnement actif
+    // ni de rattachement d'un abonnement déjà lié à un autre compte.
+    await linkSubscriptionToUser(service, userId, sub)
   } catch (err) {
     console.error('syncSubscription error:', err)
   }

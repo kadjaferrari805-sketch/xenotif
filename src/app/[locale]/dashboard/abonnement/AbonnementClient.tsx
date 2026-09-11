@@ -6,7 +6,6 @@ import { Link } from '@/i18n/navigation'
 import { CheckCircle, AlertTriangle, CreditCard, Calendar, ArrowRight, ShieldCheck, X, RotateCcw } from 'lucide-react'
 import { Loader } from '@/components/ui/Loader'
 import { Alert } from '@/components/ui/Alert'
-import { Input } from '@/components/ui/Input'
 
 export type Sub = {
   plan: string; status: string; trial_end: string | null;
@@ -53,7 +52,6 @@ export function AbonnementClient({ initialSub }: { initialSub: Sub | null }) {
   const [portalError, setPortalError] = useState('')
   const [syncing, setSyncing] = useState(false)
   const [syncMsg, setSyncMsg] = useState('')
-  const [syncEmail, setSyncEmail] = useState('')
   const [billing, setBilling] = useState<Billing | null>(null)
   const [billingLoaded, setBillingLoaded] = useState(false)
 
@@ -148,11 +146,8 @@ export function AbonnementClient({ initialSub }: { initialSub: Sub | null }) {
     setSyncing(true)
     setSyncMsg('')
     try {
-      const res = await fetch('/api/subscription/sync', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: syncEmail.trim() || undefined }),
-      })
+      // Recherche par l'email du compte uniquement (côté serveur).
+      const res = await fetch('/api/subscription/sync', { method: 'POST' })
       const data = await res.json()
       if (data.synced) { window.location.reload(); return }
       setSyncMsg(data.reason === 'already_linked' ? t('syncAlreadyLinked') : t('syncNone'))
@@ -185,13 +180,6 @@ export function AbonnementClient({ initialSub }: { initialSub: Sub | null }) {
           {/* Récupération d'un abonnement déjà payé mais non rattaché */}
           <div className="mt-6 pt-6 border-t border-sport-border">
             <p className="text-xs text-sport-gray mb-3">{t('syncHint')}</p>
-            <Input
-              type="email"
-              value={syncEmail}
-              onChange={e => setSyncEmail(e.target.value)}
-              placeholder={t('syncEmailPlaceholder')}
-              className="mb-3"
-            />
             <button
               onClick={syncSubscription}
               disabled={syncing}
