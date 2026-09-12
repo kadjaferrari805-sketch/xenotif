@@ -58,6 +58,10 @@ function useService(tables: FakeTables, admin: Record<string, unknown> = {}) {
 beforeEach(() => {
   jest.clearAllMocks()
   process.env.STRIPE_WEBHOOK_SECRET = 'whsec_test'
+  // Clé factice de TEST : la garde d'environnement du webhook exige désormais
+  // une clé Stripe autorisée avant tout appel (cf. environment.test.ts).
+  process.env.STRIPE_SECRET_KEY = 'sk_test_factice'
+  delete process.env.VERCEL_ENV
 })
 
 describe('POST /api/webhook/stripe', () => {

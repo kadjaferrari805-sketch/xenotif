@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server'
-import Stripe from 'stripe'
 import { createClient, createServiceClient } from '@/lib/supabase/server'
+import { createStripeClient } from '@/lib/stripe/server'
 
 export async function POST() {
   try {
@@ -20,7 +20,7 @@ export async function POST() {
       return NextResponse.json({ error: 'Aucun abonnement actif.' }, { status: 404 })
     }
 
-    const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!)
+    const stripe = createStripeClient()
     await stripe.subscriptions.update(sub.stripe_subscription_id, {
       cancel_at_period_end: true,
     })

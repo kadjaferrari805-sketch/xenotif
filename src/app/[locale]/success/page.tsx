@@ -5,6 +5,7 @@ import Stripe from 'stripe'
 import { createServiceClient } from '@/lib/supabase/server'
 import { MetaTrack } from '@/components/analytics/MetaTrack'
 import { findUserIdByEmail, linkSubscriptionToUser } from '@/lib/billing/stripe-subscription'
+import { createStripeClient } from '@/lib/stripe/server'
 
 export const metadata: Metadata = {
   title: 'Paiement confirmé - Xenotif®',
@@ -21,7 +22,7 @@ const NEXT_STEPS = [
 // en retard quand l'utilisateur atterrit sur la page de succès.
 async function syncSubscription(sessionId: string): Promise<void> {
   try {
-    const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!)
+    const stripe = createStripeClient()
     const session = await stripe.checkout.sessions.retrieve(sessionId, {
       expand: ['subscription'],
     })

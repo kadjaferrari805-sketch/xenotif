@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server'
-import Stripe from 'stripe'
 import { createClient, createServiceClient } from '@/lib/supabase/server'
+import { createStripeClient } from '@/lib/stripe/server'
 
 // Réactivation d'un abonnement résilié AVANT la fin de période (cancel_at_period_end).
 // Remet la facturation automatique : on annule la résiliation programmée côté Stripe.
@@ -22,7 +22,7 @@ export async function POST() {
       return NextResponse.json({ error: 'Aucun abonnement à réactiver.' }, { status: 404 })
     }
 
-    const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!)
+    const stripe = createStripeClient()
 
     // Vérifie que l'abonnement Stripe est encore récupérable (pas définitivement terminé).
     const remote = await stripe.subscriptions.retrieve(sub.stripe_subscription_id)

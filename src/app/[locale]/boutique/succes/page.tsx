@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { Link } from '@/i18n/navigation'
 import { getTranslations } from 'next-intl/server'
-import Stripe from 'stripe'
+import { createStripeClient } from '@/lib/stripe/server'
 import { CheckCircle, Download, Package, ArrowRight } from 'lucide-react'
 import { getProductByIdLocalized } from '@/lib/boutique/products.en'
 import { MetaTrack } from '@/components/analytics/MetaTrack'
@@ -28,7 +28,7 @@ async function getOrderInfo(locale: string, sessionId?: string): Promise<OrderIn
   const empty: OrderInfo = { items: [], value: 0, currency: 'EUR' }
   if (!sessionId || !process.env.STRIPE_SECRET_KEY) return empty
   try {
-    const stripe = new Stripe(process.env.STRIPE_SECRET_KEY)
+    const stripe = createStripeClient()
     const session = await stripe.checkout.sessions.retrieve(sessionId)
     if (session.payment_status !== 'paid') return empty
     const ids = (session.metadata?.digital_ids ?? '').split(',').map(s => s.trim()).filter(Boolean)

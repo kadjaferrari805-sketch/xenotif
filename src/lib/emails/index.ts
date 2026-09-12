@@ -1,6 +1,7 @@
 import { Resend } from 'resend'
 import { getProductById } from '@/lib/boutique/products'
 import { getCampaignEmail } from '@/lib/campaigns'
+import { getPublicBaseUrl } from '@/lib/env/deployment'
 
 export type EmailLocale = 'fr' | 'en' | 'de'
 // `norm` (fr/en) : conservé pour les emails transactionnels encore bilingues
@@ -11,7 +12,9 @@ const norm3 = (l?: string): EmailLocale => (l === 'en' ? 'en' : l === 'de' ? 'de
 
 const resend = new Resend(process.env.RESEND_API_KEY ?? 'placeholder')
 const FROM = 'Xenotif® <noreply@xenotif.com>'
-const BASE_URL = process.env.NEXT_PUBLIC_URL ?? 'https://xenotif.com'
+// Tous les liens des e-mails pointent vers l'environnement courant : une
+// preview n'envoie jamais de lien vers la production.
+const BASE_URL = getPublicBaseUrl()
 
 const CHROME = {
   fr: {

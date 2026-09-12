@@ -7,10 +7,19 @@ import { getProductById } from '@/lib/boutique/products'
 import { sendMetaConversion } from '@/lib/meta-capi'
 import { sendGa4Purchase } from '@/lib/ga-measurement'
 import { findUserIdByEmail, linkSubscriptionToUser, subscriptionRow } from '@/lib/billing/stripe-subscription'
+import { createStripeClient } from '@/lib/stripe/server'
+import { assertWebhookEventAllowed, getPublicBaseUrl } from '@/lib/env/deployment'
 
 export const runtime = 'nodejs'
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY ?? 'sk_placeholder')
+// Client Stripe construit à la demande : la garde d'environnement (clé TEST
+// obligatoire hors production) s'applique à chaque appel, et non au chargement
+// du module. Avant, une clé LIVE aurait été utilisée telle quelle en preview.
+let stripeSingleton: Stripe | null = null
+function stripeClient(): Stripe {
+  if (!stripeSingleton) stripeSingleton = createStripeClient()
+  return stripeSingleton
+}
 
 // Effets de bord non critiques (e-mails, conversions) : un échec est journalisé
 // sans faire échouer le webhook. Sinon Stripe rejouerait tout l'événement pour
@@ -58,12 +67,31 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'Missing stripe-signature header' }, { status: 400 })
   }
 
+  // Garde d'environnement : clé Stripe refusée (LIVE hors production) → 500,
+  // sans jamais appeler Stripe.
+  let client: Stripe
+  try {
+    client = stripeClient()
+  } catch (err) {
+    console.error('[webhook] configuration Stripe refusée :', err)
+    return NextResponse.json({ error: 'Stripe environment guard' }, { status: 500 })
+  }
+
   let event: Stripe.Event
   try {
-    event = stripe.webhooks.constructEvent(body, sig, webhookSecret)
+    event = client.webhooks.constructEvent(body, sig, webhookSecret)
   } catch (err) {
     console.error('Webhook signature verification failed:', err)
     return NextResponse.json({ error: 'Invalid signature' }, { status: 400 })
+  }
+
+  // Un événement LIVE reçu hors production = webhook Stripe LIVE pointé sur une
+  // preview : refusé, et rien n'est écrit en base.
+  try {
+    assertWebhookEventAllowed(event.livemode)
+  } catch (err) {
+    console.error('[webhook] événement refusé :', err)
+    return NextResponse.json({ error: 'Environment mismatch' }, { status: 400 })
   }
 
   const service = await createServiceClient()
@@ -158,7 +186,7 @@ async function handleEvent(service: SupabaseClient, event: Stripe.Event): Promis
       const plan = 'pro' // palier unique
       const locale = session.metadata?.locale ?? 'fr'
 
-      const sub = await stripe.subscriptions.retrieve(subscriptionId)
+      const sub = await stripeClient().subscriptions.retrieve(subscriptionId)
 
       // Rattachement : l'ID posé au checkout depuis la session serveur
       // (client_reference_id), puis l'email, puis la création du compte.
@@ -210,7 +238,7 @@ async function handleEvent(service: SupabaseClient, event: Stripe.Event): Promis
       if (outcome === 'linked' && userEmail) {
         const email = userEmail
         await bestEffort('email de bienvenue', async () => {
-          let setupLink = `${process.env.NEXT_PUBLIC_URL}/dashboard`
+          let setupLink = `${getPublicBaseUrl()}/dashboard`
           if (isNewUser) {
             const { data: linkData } = await service.auth.admin.generateLink({ type: 'recovery', email })
             setupLink = linkData?.properties?.action_link ?? setupLink
@@ -339,7 +367,7 @@ async function handleEvent(service: SupabaseClient, event: Stripe.Event): Promis
       if (!row || row.ga_purchase_sent) return
 
       const invoiceId = invoice.id
-      const sub = await stripe.subscriptions.retrieve(subId)
+      const sub = await stripeClient().subscriptions.retrieve(subId)
       const clientId = sub.metadata?.ga_client_id ?? ''
       const plan = sub.metadata?.plan ?? 'pro'
       const value = (invoice.amount_paid ?? 0) / 100
