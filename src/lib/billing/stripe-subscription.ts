@@ -38,7 +38,10 @@ export function subscriptionRow(sub: Stripe.Subscription, userId: string) {
     status: toDbStatus(sub.status),
     trial_end: sub.trial_end ? new Date(sub.trial_end * 1000).toISOString() : null,
     current_period_end: new Date((sub.items.data[0]?.current_period_end ?? 0) * 1000).toISOString(),
-    cancel_at_period_end: sub.cancel_at_period_end,
+    // Stripe ne renseigne `cancel_at_period_end` que pour un abonnement `active`
+    // ou `canceled` : une résiliation demandée pendant l'essai n'apparaît que dans
+    // `cancel_at`. Sans ce repli, une annulation restait invisible côté site.
+    cancel_at_period_end: sub.cancel_at_period_end || sub.cancel_at != null,
   }
 }
 
