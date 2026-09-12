@@ -15,6 +15,7 @@ function stripeSub(overrides: Partial<Record<string, unknown>> = {}): Stripe.Sub
     status: 'active',
     trial_end: null,
     cancel_at_period_end: false,
+    cancel_at: null,
     metadata: {},
     items: { data: [{ current_period_end: 1_800_000_000 }] },
     ...overrides,
@@ -46,6 +47,33 @@ describe('subscriptionRow', () => {
       trial_end: null,
       current_period_end: new Date(1_800_000_000 * 1000).toISOString(),
       cancel_at_period_end: false,
+    })
+  })
+
+  // Une résiliation demandée pendant l'essai n'arrive QUE dans `cancel_at` :
+  // Stripe laisse `cancel_at_period_end` à false tant que le statut est `trialing`.
+  describe('résiliation programmée', () => {
+    const cancelFlag = (overrides: Record<string, unknown>) =>
+      subscriptionRow(stripeSub(overrides), 'user-1').cancel_at_period_end
+
+    test('cancel_at_period_end seul', () => {
+      expect(cancelFlag({ cancel_at_period_end: true, cancel_at: null })).toBe(true)
+    })
+
+    test('cancel_at seul (cas réel : annulation pendant l’essai)', () => {
+      expect(cancelFlag({ cancel_at_period_end: false, cancel_at: 1_800_000_000 })).toBe(true)
+    })
+
+    test('aucun des deux : pas de résiliation', () => {
+      expect(cancelFlag({ cancel_at_period_end: false, cancel_at: null })).toBe(false)
+    })
+
+    test('les deux signaux ensemble', () => {
+      expect(cancelFlag({ cancel_at_period_end: true, cancel_at: 1_800_000_000 })).toBe(true)
+    })
+
+    test('essai résilié : cancel_at aligné sur trial_end', () => {
+      expect(cancelFlag({ status: 'trialing', trial_end: 1_800_000_000, cancel_at: 1_800_000_000 })).toBe(true)
     })
   })
 })
