@@ -12,6 +12,7 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
+    "stripe:portal": "node scripts/stripe-portal.mjs",
     "content:export": "npx --yes tsx@4 scripts/export-content.ts",
     "content:check": "npx --yes tsx@4 scripts/export-content.ts --check"
   },
