@@ -20,6 +20,33 @@ const PRODUCTION_HOSTS = new Set(['xenotif.com', 'www.xenotif.com'])
 
 type Env = Record<string, string | undefined>
 
+/**
+ * Environnement effectif, côté serveur comme côté navigateur.
+ *
+ * Next.js ne remplace au build QUE les accès LITTÉRAUX `process.env.NEXT_PUBLIC_*`.
+ * Un accès calculé (`env.NEXT_PUBLIC_VERCEL_ENV`, où `env` est un paramètre) n'est
+ * jamais substitué : dans le bundle client la valeur restait absente,
+ * `getDeploymentEnv()` renvoyait donc `development` même en production, et
+ * `assertSupabaseEnvironment` refusait alors le projet de production sur toutes les
+ * pages qui construisent un client Supabase dans le navigateur.
+ *
+ * Les variables publiques sont donc lues ici une fois, en accès littéral, pour que
+ * leur valeur entre réellement dans le bundle. Les variables serveur restent lues
+ * par l'étalement de `process.env`, qui n'existe que côté serveur.
+ */
+// Fonction et non constante : un objet figé au chargement du module capturerait
+// `process.env` une fois pour toutes, alors que le serveur le lit à l'exécution.
+export function runtimeEnv(): Env {
+  return {
+    ...process.env,
+    NEXT_PUBLIC_VERCEL_ENV: process.env.NEXT_PUBLIC_VERCEL_ENV,
+    NEXT_PUBLIC_URL: process.env.NEXT_PUBLIC_URL,
+    NEXT_PUBLIC_VERCEL_BRANCH_URL: process.env.NEXT_PUBLIC_VERCEL_BRANCH_URL,
+    NEXT_PUBLIC_VERCEL_URL: process.env.NEXT_PUBLIC_VERCEL_URL,
+    NEXT_PUBLIC_GA4_MEASUREMENT_ID: process.env.NEXT_PUBLIC_GA4_MEASUREMENT_ID,
+  }
+}
+
 /** Erreur de garde d'environnement : ne contient JAMAIS de secret, seulement un mode. */
 export class EnvironmentGuardError extends Error {
   constructor(message: string) {
@@ -34,12 +61,12 @@ export class EnvironmentGuardError extends Error {
  * (local, tests). Une valeur inconnue est traitée comme `development` : jamais
  * comme production, pour que la garde reste fermée par défaut.
  */
-export function getDeploymentEnv(env: Env = process.env): DeploymentEnv {
+export function getDeploymentEnv(env: Env = runtimeEnv()): DeploymentEnv {
   const raw = env.VERCEL_ENV ?? env.NEXT_PUBLIC_VERCEL_ENV
   return raw === 'production' || raw === 'preview' || raw === 'development' ? raw : 'development'
 }
 
-export function isProductionDeployment(env: Env = process.env): boolean {
+export function isProductionDeployment(env: Env = runtimeEnv()): boolean {
   return getDeploymentEnv(env) === 'production'
 }
 
@@ -60,7 +87,7 @@ export function stripeKeyMode(key: string | undefined | null): StripeKeyMode {
  * Preview et development : clé de TEST uniquement. Une clé LIVE, ou une clé au
  * préfixe inconnu, lève une erreur — on ne convertit jamais une clé LIVE en TEST.
  */
-export function assertStripeKeyAllowed(key: string | undefined | null, env: Env = process.env): void {
+export function assertStripeKeyAllowed(key: string | undefined | null, env: Env = runtimeEnv()): void {
   const deployment = getDeploymentEnv(env)
   const mode = stripeKeyMode(key)
   if (mode === 'missing') return
@@ -79,7 +106,7 @@ export function assertStripeKeyAllowed(key: string | undefined | null, env: Env 
 }
 
 /** Clé Stripe validée, ou `null` si aucune clé n'est configurée. */
-export function getStripeSecretKey(env: Env = process.env): string | null {
+export function getStripeSecretKey(env: Env = runtimeEnv()): string | null {
   const key = env.STRIPE_SECRET_KEY
   assertStripeKeyAllowed(key, env)
   return key && key.length > 0 ? key : null
@@ -89,7 +116,7 @@ export function getStripeSecretKey(env: Env = process.env): string | null {
  * Un événement Stripe `livemode: true` reçu hors production signale un webhook
  * LIVE pointé sur une preview : on refuse de le traiter.
  */
-export function assertWebhookEventAllowed(livemode: boolean, env: Env = process.env): void {
+export function assertWebhookEventAllowed(livemode: boolean, env: Env = runtimeEnv()): void {
   if (livemode && !isProductionDeployment(env)) {
     throw new EnvironmentGuardError(
       `Stripe : événement LIVE reçu en environnement ${getDeploymentEnv(env)}. Seuls les événements de test y sont acceptés.`,
@@ -128,7 +155,7 @@ function isProductionUrl(url: string): boolean {
  *   branche puis l'URL du déploiement fournies par Vercel. Jamais xenotif.com.
  * Development : NEXT_PUBLIC_URL, sinon localhost.
  */
-export function getPublicBaseUrl(env: Env = process.env): string {
+export function getPublicBaseUrl(env: Env = runtimeEnv()): string {
   const deployment = getDeploymentEnv(env)
   const configured = normalizeUrl(env.NEXT_PUBLIC_URL)
 
@@ -185,7 +212,7 @@ export function supabaseKeyRef(key: string | undefined | null): string | null {
  */
 export function assertSupabaseEnvironment(
   config: { url?: string | null; keys?: (string | undefined | null)[] },
-  env: Env = process.env,
+  env: Env = runtimeEnv(),
 ): void {
   const deployment = getDeploymentEnv(env)
   const urlRef = supabaseProjectRef(config.url)
@@ -228,7 +255,7 @@ export function assertSupabaseEnvironment(
  * Hors production, aucune donnée ne part vers la propriété de production tant
  * que NEXT_PUBLIC_GA4_MEASUREMENT_ID n'est pas explicitement défini.
  */
-export function getGa4MeasurementId(env: Env = process.env): string | null {
+export function getGa4MeasurementId(env: Env = runtimeEnv()): string | null {
   const configured = env.NEXT_PUBLIC_GA4_MEASUREMENT_ID?.trim()
   if (configured) return configured
   return getDeploymentEnv(env) === 'production' ? PRODUCTION_GA4_MEASUREMENT_ID : null

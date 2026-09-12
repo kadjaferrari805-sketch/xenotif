@@ -1,3 +1,5 @@
+import { readFileSync } from 'node:fs'
+import path from 'node:path'
 import {
   assertStripeKeyAllowed,
   assertSupabaseEnvironment,
@@ -37,6 +39,64 @@ describe('getDeploymentEnv', () => {
     [{}, 'development'],
   ])('%j → %s', (env, expected) => {
     expect(getDeploymentEnv(env as Record<string, string>)).toBe(expected)
+  })
+})
+
+// Ces cas-là ne peuvent pas être couverts en injectant un `env` : le défaut
+// passait justement inaperçu parce que TOUS les tests fournissaient l'objet.
+// Next.js ne remplace au build que les accès LITTÉRAUX `process.env.NEXT_PUBLIC_*` ;
+// un accès calculé laisse la valeur absente du bundle client, et la garde croyait
+// alors être en `development` sur la production.
+describe('substitution des variables publiques dans le bundle client', () => {
+  const source = readFileSync(path.join(__dirname, 'deployment.ts'), 'utf8')
+
+  test('NEXT_PUBLIC_VERCEL_ENV est lu en accès littéral, seule forme que Next.js substitue', () => {
+    expect(source).toMatch(/process\.env\.NEXT_PUBLIC_VERCEL_ENV/)
+  })
+
+  test('les variables publiques utilisées par les gardes sont toutes lues littéralement', () => {
+    for (const name of [
+      'NEXT_PUBLIC_VERCEL_ENV',
+      'NEXT_PUBLIC_URL',
+      'NEXT_PUBLIC_VERCEL_BRANCH_URL',
+      'NEXT_PUBLIC_VERCEL_URL',
+      'NEXT_PUBLIC_GA4_MEASUREMENT_ID',
+    ]) {
+      expect(source).toContain(`process.env.${name}`)
+    }
+  })
+
+  test('aucune signature ne retombe sur process.env : le défaut passe par runtimeEnv()', () => {
+    expect(source).not.toMatch(/env: Env = process\.env/)
+    expect(source.match(/env: Env = runtimeEnv\(\)/g) ?? []).toHaveLength(8)
+  })
+
+  // Le premier correctif figeait `process.env` dans une constante de module : les
+  // gardes lisaient alors un instantané et ignoraient toute variable définie après
+  // le chargement (côté serveur comme en test). runtimeEnv() doit rester évaluée
+  // à chaque appel.
+  test('runtimeEnv() est réévaluée à chaque appel, jamais figée au chargement', () => {
+    const avant = process.env.VERCEL_ENV
+    try {
+      process.env.VERCEL_ENV = 'preview'
+      expect(getDeploymentEnv()).toBe('preview')
+      process.env.VERCEL_ENV = 'production'
+      expect(getDeploymentEnv()).toBe('production')
+    } finally {
+      if (avant === undefined) delete process.env.VERCEL_ENV
+      else process.env.VERCEL_ENV = avant
+    }
+  })
+
+  test('sans aucune variable, la détection reste fermée (jamais production)', () => {
+    expect(getDeploymentEnv({})).toBe('development')
+    expect(getDeploymentEnv({ NEXT_PUBLIC_VERCEL_ENV: 'staging' })).toBe('development')
+  })
+
+  test('la valeur publique seule suffit à détecter chaque environnement', () => {
+    expect(getDeploymentEnv({ NEXT_PUBLIC_VERCEL_ENV: 'production' })).toBe('production')
+    expect(getDeploymentEnv({ NEXT_PUBLIC_VERCEL_ENV: 'preview' })).toBe('preview')
+    expect(getDeploymentEnv({ NEXT_PUBLIC_VERCEL_ENV: 'development' })).toBe('development')
   })
 })
 
