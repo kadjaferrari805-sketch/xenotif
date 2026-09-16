@@ -31,6 +31,9 @@ export function FreeProgramPopup() {
   const [email, setEmail] = useState('')
   const [status, setStatus] = useState<Status>('idle')
   const [errorMsg, setErrorMsg] = useState('')
+  // Champ-piège (05-K.5) : masqué et hors de l'arbre d'accessibilité, un humain
+  // ne le remplit jamais. Le serveur refuse la requête s'il est rempli.
+  const [website, setWebsite] = useState('')
   const armedRef = useRef(false)
   const inputRef = useRef<HTMLInputElement>(null)
 
@@ -101,7 +104,7 @@ export function FreeProgramPopup() {
       const res = await fetch('/api/subscribe', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, locale }),
+        body: JSON.stringify({ email, locale, website }),
       })
       const data = await res.json().catch(() => ({}))
       if (!res.ok) {
@@ -203,6 +206,17 @@ export function FreeProgramPopup() {
 
                   <form onSubmit={handleSubmit} className="mt-5">
                     <label htmlFor="lead-popup-email" className="sr-only">{t('emailPlaceholder')}</label>
+                    {/* Champ-piège (05-K.5) : masqué et hors de l'arbre d'accessibilité. */}
+                    <input
+                      type="text"
+                      name="website"
+                      value={website}
+                      onChange={(e) => setWebsite(e.target.value)}
+                      tabIndex={-1}
+                      autoComplete="off"
+                      aria-hidden="true"
+                      style={{ position: 'absolute', left: '-9999px', width: 0, height: 0, opacity: 0 }}
+                    />
                     <input
                       ref={inputRef}
                       id="lead-popup-email"

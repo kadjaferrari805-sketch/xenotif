@@ -1,5 +1,24 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { Resend } from 'resend'
+import {
+  clientIp,
+  enforceRateLimit,
+  normalizeEmail,
+  retryAfterHeaders,
+  tooManyRequestsBody,
+} from '@/lib/security/rate-limit'
+import { getRateLimitStore } from '@/lib/security/rate-limit-store'
+
+/**
+ * Limitation (05-K.5, finding F-02). Chaque appel émet DEUX e-mails via Resend :
+ * un vers contact@xenotif.com, un accusé de réception vers l'adresse fournie.
+ * Sans borne, la boîte de l'équipe est inondable et l'accusé devient un vecteur
+ * d'envoi vers un tiers arbitraire.
+ *
+ * fail-closed : mêmes effets qu'en F-01, même arbitrage.
+ */
+const IP_RULE = { limit: 5, windowSeconds: 3600 }
+const EMAIL_RULE = { limit: 5, windowSeconds: 86400 }
 
 function escapeHtml(str: string): string {
   return str
@@ -22,6 +41,21 @@ export async function POST(req: NextRequest) {
   // Validation longueur max
   if (name.length > 100 || subject.length > 200 || message.length > 5000) {
     return NextResponse.json({ error: 'Contenu trop long.' }, { status: 400 })
+  }
+
+  const verdict = await enforceRateLimit({
+    store: getRateLimitStore(),
+    failClosed: true,
+    dimensions: [
+      { scope: 'contact:ip', value: clientIp(req), rule: IP_RULE, required: true },
+      { scope: 'contact:email', value: normalizeEmail(email), rule: EMAIL_RULE },
+    ],
+  })
+  if (!verdict.allowed) {
+    return NextResponse.json(tooManyRequestsBody(), {
+      status: 429,
+      headers: retryAfterHeaders(verdict.retryAfterSeconds),
+    })
   }
 
   const safeName    = escapeHtml(name.trim())
