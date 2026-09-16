@@ -2,6 +2,30 @@ import { NextRequest, NextResponse } from 'next/server'
 import { Resend } from 'resend'
 import { createAdminClient } from '@/lib/supabase/admin'
 import { getPublicBaseUrl } from '@/lib/env/deployment'
+import {
+  clientIp,
+  enforceRateLimit,
+  isHoneypotFilled,
+  normalizeEmail,
+  retryAfterHeaders,
+  tooManyRequestsBody,
+} from '@/lib/security/rate-limit'
+import { getRateLimitStore } from '@/lib/security/rate-limit-store'
+
+/**
+ * Limitation (05-K.5, finding F-01 P1). Sans elle, un tiers non authentifié
+ * faisait émettre des e-mails depuis noreply@xenotif.com vers des adresses
+ * arbitraires : inondation d'un tiers, réputation d'expédition dégradée, coût
+ * Resend, pollution de newsletter_subscribers.
+ *
+ * Calibrage : sur 30 jours, la table ne comptait AUCUNE inscription. Ces bornes
+ * sont donc très au-dessus de l'usage réel et ne gênent aucun visiteur.
+ *
+ * fail-closed : si le compteur est injoignable, on refuse plutôt que d'envoyer
+ * des e-mails à l'aveugle — c'est précisément l'abus que la phase corrige.
+ */
+const IP_RULE = { limit: 5, windowSeconds: 3600 }
+const EMAIL_RULE = { limit: 3, windowSeconds: 86400 }
 
 const SITE = getPublicBaseUrl()
 
@@ -94,11 +118,33 @@ function buildHtml(c: EmailCopy, locale: string): string {
 
 export async function POST(req: NextRequest) {
   try {
-    const { email, locale: rawLocale } = await req.json()
+    const { email, locale: rawLocale, website } = await req.json()
     const locale = ['fr', 'en', 'de'].includes(rawLocale) ? rawLocale : 'fr'
+
+    // Champ-piège : invisible dans le formulaire, seul un robot le remplit.
+    // On répond comme en cas de succès pour ne pas lui signaler la détection.
+    if (isHoneypotFilled(website)) {
+      return NextResponse.json({ success: true })
+    }
 
     if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       return NextResponse.json({ error: 'Adresse email invalide' }, { status: 400 })
+    }
+
+    const verdict = await enforceRateLimit({
+      store: getRateLimitStore(),
+      failClosed: true,
+      dimensions: [
+        { scope: 'subscribe:ip', value: clientIp(req), rule: IP_RULE, required: true },
+        { scope: 'subscribe:email', value: normalizeEmail(email), rule: EMAIL_RULE },
+      ],
+    })
+    if (!verdict.allowed) {
+      // Refus AVANT toute écriture en base et avant tout appel à Resend.
+      return NextResponse.json(tooManyRequestsBody(), {
+        status: 429,
+        headers: retryAfterHeaders(verdict.retryAfterSeconds),
+      })
     }
 
     if (!process.env.RESEND_API_KEY) {

@@ -59,6 +59,9 @@ function FooterNewsletter() {
   const [submitted, setSubmitted] = useState(false)
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
+  // Champ-piège (05-K.5) : masqué et hors de l'arbre d'accessibilité, un humain
+  // ne le remplit jamais. Le serveur refuse la requête s'il est rempli.
+  const [website, setWebsite] = useState('')
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
@@ -72,7 +75,7 @@ function FooterNewsletter() {
       const res = await fetch('/api/subscribe', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, locale }),
+        body: JSON.stringify({ email, locale, website }),
       })
       const data = await res.json()
       if (!res.ok) {
@@ -98,6 +101,17 @@ function FooterNewsletter() {
       ) : (
         <form onSubmit={handleSubmit} noValidate aria-label={tn('formAria')} className="flex flex-col gap-2">
           <label htmlFor="footer-newsletter-email" className="sr-only">{tn('emailLabel')}</label>
+          {/* Champ-piège (05-K.5) : masqué et hors de l'arbre d'accessibilité. */}
+          <input
+            type="text"
+            name="website"
+            value={website}
+            onChange={(e) => setWebsite(e.target.value)}
+            tabIndex={-1}
+            autoComplete="off"
+            aria-hidden="true"
+            style={{ position: 'absolute', left: '-9999px', width: 0, height: 0, opacity: 0 }}
+          />
           <div className="flex gap-2">
             <input
               id="footer-newsletter-email"
