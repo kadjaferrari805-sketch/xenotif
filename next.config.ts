@@ -15,7 +15,17 @@ const securityHeaders = [
       "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://js.stripe.com https://www.googletagmanager.com https://www.google-analytics.com https://connect.facebook.net",
       "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
       "font-src 'self' https://fonts.gstatic.com",
-      "img-src 'self' data: blob: https://images.unsplash.com https://images.pexels.com https://img.youtube.com https://i.ytimg.com https://m.media-amazon.com https://images-eu.ssl-images-amazon.com https://images-na.ssl-images-amazon.com https://ws-eu.amazon-adsystem.com https://www.googletagmanager.com https://www.google-analytics.com https://www.facebook.com",
+      // Supabase Storage : les transformations avant/après sont servies depuis le
+      // bucket public `transformations` via getPublicUrl, donc depuis l'hôte du
+      // projet. Sans ces deux entrées, le navigateur bloque les <img> alors que
+      // Storage répond 200 — la galerie et la modération n'affichent que leur
+      // texte alternatif.
+      //
+      // Les deux hôtes sont énumérés EXPLICITEMENT plutôt qu'un joker
+      // `*.supabase.co` : ce joker autoriserait les images de n'importe quel
+      // projet Supabase, y compris ceux de tiers. Si un troisième projet devait
+      // servir des images un jour, il faudra l'ajouter ici sciemment.
+      "img-src 'self' data: blob: https://pciadjwuxuevkqkdarut.supabase.co https://jmdfgpvxdbnwqjtdamcu.supabase.co https://images.unsplash.com https://images.pexels.com https://img.youtube.com https://i.ytimg.com https://m.media-amazon.com https://images-eu.ssl-images-amazon.com https://images-na.ssl-images-amazon.com https://ws-eu.amazon-adsystem.com https://www.googletagmanager.com https://www.google-analytics.com https://www.facebook.com",
       "frame-src https://www.youtube.com https://js.stripe.com https://hooks.stripe.com",
       "connect-src 'self' https://*.supabase.co https://api.anthropic.com https://api.stripe.com https://firestore.googleapis.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://connect.facebook.net https://www.facebook.com",
       "media-src 'self'",
