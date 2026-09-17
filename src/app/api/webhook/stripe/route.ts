@@ -125,9 +125,12 @@ async function handleEvent(service: SupabaseClient, event: Stripe.Event): Promis
         const buyerEmail = session.customer_details?.email ?? session.customer_email
         const buyerName = session.customer_details?.name ?? ''
 
-        // Marquage du panier récupéré (K8.4). Le jeton désigne LA ligne payée ;
-        // l'adresse, elle, peut correspondre à plusieurs paniers une fois la
-        // bascule de clé primaire effectuée.
+        // Marquage du panier récupéré (K8.4, durci en K8.5). Le jeton désigne LA
+        // ligne payée ; l'adresse, elle, peut désormais correspondre à plusieurs
+        // paniers puisque la clé primaire est passée sur `id`.
+        //
+        // UN ÉVÉNEMENT STRIPE NE MARQUE JAMAIS PLUS D'UNE LIGNE. C'est la règle
+        // qui gouverne les deux branches ci-dessous.
         //
         // LE REPLI SUR L'ADRESSE EST OBLIGATOIRE pendant la transition : les
         // sessions Stripe créées avant ce déploiement ne portent pas de jeton,
@@ -136,17 +139,38 @@ async function handleEvent(service: SupabaseClient, event: Stripe.Event): Promis
         // retirer sans preuve que ces sessions sont épuisées.
         const cartToken = session.metadata?.cart_token
         if (cartToken) {
+          // `cart_token` est UNIQUE : au plus une ligne. Un jeton inconnu ne
+          // déclenche AUCUN repli — replier réintroduirait le marquage croisé
+          // que K8-03 corrige.
           const { error } = await service
             .from('abandoned_carts')
             .update({ recovered: true })
             .eq('cart_token', cartToken)
           if (error) console.error('[webhook] relance panier (jeton) :', error.message)
         } else if (buyerEmail) {
-          const { error } = await service
+          // Repli : on DÉSIGNE d'abord le panier le plus récent de l'adresse,
+          // puis on marque par `id`. Filtrer directement sur l'adresse
+          // éteindrait tous ses paniers pour un seul paiement, dont ceux que le
+          // client n'a pas réglés. Départage identique au cron : `updated_at`
+          // décroissant, puis `id` décroissant.
+          const { data: recent, error: lectureErr } = await service
             .from('abandoned_carts')
-            .update({ recovered: true })
+            .select('id')
             .eq('email', buyerEmail.toLowerCase())
-          if (error) console.error('[webhook] relance panier (repli adresse) :', error.message)
+            .order('updated_at', { ascending: false })
+            .order('id', { ascending: false })
+            .limit(1)
+            .maybeSingle()
+
+          if (lectureErr) {
+            console.error('[webhook] relance panier (lecture repli) :', lectureErr.message)
+          } else if (recent) {
+            const { error } = await service
+              .from('abandoned_carts')
+              .update({ recovered: true })
+              .eq('id', recent.id)
+            if (error) console.error('[webhook] relance panier (repli adresse) :', error.message)
+          }
         }
 
         // Livraison des guides/programmes digitaux achetés

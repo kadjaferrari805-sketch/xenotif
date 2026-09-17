@@ -14,6 +14,8 @@ export type FakeCall = { table: string; op: Op; payload?: unknown; filters: unkn
 interface FakeQuery extends PromiseLike<FakeResponse> {
   eq(...args: unknown[]): FakeQuery
   or(...args: unknown[]): FakeQuery
+  order(...args: unknown[]): FakeQuery
+  limit(...args: unknown[]): FakeQuery
   maybeSingle(): FakeQuery
   single(): FakeQuery
 }
@@ -34,6 +36,8 @@ export function createFakeSupabase(tables: FakeTables = {}, extra: Record<string
       },
       eq(...args: unknown[]) { call.filters.push(['eq', ...args]); return query },
       or(...args: unknown[]) { call.filters.push(['or', ...args]); return query },
+      order(...args: unknown[]) { call.filters.push(['order', ...args]); return query },
+      limit(...args: unknown[]) { call.filters.push(['limit', ...args]); return query },
       maybeSingle() { return query },
       single() { return query },
     }

@@ -5,6 +5,10 @@
 // Phase K8.4 — finding K8-03 : depuis le jeton de panier, une meme adresse peut
 // porter PLUSIEURS lignes. Sans deduplication, la meme personne recevrait
 // plusieurs rappels dans le meme cycle.
+// Phase K8.5 — bascule PK(email) -> PK(id). Trois changements testes ici :
+//   1. le marquage porte sur LA LIGNE relancee (`id`), plus sur l'adresse ;
+//   2. le departage est un ORDRE TOTAL (updated_at desc, id desc) ;
+//   3. le budget de 50 porte sur des DESTINATAIRES DISTINCTS, pas des lignes.
 //
 // Le double Supabase distingue explicitement SELECT et UPDATE : confondre les
 // deux rendrait toute assertion sur la deduplication sans valeur.
@@ -16,6 +20,7 @@ type FakeError = { message: string; code?: string } | null
 interface FakeQuery extends PromiseLike<unknown> {
   eq(...args: unknown[]): FakeQuery
   lt(...args: unknown[]): FakeQuery
+  order(...args: unknown[]): FakeQuery
   limit(...args: unknown[]): FakeQuery
 }
 
@@ -37,6 +42,7 @@ function chain(result: unknown, operation: Operation): FakeQuery {
   const query: FakeQuery = {
     eq: (...args: unknown[]) => { operation.filtres.push(['eq', ...args]); return query },
     lt: (...args: unknown[]) => { operation.filtres.push(['lt', ...args]); return query },
+    order: (...args: unknown[]) => { operation.filtres.push(['order', ...args]); return query },
     limit: (...args: unknown[]) => { operation.filtres.push(['limit', ...args]); return query },
     then: (onFulfilled, onRejected) => Promise.resolve(result).then(onFulfilled, onRejected),
   }
@@ -75,8 +81,10 @@ import { GET } from './route'
 
 const PG_ERROR = { code: '42P01', message: 'relation "public.abandoned_carts" does not exist' }
 
-const panier = (email: string, updatedAt: string, token: string) => ({
-  cart_token: token,
+/** Panier eligible. `id` est desormais la cle : il pilote le marquage. */
+const panier = (id: string, email: string, updatedAt: string) => ({
+  id,
+  cart_token: `tok-${id}`,
   email,
   items: [{ product_id: 'd1', quantity: 1 }],
   locale: 'fr',
@@ -98,6 +106,9 @@ const adressesRelancees = () => mockSendEmail.mock.calls.map(c => (c[0] as { ema
 
 /** Filtres des UPDATE — prouve sur quelles lignes `reminder_sent` est posé. */
 const updates = () => operations.filter(o => o.op === 'update')
+
+/** Les `id` effectivement marqués. */
+const idsMarques = () => updates().map(u => u.filtres[0][2])
 
 beforeEach(() => {
   jest.clearAllMocks()
@@ -130,12 +141,12 @@ describe('cron/abandoned-cart — garde CRON_SECRET inchangée', () => {
   })
 })
 
-describe('cron/abandoned-cart — déduplication par adresse (K8-03)', () => {
-  test('deux paniers pour la même adresse : UN SEUL rappel, sur le plus récent', async () => {
+describe('cron/abandoned-cart — un seul rappel par adresse et par cycle', () => {
+  test('DEUX paniers pour la même adresse : un seul rappel, sur le plus récent', async () => {
     mockState.cartsResult = {
       data: [
-        panier('client@exemple.fr', '2026-09-10T08:00:00.000Z', 'tok-ancien'),
-        panier('client@exemple.fr', '2026-09-17T08:00:00.000Z', 'tok-recent'),
+        panier('id-ancien', 'client@exemple.fr', '2026-09-10T08:00:00.000Z'),
+        panier('id-recent', 'client@exemple.fr', '2026-09-17T08:00:00.000Z'),
       ],
       error: null,
     }
@@ -145,15 +156,48 @@ describe('cron/abandoned-cart — déduplication par adresse (K8-03)', () => {
     expect(res.status).toBe(200)
     expect(mockSendEmail).toHaveBeenCalledTimes(1)
     expect(adressesRelancees()).toEqual(['client@exemple.fr'])
-    // Le panier retenu est le plus récent : son total provient de ses items.
     expect(await res.json()).toMatchObject({ sent: 1, processed: 1, read: 2 })
   })
 
-  test('l’ordre de lecture n’influence pas le choix : le plus récent gagne', async () => {
+  test('TROIS paniers pour la même adresse : un seul rappel, sur le plus récent', async () => {
     mockState.cartsResult = {
       data: [
-        panier('client@exemple.fr', '2026-09-17T08:00:00.000Z', 'tok-recent'),
-        panier('client@exemple.fr', '2026-09-10T08:00:00.000Z', 'tok-ancien'),
+        panier('id-1', 'client@exemple.fr', '2026-09-10T08:00:00.000Z'),
+        panier('id-3', 'client@exemple.fr', '2026-09-16T08:00:00.000Z'),
+        panier('id-2', 'client@exemple.fr', '2026-09-12T08:00:00.000Z'),
+      ],
+      error: null,
+    }
+
+    const res = await GET(request(AUTH))
+
+    expect(mockSendEmail).toHaveBeenCalledTimes(1)
+    expect(idsMarques()).toEqual(['id-3'])
+    expect(await res.json()).toMatchObject({ sent: 1, processed: 1, read: 3 })
+  })
+
+  test('l’ordre de lecture n’influence pas le choix : le plus récent gagne', async () => {
+    const lignes = [
+      panier('id-recent', 'client@exemple.fr', '2026-09-17T08:00:00.000Z'),
+      panier('id-ancien', 'client@exemple.fr', '2026-09-10T08:00:00.000Z'),
+    ]
+    for (const ordre of [lignes, [...lignes].reverse()]) {
+      jest.clearAllMocks()
+      operations.length = 0
+      mockState.cartsResult = { data: ordre, error: null }
+
+      await GET(request(AUTH))
+
+      expect(mockSendEmail).toHaveBeenCalledTimes(1)
+      expect(idsMarques()).toEqual(['id-recent'])
+    }
+  })
+
+  test('la casse de l’adresse ne crée pas de doublon', async () => {
+    mockState.cartsResult = {
+      data: [
+        panier('id-1', 'Client@Exemple.FR', '2026-09-10T08:00:00.000Z'),
+        panier('id-2', 'client@exemple.fr', '2026-09-17T08:00:00.000Z'),
       ],
       error: null,
     }
@@ -162,13 +206,13 @@ describe('cron/abandoned-cart — déduplication par adresse (K8-03)', () => {
     expect(mockSendEmail).toHaveBeenCalledTimes(1)
   })
 
-  test('les autres adresses éligibles sont bien traitées', async () => {
+  test('plusieurs adresses distinctes : chacune reçoit son rappel', async () => {
     mockState.cartsResult = {
       data: [
-        panier('a@exemple.fr', '2026-09-10T08:00:00.000Z', 'tok-a1'),
-        panier('a@exemple.fr', '2026-09-17T08:00:00.000Z', 'tok-a2'),
-        panier('b@exemple.fr', '2026-09-12T08:00:00.000Z', 'tok-b'),
-        panier('c@exemple.fr', '2026-09-13T08:00:00.000Z', 'tok-c'),
+        panier('id-a1', 'a@exemple.fr', '2026-09-10T08:00:00.000Z'),
+        panier('id-a2', 'a@exemple.fr', '2026-09-17T08:00:00.000Z'),
+        panier('id-b', 'b@exemple.fr', '2026-09-12T08:00:00.000Z'),
+        panier('id-c', 'c@exemple.fr', '2026-09-13T08:00:00.000Z'),
       ],
       error: null,
     }
@@ -177,59 +221,145 @@ describe('cron/abandoned-cart — déduplication par adresse (K8-03)', () => {
 
     expect(mockSendEmail).toHaveBeenCalledTimes(3)
     expect(adressesRelancees().sort()).toEqual(['a@exemple.fr', 'b@exemple.fr', 'c@exemple.fr'])
+    expect(idsMarques().sort()).toEqual(['id-a2', 'id-b', 'id-c'])
     expect(await res.json()).toMatchObject({ sent: 3, processed: 3, read: 4 })
   })
+})
 
-  test('la casse de l’adresse ne crée pas de doublon', async () => {
-    mockState.cartsResult = {
-      data: [
-        panier('Client@Exemple.FR', '2026-09-10T08:00:00.000Z', 'tok-1'),
-        panier('client@exemple.fr', '2026-09-17T08:00:00.000Z', 'tok-2'),
-      ],
-      error: null,
+describe('cron/abandoned-cart — départage déterministe (K8.5)', () => {
+  test('horodatages IDENTIQUES : le plus grand `id` gagne, quel que soit l’ordre de lecture', async () => {
+    const MEME_INSTANT = '2026-09-15T08:00:00.000Z'
+    const lignes = [
+      panier('id-aaa', 'client@exemple.fr', MEME_INSTANT),
+      panier('id-zzz', 'client@exemple.fr', MEME_INSTANT),
+    ]
+
+    for (const ordre of [lignes, [...lignes].reverse()]) {
+      jest.clearAllMocks()
+      operations.length = 0
+      mockState.cartsResult = { data: ordre, error: null }
+
+      await GET(request(AUTH))
+
+      expect(mockSendEmail).toHaveBeenCalledTimes(1)
+      // Sans départage, ce choix dépendrait de l'ordre rendu par Postgres.
+      expect(idsMarques()).toEqual(['id-zzz'])
     }
-
-    await GET(request(AUTH))
-    expect(mockSendEmail).toHaveBeenCalledTimes(1)
   })
 
-  test('les UPDATE portent uniquement sur les adresses réellement relancées', async () => {
+  test('la requête exprime un ordre total et une borne de lecture', async () => {
+    mockState.cartsResult = { data: [panier('id-a', 'a@exemple.fr', '2026-09-12T08:00:00.000Z')], error: null }
+
+    await GET(request(AUTH))
+
+    const filtres = operations.filter(o => o.op === 'select')[0].filtres
+    expect(filtres).toContainEqual(['order', 'updated_at', { ascending: false }])
+    expect(filtres).toContainEqual(['order', 'id', { ascending: false }])
+    expect(filtres.some(f => f[0] === 'limit')).toBe(true)
+  })
+})
+
+describe('cron/abandoned-cart — budget de 50 DESTINATAIRES, pas 50 lignes (K8.5)', () => {
+  test('90 lignes concentrées sur 3 adresses : 3 rappels, pas 50', async () => {
+    const data = []
+    for (const email of ['a@exemple.fr', 'b@exemple.fr', 'c@exemple.fr']) {
+      for (let i = 0; i < 30; i++) {
+        data.push(panier(`id-${email}-${String(i).padStart(2, '0')}`, email, `2026-09-${String(i + 1).padStart(2, '0')}T08:00:00.000Z`))
+      }
+    }
+    mockState.cartsResult = { data, error: null }
+
+    const res = await GET(request(AUTH))
+
+    expect(mockSendEmail).toHaveBeenCalledTimes(3)
+    expect(await res.json()).toMatchObject({ sent: 3, processed: 3, read: 90 })
+    // Une seule ligne marquée par adresse : la plus récente (i = 29).
+    expect(idsMarques().sort()).toEqual([
+      'id-a@exemple.fr-29', 'id-b@exemple.fr-29', 'id-c@exemple.fr-29',
+    ])
+  })
+
+  test('60 adresses distinctes : exactement 50 destinataires servis', async () => {
+    const data = Array.from({ length: 60 }, (_, i) =>
+      panier(`id-${String(i).padStart(2, '0')}`, `client${String(i).padStart(2, '0')}@exemple.fr`, '2026-09-12T08:00:00.000Z'))
+    mockState.cartsResult = { data, error: null }
+
+    const res = await GET(request(AUTH))
+
+    expect(mockSendEmail).toHaveBeenCalledTimes(50)
+    expect(new Set(adressesRelancees()).size).toBe(50)
+    expect(await res.json()).toMatchObject({ sent: 50, processed: 50, read: 60 })
+  })
+
+  test('une adresse bavarde ne prive pas les autres du budget', async () => {
+    const data = [
+      ...Array.from({ length: 55 }, (_, i) =>
+        panier(`id-bav-${String(i).padStart(2, '0')}`, 'bavarde@exemple.fr', `2026-09-${String((i % 28) + 1).padStart(2, '0')}T08:00:00.000Z`)),
+      panier('id-autre-1', 'autre1@exemple.fr', '2026-09-11T08:00:00.000Z'),
+      panier('id-autre-2', 'autre2@exemple.fr', '2026-09-11T08:00:00.000Z'),
+    ]
+    mockState.cartsResult = { data, error: null }
+
+    await GET(request(AUTH))
+
+    // 3 destinataires : la bavarde compte pour UN, les deux autres sont servis.
+    expect(adressesRelancees().sort()).toEqual(['autre1@exemple.fr', 'autre2@exemple.fr', 'bavarde@exemple.fr'])
+  })
+})
+
+describe('cron/abandoned-cart — marquage de la SEULE ligne relancée (K8.5)', () => {
+  test('les UPDATE filtrent sur `id`, jamais sur `email`', async () => {
     mockState.cartsResult = {
       data: [
-        panier('a@exemple.fr', '2026-09-10T08:00:00.000Z', 'tok-a1'),
-        panier('a@exemple.fr', '2026-09-17T08:00:00.000Z', 'tok-a2'),
-        panier('b@exemple.fr', '2026-09-12T08:00:00.000Z', 'tok-b'),
+        panier('id-a1', 'a@exemple.fr', '2026-09-10T08:00:00.000Z'),
+        panier('id-a2', 'a@exemple.fr', '2026-09-17T08:00:00.000Z'),
+        panier('id-b', 'b@exemple.fr', '2026-09-12T08:00:00.000Z'),
       ],
       error: null,
     }
 
     await GET(request(AUTH))
 
-    // Deux UPDATE seulement — un par adresse, pas un par ligne lue.
     expect(updates()).toHaveLength(2)
     for (const u of updates()) {
       expect(u.payload).toMatchObject({ reminder_sent: true })
       expect(u.payload).toHaveProperty('reminded_at')
-      // Le filtre porte sur l'adresse : toutes les lignes de cette adresse
-      // sortent de l'éligibilité, y compris celles non retenues.
       expect(u.filtres[0][0]).toBe('eq')
-      expect(u.filtres[0][1]).toBe('email')
+      expect(u.filtres[0][1]).toBe('id')
     }
-    expect(updates().map(u => u.filtres[0][2]).sort()).toEqual(['a@exemple.fr', 'b@exemple.fr'])
+    expect(JSON.stringify(updates().map(u => u.filtres))).not.toContain('email')
   })
 
-  test('le double ne confond jamais SELECT et UPDATE', async () => {
-    mockState.cartsResult = { data: [panier('a@exemple.fr', '2026-09-12T08:00:00.000Z', 'tok-a')], error: null }
+  test('un panier NON retenu n’est pas marqué : il reste éligible pour un cycle futur', async () => {
+    mockState.cartsResult = {
+      data: [
+        panier('id-ecarte', 'client@exemple.fr', '2026-09-10T08:00:00.000Z'),
+        panier('id-retenu', 'client@exemple.fr', '2026-09-17T08:00:00.000Z'),
+      ],
+      error: null,
+    }
 
     await GET(request(AUTH))
 
-    const selects = operations.filter(o => o.op === 'select')
-    expect(selects).toHaveLength(1)
-    expect(selects[0].payload).toBeUndefined()
-    // Le SELECT porte les filtres d'éligibilité, jamais un payload.
-    expect(selects[0].filtres.some(f => f[0] === 'lt' && f[1] === 'updated_at')).toBe(true)
+    expect(idsMarques()).toEqual(['id-retenu'])
+    // C'est tout l'objet du changement K8.5 : `id-ecarte` n'a jamais fait
+    // l'objet d'un envoi, il ne doit donc pas porter un `reminded_at` mensonger.
+    expect(idsMarques()).not.toContain('id-ecarte')
+  })
+
+  test('deux paniers du même email ne produisent JAMAIS deux rappels dans le même cycle', async () => {
+    mockState.cartsResult = {
+      data: [
+        panier('id-1', 'client@exemple.fr', '2026-09-10T08:00:00.000Z'),
+        panier('id-2', 'client@exemple.fr', '2026-09-17T08:00:00.000Z'),
+      ],
+      error: null,
+    }
+
+    await GET(request(AUTH))
+
+    expect(mockSendEmail).toHaveBeenCalledTimes(1)
     expect(updates()).toHaveLength(1)
-    expect(updates()[0].payload).toBeDefined()
   })
 })
 
@@ -246,7 +376,7 @@ describe('cron/abandoned-cart — éligibilité', () => {
 
   test('un panier dont les produits n’existent plus n’est pas relancé', async () => {
     mockState.cartsResult = {
-      data: [{ ...panier('a@exemple.fr', '2026-09-12T08:00:00.000Z', 'tok-a'), items: [{ product_id: 'inconnu', quantity: 1 }] }],
+      data: [{ ...panier('id-a', 'a@exemple.fr', '2026-09-12T08:00:00.000Z'), items: [{ product_id: 'inconnu', quantity: 1 }] }],
       error: null,
     }
 
@@ -257,14 +387,26 @@ describe('cron/abandoned-cart — éligibilité', () => {
   })
 
   test('la sélection filtre reminder_sent, recovered et l’ancienneté', async () => {
-    mockState.cartsResult = { data: [panier('a@exemple.fr', '2026-09-12T08:00:00.000Z', 'tok-a')], error: null }
+    mockState.cartsResult = { data: [panier('id-a', 'a@exemple.fr', '2026-09-12T08:00:00.000Z')], error: null }
 
     await GET(request(AUTH))
 
     const filtres = operations.filter(o => o.op === 'select')[0].filtres
     expect(filtres).toContainEqual(['eq', 'reminder_sent', false])
     expect(filtres).toContainEqual(['eq', 'recovered', false])
-    expect(filtres.some(f => f[0] === 'limit' && f[1] === 50)).toBe(true)
+    expect(filtres.some(f => f[0] === 'lt' && f[1] === 'updated_at')).toBe(true)
+  })
+
+  test('le double ne confond jamais SELECT et UPDATE', async () => {
+    mockState.cartsResult = { data: [panier('id-a', 'a@exemple.fr', '2026-09-12T08:00:00.000Z')], error: null }
+
+    await GET(request(AUTH))
+
+    const selects = operations.filter(o => o.op === 'select')
+    expect(selects).toHaveLength(1)
+    expect(selects[0].payload).toBeUndefined()
+    expect(updates()).toHaveLength(1)
+    expect(updates()[0].payload).toBeDefined()
   })
 })
 

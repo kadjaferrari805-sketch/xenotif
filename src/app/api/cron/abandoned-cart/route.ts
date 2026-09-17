@@ -12,6 +12,26 @@ export const dynamic = 'force-dynamic'
 const PRODUCT_BY_ID = new Map(PRODUCTS.map(p => [p.id, p]))
 const BASE_URL = getPublicBaseUrl()
 
+/**
+ * BUDGET D'ENVOI (K8.5). Il porte sur des DESTINATAIRES DISTINCTS, pas sur des
+ * lignes lues.
+ *
+ * Avant la bascule de clé primaire, une adresse ne pouvait porter qu'un panier :
+ * `limit(50)` valait donc « 50 destinataires ». Depuis K8.5, `email` n'est plus
+ * unique — 50 lignes peuvent appartenir à une seule personne, et le budget
+ * d'envoi serait entièrement consommé par elle pendant que d'autres adresses
+ * attendent indéfiniment. On lit donc large, puis on compte les destinataires.
+ *
+ * LIMITE CONNUE, ASSUMÉE : si le nombre de lignes éligibles dépasse
+ * `LECTURE_MAX`, la fenêtre de lecture ne couvre pas toute la table. L'ordre
+ * étant `updated_at` décroissant, ce sont les paniers les plus récents qui sont
+ * servis — un choix défendable, mais ce n'est pas une équité stricte. Sur les
+ * volumes réels (aucun panier enregistré sur 30 jours au calibrage K.5), la
+ * fenêtre est très au-dessus de l'usage.
+ */
+const MAX_DESTINATAIRES = 50
+const LECTURE_MAX = 500
+
 // Texte court du push de relance panier, par langue.
 const CART_PUSH: Record<string, { title: string; body: string }> = {
   fr: { title: '🛒 Ton panier t\'attend', body: 'Termine ta commande Xenotif® avant que ton panier n\'expire !' },
@@ -27,7 +47,10 @@ export async function GET(request: Request) {
 
   const supabase = createAdminClient()
 
-  // Paniers abandonnés depuis +1h, pas encore relancés, non récupérés
+  // Paniers abandonnés depuis +1h, pas encore relancés, non récupérés.
+  // L'ORDER BY est EXPLICITE : sans lui, `limit` ramenait un sous-ensemble
+  // arbitraire, et deux exécutions sur les mêmes données pouvaient retenir des
+  // paniers différents.
   const oneHourAgo = new Date(Date.now() - 60 * 60 * 1000).toISOString()
   const { data: carts, error } = await supabase
     .from('abandoned_carts')
@@ -35,7 +58,9 @@ export async function GET(request: Request) {
     .eq('reminder_sent', false)
     .eq('recovered', false)
     .lt('updated_at', oneHourAgo)
-    .limit(50)
+    .order('updated_at', { ascending: false })
+    .order('id', { ascending: false })
+    .limit(LECTURE_MAX)
 
   if (error) {
     console.error('[abandoned-cart] query error:', error)
@@ -46,9 +71,41 @@ export async function GET(request: Request) {
     return NextResponse.json({ sent: 0 })
   }
 
+  // ORDRE TOTAL, réappliqué côté serveur (K8.5). Postgres trie déjà — mais la
+  // règle de départage est une garantie métier, pas un détail de requête : la
+  // réappliquer ici la rend vérifiable sans dépendre de l'ordre rendu par la
+  // base. `updated_at` décroissant, puis `id` décroissant quand deux paniers
+  // portent EXACTEMENT le même horodatage.
+  const ordonnes = [...carts].sort((a, b) => {
+    const ta = new Date(a.updated_at as string).getTime()
+    const tb = new Date(b.updated_at as string).getTime()
+    if (ta !== tb) return tb - ta
+    const ia = String(a.id ?? ''), ib = String(b.id ?? '')
+    return ia < ib ? 1 : ia > ib ? -1 : 0
+  })
+
+  // DÉDUPLICATION PAR ADRESSE (K8.4, durcie en K8.5). Une même adresse peut
+  // porter plusieurs paniers : deux appareils, ou un localStorage vidé. La liste
+  // étant triée, la PREMIÈRE ligne rencontrée pour une adresse est forcément la
+  // plus récente — un seul rappel part donc par adresse et par cycle.
+  //
+  // CE QUI A CHANGÉ EN K8.5 : les lignes écartées ne sont plus marquées. Elles
+  // restent éligibles pour un cycle ultérieur, où elles deviendront à leur tour
+  // la plus récente de leur adresse. Conséquence assumée et voulue : une
+  // personne ayant laissé trois paniers recevra trois rappels, un par cycle —
+  // jamais deux dans le même. L'alternative (marquer toute l'adresse) éteignait
+  // silencieusement des paniers jamais relancés.
+  const parEmail = new Map<string, typeof carts[number]>()
+  for (const cart of ordonnes) {
+    const cle = (cart.email as string).toLowerCase()
+    if (!parEmail.has(cle)) parEmail.set(cle, cart)
+    if (parEmail.size >= MAX_DESTINATAIRES) break
+  }
+  const aRelancer = [...parEmail.values()]
+
   // Résolution email → user_id (pour le push : la table abandoned_carts ne stocke
-  // que l'email). On ne mappe que les emails des paniers à relancer.
-  const wantedEmails = new Set(carts.map(c => (c.email as string).toLowerCase()))
+  // que l'email). On ne mappe que les adresses réellement relancées.
+  const wantedEmails = new Set(aRelancer.map(c => (c.email as string).toLowerCase()))
   const userIdByEmail = new Map<string, string>()
   for (let page = 1; page <= 25; page++) {
     const { data: list, error: listErr } = await supabase.auth.admin.listUsers({ page, perPage: 200 })
@@ -61,26 +118,6 @@ export async function GET(request: Request) {
     }
     if (list.users.length < 200) break
   }
-
-  // Déduplication par adresse (K8.4). Depuis l'introduction du jeton de panier,
-  // une même adresse peut porter PLUSIEURS lignes : deux appareils, ou un
-  // localStorage vidé. Sans ce regroupement, la même personne recevrait
-  // plusieurs rappels dans le même cycle.
-  //
-  // Ligne retenue : la plus récente par `updated_at` — c'est le panier que le
-  // visiteur a réellement laissé en dernier. Les lignes écartées ne sont ni
-  // supprimées ni ignorées pour autant : la mise à jour de `reminder_sent`
-  // porte sur l'adresse entière (`.eq('email', …)`), si bien qu'elles ne
-  // ressortiront pas au cycle suivant.
-  const parEmail = new Map<string, typeof carts[number]>()
-  for (const cart of carts) {
-    const cle = (cart.email as string).toLowerCase()
-    const retenu = parEmail.get(cle)
-    if (!retenu || new Date(cart.updated_at as string) > new Date(retenu.updated_at as string)) {
-      parEmail.set(cle, cart)
-    }
-  }
-  const aRelancer = [...parEmail.values()]
 
   let sent = 0
   let pushed = 0
@@ -110,10 +147,13 @@ export async function GET(request: Request) {
         recoverUrl: `${BASE_URL}/boutique/panier`,
         locale: cart.locale ?? 'fr',
       })
+      // Marquage de LA SEULE LIGNE relancée (K8.5). Filtrer sur l'adresse
+      // marquerait aussi des paniers qui n'ont jamais fait l'objet d'un envoi,
+      // en leur posant un `reminded_at` mensonger.
       await supabase
         .from('abandoned_carts')
         .update({ reminder_sent: true, reminded_at: new Date().toISOString() })
-        .eq('email', cart.email)
+        .eq('id', cart.id)
       sent++
     } catch (err) {
       console.error(`[abandoned-cart] send error for ${cart.email}:`, err)
@@ -143,7 +183,7 @@ export async function GET(request: Request) {
     }
   }
 
-  // `processed` compte les paniers REELLEMENT traites, apres deduplication —
-  // pas les lignes lues. `read` conserve la visibilite sur l'ecart.
+  // `processed` compte les DESTINATAIRES retenus apres deduplication — pas les
+  // lignes lues. `read` conserve la visibilite sur l'ecart.
   return NextResponse.json({ sent, pushed, processed: aRelancer.length, read: carts.length })
 }
