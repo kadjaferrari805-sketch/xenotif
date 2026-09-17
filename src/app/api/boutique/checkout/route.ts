@@ -129,8 +129,17 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ url: session.url })
 
   } catch (err) {
-    console.error('Boutique checkout error:', err)
-    const msg = err instanceof Error ? err.message : 'Erreur inconnue'
-    return NextResponse.json({ error: `Erreur paiement : ${msg}` }, { status: 500 })
+    // K8.8 — finding F6 de l'audit K8.7. Le message de l'exception Stripe
+    // partait TEL QUEL au client : il peut nommer des identifiants de prix, la
+    // configuration du compte, une contrainte, parfois un request ID. Même
+    // acquis que K8-02 sur /api/reviews — le détail reste côté serveur.
+    //
+    // POURQUOI PAS `server_error` ICI. C'est la convention des routes dont le
+    // corps n'est jamais affiché. Celui-ci l'est : panier/page.tsx fait
+    // `setError(data.error ?? …)`, et le visiteur lirait « server_error ». On
+    // reprend donc la seconde convention maison — un message générique en
+    // français, comme « Erreur sauvegarde » de save-cart.
+    console.error('[boutique/checkout] session Stripe refusée :', err)
+    return NextResponse.json({ error: 'Erreur de paiement. Veuillez réessayer.' }, { status: 500 })
   }
 }
