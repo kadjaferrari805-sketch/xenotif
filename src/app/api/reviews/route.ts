@@ -26,7 +26,12 @@ export async function GET(req: NextRequest) {
     .limit(50)
   if (type === 'product') q = q.eq('product_id', productId)
   const { data, error } = await q
-  if (error) return NextResponse.json({ error: error.message }, { status: 500 })
+  if (error) {
+    // Route PUBLIQUE : le message Postgres révélerait noms de tables, de colonnes
+    // et de contraintes. Il reste dans les logs serveur, jamais dans la réponse.
+    console.error('[GET /api/reviews] lecture impossible:', error.code, error.message)
+    return NextResponse.json({ error: 'server_error' }, { status: 500 })
+  }
   return NextResponse.json({ reviews: data ?? [] })
 }
 
