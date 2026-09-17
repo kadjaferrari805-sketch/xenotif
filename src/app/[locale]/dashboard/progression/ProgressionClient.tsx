@@ -9,6 +9,7 @@ import { computeGamification } from '@/lib/gamification'
 import { XpLevelBar } from '@/components/gamification/XpLevelBar'
 import { ChallengesCard } from '@/components/gamification/ChallengesCard'
 import { BadgesGrid } from '@/components/gamification/BadgesGrid'
+import { TransformationsGallery } from '@/components/transformations/TransformationsGallery'
 import { TransformationForm } from '@/components/transformations/TransformationForm'
 import { Input, Select, Textarea, Label } from '@/components/ui/Input'
 import { Loader } from '@/components/ui/Loader'
@@ -221,6 +222,18 @@ export function ProgressionClient({ userId, initialWorkouts, initialProgress }: 
           </div>
         )}
       </div>
+
+      {/*
+        Galerie des transformations approuvées, PLACÉE AVANT le formulaire : on
+        voit ce que la communauté a partagé avant d'être invité à contribuer.
+
+        Le composant est autonome — il interroge lui-même /api/transformations
+        et gère ses quatre états (chargement, éléments, vide, erreur, cf. K7 H.1).
+        Il s'efface entièrement quand il n'y a rien à montrer, si bien que cette
+        page reste strictement identique à ce qu'elle était tant qu'aucune
+        transformation n'est approuvée.
+      */}
+      <TransformationsGallery />
 
       <div className="mt-8">
         <TransformationForm />
