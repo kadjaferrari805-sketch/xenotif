@@ -19,8 +19,18 @@ const KEY = 'xenotif_cart'
 // adresse arbitraire — cela demanderait une verification de possession.
 //
 // STABILITE. Cle de stockage SEPAREE de celle du panier : le jeton survit donc
-// a un panier vide, et ne tourne pas. Il n'est jamais journalise.
+// a un panier vide. Il ne tourne QU'EN UN SEUL CAS, ajoute en K8.6.1 : lorsque
+// la valeur relue du stockage n'est pas un UUID v4 valide (cf. ci-dessous).
+// Il n'est jamais journalise, et n'apparait dans aucune URL.
 const TOKEN_KEY = 'xenotif_cart_token'
+
+/**
+ * UUID v4, dans l'ecriture EXACTE de la garde serveur de
+ * /api/boutique/save-cart (route.ts:18). Les deux expressions doivent rester
+ * identiques au caractere pres : si le client acceptait un jeton que le serveur
+ * refuse, le panier ne serait jamais enregistre — et silencieusement.
+ */
+const UUID_V4 = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i
 
 let cartToken = ''
 
@@ -33,13 +43,26 @@ function newToken(): string {
  * Jeton du panier courant. Le cree au premier appel cote navigateur et le
  * reutilise ensuite — un rendu supplementaire n'en genere jamais un nouveau.
  * Renvoie '' cote serveur : le jeton n'existe que dans le navigateur.
+ *
+ * VALIDATION DE LA VALEUR STOCKEE (K8.6.1, finding C1). `localStorage` est
+ * ecrivable par l'utilisateur, par une extension, ou corruptible par une
+ * collision de cle. Avant ce correctif, la valeur relue etait renvoyee TELLE
+ * QUELLE : un jeton altere partait vers /api/boutique/save-cart, qui le
+ * rejetait en 400. Et comme le jeton ne tournait jamais, le panier de ce
+ * visiteur n'etait PLUS JAMAIS enregistre — sans le moindre signal, ni pour
+ * lui, ni pour l'exploitation.
+ *
+ * Trois cas, un seul comportement conserve :
+ *   - valeur valide   -> conservee EXACTEMENT, le panier reste rattache ;
+ *   - cle absente     -> nouveau jeton, persiste ;
+ *   - valeur invalide -> nouveau jeton, persiste (la valeur cassee est remplacee).
  */
 export function getCartToken(): string {
   if (typeof window === 'undefined') return ''
   if (cartToken) return cartToken
   try {
     const stocke = localStorage.getItem(TOKEN_KEY)
-    if (stocke) {
+    if (stocke && UUID_V4.test(stocke)) {
       cartToken = stocke
     } else {
       cartToken = newToken()
