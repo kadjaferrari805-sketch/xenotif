@@ -39,7 +39,7 @@ export async function GET(request: Request) {
 
   if (error) {
     console.error('[abandoned-cart] query error:', error)
-    return NextResponse.json({ error: error.message }, { status: 500 })
+    return NextResponse.json({ error: 'server_error' }, { status: 500 })
   }
 
   if (!carts || carts.length === 0) {

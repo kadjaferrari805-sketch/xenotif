@@ -17,7 +17,10 @@ export async function GET() {
   const service = await requireAdmin()
   if (!service) return NextResponse.json({ error: 'forbidden' }, { status: 403 })
   const { data, error } = await service.from('reviews').select('*').order('created_at', { ascending: false }).limit(200)
-  if (error) return NextResponse.json({ error: error.message }, { status: 500 })
+  if (error) {
+    console.error('[GET /api/admin/reviews] lecture impossible:', error.code, error.message)
+    return NextResponse.json({ error: 'server_error' }, { status: 500 })
+  }
   return NextResponse.json({ reviews: data ?? [] })
 }
 
@@ -27,7 +30,10 @@ export async function PATCH(req: NextRequest) {
   const { id, hidden } = await req.json().catch(() => ({})) as { id?: string; hidden?: boolean }
   if (!id || typeof hidden !== 'boolean') return NextResponse.json({ error: 'bad_request' }, { status: 400 })
   const { error } = await service.from('reviews').update({ hidden }).eq('id', id)
-  if (error) return NextResponse.json({ error: error.message }, { status: 500 })
+  if (error) {
+    console.error('[PATCH /api/admin/reviews] mise a jour impossible:', error.code, error.message)
+    return NextResponse.json({ error: 'server_error' }, { status: 500 })
+  }
   return NextResponse.json({ ok: true })
 }
 
@@ -37,6 +43,9 @@ export async function DELETE(req: NextRequest) {
   const id = req.nextUrl.searchParams.get('id')
   if (!id) return NextResponse.json({ error: 'bad_request' }, { status: 400 })
   const { error } = await service.from('reviews').delete().eq('id', id)
-  if (error) return NextResponse.json({ error: error.message }, { status: 500 })
+  if (error) {
+    console.error('[DELETE /api/admin/reviews] suppression impossible:', error.code, error.message)
+    return NextResponse.json({ error: 'server_error' }, { status: 500 })
+  }
   return NextResponse.json({ ok: true })
 }
