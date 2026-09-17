@@ -25,11 +25,24 @@ export default function PanierPage() {
   const affiliateItems = items.filter(i => i.product.isAffiliate)
   const ownTotal = ownItems.reduce((s, i) => s + i.product.price_cents * i.quantity, 0)
 
-  // Sauvegarde le panier pour la relance si email valide saisi
+  // Sauvegarde le panier pour la relance si email valide saisi.
+  //
+  // OBSERVABILITÉ (K8.6.1, finding C2). `fetch` ne rejette PAS sur un statut
+  // d'erreur : sans lecture de `res.ok`, un 400 (jeton invalide), un 409 (jeton
+  // rattaché à une autre adresse) ou un 429 (limite K.5 atteinte) passaient
+  // totalement inaperçus — ni pour le visiteur, ni pour l'exploitation.
+  //
+  // CE QUI N'EST JAMAIS JOURNALISÉ, ET NE DOIT PAS L'ÊTRE : le jeton (c'est une
+  // capability), l'adresse, le contenu du panier. Seul le code HTTP est tracé,
+  // et il ne révèle rien du visiteur ni de la base.
+  //
+  // UN ÉCHEC NE BLOQUE JAMAIS LE PAIEMENT : `checkout()` appelle cette fonction
+  // sans `await`, et elle ne propage aucune exception. C'est un mécanisme de
+  // RÉCUPÉRATION de panier, pas une étape de la commande.
   async function saveCartForRecovery() {
     if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || !ownItems.length) return
     try {
-      await fetch('/api/boutique/save-cart', {
+      const res = await fetch('/api/boutique/save-cart', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -39,7 +52,13 @@ export default function PanierPage() {
           locale,
         }),
       })
-    } catch { /* silencieux - ne bloque jamais l'achat */ }
+      if (!res.ok) {
+        console.warn(`[save-cart] panier non enregistré (HTTP ${res.status})`)
+      }
+    } catch {
+      // Réseau injoignable. Rien à signaler au visiteur : l'achat continue.
+      console.warn('[save-cart] panier non enregistré (réseau indisponible)')
+    }
   }
 
   async function checkout() {
