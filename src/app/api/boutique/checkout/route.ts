@@ -12,8 +12,22 @@ export async function POST(req: NextRequest) {
   }
 
   try {
-    const { items, locale: rawLocale } = await req.json() as { items: { product_id: string; quantity: number }[]; locale?: string }
+    const { items, locale: rawLocale, cart_token: rawToken } = await req.json() as {
+      items: { product_id: string; quantity: number }[]
+      locale?: string
+      cart_token?: unknown
+    }
     const locale = rawLocale === 'en' ? 'en' : 'fr'
+
+    // Jeton de panier (K8.4) : transmis à Stripe pour que le webhook marque
+    // `recovered` sur LA ligne payée, et non sur toutes celles qui partagent
+    // l'adresse. Facultatif ici : pendant la transition, un client déployé
+    // avant cette version n'en envoie pas, et le paiement doit aboutir quand
+    // même — le webhook conserve un repli sur l'adresse.
+    const cartToken = typeof rawToken === 'string'
+      && /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(rawToken)
+      ? rawToken
+      : ''
 
     if (!items?.length) {
       return NextResponse.json({ error: 'Panier vide' }, { status: 400 })
@@ -71,7 +85,13 @@ export async function POST(req: NextRequest) {
       cancel_url: `${req.nextUrl.origin}/boutique/panier`,
       locale,
       billing_address_collection: 'auto',
-      metadata: { digital_ids: digitalIds.join(','), locale },
+      metadata: {
+        digital_ids: digitalIds.join(','),
+        locale,
+        // Clé omise quand le jeton est absent : Stripe n'accepte que des
+        // chaînes, et une valeur vide serait indiscernable d'un jeton perdu.
+        ...(cartToken ? { cart_token: cartToken } : {}),
+      },
     }
 
     // Ajouter la collecte d'adresse seulement pour les produits physiques

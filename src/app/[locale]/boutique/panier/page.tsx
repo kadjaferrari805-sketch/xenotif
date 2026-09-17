@@ -15,7 +15,7 @@ import { Loader } from '@/components/ui/Loader'
 export default function PanierPage() {
   const t = useTranslations('boutique.panier')
   const locale = useLocale()
-  const { items, count, removeItem, updateQty } = useCart()
+  const { items, count, removeItem, updateQty, token } = useCart()
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
   const [email, setEmail] = useState('')
@@ -33,6 +33,7 @@ export default function PanierPage() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
+          cart_token: token,
           email,
           items: ownItems.map(i => ({ product_id: i.product.id, quantity: i.quantity })),
           locale,
@@ -53,6 +54,7 @@ export default function PanierPage() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
+          cart_token: token,
           items: ownItems.map(i => ({ product_id: i.product.id, quantity: i.quantity })),
           locale,
         }),
