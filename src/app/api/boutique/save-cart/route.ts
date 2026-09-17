@@ -151,13 +151,17 @@ export async function POST(req: NextRequest) {
     })
 
     if (error) {
-      // 23505 sur l'adresse : tant que la clé primaire reste `email` (étape A,
-      // la bascule appartient à l'étape G), deux paniers pour une même adresse
-      // sont impossibles. On le signale explicitement plutôt que de renvoyer un
-      // 500 opaque. Après la bascule, ce cas disparaît.
+      // 23505 depuis la bascule de clé primaire (K8.5) : `email` n'étant plus
+      // unique, la SEULE contrainte encore capable de le produire ici est
+      // UNIQUE(cart_token). Le cas résiduel est une COURSE — deux requêtes
+      // concurrentes portant le même jeton, dont la lecture ci-dessus n'a rien
+      // vu ni l'une ni l'autre. Un 409 le décrit mieux qu'un 500 opaque.
+      //
+      // Le message ne nomme ni la contrainte, ni la colonne, ni l'adresse : il
+      // dit qu'il y a conflit, et rien de plus.
       if (error.code === '23505') {
-        console.error('[save-cart] conflit d unicite (PK email encore en place):', error.code)
-        return NextResponse.json({ error: 'Panier déjà enregistré pour cette adresse' }, { status: 409 })
+        console.error('[save-cart] conflit d unicite sur le jeton (course) :', error.code)
+        return NextResponse.json({ error: 'Conflit d\'enregistrement du panier' }, { status: 409 })
       }
       console.error('[save-cart] insert error:', error)
       return NextResponse.json({ error: 'Erreur sauvegarde' }, { status: 500 })

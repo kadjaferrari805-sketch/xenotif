@@ -215,17 +215,108 @@ describe('POST /api/webhook/stripe — panier récupéré (K8.4)', () => {
     expect(JSON.stringify(maj[0].filters)).not.toContain('email')
   })
 
-  test('B. jeton absent : repli sur l’adresse, normalisée en minuscules', async () => {
-    const service = useService({ abandoned_carts: { update: {} } })
+  test('B. jeton absent : le panier le plus récent est DÉSIGNÉ, puis marqué par id', async () => {
+    const service = useService({
+      abandoned_carts: { select: { data: { id: 'panier-recent' } }, update: {} },
+    })
     mockConstructEvent.mockReturnValue(achatBoutique({ locale: 'fr' }))
+
+    const res = await POST(request())
+
+    expect(res.status).toBe(200)
+    // La désignation porte l'adresse normalisée ET un ordre total borné à 1.
+    const lecture = service.calls.find(c => c.table === 'abandoned_carts' && c.op === 'select')
+    expect(lecture?.filters).toEqual([
+      ['eq', 'email', 'client@exemple.fr'],
+      ['order', 'updated_at', { ascending: false }],
+      ['order', 'id', { ascending: false }],
+      ['limit', 1],
+    ])
+    // Le marquage, lui, ne connaît plus que l'identifiant de ligne.
+    const maj = majPanier(service)
+    expect(maj).toHaveLength(1)
+    expect(maj[0].payload).toEqual({ recovered: true })
+    expect(maj[0].filters).toEqual([['eq', 'id', 'panier-recent']])
+    expect(JSON.stringify(maj[0].filters)).not.toContain('email')
+  })
+
+  test('B-bis. jeton absent et AUCUN panier pour l’adresse : rien n’est écrit', async () => {
+    const service = useService({ abandoned_carts: { select: { data: null }, update: {} } })
+    mockConstructEvent.mockReturnValue(achatBoutique({ locale: 'fr' }))
+
+    const res = await POST(request())
+
+    expect(res.status).toBe(200)
+    expect(majPanier(service)).toHaveLength(0)
+  })
+
+  test('B-ter. plusieurs paniers à horodatage ÉGAL : le départage est délégué à un ordre total', async () => {
+    const service = useService({
+      abandoned_carts: { select: { data: { id: 'panier-zzz' } }, update: {} },
+    })
+    mockConstructEvent.mockReturnValue(achatBoutique({ locale: 'fr' }))
+
+    await POST(request())
+
+    // À `updated_at` égal, seul le second critère tranche. Sans lui, la ligne
+    // marquée dépendrait de l'ordre rendu par Postgres.
+    const lecture = service.calls.find(c => c.table === 'abandoned_carts' && c.op === 'select')
+    expect(lecture?.filters).toContainEqual(['order', 'id', { ascending: false }])
+    expect(lecture?.filters).toContainEqual(['limit', 1])
+    expect(majPanier(service)).toHaveLength(1)
+  })
+
+  test('D. jeton valide dont le panier porte une AUTRE adresse : le jeton prime, l’adresse n’est jamais filtrée', async () => {
+    const service = useService({ abandoned_carts: { update: {} } })
+    // L'acheteur Stripe est `Client@Exemple.FR` ; le panier désigné par le jeton
+    // peut appartenir à une autre adresse. Le webhook marque LA LIGNE PAYÉE.
+    mockConstructEvent.mockReturnValue(achatBoutique({ cart_token: 'tok-autre-adresse', locale: 'fr' }))
 
     const res = await POST(request())
 
     expect(res.status).toBe(200)
     const maj = majPanier(service)
     expect(maj).toHaveLength(1)
-    expect(maj[0].payload).toEqual({ recovered: true })
-    expect(maj[0].filters).toEqual([['eq', 'email', 'client@exemple.fr']])
+    expect(maj[0].filters).toEqual([['eq', 'cart_token', 'tok-autre-adresse']])
+    // Aucune lecture de repli ne doit avoir eu lieu.
+    expect(service.calls.some(c => c.table === 'abandoned_carts' && c.op === 'select')).toBe(false)
+    expect(JSON.stringify(maj[0].filters)).not.toContain('email')
+  })
+
+  // RÈGLE GÉNÉRALE — un événement Stripe ne marque JAMAIS plus d'un panier.
+  // Les trois voies sont vérifiées séparément plutôt que dans une boucle :
+  // `useService` porte le préfixe `use`, et la règle ESLint react-hooks refuse
+  // un appel en boucle. Trois cas explicites se lisent mieux, et la règle reste
+  // active — on ne désactive pas un garde-fou pour faire passer un test.
+  const AU_PLUS_UN = (service: ReturnType<typeof useService>) => {
+    expect(majPanier(service).length).toBeLessThanOrEqual(1)
+    expect(JSON.stringify(majPanier(service).map(m => m.filters))).not.toContain('"email"')
+  }
+
+  test('RÈGLE GÉNÉRALE — voie jeton connu : au plus un panier marqué', async () => {
+    const service = useService({ abandoned_carts: { update: {} } })
+    mockConstructEvent.mockReturnValue(achatBoutique({ cart_token: 'tok-connu', locale: 'fr' }))
+
+    await POST(request())
+    AU_PLUS_UN(service)
+  })
+
+  test('RÈGLE GÉNÉRALE — voie jeton inconnu : au plus un panier marqué', async () => {
+    const service = useService({ abandoned_carts: { update: {} } })
+    mockConstructEvent.mockReturnValue(achatBoutique({ cart_token: 'tok-inconnu', locale: 'fr' }))
+
+    await POST(request())
+    AU_PLUS_UN(service)
+  })
+
+  test('RÈGLE GÉNÉRALE — voie repli adresse : au plus un panier marqué', async () => {
+    const service = useService({
+      abandoned_carts: { select: { data: { id: 'panier-recent' } }, update: {} },
+    })
+    mockConstructEvent.mockReturnValue(achatBoutique({ locale: 'fr' }))
+
+    await POST(request())
+    AU_PLUS_UN(service)
   })
 
   test('C. jeton présent mais inconnu : AUCUN repli, la mise à jour ne touche rien', async () => {

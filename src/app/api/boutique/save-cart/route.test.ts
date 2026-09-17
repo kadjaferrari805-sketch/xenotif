@@ -150,15 +150,71 @@ describe('save-cart — propriété par jeton (K8-03)', () => {
     expect((mockInsert.mock.calls[0][0] as Record<string, unknown>).cart_token).toBe(AUTRE_TOKEN)
   })
 
-  test('conflit d’unicité pendant la transition (PK email) : 409, pas 500', async () => {
+  test('course sur le jeton (23505) : 409 générique, pas 500', async () => {
     mockState.existant = null
-    mockState.insertError = { code: '23505', message: 'duplicate key value violates unique constraint' }
+    // Depuis la bascule PK(email) → PK(id), `email` n'est plus unique : la seule
+    // contrainte encore capable de produire un 23505 ici est UNIQUE(cart_token),
+    // et le seul scénario est une course entre deux requêtes concurrentes.
+    mockState.insertError = {
+      code: '23505',
+      message: 'duplicate key value violates unique constraint "abandoned_carts_cart_token_key"',
+    }
     const res = await POST(request(corps()))
 
     expect(res.status).toBe(409)
     const body = JSON.stringify(await res.json()).toLowerCase()
-    expect(body).not.toContain('duplicate')
-    expect(body).not.toContain('constraint')
+    // Le corps ne nomme ni la contrainte, ni la colonne, ni l'adresse.
+    for (const fuite of ['duplicate', 'constraint', 'cart_token', 'unique', 'exemple.fr', 'adresse']) {
+      expect(body).not.toContain(fuite)
+    }
+  })
+})
+
+// ─── K8.5 : invariants après la bascule PK(email) → PK(id) ─────────
+//
+// Ces quatre lignes sont le contrat de `save-cart`. Elles étaient déjà vraies
+// sous PK(email) pour les deux premières ; les deux dernières ne deviennent
+// réellement atteignables qu'une fois `email` non unique, puisque toute seconde
+// ligne portant la même adresse était auparavant refusée en 23505.
+describe('save-cart — les quatre invariants sous PK(id) (K8.5)', () => {
+  test('même jeton + même adresse → UPDATE de la ligne existante', async () => {
+    mockState.existant = { email: 'a@exemple.fr' }
+    const res = await POST(request(corps()))
+
+    expect(res.status).toBe(200)
+    expect(mockUpdate).toHaveBeenCalledTimes(1)
+    expect(mockInsert).not.toHaveBeenCalled()
+    expect(mockUpdate.mock.calls[0][1]).toEqual(['cart_token', TOKEN])
+  })
+
+  test('même jeton + AUTRE adresse → 409, aucune écriture', async () => {
+    mockState.existant = { email: 'titulaire@exemple.fr' }
+    const res = await POST(request(corps({ email: 'tiers@exemple.fr' })))
+
+    expect(res.status).toBe(409)
+    expect(mockInsert).not.toHaveBeenCalled()
+    expect(mockUpdate).not.toHaveBeenCalled()
+  })
+
+  test('NOUVEAU jeton + même adresse → nouvelle ligne (impossible avant K8.5)', async () => {
+    mockState.existant = null
+    const res = await POST(request(corps({ cart_token: AUTRE_TOKEN, email: 'a@exemple.fr' })))
+
+    expect(res.status).toBe(200)
+    const ligne = mockInsert.mock.calls[0][0] as Record<string, unknown>
+    expect(ligne.cart_token).toBe(AUTRE_TOKEN)
+    expect(ligne.email).toBe('a@exemple.fr')
+    expect(mockUpdate).not.toHaveBeenCalled()
+  })
+
+  test('NOUVEAU jeton + nouvelle adresse → nouvelle ligne', async () => {
+    mockState.existant = null
+    const res = await POST(request(corps({ cart_token: AUTRE_TOKEN, email: 'neuf@exemple.fr' })))
+
+    expect(res.status).toBe(200)
+    const ligne = mockInsert.mock.calls[0][0] as Record<string, unknown>
+    expect(ligne.cart_token).toBe(AUTRE_TOKEN)
+    expect(ligne.email).toBe('neuf@exemple.fr')
   })
 })
 
