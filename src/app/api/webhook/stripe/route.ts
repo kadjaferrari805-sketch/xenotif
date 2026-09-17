@@ -125,12 +125,28 @@ async function handleEvent(service: SupabaseClient, event: Stripe.Event): Promis
         const buyerEmail = session.customer_details?.email ?? session.customer_email
         const buyerName = session.customer_details?.name ?? ''
 
-        if (buyerEmail) {
+        // Marquage du panier récupéré (K8.4). Le jeton désigne LA ligne payée ;
+        // l'adresse, elle, peut correspondre à plusieurs paniers une fois la
+        // bascule de clé primaire effectuée.
+        //
+        // LE REPLI SUR L'ADRESSE EST OBLIGATOIRE pendant la transition : les
+        // sessions Stripe créées avant ce déploiement ne portent pas de jeton,
+        // et sans lui elles ne seraient plus jamais marquées — le client
+        // recevrait un rappel pour un panier qu'il vient de payer. Ne pas le
+        // retirer sans preuve que ces sessions sont épuisées.
+        const cartToken = session.metadata?.cart_token
+        if (cartToken) {
+          const { error } = await service
+            .from('abandoned_carts')
+            .update({ recovered: true })
+            .eq('cart_token', cartToken)
+          if (error) console.error('[webhook] relance panier (jeton) :', error.message)
+        } else if (buyerEmail) {
           const { error } = await service
             .from('abandoned_carts')
             .update({ recovered: true })
             .eq('email', buyerEmail.toLowerCase())
-          if (error) console.error('[webhook] relance panier :', error.message)
+          if (error) console.error('[webhook] relance panier (repli adresse) :', error.message)
         }
 
         // Livraison des guides/programmes digitaux achetés

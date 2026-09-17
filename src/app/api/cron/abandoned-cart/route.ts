@@ -62,9 +62,29 @@ export async function GET(request: Request) {
     if (list.users.length < 200) break
   }
 
+  // Déduplication par adresse (K8.4). Depuis l'introduction du jeton de panier,
+  // une même adresse peut porter PLUSIEURS lignes : deux appareils, ou un
+  // localStorage vidé. Sans ce regroupement, la même personne recevrait
+  // plusieurs rappels dans le même cycle.
+  //
+  // Ligne retenue : la plus récente par `updated_at` — c'est le panier que le
+  // visiteur a réellement laissé en dernier. Les lignes écartées ne sont ni
+  // supprimées ni ignorées pour autant : la mise à jour de `reminder_sent`
+  // porte sur l'adresse entière (`.eq('email', …)`), si bien qu'elles ne
+  // ressortiront pas au cycle suivant.
+  const parEmail = new Map<string, typeof carts[number]>()
+  for (const cart of carts) {
+    const cle = (cart.email as string).toLowerCase()
+    const retenu = parEmail.get(cle)
+    if (!retenu || new Date(cart.updated_at as string) > new Date(retenu.updated_at as string)) {
+      parEmail.set(cle, cart)
+    }
+  }
+  const aRelancer = [...parEmail.values()]
+
   let sent = 0
   let pushed = 0
-  for (const cart of carts) {
+  for (const cart of aRelancer) {
     const items = (cart.items as { product_id: string; quantity: number }[])
       .map(i => {
         const p = PRODUCT_BY_ID.get(i.product_id)
@@ -123,5 +143,7 @@ export async function GET(request: Request) {
     }
   }
 
-  return NextResponse.json({ sent, pushed, processed: carts.length })
+  // `processed` compte les paniers REELLEMENT traites, apres deduplication —
+  // pas les lignes lues. `read` conserve la visibilite sur l'ecart.
+  return NextResponse.json({ sent, pushed, processed: aRelancer.length, read: carts.length })
 }

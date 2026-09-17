@@ -172,3 +172,83 @@ describe('POST /api/webhook/stripe', () => {
     expect(sendWelcomeEmail).not.toHaveBeenCalled()
   })
 })
+
+// ─── K8.4 : marquage du panier récupéré ────────────────────────────
+//
+// Avant, `recovered` était posé par `.eq('email', …)` : un achat marquait TOUS
+// les paniers partageant l'adresse. Depuis le jeton, la ligne payée est
+// désignée précisément. Le repli sur l'adresse reste indispensable tant que des
+// sessions Stripe créées avant ce déploiement peuvent encore aboutir.
+describe('POST /api/webhook/stripe — panier récupéré (K8.4)', () => {
+  /** Événement d'achat boutique, avec ou sans jeton dans les métadonnées. */
+  const achatBoutique = (metadata: Record<string, string>) => ({
+    id: 'evt_cart',
+    type: 'checkout.session.completed',
+    data: {
+      object: {
+        id: 'cs_boutique',
+        mode: 'payment',
+        customer_details: { email: 'Client@Exemple.FR', name: 'Client' },
+        amount_total: 0,
+        metadata,
+      },
+    },
+  })
+
+  /** Opérations subies par abandoned_carts, avec leurs filtres. */
+  const majPanier = (service: ReturnType<typeof useService>) =>
+    service.calls.filter(c => c.table === 'abandoned_carts' && c.op === 'update')
+
+  test('A. jeton présent : la recherche se fait PAR JETON, jamais par adresse', async () => {
+    const service = useService({ abandoned_carts: { update: {} } })
+    mockConstructEvent.mockReturnValue(achatBoutique({ cart_token: 'tok-paye', locale: 'fr' }))
+
+    const res = await POST(request())
+
+    expect(res.status).toBe(200)
+    const maj = majPanier(service)
+    expect(maj).toHaveLength(1)
+    expect(maj[0].payload).toEqual({ recovered: true })
+    expect(maj[0].filters).toEqual([['eq', 'cart_token', 'tok-paye']])
+    // L'adresse ne doit apparaître dans AUCUN filtre : c'est tout l'objet du
+    // correctif — un achat ne marque plus les paniers homonymes.
+    expect(JSON.stringify(maj[0].filters)).not.toContain('email')
+  })
+
+  test('B. jeton absent : repli sur l’adresse, normalisée en minuscules', async () => {
+    const service = useService({ abandoned_carts: { update: {} } })
+    mockConstructEvent.mockReturnValue(achatBoutique({ locale: 'fr' }))
+
+    const res = await POST(request())
+
+    expect(res.status).toBe(200)
+    const maj = majPanier(service)
+    expect(maj).toHaveLength(1)
+    expect(maj[0].payload).toEqual({ recovered: true })
+    expect(maj[0].filters).toEqual([['eq', 'email', 'client@exemple.fr']])
+  })
+
+  test('C. jeton présent mais inconnu : AUCUN repli, la mise à jour ne touche rien', async () => {
+    const service = useService({ abandoned_carts: { update: {} } })
+    mockConstructEvent.mockReturnValue(achatBoutique({ cart_token: 'tok-inexistant', locale: 'fr' }))
+
+    const res = await POST(request())
+
+    expect(res.status).toBe(200)
+    const maj = majPanier(service)
+    // Une seule opération, par jeton : le repli adresse n'est PAS déclenché.
+    expect(maj).toHaveLength(1)
+    expect(maj[0].filters).toEqual([['eq', 'cart_token', 'tok-inexistant']])
+    expect(JSON.stringify(maj[0].filters)).not.toContain('email')
+    // Conséquence assumée : aucune ligne n'est marquée. Replier sur l'adresse
+    // réintroduirait le marquage croisé que K8-03 corrige.
+  })
+
+  test('une erreur de mise à jour n’interrompt pas le traitement de l’achat', async () => {
+    useService({ abandoned_carts: { update: { error: { message: 'échec', code: 'XX000' } } } })
+    mockConstructEvent.mockReturnValue(achatBoutique({ cart_token: 'tok-paye', locale: 'fr' }))
+
+    const res = await POST(request())
+    expect(res.status).toBe(200)
+  })
+})
