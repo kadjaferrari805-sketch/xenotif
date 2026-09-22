@@ -24,10 +24,14 @@ export async function GET(request: Request) {
   const supabase = createAdminClient()
 
   // Comptes AVEC un abonnement (payant ou résilié) → exclus de l'onboarding essai.
+  // K8.9-01 — le message Postgres nommait table, colonne et contrainte, et
+  // partait tel quel au client. Il reste journalisé en entier ci-dessous ; la
+  // réponse reprend la convention générique K8.1 (`server_error`), déjà employée
+  // par cron/abandoned-cart et cron/reactivation.
   const { data: subs, error: subErr } = await supabase.from('subscriptions').select('user_id')
   if (subErr) {
     console.error('[onboarding] subscriptions query error:', subErr)
-    return NextResponse.json({ error: subErr.message }, { status: 500 })
+    return NextResponse.json({ error: 'server_error' }, { status: 500 })
   }
   const hasSub = new Set((subs ?? []).map((s: { user_id: string }) => s.user_id))
 
@@ -37,7 +41,7 @@ export async function GET(request: Request) {
     .select('id, full_name, locale, onboarding_step')
   if (profErr) {
     console.error('[onboarding] profiles query error:', profErr)
-    return NextResponse.json({ error: profErr.message }, { status: 500 })
+    return NextResponse.json({ error: 'server_error' }, { status: 500 })
   }
   const stepById = new Map<string, number>(
     (profiles ?? []).map((p: { id: string; onboarding_step: number | null }) => [p.id, p.onboarding_step ?? 0]),
@@ -49,8 +53,10 @@ export async function GET(request: Request) {
     (profiles ?? []).map((p: { id: string; locale: string | null }) => [p.id, p.locale ?? 'fr']),
   )
 
+  // K8.9-02 — l'adresse ne quitte plus le serveur : le log retient l'identifiant
+  // de compte, qui suffit au diagnostic et n'est pas une donnée personnelle.
   let sent = 0
-  const errors: string[] = []
+  let failed = 0
 
   // Parcours des comptes auth (source de vérité pour email + date de création).
   for (let page = 1; page <= 25; page++) {
@@ -79,13 +85,14 @@ export async function GET(request: Request) {
           .upsert({ id: u.id, onboarding_step: step }, { onConflict: 'id' })
         sent++
       } catch (e) {
-        errors.push(`onboarding ${u.email} (step ${step}): ${e}`)
+        failed++
+        console.error('[onboarding] envoi echoue :', u.id, `step ${step}`, e)
       }
     }
 
     if (list.users.length < 200) break
   }
 
-  console.log(`[onboarding] emails=${sent} errors=${errors.length}`)
-  return NextResponse.json({ sent, errors })
+  console.log(`[onboarding] emails=${sent} errors=${failed}`)
+  return NextResponse.json({ sent, failed })
 }

@@ -75,9 +75,11 @@ export async function GET(request: Request) {
     if (list.users.length < 200) break
   }
 
+  // K8.9-02 / K8.9-03 — ni l'adresse ni l'identifiant ne quittent le serveur :
+  // le détail part en journal, la réponse ne porte qu'un compte.
   let sent = 0
   let pushed = 0
-  const errors: string[] = []
+  let failed = 0
 
   for (const userId of userIds) {
     const locale = localeById.get(userId) ?? 'fr'
@@ -92,7 +94,8 @@ export async function GET(request: Request) {
           .eq('user_id', userId)
         sent++
       } catch (e) {
-        errors.push(`email ${email}: ${e}`)
+        failed++
+        console.error('[reactivation] envoi echoue :', userId, e)
         continue
       }
     }
@@ -112,10 +115,11 @@ export async function GET(request: Request) {
         data: { type: 'reactivation', url: '/dashboard/abonnement' },
       })
     } catch (e) {
-      errors.push(`push ${userId}: ${e}`)
+      failed++
+      console.error('[reactivation] push echoue :', userId, e)
     }
   }
 
-  console.log(`[reactivation] emails=${sent} push=${pushed} errors=${errors.length}`)
-  return NextResponse.json({ sent, pushed, processed: subs.length, errors })
+  console.log(`[reactivation] emails=${sent} push=${pushed} errors=${failed}`)
+  return NextResponse.json({ sent, pushed, processed: subs.length, failed })
 }

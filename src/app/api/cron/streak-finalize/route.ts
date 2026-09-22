@@ -9,8 +9,12 @@ export const dynamic = 'force-dynamic'
 // ayant une ligne user_streaks - même sans ouverture de l'app. getStreak est
 // idempotent (gardé par last_finalized_week).
 export async function GET(request: Request) {
-  const authHeader = request.headers.get('Authorization')
-  if (authHeader !== `Bearer ${process.env.CRON_SECRET}`) {
+  // K8.9-04 — garde fail-closed. Sans le test sur `cronSecret`, une variable
+  // absente faisait comparer à la chaîne « Bearer undefined », devinable.
+  const cronSecret = process.env.CRON_SECRET
+  const authHeader = request.headers.get('authorization')
+
+  if (!cronSecret || authHeader !== `Bearer ${cronSecret}`) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
   }
 
@@ -18,13 +22,15 @@ export async function GET(request: Request) {
   const { data: rows } = await supabase.from('user_streaks').select('user_id')
   const users = (rows ?? []).map((r: { user_id: string }) => r.user_id)
 
+  // K8.9-03 — le détail des échecs (identifiant + exception) reste côté serveur ;
+  // la réponse ne porte plus qu'un compte.
   let finalized = 0
-  const errors: string[] = []
+  let failed = 0
   for (const userId of users) {
     try { await getStreak(supabase, userId); finalized++ }
-    catch (e) { errors.push(`streak ${userId}: ${e}`) }
+    catch (e) { failed++; console.error('[streak-finalize] finalisation echouee :', userId, e) }
   }
 
-  console.log(`[streak-finalize] finalized=${finalized}/${users.length} errors=${errors.length}`)
-  return NextResponse.json({ finalized, users: users.length, errors })
+  console.log(`[streak-finalize] finalized=${finalized}/${users.length} errors=${failed}`)
+  return NextResponse.json({ finalized, users: users.length, failed })
 }
