@@ -19,6 +19,8 @@ const mockState = {
   subs: { data: [] as unknown[] | null, error: null as FakeError },
   profiles: { data: [] as unknown[] | null, error: null as FakeError },
   users: [] as { id: string; email: string; created_at: string }[],
+  // Ajouté en K8.12 : erreur renvoyée par l'UPSERT. `null` par défaut.
+  upsertError: null as FakeError,
 }
 
 const mockSendOnboarding = jest.fn()
@@ -32,7 +34,7 @@ function chaîne(table: string) {
   q.select = () => q
   // Enregistré en K8.11 : sans cela, impossible d'affirmer que
   // `profiles.onboarding_step` n'est PAS consommé quand l'envoi échoue.
-  q.upsert = (payload: unknown) => { mockUpserts.push(payload); return Promise.resolve({ error: null }) }
+  q.upsert = (payload: unknown) => { mockUpserts.push(payload); return Promise.resolve({ error: mockState.upsertError }) }
   q.then = (ok: (v: unknown) => unknown) => Promise.resolve(résultat).then(ok)
   return q
 }
@@ -79,6 +81,7 @@ beforeEach(() => {
   mockState.subs = { data: [], error: null }
   mockState.profiles = { data: [], error: null }
   mockState.users = []
+  mockState.upsertError = null
 })
 
 afterAll(() => { process.env = ORIGINAL_ENV })
@@ -208,5 +211,48 @@ describe('cron/onboarding — K8.11 : un échec d’envoi ne consomme plus l’�
 
     expect(mockUpserts).toHaveLength(1)
     expect(mockUpserts[0]).toMatchObject({ id: 'user-1', onboarding_step: 1 })
+  })
+})
+
+// ── Phase K8.12 — COUCHE 1 : l'erreur d'UPSERT est enfin détectée.
+
+describe('cron/onboarding — K8.12 : une erreur d’UPSERT n’est plus un succès', () => {
+  const PG_WRITE_ERROR = { code: '42501', message: 'permission denied for table profiles' }
+
+  beforeEach(() => {
+    mockUpserts.length = 0
+    mockState.users = [{ id: 'user-1', email: ADRESSE, created_at: new Date().toISOString() }]
+    mockSendOnboarding.mockResolvedValue(undefined)
+  })
+
+  test('envoi OK + UPSERT en erreur : `failed++`, `sent` inchangé', async () => {
+    mockState.upsertError = PG_WRITE_ERROR
+
+    // AVANT K8.12 : { sent: 1 } alors que l'étape n'était pas consommée.
+    expect(await (await GET(ok())).json()).toEqual({ sent: 0, failed: 1 })
+  })
+
+  test('l’échec d’écriture est journalisé, sans l’adresse', async () => {
+    mockState.upsertError = PG_WRITE_ERROR
+
+    await GET(ok())
+
+    const journal = (console.error as jest.Mock).mock.calls
+      .flat()
+      .map(a => (a instanceof Error ? a.message : String(a)))
+      .join(' ')
+    expect(journal).toContain('consommation de l\'etape onboarding')
+    expect(journal).not.toContain(ADRESSE)
+    expect(journal).toContain('user-1')
+  })
+
+  test('une erreur DB ne produit PAS un statut HTTP d’erreur', async () => {
+    mockState.upsertError = PG_WRITE_ERROR
+
+    expect((await GET(ok())).status).toBe(200)
+  })
+
+  test('UPSERT OK : comportement inchangé', async () => {
+    expect(await (await GET(ok())).json()).toEqual({ sent: 1, failed: 0 })
   })
 })

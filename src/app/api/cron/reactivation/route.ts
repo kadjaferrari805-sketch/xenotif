@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server'
 import { createAdminClient } from '@/lib/supabase/admin'
+import { assertNoError } from '@/lib/supabase/errors'
 import { sendReactivationEmail } from '@/lib/emails'
 import { sendPushToUser } from '@/lib/push'
 import { sendWebPushToUser } from '@/lib/web-push'
@@ -88,10 +89,13 @@ export async function GET(request: Request) {
     if (email) {
       try {
         await sendReactivationEmail({ email, name: nameById.get(userId) ?? '', locale })
-        await supabase
+        // K8.12 — le retour de l'UPDATE était jeté : une écriture refusée
+        // laissait `sent++` s'exécuter et `reactivation_sent_at` à NULL.
+        const { error: marquageErr } = await supabase
           .from('subscriptions')
           .update({ reactivation_sent_at: new Date().toISOString() })
           .eq('user_id', userId)
+        assertNoError('marquage de la relance', marquageErr)
         sent++
       } catch (e) {
         failed++

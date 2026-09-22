@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server'
 import { createAdminClient } from '@/lib/supabase/admin'
+import { assertNoError } from '@/lib/supabase/errors'
 import { sendAbandonedCartEmail } from '@/lib/emails'
 import { sendPushToUser } from '@/lib/push'
 import { sendWebPushToUser } from '@/lib/web-push'
@@ -119,8 +120,12 @@ export async function GET(request: Request) {
     if (list.users.length < 200) break
   }
 
+  // K8.12 — `failed` manquait : un échec n'était observable nulle part, ni dans
+  // les compteurs, ni dans la réponse. Il ne couvre QUE le couple envoi+marquage ;
+  // le push, best-effort, garde son propre `catch` et n'est pas compté ici.
   let sent = 0
   let pushed = 0
+  let failed = 0
   for (const cart of aRelancer) {
     const items = (cart.items as { product_id: string; quantity: number }[])
       .map(i => {
@@ -150,12 +155,16 @@ export async function GET(request: Request) {
       // Marquage de LA SEULE LIGNE relancée (K8.5). Filtrer sur l'adresse
       // marquerait aussi des paniers qui n'ont jamais fait l'objet d'un envoi,
       // en leur posant un `reminded_at` mensonger.
-      await supabase
+      // K8.12 — le retour de l'UPDATE était jeté. Postgrest ne lève pas : une
+      // écriture refusée laissait `sent++` s'exécuter et la ligne non marquée.
+      const { error: marquageErr } = await supabase
         .from('abandoned_carts')
         .update({ reminder_sent: true, reminded_at: new Date().toISOString() })
         .eq('id', cart.id)
+      assertNoError('marquage du panier relancé', marquageErr)
       sent++
     } catch (err) {
+      failed++
       // K8.10-01 — l'adresse partait en clair dans le journal serveur. `cart.id`
       // est la clé primaire depuis K8.5 : la corrélation avec la ligne reste
       // entière via la base, sans écrire de donnée personnelle. L'exception est
@@ -190,5 +199,5 @@ export async function GET(request: Request) {
 
   // `processed` compte les DESTINATAIRES retenus apres deduplication — pas les
   // lignes lues. `read` conserve la visibilite sur l'ecart.
-  return NextResponse.json({ sent, pushed, processed: aRelancer.length, read: carts.length })
+  return NextResponse.json({ sent, pushed, processed: aRelancer.length, read: carts.length, failed })
 }

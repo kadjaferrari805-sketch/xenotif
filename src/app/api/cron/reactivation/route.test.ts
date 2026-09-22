@@ -21,6 +21,8 @@ const mockState = {
   // Ajouté en K8.9 : comptes auth renvoyés par listUsers, pour atteindre le
   // chemin d'envoi. Vide par défaut — les tests K8.1 restent inchangés.
   users: [] as { id: string; email: string }[],
+  // Ajouté en K8.12 : erreur renvoyée par l'UPDATE. `null` par défaut.
+  updateError: null as FakeError,
 }
 
 const mockSendEmail = jest.fn()
@@ -47,7 +49,9 @@ jest.mock('../../../../lib/supabase/admin', () => ({
       // Ajouté en K8.9 : la route marque l'abonné relancé après un envoi réussi.
       // Enregistré en K8.11 : sans cela, impossible d'affirmer que
       // `reactivation_sent_at` n'est PAS marqué quand l'envoi échoue.
-      update: (payload: unknown) => { mockUpdates.push(payload); return chain({ error: null }) },
+      // K8.12 : l'erreur devient configurable, sans quoi le chemin « écriture
+      // refusée » resterait intestable.
+      update: (payload: unknown) => { mockUpdates.push(payload); return chain({ error: mockState.updateError }) },
     }),
     auth: { admin: { listUsers: async () => ({ data: { users: mockState.users } }) } },
   }),
@@ -77,6 +81,7 @@ beforeEach(() => {
   process.env = { ...ORIGINAL_ENV, CRON_SECRET: 'secret-de-test' }
   mockState.subsResult = { data: [], error: null }
   mockState.users = []
+  mockState.updateError = null
 })
 
 afterAll(() => { process.env = ORIGINAL_ENV })
@@ -279,5 +284,49 @@ describe('cron/reactivation — K8.11 : un échec d’envoi ne marque plus l’a
 
     expect(mockUpdates).toHaveLength(1)
     expect(mockUpdates[0]).toHaveProperty('reactivation_sent_at')
+  })
+})
+
+// ── Phase K8.12 — COUCHE 1 : l'erreur d'UPDATE est enfin détectée.
+
+describe('cron/reactivation — K8.12 : une erreur d’UPDATE n’est plus un succès', () => {
+  const PG_WRITE_ERROR = { code: '42501', message: 'permission denied for table subscriptions' }
+
+  beforeEach(() => {
+    mockUpdates.length = 0
+    mockState.subsResult = {
+      data: [{ user_id: USER_ID, status: 'canceled', reactivation_sent_at: null }],
+      error: null,
+    }
+    mockState.users = [{ id: USER_ID, email: 'resilie@exemple.fr' }]
+    mockSendEmail.mockResolvedValue(undefined)
+    mockSendWebPush.mockResolvedValue(0)
+    mockSendPush.mockResolvedValue(0)
+  })
+
+  test('envoi OK + UPDATE en erreur : `failed++`, `sent` inchangé', async () => {
+    mockState.updateError = PG_WRITE_ERROR
+
+    // AVANT K8.12 : { sent: 1 } alors que reactivation_sent_at restait NULL.
+    expect(await (await GET(request('Bearer secret-de-test'))).json())
+      .toMatchObject({ sent: 0, failed: 1, processed: 1 })
+  })
+
+  test('l’échec d’écriture est journalisé avec son libellé', async () => {
+    mockState.updateError = PG_WRITE_ERROR
+
+    await GET(request('Bearer secret-de-test'))
+
+    const journal = (console.error as jest.Mock).mock.calls
+      .flat()
+      .map(a => (a instanceof Error ? a.message : String(a)))
+      .join(' ')
+    expect(journal).toContain('marquage de la relance')
+    expect(journal).not.toContain('resilie@exemple.fr')
+  })
+
+  test('UPDATE OK : comportement inchangé', async () => {
+    expect(await (await GET(request('Bearer secret-de-test'))).json())
+      .toMatchObject({ sent: 1, failed: 0 })
   })
 })
