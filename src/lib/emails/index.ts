@@ -16,6 +16,44 @@ const FROM = 'Xenotif® <noreply@xenotif.com>'
 // preview n'envoie jamais de lien vers la production.
 const BASE_URL = getPublicBaseUrl()
 
+/**
+ * Erreur d'envoi contrôlée (K8.11).
+ *
+ * Le `message` est bâti UNIQUEMENT à partir du code et du statut renvoyés par le
+ * fournisseur — jamais de son message, qui peut réécho l'adresse du
+ * destinataire. Le détail brut reste disponible dans `providerError` pour le
+ * diagnostic serveur, où il a sa place.
+ */
+export class EmailSendError extends Error {
+  readonly code: string
+  readonly statusCode: number | null
+  readonly providerError: { message: string; statusCode: number | null; name: string }
+
+  constructor(providerError: { message: string; statusCode: number | null; name: string }) {
+    super(`Resend a refusé l'envoi (${providerError.name}, HTTP ${providerError.statusCode ?? 'inconnu'})`)
+    this.name = 'EmailSendError'
+    this.code = providerError.name
+    this.statusCode = providerError.statusCode
+    this.providerError = providerError
+  }
+}
+
+/**
+ * Point d'envoi unique (K8.11-01).
+ *
+ * Le SDK Resend NE LÈVE PAS sur refus d'API : il retourne `{ data: null, error }`.
+ * Les dix fonctions faisaient un `await` nu, donc un quota dépassé ou une adresse
+ * refusée se présentait comme un succès — et les crons marquaient ensuite la
+ * ligne « envoyée », supprimant définitivement toute relance (K8.11-02).
+ *
+ * Un point unique plutôt que dix déstructurations : la garantie devient
+ * structurelle, et toute fonction d'envoi ajoutée plus tard en hérite.
+ */
+async function envoyer(payload: Parameters<typeof resend.emails.send>[0]): Promise<void> {
+  const { error } = await resend.emails.send(payload)
+  if (error) throw new EmailSendError(error)
+}
+
 const CHROME = {
   fr: {
     tagline: 'Performance · Coaching IA',
@@ -123,7 +161,7 @@ export async function sendWelcomeEmail({
     includedTitle: `Inclus dans ton Plan ${planLabel} :`,
   }
 
-  await resend.emails.send({
+  await envoyer({
     from: FROM,
     to: email,
     subject: c.subject,
@@ -184,7 +222,7 @@ export async function sendTrialReminderEmail({
     note: 'Si tu ne fais rien, ton abonnement se poursuivra automatiquement. Tu peux annuler à tout moment depuis ton espace membre.',
   }
 
-  await resend.emails.send({
+  await envoyer({
     from: FROM,
     to: email,
     subject: c.subject,
@@ -413,7 +451,7 @@ export async function sendDailyMotivationEmail({
   }
   const labels = LABELS[locale]
 
-  await resend.emails.send({
+  await envoyer({
     from: FROM,
     to: email,
     subject: msg.subject,
@@ -468,7 +506,7 @@ export async function sendThemedDailyEmail({
     fr: 'Gérer mes préférences', en: 'Manage my preferences', de: 'Einstellungen verwalten',
   }
   const href = c.ctaUrl.startsWith('http') ? c.ctaUrl : `${BASE_URL}${c.ctaUrl}`
-  await resend.emails.send({
+  await envoyer({
     from: FROM,
     to: email,
     subject: c.subject,
@@ -512,7 +550,7 @@ export async function sendCancellationEmail({
     questions: 'Des questions ? Réponds à cet email ou contacte-nous à',
   }
 
-  await resend.emails.send({
+  await envoyer({
     from: FROM,
     to: email,
     subject: c.subject,
@@ -579,7 +617,7 @@ export async function sendReactivationEmail({
     ps: 'Tu as arrêté pour une raison ? Réponds simplement à cet email - on lit chaque message et ton retour nous intéresse.',
   }
 
-  await resend.emails.send({
+  await envoyer({
     from: FROM,
     to: email,
     subject: c.subject,
@@ -689,7 +727,7 @@ export async function sendOnboardingEmail({
   }
   const c = (en ? enC : fr)[step]
 
-  await resend.emails.send({
+  await envoyer({
     from: FROM,
     to: email,
     subject: c.subject,
@@ -760,7 +798,7 @@ export async function sendAbandonedCartEmail({
     </tr>
   `).join('')
 
-  await resend.emails.send({
+  await envoyer({
     from: FROM,
     to: email,
     subject: c.subject,
@@ -871,7 +909,7 @@ export async function sendDigitalDeliveryEmail({
       </table>
   ` : ''
 
-  await resend.emails.send({
+  await envoyer({
     from: FROM,
     to: email,
     subject: labels.subject,
@@ -923,7 +961,7 @@ export async function sendAccountCreatedEmail({
     cta: 'Accéder à mon espace →',
     note: 'À tout de suite !',
   }
-  await resend.emails.send({
+  await envoyer({
     from: FROM,
     to: email,
     subject: c.subject,

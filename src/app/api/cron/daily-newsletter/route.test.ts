@@ -131,3 +131,32 @@ describe('daily-newsletter — comportement nominal inchangé', () => {
     expect(console.error).not.toHaveBeenCalled()
   })
 })
+
+// ── Phase K8.11 — K8.11-02, côté appelant.
+//
+// Cette route ne marque rien en base : le préjudice y était uniquement un
+// compteur `sent` surdéclaré. Le module lève désormais sur refus d'API, et le
+// `catch` déjà présent — INCHANGÉ — classe l'envoi du bon côté.
+
+describe('cron/daily-newsletter — K8.11 : un refus d’API n’est plus compté comme envoyé', () => {
+  beforeEach(() => {
+    mockState.leads = [{ email: ADRESSE }]
+    mockMotivation.mockResolvedValue(undefined)
+  })
+
+  test('refus d’API : `sent` reste à 0, l’échec est compté', async () => {
+    mockMotivation.mockRejectedValue(new Error('Resend a refusé l’envoi (rate_limit_exceeded, HTTP 429)'))
+
+    expect(await (await GET(ok())).json()).toEqual({ sent: 0, recipients: 1, failed: 1 })
+  })
+
+  test('sur plusieurs destinataires, seuls les envois réels sont comptés', async () => {
+    mockState.leads = [{ email: 'a@exemple.fr' }, { email: 'b@exemple.fr' }, { email: 'c@exemple.fr' }]
+    mockMotivation
+      .mockResolvedValueOnce(undefined)
+      .mockRejectedValueOnce(new Error('rate_limit_exceeded'))
+      .mockResolvedValueOnce(undefined)
+
+    expect(await (await GET(ok())).json()).toEqual({ sent: 2, recipients: 3, failed: 1 })
+  })
+})

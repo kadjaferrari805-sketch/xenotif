@@ -22,13 +22,17 @@ const mockState = {
 }
 
 const mockSendOnboarding = jest.fn()
+/** Charges utiles des UPSERT observés (K8.11). Préfixé `mock` : contrainte du hoisting de jest.mock. */
+const mockUpserts: unknown[] = []
 
 /** `from('subscriptions')` puis `from('profiles')` : réponses distinctes. */
 function chaîne(table: string) {
   const résultat = table === 'subscriptions' ? mockState.subs : mockState.profiles
   const q: Record<string, unknown> = {}
   q.select = () => q
-  q.upsert = () => Promise.resolve({ error: null })
+  // Enregistré en K8.11 : sans cela, impossible d'affirmer que
+  // `profiles.onboarding_step` n'est PAS consommé quand l'envoi échoue.
+  q.upsert = (payload: unknown) => { mockUpserts.push(payload); return Promise.resolve({ error: null }) }
   q.then = (ok: (v: unknown) => unknown) => Promise.resolve(résultat).then(ok)
   return q
 }
@@ -168,5 +172,41 @@ describe('onboarding — comportement nominal inchangé', () => {
 
     expect(await res.json()).toEqual({ sent: 1, failed: 0 })
     expect(console.error).not.toHaveBeenCalled()
+  })
+})
+
+// ── Phase K8.11 — K8.11-02, côté appelant.
+//
+// Un refus d'API Resend ne levait pas : l'UPSERT consommait l'étape
+// `profiles.onboarding_step`, et le compte n'a jamais reçu l'e-mail de cette
+// étape — définitivement. Le module lève désormais, et le `catch` déjà présent
+// — INCHANGÉ — reprend la main avant l'UPSERT, situé dans le même `try`.
+
+describe('cron/onboarding — K8.11 : un échec d’envoi ne consomme plus l’étape', () => {
+  beforeEach(() => {
+    mockUpserts.length = 0
+    mockState.users = [{ id: 'user-1', email: ADRESSE, created_at: new Date().toISOString() }]
+    mockSendOnboarding.mockResolvedValue(undefined)
+  })
+
+  test('envoi en échec : AUCUN UPSERT — l’étape reste à consommer', async () => {
+    mockSendOnboarding.mockRejectedValue(new Error('Resend a refusé l’envoi (rate_limit_exceeded, HTTP 429)'))
+
+    await GET(ok())
+
+    expect(mockUpserts).toHaveLength(0)
+  })
+
+  test('envoi en échec : `sent` reste à 0 et `failed` compte l’échec', async () => {
+    mockSendOnboarding.mockRejectedValue(new Error('boom'))
+
+    expect(await (await GET(ok())).json()).toEqual({ sent: 0, failed: 1 })
+  })
+
+  test('succès : l’étape est consommée (non-régression)', async () => {
+    await GET(ok())
+
+    expect(mockUpserts).toHaveLength(1)
+    expect(mockUpserts[0]).toMatchObject({ id: 'user-1', onboarding_step: 1 })
   })
 })
