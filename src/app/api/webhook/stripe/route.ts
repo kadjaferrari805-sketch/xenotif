@@ -9,6 +9,7 @@ import { sendGa4Purchase } from '@/lib/ga-measurement'
 import { findUserIdByEmail, linkSubscriptionToUser, subscriptionRow } from '@/lib/billing/stripe-subscription'
 import { createStripeClient } from '@/lib/stripe/server'
 import { assertWebhookEventAllowed, getPublicBaseUrl } from '@/lib/env/deployment'
+import { assertNoError } from '@/lib/supabase/errors'
 
 export const runtime = 'nodejs'
 
@@ -32,11 +33,9 @@ async function bestEffort(label: string, task: () => Promise<unknown>): Promise<
   }
 }
 
-// Supabase renvoie ses erreurs au lieu de les lever : sans ce contrôle, une
-// écriture ratée passait inaperçue et l'événement était acquitté quand même.
-function assertNoError(label: string, error: { message: string } | null): void {
-  if (error) throw new Error(`${label} : ${error.message}`)
-}
+// `assertNoError` (Supabase renvoie ses erreurs au lieu de les lever) vit
+// désormais dans @/lib/supabase/errors : K8.12 en a besoin dans les crons, qui
+// souffraient du même défaut. Comportement inchangé pour les 8 appels ci-dessous.
 
 // Journal des événements déjà traités (table stripe_events). Best-effort : si la
 // table est absente, l'événement est traité comme avant, sans déduplication.

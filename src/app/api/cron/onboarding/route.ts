@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server'
 import { createAdminClient } from '@/lib/supabase/admin'
+import { assertNoError } from '@/lib/supabase/errors'
 import { sendOnboardingEmail } from '@/lib/emails'
 import { nextOnboardingStep, accountAgeDays } from '@/lib/onboarding'
 
@@ -80,9 +81,12 @@ export async function GET(request: Request) {
           step,
           locale: localeById.get(u.id) ?? 'fr',
         })
-        await supabase
+        // K8.12 — le retour de l'UPSERT était jeté : une écriture refusée
+        // laissait `sent++` s'exécuter sans que l'étape soit consommée.
+        const { error: etapeErr } = await supabase
           .from('profiles')
           .upsert({ id: u.id, onboarding_step: step }, { onConflict: 'id' })
+        assertNoError('consommation de l\'etape onboarding', etapeErr)
         sent++
       } catch (e) {
         failed++

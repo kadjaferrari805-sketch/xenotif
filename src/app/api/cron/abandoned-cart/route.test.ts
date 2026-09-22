@@ -547,14 +547,16 @@ describe('cron/abandoned-cart — K8.10 : aucune adresse dans les journaux', () 
     }
   })
 
-  test('la réponse HTTP reste inchangée malgré les deux échecs', async () => {
+  test('la réponse HTTP ne porte que des compteurs malgré les deux échecs', async () => {
     mockSendEmail.mockRejectedValue(new Error('boom'))
     mockSendWebPush.mockRejectedValue(new Error('boom'))
 
     const res = await GET(request(AUTH))
 
+    // `failed` ajouté en K8.12 : il ne compte QUE le couple envoi+marquage.
+    // L'échec du push, best-effort, garde son propre catch et n'y figure pas.
     expect(res.status).toBe(200)
-    expect(await res.json()).toEqual({ sent: 0, pushed: 0, processed: 1, read: 1 })
+    expect(await res.json()).toEqual({ sent: 0, pushed: 0, processed: 1, read: 1, failed: 1 })
   })
 
   test('nominal : aucun échec, donc aucun journal d’erreur', async () => {
@@ -620,5 +622,77 @@ describe('cron/abandoned-cart — K8.11 : un échec d’envoi ne marque plus le 
 
     expect(await res.json()).toMatchObject({ sent: 1 })
     expect(idsMarques()).toEqual(['id-a'])
+  })
+})
+
+// ── Phase K8.12 — COUCHE 1 : l'erreur d'écriture Supabase est enfin détectée.
+//
+// Postgrest ne lève pas : `shouldThrowOnError` vaut `false` et la levée y est
+// conditionnée. Le retour de l'UPDATE était jeté, donc un refus d'écriture
+// laissait `sent++` s'exécuter alors que `reminder_sent` restait à false.
+//
+// `mockState.updateError` existait DEPUIS L'ORIGINE, câblé dans la doublure
+// (l.67) et remis à null à chaque test — mais n'avait JAMAIS été positionné.
+// Ce levier est enfin actionné ici.
+
+describe('cron/abandoned-cart — K8.12 : une erreur d’UPDATE n’est plus un succès', () => {
+  const PG_WRITE_ERROR = { code: '42501', message: 'permission denied for table abandoned_carts' }
+
+  beforeEach(() => {
+    mockState.cartsResult = {
+      data: [panier('id-a', 'client@exemple.fr', '2026-09-12T08:00:00.000Z')],
+      error: null,
+    }
+    mockSendEmail.mockResolvedValue(undefined)
+    mockSendWebPush.mockResolvedValue(0)
+    mockSendPush.mockResolvedValue(0)
+  })
+
+  test('envoi OK + UPDATE en erreur : `failed++`, `sent` inchangé', async () => {
+    mockState.updateError = PG_WRITE_ERROR
+
+    const res = await GET(request(AUTH))
+
+    // AVANT K8.12 : { sent: 1 } — une réussite fictive.
+    expect(res.status).toBe(200)
+    expect(await res.json()).toMatchObject({ sent: 0, failed: 1, processed: 1, read: 1 })
+  })
+
+  test('envoi OK + UPDATE en erreur : aucune réussite fictive, l’échec est journalisé', async () => {
+    mockState.updateError = PG_WRITE_ERROR
+
+    await GET(request(AUTH))
+
+    expect(console.error).toHaveBeenCalled()
+    const journal = (console.error as jest.Mock).mock.calls
+      .flat()
+      .map(a => (a instanceof Error ? a.message : typeof a === 'object' && a !== null ? JSON.stringify(a) : String(a)))
+      .join(' ')
+    expect(journal).toContain('marquage du panier relancé')
+    expect(journal).toContain('permission denied')
+    // K8.10 préservé : l'adresse ne figure toujours pas dans les journaux.
+    expect(journal).not.toContain('client@exemple.fr')
+    expect(journal).toContain('id-a')
+  })
+
+  test('une erreur DB ne produit PAS un statut HTTP d’erreur', async () => {
+    mockState.updateError = PG_WRITE_ERROR
+
+    // Le cycle continue pour les autres paniers : seul le compteur signale.
+    expect((await GET(request(AUTH))).status).toBe(200)
+  })
+
+  test('UPDATE OK : comportement inchangé', async () => {
+    const res = await GET(request(AUTH))
+
+    expect(await res.json()).toMatchObject({ sent: 1, failed: 0 })
+    expect(idsMarques()).toEqual(['id-a'])
+  })
+
+  test('K8.11 préservé : un échec Resend reste compté comme échec', async () => {
+    mockSendEmail.mockRejectedValue(new Error('Resend a refusé l’envoi (rate_limit_exceeded, HTTP 429)'))
+
+    expect(await (await GET(request(AUTH))).json()).toMatchObject({ sent: 0, failed: 1 })
+    expect(updates()).toHaveLength(0)
   })
 })
