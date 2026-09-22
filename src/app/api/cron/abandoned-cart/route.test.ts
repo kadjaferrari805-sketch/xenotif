@@ -32,6 +32,10 @@ const operations: Operation[] = []
 const mockState = {
   cartsResult: { data: [] as unknown[] | null, error: null as FakeError },
   updateError: null as FakeError,
+  // Ajouté en K8.10 : sans compte auth correspondant, `userId` reste indéfini et
+  // TOUT le bloc push est sauté — le journal d'échec du push (K8.10-02) serait
+  // alors inatteignable. Vide par défaut : les tests antérieurs sont inchangés.
+  users: [] as { id: string; email: string }[],
 }
 
 const mockSendEmail = jest.fn()
@@ -63,7 +67,7 @@ jest.mock('../../../../lib/supabase/admin', () => ({
         return chain({ error: mockState.updateError }, op)
       },
     }),
-    auth: { admin: { listUsers: async () => ({ data: { users: [] } }) } },
+    auth: { admin: { listUsers: async () => ({ data: { users: mockState.users } }) } },
   }),
 }))
 jest.mock('../../../../lib/emails', () => ({
@@ -117,6 +121,7 @@ beforeEach(() => {
   process.env = { ...ORIGINAL_ENV, CRON_SECRET: 'secret-de-test' }
   mockState.cartsResult = { data: [], error: null }
   mockState.updateError = null
+  mockState.users = []
 })
 
 afterAll(() => { process.env = ORIGINAL_ENV })
@@ -434,5 +439,129 @@ describe('cron/abandoned-cart — K8-06 : aucun détail Postgres exposé', () =>
     await GET(request(AUTH))
 
     expect(console.error).toHaveBeenCalledWith('[abandoned-cart] query error:', PG_ERROR)
+  })
+})
+
+// ── Phase K8.10 — findings K8.10-01 (envoi) et K8.10-02 (push).
+//
+// Les deux journaux d'échec interpolaient `${cart.email}` : une adresse en clair
+// écrite dans les logs serveur. Ils portent désormais `cart.id`, clé primaire
+// depuis K8.5 — la corrélation reste entière via la base, sans donnée
+// personnelle. L'exception, elle, continue d'être transmise.
+//
+// Ces deux chemins n'étaient couverts par AUCUN test : la suite K8.1/K8.4/K8.5
+// n'assertait qu'un seul message, celui de l'erreur de requête (ligne 66).
+
+const ADRESSE = 'client@exemple.fr'
+
+/**
+ * Tous les arguments passés à console.error, aplatis.
+ *
+ * Les objets sont sérialisés en JSON, JAMAIS via String() : `String(objet)`
+ * rendrait « [object Object] » et masquerait précisément la fuite que ces tests
+ * doivent détecter — l'assertion passerait alors à tort.
+ */
+const journal = () =>
+  (console.error as jest.Mock).mock.calls
+    .map((args: unknown[]) =>
+      args
+        .map(a => {
+          if (a instanceof Error) return `${a.name}: ${a.message}`
+          if (typeof a === 'object' && a !== null) return JSON.stringify(a)
+          return String(a)
+        })
+        .join(' '),
+    )
+    .join(' | ')
+
+describe('cron/abandoned-cart — K8.10 : aucune adresse dans les journaux', () => {
+  beforeEach(() => {
+    // `clearAllMocks` n'efface que les appels, pas les implémentations : on les
+    // repose explicitement pour qu'un `mockRejectedValue` ne fuite pas d'un test
+    // à l'autre.
+    mockSendEmail.mockResolvedValue(undefined)
+    mockSendWebPush.mockResolvedValue(0)
+    mockSendPush.mockResolvedValue(0)
+
+    mockState.cartsResult = {
+      data: [panier('id-a', ADRESSE, '2026-09-12T08:00:00.000Z')],
+      error: null,
+    }
+    mockState.users = [{ id: 'user-1', email: ADRESSE }]
+  })
+
+  test('K8.10-01 — un envoi qui échoue journalise `cart.id`, jamais l’adresse', async () => {
+    const erreur = new Error('SMTP 550 mailbox unavailable')
+    mockSendEmail.mockRejectedValue(erreur)
+
+    await GET(request(AUTH))
+
+    expect(console.error).toHaveBeenCalledWith('[abandoned-cart] envoi echoue :', 'id-a', erreur)
+    expect(journal()).not.toContain(ADRESSE)
+    expect(journal()).not.toContain('exemple.fr')
+  })
+
+  test('K8.10-02 — un push qui échoue journalise `cart.id`, jamais l’adresse', async () => {
+    const erreur = new Error('VAPID 403 unauthorized registration')
+    mockSendWebPush.mockRejectedValue(erreur)
+
+    await GET(request(AUTH))
+
+    expect(console.error).toHaveBeenCalledWith('[abandoned-cart] push echoue :', 'id-a', erreur)
+    expect(journal()).not.toContain(ADRESSE)
+    expect(journal()).not.toContain('exemple.fr')
+  })
+
+  test('le jeton de capacité `cart_token` n’est JAMAIS journalisé', async () => {
+    mockSendEmail.mockRejectedValue(new Error('boom'))
+    mockSendWebPush.mockRejectedValue(new Error('boom'))
+
+    await GET(request(AUTH))
+
+    // `panier()` pose `cart_token: 'tok-id-a'`. Le journaliser serait PIRE que
+    // l'adresse : c'est la preuve de propriété d'un panier (UNIQUE, NOT NULL).
+    expect(journal()).not.toContain('tok-id-a')
+    expect(journal()).not.toContain('cart_token')
+  })
+
+  test('l’objet `err` reste transmis au journal : le diagnostic n’est pas réduit', async () => {
+    const erreur = new Error('detail technique a conserver')
+    mockSendEmail.mockRejectedValue(erreur)
+
+    await GET(request(AUTH))
+
+    const appel = (console.error as jest.Mock).mock.calls.find(
+      (a: unknown[]) => a[0] === '[abandoned-cart] envoi echoue :',
+    )
+    expect(appel?.[2]).toBe(erreur)
+  })
+
+  test('aucun secret ni en-tête d’autorisation ne figure dans les journaux', async () => {
+    mockSendEmail.mockRejectedValue(new Error('boom'))
+    mockSendWebPush.mockRejectedValue(new Error('boom'))
+
+    await GET(request(AUTH))
+
+    for (const fuite of ['secret-de-test', 'CRON_SECRET', 'Authorization', 'Bearer']) {
+      expect(journal()).not.toContain(fuite)
+    }
+  })
+
+  test('la réponse HTTP reste inchangée malgré les deux échecs', async () => {
+    mockSendEmail.mockRejectedValue(new Error('boom'))
+    mockSendWebPush.mockRejectedValue(new Error('boom'))
+
+    const res = await GET(request(AUTH))
+
+    expect(res.status).toBe(200)
+    expect(await res.json()).toEqual({ sent: 0, pushed: 0, processed: 1, read: 1 })
+  })
+
+  test('nominal : aucun échec, donc aucun journal d’erreur', async () => {
+    const res = await GET(request(AUTH))
+
+    expect(res.status).toBe(200)
+    expect(await res.json()).toMatchObject({ sent: 1, processed: 1, read: 1 })
+    expect(console.error).not.toHaveBeenCalled()
   })
 })
