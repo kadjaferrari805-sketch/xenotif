@@ -89,3 +89,82 @@ describe('POST /api/contact — non-régression des validations existantes', () 
     expect(html).toContain('&lt;script&gt;')
   })
 })
+
+// ── Phase K8.11 — finding K8.11-03.
+//
+// Les deux `await resend.emails.send(...)` étaient nus. Or le SDK NE LÈVE PAS
+// sur refus d'API : il retourne `{ data: null, error }`. La route répondait donc
+// `{ ok: true }` alors qu'aucun message n'était parti — ni vers l'équipe, ni
+// vers le visiteur — et sans la moindre trace serveur.
+
+describe('POST /api/contact — K8.11-03 : un refus de Resend n’est plus un succès', () => {
+  const REFUS_API = {
+    data: null,
+    error: { message: 'simulated resend failure', statusCode: 429, name: 'rate_limit_exceeded' },
+  }
+
+  beforeEach(() => {
+    jest.spyOn(console, 'error').mockImplementation(() => {})
+  })
+
+  test('refus d’API sur le 1er envoi : 500, et le 2e n’est pas tenté', async () => {
+    mockSend.mockResolvedValue(REFUS_API)
+
+    const res = await POST(request(VALID))
+
+    // Avant la correction : 200 { ok: true }.
+    expect(res.status).toBe(500)
+    expect(mockSend).toHaveBeenCalledTimes(1)
+  })
+
+  test('refus d’API sur le 2e envoi seulement : 500 également', async () => {
+    mockSend
+      .mockResolvedValueOnce({ data: { id: 'ok' }, error: null })
+      .mockResolvedValueOnce(REFUS_API)
+
+    const res = await POST(request(VALID))
+
+    expect(res.status).toBe(500)
+    expect(mockSend).toHaveBeenCalledTimes(2)
+  })
+
+  test('exception de transport : 500, même contrat', async () => {
+    mockSend.mockRejectedValue(new Error('network failure'))
+
+    expect((await POST(request(VALID))).status).toBe(500)
+  })
+
+  test('le corps reste générique : ni adresse, ni code fournisseur, ni trace', async () => {
+    mockSend.mockResolvedValue(REFUS_API)
+
+    const corps = JSON.stringify(await (await POST(request(VALID))).json())
+
+    expect(corps).toEqual('{"error":"Erreur lors de l\'envoi. Réessaie."}')
+    for (const fuite of ['dave@exemple.fr', 'exemple.fr', 'rate_limit_exceeded', '429', 'simulated', 'RESEND', 'Bearer']) {
+      expect(corps).not.toContain(fuite)
+    }
+  })
+
+  test('le diagnostic est journalisé côté serveur, sans l’adresse', async () => {
+    mockSend.mockResolvedValue(REFUS_API)
+
+    await POST(request(VALID))
+
+    expect(console.error).toHaveBeenCalled()
+    const journal = (console.error as jest.Mock).mock.calls
+      .flat()
+      .map(a => (a instanceof Error ? a.message : typeof a === 'object' && a !== null ? JSON.stringify(a) : String(a)))
+      .join(' ')
+    expect(journal).toContain('rate_limit_exceeded')
+    expect(journal).not.toContain('dave@exemple.fr')
+  })
+
+  test('succès inchangé : 200 { ok: true } et deux envois', async () => {
+    const res = await POST(request(VALID))
+
+    expect(res.status).toBe(200)
+    expect(await res.json()).toEqual({ ok: true })
+    expect(mockSend).toHaveBeenCalledTimes(2)
+    expect(console.error).not.toHaveBeenCalled()
+  })
+})

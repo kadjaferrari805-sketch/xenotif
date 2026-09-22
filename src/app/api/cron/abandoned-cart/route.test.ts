@@ -565,3 +565,60 @@ describe('cron/abandoned-cart — K8.10 : aucune adresse dans les journaux', () 
     expect(console.error).not.toHaveBeenCalled()
   })
 })
+
+// ── Phase K8.11 — K8.11-02, côté appelant.
+//
+// Jusqu'ici, un refus d'API Resend ne levait PAS : `sendAbandonedCartEmail` se
+// résolvait, l'UPDATE marquait `reminder_sent` et `sent++` s'exécutait. Le
+// panier était donc scellé « relancé » sans qu'aucun e-mail ne parte, et aucune
+// relance ultérieure n'était possible.
+//
+// Depuis K8.11, le module lève. Le `catch` déjà présent ici — INCHANGÉ — reprend
+// alors la main AVANT l'UPDATE, qui se trouve dans le même `try`.
+
+describe('cron/abandoned-cart — K8.11 : un échec d’envoi ne marque plus le panier', () => {
+  beforeEach(() => {
+    mockState.cartsResult = {
+      data: [panier('id-a', 'client@exemple.fr', '2026-09-12T08:00:00.000Z')],
+      error: null,
+    }
+    mockSendEmail.mockResolvedValue(undefined)
+  })
+
+  test('envoi en échec : `sent` n’est pas incrémenté', async () => {
+    mockSendEmail.mockRejectedValue(new Error('Resend a refusé l’envoi (rate_limit_exceeded, HTTP 429)'))
+
+    expect(await (await GET(request(AUTH))).json()).toMatchObject({ sent: 0, processed: 1, read: 1 })
+  })
+
+  test('envoi en échec : AUCUN UPDATE — `reminder_sent` et `reminded_at` intacts', async () => {
+    mockSendEmail.mockRejectedValue(new Error('boom'))
+
+    await GET(request(AUTH))
+
+    // L'UPDATE est dans le même `try`, APRÈS l'envoi : il devient inatteignable.
+    expect(updates()).toHaveLength(0)
+    expect(idsMarques()).toEqual([])
+  })
+
+  test('le panier reste donc éligible pour un cycle ultérieur', async () => {
+    mockSendEmail.mockRejectedValue(new Error('boom'))
+    await GET(request(AUTH))
+    expect(idsMarques()).not.toContain('id-a')
+
+    // Cycle suivant : l'envoi passe, le panier est enfin marqué.
+    jest.clearAllMocks()
+    operations.length = 0
+    mockSendEmail.mockResolvedValue(undefined)
+
+    await GET(request(AUTH))
+    expect(idsMarques()).toEqual(['id-a'])
+  })
+
+  test('succès : le marquage a bien lieu (non-régression)', async () => {
+    const res = await GET(request(AUTH))
+
+    expect(await res.json()).toMatchObject({ sent: 1 })
+    expect(idsMarques()).toEqual(['id-a'])
+  })
+})

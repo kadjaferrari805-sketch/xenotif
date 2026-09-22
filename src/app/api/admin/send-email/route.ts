@@ -50,15 +50,26 @@ export async function POST(req: NextRequest) {
   </div>
 </body></html>`
 
+  // K8.11-04 — `sent++` s'exécutait dès que l'`await` se résolvait. Or Resend NE
+  // LÈVE PAS sur refus d'API : il retourne `{ data: null, error }`. Un quota
+  // dépassé était donc compté comme un envoi réussi, et le `catch` muet n'en
+  // laissait aucune trace. Le compte est désormais sincère et l'échec visible.
   let sent = 0
+  let failed = 0
   for (const email of emails) {
     try {
-      await resend.emails.send({ from: 'Xenotif® <noreply@xenotif.com>', to: email, subject, html })
+      const { error } = await resend.emails.send({ from: 'Xenotif® <noreply@xenotif.com>', to: email, subject, html })
+      if (error) {
+        throw new Error(`Resend a refusé l'envoi (${error.name}, HTTP ${error.statusCode ?? 'inconnu'})`)
+      }
       sent++
-    } catch {
-      // continue
+    } catch (err) {
+      failed++
+      // L'adresse ne quitte pas le serveur : seuls le code et le statut du
+      // fournisseur sont journalisés.
+      console.error('[admin/send-email] envoi echoue :', err)
     }
   }
 
-  return NextResponse.json({ sent })
+  return NextResponse.json({ sent, failed })
 }

@@ -26,6 +26,8 @@ const mockState = {
 const mockSendEmail = jest.fn()
 const mockSendPush = jest.fn()
 const mockSendWebPush = jest.fn()
+/** Charges utiles des UPDATE observés (K8.11). Préfixé `mock` : contrainte du hoisting de jest.mock. */
+const mockUpdates: unknown[] = []
 
 function chain(result: unknown): FakeQuery {
   const query: FakeQuery = {
@@ -43,7 +45,9 @@ jest.mock('../../../../lib/supabase/admin', () => ({
     from: () => ({
       select: () => chain(mockState.subsResult),
       // Ajouté en K8.9 : la route marque l'abonné relancé après un envoi réussi.
-      update: () => chain({ error: null }),
+      // Enregistré en K8.11 : sans cela, impossible d'affirmer que
+      // `reactivation_sent_at` n'est PAS marqué quand l'envoi échoue.
+      update: (payload: unknown) => { mockUpdates.push(payload); return chain({ error: null }) },
     }),
     auth: { admin: { listUsers: async () => ({ data: { users: mockState.users } }) } },
   }),
@@ -232,5 +236,48 @@ describe('cron/reactivation — K8.9-03 : ni identifiant ni exception dans la r�
 
     expect(await (await GET(request('Bearer secret-de-test'))).json())
       .toEqual({ sent: 0, pushed: 3, processed: 1, failed: 0 })
+  })
+})
+
+// ── Phase K8.11 — K8.11-02, côté appelant.
+//
+// Un refus d'API Resend ne levait pas : l'UPDATE posait `reactivation_sent_at`
+// et l'abonné était scellé « relancé » sans qu'aucun e-mail ne parte. Le module
+// lève désormais, et le `catch` déjà présent — INCHANGÉ — reprend la main avant
+// l'UPDATE, situé dans le même `try`.
+
+describe('cron/reactivation — K8.11 : un échec d’envoi ne marque plus l’abonné', () => {
+  beforeEach(() => {
+    mockUpdates.length = 0
+    mockState.subsResult = {
+      data: [{ user_id: USER_ID, status: 'canceled', reactivation_sent_at: null }],
+      error: null,
+    }
+    mockState.users = [{ id: USER_ID, email: 'resilie@exemple.fr' }]
+    mockSendEmail.mockResolvedValue(undefined)
+    mockSendWebPush.mockResolvedValue(0)
+    mockSendPush.mockResolvedValue(0)
+  })
+
+  test('envoi en échec : AUCUN UPDATE — `reactivation_sent_at` reste nul', async () => {
+    mockSendEmail.mockRejectedValue(new Error('Resend a refusé l’envoi (rate_limit_exceeded, HTTP 429)'))
+
+    await GET(request('Bearer secret-de-test'))
+
+    expect(mockUpdates).toHaveLength(0)
+  })
+
+  test('envoi en échec : `sent` reste à 0', async () => {
+    mockSendEmail.mockRejectedValue(new Error('boom'))
+
+    expect(await (await GET(request('Bearer secret-de-test'))).json())
+      .toMatchObject({ sent: 0, processed: 1, failed: 1 })
+  })
+
+  test('succès : l’UPDATE a bien lieu (non-régression)', async () => {
+    await GET(request('Bearer secret-de-test'))
+
+    expect(mockUpdates).toHaveLength(1)
+    expect(mockUpdates[0]).toHaveProperty('reactivation_sent_at')
   })
 })

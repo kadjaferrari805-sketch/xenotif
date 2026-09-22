@@ -65,6 +65,18 @@ export async function POST(req: NextRequest) {
 
   const resend = new Resend(process.env.RESEND_API_KEY!)
 
+  // K8.11-03 — le SDK Resend NE LÈVE PAS sur refus d'API : il retourne
+  // `{ data: null, error }`. Les deux `await` nus ci-dessous renvoyaient donc
+  // `{ ok: true }` alors que le message n'était jamais parti. Le message de
+  // l'erreur ne porte que le code et le statut du fournisseur — jamais
+  // l'adresse, le sujet ni le contenu.
+  const envoyer = async (payload: Parameters<typeof resend.emails.send>[0]) => {
+    const { error } = await resend.emails.send(payload)
+    if (error) {
+      throw new Error(`Resend a refusé l'envoi (${error.name}, HTTP ${error.statusCode ?? 'inconnu'})`)
+    }
+  }
+
   const html = `<!DOCTYPE html><html><head><meta charset="utf-8"/></head>
 <body style="background:#0A0B0F;color:#fff;font-family:sans-serif;margin:0;padding:40px 20px;">
   <div style="max-width:560px;margin:0 auto;">
@@ -83,7 +95,7 @@ export async function POST(req: NextRequest) {
 </body></html>`
 
   try {
-    await resend.emails.send({
+    await envoyer({
       from: 'Xenotif® <noreply@xenotif.com>',
       to: 'contact@xenotif.com',
       replyTo: email,
@@ -91,7 +103,7 @@ export async function POST(req: NextRequest) {
       html,
     })
 
-    await resend.emails.send({
+    await envoyer({
       from: 'Xenotif® <noreply@xenotif.com>',
       to: email,
       subject: 'Nous avons bien reçu ton message - Xenotif®',
@@ -113,7 +125,10 @@ export async function POST(req: NextRequest) {
     })
 
     return NextResponse.json({ ok: true })
-  } catch {
+  } catch (err) {
+    // Le détail reste côté serveur ; la réponse conserve son message générique
+    // et son statut 500 — le contrat HTTP existant est inchangé.
+    console.error('[contact] envoi echoue :', err)
     return NextResponse.json({ error: 'Erreur lors de l\'envoi. Réessaie.' }, { status: 500 })
   }
 }

@@ -133,3 +133,71 @@ describe('POST /api/subscribe — non-régression des validations existantes', (
     expect(res.status).toBe(500)
   })
 })
+
+// ── Phase K8.11 — K8.11-05, REQUALIFIÉ.
+//
+// L'audit K8.11 avait qualifié d'« incohérent » le fait de détecter l'erreur
+// Resend puis de répondre `{ success: true }`. C'était une ERREUR D'ANALYSE de
+// ma part : la route répond volontairement de façon INDISCERNABLE dans tous les
+// cas — voir le commentaire du champ-piège, « on répond comme en cas de succès
+// pour ne pas lui signaler la détection », et le test correspondant plus haut.
+// Faire varier le statut selon la réponse de Resend transformerait cette route
+// en oracle d'énumération d'adresses.
+//
+// La détection est donc CONSERVÉE telle quelle, et seulement verrouillée par
+// des tests. Aucune ligne de la route n'a été modifiée en K8.11.
+
+describe('POST /api/subscribe — K8.11-05 : détection conservée, réponse indiscernable', () => {
+  const REFUS_API = {
+    data: null,
+    error: { message: 'simulated resend failure', statusCode: 429, name: 'rate_limit_exceeded' },
+  }
+
+  beforeEach(() => {
+    jest.spyOn(console, 'error').mockImplementation(() => {})
+  })
+
+  test('refus d’API : la détection a lieu et le refus est journalisé', async () => {
+    mockSend.mockResolvedValue(REFUS_API)
+
+    await POST(request({ email: 'a@exemple.fr' }))
+
+    const journal = (console.error as jest.Mock).mock.calls.flat().map(String).join(' ')
+    expect(journal).toContain('Resend error')
+    expect(journal).toContain('rate_limit_exceeded')
+  })
+
+  test('refus d’API : le statut reste 200, comme pour un succès', async () => {
+    mockSend.mockResolvedValue(REFUS_API)
+
+    const res = await POST(request({ email: 'a@exemple.fr' }))
+
+    // NON-RÉGRESSION DE SÉCURITÉ : un 500 ici révélerait quelles adresses Resend
+    // accepte, faisant de cette route publique un oracle d'énumération.
+    expect(res.status).toBe(200)
+    expect(await res.json()).toEqual({ success: true })
+  })
+
+  test('succès et refus produisent des réponses STRICTEMENT identiques', async () => {
+    mockSend.mockResolvedValue({ data: { id: 'ok' }, error: null })
+    const succes = await POST(request({ email: 'a@exemple.fr' }))
+    const corpsSucces = JSON.stringify(await succes.json())
+
+    mockSend.mockResolvedValue(REFUS_API)
+    const refus = await POST(request({ email: 'b@exemple.fr' }))
+    const corpsRefus = JSON.stringify(await refus.json())
+
+    expect(refus.status).toBe(succes.status)
+    expect(corpsRefus).toEqual(corpsSucces)
+  })
+
+  test('le corps ne divulgue jamais le détail du fournisseur', async () => {
+    mockSend.mockResolvedValue(REFUS_API)
+
+    const corps = JSON.stringify(await (await POST(request({ email: 'a@exemple.fr' }))).json())
+
+    for (const fuite of ['rate_limit_exceeded', '429', 'simulated', 'resend', 'Resend']) {
+      expect(corps).not.toContain(fuite)
+    }
+  })
+})
