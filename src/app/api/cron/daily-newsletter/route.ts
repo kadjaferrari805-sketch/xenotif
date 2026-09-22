@@ -15,8 +15,12 @@ type Recipient = { email: string; name: string; locale: string; isSubscriber: bo
 // (emails capturés sans compte). Les abonnés actifs/essai ne reçoivent pas le
 // thème « abonnement ».
 export async function GET(request: Request) {
-  const authHeader = request.headers.get('Authorization')
-  if (authHeader !== `Bearer ${process.env.CRON_SECRET}`) {
+  // K8.9-04 — garde fail-closed. Sans le test sur `cronSecret`, une variable
+  // absente faisait comparer à la chaîne « Bearer undefined », devinable.
+  const cronSecret = process.env.CRON_SECRET
+  const authHeader = request.headers.get('authorization')
+
+  if (!cronSecret || authHeader !== `Bearer ${cronSecret}`) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
   }
 
@@ -69,8 +73,12 @@ export async function GET(request: Request) {
   const recipients = [...byEmail.values()]
   if (recipients.length === 0) return NextResponse.json({ sent: 0 })
 
+  // K8.9-02 — l'adresse ne quitte plus le serveur. Les destinataires « prospects »
+  // n'ayant pas de compte, il n'existe pas d'identifiant à journaliser à sa
+  // place : l'adresse est donc MASQUÉE dans le log (ab***@domaine), ce qui suffit
+  // au diagnostic sans écrire de donnée personnelle en clair.
   let sent = 0
-  const errors: string[] = []
+  let failed = 0
   for (const r of recipients) {
     const theme = getDailyEmailTheme(r.isSubscriber)
     try {
@@ -81,10 +89,11 @@ export async function GET(request: Request) {
       }
       sent++
     } catch (e) {
-      errors.push(`${r.email}: ${e}`)
+      failed++
+      console.error('[daily-newsletter] envoi echoue :', r.email.replace(/^(.{2}).*@/, '$1***@'), theme, e)
     }
   }
 
-  console.log(`[daily-newsletter] sent=${sent}/${recipients.length} errors=${errors.length}`)
-  return NextResponse.json({ sent, recipients: recipients.length, errors: errors.slice(0, 10) })
+  console.log(`[daily-newsletter] sent=${sent}/${recipients.length} errors=${failed}`)
+  return NextResponse.json({ sent, recipients: recipients.length, failed })
 }

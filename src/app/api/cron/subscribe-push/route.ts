@@ -11,8 +11,12 @@ export const dynamic = 'force-dynamic'
 // Créneau soirée : « passe à l'abonnement Pro ». PUSH localisé (fr/en/de),
 // envoyé UNIQUEMENT aux non-abonnés (on ne sollicite pas ceux déjà actifs/essai).
 export async function GET(request: Request) {
-  const authHeader = request.headers.get('Authorization')
-  if (authHeader !== `Bearer ${process.env.CRON_SECRET}`) {
+  // K8.9-04 — garde fail-closed. Sans le test sur `cronSecret`, une variable
+  // absente faisait comparer à la chaîne « Bearer undefined », devinable.
+  const cronSecret = process.env.CRON_SECRET
+  const authHeader = request.headers.get('authorization')
+
+  if (!cronSecret || authHeader !== `Bearer ${cronSecret}`) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
   }
 
@@ -29,15 +33,17 @@ export async function GET(request: Request) {
   const targets = recipients.filter((r) => !subscriberIds.has(r.userId))
   if (targets.length === 0) return NextResponse.json({ pushed: 0, devices: 0, skipped: recipients.length })
 
+  // K8.9-03 — le détail des échecs (identifiant + exception) reste côté serveur ;
+  // la réponse ne porte plus qu'un compte.
   let pushed = 0
-  const errors: string[] = []
+  let failed = 0
   for (const { userId, locale } of targets) {
     const { title, body, url, tag } = getCampaignPush('subscribe', locale)
     try { pushed += await sendPushToUser(userId, { title, body, data: { type: 'subscribe_daily', url } }) }
-    catch (e) { errors.push(`push ${userId}: ${e}`) }
+    catch (e) { failed++; console.error('[subscribe-push] push natif echoue :', userId, e) }
     try { pushed += await sendWebPushToUser(userId, { title, body, url, tag }) }
-    catch (e) { errors.push(`webpush ${userId}: ${e}`) }
+    catch (e) { failed++; console.error('[subscribe-push] web push echoue :', userId, e) }
   }
-  console.log(`[subscribe-push] push=${pushed} targets=${targets.length}/${recipients.length} errors=${errors.length}`)
-  return NextResponse.json({ pushed, targets: targets.length, devices: recipients.length, errors })
+  console.log(`[subscribe-push] push=${pushed} targets=${targets.length}/${recipients.length} errors=${failed}`)
+  return NextResponse.json({ pushed, targets: targets.length, devices: recipients.length, failed })
 }
