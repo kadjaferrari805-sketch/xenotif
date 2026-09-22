@@ -156,7 +156,11 @@ export async function GET(request: Request) {
         .eq('id', cart.id)
       sent++
     } catch (err) {
-      console.error(`[abandoned-cart] send error for ${cart.email}:`, err)
+      // K8.10-01 — l'adresse partait en clair dans le journal serveur. `cart.id`
+      // est la clé primaire depuis K8.5 : la corrélation avec la ligne reste
+      // entière via la base, sans écrire de donnée personnelle. L'exception est
+      // toujours transmise telle quelle — le diagnostic n'est pas réduit.
+      console.error('[abandoned-cart] envoi echoue :', cart.id, err)
     }
 
     // Push (web + natif) en plus de l'email, si on a retrouvé le compte utilisateur.
@@ -178,7 +182,8 @@ export async function GET(request: Request) {
           data: { type: 'abandoned_cart', url: '/boutique/panier' },
         })
       } catch (err) {
-        console.error(`[abandoned-cart] push error for ${cart.email}:`, err)
+        // K8.10-02 — même correction que ci-dessus.
+        console.error('[abandoned-cart] push echoue :', cart.id, err)
       }
     }
   }
