@@ -134,18 +134,18 @@ export default function PanierPage() {
                             <p className="font-black text-sport-fg text-sm line-clamp-2">{product.name}</p>
                             <p className="text-xs text-sport-gray mt-0.5">{product.type === 'digital' ? t('digitalImmediate') : t('physicalDelivery')}</p>
                           </div>
-                          <button onClick={() => removeItem(product.id)} className="flex-shrink-0 text-sport-gray hover:text-red-600 transition-colors">
+                          <button type="button" onClick={() => removeItem(product.id)} className="flex-shrink-0 text-sport-gray hover:text-red-600 transition-colors">
                             <Trash2 size={15} />
                           </button>
                         </div>
                         <div className="flex items-center justify-between mt-3">
                           {product.type === 'physical' ? (
                             <div className="flex items-center gap-2">
-                              <button onClick={() => updateQty(product.id, quantity - 1)} className="flex h-7 w-7 items-center justify-center rounded-lg border border-sport-border hover:border-sport-orange/50 text-sport-gray hover:text-sport-fg transition-colors">
+                              <button type="button" onClick={() => updateQty(product.id, quantity - 1)} className="flex h-7 w-7 items-center justify-center rounded-lg border border-sport-border hover:border-sport-orange/50 text-sport-gray hover:text-sport-fg transition-colors">
                                 <Minus size={12} />
                               </button>
                               <span className="text-sm font-bold text-sport-fg w-5 text-center">{quantity}</span>
-                              <button onClick={() => updateQty(product.id, quantity + 1)} className="flex h-7 w-7 items-center justify-center rounded-lg border border-sport-border hover:border-sport-orange/50 text-sport-gray hover:text-sport-fg transition-colors">
+                              <button type="button" onClick={() => updateQty(product.id, quantity + 1)} className="flex h-7 w-7 items-center justify-center rounded-lg border border-sport-border hover:border-sport-orange/50 text-sport-gray hover:text-sport-fg transition-colors">
                                 <Plus size={12} />
                               </button>
                             </div>
@@ -183,7 +183,7 @@ export default function PanierPage() {
                               <ExternalLink size={11} /> Amazon
                             </a>
                           )}
-                          <button onClick={() => removeItem(product.id)} className="text-sport-gray hover:text-red-600 transition-colors">
+                          <button type="button" onClick={() => removeItem(product.id)} className="text-sport-gray hover:text-red-600 transition-colors">
                             <Trash2 size={14} />
                           </button>
                         </div>

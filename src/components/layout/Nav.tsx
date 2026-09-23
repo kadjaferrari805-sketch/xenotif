@@ -219,7 +219,7 @@ export function Nav() {
             labelClassName="hidden"
             iconSize={16}
           />
-          <button
+          <button type="button"
             ref={hamburgerRef}
             onClick={() => setIsOpen((v) => !v)}
             aria-label={isOpen ? t('fermerMenu') : t('ouvrirMenu')}

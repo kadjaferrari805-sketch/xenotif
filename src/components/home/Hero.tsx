@@ -357,7 +357,7 @@ export function Hero() {
           {slides.map((_, i) => (
             // Bouton avec zone tactile ≥24px (px-2 py-3) ; la barre visuelle reste
             // fine via un <span> interne (accessibilité : taille des cibles tactiles).
-            <button
+            <button type="button"
               key={i}
               role="tab"
               onClick={() => { setCurrent(i); setProgress(0) }}

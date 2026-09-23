@@ -303,7 +303,7 @@ export function TodayActivity({ initialSteps, initialActiveSec, weekly, dateLabe
             <div className="flex flex-col items-center gap-3 rounded-2xl border border-sport-lime/20 bg-sport-lime/5 px-4 py-4 text-center">
               <p className="text-sm font-bold text-sport-fg">{t('tapToStart')}</p>
               <p className="max-w-xs text-[11px] leading-relaxed text-sport-gray">{t('tapHint')}</p>
-              <button
+              <button type="button"
                 onClick={start}
                 className="inline-flex items-center justify-center gap-2 rounded-xl bg-sport-lime px-5 py-2.5 text-sm font-black text-sport-dark transition-all hover:brightness-110"
               >
@@ -315,7 +315,7 @@ export function TodayActivity({ initialSteps, initialActiveSec, weekly, dateLabe
           {status === 'denied' && (
             <div className="flex flex-col items-center gap-3 rounded-2xl border border-red-200 bg-red-500/5 px-4 py-4 text-center">
               <p className="max-w-xs text-[11px] leading-relaxed text-red-600">{t('denied')}</p>
-              <button
+              <button type="button"
                 onClick={start}
                 className="inline-flex items-center justify-center gap-2 rounded-xl bg-sport-lime px-5 py-2.5 text-sm font-black text-sport-dark transition-all hover:brightness-110"
               >

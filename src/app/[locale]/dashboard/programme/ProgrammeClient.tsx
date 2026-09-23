@@ -111,7 +111,7 @@ function ProgrammeContent({ isPro, freeSlugs, userId, initialProgress }: { isPro
         {DISCIPLINES.map(d => {
           const locked = !unlocked(d.slug)
           return (
-            <button
+            <button type="button"
               key={d.slug}
               onClick={() => setSelected(d.slug)}
               className={`px-4 py-2 rounded-full text-xs font-bold transition-all border inline-flex items-center gap-1.5 ${
@@ -199,7 +199,7 @@ function ProgrammeContent({ isPro, freeSlugs, userId, initialProgress }: { isPro
                   const done = progress[key] ?? false
                   return (
                     <li key={session.name} className="px-5 py-4 flex gap-4 items-start">
-                      <button
+                      <button type="button"
                         onClick={() => toggleSession(bi + 1, session.name, done)}
                         aria-label={done ? t('markUndone', { name: session.name }) : t('markDone', { name: session.name })}
                         className="mt-0.5 shrink-0 transition-all hover:scale-110"

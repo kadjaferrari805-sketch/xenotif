@@ -56,7 +56,7 @@ export function PushToggle() {
         </p>
       </div>
       {state === 'on' ? (
-        <button
+        <button type="button"
           onClick={disable}
           disabled={busy}
           aria-label={t('disable')}
@@ -65,7 +65,7 @@ export function PushToggle() {
           <BellOff size={14} aria-hidden="true" />
         </button>
       ) : state === 'off' ? (
-        <button
+        <button type="button"
           onClick={enable}
           disabled={busy}
           className="shrink-0 inline-flex items-center gap-1.5 rounded-full bg-sport-orange px-3.5 py-2 text-xs font-bold text-white hover:bg-orange-600 disabled:opacity-60 transition-colors"

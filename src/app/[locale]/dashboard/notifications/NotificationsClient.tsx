@@ -42,7 +42,7 @@ export function NotificationsClient() {
         <h1 className="text-2xl font-black text-sport-fg flex items-center gap-2.5">
           <Bell size={22} className="text-sport-orange" aria-hidden="true" /> {t('title')}
         </h1>
-        <button
+        <button type="button"
           onClick={markAllRead}
           disabled={read}
           className="text-xs font-bold text-sport-orange hover:underline disabled:text-sport-gray disabled:no-underline disabled:cursor-default inline-flex items-center gap-1.5"

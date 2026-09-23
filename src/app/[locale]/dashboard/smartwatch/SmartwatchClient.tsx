@@ -214,7 +214,7 @@ export function SmartwatchClient({ initialData }: { initialData: DashboardData }
           )}
 
           {connectedDevice && (
-            <button
+            <button type="button"
               onClick={() => handleSync()}
               disabled={syncing}
               className="flex items-center gap-2 bg-sport-card border border-sport-border hover:border-sport-fg/20 rounded-xl px-4 py-2 text-xs font-bold text-sport-fg transition-all"
@@ -229,7 +229,7 @@ export function SmartwatchClient({ initialData }: { initialData: DashboardData }
       {/* Tabs */}
       <div className="flex gap-1 bg-sport-card border border-sport-border rounded-xl p-1 mb-6 overflow-x-auto scrollbar-hide">
         {TABS.map(tb => (
-          <button
+          <button type="button"
             key={tb.id}
             onClick={() => setTab(tb.id)}
             className={`flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-bold whitespace-nowrap transition-all flex-1 justify-center ${
@@ -307,7 +307,7 @@ export function SmartwatchClient({ initialData }: { initialData: DashboardData }
               <p className="text-sm font-black text-sport-fg">{t('weeklyActivity')}</p>
               <div className="flex gap-1">
                 {(['steps', 'calories', 'activeMinutes'] as const).map(m => (
-                  <button
+                  <button type="button"
                     key={m}
                     onClick={() => setChartMetric(m)}
                     className={`text-[10px] font-bold px-2.5 py-1 rounded-lg transition-all ${

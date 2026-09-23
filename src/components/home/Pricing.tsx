@@ -45,7 +45,7 @@ function PlanButton({
 
   if (planId === 'elite') {
     return (
-      <button
+      <button type="button"
         onClick={() => router.push('/contact?sujet=elite')}
         aria-label={t('subscribeAria', { name })}
         className="w-full py-3.5 px-6 rounded-full font-bold text-sm transition-all inline-flex items-center justify-center gap-2 active:scale-95 border border-sport-border text-sport-fg hover:border-sport-gray hover:bg-sport-fg/5"
@@ -56,7 +56,7 @@ function PlanButton({
   }
 
   return (
-    <button
+    <button type="button"
       onClick={() => router.push(`/auth/signup?plan=${planId}${period === 'annual' ? '&period=annual' : ''}`)}
       aria-label={t('subscribeAria', { name })}
       className={`w-full py-3.5 px-6 rounded-full font-bold text-sm transition-all inline-flex items-center justify-center gap-2 active:scale-95 ${
@@ -95,13 +95,13 @@ export function Pricing() {
 
         {/* Billing toggle */}
         <div className="flex items-center justify-center gap-4 mt-8">
-          <button
+          <button type="button"
             onClick={() => setPeriod('monthly')}
             className={`px-5 py-2 rounded-full text-sm font-bold transition-all ${period === 'monthly' ? 'bg-sport-orange text-white' : 'text-sport-gray hover:text-sport-fg'}`}
           >
             {t('monthly')}
           </button>
-          <button
+          <button type="button"
             onClick={() => setPeriod('annual')}
             className={`px-5 py-2 rounded-full text-sm font-bold transition-all flex items-center gap-2 ${period === 'annual' ? 'bg-sport-orange text-white' : 'text-sport-gray hover:text-sport-fg'}`}
           >

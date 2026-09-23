@@ -19,7 +19,7 @@ export function DisciplineFAQSection({ items, accentColor }: { items: FAQItem[];
           key={i}
           className="bg-sport-dark border border-sport-border rounded-2xl overflow-hidden"
         >
-          <button
+          <button type="button"
             onClick={() => setOpen(open === i ? null : i)}
             aria-expanded={open === i}
             className="w-full flex items-center justify-between px-6 py-5 text-left hover:bg-white/[0.02] transition-colors"

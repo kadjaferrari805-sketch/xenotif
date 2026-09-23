@@ -55,9 +55,9 @@ export default function ResetPasswordPage() {
 
               <form onSubmit={handleSubmit} className="space-y-5">
                 <div>
-                  <Label className="uppercase tracking-wider">{t('passwordLabel')}</Label>
+                  <Label htmlFor="reset-password" className="uppercase tracking-wider">{t('passwordLabel')}</Label>
                   <div className="relative">
-                    <Input
+                    <Input id="reset-password"
                       type={showPwd ? 'text' : 'password'}
                       required
                       value={password}

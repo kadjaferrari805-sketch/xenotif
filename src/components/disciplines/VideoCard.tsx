@@ -102,7 +102,7 @@ export function VideoCard({ youtubeIds, title, description, duration, level, acc
           />
         </div>
       ) : (
-        <button
+        <button type="button"
           onClick={() => setPlaying(true)}
           aria-label={t('playAria', { title })}
           className="block w-full text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-sport-orange"

@@ -71,7 +71,7 @@ export function NotificationBell({ align = 'right' }: { align?: 'left' | 'right'
 
   return (
     <div className="relative" ref={ref}>
-      <button
+      <button type="button"
         onClick={toggle}
         aria-label={unreadCount > 0 ? `${t('aria')} (${unreadCount})` : t('aria')}
         aria-haspopup="dialog"
@@ -97,7 +97,7 @@ export function NotificationBell({ align = 'right' }: { align?: 'left' | 'right'
         >
           <div className="flex items-center justify-between px-4 py-3 border-b border-sport-border">
             <p className="text-sm font-black text-sport-fg">{t('title')}</p>
-            <button onClick={() => setOpen(false)} aria-label={t('close')} className="text-sport-gray hover:text-sport-fg transition-colors">
+            <button type="button" onClick={() => setOpen(false)} aria-label={t('close')} className="text-sport-gray hover:text-sport-fg transition-colors">
               <X size={15} aria-hidden="true" />
             </button>
           </div>

@@ -77,7 +77,7 @@ export function TransformationForm() {
         <span className="text-xs text-sport-gray leading-relaxed">{t('consentLabel')}</span>
       </label>
       {error && <p role="alert" className="text-red-600 text-xs mb-3">{error}</p>}
-      <button onClick={submit} disabled={!canSubmit}
+      <button type="button" onClick={submit} disabled={!canSubmit}
         className="inline-flex items-center gap-2 bg-sport-orange text-white px-6 py-3 rounded-full font-bold text-sm hover:bg-orange-600 disabled:opacity-50 transition-all">
         {loading ? t('sending') : t('submit')}
       </button>

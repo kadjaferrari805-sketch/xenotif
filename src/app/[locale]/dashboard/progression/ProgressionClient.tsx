@@ -66,7 +66,7 @@ export function ProgressionClient({ userId, initialWorkouts, initialProgress }: 
     <div className="p-6 md:p-8 max-w-4xl mx-auto pb-24 md:pb-8">
       <div className="flex items-center justify-between mb-8">
         <h1 className="text-2xl font-black text-sport-fg">{t('title')}</h1>
-        <button
+        <button type="button"
           onClick={() => setAdding(true)}
           className="inline-flex items-center gap-2 bg-sport-orange text-white px-4 py-2 rounded-full text-xs font-bold hover:bg-orange-600 active:scale-95 transition-all shadow-lg shadow-sport-orange/20"
         >
@@ -91,8 +91,8 @@ export function ProgressionClient({ userId, initialWorkouts, initialProgress }: 
                 </Select>
               </div>
               <div>
-                <Label className="uppercase tracking-wider">{t('durationMin')}</Label>
-                <Input type="number" min="5" max="300" value={form.duration}
+                <Label htmlFor="progression-duration" className="uppercase tracking-wider">{t('durationMin')}</Label>
+                <Input id="progression-duration" type="number" min="5" max="300" value={form.duration}
                   onChange={e => setForm(f => ({ ...f, duration: e.target.value }))} />
               </div>
               <div>
@@ -102,11 +102,11 @@ export function ProgressionClient({ userId, initialWorkouts, initialProgress }: 
               </div>
             </div>
             <div className="flex gap-3 mt-6">
-              <button onClick={() => setAdding(false)}
+              <button type="button" onClick={() => setAdding(false)}
                 className="flex-1 border border-sport-border text-sport-gray py-2.5 rounded-full text-sm font-bold hover:text-sport-fg hover:border-sport-gray transition-all">
                 {t('cancel')}
               </button>
-              <button onClick={addWorkout} disabled={saving}
+              <button type="button" onClick={addWorkout} disabled={saving}
                 className="flex-1 bg-sport-orange text-white py-2.5 rounded-full text-sm font-bold hover:bg-orange-600 disabled:opacity-60 transition-all inline-flex items-center justify-center gap-2">
                 {saving ? <><Loader size={14} className="text-white" iconClassName="text-white" />{t('saving')}</> : t('save')}
               </button>

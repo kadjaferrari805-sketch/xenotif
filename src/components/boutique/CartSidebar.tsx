@@ -47,7 +47,7 @@ export function CartSidebar({ open, onClose }: CartSidebarProps) {
                 <h2 className="font-black text-sport-fg">{t('title')}</h2>
                 {count > 0 && <span className="rounded-full bg-sport-orange px-2 py-0.5 text-xs font-black text-white">{count}</span>}
               </div>
-              <button onClick={onClose} className="rounded-lg p-2 text-sport-gray hover:text-sport-fg hover:bg-sport-border/50 transition-colors">
+              <button type="button" onClick={onClose} className="rounded-lg p-2 text-sport-gray hover:text-sport-fg hover:bg-sport-border/50 transition-colors">
                 <X size={18} />
               </button>
             </div>
@@ -81,7 +81,7 @@ export function CartSidebar({ open, onClose }: CartSidebarProps) {
                     <p className="font-black text-sport-fg">{t('emptyTitle')}</p>
                     <p className="text-sm text-sport-gray mt-1">{t('emptyDesc')}</p>
                   </div>
-                  <button onClick={onClose} className="rounded-xl bg-sport-orange px-6 py-2.5 text-sm font-bold text-white hover:bg-orange-600 transition-colors">
+                  <button type="button" onClick={onClose} className="rounded-xl bg-sport-orange px-6 py-2.5 text-sm font-bold text-white hover:bg-orange-600 transition-colors">
                     {t('discover')}
                   </button>
                 </div>
@@ -96,18 +96,18 @@ export function CartSidebar({ open, onClose }: CartSidebarProps) {
                       <div className="flex flex-1 flex-col justify-between min-w-0">
                         <div className="flex items-start justify-between gap-2">
                           <p className="text-sm font-bold text-sport-fg line-clamp-2 flex-1">{product.name}</p>
-                          <button onClick={() => removeItem(product.id)} className="flex-shrink-0 text-sport-gray hover:text-red-600 transition-colors">
+                          <button type="button" onClick={() => removeItem(product.id)} className="flex-shrink-0 text-sport-gray hover:text-red-600 transition-colors">
                             <Trash2 size={14} />
                           </button>
                         </div>
                         <div className="flex items-center justify-between mt-2">
                           {product.type === 'physical' ? (
                             <div className="flex items-center gap-2">
-                              <button onClick={() => updateQty(product.id, quantity - 1)} className="flex h-6 w-6 items-center justify-center rounded-lg border border-sport-border hover:border-sport-orange text-sport-gray hover:text-sport-fg transition-colors">
+                              <button type="button" onClick={() => updateQty(product.id, quantity - 1)} className="flex h-6 w-6 items-center justify-center rounded-lg border border-sport-border hover:border-sport-orange text-sport-gray hover:text-sport-fg transition-colors">
                                 <Minus size={10} />
                               </button>
                               <span className="text-sm font-bold text-sport-fg w-4 text-center">{quantity}</span>
-                              <button onClick={() => updateQty(product.id, quantity + 1)} className="flex h-6 w-6 items-center justify-center rounded-lg border border-sport-border hover:border-sport-orange text-sport-gray hover:text-sport-fg transition-colors">
+                              <button type="button" onClick={() => updateQty(product.id, quantity + 1)} className="flex h-6 w-6 items-center justify-center rounded-lg border border-sport-border hover:border-sport-orange text-sport-gray hover:text-sport-fg transition-colors">
                                 <Plus size={10} />
                               </button>
                             </div>
@@ -133,7 +133,7 @@ export function CartSidebar({ open, onClose }: CartSidebarProps) {
                   className="flex w-full items-center justify-center gap-2 rounded-2xl bg-sport-orange py-4 font-bold text-white hover:bg-orange-600 transition-all hover:shadow-[0_0_30px_rgba(255,69,0,0.4)]">
                   {t('checkout')} <ArrowRight size={16} />
                 </Link>
-                <button onClick={onClose} className="w-full text-center text-sm font-semibold text-sport-gray hover:text-sport-fg transition-colors">
+                <button type="button" onClick={onClose} className="w-full text-center text-sm font-semibold text-sport-gray hover:text-sport-fg transition-colors">
                   {t('continueShopping')}
                 </button>
               </div>

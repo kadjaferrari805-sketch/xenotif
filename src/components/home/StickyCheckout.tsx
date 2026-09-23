@@ -58,7 +58,7 @@ export function StickyCheckout() {
           </div>
 
           {/* Dismiss */}
-          <button
+          <button type="button"
             onClick={() => setDismissed(true)}
             aria-label={t('dismiss')}
             className="shrink-0 text-sport-gray hover:text-sport-fg transition-colors p-1 ml-1"

@@ -30,7 +30,7 @@ export function ReviewInvite() {
       ) : open ? (
         <ReviewForm type="platform" initial={elig.existing} onPublished={() => { setOpen(false); setDone(true) }} />
       ) : (
-        <button
+        <button type="button"
           onClick={() => setOpen(true)}
           className="bg-sport-orange text-white px-5 py-2.5 rounded-full font-bold text-sm hover:bg-orange-600 transition-all"
         >
