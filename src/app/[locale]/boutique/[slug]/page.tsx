@@ -47,7 +47,13 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
   const product = getProductBySlugLocalized(slug, locale)
   if (!product) notFound()
 
-  // Données structurées Produit → rich snippets Google (prix, étoiles, stock).
+  // Données structurées Produit → rich snippets Google (prix, stock).
+  //
+  // PAS d'aggregateRating (09.3.1) : `product.rating`/`product.reviews`
+  // proviennent de fiches tierces, pas d'avis Xenotif. Les déclarer ici
+  // exposerait à Google une note que la page ne peut pas justifier — elle
+  // n'affiche que les avis réels (CustomerReviews). À réintroduire uniquement
+  // le jour où une note agrégée issue de la table `reviews` sera disponible.
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Product',
@@ -56,11 +62,6 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
     description: product.description,
     sku: product.id,
     brand: { '@type': 'Brand', name: product.brand },
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: product.rating,
-      reviewCount: product.reviews,
-    },
     offers: {
       '@type': 'Offer',
       url: `${SITE}/boutique/${product.slug}`,
