@@ -219,7 +219,7 @@
   },
   "home": {
     "adBanners": {
-      "proof": "4,9/5 · 12.000+ Athleten",
+      "proof": "7 Tage Pro gratis · ohne Karte",
       "transform": {
         "title": "Verändere deinen Körper.",
         "accent": "Entfalte dein Potenzial.",
@@ -347,13 +347,13 @@
       "dismiss": "Abonnement-Leiste schließen"
     },
     "metaTitle": "Xenotif® - Forme deinen Körper. Überwinde deine Grenzen.",
-    "metaDescription": "Die Premium-Fitnessplattform - 10 Disziplinen, personalisiertes KI-Coaching, 300+ Einheiten. Schließe dich 12.000+ Athleten an, die ihren Körper mit Xenotif® transformieren.",
+    "metaDescription": "Die Premium-Fitnessplattform - 10 Disziplinen, personalisiertes KI-Coaching, Aktivitätstracking direkt vom Handy. 7 Tage Pro testen, ohne Karte.",
     "hero": {
       "eyebrow": "Die Premium-Sportplattform",
       "ctaPrimary": "Kostenlos starten",
       "ctaSecondary": "Disziplinen ansehen",
       "ctaNote": "Krafttraining gratis, ohne Karte · PRO ab 9,99 €/Monat",
-      "socialProof": "<b>4,9/5</b> · von <b>12.000+ Athleten</b> genutzt",
+      "socialProof": "<b>7 Tage Pro gratis</b> · ohne Kreditkarte",
       "scroll": "Scrollen",
       "slides": [
         {
@@ -374,26 +374,26 @@
       ],
       "badges": [
         {
-          "label": "+12.000 Mitglieder",
-          "sub": "aktiv"
+          "label": "10 Disziplinen",
+          "sub": "geführte Programme"
         },
         {
           "label": "KI-Coaching",
           "sub": "inklusive"
         },
         {
-          "label": "4.9 / 5",
-          "sub": "3.200 Bewertungen"
+          "label": "Aktivitätstracking",
+          "sub": "ohne Uhr"
         },
         {
-          "label": "Ergebnisse",
-          "sub": "ab 30 Tagen"
+          "label": "Garantie",
+          "sub": "30 Tage"
         }
       ],
       "trust": [
         {
-          "label": "12K+ Athleten",
-          "sublabel": "aktive Community"
+          "label": "7 Tage Pro testen",
+          "sublabel": "ohne Kreditkarte"
         },
         {
           "label": "KI-Coaching",
@@ -415,7 +415,7 @@
         "slides": "Folien",
         "slide": "Folie {n} von {total}"
       },
-      "subheadline": "Strukturierte Programme, Ernährung und ein KI-Coach für Kraft, Running und HIIT. Schließ dich 12.000+ Athleten an - kostenlos starten, ohne Karte."
+      "subheadline": "Strukturierte Programme, Ernährung und ein KI-Coach für Kraft, Running und HIIT. Kostenlos starten, ohne Karte."
     },
     "marquee": {
       "items": [
@@ -426,7 +426,7 @@
         "Schwimmen",
         "CrossFit",
         "KI-Coaching",
-        "12K+ Athleten",
+        "10 Disziplinen",
         "Garantierte Ergebnisse",
         "Maßgeschneiderte Programme"
       ]
@@ -435,20 +435,20 @@
       "aria": "Wichtige Zahlen",
       "stats": [
         {
-          "label": "Aktive Athleten",
-          "sublabel": "weltweit"
+          "label": "Disziplinen",
+          "sublabel": "Rundum-Sport"
         },
         {
           "label": "Programme",
           "sublabel": "alle Niveaus"
         },
         {
-          "label": "Disziplinen",
-          "sublabel": "Rundum-Sport"
+          "label": "Sprachen",
+          "sublabel": "FR · EN · DE"
         },
         {
-          "label": "Zufriedenheit",
-          "sublabel": "3.200+ verifizierte Bewertungen"
+          "label": "Pro testen",
+          "sublabel": "ohne Kreditkarte"
         }
       ]
     },
@@ -466,8 +466,8 @@
           "tag": "Cardio",
           "description": "Laufprogramme für alle Niveaus - vom 5-km-Lauf bis zum Marathon. Personalisierte Pläne mit GPS-Coaching und Herzfrequenz-Tracking.",
           "stats": [
-            "+4.200 Läufer",
-            "120+ Pläne",
+            "Kompletter Guide",
+            "Alle Niveaus",
             "Ø 12 Wochen"
           ]
         },
@@ -476,8 +476,8 @@
           "tag": "Kraft",
           "description": "Masseaufbau, Definition oder Tonisierung - unsere zertifizierten Coaches erstellen dein maßgeschneidertes Programm passend zu deiner Morphologie.",
           "stats": [
-            "+3.800 Mitglieder",
-            "90+ Programme",
+            "Kompletter Guide",
+            "Alle Niveaus",
             "Ø 8 Wochen"
           ]
         },
@@ -486,8 +486,8 @@
           "tag": "Fettverbrennung",
           "description": "Kurze, intensive Einheiten, um maximal Kalorien zu verbrennen und deinen Stoffwechsel dauerhaft in 20 bis 30 Min. anzukurbeln.",
           "stats": [
-            "+2.100 Mitglieder",
-            "60+ Circuits",
+            "Kompletter Guide",
+            "Alle Niveaus",
             "20-30 Min / Einheit"
           ]
         },
@@ -496,8 +496,8 @@
           "tag": "Ausdauer",
           "description": "Indoor- und Outdoor-Training mit Wattmessung. Vom Sportler bis zum Bergkletterer - ein Plan für jedes Profil.",
           "stats": [
-            "+1.500 Radfahrer",
-            "45+ Pläne",
+            "Kompletter Guide",
+            "Alle Niveaus",
             "Ø 16 Wochen"
           ]
         },
@@ -506,8 +506,8 @@
           "tag": "Wasser",
           "description": "Schwimmtechniken, Triathlon-Vorbereitung, Open Water - verbessere dich in allen Stilen mit HD-Video-Drills.",
           "stats": [
-            "+900 Schwimmer",
-            "30+ Programme",
+            "Kompletter Guide",
+            "Alle Niveaus",
             "Ø 10 Wochen"
           ]
         },
@@ -516,8 +516,8 @@
           "tag": "Funktional",
           "description": "Tägliche WODs, funktionelle Bewegungen und Community-Challenges, um deine Grenzen jede Woche zu erweitern.",
           "stats": [
-            "+1.800 Athleten",
-            "365 WODs/Jahr",
+            "Kompletter Guide",
+            "Alle Niveaus",
             "5× / Woche"
           ]
         },
@@ -526,8 +526,8 @@
           "tag": "Wohlbefinden",
           "description": "Flexibilität, innere Stärke und Achtsamkeit - von Anfänger-Flows bis zu fortgeschrittenem Yoga für einen ausgeglichenen Körper und Geist.",
           "stats": [
-            "+2.000 Praktizierende",
-            "40+ Sequenzen",
+            "Kompletter Guide",
+            "Alle Niveaus",
             "20-60 Min / Einheit"
           ]
         },
@@ -536,8 +536,8 @@
           "tag": "Kampf",
           "description": "Technik, Cardio und Kraft - von den Grundlagen bis zu fortgeschrittenen Kombinationen, um dich körperlich und mental zu transformieren.",
           "stats": [
-            "+1.200 Boxer",
-            "35+ Programme",
+            "Kompletter Guide",
+            "Alle Niveaus",
             "Ø 8 Wochen"
           ]
         },
@@ -546,8 +546,8 @@
           "tag": "Mobilität",
           "description": "Mobilität, Beweglichkeit und optimale Erholung - geführte Dehnroutinen, um Verletzungen vorzubeugen und Leistung zu bringen.",
           "stats": [
-            "+1.600 Mitglieder",
-            "30+ Routinen",
+            "Kompletter Guide",
+            "Alle Niveaus",
             "10-30 Min / Einheit"
           ]
         },
@@ -556,8 +556,8 @@
           "tag": "Ernährung",
           "description": "Personalisierte Ernährungspläne, Makro-Berechnung und Ernährungsstrategien, um deine sportlichen Ziele zu erreichen.",
           "stats": [
-            "+3.000 Mitglieder",
-            "50+ Pläne",
+            "Kompletter Guide",
+            "Alle Niveaus",
             "Tägliches Tracking"
           ]
         }
@@ -696,51 +696,18 @@
     },
     "reviews": {
       "label": "Erfahrungsberichte",
-      "title": "Sie haben ihren Körper transformiert",
-      "subtitle": "Tausende Athleten vertrauen Xenotif®, um ihre Ziele zu erreichen",
+      "title": "Mitglieder-Bewertungen",
+      "subtitle": "Rückmeldungen von Xenotif®-Mitgliedern",
       "verified": "Verifiziert",
       "ratingAria": "Bewertung: {rating} von 5 Sternen",
-      "results": [
-        "+18 Min Marathon-PR",
-        "-12 kg in 4 Monaten",
-        "Ironman abgeschlossen"
-      ],
-      "items": [
-        {
-          "sport": "Running · Marathon",
-          "date": "Vor 2 Tagen",
-          "text": "\"In 3 Monaten Xenotif®-Programm habe ich meinen Marathon-Rekord um 18 Minuten verbessert. Das KI-Coaching ist verblüffend - jede Einheit ist perfekt auf mein Niveau abgestimmt.\""
-        },
-        {
-          "sport": "HIIT · Krafttraining",
-          "date": "Vor 5 Tagen",
-          "text": "\"Ich habe 12 kg in 4 Monaten verloren und gleichzeitig an Kraft gewonnen. Die HIIT- und Kraft-Einheiten sind perfekt ausbalanciert. Die Xenotif®-Community motiviert mich jeden Morgen.\""
-        },
-        {
-          "sport": "CrossFit · Schwimmen",
-          "date": "Vor 1 Woche",
-          "text": "\"Triathlon-Vorbereitung mit Xenotif® - unglaubliches Ergebnis. Dank dieser Plattform habe ich meinen ersten Ironman abgeschlossen. Danke Xenotif®!\""
-        }
-      ],
+      "results": [],
+      "items": [],
       "summary": {
-        "rating": "4.9 / 5",
-        "basedOn": "basierend auf",
-        "count": "3.200+",
-        "reviews": "verifizierten Bewertungen",
-        "stats": [
-          {
-            "value": "97%",
-            "label": "Zufrieden"
-          },
-          {
-            "value": "4.2×",
-            "label": "Schneller"
-          },
-          {
-            "value": "30T",
-            "label": "Erste Ergebnisse"
-          }
-        ]
+        "rating": "",
+        "basedOn": "",
+        "count": "",
+        "reviews": "",
+        "stats": []
       }
     },
     "newsletter": {
@@ -827,7 +794,7 @@
       "metaTitle": "Fitness-Challenges - 30 Tage, Cardio, Kraft, Definition",
       "metaDescription": "Nimm eine Fitness-Challenge mit Xenotif an: 30 Tage, Cardio-Woche, Kraft-Streak, Definitions-Sprint. Klares Ziel, tägliches Tracking, kostenlos starten.",
       "pageTitle": "Fitness-Challenges",
-      "pageSubtitle": "Ein Ziel, ein Zeitraum, ein Plan. Schließ dich 12.000+ Xenotif-Athleten an und nimm deine Challenge an - die App begleitet dich und hält dich Tag für Tag am Ball.",
+      "pageSubtitle": "Ein Ziel, ein Zeitraum, ein Plan. Wähle deine Xenotif-Challenge - die App begleitet dich und hält dich Tag für Tag am Ball.",
       "goalLabel": "Ziel",
       "items": [
         {
@@ -907,7 +874,7 @@
         "KI-Coach & Ernährungsplan",
         "Verfolge deinen Fortschritt"
       ],
-      "panelProof": "★ 4,9/5 · bereits 12.000+ Athleten"
+      "panelProof": "7 Tage Pro gratis · ohne Kreditkarte"
     },
     "signup": {
       "title": "Erstelle dein Konto",
@@ -1033,12 +1000,12 @@
     },
     "cta": {
       "title": "Tritt der Community bei",
-      "desc": "Greife auf die <b>{title}</b>-Programme, personalisiertes KI-Coaching und Tausende motivierte Athleten zu.",
+      "desc": "Greife auf die <b>{title}</b>-Programme, personalisiertes KI-Coaching und dein Fortschritts-Tracking zu.",
       "features": [
         "Kompletter Leitfaden + HD-Videos",
         "KI-personalisiertes Programm",
         "Erweitertes Fortschritts-Tracking",
-        "Community von Coaches",
+        "Personalisierter KI-Coach",
         "30 T Geld-zurück-Garantie"
       ],
       "primary": "Kostenlos starten",
@@ -1069,8 +1036,8 @@
     "stats": {
       "products": "Premium-Produkte",
       "rating": "Durchschnittsbewertung",
-      "customers": "Zufriedene Kunden",
-      "customersValue": "12.000+",
+      "customers": "Sichere Zahlung",
+      "customersValue": "Stripe",
       "delivery": "Express-Lieferung"
     },
     "trust": [
@@ -1271,7 +1238,7 @@
     "searchClear": "Suche löschen",
     "searchNoResults": "Kein Artikel für „{query}\".",
     "ctaTitle": "Bereit, <o>aktiv zu werden?</o>",
-    "ctaSubtitle": "Theoretische Tipps sind gut, ein von Experten strukturiertes Programm ist besser. Schließe dich den 12.000+ Xenotif®-Athleten an.",
+    "ctaSubtitle": "Theoretische Tipps sind gut, ein strukturiertes Programm ist besser. Starte kostenlos mit Xenotif®.",
     "ctaShop": "Zum Shop",
     "ctaJoin": "Xenotif® beitreten",
     "readingTime": "{minutes} Min",
@@ -1842,7 +1809,7 @@
     "statsTitle": "Xenotif® in Zahlen",
     "statsSubtitle": "Die Community, die jeden Tag Fortschritte macht.",
     "ctaTitle": "Bereit, <o>über dich hinauszuwachsen</o>?",
-    "ctaSubtitle": "Schließe dich Tausenden von Sportlern an, die mit Xenotif® Fortschritte machen.",
+    "ctaSubtitle": "Starte kostenlos und mach Fortschritte in deinem Tempo mit Xenotif®.",
     "ctaJoin": "Xenotif® beitreten",
     "ctaShop": "Den Shop entdecken"
   },
@@ -1854,10 +1821,22 @@
     "subtitle": "Personalisierte Programme, Echtzeit-Tracking und sofortige Antworten: Dein KI-Coach begleitet dich bei jeder Einheit, rund um die Uhr.",
     "featuresTitle": "So funktioniert's",
     "features": [
-      { "title": "Maßgeschneiderte Pläne", "text": "Dein Coach passt deine Programme an dein Niveau, deine Ziele und deinen tatsächlichen Fortschritt an." },
-      { "title": "24/7 verfügbar", "text": "Eine Frage vor dem Training, technischer Rat gefragt? Sofortige Antwort, jederzeit." },
-      { "title": "Echtzeit-Tracking", "text": "Jede erfasste Einheit verfeinert die nächsten Empfehlungen - dein Coach lernt von dir." },
-      { "title": "Kontinuierliche Anpassung", "text": "Plateau, Verletzung, Wiedereinstieg: Das Programm passt sich automatisch an deine Situation an." }
+      {
+        "title": "Maßgeschneiderte Pläne",
+        "text": "Dein Coach passt deine Programme an dein Niveau, deine Ziele und deinen tatsächlichen Fortschritt an."
+      },
+      {
+        "title": "24/7 verfügbar",
+        "text": "Eine Frage vor dem Training, technischer Rat gefragt? Sofortige Antwort, jederzeit."
+      },
+      {
+        "title": "Echtzeit-Tracking",
+        "text": "Jede erfasste Einheit verfeinert die nächsten Empfehlungen - dein Coach lernt von dir."
+      },
+      {
+        "title": "Kontinuierliche Anpassung",
+        "text": "Plateau, Verletzung, Wiedereinstieg: Das Programm passt sich automatisch an deine Situation an."
+      }
     ],
     "previewTitle": "Teste den Coach jetzt",
     "previewText": "Entdecke eine Vorschau des Mitgliederbereichs und des KI-Assistenten, ganz ohne Konto.",
@@ -1871,10 +1850,10 @@
   },
   "communaute": {
     "metaTitle": "Community - Xenotif®",
-    "metaDescription": "Schließe dich Tausenden von Sportlern an, die sich gegenseitig motivieren, ihre Fortschritte teilen und gemeinsam über sich hinauswachsen.",
+    "metaDescription": "Challenges, Mitglieder-Bewertungen und geführte Programme in 10 Disziplinen - mach Fortschritte in deinem Tempo mit Xenotif®.",
     "eyebrow": "Community",
     "title": "Du bist <o>nie allein</o>",
-    "subtitle": "Tausende Sportler machen jeden Tag Fortschritte mit Xenotif® - Challenges, verifizierte Bewertungen und Motivation aus einer ganzen Community.",
+    "subtitle": "Challenges, Mitglieder-Bewertungen und geführte Programme - mach Fortschritte in deinem Tempo mit Xenotif®.",
     "statsTitle": "Xenotif® in Zahlen",
     "statsSubtitle": "Die Community, die jeden Tag Fortschritte macht.",
     "reviewsTitle": "Sie machen Fortschritte mit uns",

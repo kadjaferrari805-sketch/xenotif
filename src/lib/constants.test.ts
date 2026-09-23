@@ -3,8 +3,16 @@ import { BRAND, FEATURES, REVIEWS, TRUST_ITEMS, STATS } from './constants'
 describe('constants', () => {
   it('brand has required fields', () => {
     expect(BRAND.name).toBe('Xenotif®')
-    expect(BRAND.rating).toBe(4.9)
-    expect(BRAND.members).toBe(12400)
+    expect(BRAND.programs).toBe(9)
+  })
+
+  // Phase 09.3 : BRAND ne doit plus porter d'audience ni de note agregee - ces
+  // valeurs (12 400 membres, 4,9/5, 3 200 avis) ne correspondaient a aucune
+  // donnee reelle.
+  it('brand carries no unverifiable audience or rating claim', () => {
+    expect(BRAND).not.toHaveProperty('members')
+    expect(BRAND).not.toHaveProperty('rating')
+    expect(BRAND).not.toHaveProperty('reviewCount')
   })
 
   it('features has 10 items', () => {
@@ -16,13 +24,11 @@ describe('constants', () => {
     })
   })
 
-  it('reviews has 3 items with required fields', () => {
-    expect(REVIEWS).toHaveLength(3)
-    REVIEWS.forEach((r) => {
-      expect(r.name).toBeTruthy()
-      expect(r.text).toBeTruthy()
-      expect(r.rating).toBe(5)
-    })
+  // Phase 09.3 : les 3 temoignages etaient fabriques (noms, resultats, citations).
+  // Tant qu'aucun avis reel n'est disponible, le tableau reste vide et
+  // Reviews.tsx masque la section.
+  it('reviews carries no fabricated testimonial', () => {
+    expect(REVIEWS).toHaveLength(0)
   })
 
   it('trust items has 4 entries', () => {

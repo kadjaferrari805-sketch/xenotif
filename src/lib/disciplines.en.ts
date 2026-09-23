@@ -7,7 +7,7 @@ import type { DisciplineContent, DisciplineMeta } from './disciplines'
 /* ── Running & Cardio ──────────────────────────────────────────── */
 const runningContent: DisciplineContent = {
   tagline: 'Run faster, run longer, without getting injured.',
-  heroStat: '4,200+ active runners',
+  heroStat: 'Full guide · FR · EN · DE',
   guide: {
     technique: {
       emoji: '👟',
@@ -164,7 +164,7 @@ const runningContent: DisciplineContent = {
 /* ── Strength training ─────────────────────────────────────────── */
 const musculationContent: DisciplineContent = {
   tagline: 'Build your physique with surgical precision.',
-  heroStat: '3,800+ active members',
+  heroStat: 'Full guide · FR · EN · DE',
   guide: {
     technique: {
       emoji: '💪',
@@ -323,7 +323,7 @@ const musculationContent: DisciplineContent = {
 /* ── HIIT ──────────────────────────────────────────────────────── */
 const hiitContent: DisciplineContent = {
   tagline: 'Burn 500 kcal in 25 minutes. Scientifically proven.',
-  heroStat: '2,100+ active members',
+  heroStat: 'Full guide · FR · EN · DE',
   guide: {
     technique: {
       emoji: '⚡',
@@ -480,7 +480,7 @@ const hiitContent: DisciplineContent = {
 /* ── Cycling ───────────────────────────────────────────────────── */
 const cyclismeContent: DisciplineContent = {
   tagline: 'From road racer to mountain climber - a plan for every wheel.',
-  heroStat: '1,500+ active cyclists',
+  heroStat: 'Full guide · FR · EN · DE',
   guide: {
     technique: {
       emoji: '🚴',
@@ -636,7 +636,7 @@ const cyclismeContent: DisciplineContent = {
 /* ── Swimming ──────────────────────────────────────────────────── */
 const natationContent: DisciplineContent = {
   tagline: 'Technique, efficiency, performance - the water never lies.',
-  heroStat: '900+ active swimmers',
+  heroStat: 'Full guide · FR · EN · DE',
   guide: {
     technique: {
       emoji: '🏊',
@@ -793,7 +793,7 @@ const natationContent: DisciplineContent = {
 /* ── CrossFit ──────────────────────────────────────────────────── */
 const crossfitContent: DisciplineContent = {
   tagline: 'Forged in fire. Tested every day.',
-  heroStat: '1,800+ active athletes',
+  heroStat: 'Full guide · FR · EN · DE',
   guide: {
     technique: {
       emoji: '🏋️',
@@ -951,7 +951,7 @@ const crossfitContent: DisciplineContent = {
 /* ── Yoga ──────────────────────────────────────────────────────── */
 const yogaContent: DisciplineContent = {
   tagline: 'Flexibility, inner strength and serenity - on and off the mat.',
-  heroStat: '2,900+ active practitioners',
+  heroStat: 'Full guide · FR · EN · DE',
   guide: {
     technique: {
       emoji: '🧘',
@@ -1111,7 +1111,7 @@ const yogaContent: DisciplineContent = {
 /* ── Boxing ────────────────────────────────────────────────────── */
 const boxingContent: DisciplineContent = {
   tagline: 'Power, explosiveness and self-control - forged in the ring.',
-  heroStat: '1,800+ active boxers',
+  heroStat: 'Full guide · FR · EN · DE',
   guide: {
     technique: {
       emoji: '🥊',
@@ -1270,7 +1270,7 @@ const boxingContent: DisciplineContent = {
 /* ── Stretching ────────────────────────────────────────────────── */
 const stretchingContent: DisciplineContent = {
   tagline: 'Free your body, recover better and move without pain.',
-  heroStat: '3,200+ active practitioners',
+  heroStat: 'Full guide · FR · EN · DE',
   guide: {
     technique: {
       emoji: '🤸',
@@ -1429,7 +1429,7 @@ const stretchingContent: DisciplineContent = {
 /* ── Nutrition ─────────────────────────────────────────────────── */
 const nutritionContent: DisciplineContent = {
   tagline: 'Eat smart - performance starts on the plate.',
-  heroStat: '4,100+ active members',
+  heroStat: 'Full guide · FR · EN · DE',
   guide: {
     technique: {
       emoji: '🥗',
@@ -1606,70 +1606,70 @@ export const DISCIPLINE_META_EN: Record<string, DisciplineMeta> = {
     title: 'Running & Cardio',
     tag: 'Cardio',
     description: 'Running programs for every level - from 5K to marathon. Personalized plans with GPS coaching and heart-rate tracking.',
-    stats: ['+4,200 runners', '120+ plans', '12 weeks avg.'],
+    stats: ['Full guide', 'All levels', 'FR · EN · DE'],
     levels: ['Beginner', 'Intermediate', 'Advanced', 'Elite'],
   },
   musculation: {
     title: 'Strength training',
     tag: 'Strength',
     description: 'Bulking, cutting or toning - our certified coaches build a custom program tailored to your body type.',
-    stats: ['+3,800 members', '90+ programs', '8 weeks avg.'],
+    stats: ['Full guide', 'All levels', 'FR · EN · DE'],
     levels: ['Beginner', 'Intermediate', 'Advanced', 'Elite'],
   },
   hiit: {
     title: 'HIIT',
     tag: 'Fat Burn',
     description: 'Short, intense sessions to burn maximum calories and boost your metabolism for the long run in 20 to 30 min.',
-    stats: ['+2,100 members', '60+ circuits', '20-30 min / session'],
+    stats: ['Full guide', 'All levels', 'FR · EN · DE'],
     levels: ['Beginner', 'Intermediate', 'Advanced'],
   },
   cyclisme: {
     title: 'Cycling',
     tag: 'Endurance',
     description: 'Indoor and outdoor training with a power meter. From road racer to climber, a plan tailored to every profile.',
-    stats: ['+1,500 cyclists', '45+ plans', '16 weeks avg.'],
+    stats: ['Full guide', 'All levels', 'FR · EN · DE'],
     levels: ['Beginner', 'Intermediate', 'Advanced', 'Competition'],
   },
   natation: {
     title: 'Swimming',
     tag: 'Aquatic',
     description: 'Stroke technique, triathlon prep, open water - progress in every style with HD video drills.',
-    stats: ['+900 swimmers', '30+ programs', '10 weeks avg.'],
+    stats: ['Full guide', 'All levels', 'FR · EN · DE'],
     levels: ['Beginner', 'Intermediate', 'Advanced', 'Triathlon'],
   },
   crossfit: {
     title: 'CrossFit',
     tag: 'Functional',
     description: 'Daily WODs, functional movements and community challenges to push your limits every week.',
-    stats: ['+1,800 athletes', '365 WODs/yr', '5× / week'],
+    stats: ['Full guide', 'All levels', 'FR · EN · DE'],
     levels: ['Beginner', 'Intermediate', 'RX', 'Competition'],
   },
   yoga: {
     title: 'Yoga',
     tag: 'Wellness',
     description: 'Flexibility, inner strength and mindfulness - from beginner flows to advanced yoga for a balanced body and mind.',
-    stats: ['+2,000 practitioners', '40+ sequences', '20-60 min / session'],
+    stats: ['Full guide', 'All levels', 'FR · EN · DE'],
     levels: ['Beginner', 'Intermediate', 'Advanced', 'All levels'],
   },
   boxing: {
     title: 'Boxing',
     tag: 'Combat',
     description: 'Technique, cardio and power - from the basics to advanced combinations to transform you physically and mentally.',
-    stats: ['+1,200 boxers', '35+ programs', '8 weeks avg.'],
+    stats: ['Full guide', 'All levels', 'FR · EN · DE'],
     levels: ['Beginner', 'Intermediate', 'Advanced', 'Competition'],
   },
   stretching: {
     title: 'Stretching',
     tag: 'Mobility',
     description: 'Mobility, flexibility and optimal recovery - guided stretching routines to prevent injuries and perform.',
-    stats: ['+1,600 members', '30+ routines', '10-30 min / session'],
+    stats: ['Full guide', 'All levels', 'FR · EN · DE'],
     levels: ['Beginner', 'Intermediate', 'Advanced', 'All levels'],
   },
   nutrition: {
     title: 'Nutrition',
     tag: 'Diet',
     description: 'Personalized meal plans, macro tracking and nutrition strategies to reach your athletic goals.',
-    stats: ['+3,000 members', '50+ plans', 'Daily tracking'],
+    stats: ['Full guide', 'All levels', 'FR · EN · DE'],
     levels: ['Beginner', 'Intermediate', 'Advanced', 'Athlete'],
   },
 }
