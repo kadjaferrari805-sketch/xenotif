@@ -441,6 +441,68 @@ describe('cron/onboarding — K8.12.7 : claim atomique avant envoi', () => {
     expect(journalDe()).toContain('user-1')
   })
 
+  // ── K8.12.7 — `upsert` → `update` : les deux cas, normal et anormal.
+  //
+  // CAS NORMAL   auth.users → handle_new_user → profiles → claim
+  // CAS ANORMAL  profiles absent → UPDATE rend 0 ligne → CLAIM_LOST
+  //              → aucun e-mail, AUCUNE création implicite de profil.
+  //
+  // C'est le seul écart de comportement introduit par le passage d'`upsert` à
+  // `update`, et il doit être FAIL-SAFE : on préfère ne rien envoyer plutôt que
+  // de recréer une ligne à l'insu du trigger.
+
+  test('CAS NORMAL : profil présent → claim gagné → e-mail envoyé', async () => {
+    mockState.profiles = {
+      data: [{ id: 'user-1', full_name: 'A', locale: 'fr', onboarding_step: 0 }],
+      error: null,
+    }
+
+    const res = await GET(ok())
+
+    expect(mockSendOnboarding).toHaveBeenCalledTimes(1)
+    expect(await res.json()).toEqual({ sent: 1, failed: 0 })
+  })
+
+  test('CAS ANORMAL : profil absent → UPDATE rend 0 → CLAIM_LOST, fail-safe', async () => {
+    // Aucune ligne `profiles` pour ce compte : la garde `id = u.id` ne peut
+    // matcher, donc le RETURNING est vide.
+    mockState.profiles = { data: [], error: null }
+    mockState.claimWon = false
+
+    const res = await GET(ok())
+
+    expect(mockSendOnboarding).not.toHaveBeenCalled()
+    expect(await res.json()).toEqual({ sent: 0, failed: 0 })
+  })
+
+  test('CAS ANORMAL : AUCUNE création implicite de profil', async () => {
+    mockState.profiles = { data: [], error: null }
+    mockState.claimWon = false
+
+    await GET(ok())
+
+    // Le contraste avec l'ancien `upsert` est ici : il aurait CRÉÉ la ligne
+    // absente, à l'insu du trigger `on_auth_user_created`. L'`update` ne peut
+    // pas — et c'est voulu : la création de profil reste la seule affaire du
+    // trigger (`handle_new_user`), jamais celle de ce cron.
+    expect(mockUpserts).toHaveLength(1)
+    expect(JSON.stringify(mockUpserts[0])).not.toContain('"id"')
+    expect(mockClaimFiltres[0]).toEqual([['eq', 'id', 'user-1'], ['eq', 'onboarding_step', 0]])
+  })
+
+  test('CAS ANORMAL : un profil absent ne fait échouer aucun autre candidat', async () => {
+    mockState.users = [
+      { id: 'sans-profil', email: 'a@exemple.fr', created_at: new Date().toISOString() },
+      { id: 'user-2', email: 'b@exemple.fr', created_at: new Date().toISOString() },
+    ]
+    mockState.claimSequence = [false, true]
+
+    const res = await GET(ok())
+
+    expect(mockSendOnboarding).toHaveBeenCalledTimes(1)
+    expect(await res.json()).toEqual({ sent: 1, failed: 0 })
+  })
+
   test('plusieurs candidats : un claim perdu ne bloque pas les suivants', async () => {
     mockState.users = [
       { id: 'user-1', email: 'a@exemple.fr', created_at: new Date().toISOString() },
