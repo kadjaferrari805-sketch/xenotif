@@ -104,7 +104,7 @@ export function CoachClient() {
           </div>
         </div>
         {messages.length > 0 && (
-          <button
+          <button type="button"
             onClick={() => setMessages([])}
             className="inline-flex items-center gap-1.5 text-xs text-sport-gray hover:text-sport-fg transition-colors"
           >
@@ -128,7 +128,7 @@ export function CoachClient() {
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 w-full max-w-lg">
               {suggestions.map((s) => (
-                <button
+                <button type="button"
                   key={s}
                   onClick={() => send(s)}
                   className="text-left px-4 py-3 bg-sport-card border border-sport-border rounded-xl text-xs text-sport-gray hover:text-sport-fg hover:border-sport-orange/50 transition-all hover:-translate-y-0.5 leading-relaxed"
@@ -191,7 +191,7 @@ export function CoachClient() {
               style={{ maxHeight: '120px' }}
             />
           </div>
-          <button
+          <button type="button"
             onClick={() => send(input)}
             disabled={!input.trim() || streaming}
             aria-label={t('send')}

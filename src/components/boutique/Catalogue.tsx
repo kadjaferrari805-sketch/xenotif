@@ -118,7 +118,7 @@ export function Catalogue() {
               className="w-full card-base pl-12 pr-10 py-4 text-sport-fg placeholder:text-sport-gray focus:outline-none focus:border-sport-orange transition-colors text-sm"
             />
             {search && (
-              <button onClick={() => setSearch('')} aria-label={t('reset')} className="absolute right-4 top-1/2 -translate-y-1/2 text-sport-gray hover:text-sport-fg">
+              <button type="button" onClick={() => setSearch('')} aria-label={t('reset')} className="absolute right-4 top-1/2 -translate-y-1/2 text-sport-gray hover:text-sport-fg">
                 <X size={16} />
               </button>
             )}
@@ -133,14 +133,14 @@ export function Catalogue() {
             {/* Puces de sport */}
             {/* Carrousel snap mobile : accroche par pastille, défilement net */}
             <div className="min-w-0 flex-1 flex items-center gap-2 overflow-x-auto scrollbar-hide snap-x snap-proximity scroll-pl-4 sm:scroll-pl-6 scroll-smooth" role="tablist" aria-label={t('filterDiscipline')}>
-              <button
+              <button type="button"
                 role="tab" aria-selected={discipline === 'all'} onClick={() => setDiscipline('all')}
                 className={`snap-start shrink-0 rounded-full px-4 py-2 text-sm font-bold transition-all ${discipline === 'all' ? 'bg-sport-orange text-white shadow-lg shadow-sport-orange/20' : 'border border-sport-border text-sport-gray hover:text-sport-fg hover:border-sport-fg/20'}`}
               >
                 {t('allDisciplines')}
               </button>
               {available.map(id => (
-                <button
+                <button type="button"
                   key={id} role="tab" aria-selected={discipline === id} onClick={() => setDiscipline(id)}
                   className={`snap-start shrink-0 rounded-full px-4 py-2 text-sm font-bold whitespace-nowrap transition-all ${discipline === id ? 'bg-sport-orange text-white shadow-lg shadow-sport-orange/20' : 'border border-sport-border text-sport-gray hover:text-sport-fg hover:border-sport-fg/20'}`}
                 >
@@ -184,7 +184,7 @@ export function Catalogue() {
                 <div className="flex items-baseline gap-3 mb-6 border-b border-sport-border pb-3">
                   <h2 id={`disc-${id}`} className="text-2xl font-black text-sport-fg">{t(`disciplinesFilter.${id}`)}</h2>
                   <span className="text-sm font-semibold text-sport-gray">{t('count', { count: items.length })}</span>
-                  <button onClick={() => setDiscipline(id)} className="ml-auto text-xs font-bold text-sport-orange hover:underline">
+                  <button type="button" onClick={() => setDiscipline(id)} className="ml-auto text-xs font-bold text-sport-orange hover:underline">
                     {t('catalogue.seeAll')}
                   </button>
                 </div>

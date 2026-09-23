@@ -87,7 +87,7 @@ export function CustomerReviews({ kind, productId }: Props) {
             formOpen ? (
               <ReviewForm type={kind} productId={productId} initial={elig.existing} onPublished={onPublished} />
             ) : (
-              <button onClick={() => setFormOpen(true)} className="bg-sport-orange text-white px-6 py-2.5 rounded-full font-bold text-sm hover:bg-orange-600 transition-all">
+              <button type="button" onClick={() => setFormOpen(true)} className="bg-sport-orange text-white px-6 py-2.5 rounded-full font-bold text-sm hover:bg-orange-600 transition-all">
                 {elig.existing ? t('editReview') : t('leaveReview')}
               </button>
             )

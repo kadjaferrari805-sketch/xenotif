@@ -119,7 +119,7 @@ export function ProductDetail({ product }: { product: Product }) {
                   <ExternalLink size={16} /> {t('detail.buyAmazon')}
                 </a>
               ) : (
-                <button
+                <button type="button"
                   onClick={handleAdd}
                   className={`flex flex-1 items-center justify-center gap-2 rounded-2xl px-6 py-3.5 font-bold text-sport-fg transition-all ${
                     added ? 'bg-emerald-600' : 'bg-sport-orange hover:bg-orange-600 shadow-[0_0_20px_rgba(255,69,0,0.3)]'

@@ -29,10 +29,10 @@ export function AdminReviews() {
             </div>
             <p className="text-sm text-sport-gray mt-2 whitespace-pre-wrap">{r.comment}</p>
             <div className="flex gap-2 mt-3">
-              <button onClick={() => toggle(r.id, r.hidden)} className="text-xs border border-sport-border px-3 py-1.5 rounded-full text-sport-gray hover:text-sport-fg transition-colors">
+              <button type="button" onClick={() => toggle(r.id, r.hidden)} className="text-xs border border-sport-border px-3 py-1.5 rounded-full text-sport-gray hover:text-sport-fg transition-colors">
                 {r.hidden ? 'Afficher' : 'Masquer'}
               </button>
-              <button onClick={() => remove(r.id)} className="text-xs border border-red-200 px-3 py-1.5 rounded-full text-red-600 hover:bg-red-50 transition-colors">
+              <button type="button" onClick={() => remove(r.id)} className="text-xs border border-red-200 px-3 py-1.5 rounded-full text-red-600 hover:bg-red-50 transition-colors">
                 Supprimer
               </button>
             </div>

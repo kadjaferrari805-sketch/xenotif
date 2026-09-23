@@ -63,8 +63,8 @@ export default function ForgotPasswordPage() {
 
               <form onSubmit={handleSubmit} className="space-y-5">
                 <div>
-                  <Label className="uppercase tracking-wider">{t('emailLabel')}</Label>
-                  <Input
+                  <Label htmlFor="forgot-email" className="uppercase tracking-wider">{t('emailLabel')}</Label>
+                  <Input id="forgot-email"
                     type="email"
                     required
                     value={email}

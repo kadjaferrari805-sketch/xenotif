@@ -10,7 +10,7 @@ export default function GlobalError({ reset }: { reset: () => void }) {
           <p style={{ color: '#2A2A2A', marginBottom: 32, maxWidth: 400 }}>
             Une erreur inattendue s&apos;est produite. Merci de réessayer.
           </p>
-          <button
+          <button type="button"
             onClick={reset}
             style={{ background: '#FF6B00', color: '#fff', border: 'none', borderRadius: 12, padding: '12px 24px', fontWeight: 700, fontSize: 14, cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: 8 }}
           >

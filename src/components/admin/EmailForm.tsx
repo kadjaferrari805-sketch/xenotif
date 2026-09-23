@@ -49,8 +49,8 @@ export function AdminEmailForm() {
             </select>
           </div>
           <div>
-            <label className="block text-xs font-bold text-sport-fg mb-2 uppercase tracking-wider">Sujet</label>
-            <input
+            <label htmlFor="admin-email-subject" className="block text-xs font-bold text-sport-fg mb-2 uppercase tracking-wider">Sujet</label>
+            <input id="admin-email-subject"
               type="text"
               value={subject}
               onChange={e => setSubject(e.target.value)}
@@ -70,7 +70,7 @@ export function AdminEmailForm() {
           />
         </div>
         <div className="flex items-center gap-4">
-          <button
+          <button type="button"
             onClick={send}
             disabled={sending || !subject.trim() || !message.trim()}
             className="inline-flex items-center gap-2 bg-sport-orange text-white px-6 py-3 rounded-full font-bold text-sm hover:bg-orange-600 disabled:opacity-60 transition-all"

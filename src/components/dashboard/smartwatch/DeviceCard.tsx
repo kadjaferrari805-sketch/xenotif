@@ -101,7 +101,7 @@ export function DeviceCard({ provider, connection, onConnect, onDisconnect, onSy
         <div className="flex gap-2">
           {isConnected ? (
             <>
-              <button
+              <button type="button"
                 onClick={handleSync}
                 disabled={loading !== null}
                 className="flex-1 flex items-center justify-center gap-2 text-xs font-bold py-2 px-3 rounded-xl transition-all"
@@ -110,7 +110,7 @@ export function DeviceCard({ provider, connection, onConnect, onDisconnect, onSy
                 {loading === 'sync' ? <Loader2 size={12} className="animate-spin" /> : <RefreshCw size={12} />}
                 {t('sync')}
               </button>
-              <button
+              <button type="button"
                 onClick={handleDisconnect}
                 disabled={loading !== null}
                 className="flex items-center justify-center gap-1.5 text-xs font-bold py-2 px-3 rounded-xl bg-red-50 border border-red-200 text-red-600 hover:bg-red-500/20 transition-all"
@@ -119,7 +119,7 @@ export function DeviceCard({ provider, connection, onConnect, onDisconnect, onSy
               </button>
             </>
           ) : (
-            <button
+            <button type="button"
               onClick={handleConnect}
               disabled={loading !== null}
               className="w-full flex items-center justify-center gap-2 text-xs font-bold py-2.5 px-4 rounded-xl transition-all hover:opacity-90"

@@ -180,7 +180,7 @@ export function AbonnementClient({ initialSub }: { initialSub: Sub | null }) {
           {/* Récupération d'un abonnement déjà payé mais non rattaché */}
           <div className="mt-6 pt-6 border-t border-sport-border">
             <p className="text-xs text-sport-gray mb-3">{t('syncHint')}</p>
-            <button
+            <button type="button"
               onClick={syncSubscription}
               disabled={syncing}
               className="inline-flex items-center gap-2 border border-sport-border text-sport-fg px-5 py-2.5 rounded-full text-sm font-bold hover:border-sport-gray disabled:opacity-60 transition-all"
@@ -218,11 +218,11 @@ export function AbonnementClient({ initialSub }: { initialSub: Sub | null }) {
             )}
             {cancelError && <Alert variant="error" className="mb-4">{cancelError}</Alert>}
             <div className="flex gap-3">
-              <button onClick={() => setShowCancel(false)}
+              <button type="button" onClick={() => setShowCancel(false)}
                 className="flex-1 border border-sport-border text-sport-gray py-2.5 rounded-full text-sm font-bold hover:text-sport-fg transition-all">
                 {t('cancel')}
               </button>
-              <button onClick={cancelSubscription} disabled={cancelLoading}
+              <button type="button" onClick={cancelSubscription} disabled={cancelLoading}
                 className="flex-1 bg-red-500 text-white py-2.5 rounded-full text-sm font-bold hover:bg-red-600 disabled:opacity-60 transition-all inline-flex items-center justify-center gap-2">
                 {cancelLoading ? <><Loader size={14} className="text-white" iconClassName="text-white" />{t('cancelling')}</> : t('confirmCancel')}
               </button>
@@ -324,7 +324,7 @@ export function AbonnementClient({ initialSub }: { initialSub: Sub | null }) {
 
       {/* Actions */}
       <div className="space-y-3">
-        <button
+        <button type="button"
           onClick={openPortal}
           disabled={portalLoading}
           className="w-full border border-sport-border text-sport-fg py-3.5 rounded-full font-bold text-sm hover:border-sport-orange hover:text-sport-orange transition-all inline-flex items-center justify-center gap-2 disabled:opacity-60"
@@ -335,7 +335,7 @@ export function AbonnementClient({ initialSub }: { initialSub: Sub | null }) {
         {portalError && <Alert variant="warning">{portalError}</Alert>}
 
         {(isTrialing || isActive) && !isCanceled && (
-          <button
+          <button type="button"
             onClick={() => setShowCancel(true)}
             className="w-full border border-red-300 text-red-600 py-3.5 rounded-full font-bold text-sm hover:bg-red-50 hover:border-red-400 transition-all inline-flex items-center justify-center gap-2"
           >
@@ -349,7 +349,7 @@ export function AbonnementClient({ initialSub }: { initialSub: Sub | null }) {
             <p className="text-sport-gray text-xs mt-1">{t('cancelConfirmedDesc')}</p>
             {sub.cancel_at_period_end && sub.status !== 'canceled' ? (
               <>
-                <button
+                <button type="button"
                   onClick={reactivateSubscription}
                   disabled={reactivateLoading}
                   className="mt-4 w-full bg-sport-orange text-white py-3 rounded-full font-bold text-sm hover:bg-orange-600 disabled:opacity-60 transition-all inline-flex items-center justify-center gap-2"

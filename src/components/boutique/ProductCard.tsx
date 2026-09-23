@@ -100,7 +100,7 @@ export function ProductCard({ product, index = 0, source = 'shop' }: ProductCard
           {product.badge && <span className="absolute top-3 left-3 rounded-full bg-sport-orange px-2.5 py-1 text-xs font-black text-white shadow-lg">{product.badge}</span>}
           {discount && <span className="absolute top-3 right-10 rounded-full bg-red-500 px-2 py-0.5 text-xs font-black text-white">-{discount}%</span>}
           {/* Wishlist */}
-          <button onClick={e => { e.preventDefault(); toggle(product.id) }}
+          <button type="button" onClick={e => { e.preventDefault(); toggle(product.id) }}
             className={`absolute top-3 right-3 flex h-7 w-7 items-center justify-center rounded-full transition-all ${wishlisted ? 'bg-red-500 text-white' : 'bg-sport-dark/80 text-sport-gray hover:text-red-600'}`}>
             <Heart size={12} fill={wishlisted ? 'currentColor' : 'none'} />
           </button>
@@ -126,7 +126,7 @@ export function ProductCard({ product, index = 0, source = 'shop' }: ProductCard
               <span className="text-base font-black text-sport-fg">{formatPrice(product.price_cents)}</span>
               {product.original_price_cents && <span className="ml-1.5 text-xs text-sport-gray line-through">{formatPrice(product.original_price_cents)}</span>}
             </div>
-            <button onClick={handleAdd}
+            <button type="button" onClick={handleAdd}
               className={`flex items-center gap-1.5 rounded-xl px-3 py-2 text-xs font-bold text-sport-fg transition-all whitespace-nowrap ${added ? 'bg-emerald-600' : 'bg-sport-orange hover:bg-orange-600 hover:shadow-[0_0_16px_rgba(255,69,0,0.4)]'}`}>
               {added ? '✓' : product.type === 'digital' ? <Download size={12} /> : <ShoppingCart size={12} />}
               {added ? t('card.added') : t('card.add')}

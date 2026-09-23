@@ -164,8 +164,8 @@ function ContactForm() {
               <form onSubmit={handleSubmit} className="space-y-5">
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div>
-                    <Label className="uppercase tracking-wider">{t('nameLabel')}</Label>
-                    <Input
+                    <Label htmlFor="contact-name" className="uppercase tracking-wider">{t('nameLabel')}</Label>
+                    <Input id="contact-name"
                       type="text"
                       required
                       value={form.name}
@@ -174,8 +174,8 @@ function ContactForm() {
                     />
                   </div>
                   <div>
-                    <Label className="uppercase tracking-wider">{t('emailLabel')}</Label>
-                    <Input
+                    <Label htmlFor="contact-email" className="uppercase tracking-wider">{t('emailLabel')}</Label>
+                    <Input id="contact-email"
                       type="email"
                       required
                       value={form.email}

@@ -55,10 +55,10 @@ export function ProfilClient({ initialName, email, userId }: { initialName: stri
 
         <div className="space-y-4">
           <div>
-            <Label className="uppercase tracking-wider">{t('profil.fullName')}</Label>
+            <Label htmlFor="profil-fullname" className="uppercase tracking-wider">{t('profil.fullName')}</Label>
             <div className="relative">
               <User size={15} className="absolute left-4 top-1/2 -translate-y-1/2 text-sport-gray" />
-              <Input
+              <Input id="profil-fullname"
                 type="text"
                 value={fullName}
                 onChange={e => setFullName(e.target.value)}
@@ -69,10 +69,10 @@ export function ProfilClient({ initialName, email, userId }: { initialName: stri
           </div>
 
           <div>
-            <Label className="uppercase tracking-wider">{t('profil.email')}</Label>
+            <Label htmlFor="profil-email" className="uppercase tracking-wider">{t('profil.email')}</Label>
             <div className="relative">
               <Mail size={15} className="absolute left-4 top-1/2 -translate-y-1/2 text-sport-gray" />
-              <Input
+              <Input id="profil-email"
                 type="email"
                 value={email}
                 disabled
