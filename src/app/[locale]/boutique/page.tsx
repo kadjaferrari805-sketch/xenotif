@@ -5,7 +5,7 @@ import { useTranslations, useLocale } from 'next-intl'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import { Link } from '@/i18n/navigation'
-import { Zap, ShoppingBag, Star, TrendingUp, ArrowRight, LayoutGrid, Sparkles, type LucideIcon } from 'lucide-react'
+import { Zap, ShoppingBag, ShieldCheck, CreditCard, ArrowRight, LayoutGrid, Sparkles, type LucideIcon } from 'lucide-react'
 import { ProductCard } from '@/components/boutique/ProductCard'
 import { Carousel } from '@/components/ui/Carousel'
 import { getProductsLocalized } from '@/lib/boutique/products.en'
@@ -57,8 +57,8 @@ export default function BoutiquePage() {
 
   const stats = [
     { icon: ShoppingBag, label: t('stats.products'), value: `${products.length}+` },
-    { icon: Star, label: t('stats.rating'), value: '4.8/5' },
-    { icon: TrendingUp, label: t('stats.customers'), value: t('stats.customersValue') },
+    { icon: ShieldCheck, label: t('stats.rating'), value: '3D Secure' },
+    { icon: CreditCard, label: t('stats.customers'), value: t('stats.customersValue') },
     { icon: Zap, label: t('stats.delivery'), value: '24-48h' },
   ]
 

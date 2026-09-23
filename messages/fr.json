@@ -219,7 +219,7 @@
   },
   "home": {
     "adBanners": {
-      "proof": "4,9/5 · déjà 12 000+ athlètes",
+      "proof": "7 jours Pro offerts · sans carte",
       "transform": {
         "title": "Transforme ton corps.",
         "accent": "Libère ton potentiel.",
@@ -347,13 +347,13 @@
       "dismiss": "Fermer la barre d'abonnement"
     },
     "metaTitle": "Xenotif® - Forge ton corps. Dépasse tes limites.",
-    "metaDescription": "La plateforme fitness premium - 10 disciplines, coaching IA personnalisé, 300+ séances. Rejoins 12 000+ athlètes qui transforment leur corps avec Xenotif®.",
+    "metaDescription": "La plateforme fitness premium - 10 disciplines, coaching IA personnalisé, suivi d'activité depuis ton téléphone. Essai Pro 7 jours, sans carte.",
     "hero": {
       "eyebrow": "La Plateforme Sport Premium",
       "ctaPrimary": "Commencer gratuitement",
       "ctaSecondary": "Voir les disciplines",
       "ctaNote": "Musculation gratuite, sans carte · PRO dès 9,99 €/mois",
-      "socialProof": "<b>4,9/5</b> · déjà rejoint par <b>12 000+ athlètes</b>",
+      "socialProof": "<b>7 jours Pro offerts</b> · sans carte bancaire",
       "scroll": "Scroll",
       "slides": [
         {
@@ -374,26 +374,26 @@
       ],
       "badges": [
         {
-          "label": "+12 000 membres",
-          "sub": "actifs"
+          "label": "10 disciplines",
+          "sub": "programmes guidés"
         },
         {
           "label": "Coaching IA",
           "sub": "inclus"
         },
         {
-          "label": "4.9 / 5",
-          "sub": "3 200 avis"
+          "label": "Suivi d’activité",
+          "sub": "sans montre"
         },
         {
-          "label": "Résultats",
-          "sub": "dès 30 jours"
+          "label": "Garantie",
+          "sub": "30 jours"
         }
       ],
       "trust": [
         {
-          "label": "12K+ athlètes",
-          "sublabel": "communauté active"
+          "label": "Essai Pro 7 jours",
+          "sublabel": "sans carte bancaire"
         },
         {
           "label": "Coaching IA",
@@ -415,7 +415,7 @@
         "slides": "Diapositives",
         "slide": "Diapositive {n} sur {total}"
       },
-      "subheadline": "Programmes structurés, nutrition et coach IA pour la muscu, le running et le HIIT. Rejoins 12 000+ athlètes - gratuit pour commencer, sans carte."
+      "subheadline": "Programmes structurés, nutrition et coach IA pour la muscu, le running et le HIIT. Gratuit pour commencer, sans carte."
     },
     "marquee": {
       "items": [
@@ -426,7 +426,7 @@
         "Natation",
         "CrossFit",
         "Coaching IA",
-        "12K+ Athlètes",
+        "10 Disciplines",
         "Résultats garantis",
         "Programmes sur mesure"
       ]
@@ -435,20 +435,20 @@
       "aria": "Chiffres clés",
       "stats": [
         {
-          "label": "Athlètes actifs",
-          "sublabel": "dans le monde entier"
+          "label": "Disciplines",
+          "sublabel": "sport complet"
         },
         {
           "label": "Programmes",
           "sublabel": "tous niveaux"
         },
         {
-          "label": "Disciplines",
-          "sublabel": "sport complet"
+          "label": "Langues",
+          "sublabel": "FR · EN · DE"
         },
         {
-          "label": "Satisfaction",
-          "sublabel": "3 200+ avis vérifiés"
+          "label": "Essai Pro",
+          "sublabel": "sans carte bancaire"
         }
       ]
     },
@@ -466,7 +466,7 @@
           "tag": "Cardio",
           "description": "Programmes de course adaptés à tous les niveaux - du 5K au marathon. Plans personnalisés avec coaching GPS et suivi de fréquence cardiaque.",
           "stats": [
-            "+4 200 coureurs",
+            "Guide complet",
             "120+ plans",
             "12 semaines moy."
           ]
@@ -476,7 +476,7 @@
           "tag": "Strength",
           "description": "Prise de masse, sèche ou tonification - nos coaches certifiés construisent ton programme sur mesure selon ta morphologie.",
           "stats": [
-            "+3 800 membres",
+            "Guide complet",
             "90+ programmes",
             "8 semaines moy."
           ]
@@ -486,7 +486,7 @@
           "tag": "Fat Burn",
           "description": "Séances courtes et intenses pour brûler un maximum de calories et booster ton métabolisme durablement en 20 à 30 min.",
           "stats": [
-            "+2 100 membres",
+            "Guide complet",
             "60+ circuits",
             "20-30 min / séance"
           ]
@@ -496,7 +496,7 @@
           "tag": "Endurance",
           "description": "Entraînements indoor et outdoor avec puissance-mètre. De la sportive au grimpeur de cols, un plan adapté à chaque profil.",
           "stats": [
-            "+1 500 cyclistes",
+            "Guide complet",
             "45+ plans",
             "16 semaines moy."
           ]
@@ -506,7 +506,7 @@
           "tag": "Aquatique",
           "description": "Techniques de nage, préparation triathlon, open water - progressez dans tous les styles avec des drills vidéo HD.",
           "stats": [
-            "+900 nageurs",
+            "Guide complet",
             "30+ programmes",
             "10 semaines moy."
           ]
@@ -516,7 +516,7 @@
           "tag": "Functional",
           "description": "WODs quotidiens, mouvements fonctionnels et challenges communautaires pour repousser tes limites chaque semaine.",
           "stats": [
-            "+1 800 athlètes",
+            "Guide complet",
             "365 WODs/an",
             "5× / semaine"
           ]
@@ -526,7 +526,7 @@
           "tag": "Bien-être",
           "description": "Flexibilité, force intérieure et pleine conscience - des flows débutants au yoga avancé pour un corps et un esprit équilibrés.",
           "stats": [
-            "+2 000 pratiquants",
+            "Guide complet",
             "40+ séquences",
             "20-60 min / séance"
           ]
@@ -536,7 +536,7 @@
           "tag": "Combat",
           "description": "Technique, cardio et puissance - des bases aux combinaisons avancées pour te transformer physiquement et mentalement.",
           "stats": [
-            "+1 200 boxeurs",
+            "Guide complet",
             "35+ programmes",
             "8 semaines moy."
           ]
@@ -546,7 +546,7 @@
           "tag": "Mobilité",
           "description": "Mobilité, souplesse et récupération optimale - des routines d'étirements guidées pour prévenir les blessures et performer.",
           "stats": [
-            "+1 600 membres",
+            "Guide complet",
             "30+ routines",
             "10-30 min / séance"
           ]
@@ -556,7 +556,7 @@
           "tag": "Alimentation",
           "description": "Plans alimentaires personnalisés, calcul des macros et stratégies nutritionnelles pour atteindre tes objectifs sportifs.",
           "stats": [
-            "+3 000 membres",
+            "Guide complet",
             "50+ plans",
             "Suivi quotidien"
           ]
@@ -696,51 +696,18 @@
     },
     "reviews": {
       "label": "Témoignages",
-      "title": "Ils ont transformé leur corps",
-      "subtitle": "Des milliers d'athlètes font confiance à Xenotif® pour atteindre leurs objectifs",
+      "title": "Avis des membres",
+      "subtitle": "Les retours publiés par les membres Xenotif®",
       "verified": "Vérifié",
       "ratingAria": "Note : {rating} étoiles sur 5",
-      "results": [
-        "+18 min de PR marathon",
-        "-12 kg en 4 mois",
-        "Ironman terminé"
-      ],
-      "items": [
-        {
-          "sport": "Running · Marathon",
-          "date": "Il y a 2 jours",
-          "text": "\"En 3 mois de programme Xenotif®, j'ai battu mon record sur marathon de 18 minutes. Le coaching IA est bluffant - chaque séance est parfaitement calibrée à mon niveau.\""
-        },
-        {
-          "sport": "HIIT · Musculation",
-          "date": "Il y a 5 jours",
-          "text": "\"J'ai perdu 12 kg en 4 mois tout en gagnant en force. Les séances HIIT + muscu sont parfaitement équilibrées. La communauté Xenotif® me motive chaque matin.\""
-        },
-        {
-          "sport": "CrossFit · Natation",
-          "date": "Il y a 1 semaine",
-          "text": "\"Préparation triathlon avec Xenotif® - résultat incroyable. J'ai terminé mon premier Ironman grâce à cette plateforme. Merci Xenotif® !\""
-        }
-      ],
+      "results": [],
+      "items": [],
       "summary": {
-        "rating": "4.9 / 5",
-        "basedOn": "basé sur",
-        "count": "3 200+",
-        "reviews": "avis vérifiés",
-        "stats": [
-          {
-            "value": "97%",
-            "label": "Satisfaits"
-          },
-          {
-            "value": "4.2×",
-            "label": "Plus rapide"
-          },
-          {
-            "value": "30j",
-            "label": "Premiers résultats"
-          }
-        ]
+        "rating": "",
+        "basedOn": "",
+        "count": "",
+        "reviews": "",
+        "stats": []
       }
     },
     "newsletter": {
@@ -827,7 +794,7 @@
       "metaTitle": "Défis fitness - 30 jours, cardio, force, sèche",
       "metaDescription": "Relève un défi fitness avec Xenotif : 30 jours, semaine cardio, streak musculation, sèche express. Objectif clair, suivi jour par jour, gratuit pour commencer.",
       "pageTitle": "Défis fitness",
-      "pageSubtitle": "Un objectif, une durée, un plan. Rejoins les 12 000+ athlètes Xenotif et relève ton défi - l’app te guide et te tient responsable, jour après jour.",
+      "pageSubtitle": "Un objectif, une durée, un plan. Choisis ton défi Xenotif - l’app te guide et te tient responsable, jour après jour.",
       "goalLabel": "Objectif",
       "items": [
         {
@@ -907,7 +874,7 @@
         "Coach IA & plan nutrition",
         "Suivi de ta progression"
       ],
-      "panelProof": "★ 4,9/5 · déjà 12 000+ athlètes"
+      "panelProof": "7 jours Pro offerts · sans carte bancaire"
     },
     "signup": {
       "title": "Crée ton compte",
@@ -1033,12 +1000,12 @@
     },
     "cta": {
       "title": "Rejoins la communauté",
-      "desc": "Accède aux programmes <b>{title}</b>, au coaching IA personnalisé et à des milliers d'athlètes motivés.",
+      "desc": "Accède aux programmes <b>{title}</b>, au coaching IA personnalisé et au suivi de ta progression.",
       "features": [
         "Guide complet + vidéos HD",
         "Programme personnalisé IA",
         "Suivi de progression avancé",
-        "Communauté de coaches",
+        "Coach IA personnalisé",
         "30 j satisfait ou remboursé"
       ],
       "primary": "Commencer gratuitement",
@@ -1069,8 +1036,8 @@
     "stats": {
       "products": "Produits premium",
       "rating": "Note moyenne",
-      "customers": "Clients satisfaits",
-      "customersValue": "12 000+",
+      "customers": "Paiement sécurisé",
+      "customersValue": "Stripe",
       "delivery": "Livraison express"
     },
     "trust": [
@@ -1271,7 +1238,7 @@
     "searchClear": "Effacer la recherche",
     "searchNoResults": "Aucun article pour « {query} ».",
     "ctaTitle": "Prêt à <o>Passer à l'Action ?</o>",
-    "ctaSubtitle": "Les conseils théoriques c'est bien, un programme structuré par des experts c'est mieux. Rejoignez les 12 000+ athlètes Xenotif®.",
+    "ctaSubtitle": "Les conseils théoriques c'est bien, un programme structuré c'est mieux. Commence gratuitement avec Xenotif®.",
     "ctaShop": "Voir la Boutique",
     "ctaJoin": "Rejoindre Xenotif®",
     "readingTime": "{minutes} min",
@@ -1842,7 +1809,7 @@
     "statsTitle": "Xenotif® en chiffres",
     "statsSubtitle": "La communauté qui progresse chaque jour.",
     "ctaTitle": "Prêt à <o>te dépasser</o> ?",
-    "ctaSubtitle": "Rejoins des milliers de sportifs qui progressent avec Xenotif®.",
+    "ctaSubtitle": "Commence gratuitement et progresse à ton rythme avec Xenotif®.",
     "ctaJoin": "Rejoindre Xenotif®",
     "ctaShop": "Découvrir la boutique"
   },
@@ -1854,10 +1821,22 @@
     "subtitle": "Programmes personnalisés, suivi en temps réel et réponses instantanées : ton coach IA t'accompagne à chaque séance, 24h/24.",
     "featuresTitle": "Comment ça marche",
     "features": [
-      { "title": "Plans sur mesure", "text": "Ton coach ajuste tes programmes selon ton niveau, tes objectifs et ta progression réelle." },
-      { "title": "Disponible 24h/24", "text": "Une question avant une séance, besoin d'un conseil technique ? Réponse immédiate, à toute heure." },
-      { "title": "Suivi en temps réel", "text": "Chaque séance loggée affine les recommandations suivantes - ton coach apprend de toi." },
-      { "title": "Ajustement continu", "text": "Plateau, blessure, reprise : le programme s'adapte automatiquement à ta situation." }
+      {
+        "title": "Plans sur mesure",
+        "text": "Ton coach ajuste tes programmes selon ton niveau, tes objectifs et ta progression réelle."
+      },
+      {
+        "title": "Disponible 24h/24",
+        "text": "Une question avant une séance, besoin d'un conseil technique ? Réponse immédiate, à toute heure."
+      },
+      {
+        "title": "Suivi en temps réel",
+        "text": "Chaque séance loggée affine les recommandations suivantes - ton coach apprend de toi."
+      },
+      {
+        "title": "Ajustement continu",
+        "text": "Plateau, blessure, reprise : le programme s'adapte automatiquement à ta situation."
+      }
     ],
     "previewTitle": "Essaie le coach dès maintenant",
     "previewText": "Découvre un aperçu de l'espace membre et de l'assistant IA, sans créer de compte.",
@@ -1871,10 +1850,10 @@
   },
   "communaute": {
     "metaTitle": "Communauté - Xenotif®",
-    "metaDescription": "Rejoins des milliers de sportifs qui se motivent, partagent leurs progrès et se dépassent ensemble avec Xenotif®.",
+    "metaDescription": "Défis, avis de membres et programmes guidés en 10 disciplines - progresse à ton rythme avec Xenotif®.",
     "eyebrow": "Communauté",
     "title": "Tu n'es <o>jamais seul·e</o>",
-    "subtitle": "Des milliers de sportifs progressent chaque jour avec Xenotif® - défis, avis vérifiés et une motivation qui vient de toute une communauté.",
+    "subtitle": "Défis, avis de membres et programmes guidés - progresse à ton rythme avec Xenotif®.",
     "statsTitle": "Xenotif® en chiffres",
     "statsSubtitle": "La communauté qui progresse chaque jour.",
     "reviewsTitle": "Ils progressent avec nous",

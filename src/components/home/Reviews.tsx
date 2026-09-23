@@ -31,6 +31,11 @@ export function Reviews() {
   const summaryStats = t.raw('summary.stats') as SummaryStat[]
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 })
 
+  // Aucun avis reel a afficher -> aucune section. Rendre l'en-tete, un
+  // carrousel vide et un resume de note vide laisserait croire a une base
+  // d'avis inexistante.
+  if (REVIEWS.length === 0 || items.length === 0) return null
+
   return (
     <section aria-labelledby="avis-title" className="section-white px-6">
       <div className="max-w-6xl mx-auto">
@@ -96,7 +101,8 @@ export function Reviews() {
           </Carousel>
         </div>
 
-        {/* Global rating summary */}
+        {/* Global rating summary - uniquement si un agregat reel existe */}
+        {summaryStats.length > 0 && t('summary.rating') ? (
         <motion.div
           initial={{ opacity: 0, y: 12 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -126,6 +132,7 @@ export function Reviews() {
             ))}
           </div>
         </motion.div>
+        ) : null}
       </div>
     </section>
   )

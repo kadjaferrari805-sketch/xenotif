@@ -7,7 +7,7 @@ import type { DisciplineContent, DisciplineMeta } from './disciplines'
 /* ── Running & Cardio ──────────────────────────────────────────── */
 const runningContent: DisciplineContent = {
   tagline: 'Lauf schneller, lauf länger, ohne dich zu verletzen.',
-  heroStat: '4.200+ aktive Läufer',
+  heroStat: 'Kompletter Guide · FR · EN · DE',
   guide: {
     technique: {
       emoji: '👟',
@@ -164,7 +164,7 @@ const runningContent: DisciplineContent = {
 /* ── Krafttraining ─────────────────────────────────────────────── */
 const musculationContent: DisciplineContent = {
   tagline: 'Forme deinen Körper mit chirurgischer Präzision.',
-  heroStat: '3.800+ aktive Mitglieder',
+  heroStat: 'Kompletter Guide · FR · EN · DE',
   guide: {
     technique: {
       emoji: '💪',
@@ -323,7 +323,7 @@ const musculationContent: DisciplineContent = {
 /* ── HIIT ──────────────────────────────────────────────────────── */
 const hiitContent: DisciplineContent = {
   tagline: 'Verbrenne 500 kcal in 25 Minuten. Wissenschaftlich belegt.',
-  heroStat: '2.100+ aktive Mitglieder',
+  heroStat: 'Kompletter Guide · FR · EN · DE',
   guide: {
     technique: {
       emoji: '⚡',
@@ -480,7 +480,7 @@ const hiitContent: DisciplineContent = {
 /* ── Radfahren ─────────────────────────────────────────────────── */
 const cyclismeContent: DisciplineContent = {
   tagline: 'Vom Rennfahrer bis zum Bergkletterer - ein Plan für jedes Rad.',
-  heroStat: '1.500+ aktive Radfahrer',
+  heroStat: 'Kompletter Guide · FR · EN · DE',
   guide: {
     technique: {
       emoji: '🚴',
@@ -636,7 +636,7 @@ const cyclismeContent: DisciplineContent = {
 /* ── Schwimmen ─────────────────────────────────────────────────── */
 const natationContent: DisciplineContent = {
   tagline: 'Technik, Effizienz, Leistung - das Wasser lügt nie.',
-  heroStat: '900+ aktive Schwimmer',
+  heroStat: 'Kompletter Guide · FR · EN · DE',
   guide: {
     technique: {
       emoji: '🏊',
@@ -793,7 +793,7 @@ const natationContent: DisciplineContent = {
 /* ── CrossFit ──────────────────────────────────────────────────── */
 const crossfitContent: DisciplineContent = {
   tagline: 'Im Feuer geschmiedet. Jeden Tag getestet.',
-  heroStat: '1.800+ aktive Athleten',
+  heroStat: 'Kompletter Guide · FR · EN · DE',
   guide: {
     technique: {
       emoji: '🏋️',
@@ -951,7 +951,7 @@ const crossfitContent: DisciplineContent = {
 /* ── Yoga ──────────────────────────────────────────────────────── */
 const yogaContent: DisciplineContent = {
   tagline: 'Flexibilität, innere Stärke und Gelassenheit - auf und neben der Matte.',
-  heroStat: '2.900+ aktive Praktizierende',
+  heroStat: 'Kompletter Guide · FR · EN · DE',
   guide: {
     technique: {
       emoji: '🧘',
@@ -1111,7 +1111,7 @@ const yogaContent: DisciplineContent = {
 /* ── Boxen ─────────────────────────────────────────────────────── */
 const boxingContent: DisciplineContent = {
   tagline: 'Kraft, Explosivität und Selbstkontrolle - im Ring geschmiedet.',
-  heroStat: '1.800+ aktive Boxer',
+  heroStat: 'Kompletter Guide · FR · EN · DE',
   guide: {
     technique: {
       emoji: '🥊',
@@ -1270,7 +1270,7 @@ const boxingContent: DisciplineContent = {
 /* ── Stretching ────────────────────────────────────────────────── */
 const stretchingContent: DisciplineContent = {
   tagline: 'Befreie deinen Körper, erhole dich besser und bewege dich ohne Schmerz.',
-  heroStat: '3.200+ aktive Praktizierende',
+  heroStat: 'Kompletter Guide · FR · EN · DE',
   guide: {
     technique: {
       emoji: '🤸',
@@ -1429,7 +1429,7 @@ const stretchingContent: DisciplineContent = {
 /* ── Ernährung ─────────────────────────────────────────────────── */
 const nutritionContent: DisciplineContent = {
   tagline: 'Iss klug - Leistung beginnt auf dem Teller.',
-  heroStat: '4.100+ aktive Mitglieder',
+  heroStat: 'Kompletter Guide · FR · EN · DE',
   guide: {
     technique: {
       emoji: '🥗',

@@ -4,19 +4,19 @@ import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { useTranslations } from 'next-intl'
 import { useInView } from 'react-intersection-observer'
-import { Users, BookOpen, Layers, Star } from 'lucide-react'
+import { BookOpen, Layers, Globe, Gift } from 'lucide-react'
 import { Tilt3D } from '@/components/premium/Tilt3D'
 
 // Données structurelles des stats (icône, valeur, couleurs). Les libellés
 // (label, sublabel) viennent de messages → home.proof.stats.
 const STAT_STYLE = [
-  { Icon: Users,    end: 12000, suffix: '+',  color: 'text-sport-orange', bg: 'bg-sport-orange/10 border-sport-orange/20' },
-  { Icon: BookOpen, end: 50,    suffix: '+',  color: 'text-sport-blue',   bg: 'bg-sport-blue/10 border-sport-blue/20' },
-  { Icon: Layers,   end: 10,    suffix: '',   color: 'text-sport-lime',   bg: 'bg-sport-lime/10 border-sport-lime/20' },
-  { Icon: Star,     end: 49,    suffix: '/5', color: 'text-sport-orange', bg: 'bg-sport-orange/10 border-sport-orange/20', decimal: true },
+  { Icon: Layers,   end: 10, suffix: '',   color: 'text-sport-orange', bg: 'bg-sport-orange/10 border-sport-orange/20' },
+  { Icon: BookOpen, end: 9,  suffix: '',   color: 'text-sport-blue',   bg: 'bg-sport-blue/10 border-sport-blue/20' },
+  { Icon: Globe,    end: 3,  suffix: '',   color: 'text-sport-lime',   bg: 'bg-sport-lime/10 border-sport-lime/20' },
+  { Icon: Gift,     end: 7,  suffix: ' j', color: 'text-sport-orange', bg: 'bg-sport-orange/10 border-sport-orange/20' },
 ]
 
-function Counter({ end, suffix, decimal, active }: { end: number; suffix: string; decimal?: boolean; active: boolean }) {
+function Counter({ end, suffix, active }: { end: number; suffix: string; active: boolean }) {
   const [count, setCount] = useState(0)
 
   useEffect(() => {
@@ -37,7 +37,7 @@ function Counter({ end, suffix, decimal, active }: { end: number; suffix: string
     requestAnimationFrame(step)
   }, [active, end])
 
-  const display = decimal ? (count / 10).toFixed(1) : count >= 1000 ? `${Math.floor(count / 1000)} ${String(count % 1000).padStart(3, '0')}` : String(count)
+  const display = count >= 1000 ? `${Math.floor(count / 1000)} ${String(count % 1000).padStart(3, '0')}` : String(count)
 
   return <>{display}{suffix}</>
 }
@@ -72,7 +72,7 @@ export function ProofBar() {
                 <stat.Icon size={20} className={stat.color} />
               </div>
               <div className={`text-4xl font-black ${stat.color} tabular-nums`}>
-                <Counter end={stat.end} suffix={stat.suffix} decimal={stat.decimal} active={inView} />
+                <Counter end={stat.end} suffix={stat.suffix} active={inView} />
               </div>
               <div className="text-xs font-bold text-sport-fg uppercase tracking-widest mt-1">{labels[i].label}</div>
               <span className="text-[11px] text-sport-gray">{labels[i].sublabel}</span>
