@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server'
 import { createAdminClient } from '@/lib/supabase/admin'
-import { assertNoError } from '@/lib/supabase/errors'
+import { claimEvent } from '@/lib/supabase/claim'
 import { sendOnboardingEmail } from '@/lib/emails'
 import { nextOnboardingStep, accountAgeDays } from '@/lib/onboarding'
 
@@ -74,6 +74,51 @@ export async function GET(request: Request) {
       const step = nextOnboardingStep(age, current)
       if (!step) continue
 
+      // ── K8.12.7 — APPROPRIATION AVANT ENVOI.
+      //
+      // L'UPDATE conditionnel est atomique : PostgreSQL n'accorde la ligne qu'à
+      // UN seul exécutant. La garde `onboarding_step = current` rejoue, AU
+      // MOMENT de l'écriture, la valeur lue au SELECT — ce que le SELECT seul ne
+      // peut pas garantir. L'identité protégée est donc bien le couple
+      // (profile.id, onboarding_step), et non le seul profil.
+      //
+      // L'ISOLATION DES ÉTAPES EST STRUCTURELLE : `nextOnboardingStep` ne rend
+      // l'étape N que si `currentStep < N`. Le claim fait PROGRESSER la valeur
+      // (0→1, 1→2, 2→3) ; s'approprier l'étape 2 laisse `current = 2`, ce qui
+      // rend l'étape 3 éligible au cycle suivant. Un claim ne bloque jamais
+      // l'étape d'après.
+      //
+      // `update` ET NON `upsert` : la ligne `profiles` est garantie par le
+      // trigger `on_auth_user_created` → `handle_new_user()`. Un `upsert` ne
+      // pourrait pas porter de garde conditionnelle, et créerait la ligne au
+      // lieu de perdre le claim. Si la ligne manquait malgré tout, l'issue est
+      // CLAIM_LOST : aucun envoi, aucune étape consommée — fail-safe.
+      //
+      // ⚠️ COMPROMIS ASSUMÉ (K8.12.3 §G) : l'appropriation est DÉFINITIVE. Un
+      // échec d'envoi après ce point consomme l'étape sans e-mail parti. Aucune
+      // compensation : restaurer `onboarding_step` rouvrirait la fenêtre de
+      // doublon que cette phase ferme.
+      const claim = await claimEvent(
+        supabase
+          .from('profiles')
+          .update({ onboarding_step: step })
+          .eq('id', u.id)
+          .eq('onboarding_step', current)
+          .select('id'),
+      )
+
+      // Un autre exécutant a gagné cette étape : ni succès ni échec pour
+      // celui-ci. Aucun compteur, aucun envoi.
+      if (claim.outcome === 'CLAIM_LOST') continue
+
+      if (claim.outcome === 'DB_ERROR') {
+        // JAMAIS confondu avec CLAIM_LOST : une écriture refusée doit rester
+        // visible. Seul le message est journalisé — jamais l'adresse.
+        failed++
+        console.error('[onboarding] claim echoue :', u.id, `step ${step}`, claim.error.message)
+        continue
+      }
+
       try {
         await sendOnboardingEmail({
           email: u.email,
@@ -81,12 +126,6 @@ export async function GET(request: Request) {
           step,
           locale: localeById.get(u.id) ?? 'fr',
         })
-        // K8.12 — le retour de l'UPSERT était jeté : une écriture refusée
-        // laissait `sent++` s'exécuter sans que l'étape soit consommée.
-        const { error: etapeErr } = await supabase
-          .from('profiles')
-          .upsert({ id: u.id, onboarding_step: step }, { onConflict: 'id' })
-        assertNoError('consommation de l\'etape onboarding', etapeErr)
         sent++
       } catch (e) {
         failed++
