@@ -22,6 +22,9 @@ interface FakeQuery extends PromiseLike<unknown> {
   lt(...args: unknown[]): FakeQuery
   order(...args: unknown[]): FakeQuery
   limit(...args: unknown[]): FakeQuery
+  // Ajouté en K8.12.5 : le claim termine par `.select('id')` pour obtenir un
+  // RETURNING. Sans cette méthode, l'UPDATE lèverait `select is not a function`.
+  select(...args: unknown[]): FakeQuery
 }
 
 /** Journal des operations, pour prouver qui fait quoi et avec quels filtres. */
@@ -32,6 +35,14 @@ const operations: Operation[] = []
 const mockState = {
   cartsResult: { data: [] as unknown[] | null, error: null as FakeError },
   updateError: null as FakeError,
+  // Ajouté en K8.12.5 : pilote le RETURNING du claim. `true` → une ligne
+  // rendue (CLAIM_WON) ; `false` → zéro ligne (CLAIM_LOST, un autre exécutant
+  // a gagné). Par défaut gagné, pour que les tests antérieurs soient inchangés.
+  claimWon: true,
+  // File d'issues consommée appel par appel, quand plusieurs paniers doivent
+  // connaître des sorts DIFFÉRENTS. Sans elle, « un claim perdu ne bloque pas
+  // les suivants » serait intestable — un booléen global ne le permet pas.
+  claimSequence: [] as boolean[],
   // Ajouté en K8.10 : sans compte auth correspondant, `userId` reste indéfini et
   // TOUT le bloc push est sauté — le journal d'échec du push (K8.10-02) serait
   // alors inatteignable. Vide par défaut : les tests antérieurs sont inchangés.
@@ -48,6 +59,7 @@ function chain(result: unknown, operation: Operation): FakeQuery {
     lt: (...args: unknown[]) => { operation.filtres.push(['lt', ...args]); return query },
     order: (...args: unknown[]) => { operation.filtres.push(['order', ...args]); return query },
     limit: (...args: unknown[]) => { operation.filtres.push(['limit', ...args]); return query },
+    select: (...args: unknown[]) => { operation.filtres.push(['select', ...args]); return query },
     then: (onFulfilled, onRejected) => Promise.resolve(result).then(onFulfilled, onRejected),
   }
   return query
@@ -64,7 +76,15 @@ jest.mock('../../../../lib/supabase/admin', () => ({
       update: (payload: unknown) => {
         const op: Operation = { op: 'update', payload, filtres: [] }
         operations.push(op)
-        return chain({ error: mockState.updateError }, op)
+        // K8.12.5 — l'UPDATE rend désormais `{ data, error }` : c'est le
+        // RETURNING du claim qui départage CLAIM_WON de CLAIM_LOST.
+        const gagne = mockState.claimSequence.length > 0
+          ? mockState.claimSequence.shift()!
+          : mockState.claimWon
+        return chain(
+          { data: gagne ? [{ id: 'claim' }] : [], error: mockState.updateError },
+          op,
+        )
       },
     }),
     auth: { admin: { listUsers: async () => ({ data: { users: mockState.users } }) } },
@@ -121,6 +141,8 @@ beforeEach(() => {
   process.env = { ...ORIGINAL_ENV, CRON_SECRET: 'secret-de-test' }
   mockState.cartsResult = { data: [], error: null }
   mockState.updateError = null
+  mockState.claimWon = true
+  mockState.claimSequence = []
   mockState.users = []
 })
 
@@ -570,15 +592,17 @@ describe('cron/abandoned-cart — K8.10 : aucune adresse dans les journaux', () 
 
 // ── Phase K8.11 — K8.11-02, côté appelant.
 //
-// Jusqu'ici, un refus d'API Resend ne levait PAS : `sendAbandonedCartEmail` se
-// résolvait, l'UPDATE marquait `reminder_sent` et `sent++` s'exécutait. Le
-// panier était donc scellé « relancé » sans qu'aucun e-mail ne parte, et aucune
-// relance ultérieure n'était possible.
+// Depuis K8.11, un refus d'API Resend LÈVE au lieu de se résoudre : l'échec est
+// donc compté au lieu de passer pour un succès. Cette propriété est conservée.
 //
-// Depuis K8.11, le module lève. Le `catch` déjà présent ici — INCHANGÉ — reprend
-// alors la main AVANT l'UPDATE, qui se trouve dans le même `try`.
+// ⚠️ CE QUE K8.12.5 A INVERSÉ. Ce bloc assertait auparavant qu'un échec d'envoi
+// ne marquait PAS le panier, qui restait éligible au cycle suivant. Ce n'est
+// plus vrai : l'appropriation précède désormais l'envoi et elle est DÉFINITIVE.
+// Le panier est marqué avant que Resend ne soit sollicité, et aucune
+// compensation n'est effectuée — c'est la perte rare explicitement acceptée en
+// échange de la suppression du doublon (K8.12.3 §G).
 
-describe('cron/abandoned-cart — K8.11 : un échec d’envoi ne marque plus le panier', () => {
+describe('cron/abandoned-cart — K8.11 : un échec d’envoi reste compté comme échec', () => {
   beforeEach(() => {
     mockState.cartsResult = {
       data: [panier('id-a', 'client@exemple.fr', '2026-09-12T08:00:00.000Z')],
@@ -590,31 +614,35 @@ describe('cron/abandoned-cart — K8.11 : un échec d’envoi ne marque plus le 
   test('envoi en échec : `sent` n’est pas incrémenté', async () => {
     mockSendEmail.mockRejectedValue(new Error('Resend a refusé l’envoi (rate_limit_exceeded, HTTP 429)'))
 
-    expect(await (await GET(request(AUTH))).json()).toMatchObject({ sent: 0, processed: 1, read: 1 })
+    expect(await (await GET(request(AUTH))).json()).toMatchObject({ sent: 0, failed: 1, processed: 1, read: 1 })
   })
 
-  test('envoi en échec : AUCUN UPDATE — `reminder_sent` et `reminded_at` intacts', async () => {
+  test('envoi en échec : le panier EST marqué — l’appropriation précède l’envoi', async () => {
     mockSendEmail.mockRejectedValue(new Error('boom'))
 
     await GET(request(AUTH))
 
-    // L'UPDATE est dans le même `try`, APRÈS l'envoi : il devient inatteignable.
-    expect(updates()).toHaveLength(0)
-    expect(idsMarques()).toEqual([])
+    // INVERSION K8.12.5 : le claim a eu lieu AVANT l'envoi, donc il subsiste.
+    expect(updates()).toHaveLength(1)
+    expect(idsMarques()).toEqual(['id-a'])
   })
 
-  test('le panier reste donc éligible pour un cycle ultérieur', async () => {
+  test('le panier n’est PLUS relancé au cycle suivant : perte rare assumée', async () => {
     mockSendEmail.mockRejectedValue(new Error('boom'))
     await GET(request(AUTH))
-    expect(idsMarques()).not.toContain('id-a')
+    expect(idsMarques()).toEqual(['id-a'])
 
-    // Cycle suivant : l'envoi passe, le panier est enfin marqué.
+    // Cycle suivant : en base, `reminder_sent` vaut désormais true, donc le
+    // SELECT ne retiendrait plus ce panier. On le simule par un claim perdu —
+    // aucun second envoi n'a lieu. C'est le compromis assumé : le rappel est
+    // perdu, mais jamais dupliqué.
     jest.clearAllMocks()
     operations.length = 0
+    mockState.claimWon = false
     mockSendEmail.mockResolvedValue(undefined)
 
     await GET(request(AUTH))
-    expect(idsMarques()).toEqual(['id-a'])
+    expect(mockSendEmail).not.toHaveBeenCalled()
   })
 
   test('succès : le marquage a bien lieu (non-régression)', async () => {
@@ -635,7 +663,7 @@ describe('cron/abandoned-cart — K8.11 : un échec d’envoi ne marque plus le 
 // (l.67) et remis à null à chaque test — mais n'avait JAMAIS été positionné.
 // Ce levier est enfin actionné ici.
 
-describe('cron/abandoned-cart — K8.12 : une erreur d’UPDATE n’est plus un succès', () => {
+describe('cron/abandoned-cart — K8.12 : une erreur d’écriture n’est plus un succès', () => {
   const PG_WRITE_ERROR = { code: '42501', message: 'permission denied for table abandoned_carts' }
 
   beforeEach(() => {
@@ -648,7 +676,7 @@ describe('cron/abandoned-cart — K8.12 : une erreur d’UPDATE n’est plus un 
     mockSendPush.mockResolvedValue(0)
   })
 
-  test('envoi OK + UPDATE en erreur : `failed++`, `sent` inchangé', async () => {
+  test('écriture en erreur : `failed++`, `sent` inchangé', async () => {
     mockState.updateError = PG_WRITE_ERROR
 
     const res = await GET(request(AUTH))
@@ -658,21 +686,20 @@ describe('cron/abandoned-cart — K8.12 : une erreur d’UPDATE n’est plus un 
     expect(await res.json()).toMatchObject({ sent: 0, failed: 1, processed: 1, read: 1 })
   })
 
-  test('envoi OK + UPDATE en erreur : aucune réussite fictive, l’échec est journalisé', async () => {
+  test('écriture en erreur : l’échec est journalisé, sans donnée sensible', async () => {
     mockState.updateError = PG_WRITE_ERROR
 
     await GET(request(AUTH))
 
     expect(console.error).toHaveBeenCalled()
-    const journal = (console.error as jest.Mock).mock.calls
-      .flat()
-      .map(a => (a instanceof Error ? a.message : typeof a === 'object' && a !== null ? JSON.stringify(a) : String(a)))
-      .join(' ')
-    expect(journal).toContain('marquage du panier relancé')
-    expect(journal).toContain('permission denied')
-    // K8.10 préservé : l'adresse ne figure toujours pas dans les journaux.
-    expect(journal).not.toContain('client@exemple.fr')
-    expect(journal).toContain('id-a')
+    // INVERSION K8.12.5 : le libellé devient `claim echoue`, l'écriture étant
+    // désormais l'appropriation elle-même.
+    expect(journal()).toContain('claim echoue')
+    expect(journal()).toContain('permission denied')
+    // K8.10 préservé : ni adresse, ni jeton de capacité.
+    expect(journal()).not.toContain('client@exemple.fr')
+    expect(journal()).not.toContain('tok-id-a')
+    expect(journal()).toContain('id-a')
   })
 
   test('une erreur DB ne produit PAS un statut HTTP d’erreur', async () => {
@@ -682,17 +709,149 @@ describe('cron/abandoned-cart — K8.12 : une erreur d’UPDATE n’est plus un 
     expect((await GET(request(AUTH))).status).toBe(200)
   })
 
-  test('UPDATE OK : comportement inchangé', async () => {
+  test('écriture OK : comportement inchangé', async () => {
     const res = await GET(request(AUTH))
 
     expect(await res.json()).toMatchObject({ sent: 1, failed: 0 })
     expect(idsMarques()).toEqual(['id-a'])
   })
+})
 
-  test('K8.11 préservé : un échec Resend reste compté comme échec', async () => {
+// ── Phase K8.12.5 — APPROPRIATION ATOMIQUE AVANT ENVOI (Option 3 simple).
+//
+// L'UPDATE conditionnel `WHERE id = … AND reminder_sent = false AND
+// recovered = false RETURNING id` n'accorde la ligne qu'à UN exécutant : c'est
+// PostgreSQL qui arbitre, pas notre code.
+//
+// ⚠️ CES TESTS NE PROUVENT PAS LA CONCURRENCE RÉELLE. Ils vérifient que la
+// route réagit correctement à chacune des trois issues rendues par claimEvent,
+// face à une doublure. Que deux UPDATE concurrents ne produisent qu'un seul
+// gagnant relève de PostgreSQL et sera démontré en K8.12.8.
+
+describe('cron/abandoned-cart — K8.12.5 : claim atomique avant envoi', () => {
+  const PG_WRITE_ERROR = { code: '42501', message: 'permission denied for table abandoned_carts' }
+
+  beforeEach(() => {
+    mockState.cartsResult = {
+      data: [panier('id-a', ADRESSE, '2026-09-12T08:00:00.000Z')],
+      error: null,
+    }
+    mockSendEmail.mockResolvedValue(undefined)
+    mockSendWebPush.mockResolvedValue(0)
+    mockSendPush.mockResolvedValue(0)
+  })
+
+  test('A. CLAIM_WON + envoi réussi : `sent++`, `failed` inchangé', async () => {
+    const res = await GET(request(AUTH))
+
+    expect(mockSendEmail).toHaveBeenCalledTimes(1)
+    expect(await res.json()).toMatchObject({ sent: 1, failed: 0 })
+  })
+
+  test('B. CLAIM_LOST : aucun envoi, aucun compteur', async () => {
+    mockState.claimWon = false
+
+    const res = await GET(request(AUTH))
+
+    // Ni succès ni erreur pour cet exécutant : l'autre a gagné, c'est à lui
+    // d'envoyer. Un `failed++` ici serait une fausse alerte.
+    expect(mockSendEmail).not.toHaveBeenCalled()
+    expect(await res.json()).toMatchObject({ sent: 0, failed: 0 })
+  })
+
+  test('C. DB_ERROR : aucun envoi, `failed++`', async () => {
+    mockState.updateError = PG_WRITE_ERROR
+
+    const res = await GET(request(AUTH))
+
+    // Une erreur DB n'est JAMAIS un claim perdu : elle doit rester visible.
+    expect(mockSendEmail).not.toHaveBeenCalled()
+    expect(await res.json()).toMatchObject({ sent: 0, failed: 1 })
+  })
+
+  test('D. CLAIM_WON + échec Resend : `failed++`, marquage conservé, AUCUNE compensation', async () => {
     mockSendEmail.mockRejectedValue(new Error('Resend a refusé l’envoi (rate_limit_exceeded, HTTP 429)'))
 
+    const res = await GET(request(AUTH))
+
+    expect(mockSendEmail).toHaveBeenCalledTimes(1)
+    expect(await res.json()).toMatchObject({ sent: 0, failed: 1 })
+    // Un SEUL UPDATE : celui du claim. Aucun second UPDATE ne vient remettre
+    // `reminder_sent` à false — une compensation rouvrirait la fenêtre de
+    // doublon que cette phase ferme.
+    expect(updates()).toHaveLength(1)
+    expect(updates()[0].payload).toMatchObject({ reminder_sent: true })
+  })
+
+  test('E. plusieurs candidats : un claim perdu ne bloque pas les suivants', async () => {
+    mockState.cartsResult = {
+      data: [
+        panier('id-1', 'a@exemple.fr', '2026-09-14T08:00:00.000Z'),
+        panier('id-2', 'b@exemple.fr', '2026-09-13T08:00:00.000Z'),
+        panier('id-3', 'c@exemple.fr', '2026-09-12T08:00:00.000Z'),
+      ],
+      error: null,
+    }
+    // Le deuxième est pris par un autre exécutant.
+    mockState.claimSequence = [true, false, true]
+
+    const res = await GET(request(AUTH))
+
+    expect(adressesRelancees()).toEqual(['a@exemple.fr', 'c@exemple.fr'])
+    expect(await res.json()).toMatchObject({ sent: 2, failed: 0, processed: 3 })
+  })
+
+  test('F. aucun faux `sent++` : ni sur claim perdu, ni sur erreur DB, ni sur échec d’envoi', async () => {
+    mockState.cartsResult = {
+      data: [
+        panier('id-1', 'a@exemple.fr', '2026-09-14T08:00:00.000Z'),
+        panier('id-2', 'b@exemple.fr', '2026-09-13T08:00:00.000Z'),
+      ],
+      error: null,
+    }
+    mockState.claimSequence = [false, true]
+    mockSendEmail.mockRejectedValue(new Error('boom'))
+
     expect(await (await GET(request(AUTH))).json()).toMatchObject({ sent: 0, failed: 1 })
-    expect(updates()).toHaveLength(0)
+  })
+
+  test('G. K8.11 : le refus Resend reste distingué et compté', async () => {
+    mockSendEmail.mockRejectedValue(new Error('Resend a refusé l’envoi (validation_error, HTTP 422)'))
+
+    await GET(request(AUTH))
+
+    expect(journal()).toContain('envoi echoue')
+    expect(journal()).not.toContain('claim echoue')
+  })
+
+  test('H. K8.12.2 : l’erreur d’écriture reste détectée et observable', async () => {
+    mockState.updateError = PG_WRITE_ERROR
+
+    await GET(request(AUTH))
+
+    expect(journal()).toContain('claim echoue')
+    expect(journal()).toContain('permission denied')
+  })
+
+  test('le claim porte les gardes de sélection, rejouées au moment de l’écriture', async () => {
+    await GET(request(AUTH))
+
+    const filtres = JSON.stringify(updates()[0].filtres)
+    expect(filtres).toContain('reminder_sent')
+    expect(filtres).toContain('recovered')
+    expect(filtres).toContain('select')
+    // K8.5 préservé : le marquage vise toujours `id`, jamais l'adresse.
+    expect(updates()[0].filtres[0]).toEqual(['eq', 'id', 'id-a'])
+    expect(filtres).not.toContain('email')
+  })
+
+  test('CLAIM_LOST saute aussi le push : il revient au gagnant', async () => {
+    mockState.claimWon = false
+    mockState.users = [{ id: 'user-1', email: ADRESSE }]
+
+    await GET(request(AUTH))
+
+    expect(mockSendWebPush).not.toHaveBeenCalled()
+    expect(mockSendPush).not.toHaveBeenCalled()
   })
 })

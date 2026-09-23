@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server'
 import { createAdminClient } from '@/lib/supabase/admin'
-import { assertNoError } from '@/lib/supabase/errors'
+import { claimEvent } from '@/lib/supabase/claim'
 import { sendAbandonedCartEmail } from '@/lib/emails'
 import { sendPushToUser } from '@/lib/push'
 import { sendWebPushToUser } from '@/lib/web-push'
@@ -144,32 +144,58 @@ export async function GET(request: Request) {
 
     const total = formatPrice(items.reduce((s, i) => s + i.cents, 0))
 
-    try {
-      await sendAbandonedCartEmail({
-        email: cart.email,
-        items: items.map(i => ({ name: i.name, price: i.price, image: i.image })),
-        total,
-        recoverUrl: `${BASE_URL}/boutique/panier`,
-        locale: cart.locale ?? 'fr',
-      })
-      // Marquage de LA SEULE LIGNE relancée (K8.5). Filtrer sur l'adresse
-      // marquerait aussi des paniers qui n'ont jamais fait l'objet d'un envoi,
-      // en leur posant un `reminded_at` mensonger.
-      // K8.12 — le retour de l'UPDATE était jeté. Postgrest ne lève pas : une
-      // écriture refusée laissait `sent++` s'exécuter et la ligne non marquée.
-      const { error: marquageErr } = await supabase
+    // ── K8.12.5 — APPROPRIATION AVANT ENVOI.
+    //
+    // L'UPDATE conditionnel est atomique : PostgreSQL n'accorde la ligne qu'à UN
+    // seul exécutant. Deux crons concurrents ne peuvent donc plus envoyer deux
+    // fois le même rappel. Le marquage porte toujours sur LA SEULE LIGNE
+    // retenue (`id`, K8.5) ; les gardes `reminder_sent`/`recovered` rejouent la
+    // condition de sélection AU MOMENT de l'écriture, ce que le SELECT initial
+    // ne peut pas garantir.
+    //
+    // ⚠️ COMPROMIS ASSUMÉ (K8.12.3 §G, arbitrage validé) : l'appropriation est
+    // DÉFINITIVE. Un échec d'envoi ou un crash après ce point laisse le panier
+    // marqué sans rappel parti — une perte rare, échangée contre la suppression
+    // du doublon. Aucune compensation n'est effectuée : remettre
+    // `reminder_sent=false` rouvrirait précisément la fenêtre de doublon.
+    const claim = await claimEvent(
+      supabase
         .from('abandoned_carts')
         .update({ reminder_sent: true, reminded_at: new Date().toISOString() })
         .eq('id', cart.id)
-      assertNoError('marquage du panier relancé', marquageErr)
-      sent++
-    } catch (err) {
+        .eq('reminder_sent', false)
+        .eq('recovered', false)
+        .select('id'),
+    )
+
+    // Un autre exécutant a gagné : ni succès ni échec pour celui-ci. Aucun
+    // compteur, aucun envoi, et pas de push non plus — il revient au gagnant.
+    if (claim.outcome === 'CLAIM_LOST') continue
+
+    if (claim.outcome === 'DB_ERROR') {
+      // JAMAIS confondu avec CLAIM_LOST : une écriture refusée doit rester
+      // visible. Seul le message est journalisé — il ne porte ni adresse, ni
+      // jeton, ni contenu de panier.
       failed++
-      // K8.10-01 — l'adresse partait en clair dans le journal serveur. `cart.id`
-      // est la clé primaire depuis K8.5 : la corrélation avec la ligne reste
-      // entière via la base, sans écrire de donnée personnelle. L'exception est
-      // toujours transmise telle quelle — le diagnostic n'est pas réduit.
-      console.error('[abandoned-cart] envoi echoue :', cart.id, err)
+      console.error('[abandoned-cart] claim echoue :', cart.id, claim.error.message)
+    } else {
+      try {
+        await sendAbandonedCartEmail({
+          email: cart.email,
+          items: items.map(i => ({ name: i.name, price: i.price, image: i.image })),
+          total,
+          recoverUrl: `${BASE_URL}/boutique/panier`,
+          locale: cart.locale ?? 'fr',
+        })
+        sent++
+      } catch (err) {
+        failed++
+        // K8.10-01 — l'adresse partait en clair dans le journal serveur. `cart.id`
+        // est la clé primaire depuis K8.5 : la corrélation avec la ligne reste
+        // entière via la base, sans écrire de donnée personnelle. L'exception est
+        // toujours transmise telle quelle — le diagnostic n'est pas réduit.
+        console.error('[abandoned-cart] envoi echoue :', cart.id, err)
+      }
     }
 
     // Push (web + natif) en plus de l'email, si on a retrouvé le compte utilisateur.
