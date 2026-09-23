@@ -14,6 +14,9 @@ interface FakeQuery extends PromiseLike<unknown> {
   // Ajouté en K8.9 : le chemin nominal (jusque-là non couvert) interroge
   // profiles avec .in(...).
   in(...args: unknown[]): FakeQuery
+  // Ajouté en K8.12.6 : le claim termine par `.select('user_id')` pour obtenir
+  // un RETURNING. Sans cette méthode, l'UPDATE lèverait `select is not a function`.
+  select(...args: unknown[]): FakeQuery
 }
 
 const mockState = {
@@ -23,6 +26,12 @@ const mockState = {
   users: [] as { id: string; email: string }[],
   // Ajouté en K8.12 : erreur renvoyée par l'UPDATE. `null` par défaut.
   updateError: null as FakeError,
+  // Ajouté en K8.12.6 : pilote le RETURNING du claim. `true` → une ligne rendue
+  // (CLAIM_WON) ; `false` → zéro ligne (CLAIM_LOST, un autre exécutant a gagné).
+  claimWon: true,
+  // File d'issues consommée appel par appel, quand plusieurs candidats doivent
+  // connaître des sorts DIFFÉRENTS. Un booléen global ne le permettrait pas.
+  claimSequence: [] as boolean[],
 }
 
 const mockSendEmail = jest.fn()
@@ -37,6 +46,7 @@ function chain(result: unknown): FakeQuery {
     is: () => query,
     limit: () => query,
     in: () => query,
+    select: () => query,
     then: (onFulfilled, onRejected) => Promise.resolve(result).then(onFulfilled, onRejected),
   }
   return query
@@ -51,7 +61,15 @@ jest.mock('../../../../lib/supabase/admin', () => ({
       // `reactivation_sent_at` n'est PAS marqué quand l'envoi échoue.
       // K8.12 : l'erreur devient configurable, sans quoi le chemin « écriture
       // refusée » resterait intestable.
-      update: (payload: unknown) => { mockUpdates.push(payload); return chain({ error: mockState.updateError }) },
+      // K8.12.6 : l'UPDATE rend désormais `{ data, error }` — c'est le RETURNING
+      // du claim qui départage CLAIM_WON de CLAIM_LOST.
+      update: (payload: unknown) => {
+        mockUpdates.push(payload)
+        const gagne = mockState.claimSequence.length > 0
+          ? mockState.claimSequence.shift()!
+          : mockState.claimWon
+        return chain({ data: gagne ? [{ user_id: 'claim' }] : [], error: mockState.updateError })
+      },
     }),
     auth: { admin: { listUsers: async () => ({ data: { users: mockState.users } }) } },
   }),
@@ -82,6 +100,13 @@ beforeEach(() => {
   mockState.subsResult = { data: [], error: null }
   mockState.users = []
   mockState.updateError = null
+  // K8.12.6 — INDISPENSABLE : `clearAllMocks` n'efface que les appels, pas cet
+  // état. Sans ces deux lignes, un test posant `claimWon = false` contaminait
+  // tous les suivants : le claim y était perdu, `continue` s'exécutait, et
+  // aucun envoi n'avait lieu — des tests échouaient, et d'autres réussissaient
+  // pour la mauvaise raison.
+  mockState.claimWon = true
+  mockState.claimSequence = []
 })
 
 afterAll(() => { process.env = ORIGINAL_ENV })
@@ -246,12 +271,15 @@ describe('cron/reactivation — K8.9-03 : ni identifiant ni exception dans la r�
 
 // ── Phase K8.11 — K8.11-02, côté appelant.
 //
-// Un refus d'API Resend ne levait pas : l'UPDATE posait `reactivation_sent_at`
-// et l'abonné était scellé « relancé » sans qu'aucun e-mail ne parte. Le module
-// lève désormais, et le `catch` déjà présent — INCHANGÉ — reprend la main avant
-// l'UPDATE, situé dans le même `try`.
+// Depuis K8.11, un refus d'API Resend LÈVE au lieu de se résoudre : l'échec est
+// compté au lieu de passer pour un succès. Cette propriété est conservée.
+//
+// ⚠️ CE QUE K8.12.6 A INVERSÉ. Ce bloc assertait qu'un échec d'envoi ne marquait
+// PAS l'abonné. Ce n'est plus vrai : l'appropriation précède désormais l'envoi
+// et elle est DÉFINITIVE — c'est la perte rare explicitement acceptée en échange
+// de la suppression du doublon (K8.12.3 §G).
 
-describe('cron/reactivation — K8.11 : un échec d’envoi ne marque plus l’abonné', () => {
+describe('cron/reactivation — K8.11 : un échec d’envoi reste compté comme échec', () => {
   beforeEach(() => {
     mockUpdates.length = 0
     mockState.subsResult = {
@@ -264,12 +292,14 @@ describe('cron/reactivation — K8.11 : un échec d’envoi ne marque plus l’a
     mockSendPush.mockResolvedValue(0)
   })
 
-  test('envoi en échec : AUCUN UPDATE — `reactivation_sent_at` reste nul', async () => {
+  test('envoi en échec : l’abonné EST marqué — l’appropriation précède l’envoi', async () => {
     mockSendEmail.mockRejectedValue(new Error('Resend a refusé l’envoi (rate_limit_exceeded, HTTP 429)'))
 
     await GET(request('Bearer secret-de-test'))
 
-    expect(mockUpdates).toHaveLength(0)
+    // INVERSION K8.12.6 : le claim a eu lieu AVANT l'envoi, donc il subsiste.
+    expect(mockUpdates).toHaveLength(1)
+    expect(mockUpdates[0]).toHaveProperty('reactivation_sent_at')
   })
 
   test('envoi en échec : `sent` reste à 0', async () => {
@@ -277,6 +307,15 @@ describe('cron/reactivation — K8.11 : un échec d’envoi ne marque plus l’a
 
     expect(await (await GET(request('Bearer secret-de-test'))).json())
       .toMatchObject({ sent: 0, processed: 1, failed: 1 })
+  })
+
+  test('aucune compensation : un SEUL UPDATE, jamais de remise à NULL', async () => {
+    mockSendEmail.mockRejectedValue(new Error('boom'))
+
+    await GET(request('Bearer secret-de-test'))
+
+    expect(mockUpdates).toHaveLength(1)
+    expect(JSON.stringify(mockUpdates)).not.toContain('null')
   })
 
   test('succès : l’UPDATE a bien lieu (non-régression)', async () => {
@@ -304,7 +343,7 @@ describe('cron/reactivation — K8.12 : une erreur d’UPDATE n’est plus un su
     mockSendPush.mockResolvedValue(0)
   })
 
-  test('envoi OK + UPDATE en erreur : `failed++`, `sent` inchangé', async () => {
+  test('écriture en erreur : `failed++`, `sent` inchangé', async () => {
     mockState.updateError = PG_WRITE_ERROR
 
     // AVANT K8.12 : { sent: 1 } alors que reactivation_sent_at restait NULL.
@@ -321,12 +360,158 @@ describe('cron/reactivation — K8.12 : une erreur d’UPDATE n’est plus un su
       .flat()
       .map(a => (a instanceof Error ? a.message : String(a)))
       .join(' ')
-    expect(journal).toContain('marquage de la relance')
+    // INVERSION K8.12.6 : le libellé devient `claim echoue`, l'écriture étant
+    // désormais l'appropriation elle-même.
+    expect(journal).toContain('claim echoue')
     expect(journal).not.toContain('resilie@exemple.fr')
   })
 
-  test('UPDATE OK : comportement inchangé', async () => {
+  test('écriture OK : comportement inchangé', async () => {
     expect(await (await GET(request('Bearer secret-de-test'))).json())
       .toMatchObject({ sent: 1, failed: 0 })
+  })
+})
+
+// ── Phase K8.12.6 — APPROPRIATION ATOMIQUE AVANT ENVOI (Option 3 simple).
+//
+// `UPDATE subscriptions SET reactivation_sent_at = now() WHERE user_id = … AND
+// reactivation_sent_at IS NULL RETURNING user_id` n'accorde la ligne qu'à UN
+// exécutant : c'est PostgreSQL qui arbitre, pas notre code.
+//
+// ⚠️ CES TESTS NE PROUVENT PAS LA CONCURRENCE RÉELLE. Ils vérifient que la
+// route réagit correctement aux trois issues rendues par claimEvent, face à une
+// doublure. La preuve PostgreSQL appartient à K8.12.8.
+
+describe('cron/reactivation — K8.12.6 : claim atomique avant envoi', () => {
+  const PG_WRITE_ERROR = { code: '42501', message: 'permission denied for table subscriptions' }
+  const ADRESSE = 'resilie@exemple.fr'
+
+  const journalDe = () =>
+    (console.error as jest.Mock).mock.calls
+      .flat()
+      .map(a => (a instanceof Error ? a.message : typeof a === 'object' && a !== null ? JSON.stringify(a) : String(a)))
+      .join(' ')
+
+  beforeEach(() => {
+    mockUpdates.length = 0
+    mockState.subsResult = {
+      data: [{ user_id: USER_ID, status: 'canceled', reactivation_sent_at: null }],
+      error: null,
+    }
+    mockState.users = [{ id: USER_ID, email: ADRESSE }]
+    mockSendEmail.mockResolvedValue(undefined)
+    mockSendWebPush.mockResolvedValue(0)
+    mockSendPush.mockResolvedValue(0)
+  })
+
+  test('A. CLAIM_WON : e-mail envoyé, `sent++`, `failed` inchangé', async () => {
+    const res = await GET(request('Bearer secret-de-test'))
+
+    expect(mockSendEmail).toHaveBeenCalledTimes(1)
+    expect(await res.json()).toMatchObject({ sent: 1, failed: 0 })
+  })
+
+  test('B. CLAIM_LOST : aucun e-mail, aucun compteur', async () => {
+    mockState.claimWon = false
+
+    const res = await GET(request('Bearer secret-de-test'))
+
+    // Ni succès ni erreur : l'autre exécutant a gagné, c'est à lui d'envoyer.
+    expect(mockSendEmail).not.toHaveBeenCalled()
+    expect(await res.json()).toMatchObject({ sent: 0, failed: 0 })
+  })
+
+  test('C. DB_ERROR : aucun e-mail, `failed++`, rien d’interne dans la réponse', async () => {
+    mockState.updateError = PG_WRITE_ERROR
+
+    const res = await GET(request('Bearer secret-de-test'))
+    const corps = JSON.stringify(await res.json())
+
+    expect(mockSendEmail).not.toHaveBeenCalled()
+    expect(res.status).toBe(200)
+    expect(corps).toContain('"failed":1')
+    for (const fuite of ['permission denied', '42501', 'subscriptions', ADRESSE]) {
+      expect(corps).not.toContain(fuite)
+    }
+  })
+
+  test('D. CLAIM_WON + échec Resend : `failed++`, marquage conservé, aucune compensation', async () => {
+    mockSendEmail.mockRejectedValue(new Error('Resend a refusé l’envoi (rate_limit_exceeded, HTTP 429)'))
+
+    const res = await GET(request('Bearer secret-de-test'))
+
+    expect(mockSendEmail).toHaveBeenCalledTimes(1)
+    expect(await res.json()).toMatchObject({ sent: 0, failed: 1 })
+    expect(mockUpdates).toHaveLength(1)
+    expect(mockUpdates[0]).toHaveProperty('reactivation_sent_at')
+  })
+
+  test('E. K8.12.2 : aucune erreur DB silencieuse, aucun `sent++` après échec d’écriture', async () => {
+    mockState.updateError = PG_WRITE_ERROR
+
+    await GET(request('Bearer secret-de-test'))
+
+    expect(journalDe()).toContain('claim echoue')
+    expect(journalDe()).toContain('permission denied')
+  })
+
+  test('F. K8.11 : le refus Resend reste distingué du refus d’écriture', async () => {
+    mockSendEmail.mockRejectedValue(new Error('Resend a refusé l’envoi (validation_error, HTTP 422)'))
+
+    await GET(request('Bearer secret-de-test'))
+
+    expect(journalDe()).toContain('envoi echoue')
+    expect(journalDe()).not.toContain('claim echoue')
+  })
+
+  test('G. K8.10 : aucune adresse dans les journaux, seul l’identifiant', async () => {
+    mockState.updateError = PG_WRITE_ERROR
+
+    await GET(request('Bearer secret-de-test'))
+
+    expect(journalDe()).not.toContain(ADRESSE)
+    expect(journalDe()).not.toContain('exemple.fr')
+    expect(journalDe()).toContain(USER_ID)
+  })
+
+  test('plusieurs candidats : un claim perdu ne bloque pas les suivants', async () => {
+    const AUTRE = '11111111-2222-3333-4444-555555555555'
+    mockState.subsResult = {
+      data: [
+        { user_id: USER_ID, status: 'canceled', reactivation_sent_at: null },
+        { user_id: AUTRE, status: 'canceled', reactivation_sent_at: null },
+      ],
+      error: null,
+    }
+    mockState.users = [{ id: USER_ID, email: ADRESSE }, { id: AUTRE, email: 'autre@exemple.fr' }]
+    mockState.claimSequence = [false, true]
+
+    const res = await GET(request('Bearer secret-de-test'))
+
+    expect(mockSendEmail).toHaveBeenCalledTimes(1)
+    expect(await res.json()).toMatchObject({ sent: 1, failed: 0, processed: 2 })
+  })
+
+  test('CLAIM_LOST saute aussi le push : il revient au gagnant', async () => {
+    mockState.claimWon = false
+
+    await GET(request('Bearer secret-de-test'))
+
+    expect(mockSendWebPush).not.toHaveBeenCalled()
+    expect(mockSendPush).not.toHaveBeenCalled()
+  })
+
+  test('un abonné SANS adresse n’est jamais approprié', async () => {
+    // Le claim est à l'intérieur de `if (email)` : approprier un abonné dont
+    // l'adresse est introuvable consommerait son unique réactivation sans
+    // qu'aucun envoi ne soit possible — une perte SYSTÉMATIQUE.
+    mockState.users = []
+
+    await GET(request('Bearer secret-de-test'))
+
+    expect(mockUpdates).toHaveLength(0)
+    expect(mockSendEmail).not.toHaveBeenCalled()
+    // Le push best-effort reste tenté, comme avant.
+    expect(mockSendWebPush).toHaveBeenCalled()
   })
 })

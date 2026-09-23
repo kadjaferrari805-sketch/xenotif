@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server'
 import { createAdminClient } from '@/lib/supabase/admin'
-import { assertNoError } from '@/lib/supabase/errors'
+import { claimEvent } from '@/lib/supabase/claim'
 import { sendReactivationEmail } from '@/lib/emails'
 import { sendPushToUser } from '@/lib/push'
 import { sendWebPushToUser } from '@/lib/web-push'
@@ -87,20 +87,50 @@ export async function GET(request: Request) {
     const email = emailById.get(userId)
 
     if (email) {
-      try {
-        await sendReactivationEmail({ email, name: nameById.get(userId) ?? '', locale })
-        // K8.12 — le retour de l'UPDATE était jeté : une écriture refusée
-        // laissait `sent++` s'exécuter et `reactivation_sent_at` à NULL.
-        const { error: marquageErr } = await supabase
+      // ── K8.12.6 — APPROPRIATION AVANT ENVOI.
+      //
+      // L'UPDATE conditionnel est atomique : PostgreSQL n'accorde la ligne qu'à
+      // UN seul exécutant. La garde `reactivation_sent_at IS NULL` rejoue la
+      // condition de sélection AU MOMENT de l'écriture, ce que le SELECT initial
+      // ne peut pas garantir. `user_id` est UNIQUE : la clé désigne exactement
+      // l'événement de réactivation de cet abonné, qui est one-shot.
+      //
+      // LE CLAIM EST À L'INTÉRIEUR DE `if (email)` À DESSEIN : approprier un
+      // abonné dont l'adresse est introuvable consommerait son unique
+      // réactivation sans qu'aucun envoi ne soit possible — une perte
+      // SYSTÉMATIQUE, et non la perte rare acceptée.
+      //
+      // ⚠️ COMPROMIS ASSUMÉ (K8.12.3 §G) : l'appropriation est DÉFINITIVE. Un
+      // échec d'envoi ou un crash après ce point laisse l'abonné marqué sans
+      // relance partie. Aucune compensation : remettre `reactivation_sent_at` à
+      // NULL rouvrirait exactement la fenêtre de doublon que cette phase ferme.
+      const claim = await claimEvent(
+        supabase
           .from('subscriptions')
           .update({ reactivation_sent_at: new Date().toISOString() })
           .eq('user_id', userId)
-        assertNoError('marquage de la relance', marquageErr)
-        sent++
-      } catch (e) {
+          .is('reactivation_sent_at', null)
+          .select('user_id'),
+      )
+
+      // Un autre exécutant a gagné : ni succès ni échec pour celui-ci. Aucun
+      // compteur, aucun envoi, et pas de push — il revient au gagnant.
+      if (claim.outcome === 'CLAIM_LOST') continue
+
+      if (claim.outcome === 'DB_ERROR') {
+        // JAMAIS confondu avec CLAIM_LOST : une écriture refusée doit rester
+        // visible. Seul le message est journalisé — jamais l'adresse.
         failed++
-        console.error('[reactivation] envoi echoue :', userId, e)
-        continue
+        console.error('[reactivation] claim echoue :', userId, claim.error.message)
+      } else {
+        try {
+          await sendReactivationEmail({ email, name: nameById.get(userId) ?? '', locale })
+          sent++
+        } catch (e) {
+          failed++
+          console.error('[reactivation] envoi echoue :', userId, e)
+          continue
+        }
       }
     }
 
