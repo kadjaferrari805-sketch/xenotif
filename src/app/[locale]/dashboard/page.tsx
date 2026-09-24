@@ -223,7 +223,7 @@ export default async function DashboardPage() {
             const total = (content?.program ?? []).reduce((acc, w) => acc + w.sessions.length, 0)
             const pct = total > 0 ? Math.round((completed / total) * 100) : 0
             return (
-              <Link key={slug} href={`/dashboard/programme?discipline=${slug}`} className="group bg-sport-card border border-sport-border rounded-xl p-4 hover:border-sport-orange/50 transition-all hover:-translate-y-0.5">
+              <Link key={slug} href={`/dashboard/programme?discipline=${slug}`} className="group bg-sport-card border border-sport-border rounded-control p-4 hover:border-sport-orange/50 transition-all hover:-translate-y-0.5">
                 <div className="flex items-center justify-between mb-3">
                   <p className="text-sm font-bold text-sport-fg">{t(`overview.disciplines.${slug}`)}</p>
                   <span className="text-xs text-sport-orange font-bold">{pct}%</span>

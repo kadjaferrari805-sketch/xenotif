@@ -131,7 +131,7 @@ export function CoachClient() {
                 <button type="button"
                   key={s}
                   onClick={() => send(s)}
-                  className="text-left px-4 py-3 bg-sport-card border border-sport-border rounded-xl text-xs text-sport-gray hover:text-sport-fg hover:border-sport-orange/50 transition-all hover:-translate-y-0.5 leading-relaxed"
+                  className="text-left px-4 py-3 bg-sport-card border border-sport-border rounded-control text-xs text-sport-gray hover:text-sport-fg hover:border-sport-orange/50 transition-all hover:-translate-y-0.5 leading-relaxed"
                 >
                   {s}
                 </button>
