@@ -26,7 +26,7 @@ export default async function AdminContentPage() {
           <Link
             key={f.slug}
             href={`/admin/content/${f.slug}`}
-            className="flex items-center justify-between rounded-xl border border-sport-border bg-sport-card px-5 py-4 hover:border-sport-orange/40 transition-all"
+            className="flex items-center justify-between rounded-control border border-sport-border bg-sport-card px-5 py-4 hover:border-sport-orange/40 transition-all"
           >
             <span className="text-sm font-bold text-sport-fg">{f.title}</span>
             <span className="flex items-center gap-3">
