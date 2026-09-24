@@ -47,55 +47,76 @@ export async function proxy(request: NextRequest) {
   const path = stripLocale(pathname)
   const localePrefix = getLocalePrefix(pathname)
 
-  // 3. Initialiser Supabase en lisant depuis request.cookies et en écrivant
-  //    directement sur i18nResponse (évite de créer un nouveau NextResponse qui
-  //    écraserait les headers/cookies posés par next-intl).
   // Garde : hors production, le projet Supabase de production est refusé, dès
-  // le proxy (donc avant tout rendu de page protégée).
+  // le proxy (donc avant tout rendu de page protégée). Volontairement
+  // INCONDITIONNELLE : c'est une vérification d'environnement synchrone, sans
+  // coût réseau — seul l'appel réseau `getUser()` est conditionné ci-dessous.
   assertSupabaseEnvironment({
     url: process.env.NEXT_PUBLIC_SUPABASE_URL,
     keys: [process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY],
   })
 
-  const supabase = createServerClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-    {
-      cookies: {
-        getAll() { return request.cookies.getAll() },
-        setAll(cookiesToSet) {
-          // Écrire les cookies Supabase (refresh de session) sur la réponse
-          // qui sera retournée au client, quelle qu'elle soit.
-          cookiesToSet.forEach(({ name, value, options }) =>
-            i18nResponse.cookies.set(name, value, options)
-          )
-        },
-      },
-    }
-  )
+  // 3. Déterminer si ce segment a besoin de connaître l'utilisateur, AVANT
+  //    d'interroger Supabase. Auparavant `auth.getUser()` était appelé sur
+  //    chaque requête traversant le matcher — donc sur toutes les pages
+  //    publiques, où son résultat n'était jamais lu (audit 09.6.2).
+  //    Les deux prédicats sont repris à l'identique des conditions d'origine :
+  //    ils sont seulement nommés et évalués plus tôt.
+  //
+  // NB : `/dashboard-preview` (aperçu public) n'est visé NI par `=== '/dashboard'`
+  //      NI par `startsWith('/dashboard/')` — il reste donc public.
+  const estRouteProtegee =
+    path === '/dashboard' ||
+    path.startsWith('/dashboard/') ||
+    path === '/admin' ||
+    path.startsWith('/admin/')
 
-  const { data: { user } } = await supabase.auth.getUser()
-
-  // 4. Protéger /dashboard et /admin.
-  //    On préserve le préfixe de locale dans la redirection : /en/dashboard → /en/auth/signin.
-  // NB : exclut /dashboard-preview (aperçu public) - on protège le segment exact /dashboard et /dashboard/*.
-  if ((path === '/dashboard' || path.startsWith('/dashboard/') || path === '/admin' || path.startsWith('/admin/')) && !user) {
-    const url = request.nextUrl.clone()
-    url.pathname = `${localePrefix}/auth/signin`
-    return NextResponse.redirect(url)
-  }
-
-  // 5. Rediriger les utilisateurs déjà connectés hors des pages d'auth.
-  //    On préserve le préfixe de locale : /en/auth/signin → /en/dashboard.
-  if (
+  // Pages d'auth d'où l'on renvoie un utilisateur déjà connecté. `/callback` et
+  // `/reset-password` en sont exclus : ils doivent rester accessibles à une
+  // session active, et ne déclenchent donc plus aucun appel.
+  const estPageAuthRedirigeable =
     path.startsWith('/auth/') &&
-    user &&
     !path.includes('/callback') &&
     !path.includes('/reset-password')
-  ) {
-    const url = request.nextUrl.clone()
-    url.pathname = `${localePrefix}/dashboard`
-    return NextResponse.redirect(url)
+
+  if (estRouteProtegee || estPageAuthRedirigeable) {
+    // Initialiser Supabase en lisant depuis request.cookies et en écrivant
+    // directement sur i18nResponse (évite de créer un nouveau NextResponse qui
+    // écraserait les headers/cookies posés par next-intl).
+    const supabase = createServerClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL!,
+      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+      {
+        cookies: {
+          getAll() { return request.cookies.getAll() },
+          setAll(cookiesToSet) {
+            // Écrire les cookies Supabase (refresh de session) sur la réponse
+            // qui sera retournée au client, quelle qu'elle soit.
+            cookiesToSet.forEach(({ name, value, options }) =>
+              i18nResponse.cookies.set(name, value, options)
+            )
+          },
+        },
+      }
+    )
+
+    const { data: { user } } = await supabase.auth.getUser()
+
+    // 4. Protéger /dashboard et /admin.
+    //    On préserve le préfixe de locale : /en/dashboard → /en/auth/signin.
+    if (estRouteProtegee && !user) {
+      const url = request.nextUrl.clone()
+      url.pathname = `${localePrefix}/auth/signin`
+      return NextResponse.redirect(url)
+    }
+
+    // 5. Rediriger les utilisateurs déjà connectés hors des pages d'auth.
+    //    On préserve le préfixe de locale : /en/auth/signin → /en/dashboard.
+    if (estPageAuthRedirigeable && user) {
+      const url = request.nextUrl.clone()
+      url.pathname = `${localePrefix}/dashboard`
+      return NextResponse.redirect(url)
+    }
   }
 
   // 6. Transmettre le path sans préfixe de locale pour le layout.
