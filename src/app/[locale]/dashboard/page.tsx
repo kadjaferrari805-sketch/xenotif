@@ -4,6 +4,8 @@ import { Link } from '@/i18n/navigation'
 import { createClient } from '@/lib/supabase/server'
 import { getAccess } from '@/lib/access'
 import { getCurrentUser, getProfileName } from '@/lib/supabase/session'
+import { lireEtatOnboardingServeur } from '@/lib/onboarding/website-state.server'
+import { peutReprendre } from '@/lib/onboarding/website-state'
 import { CheckCircle, Flame, TrendingUp, ArrowRight, Clock, Award } from 'lucide-react'
 import { DISCIPLINE_CONTENT } from '@/lib/disciplines'
 import { getDisciplineFromDb } from '@/lib/content-db'
@@ -64,6 +66,10 @@ export default async function DashboardPage() {
     Promise.all(overviewSlugs.map(async (s) => [s, (await getDisciplineFromDb(s, locale))?.content ?? DISCIPLINE_CONTENT[s]] as const)),
   ])
   const overviewContents = Object.fromEntries(overviewPairs)
+
+  // Lecture MÉMOÏSÉE : le layout l'a déjà demandée pour son gating, donc cet
+  // appel ne produit aucune requête supplémentaire.
+  const reprendreOnboarding = peutReprendre(await lireEtatOnboardingServeur(user.id))
 
   const firstName = (fullName ?? '').split(' ')[0] || t('athlete')
   const totalSessions = (progress ?? []).filter(p => p.completed).length
@@ -127,6 +133,22 @@ export default async function DashboardPage() {
         </h1>
         <p className="text-sport-gray text-sm mt-1">{t('overview.subtitle')}</p>
       </div>
+
+      {/* SEULE PORTE DE REPRISE d'un parcours reporté. Sans elle, l'état
+          `dismissed` serait sans issue : le layout ne redirige plus, et rien
+          ne ramènerait vers /dashboard/bienvenue. Discrète et limitée à cette
+          page — jamais répétée sur les autres routes du tableau de bord. */}
+      {reprendreOnboarding && (
+        <div className="mb-6">
+          <Link
+            href="/dashboard/bienvenue"
+            className="flex items-center justify-between gap-3 rounded-control border border-sport-orange/30 bg-sport-orange/5 px-5 py-3.5 min-h-[44px] hover:border-sport-orange/60 transition-all"
+          >
+            <span className="text-sm font-bold text-sport-fg">{t('bienvenue.ctaDismissed')}</span>
+            <ArrowRight size={14} className="text-sport-orange shrink-0" aria-hidden="true" />
+          </Link>
+        </div>
+      )}
 
       {/* Pub Pro clignotante : en essai → vrai décompte ; gratuit (essai fini) → upsell.
           Rien pour les abonnés Pro payants (status 'active'). */}

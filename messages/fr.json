@@ -1556,6 +1556,55 @@
         "pastDue": "Paiement en attente"
       }
     },
+    "bienvenue": {
+      "title": "Bienvenue",
+      "subtitle": "Quatre étapes rapides pour démarrer.",
+      "stepOf": "Étape {n} sur {total}",
+      "continue": "Continuer",
+      "back": "Retour",
+      "skip": "Passer",
+      "later": "Plus tard",
+      "saving": "Enregistrement…",
+      "ctaDismissed": "Terminer mon démarrage",
+      "step1": {
+        "title": "Comment t'appeler ?",
+        "subtitle": "Ton prénom apparaîtra sur ton tableau de bord.",
+        "label": "Nom complet",
+        "placeholder": "Ton nom"
+      },
+      "step2": {
+        "title": "Quel est ton objectif ?",
+        "subtitle": "Il nous sert à te suggérer une discipline. Rien n'est figé.",
+        "goals": {
+          "weight_loss": "Perdre du poids",
+          "muscle_gain": "Prendre du muscle",
+          "endurance": "Gagner en endurance",
+          "general_fitness": "Me remettre en forme"
+        }
+      },
+      "step3": {
+        "title": "Par quoi commencer ?",
+        "subtitle": "Tu pourras changer de discipline à tout moment.",
+        "label": "Discipline"
+      },
+      "step4": {
+        "title": "Ta première séance",
+        "subtitle": "Enregistre-la pour lancer ta progression.",
+        "duration": "Durée (minutes)",
+        "save": "Enregistrer ma séance"
+      },
+      "done": {
+        "title": "C'est parti !",
+        "text": "Ta première séance est enregistrée. Ton tableau de bord t'attend.",
+        "cta": "Voir mon tableau de bord"
+      },
+      "errors": {
+        "name": "Indique ton nom pour continuer.",
+        "duration": "Indique une durée entière, entre {min} et {max} minutes.",
+        "save": "Enregistrement impossible. Réessaie.",
+        "network": "Connexion interrompue. Vérifie ta connexion, puis réessaie."
+      }
+    },
     "progression": {
       "title": "Ma Progression",
       "addSession": "Ajouter séance",
