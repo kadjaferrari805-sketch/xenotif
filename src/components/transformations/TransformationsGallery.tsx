@@ -90,7 +90,7 @@ export function TransformationsGallery() {
             data-testid="transformations-skeleton"
           >
             {Array.from({ length: SKELETON_COUNT }, (_, i) => (
-              <div key={i} className="bg-sport-card border border-sport-border rounded-2xl overflow-hidden animate-pulse">
+              <div key={i} className="bg-sport-card border border-sport-border rounded-card overflow-hidden animate-pulse">
                 <div className="grid grid-cols-2">
                   <div className="aspect-[3/4] bg-sport-dark" />
                   <div className="aspect-[3/4] bg-sport-dark" />
@@ -125,7 +125,7 @@ export function TransformationsGallery() {
               ]
 
               return (
-                <figure key={it.id} className="bg-sport-card border border-sport-border rounded-2xl overflow-hidden">
+                <figure key={it.id} className="bg-sport-card border border-sport-border rounded-card overflow-hidden">
                   <div className="grid grid-cols-2">
                     {images.map((img, i) => (
                       <div key={i} className="relative aspect-[3/4] bg-sport-dark">

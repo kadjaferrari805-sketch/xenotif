@@ -46,7 +46,7 @@ export function ProductGallery({ images, alt, badge, discountLabel, imageFit, im
         onMouseEnter={() => setZoom(true)}
         onMouseLeave={() => setZoom(false)}
         onMouseMove={handleMove}
-        className={`group relative aspect-square overflow-hidden rounded-2xl border border-sport-border cursor-zoom-in ${lightTile ? 'bg-white' : 'bg-sport-card'}`}
+        className={`group relative aspect-square overflow-hidden rounded-card border border-sport-border cursor-zoom-in ${lightTile ? 'bg-white' : 'bg-sport-card'}`}
       >
         <Image
           key={active}

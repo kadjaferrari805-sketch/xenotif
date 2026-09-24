@@ -8,7 +8,7 @@ const MACROS = [
 export function PreviewNutrition({ calories, target, protein, carbs, fat }: { calories: number; target: number; protein: number; carbs: number; fat: number }) {
   const vals = { protein, carbs, fat }
   return (
-    <div className="bg-sport-card border border-sport-border rounded-2xl p-5">
+    <div className="bg-sport-card border border-sport-border rounded-card p-5">
       <div className="flex items-baseline justify-between mb-4">
         <h3 className="text-sm font-black text-sport-fg">Nutrition du jour</h3>
         <span className="text-xs text-sport-gray"><strong className="text-sport-fg">{calories}</strong> / {target} kcal</span>

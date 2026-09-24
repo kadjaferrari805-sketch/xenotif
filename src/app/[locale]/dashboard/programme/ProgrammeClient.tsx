@@ -142,7 +142,7 @@ function ProgrammeContent({ isPro, freeSlugs, userId, initialProgress }: { isPro
 
       {selectedUnlocked && (<>
       {/* Progress bar */}
-      <div className="bg-sport-card border border-sport-border rounded-2xl p-5 mb-8">
+      <div className="bg-sport-card border border-sport-border rounded-card p-5 mb-8">
         <div className="flex items-center justify-between mb-3">
           <div>
             <p className="text-sm font-black text-sport-fg">{t('weeks', { name: t(`disciplines.${selected}`) })}</p>

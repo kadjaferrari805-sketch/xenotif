@@ -34,7 +34,7 @@ export function OneRmCalc() {
         <p className="text-xxs text-sport-gray leading-relaxed">{t('disclaimer')}</p>
       </div>
 
-      <div className="rounded-2xl bg-sport-card border border-sport-border p-5">
+      <div className="rounded-card bg-sport-card border border-sport-border p-5">
         <p className="text-xs font-bold uppercase tracking-wider text-sport-gray mb-3">{t('oneRm.table')}</p>
         <table className="w-full text-sm">
           <thead>

@@ -73,7 +73,7 @@ export function VideoCard({ youtubeIds, title, description, duration, level, acc
 
   if (allFailed) {
     return (
-      <div className="rounded-2xl overflow-hidden bg-sport-card border border-sport-border">
+      <div className="rounded-card overflow-hidden bg-sport-card border border-sport-border">
         <div className="relative w-full bg-sport-dark" style={{ paddingBottom: '56.25%' }}>
           <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 text-sport-gray">
             <VideoOff size={36} strokeWidth={1.5} />
@@ -86,7 +86,7 @@ export function VideoCard({ youtubeIds, title, description, duration, level, acc
   }
 
   return (
-    <div className="group relative rounded-2xl overflow-hidden bg-sport-card border border-sport-border hover:border-sport-fg/20 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-black/40">
+    <div className="group relative rounded-card overflow-hidden bg-sport-card border border-sport-border hover:border-sport-fg/20 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-black/40">
       {playing ? (
         <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
           {/* key forces iframe re-mount when backup ID changes */}

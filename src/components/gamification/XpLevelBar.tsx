@@ -8,7 +8,7 @@ export function XpLevelBar({ xp, levelKey, xpInLevel, xpForNext, compact = false
   const t = useTranslations('gamification')
   const pct = xpForNext ? Math.min(100, Math.round((xpInLevel / xpForNext) * 100)) : 100
   return (
-    <div className={`bg-sport-card border border-sport-border rounded-2xl ${compact ? 'p-4' : 'p-6'}`}>
+    <div className={`bg-sport-card border border-sport-border rounded-card ${compact ? 'p-4' : 'p-6'}`}>
       <div className="flex items-center justify-between mb-3">
         <div className="flex items-center gap-2">
           <div className="w-9 h-9 rounded-xl bg-sport-orange/15 border border-sport-orange/30 flex items-center justify-center">

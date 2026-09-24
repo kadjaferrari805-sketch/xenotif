@@ -9,7 +9,7 @@ export function PreviewWeightChart({ points, unit, goal }: { points: number[]; u
   const last = points[points.length - 1]
   const delta = (last - points[0]).toFixed(1)
   return (
-    <div className="bg-sport-card border border-sport-border rounded-2xl p-5">
+    <div className="bg-sport-card border border-sport-border rounded-card p-5">
       <div className="flex items-baseline justify-between mb-3">
         <h3 className="text-sm font-black text-sport-fg">Suivi du poids</h3>
         <span className="text-xs font-bold text-sport-success">{delta} {unit}</span>

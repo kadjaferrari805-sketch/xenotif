@@ -30,7 +30,7 @@ function Section({ icon: Icon, title, children }: { icon: React.ElementType; tit
       initial={{ opacity: 0, y: 24 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-      className="bg-sport-card border border-sport-border rounded-2xl p-6 md:p-7 shadow-lg shadow-black/20"
+      className="bg-sport-card border border-sport-border rounded-card p-6 md:p-7 shadow-lg shadow-black/20"
     >
       <h2 className="flex items-center gap-2.5 text-lg font-black text-sport-fg mb-5">
         <span className="w-9 h-9 rounded-xl bg-sport-orange/10 border border-sport-orange/25 flex items-center justify-center">

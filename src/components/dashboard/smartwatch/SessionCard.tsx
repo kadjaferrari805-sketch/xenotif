@@ -43,7 +43,7 @@ export function SessionCard({ session }: SessionCardProps) {
   })
 
   return (
-    <div className="bg-sport-card border border-sport-border rounded-2xl p-4 hover:border-sport-fg/10 transition-colors">
+    <div className="bg-sport-card border border-sport-border rounded-card p-4 hover:border-sport-fg/10 transition-colors">
       <div className="flex items-start justify-between mb-3">
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 rounded-xl bg-sport-dark border border-sport-border flex items-center justify-center text-lg">

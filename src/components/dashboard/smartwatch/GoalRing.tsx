@@ -17,7 +17,7 @@ export function GoalRing({ label, value, goal, unit, color, icon }: GoalRingProp
   const done = value >= goal
 
   return (
-    <div className="bg-sport-card border border-sport-border rounded-2xl p-4 flex flex-col gap-3">
+    <div className="bg-sport-card border border-sport-border rounded-card p-4 flex flex-col gap-3">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
           <span className="text-lg">{icon}</span>

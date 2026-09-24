@@ -67,7 +67,7 @@ export async function GuideBlocks({ blocks }: { blocks: GuideBlock[] }) {
             )
           case 'exercise':
             return (
-              <div key={i} className="bg-sport-card border border-sport-border rounded-2xl p-5">
+              <div key={i} className="bg-sport-card border border-sport-border rounded-card p-5">
                 <div className="flex items-center justify-between gap-3 mb-2">
                   <h4 className="font-black text-sport-fg">{b.name}</h4>
                   <span className="shrink-0 text-2xs font-bold px-2.5 py-1 rounded-full bg-sport-orange/10 text-sport-orange">{b.level}</span>

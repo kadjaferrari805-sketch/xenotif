@@ -42,7 +42,7 @@ export function VideoGallery({ videos, videoMinPlans, accentColor }: { videos: V
           )
         }
         return (
-          <div key={video.youtubeIds[0] ?? i} className="rounded-2xl overflow-hidden bg-sport-card border border-sport-border">
+          <div key={video.youtubeIds[0] ?? i} className="rounded-card overflow-hidden bg-sport-card border border-sport-border">
             <div className="relative w-full bg-sport-dark" style={{ paddingBottom: '56.25%' }}>
               <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 text-center px-4">
                 <div className="w-12 h-12 rounded-2xl bg-sport-orange/15 border border-sport-orange/30 flex items-center justify-center">

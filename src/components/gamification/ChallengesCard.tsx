@@ -5,7 +5,7 @@ import type { Challenge } from '@/lib/gamification'
 export function ChallengesCard({ titleKey, challenges }: { titleKey: 'weeklyTitle' | 'monthlyTitle'; challenges: Challenge[] }) {
   const t = useTranslations('gamification')
   return (
-    <div className="bg-sport-card border border-sport-border rounded-2xl p-6">
+    <div className="bg-sport-card border border-sport-border rounded-card p-6">
       <h3 className="text-sm font-black text-sport-fg mb-4">{t(titleKey)}</h3>
       <div className="space-y-4">
         {challenges.map(c => {

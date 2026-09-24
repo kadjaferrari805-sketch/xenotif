@@ -52,7 +52,7 @@ export default async function OutilsHubPage({ params }: { params: Promise<{ loca
             <Link
               key={o.slug}
               href={`/outils/${o.slug}`}
-              className="group bg-sport-card border border-sport-border rounded-2xl p-6 hover:border-sport-orange/50 transition-all hover:-translate-y-0.5 flex items-start gap-4"
+              className="group bg-sport-card border border-sport-border rounded-card p-6 hover:border-sport-orange/50 transition-all hover:-translate-y-0.5 flex items-start gap-4"
             >
               <span className="text-3xl shrink-0" aria-hidden="true">{o.emoji}</span>
               <div>

@@ -18,7 +18,7 @@ export function AdminReviews() {
   }
 
   return (
-    <div className="bg-sport-card border border-sport-border rounded-2xl p-6 mt-8">
+    <div className="bg-sport-card border border-sport-border rounded-card p-6 mt-8">
       <h2 className="text-sm font-black text-sport-fg mb-4">Avis clients ({items.length})</h2>
       <div className="space-y-3">
         {items.map((r) => (

@@ -169,7 +169,7 @@ export function AbonnementClient({ initialSub }: { initialSub: Sub | null }) {
     return (
       <div className="p-6 md:p-8 max-w-2xl mx-auto">
         <h1 className="text-2xl font-black text-sport-fg mb-8">{t('title')}</h1>
-        <div className="bg-sport-card border border-sport-border rounded-2xl p-8 text-center">
+        <div className="bg-sport-card border border-sport-border rounded-card p-8 text-center">
           <CreditCard size={32} className="text-sport-gray mx-auto mb-4" />
           <p className="text-sport-fg font-bold mb-2">{t('noneTitle')}</p>
           <p className="text-sport-gray text-sm mb-6">{t('noneDesc')}</p>
@@ -232,7 +232,7 @@ export function AbonnementClient({ initialSub }: { initialSub: Sub | null }) {
       )}
 
       {/* Plan card */}
-      <div className="bg-sport-card border border-sport-border rounded-2xl p-6 mb-6">
+      <div className="bg-sport-card border border-sport-border rounded-card p-6 mb-6">
         <div className="flex items-start justify-between flex-wrap gap-4 mb-5">
           <div>
             <h2 className="text-lg font-black text-sport-fg mb-1">{t('plan', { plan: planName })}</h2>
@@ -268,7 +268,7 @@ export function AbonnementClient({ initialSub }: { initialSub: Sub | null }) {
       </div>
 
       {/* Features */}
-      <div className="bg-sport-card border border-sport-border rounded-2xl p-6 mb-6">
+      <div className="bg-sport-card border border-sport-border rounded-card p-6 mb-6">
         <h3 className="text-sm font-black text-sport-fg mb-4">{t('includedTitle')}</h3>
         <ul className="space-y-2.5">
           {(t.raw('featuresPro') as string[]).map(item => (
@@ -281,7 +281,7 @@ export function AbonnementClient({ initialSub }: { initialSub: Sub | null }) {
       </div>
 
       {/* Paiement & factures - affichés directement sur le site */}
-      <div className="bg-sport-card border border-sport-border rounded-2xl p-6 mb-6">
+      <div className="bg-sport-card border border-sport-border rounded-card p-6 mb-6">
         <h3 className="text-sm font-black text-sport-fg mb-4">{t('billingTitle')}</h3>
 
         {sub.status && !billingLoaded ? (

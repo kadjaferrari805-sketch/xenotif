@@ -136,7 +136,7 @@ export function SmartwatchClient({ initialData }: { initialData: DashboardData }
           </div>
         </div>
 
-        <div className="bg-sport-card border border-sport-border rounded-2xl p-8 text-center mb-6">
+        <div className="bg-sport-card border border-sport-border rounded-card p-8 text-center mb-6">
           <div className="w-20 h-20 rounded-full bg-sport-orange/10 border border-sport-orange/20 flex items-center justify-center mx-auto mb-6">
             <Watch size={36} className="text-sport-orange" />
           </div>
@@ -167,7 +167,7 @@ export function SmartwatchClient({ initialData }: { initialData: DashboardData }
           })}
         </div>
 
-        <div className="bg-sport-card border border-sport-border rounded-2xl p-4 flex items-start gap-3">
+        <div className="bg-sport-card border border-sport-border rounded-card p-4 flex items-start gap-3">
           <div className="w-8 h-8 rounded-lg bg-emerald-50 border border-emerald-200 flex items-center justify-center shrink-0">
             <span className="text-sm">🔒</span>
           </div>
@@ -252,7 +252,7 @@ export function SmartwatchClient({ initialData }: { initialData: DashboardData }
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
 
             {/* Rings */}
-            <div className="bg-sport-card border border-sport-border rounded-2xl p-6 flex flex-col items-center gap-4">
+            <div className="bg-sport-card border border-sport-border rounded-card p-6 flex flex-col items-center gap-4">
               <ActivityRings rings={rings} size={220} />
               <div className="w-full grid grid-cols-3 gap-2 text-center">
                 {rings.map(r => (
@@ -290,7 +290,7 @@ export function SmartwatchClient({ initialData }: { initialData: DashboardData }
           </div>
 
           {/* Heart rate */}
-          <div className="bg-sport-card border border-sport-border rounded-2xl p-5">
+          <div className="bg-sport-card border border-sport-border rounded-card p-5">
             <p className="text-sm font-black text-sport-fg mb-4 flex items-center gap-2">
               <Heart size={14} className="text-red-400" /> {t('heartRateTitle')}
             </p>
@@ -302,7 +302,7 @@ export function SmartwatchClient({ initialData }: { initialData: DashboardData }
           </div>
 
           {/* Weekly chart */}
-          <div className="bg-sport-card border border-sport-border rounded-2xl p-5">
+          <div className="bg-sport-card border border-sport-border rounded-card p-5">
             <div className="flex items-center justify-between mb-4">
               <p className="text-sm font-black text-sport-fg">{t('weeklyActivity')}</p>
               <div className="flex gap-1">
@@ -346,7 +346,7 @@ export function SmartwatchClient({ initialData }: { initialData: DashboardData }
       {/* ─── Devices ───────────────────────────────── */}
       {tab === 'devices' && (
         <div className="space-y-4">
-          <div className="bg-sport-card border border-sport-border rounded-2xl p-4">
+          <div className="bg-sport-card border border-sport-border rounded-card p-4">
             <p className="text-sm font-black text-sport-fg mb-1">{t('supportedTitle')}</p>
             <p className="text-xs text-sport-gray">{t('supportedDesc')}</p>
           </div>
@@ -368,7 +368,7 @@ export function SmartwatchClient({ initialData }: { initialData: DashboardData }
           </div>
 
           {/* Security note */}
-          <div className="bg-sport-card border border-sport-border rounded-2xl p-4 flex items-start gap-3">
+          <div className="bg-sport-card border border-sport-border rounded-card p-4 flex items-start gap-3">
             <div className="w-8 h-8 rounded-lg bg-emerald-50 border border-emerald-200 flex items-center justify-center shrink-0">
               <span className="text-sm">🔒</span>
             </div>
@@ -393,7 +393,7 @@ export function SmartwatchClient({ initialData }: { initialData: DashboardData }
             <SessionCard key={s.id} session={s} />
           ))}
           {sessions.length === 0 && (
-            <div className="bg-sport-card border border-sport-border rounded-2xl p-10 text-center">
+            <div className="bg-sport-card border border-sport-border rounded-card p-10 text-center">
               <Watch size={32} className="text-sport-gray mx-auto mb-3" />
               <p className="text-sport-gray text-sm">{t('noSessions')}</p>
               <p className="text-xxs text-sport-gray mt-1">{t('noSessionsHint')}</p>
@@ -405,7 +405,7 @@ export function SmartwatchClient({ initialData }: { initialData: DashboardData }
       {/* ─── Goals ─────────────────────────────────── */}
       {tab === 'goals' && (
         <div className="space-y-4">
-          <div className="bg-sport-card border border-sport-border rounded-2xl p-4 mb-2">
+          <div className="bg-sport-card border border-sport-border rounded-card p-4 mb-2">
             <p className="text-sm font-black text-sport-fg mb-1">{t('dailyGoals')}</p>
             <p className="text-xs text-sport-gray">{t('dailyGoalsDesc')}</p>
           </div>

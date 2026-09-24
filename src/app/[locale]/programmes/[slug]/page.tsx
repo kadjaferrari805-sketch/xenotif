@@ -142,7 +142,7 @@ export default async function ProgramPage({ params }: { params: Promise<{ slug: 
         <h2 className="text-2xl md:text-3xl font-black mb-6">{t('faqTitle')}</h2>
         <div className="space-y-3">
           {faq.map(({ q, a }, i) => (
-            <details key={i} className="group bg-sport-card border border-sport-border rounded-2xl px-5 py-4">
+            <details key={i} className="group bg-sport-card border border-sport-border rounded-card px-5 py-4">
               <summary className="flex items-center justify-between gap-4 cursor-pointer list-none font-bold text-sport-fg">
                 {q}
                 <ChevronDown size={18} aria-hidden="true" className="shrink-0 text-sport-orange transition-transform group-open:rotate-180" />

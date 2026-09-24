@@ -57,7 +57,7 @@ export function MacrosCalc() {
 
       <div className="space-y-3">
         {cards.map(({ key, g, color }) => (
-          <div key={key} className="rounded-2xl bg-sport-card border border-sport-border p-5 flex items-center justify-between">
+          <div key={key} className="rounded-card bg-sport-card border border-sport-border p-5 flex items-center justify-between">
             <span className="text-sm font-bold text-sport-fg">{t(`macros.${key}`)}</span>
             <span className={`text-2xl font-black ${color}`}>{g} <span className="text-sm text-sport-gray font-bold">g</span></span>
           </div>

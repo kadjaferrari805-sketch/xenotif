@@ -57,7 +57,7 @@ export default async function AdminPage() {
           { Icon: Clock,       label: 'Essais en cours',     value: trialCount.toString(),             color: 'text-blue-600',    bg: 'bg-blue-50' },
           { Icon: Euro,        label: 'Revenu MRR (€)',      value: `${totalRevenue.toFixed(2)} €`,    color: 'text-sport-orange', bg: 'bg-sport-orange/10' },
         ].map(({ Icon, label, value, color, bg }) => (
-          <div key={label} className="bg-sport-card border border-sport-border rounded-2xl p-5">
+          <div key={label} className="bg-sport-card border border-sport-border rounded-card p-5">
             <div className={`w-10 h-10 ${bg} rounded-xl flex items-center justify-center mb-4`}>
               <Icon size={18} className={color} aria-hidden="true" />
             </div>
@@ -68,7 +68,7 @@ export default async function AdminPage() {
       </div>
 
       {/* Revenue Chart */}
-      <div className="bg-sport-card border border-sport-border rounded-2xl p-6 mb-8">
+      <div className="bg-sport-card border border-sport-border rounded-card p-6 mb-8">
         <h2 className="text-sm font-black text-sport-fg mb-4">Revenus mensuels (7 derniers mois)</h2>
         <RevenueChart />
       </div>
@@ -79,7 +79,7 @@ export default async function AdminPage() {
           { label: 'Plan Pro', count: subs.filter(s => s.plan === 'pro').length, revenue: subs.filter(s => s.plan === 'pro' && s.status === 'active').length * 9.99 },
           { label: 'Résiliations', count: cancelCount, revenue: 0 },
         ].map(({ label, count, revenue }) => (
-          <div key={label} className="bg-sport-card border border-sport-border rounded-2xl p-5">
+          <div key={label} className="bg-sport-card border border-sport-border rounded-card p-5">
             <p className="text-xs font-bold uppercase tracking-widest text-sport-gray mb-2">{label}</p>
             <p className="text-3xl font-black text-sport-fg">{count}</p>
             {revenue > 0 && <p className="text-sm text-sport-orange font-semibold mt-1">{revenue.toFixed(2)} €/mois</p>}
@@ -88,7 +88,7 @@ export default async function AdminPage() {
       </div>
 
       {/* Users table */}
-      <div className="bg-sport-card border border-sport-border rounded-2xl overflow-hidden">
+      <div className="bg-sport-card border border-sport-border rounded-card overflow-hidden">
         <div className="px-6 py-4 border-b border-sport-border flex items-center gap-3">
           <Users size={16} className="text-sport-orange" />
           <h2 className="text-sm font-black text-sport-fg">Tous les utilisateurs ({(profiles ?? []).length})</h2>

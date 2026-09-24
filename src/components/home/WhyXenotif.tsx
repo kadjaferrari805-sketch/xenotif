@@ -36,7 +36,7 @@ export function WhyXenotif() {
               initial={{ opacity: 0, y: 24 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: i * 0.12, duration: 0.5 }}
-              className="bg-sport-card border border-sport-border rounded-2xl p-7 flex flex-col gap-4"
+              className="bg-sport-card border border-sport-border rounded-card p-7 flex flex-col gap-4"
             >
               <div className={`w-12 h-12 rounded-2xl border flex items-center justify-center ${ring}`}>
                 <Icon size={22} aria-hidden="true" className={tint} />
