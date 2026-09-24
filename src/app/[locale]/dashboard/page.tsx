@@ -242,7 +242,7 @@ export default async function DashboardPage() {
       <div>
         <h2 className="text-lg font-black text-sport-fg mb-4">{t('overview.recentActivity')}</h2>
         {recentWorkouts.length === 0 ? (
-          <div className="bg-sport-card border border-sport-border rounded-xl p-8 text-center">
+          <div className="bg-sport-card border border-sport-border rounded-card p-8 text-center">
             <Clock size={28} className="text-sport-gray mx-auto mb-3" />
             <p className="text-sport-gray text-sm">{t('overview.noActivity')}</p>
             <Link href="/dashboard/programme" className="inline-flex items-center gap-1.5 mt-4 text-sport-orange text-sm font-bold hover:underline">

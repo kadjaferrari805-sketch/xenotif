@@ -162,7 +162,7 @@ function ProgrammeContent({ isPro, freeSlugs, userId, initialProgress }: { isPro
       {content?.videos && content.videos.length > 0 && (
         <Link
           href={`/disciplines/${selected}`}
-          className="flex items-center justify-between bg-sport-card border border-sport-border rounded-xl px-5 py-4 mb-6 hover:border-sport-orange/50 transition-all group"
+          className="flex items-center justify-between bg-sport-card border border-sport-border rounded-control px-5 py-4 mb-6 hover:border-sport-orange/50 transition-all group"
         >
           <div className="flex items-center gap-3">
             <div className="w-8 h-8 bg-sport-orange/15 rounded-lg flex items-center justify-center">
