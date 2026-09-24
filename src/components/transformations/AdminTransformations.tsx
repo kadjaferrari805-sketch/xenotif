@@ -21,7 +21,7 @@ export function AdminTransformations() {
   }
 
   return (
-    <div className="mt-10 bg-sport-card border border-sport-border rounded-2xl p-6">
+    <div className="mt-10 bg-sport-card border border-sport-border rounded-card p-6">
       <h2 className="text-sm font-black text-sport-fg mb-5">{t('adminTitle')} ({items.length})</h2>
       {items.length === 0 ? (
         <p className="text-sport-gray text-sm">{t('adminEmpty')}</p>

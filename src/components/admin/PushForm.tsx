@@ -31,7 +31,7 @@ export function AdminPushForm() {
   }
 
   return (
-    <div className="bg-sport-card border border-sport-border rounded-2xl mt-10">
+    <div className="bg-sport-card border border-sport-border rounded-card mt-10">
       <div className="px-6 py-4 border-b border-sport-border flex items-center gap-3">
         <Bell size={16} className="text-sport-orange" />
         <h2 className="text-sm font-black text-sport-fg">Envoyer une notification push</h2>

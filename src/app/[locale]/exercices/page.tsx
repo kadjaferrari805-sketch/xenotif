@@ -152,7 +152,7 @@ export default async function ExercicesHubPage({
               <Link
                 key={slug}
                 href={`/exercices/${slug}`}
-                className="group bg-sport-card border border-sport-border rounded-2xl p-5 hover:border-sport-orange/50 transition-all hover:-translate-y-0.5"
+                className="group bg-sport-card border border-sport-border rounded-card p-5 hover:border-sport-orange/50 transition-all hover:-translate-y-0.5"
               >
                 <h2 className="text-base font-black mb-1.5 group-hover:text-sport-orange transition-colors">{ex.name}</h2>
                 <p className="text-xs text-sport-gray leading-relaxed mb-3 line-clamp-2">{ex.muscles}</p>

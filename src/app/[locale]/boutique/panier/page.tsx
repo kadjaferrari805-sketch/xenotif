@@ -167,7 +167,7 @@ export default function PanierPage() {
                 </p>
                 <div className="space-y-3">
                   {affiliateItems.map(({ product }) => (
-                    <div key={product.id} className="flex gap-4 rounded-2xl border border-sport-border/40 bg-sport-card/60 p-4">
+                    <div key={product.id} className="flex gap-4 rounded-card border border-sport-border/40 bg-sport-card/60 p-4">
                       <div className="relative h-16 w-16 flex-shrink-0 overflow-hidden rounded-xl bg-sport-border/30">
                         <Image src={product.images[0] ?? ''} alt={product.name} fill sizes="64px" className="object-cover" />
                       </div>

@@ -66,10 +66,10 @@ export function PreviewDashboard() {
         </motion.div>
 
         <motion.div {...reveal} className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
-          <div className="bg-sport-card border border-sport-border rounded-2xl p-6 flex items-center justify-center">
+          <div className="bg-sport-card border border-sport-border rounded-card p-6 flex items-center justify-center">
             <ActivityRings rings={PREVIEW.rings.map(r => ({ ...r }))} size={220} />
           </div>
-          <div className="bg-sport-card border border-sport-border rounded-2xl p-6">
+          <div className="bg-sport-card border border-sport-border rounded-card p-6">
             <h3 className="text-sm font-black mb-4">{t('weekActivity')}</h3>
             <WeeklyChart data={PREVIEW.weekly.map(d => ({ ...d }))} metric="steps" color="#FF6B00" />
           </div>
@@ -85,7 +85,7 @@ export function PreviewDashboard() {
           ))}
         </motion.div>
 
-        <motion.div {...reveal} className="bg-sport-card border border-sport-border rounded-2xl p-6 mb-8">
+        <motion.div {...reveal} className="bg-sport-card border border-sport-border rounded-card p-6 mb-8">
           <h3 className="text-sm font-black mb-5">{t('byDiscipline')}</h3>
           <div className="space-y-4">
             {PREVIEW.disciplines.map(d => (
@@ -107,7 +107,7 @@ export function PreviewDashboard() {
           <PreviewNutrition {...PREVIEW.nutrition} />
         </motion.div>
 
-        <motion.div {...reveal} className="bg-sport-card border border-sport-border rounded-2xl p-6 mb-8">
+        <motion.div {...reveal} className="bg-sport-card border border-sport-border rounded-card p-6 mb-8">
           <h3 className="text-sm font-black mb-5">{t('badges')}</h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {PREVIEW.badges.map(b => (

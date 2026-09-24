@@ -48,7 +48,7 @@ export function TransformationForm() {
   }
 
   return (
-    <div className="bg-sport-card border border-sport-border rounded-2xl p-6">
+    <div className="bg-sport-card border border-sport-border rounded-card p-6">
       <h3 className="text-sm font-black text-sport-fg">{t('shareTitle')}</h3>
       <p className="text-xs text-sport-gray mt-1 mb-5">{t('shareSubtitle')}</p>
       <div className="grid grid-cols-2 gap-4 mb-4">

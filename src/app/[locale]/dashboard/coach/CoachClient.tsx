@@ -187,7 +187,7 @@ export function CoachClient() {
               placeholder={t('placeholder')}
               maxLength={MAX_USER_CHARS}
               disabled={streaming}
-              className="w-full bg-sport-card border border-sport-border rounded-2xl px-4 py-3 pr-12 text-sport-fg text-sm placeholder:text-sport-gray focus:outline-none focus:border-sport-orange transition-colors resize-none leading-relaxed disabled:opacity-60"
+              className="w-full bg-sport-card border border-sport-border rounded-card px-4 py-3 pr-12 text-sport-fg text-sm placeholder:text-sport-gray focus:outline-none focus:border-sport-orange transition-colors resize-none leading-relaxed disabled:opacity-60"
               style={{ maxHeight: '120px' }}
             />
           </div>

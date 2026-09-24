@@ -93,7 +93,7 @@ export default async function SuccessPage({
         </p>
 
         {/* Next steps */}
-        <div className="bg-sport-card border border-sport-border rounded-2xl p-6 mb-8 text-left">
+        <div className="bg-sport-card border border-sport-border rounded-card p-6 mb-8 text-left">
           <p className="text-xs font-bold text-sport-fg uppercase tracking-wider mb-5 flex items-center gap-2">
             <Zap size={13} aria-hidden="true" className="text-sport-orange" />
             Prochaines étapes

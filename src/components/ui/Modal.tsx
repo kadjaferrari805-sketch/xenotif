@@ -44,7 +44,7 @@ export function ModalContent({ open, title, description, descriptionHidden, chil
               exit={{ opacity: 0, scale: 0.96, y: 12 }}
               transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
               className={cn(
-                'fixed left-1/2 top-1/2 z-[101] w-[calc(100%-2rem)] max-w-lg -translate-x-1/2 -translate-y-1/2 rounded-2xl bg-sport-card border border-sport-border shadow-2xl shadow-black/20 p-6',
+                'fixed left-1/2 top-1/2 z-[101] w-[calc(100%-2rem)] max-w-lg -translate-x-1/2 -translate-y-1/2 rounded-card bg-sport-card border border-sport-border shadow-2xl shadow-black/20 p-6',
                 className,
               )}
             >

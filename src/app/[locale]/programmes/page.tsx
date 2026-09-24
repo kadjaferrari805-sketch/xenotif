@@ -56,7 +56,7 @@ export default async function ProgramsHubPage({ params }: { params: Promise<{ lo
             <Link
               key={slug}
               href={`/programmes/${slug}`}
-              className="group overflow-hidden bg-sport-card border border-sport-border rounded-2xl hover:border-sport-orange/50 transition-all hover:-translate-y-0.5"
+              className="group overflow-hidden bg-sport-card border border-sport-border rounded-card hover:border-sport-orange/50 transition-all hover:-translate-y-0.5"
             >
               {guide.coverImage && (
                 <div className="relative h-40 overflow-hidden">

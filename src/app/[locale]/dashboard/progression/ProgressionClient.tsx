@@ -81,7 +81,7 @@ export function ProgressionClient({ userId, initialWorkouts, initialProgress }: 
       {/* Add workout modal */}
       {adding && (
         <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="bg-sport-card border border-sport-border rounded-2xl p-6 w-full max-w-md">
+          <div className="bg-sport-card border border-sport-border rounded-card p-6 w-full max-w-md">
             <h3 className="text-lg font-black text-sport-fg mb-5">{t('newSession')}</h3>
             <div className="space-y-4">
               <div>
@@ -132,7 +132,7 @@ export function ProgressionClient({ userId, initialWorkouts, initialProgress }: 
       </div>
 
       {/* Discipline progress */}
-      <div className="bg-sport-card border border-sport-border rounded-2xl p-6 mb-8">
+      <div className="bg-sport-card border border-sport-border rounded-card p-6 mb-8">
         <h2 className="text-base font-black text-sport-fg mb-5">{t('byDiscipline')}</h2>
         <div className="space-y-5">
           {disciplineProgress.map(({ slug, name, pct, done, total }) => (
@@ -174,7 +174,7 @@ export function ProgressionClient({ userId, initialWorkouts, initialProgress }: 
         })
         const maxCount = Math.max(...counts, 1)
         return (
-          <div className="bg-sport-card border border-sport-border rounded-2xl p-6 mb-8">
+          <div className="bg-sport-card border border-sport-border rounded-card p-6 mb-8">
             <h2 className="text-base font-black text-sport-fg mb-5">{t('weekActivity')}</h2>
             <div className="flex items-end gap-2 h-24">
               {days.map((day, i) => (

@@ -5,7 +5,7 @@ import type { Badge } from '@/lib/gamification'
 export function BadgesGrid({ badges }: { badges: Badge[] }) {
   const t = useTranslations('gamification')
   return (
-    <div className="bg-sport-card border border-sport-border rounded-2xl p-6">
+    <div className="bg-sport-card border border-sport-border rounded-card p-6">
       <h3 className="text-base font-black text-sport-fg mb-5">{t('badgesTitle')}</h3>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         {badges.map(b => (

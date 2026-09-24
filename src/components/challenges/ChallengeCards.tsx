@@ -24,7 +24,7 @@ export function ChallengeCards() {
           initial={{ opacity: 0, y: 24 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: i * 0.1, duration: 0.5 }}
-          className="group bg-sport-card border border-sport-border rounded-2xl p-6 flex flex-col hover:border-sport-orange/40 transition-colors"
+          className="group bg-sport-card border border-sport-border rounded-card p-6 flex flex-col hover:border-sport-orange/40 transition-colors"
         >
           <div className="flex items-start gap-4 mb-4">
             <div className={`w-12 h-12 shrink-0 rounded-2xl border flex items-center justify-center text-2xl ${c.ring}`} aria-hidden="true">

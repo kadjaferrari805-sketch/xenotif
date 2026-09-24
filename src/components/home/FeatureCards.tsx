@@ -39,7 +39,7 @@ export function FeatureCards() {
               initial={{ opacity: 0, y: 24 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: i * 0.12, duration: 0.5 }}
-              className="bg-sport-card border border-sport-border rounded-2xl overflow-hidden flex flex-col"
+              className="bg-sport-card border border-sport-border rounded-card overflow-hidden flex flex-col"
             >
               <div className="relative aspect-[16/10] w-full">
                 <Image

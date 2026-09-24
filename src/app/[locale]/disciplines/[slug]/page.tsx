@@ -313,7 +313,7 @@ export default async function DisciplinePage({ params }: { params: Promise<{ slu
               {content.exercises.map((ex) => (
                 <div
                   key={ex.name}
-                  className="bg-sport-card border border-sport-border rounded-2xl p-5 hover:border-sport-border/70 transition-all"
+                  className="bg-sport-card border border-sport-border rounded-card p-5 hover:border-sport-border/70 transition-all"
                 >
                   <div className="flex items-start justify-between gap-3 mb-3">
                     <h3 className={`font-black text-sm ${COLOR_TEXT[color]}`}>{ex.name}</h3>
@@ -417,7 +417,7 @@ export default async function DisciplinePage({ params }: { params: Promise<{ slu
 
           {/* Right - Sticky CTA */}
           <aside className="md:col-span-2" aria-label={t('cta.title')}>
-            <div className="sticky top-24 bg-sport-card border border-sport-border rounded-2xl p-7">
+            <div className="sticky top-24 bg-sport-card border border-sport-border rounded-card p-7">
               <div className={`w-12 h-12 rounded-xl border flex items-center justify-center mb-5 ${COLOR_CARD[color]}`}>
                 <span className={COLOR_TEXT[color]} aria-hidden="true">{DISC_ICONS[base.icon]}</span>
               </div>
