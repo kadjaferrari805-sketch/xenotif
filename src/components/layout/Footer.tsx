@@ -128,7 +128,7 @@ function FooterNewsletter() {
               type="submit"
               disabled={loading}
               aria-label={tn('submit')}
-              className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-sport-orange text-white hover:bg-[#E65F00] active:scale-95 transition-all disabled:opacity-60"
+              className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-sport-orange text-white hover:bg-sport-orange-hover active:scale-95 transition-all disabled:opacity-60"
             >
               <ArrowRight size={14} aria-hidden="true" />
             </button>

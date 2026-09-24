@@ -61,7 +61,7 @@ function PlanButton({
       aria-label={t('subscribeAria', { name })}
       className={`w-full py-3.5 px-6 rounded-full font-bold text-sm transition-all inline-flex items-center justify-center gap-2 active:scale-95 ${
         highlight
-          ? 'bg-sport-orange text-white hover:bg-[#E65F00] shadow-lg shadow-sport-orange/25'
+          ? 'bg-sport-orange text-white hover:bg-sport-orange-hover shadow-lg shadow-sport-orange/25'
           : 'border border-sport-border text-sport-fg hover:border-sport-gray hover:bg-sport-fg/5'
       }`}
     >
