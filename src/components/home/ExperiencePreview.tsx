@@ -24,7 +24,7 @@ export function ExperiencePreview() {
   const tiles = [
     { Icon: Flame, label: td('statSessions'), value: PREVIEW.stats.sessionsWeek, color: 'text-sport-orange' },
     { Icon: Clock, label: td('statHours'), value: `${PREVIEW.stats.hours}h`, color: 'text-sport-blue' },
-    { Icon: CalendarCheck, label: td('statActiveDays'), value: PREVIEW.stats.activeDays, color: 'text-[#1E7F5A]' },
+    { Icon: CalendarCheck, label: td('statActiveDays'), value: PREVIEW.stats.activeDays, color: 'text-sport-success' },
     { Icon: Award, label: td('statBadges'), value: PREVIEW.stats.badges, color: 'text-yellow-600' },
   ]
 
@@ -37,7 +37,7 @@ export function ExperiencePreview() {
           {/* Aperçu - cadre app premium avec effet 3D */}
           <Tilt3D className="relative rounded-3xl" max={8}>
             <div className="rounded-3xl border border-sport-border bg-sport-dark p-5 shadow-2xl shadow-black/40">
-              <div className="mb-4 flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-sport-gray">
+              <div className="mb-4 flex items-center gap-2 text-xxs font-bold uppercase tracking-widest text-sport-gray">
                 <Eye size={13} className="text-sport-orange" aria-hidden="true" /> {t('previewLabel')}
               </div>
               <XpLevelBar
@@ -52,7 +52,7 @@ export function ExperiencePreview() {
                   <div key={label} className="rounded-xl border border-sport-border bg-sport-card p-3">
                     <Icon size={16} className={`${color} mb-1.5`} aria-hidden="true" />
                     <p className="text-xl font-black tabular-nums text-sport-fg">{value}</p>
-                    <p className="text-[10px] leading-tight text-sport-gray">{label}</p>
+                    <p className="text-2xs leading-tight text-sport-gray">{label}</p>
                   </div>
                 ))}
               </div>

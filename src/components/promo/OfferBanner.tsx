@@ -69,7 +69,7 @@ export function OfferBanner({
           </span>
           <div className="min-w-0">
             <p className="text-sm font-black leading-tight text-sport-fg">{title}</p>
-            {subtitle && <p className="text-[11px] leading-tight text-sport-gray">{subtitle}</p>}
+            {subtitle && <p className="text-xxs leading-tight text-sport-gray">{subtitle}</p>}
           </div>
         </div>
         {/* Ligne 2 (mobile) : compteur + CTA */}

@@ -120,13 +120,13 @@ export function ProgressionClient({ userId, initialWorkouts, initialProgress }: 
         {[
           { Icon: Flame, label: t('statTotalSessions'), value: workouts.length.toString(), color: 'text-sport-orange' },
           { Icon: Clock, label: t('statHours'), value: `${totalHours}h`, color: 'text-sport-blue' },
-          { Icon: TrendingUp, label: t('statModules'), value: progress.filter(p => p.completed).length.toString(), color: 'text-[#1E7F5A]' },
+          { Icon: TrendingUp, label: t('statModules'), value: progress.filter(p => p.completed).length.toString(), color: 'text-sport-success' },
           { Icon: Award, label: t('statBadges'), value: gam.badges.filter(b => b.earned).length.toString(), color: 'text-yellow-600' },
         ].map(({ Icon, label, value, color }) => (
           <div key={label} className="bg-sport-card border border-sport-border rounded-xl p-4">
             <Icon size={18} className={`${color} mb-2`} />
             <p className="text-2xl font-black text-sport-fg">{value}</p>
-            <p className="text-[11px] text-sport-gray mt-0.5 leading-tight">{label}</p>
+            <p className="text-xxs text-sport-gray mt-0.5 leading-tight">{label}</p>
           </div>
         ))}
       </div>
@@ -185,8 +185,8 @@ export function ProgressionClient({ userId, initialWorkouts, initialProgress }: 
                       style={{ height: `${(counts[i] / maxCount) * 100}%` }}
                     />
                   </div>
-                  <span className="text-[10px] text-sport-gray font-semibold">{day}</span>
-                  {counts[i] > 0 && <span className="text-[9px] text-sport-orange font-black">{counts[i]}</span>}
+                  <span className="text-2xs text-sport-gray font-semibold">{day}</span>
+                  {counts[i] > 0 && <span className="text-micro text-sport-orange font-black">{counts[i]}</span>}
                 </div>
               ))}
             </div>
@@ -211,7 +211,7 @@ export function ProgressionClient({ userId, initialWorkouts, initialProgress }: 
                   </div>
                   <div>
                     <p className="text-sm font-bold text-sport-fg">{discName(w.discipline)}</p>
-                    <p className="text-[11px] text-sport-gray">{new Date(w.completed_at).toLocaleDateString(dateLocale, { weekday: 'short', day: 'numeric', month: 'short' })}</p>
+                    <p className="text-xxs text-sport-gray">{new Date(w.completed_at).toLocaleDateString(dateLocale, { weekday: 'short', day: 'numeric', month: 'short' })}</p>
                   </div>
                 </div>
                 <div className="text-right">

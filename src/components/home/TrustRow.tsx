@@ -20,7 +20,7 @@ export function TrustRow() {
             </div>
             <div className="min-w-0">
               <p className="text-xs font-black text-sport-fg leading-tight">{label}</p>
-              <p className="text-[11px] text-sport-gray leading-tight">{sub}</p>
+              <p className="text-xxs text-sport-gray leading-tight">{sub}</p>
             </div>
           </div>
         ))}

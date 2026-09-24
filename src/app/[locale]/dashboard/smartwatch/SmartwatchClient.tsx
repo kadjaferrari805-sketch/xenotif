@@ -132,7 +132,7 @@ export function SmartwatchClient({ initialData }: { initialData: DashboardData }
           </div>
           <div>
             <h1 className="text-xl md:text-2xl font-black text-sport-fg leading-none">{t('title')}</h1>
-            <p className="text-[11px] text-sport-gray">{t('subtitle')}</p>
+            <p className="text-xxs text-sport-gray">{t('subtitle')}</p>
           </div>
         </div>
 
@@ -173,7 +173,7 @@ export function SmartwatchClient({ initialData }: { initialData: DashboardData }
           </div>
           <div>
             <p className="text-xs font-bold text-sport-fg mb-1">{t('securityTitle')}</p>
-            <p className="text-[11px] text-sport-gray leading-relaxed">
+            <p className="text-xxs text-sport-gray leading-relaxed">
               {t('securityDescShort')}
             </p>
           </div>
@@ -200,7 +200,7 @@ export function SmartwatchClient({ initialData }: { initialData: DashboardData }
             </div>
             <div>
               <h1 className="text-xl md:text-2xl font-black text-sport-fg leading-none">{t('title')}</h1>
-              <p className="text-[11px] text-sport-gray">{t('subtitle')}</p>
+              <p className="text-xxs text-sport-gray">{t('subtitle')}</p>
             </div>
           </div>
         </div>
@@ -208,8 +208,8 @@ export function SmartwatchClient({ initialData }: { initialData: DashboardData }
         <div className="flex items-center gap-2 flex-wrap">
           {connectedDevice && (
             <div className="flex items-center gap-1.5 bg-emerald-50 border border-emerald-200 rounded-full px-3 py-1.5">
-              <Wifi size={11} className="text-[#1E7F5A]" />
-              <span className="text-[11px] text-[#1E7F5A] font-bold">{t('synced')}</span>
+              <Wifi size={11} className="text-sport-success" />
+              <span className="text-xxs text-sport-success font-bold">{t('synced')}</span>
             </div>
           )}
 
@@ -259,7 +259,7 @@ export function SmartwatchClient({ initialData }: { initialData: DashboardData }
                   <div key={r.label}>
                     <div className="w-2 h-2 rounded-full mx-auto mb-1" style={{ background: r.color }} />
                     <p className="text-xs font-black text-sport-fg">{r.value >= 1000 ? `${(r.value / 1000).toFixed(1)}k` : r.value}</p>
-                    <p className="text-[9px] text-sport-gray">{r.label}</p>
+                    <p className="text-micro text-sport-gray">{r.label}</p>
                   </div>
                 ))}
               </div>
@@ -280,10 +280,10 @@ export function SmartwatchClient({ initialData }: { initialData: DashboardData }
                     <div className="w-7 h-7 rounded-lg flex items-center justify-center" style={{ background: `${m.color}15` }}>
                       {m.icon}
                     </div>
-                    <p className="text-[10px] text-sport-gray leading-tight">{m.label}</p>
+                    <p className="text-2xs text-sport-gray leading-tight">{m.label}</p>
                   </div>
                   <p className="text-lg font-black text-sport-fg leading-none">{m.value}</p>
-                  {m.unit && <p className="text-[10px] text-sport-gray">{m.unit}</p>}
+                  {m.unit && <p className="text-2xs text-sport-gray">{m.unit}</p>}
                 </div>
               ))}
             </div>
@@ -310,7 +310,7 @@ export function SmartwatchClient({ initialData }: { initialData: DashboardData }
                   <button type="button"
                     key={m}
                     onClick={() => setChartMetric(m)}
-                    className={`text-[10px] font-bold px-2.5 py-1 rounded-lg transition-all ${
+                    className={`text-2xs font-bold px-2.5 py-1 rounded-lg transition-all ${
                       chartMetric === m ? 'bg-sport-orange text-white' : 'text-sport-gray hover:text-sport-fg'
                     }`}
                   >
@@ -374,7 +374,7 @@ export function SmartwatchClient({ initialData }: { initialData: DashboardData }
             </div>
             <div>
               <p className="text-xs font-bold text-sport-fg mb-1">{t('securityTitle')}</p>
-              <p className="text-[11px] text-sport-gray leading-relaxed">
+              <p className="text-xxs text-sport-gray leading-relaxed">
                 {t('securityDescLong')}
               </p>
             </div>
@@ -387,7 +387,7 @@ export function SmartwatchClient({ initialData }: { initialData: DashboardData }
         <div className="space-y-3">
           <div className="flex items-center justify-between mb-2">
             <p className="text-sm font-black text-sport-fg">{t('recentSessions')}</p>
-            <span className="text-[11px] text-sport-gray">{t('sessionsCount', { count: sessions.length })}</span>
+            <span className="text-xxs text-sport-gray">{t('sessionsCount', { count: sessions.length })}</span>
           </div>
           {sessions.map(s => (
             <SessionCard key={s.id} session={s} />
@@ -396,7 +396,7 @@ export function SmartwatchClient({ initialData }: { initialData: DashboardData }
             <div className="bg-sport-card border border-sport-border rounded-2xl p-10 text-center">
               <Watch size={32} className="text-sport-gray mx-auto mb-3" />
               <p className="text-sport-gray text-sm">{t('noSessions')}</p>
-              <p className="text-[11px] text-sport-gray mt-1">{t('noSessionsHint')}</p>
+              <p className="text-xxs text-sport-gray mt-1">{t('noSessionsHint')}</p>
             </div>
           )}
         </div>
@@ -437,8 +437,8 @@ export function SmartwatchClient({ initialData }: { initialData: DashboardData }
               ].map(s => (
                 <div key={s.label} className="text-center">
                   <p className="text-xl font-black text-sport-fg">{s.value}</p>
-                  <p className="text-[10px] text-sport-gray">{s.unit}</p>
-                  <p className="text-[9px] text-sport-gray mt-0.5">{s.label}</p>
+                  <p className="text-2xs text-sport-gray">{s.unit}</p>
+                  <p className="text-micro text-sport-gray mt-0.5">{s.label}</p>
                 </div>
               ))}
             </div>

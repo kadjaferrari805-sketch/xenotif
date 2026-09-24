@@ -19,7 +19,7 @@ export default function NotFound() {
         </div>
 
         {/* Error code */}
-        <p className="text-[11px] font-bold tracking-[3px] uppercase text-sport-orange mb-4">
+        <p className="text-xxs font-bold tracking-[3px] uppercase text-sport-orange mb-4">
           Erreur 404
         </p>
 

@@ -28,7 +28,7 @@ export function FeatureCards() {
     <section aria-labelledby="features-title" className="section-white px-6">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-14">
-          <p className="text-[11px] font-black tracking-[3px] uppercase text-sport-orange mb-3">{t('eyebrow')}</p>
+          <p className="text-xxs font-black tracking-[3px] uppercase text-sport-orange mb-3">{t('eyebrow')}</p>
           <h2 id="features-title" className="text-3xl md:text-5xl font-black text-sport-fg">{t('title')}</h2>
         </div>
 

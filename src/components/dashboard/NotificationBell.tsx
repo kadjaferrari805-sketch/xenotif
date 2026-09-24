@@ -82,7 +82,7 @@ export function NotificationBell({ align = 'right' }: { align?: 'left' | 'right'
         {unreadCount > 0 && (
           <span
             aria-hidden="true"
-            className="absolute -top-1 -right-1 flex h-[18px] min-w-[18px] items-center justify-center rounded-full bg-sport-orange px-1 text-[10px] font-black leading-none text-white ring-2 ring-sport-card"
+            className="absolute -top-1 -right-1 flex h-[18px] min-w-[18px] items-center justify-center rounded-full bg-sport-orange px-1 text-2xs font-black leading-none text-white ring-2 ring-sport-card"
           >
             {unreadCount > 9 ? '9+' : unreadCount}
           </span>
@@ -116,8 +116,8 @@ export function NotificationBell({ align = 'right' }: { align?: 'left' | 'right'
                   </div>
                   <div className="min-w-0">
                     <p className="text-xs font-bold text-sport-fg leading-snug">{n.title}</p>
-                    <p className="text-[11px] text-sport-gray leading-snug mt-0.5 line-clamp-2">{n.body}</p>
-                    <p className="text-[10px] text-sport-gray mt-1">{`${String(n.hour).padStart(2, '0')}:00 · ${t('today')}`}</p>
+                    <p className="text-xxs text-sport-gray leading-snug mt-0.5 line-clamp-2">{n.body}</p>
+                    <p className="text-2xs text-sport-gray mt-1">{`${String(n.hour).padStart(2, '0')}:00 · ${t('today')}`}</p>
                   </div>
                 </Link>
               )

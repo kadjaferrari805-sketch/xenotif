@@ -106,7 +106,7 @@ export function Pricing() {
             className={`px-5 py-2 rounded-full text-sm font-bold transition-all flex items-center gap-2 ${period === 'annual' ? 'bg-sport-orange text-white' : 'text-sport-gray hover:text-sport-fg'}`}
           >
             {t('annual')}
-            <span className="text-[10px] font-black bg-emerald-500 text-white px-2 py-0.5 rounded-full">{t('save')}</span>
+            <span className="text-2xs font-black bg-emerald-500 text-white px-2 py-0.5 rounded-full">{t('save')}</span>
           </button>
         </div>
 
@@ -132,7 +132,7 @@ export function Pricing() {
                 }`}
               >
                 {tr.badge && plan.id !== 'gratuit' && (
-                  <span className="absolute -top-4 left-1/2 -translate-x-1/2 bg-sport-orange text-white text-[10px] font-black uppercase tracking-wider px-4 py-1.5 rounded-full flex items-center gap-1.5 whitespace-nowrap shadow-lg shadow-sport-orange/30">
+                  <span className="absolute -top-4 left-1/2 -translate-x-1/2 bg-sport-orange text-white text-2xs font-black uppercase tracking-wider px-4 py-1.5 rounded-full flex items-center gap-1.5 whitespace-nowrap shadow-lg shadow-sport-orange/30">
                     <Zap size={10} aria-hidden="true" /> {tr.badge}
                   </span>
                 )}
@@ -150,12 +150,12 @@ export function Pricing() {
                     <span className="text-sport-gray text-xs">{tr.period}</span>
                   </div>
                   {period === 'annual' && plan.totalAnnual && (
-                    <p className="text-[10px] text-sport-gray mt-1">
+                    <p className="text-2xs text-sport-gray mt-1">
                       {t.rich('billed', { total: plan.totalAnnual, b: (c) => <strong className="text-sport-fg">{c}</strong> })}
                     </p>
                   )}
                   {plan.id === 'pro' && (
-                    <p className="text-[10px] text-[#1E7F5A] mt-1.5 font-semibold">
+                    <p className="text-2xs text-sport-success mt-1.5 font-semibold">
                       {t('freeTrialNote')}
                     </p>
                   )}
@@ -164,7 +164,7 @@ export function Pricing() {
                 <ul className="space-y-3 mb-8 flex-1" aria-label={t('featuresAria', { name: tr.name })}>
                   {tr.features.map((feature) => (
                     <li key={feature} className="flex items-start gap-2.5 text-xs text-sport-gray">
-                      <CheckCircle size={14} aria-hidden="true" className="shrink-0 mt-0.5 text-[#1E7F5A]" />
+                      <CheckCircle size={14} aria-hidden="true" className="shrink-0 mt-0.5 text-sport-success" />
                       {feature}
                     </li>
                   ))}
@@ -174,7 +174,7 @@ export function Pricing() {
 
                 {/* Réassurance au point de décision (plan mis en avant) */}
                 {plan.highlight && (
-                  <div className="mt-4 flex flex-wrap items-center justify-center gap-x-4 gap-y-1.5 text-[10px] text-sport-gray">
+                  <div className="mt-4 flex flex-wrap items-center justify-center gap-x-4 gap-y-1.5 text-2xs text-sport-gray">
                     <span className="inline-flex items-center gap-1">
                       <Lock size={11} aria-hidden="true" className="text-sport-orange" /> {tt('securePayment')}
                     </span>

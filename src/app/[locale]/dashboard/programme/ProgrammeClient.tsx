@@ -146,13 +146,13 @@ function ProgrammeContent({ isPro, freeSlugs, userId, initialProgress }: { isPro
         <div className="flex items-center justify-between mb-3">
           <div>
             <p className="text-sm font-black text-sport-fg">{t('weeks', { name: t(`disciplines.${selected}`) })}</p>
-            <p className="text-[11px] text-sport-gray">{t('sessionsCompleted', { completed: completedCount, total: totalSessions })}</p>
+            <p className="text-xxs text-sport-gray">{t('sessionsCompleted', { completed: completedCount, total: totalSessions })}</p>
           </div>
           <span className="text-2xl font-black text-sport-orange">{pct}%</span>
         </div>
         <Progress value={pct} />
         {pct === 100 && (
-          <p className="text-[#1E7F5A] text-xs font-bold mt-3 flex items-center gap-1.5">
+          <p className="text-sport-success text-xs font-bold mt-3 flex items-center gap-1.5">
             <CheckCircle size={13} /> {t('done')}
           </p>
         )}
@@ -170,7 +170,7 @@ function ProgrammeContent({ isPro, freeSlugs, userId, initialProgress }: { isPro
             </div>
             <div>
               <p className="text-sm font-bold text-sport-fg">{t('videosAvailable', { count: isPro ? content.videos.length : freeVideoCount })}</p>
-              <p className="text-[11px] text-sport-gray">{isPro ? t('videosSubtitle') : t('videosFreeHint')}</p>
+              <p className="text-xxs text-sport-gray">{isPro ? t('videosSubtitle') : t('videosFreeHint')}</p>
             </div>
           </div>
           <ArrowRight size={14} className="text-sport-gray group-hover:text-sport-orange transition-colors" />
@@ -188,7 +188,7 @@ function ProgrammeContent({ isPro, freeSlugs, userId, initialProgress }: { isPro
             <div key={block.week} className="bg-sport-card border border-sport-border rounded-xl overflow-hidden">
               <div className="px-5 py-3 border-b border-sport-border flex items-center justify-between">
                 <div>
-                  <p className="text-[10px] font-bold uppercase tracking-wider text-sport-orange">{block.week}</p>
+                  <p className="text-2xs font-bold uppercase tracking-wider text-sport-orange">{block.week}</p>
                   <p className="text-sm font-bold text-sport-fg">{block.theme}</p>
                 </div>
                 <span className="text-xs font-bold text-sport-gray">{t('phase', { n: bi + 1 })}</span>
@@ -205,7 +205,7 @@ function ProgrammeContent({ isPro, freeSlugs, userId, initialProgress }: { isPro
                         className="mt-0.5 shrink-0 transition-all hover:scale-110"
                       >
                         {done
-                          ? <CheckCircle size={20} className="text-[#1E7F5A]" />
+                          ? <CheckCircle size={20} className="text-sport-success" />
                           : <Circle size={20} className="text-sport-border hover:text-sport-orange transition-colors" />
                         }
                       </button>

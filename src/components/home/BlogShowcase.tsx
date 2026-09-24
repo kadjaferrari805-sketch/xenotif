@@ -15,7 +15,7 @@ import type { BlogPost } from '@/lib/blog/posts'
 // triés par date) arrivent en props depuis la page serveur.
 const CATEGORY_COLORS: Record<string, string> = {
   Musculation: 'bg-sport-orange/10 text-sport-orange border-sport-orange/20',
-  Nutrition: 'bg-green-50 text-[#1E7F5A] border-green-200',
+  Nutrition: 'bg-green-50 text-sport-success border-green-200',
   Running: 'bg-blue-50 text-blue-600 border-blue-200',
   HIIT: 'bg-red-50 text-red-600 border-red-200',
   Récupération: 'bg-purple-50 text-purple-600 border-purple-200',
@@ -59,7 +59,7 @@ export function BlogShowcase({ posts }: { posts: BlogPost[] }) {
                         className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                       />
                       <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
-                      <span className={`absolute top-3 left-3 text-[11px] font-bold px-2.5 py-1 rounded-full border ${colorClass}`}>
+                      <span className={`absolute top-3 left-3 text-xxs font-bold px-2.5 py-1 rounded-full border ${colorClass}`}>
                         {tb(`categories.${post.category}`)}
                       </span>
                     </div>
@@ -68,7 +68,7 @@ export function BlogShowcase({ posts }: { posts: BlogPost[] }) {
                         {post.title}
                       </h3>
                       <p className="text-sport-gray text-xs leading-relaxed line-clamp-2 mb-4">{post.excerpt}</p>
-                      <div className="mt-auto flex items-center justify-between text-[11px] text-sport-gray border-t border-sport-border pt-3">
+                      <div className="mt-auto flex items-center justify-between text-xxs text-sport-gray border-t border-sport-border pt-3">
                         <span>{formatDate(post.publishedAt, locale)}</span>
                         <span className="inline-flex items-center gap-1 font-bold text-sport-orange group-hover:gap-1.5 transition-all">
                           {t('readMore')} <ArrowRight size={12} aria-hidden="true" />

@@ -83,7 +83,7 @@ export function HowItWorks() {
           <Link href="/auth/signup" className="btn-primary shadow-xl shadow-sport-orange/25 hover:shadow-sport-orange/40 hover:scale-[1.02] active:scale-95">
             {t('cta')} <ArrowRight size={15} aria-hidden="true" />
           </Link>
-          <p className="text-[11px] text-sport-gray mt-3">{t('ctaNote')}</p>
+          <p className="text-xxs text-sport-gray mt-3">{t('ctaNote')}</p>
         </motion.div>
       </div>
     </section>

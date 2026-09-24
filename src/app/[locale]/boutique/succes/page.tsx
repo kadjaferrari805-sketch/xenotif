@@ -71,7 +71,7 @@ export default async function BoutiqueSuccesPage({
       <div className="w-full max-w-md">
         <div className="mb-8 flex justify-center">
           <div className="flex h-20 w-20 items-center justify-center rounded-full bg-emerald-500/20 border border-emerald-200">
-            <CheckCircle size={40} className="text-[#1E7F5A]" />
+            <CheckCircle size={40} className="text-sport-success" />
           </div>
         </div>
         <h1 className="mb-2 text-3xl font-black text-sport-fg">{t('title')}</h1>
@@ -92,7 +92,7 @@ export default async function BoutiqueSuccesPage({
                 >
                   <p className="text-sm font-bold text-sport-fg line-clamp-2 mb-2.5">📘 {item.name}</p>
                   <div className="flex flex-wrap items-center gap-2">
-                    <span className="text-[11px] text-sport-gray">{t('downloadLang')}</span>
+                    <span className="text-xxs text-sport-gray">{t('downloadLang')}</span>
                     {([
                       { code: 'fr', label: '🇫🇷 FR' },
                       { code: 'en', label: '🇬🇧 EN' },

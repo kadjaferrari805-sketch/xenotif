@@ -133,7 +133,7 @@ function FooterNewsletter() {
               <ArrowRight size={14} aria-hidden="true" />
             </button>
           </div>
-          {error && <p role="alert" className="text-red-400 text-[11px]">{error}</p>}
+          {error && <p role="alert" className="text-red-400 text-xxs">{error}</p>}
         </form>
       )}
     </div>
@@ -224,7 +224,7 @@ export function Footer() {
               ))}
             </ul>
             <div className="mt-6 p-4 bg-white/5 border border-white/10 rounded-xl">
-              <p className="text-[10px] text-white/60 leading-relaxed">
+              <p className="text-2xs text-white/60 leading-relaxed">
                 <strong className="text-white block mb-1">Xenotif LTD</strong>
                 Company no. 17013934<br />
                 contact@xenotif.com

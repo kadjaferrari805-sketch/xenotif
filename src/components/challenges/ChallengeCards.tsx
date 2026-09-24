@@ -37,10 +37,10 @@ export function ChallengeCards() {
           </div>
 
           <div className="flex flex-wrap gap-2 mb-4">
-            <span className="inline-flex items-center gap-1.5 text-[11px] font-bold px-2.5 py-1 rounded-full bg-sport-dark border border-sport-border text-sport-gray">
+            <span className="inline-flex items-center gap-1.5 text-xxs font-bold px-2.5 py-1 rounded-full bg-sport-dark border border-sport-border text-sport-gray">
               <Clock size={12} aria-hidden="true" /> {items[i].duration}
             </span>
-            <span className="inline-flex items-center gap-1.5 text-[11px] font-bold px-2.5 py-1 rounded-full bg-sport-dark border border-sport-border text-sport-gray">
+            <span className="inline-flex items-center gap-1.5 text-xxs font-bold px-2.5 py-1 rounded-full bg-sport-dark border border-sport-border text-sport-gray">
               <TrendingUp size={12} aria-hidden="true" /> {items[i].level}
             </span>
           </div>

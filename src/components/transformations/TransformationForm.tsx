@@ -41,7 +41,7 @@ export function TransformationForm() {
   if (done) {
     return (
       <div className="bg-sport-card border border-emerald-200 rounded-2xl p-6 flex items-center gap-3">
-        <CheckCircle size={20} className="text-[#1E7F5A] shrink-0" aria-hidden="true" />
+        <CheckCircle size={20} className="text-sport-success shrink-0" aria-hidden="true" />
         <p className="text-sm text-sport-fg">{t('success')}</p>
       </div>
     )
@@ -54,7 +54,7 @@ export function TransformationForm() {
       <div className="grid grid-cols-2 gap-4 mb-4">
         {[{ label: t('beforeLabel'), file: before, set: setBefore }, { label: t('afterLabel'), file: after, set: setAfter }].map((f, i) => (
           <label key={i} className="cursor-pointer">
-            <span className="block text-[11px] font-bold text-sport-fg mb-1.5 uppercase tracking-wider">{f.label}</span>
+            <span className="block text-xxs font-bold text-sport-fg mb-1.5 uppercase tracking-wider">{f.label}</span>
             <div className="aspect-[3/4] rounded-xl border border-dashed border-sport-border bg-sport-dark flex items-center justify-center overflow-hidden">
               {f.file
                 // eslint-disable-next-line @next/next/no-img-element

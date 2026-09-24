@@ -134,7 +134,7 @@ function SignUpForm() {
     return (
       <div className="text-center py-4">
         <div className="w-16 h-16 bg-emerald-50 border border-emerald-200 rounded-full flex items-center justify-center mx-auto mb-5">
-          <CheckCircle size={28} className="text-[#1E7F5A]" />
+          <CheckCircle size={28} className="text-sport-success" />
         </div>
         <h2 className="text-xl font-black text-sport-fg mb-3">{t('doneTitle')}</h2>
         <p className="text-sport-gray text-sm leading-relaxed mb-6">
@@ -180,7 +180,7 @@ function SignUpForm() {
             className={`px-5 py-2 rounded-full text-sm font-bold transition-all flex items-center gap-2 ${period === 'annual' ? 'bg-sport-orange text-white' : 'text-sport-gray hover:text-sport-fg'}`}
           >
             {t('annual')}
-            <span className="text-[10px] font-black bg-emerald-500 text-white px-2 py-0.5 rounded-full">{t('save')}</span>
+            <span className="text-2xs font-black bg-emerald-500 text-white px-2 py-0.5 rounded-full">{t('save')}</span>
           </button>
         </div>
 
@@ -198,7 +198,7 @@ function SignUpForm() {
               }`}
             >
               {plans[i].badge && (
-                <span className="absolute -top-2.5 left-1/2 -translate-x-1/2 text-[9px] font-black bg-emerald-500 text-white/90 px-2 py-0.5 rounded-full whitespace-nowrap">
+                <span className="absolute -top-2.5 left-1/2 -translate-x-1/2 text-micro font-black bg-emerald-500 text-white/90 px-2 py-0.5 rounded-full whitespace-nowrap">
                   {plans[i].badge}
                 </span>
               )}
@@ -206,16 +206,16 @@ function SignUpForm() {
                 {plans[i].name}
               </p>
               <p className="text-sm font-black text-sport-fg leading-none">{period === 'annual' ? plan.priceAnnual : plan.priceMonthly}</p>
-              <p className="text-[10px] text-sport-gray mb-1">{plans[i].period}</p>
+              <p className="text-2xs text-sport-gray mb-1">{plans[i].period}</p>
               {period === 'annual' && plan.totalAnnual && (
-                <p className="text-[9px] text-[#1E7F5A] mb-2 leading-tight">
+                <p className="text-micro text-sport-success mb-2 leading-tight">
                   {t.rich('billed', { total: plan.totalAnnual, b: (c) => <strong>{c}</strong> })}
                 </p>
               )}
               <ul className="space-y-1">
                 {plans[i].features.map(f => (
-                  <li key={f} className="flex items-center gap-1 text-[9px] text-sport-gray leading-tight">
-                    <CheckCircle size={8} className={`shrink-0 ${selectedPlan === plan.id ? 'text-sport-orange' : 'text-[#1E7F5A]'}`} />
+                  <li key={f} className="flex items-center gap-1 text-micro text-sport-gray leading-tight">
+                    <CheckCircle size={8} className={`shrink-0 ${selectedPlan === plan.id ? 'text-sport-orange' : 'text-sport-success'}`} />
                     {f}
                   </li>
                 ))}
@@ -267,11 +267,11 @@ function SignUpForm() {
             {/* Réassurance au point de décision : essai gratuit + aucun débit + résiliation. */}
             {selectedPlan !== 'gratuit' && (
               <div className="rounded-xl bg-emerald-50 border border-emerald-500/25 px-4 py-3">
-                <p className="text-xs font-bold text-[#1E7F5A] text-center mb-2">{t('trialReassure')}</p>
-                <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1 text-[10px] text-sport-gray">
-                  <span className="inline-flex items-center gap-1"><Lock size={10} aria-hidden="true" className="text-[#1E7F5A]" /> {tt('securePayment')}</span>
-                  <span className="inline-flex items-center gap-1"><ShieldCheck size={10} aria-hidden="true" className="text-[#1E7F5A]" /> {tt('guarantee')}</span>
-                  <span className="inline-flex items-center gap-1"><CheckCircle size={10} aria-hidden="true" className="text-[#1E7F5A]" /> {tt('cancel')}</span>
+                <p className="text-xs font-bold text-sport-success text-center mb-2">{t('trialReassure')}</p>
+                <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1 text-2xs text-sport-gray">
+                  <span className="inline-flex items-center gap-1"><Lock size={10} aria-hidden="true" className="text-sport-success" /> {tt('securePayment')}</span>
+                  <span className="inline-flex items-center gap-1"><ShieldCheck size={10} aria-hidden="true" className="text-sport-success" /> {tt('guarantee')}</span>
+                  <span className="inline-flex items-center gap-1"><CheckCircle size={10} aria-hidden="true" className="text-sport-success" /> {tt('cancel')}</span>
                 </div>
               </div>
             )}
@@ -285,7 +285,7 @@ function SignUpForm() {
               }
             </Button>
 
-            <p className="text-[10px] text-sport-gray text-center leading-relaxed">
+            <p className="text-2xs text-sport-gray text-center leading-relaxed">
               {t('legalPrefix')}{' '}
               <Link href="/mentions-legales" className="underline hover:text-sport-fg">{t('legalNotice')}</Link>
               {' '}{t('legalAnd')}{' '}
@@ -303,7 +303,7 @@ function SignUpForm() {
           </div>
         </Card>
 
-        <div className="mt-6 flex items-center justify-center gap-2 text-[11px] text-sport-gray">
+        <div className="mt-6 flex items-center justify-center gap-2 text-xxs text-sport-gray">
           <Zap size={12} className="text-sport-orange" />
           {t('secure')}
         </div>

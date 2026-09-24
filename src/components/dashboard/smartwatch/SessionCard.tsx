@@ -51,14 +51,14 @@ export function SessionCard({ session }: SessionCardProps) {
           </div>
           <div>
             <p className="text-sm font-black text-sport-fg">{label}</p>
-            <p className="text-[11px] text-sport-gray">{date} · {time}</p>
+            <p className="text-xxs text-sport-gray">{date} · {time}</p>
           </div>
         </div>
         <div className="text-right">
           <p className="text-sm font-black text-sport-fg">{formatDuration(session.duration_seconds)}</p>
           <div className="flex items-center gap-1 text-sport-gray justify-end">
             <Clock size={9} />
-            <span className="text-[10px]">{t('session.duration')}</span>
+            <span className="text-2xs">{t('session.duration')}</span>
           </div>
         </div>
       </div>
@@ -68,14 +68,14 @@ export function SessionCard({ session }: SessionCardProps) {
           <Flame size={12} className="text-sport-orange shrink-0" />
           <div>
             <p className="text-xs font-black text-sport-fg">{session.calories_burned}</p>
-            <p className="text-[9px] text-sport-gray">kcal</p>
+            <p className="text-micro text-sport-gray">kcal</p>
           </div>
         </div>
         <div className="bg-sport-dark rounded-xl px-3 py-2 flex items-center gap-2">
           <Heart size={12} className="text-red-600 shrink-0" />
           <div>
             <p className="text-xs font-black text-sport-fg">{session.avg_heart_rate ?? '-'}</p>
-            <p className="text-[9px] text-sport-gray">{t('session.bpmAvg')}</p>
+            <p className="text-micro text-sport-gray">{t('session.bpmAvg')}</p>
           </div>
         </div>
         <div className="bg-sport-dark rounded-xl px-3 py-2 flex items-center gap-2">
@@ -84,7 +84,7 @@ export function SessionCard({ session }: SessionCardProps) {
             <p className="text-xs font-black text-sport-fg">
               {session.distance_meters > 0 ? formatDistance(session.distance_meters) : formatPace(session.avg_pace_per_km)}
             </p>
-            <p className="text-[9px] text-sport-gray">
+            <p className="text-micro text-sport-gray">
               {session.distance_meters > 0 ? t('session.distance') : t('session.pace')}
             </p>
           </div>

@@ -47,7 +47,7 @@ export function SubscriberGate({ minPlan, children }: { minPlan?: string; childr
         >
           {t('cta')} <ArrowRight size={15} aria-hidden="true" />
         </Link>
-        <p className="text-[11px] text-sport-gray mt-3">{t('note')}</p>
+        <p className="text-xxs text-sport-gray mt-3">{t('note')}</p>
       </div>
     </div>
   )

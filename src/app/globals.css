@@ -20,14 +20,51 @@
   --color-sport-blue: #2563EB;
   --color-sport-lime: #A3FF00;
   --color-sport-gray: var(--val-sport-gray);
-  --color-sport-titane: var(--val-sport-gray);
   --color-sport-fg: var(--val-sport-fg);
   --color-sport-gray-light: #171B23;
-  /* Gris ardoise "tech" (slate-900) - conservé du v2, toujours utile comme
-     texte secondaire alternatif en thème sombre. */
-  --color-sport-slate: #111827;
   /* Footer : toujours quasi-noir, indépendant de la page (jamais réactif). */
   --color-footer-bg: #000000;
+
+  /* ── Design tokens canoniques (09.4.3.2-A) ──────────────────────────────
+     DÉCLARATION. Aucune règle existante n'est modifiée : déclarer un token ne
+     change aucun rendu tant qu'aucune classe ne l'utilise. */
+
+  /* Couleurs d'état. Seul `success` est MIGRÉ dans ce lot : sa valeur est
+     littérale (#1E7F5A, 65 usages), donc strictement identique une fois
+     tokenisée.
+     error / warning / info sont DÉCLARÉS mais NON MIGRÉS : Tailwind v4 génère
+     sa palette en oklch, et les valeurs compilées diffèrent de celles du
+     contrat 09.4.3.1, héritées de v3 — red-600 rend #e40014 (≠ #dc2626) et
+     blue-600 rend #155dfc (≠ #2563EB). Les substituer changerait le rendu, ce
+     que cette phase interdit. Arbitrage renvoyé à 09.4.3.2-B. */
+  --color-sport-success: #1E7F5A;
+  --color-sport-error: #dc2626;
+  --color-sport-warning: #d97706;
+  --color-sport-info: #2563EB;
+  /* Survol du CTA de marque, déjà employé en dur par .btn-primary. Déclaré
+     ici, NON appliqué : les 48 hover:bg-orange-600 restent inchangés. */
+  --color-sport-orange-hover: #E66000;
+
+  /* Typographie : trois niveaux sous text-xs (12px), qui nomment 242 usages
+     préexistants. Déclarés en px — et non en rem — pour garantir une valeur
+     calculée identique quelle que soit la taille de la racine. */
+  --text-micro: 9px;
+  --text-2xs: 10px;
+  --text-xxs: 11px;
+
+  /* Rayons, ombres et mouvement : DÉCLARÉS, AUCUN usage migré dans ce lot.
+     Les 571 rounded-* et les 122 shadow-* restent en l'état. */
+  --radius-pill: 9999px;
+  --radius-card: 16px;
+  --radius-control: 12px;
+  --shadow-xeno-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-xeno-md: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --shadow-xeno-lg: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+  --shadow-glow-brand: 0 10px 30px -10px rgb(255 107 0 / 0.30);
+  --ease-xeno-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --motion-fast: 150ms;
+  --motion-base: 200ms;
+  --motion-slow: 300ms;
 }
 
 :root {

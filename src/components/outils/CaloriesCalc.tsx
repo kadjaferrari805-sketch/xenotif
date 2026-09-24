@@ -67,19 +67,19 @@ export function CaloriesCalc() {
         </div>
         <div className="grid grid-cols-3 gap-2">
           <div className="rounded-xl bg-sport-card border border-sport-border p-3 text-center">
-            <p className="text-[10px] uppercase tracking-wider text-sport-gray">{t('calories.bmr')}</p>
+            <p className="text-2xs uppercase tracking-wider text-sport-gray">{t('calories.bmr')}</p>
             <p className="text-base font-black text-sport-fg mt-1">{r(bmr)}</p>
           </div>
           <div className="rounded-xl bg-sport-card border border-sport-border p-3 text-center">
-            <p className="text-[10px] uppercase tracking-wider text-sport-lime">{t('calories.cut')}</p>
+            <p className="text-2xs uppercase tracking-wider text-sport-lime">{t('calories.cut')}</p>
             <p className="text-base font-black text-sport-fg mt-1">{r(tdee * 0.8)}</p>
           </div>
           <div className="rounded-xl bg-sport-card border border-sport-border p-3 text-center">
-            <p className="text-[10px] uppercase tracking-wider text-sport-orange">{t('calories.bulk')}</p>
+            <p className="text-2xs uppercase tracking-wider text-sport-orange">{t('calories.bulk')}</p>
             <p className="text-base font-black text-sport-fg mt-1">{r(tdee * 1.15)}</p>
           </div>
         </div>
-        <p className="text-[11px] text-sport-gray leading-relaxed pt-1">{t('disclaimer')}</p>
+        <p className="text-xxs text-sport-gray leading-relaxed pt-1">{t('disclaimer')}</p>
       </div>
     </div>
   )

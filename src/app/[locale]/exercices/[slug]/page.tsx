@@ -69,7 +69,7 @@ export default async function ExercicePage({ params }: { params: Promise<{ slug:
           <Link href="/exercices" className="inline-flex items-center gap-1.5 text-xs font-bold text-sport-gray hover:text-sport-fg transition-colors mb-6">
             <ArrowLeft size={13} aria-hidden="true" /> {t('backToHub')}
           </Link>
-          <p className="text-[11px] font-bold tracking-[2px] uppercase text-sport-orange mb-3">{t('eyebrow')}</p>
+          <p className="text-xxs font-bold tracking-[2px] uppercase text-sport-orange mb-3">{t('eyebrow')}</p>
           <h1 className="text-4xl md:text-5xl font-black leading-tight">{detail.name}</h1>
         </div>
       </section>

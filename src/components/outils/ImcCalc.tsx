@@ -30,7 +30,7 @@ export function ImcCalc() {
           <label htmlFor="imc-height" className="block text-xs font-bold text-sport-gray mb-2">{t('imc.height')}</label>
           <input id="imc-height" type="number" min={120} max={230} value={height} onChange={(e) => setHeight(+e.target.value)} className={INPUT} />
         </div>
-        <p className="text-[11px] text-sport-gray leading-relaxed pt-1">{t('disclaimer')}</p>
+        <p className="text-xxs text-sport-gray leading-relaxed pt-1">{t('disclaimer')}</p>
       </div>
 
       <div className="rounded-2xl border border-sport-orange/30 bg-gradient-to-br from-sport-orange/15 via-sport-card to-sport-card p-8 flex flex-col items-center justify-center text-center">

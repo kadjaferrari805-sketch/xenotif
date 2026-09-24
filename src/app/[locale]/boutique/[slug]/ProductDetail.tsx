@@ -152,7 +152,7 @@ export function ProductDetail({ product }: { product: Product }) {
             {product.tags && product.tags.length > 0 && (
               <div className="mt-6 flex flex-wrap gap-2">
                 {product.tags.map(tag => (
-                  <span key={tag} className="rounded-full border border-sport-border px-2.5 py-1 text-[10px] font-semibold text-sport-gray">
+                  <span key={tag} className="rounded-full border border-sport-border px-2.5 py-1 text-2xs font-semibold text-sport-gray">
                     #{tag}
                   </span>
                 ))}

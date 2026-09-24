@@ -12,7 +12,7 @@ import { Carousel } from '@/components/ui/Carousel'
 // Style structurel par niveau (emoji, couleurs, largeur de barre). Les textes
 // (label, desc, detail) viennent de messages → home.intensity.levels.
 const LEVEL_STYLE = [
-  { id: 'debutant',      emoji: '🌱', border: 'border-emerald-200',  text: 'text-[#1E7F5A]', bar: 'bg-emerald-500',  width: '25%' },
+  { id: 'debutant',      emoji: '🌱', border: 'border-emerald-200',  text: 'text-sport-success', bar: 'bg-emerald-500',  width: '25%' },
   { id: 'intermediaire', emoji: '⚡', border: 'border-sport-blue/30',   text: 'text-sport-blue',  bar: 'bg-sport-blue',   width: '55%' },
   { id: 'avance',        emoji: '🔥', border: 'border-sport-orange/30', text: 'text-sport-orange', bar: 'bg-sport-orange', width: '80%' },
   { id: 'elite',         emoji: '🏆', border: 'border-sport-lime/30',   text: 'text-sport-lime',  bar: 'bg-sport-lime',   width: '100%' },
@@ -54,8 +54,8 @@ export function IntensityLevels() {
               {/* Progress bar */}
               <div>
                 <div className="flex justify-between items-center mb-1.5">
-                  <span className="text-[10px] text-sport-gray uppercase tracking-wider">{t('intensityLabel')}</span>
-                  <span className={`text-[10px] font-bold ${level.text}`}>{level.width}</span>
+                  <span className="text-2xs text-sport-gray uppercase tracking-wider">{t('intensityLabel')}</span>
+                  <span className={`text-2xs font-bold ${level.text}`}>{level.width}</span>
                 </div>
                 <div
                   className="h-1.5 bg-sport-border rounded-full overflow-hidden"
@@ -74,7 +74,7 @@ export function IntensityLevels() {
                 </div>
               </div>
 
-              <p className={`text-[11px] font-bold ${level.text}`}>{levels[i].detail}</p>
+              <p className={`text-xxs font-bold ${level.text}`}>{levels[i].detail}</p>
             </motion.div>
             </Tilt3D>
           ))}

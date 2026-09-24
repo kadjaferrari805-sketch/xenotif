@@ -39,7 +39,7 @@ export function VideoBand() {
       <div className="absolute inset-0 bg-gradient-to-t from-black via-black/45 to-black/75" />
 
       <div className="relative z-10 text-center px-6 max-w-3xl">
-        <p className="text-[11px] font-black tracking-[3px] uppercase text-sport-orange mb-4">{t('eyebrow')}</p>
+        <p className="text-xxs font-black tracking-[3px] uppercase text-sport-orange mb-4">{t('eyebrow')}</p>
         <h2 className="text-3xl md:text-6xl font-black text-white leading-tight mb-5 drop-shadow-lg">{t('title')}</h2>
         <p className="text-lg text-white/85 mb-8 max-w-xl mx-auto drop-shadow">{t('subtitle')}</p>
         <Link href="/auth/signup?plan=pro" className="btn-primary inline-flex items-center gap-2">

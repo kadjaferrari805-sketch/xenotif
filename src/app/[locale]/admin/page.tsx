@@ -31,7 +31,7 @@ export default async function AdminPage() {
 
   const STATUS_MAP: Record<string, { label: string; Icon: typeof CheckCircle; cls: string }> = {
     trialing: { label: 'Essai',  Icon: Clock,       cls: 'text-blue-600' },
-    active:   { label: 'Actif',  Icon: CheckCircle, cls: 'text-[#1E7F5A]' },
+    active:   { label: 'Actif',  Icon: CheckCircle, cls: 'text-sport-success' },
     canceled: { label: 'Annulé', Icon: XCircle,     cls: 'text-red-600' },
     past_due: { label: 'Impayé', Icon: XCircle,     cls: 'text-orange-600' },
   }
@@ -44,7 +44,7 @@ export default async function AdminPage() {
           <h1 className="text-3xl font-black text-sport-fg">Admin Panel</h1>
           <p className="text-sport-gray text-sm mt-1">Vue d&apos;ensemble de la plateforme Xenotif®</p>
         </div>
-        <span className="text-[10px] font-black uppercase tracking-widest bg-red-50 text-red-600 border border-red-200 px-3 py-1.5 rounded-full">
+        <span className="text-2xs font-black uppercase tracking-widest bg-red-50 text-red-600 border border-red-200 px-3 py-1.5 rounded-full">
           Accès restreint
         </span>
       </div>
@@ -53,7 +53,7 @@ export default async function AdminPage() {
       <div className="grid grid-cols-2 md:grid-cols-4 gap-5 mb-10">
         {[
           { Icon: Users,       label: 'Utilisateurs total', value: (profiles ?? []).length.toString(), color: 'text-sport-blue',   bg: 'bg-sport-blue/10' },
-          { Icon: TrendingUp,  label: 'Abonnements actifs',  value: activeCount.toString(),            color: 'text-[#1E7F5A]', bg: 'bg-emerald-50' },
+          { Icon: TrendingUp,  label: 'Abonnements actifs',  value: activeCount.toString(),            color: 'text-sport-success', bg: 'bg-emerald-50' },
           { Icon: Clock,       label: 'Essais en cours',     value: trialCount.toString(),             color: 'text-blue-600',    bg: 'bg-blue-50' },
           { Icon: Euro,        label: 'Revenu MRR (€)',      value: `${totalRevenue.toFixed(2)} €`,    color: 'text-sport-orange', bg: 'bg-sport-orange/10' },
         ].map(({ Icon, label, value, color, bg }) => (
@@ -62,7 +62,7 @@ export default async function AdminPage() {
               <Icon size={18} className={color} aria-hidden="true" />
             </div>
             <p className="text-2xl font-black text-sport-fg">{value}</p>
-            <p className="text-[11px] text-sport-gray mt-1 leading-tight">{label}</p>
+            <p className="text-xxs text-sport-gray mt-1 leading-tight">{label}</p>
           </div>
         ))}
       </div>

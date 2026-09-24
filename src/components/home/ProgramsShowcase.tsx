@@ -46,12 +46,12 @@ export function ProgramsShowcase({ programs }: { programs: Product[] }) {
                       />
                       <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
                       {p.badge && (
-                        <span className="absolute top-3 left-3 rounded-full bg-sport-orange px-2.5 py-1 text-[11px] font-black text-white shadow-lg">
+                        <span className="absolute top-3 left-3 rounded-full bg-sport-orange px-2.5 py-1 text-xxs font-black text-white shadow-lg">
                           {p.badge}
                         </span>
                       )}
                       {discount && (
-                        <span className="absolute top-3 right-3 rounded-full bg-red-500 px-2 py-0.5 text-[11px] font-black text-white">
+                        <span className="absolute top-3 right-3 rounded-full bg-red-500 px-2 py-0.5 text-xxs font-black text-white">
                           -{discount}%
                         </span>
                       )}
@@ -59,7 +59,7 @@ export function ProgramsShowcase({ programs }: { programs: Product[] }) {
 
                     {/* Contenu */}
                     <div className="flex flex-1 flex-col p-5">
-                      <p className="text-[10px] font-bold uppercase tracking-wider text-sport-orange mb-1.5">
+                      <p className="text-2xs font-bold uppercase tracking-wider text-sport-orange mb-1.5">
                         {t('eyebrow')}
                       </p>
                       <h3 className="text-sm font-black text-sport-fg leading-snug line-clamp-2 mb-3 group-hover:text-sport-orange transition-colors">
@@ -69,17 +69,17 @@ export function ProgramsShowcase({ programs }: { programs: Product[] }) {
                       {/* Badges niveau + durée (repli sur les features si absents) */}
                       <div className="flex flex-wrap gap-1.5 mb-4">
                         {p.level && (
-                          <span className="inline-flex items-center gap-1.5 text-[10px] font-bold text-sport-fg bg-sport-card border border-sport-border px-2.5 py-1 rounded-full">
+                          <span className="inline-flex items-center gap-1.5 text-2xs font-bold text-sport-fg bg-sport-card border border-sport-border px-2.5 py-1 rounded-full">
                             <Signal size={11} className="text-sport-orange" aria-hidden="true" /> {p.level}
                           </span>
                         )}
                         {p.duration && (
-                          <span className="inline-flex items-center gap-1.5 text-[10px] font-bold text-sport-fg bg-sport-card border border-sport-border px-2.5 py-1 rounded-full">
+                          <span className="inline-flex items-center gap-1.5 text-2xs font-bold text-sport-fg bg-sport-card border border-sport-border px-2.5 py-1 rounded-full">
                             <Clock size={11} className="text-sport-orange" aria-hidden="true" /> {p.duration}
                           </span>
                         )}
                         {!p.level && !p.duration && p.features.slice(0, 2).map((f) => (
-                          <span key={f} className="text-[10px] text-sport-gray bg-sport-card border border-sport-border px-2.5 py-1 rounded-full line-clamp-1">
+                          <span key={f} className="text-2xs text-sport-gray bg-sport-card border border-sport-border px-2.5 py-1 rounded-full line-clamp-1">
                             {f}
                           </span>
                         ))}
@@ -92,8 +92,8 @@ export function ProgramsShowcase({ programs }: { programs: Product[] }) {
                             <Star key={i} size={11} className={i < Math.round(p.rating) ? 'fill-sport-orange text-sport-orange' : 'fill-sport-border text-sport-border'} />
                           ))}
                         </div>
-                        <span className="text-[11px] font-bold text-sport-orange">{p.rating}</span>
-                        <span className="text-[10px] text-sport-gray">({p.reviews.toLocaleString(locale)})</span>
+                        <span className="text-xxs font-bold text-sport-orange">{p.rating}</span>
+                        <span className="text-2xs text-sport-gray">({p.reviews.toLocaleString(locale)})</span>
                       </div>
 
                       {/* Prix + CTA */}

@@ -15,7 +15,7 @@ export function XpLevelBar({ xp, levelKey, xpInLevel, xpForNext, compact = false
             <Zap size={16} className="text-sport-orange" aria-hidden="true" />
           </div>
           <div>
-            <p className="text-[10px] font-bold uppercase tracking-widest text-sport-gray leading-none">{t('level')}</p>
+            <p className="text-2xs font-bold uppercase tracking-widest text-sport-gray leading-none">{t('level')}</p>
             <p className="text-base font-black text-sport-fg leading-tight">{t(`levels.${levelKey}`)}</p>
           </div>
         </div>
@@ -25,7 +25,7 @@ export function XpLevelBar({ xp, levelKey, xpInLevel, xpForNext, compact = false
         <motion.div className="bg-sport-orange h-2 rounded-full" initial={{ width: 0 }} whileInView={{ width: `${pct}%` }} viewport={{ once: true }} transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }} />
       </div>
       {xpForNext && (
-        <p className="text-[11px] text-sport-gray mt-1.5 text-right">{xpInLevel}/{xpForNext} {t('xp')} · {t('nextLevel')}</p>
+        <p className="text-xxs text-sport-gray mt-1.5 text-right">{xpInLevel}/{xpForNext} {t('xp')} · {t('nextLevel')}</p>
       )}
     </div>
   )

@@ -35,7 +35,7 @@ export function CoachAd() {
 
         {/* Texte + CTA à côté */}
         <div className="text-center md:text-left">
-          <span className="inline-flex items-center gap-1.5 text-[11px] font-black uppercase tracking-widest text-sport-orange bg-sport-orange/10 border border-sport-orange/20 rounded-full px-3 py-1">
+          <span className="inline-flex items-center gap-1.5 text-xxs font-black uppercase tracking-widest text-sport-orange bg-sport-orange/10 border border-sport-orange/20 rounded-full px-3 py-1">
             <Sparkles size={12} aria-hidden="true" /> {t('badge')}
           </span>
           <h2 className="text-3xl md:text-4xl font-black text-sport-fg mt-4">{t('title')}</h2>

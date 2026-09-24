@@ -51,7 +51,7 @@ export function PushToggle() {
       </div>
       <div className="min-w-0 flex-1">
         <p className="text-sm font-bold text-sport-fg">{t('title')}</p>
-        <p className="text-[11px] text-sport-gray leading-relaxed">
+        <p className="text-xxs text-sport-gray leading-relaxed">
           {state === 'denied' ? t('denied') : state === 'on' ? t('onHint') : t('offHint')}
         </p>
       </div>

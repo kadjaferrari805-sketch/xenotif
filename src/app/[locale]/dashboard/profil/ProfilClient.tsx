@@ -79,7 +79,7 @@ export function ProfilClient({ initialName, email, userId }: { initialName: stri
                 className="pl-10 disabled:opacity-50 disabled:cursor-not-allowed"
               />
             </div>
-            <p className="text-[11px] text-sport-gray mt-1.5">
+            <p className="text-xxs text-sport-gray mt-1.5">
               {t('profil.emailNote')}
             </p>
           </div>

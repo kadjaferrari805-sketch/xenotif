@@ -21,7 +21,7 @@ export function MarqueeStrip() {
         {all.map((item, i) => (
           <span
             key={i}
-            className="inline-flex items-center gap-2 text-sport-fg font-black text-[11px] tracking-widest uppercase px-7"
+            className="inline-flex items-center gap-2 text-sport-fg font-black text-xxs tracking-widest uppercase px-7"
           >
             <span>{item.emoji}</span>
             <span>{item.text}</span>

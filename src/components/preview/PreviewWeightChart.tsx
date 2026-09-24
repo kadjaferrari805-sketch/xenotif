@@ -12,13 +12,13 @@ export function PreviewWeightChart({ points, unit, goal }: { points: number[]; u
     <div className="bg-sport-card border border-sport-border rounded-2xl p-5">
       <div className="flex items-baseline justify-between mb-3">
         <h3 className="text-sm font-black text-sport-fg">Suivi du poids</h3>
-        <span className="text-xs font-bold text-[#1E7F5A]">{delta} {unit}</span>
+        <span className="text-xs font-bold text-sport-success">{delta} {unit}</span>
       </div>
       <svg viewBox={`0 0 ${w} ${h}`} className="w-full" role="img" aria-label="Évolution du poids">
         <path d={d} fill="none" stroke="#FF6B00" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
         <circle cx={x(points.length - 1)} cy={y(last)} r="3.5" fill="#FF6B00" />
       </svg>
-      <div className="flex items-center justify-between mt-2 text-[11px] text-sport-gray">
+      <div className="flex items-center justify-between mt-2 text-xxs text-sport-gray">
         <span>{last} {unit}</span>
         <span>Objectif {goal} {unit}</span>
       </div>

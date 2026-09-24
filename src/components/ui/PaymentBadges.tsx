@@ -169,7 +169,7 @@ export function SecurePaymentBar() {
   return (
     <div className="flex flex-col items-center gap-4">
       {/* Trust labels */}
-      <div className="flex flex-wrap items-center justify-center gap-4 text-[11px] text-sport-gray">
+      <div className="flex flex-wrap items-center justify-center gap-4 text-xxs text-sport-gray">
         {[
           { icon: '🔒', text: 'Paiement 100 % sécurisé' },
           { icon: '🛡️', text: 'Transactions SSL chiffrées' },
@@ -187,7 +187,7 @@ export function SecurePaymentBar() {
       <PaymentBadgesRow size="md" />
 
       {/* Stripe powered */}
-      <p className="text-[10px] text-sport-gray flex items-center gap-1.5">
+      <p className="text-2xs text-sport-gray flex items-center gap-1.5">
         <svg viewBox="0 0 60 25" width="36" height="15" aria-label="Stripe" role="img">
           <rect width="60" height="25" rx="4" fill="#635BFF" />
           <text x="10" y="17" fontFamily="Arial" fontWeight="700" fontSize="11" fill="white">stripe</text>
