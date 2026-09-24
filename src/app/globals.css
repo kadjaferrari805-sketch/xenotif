@@ -55,8 +55,8 @@
   /* Rayons, ombres et mouvement : DÉCLARÉS, AUCUN usage migré dans ce lot.
      Les 571 rounded-* et les 122 shadow-* restent en l'état. */
   --radius-pill: 9999px;
-  --radius-card: 16px;
-  --radius-control: 12px;
+  --radius-card: 1rem;
+  --radius-control: 0.75rem;
   --shadow-xeno-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
   --shadow-xeno-md: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
   --shadow-xeno-lg: 0 25px 50px -12px rgb(0 0 0 / 0.25);
