@@ -21,7 +21,7 @@ export default function Error({ error, reset }: { error: Error & { digest?: stri
         <button type="button" onClick={reset} className="inline-flex items-center gap-2 rounded-xl bg-sport-orange px-5 py-2.5 text-sm font-bold text-white hover:bg-orange-600 transition-colors">
           <RefreshCw size={14} /> Réessayer
         </button>
-        <Link href="/" className="inline-flex items-center gap-2 rounded-xl border border-sport-border px-5 py-2.5 text-sm font-bold text-sport-fg hover:bg-sport-card transition-colors">
+        <Link href="/" className="inline-flex items-center gap-2 rounded-control border border-sport-border px-5 py-2.5 text-sm font-bold text-sport-fg hover:bg-sport-card transition-colors">
           <Home size={14} /> Accueil
         </Link>
       </div>

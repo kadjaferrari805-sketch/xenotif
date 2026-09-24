@@ -217,7 +217,7 @@ export function SmartwatchClient({ initialData }: { initialData: DashboardData }
             <button type="button"
               onClick={() => handleSync()}
               disabled={syncing}
-              className="flex items-center gap-2 bg-sport-card border border-sport-border hover:border-sport-fg/20 rounded-xl px-4 py-2 text-xs font-bold text-sport-fg transition-all"
+              className="flex items-center gap-2 bg-sport-card border border-sport-border hover:border-sport-fg/20 rounded-control px-4 py-2 text-xs font-bold text-sport-fg transition-all"
             >
               {syncing ? <Loader2 size={13} className="animate-spin text-sport-orange" /> : <RefreshCw size={13} className="text-sport-orange" />}
               {t('sync')}
