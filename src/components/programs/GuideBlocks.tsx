@@ -36,7 +36,7 @@ export async function GuideBlocks({ blocks }: { blocks: GuideBlock[] }) {
               <div key={i} className="grid grid-cols-2 sm:grid-cols-3 gap-3">
                 {b.items.map((m, j) => (
                   <div key={j} className="bg-sport-card border border-sport-border rounded-xl p-3">
-                    <p className="text-[10px] uppercase tracking-wider text-sport-gray">{m.label}</p>
+                    <p className="text-2xs uppercase tracking-wider text-sport-gray">{m.label}</p>
                     <p className="text-sm font-bold text-sport-fg mt-0.5">{m.value}</p>
                   </div>
                 ))}
@@ -49,7 +49,7 @@ export async function GuideBlocks({ blocks }: { blocks: GuideBlock[] }) {
                   <thead>
                     <tr className="border-b border-sport-border">
                       {b.headers.map((h, j) => (
-                        <th key={j} className="py-2 pr-4 text-[11px] uppercase tracking-wider text-sport-gray font-bold whitespace-nowrap">{h}</th>
+                        <th key={j} className="py-2 pr-4 text-xxs uppercase tracking-wider text-sport-gray font-bold whitespace-nowrap">{h}</th>
                       ))}
                     </tr>
                   </thead>
@@ -70,9 +70,9 @@ export async function GuideBlocks({ blocks }: { blocks: GuideBlock[] }) {
               <div key={i} className="bg-sport-card border border-sport-border rounded-2xl p-5">
                 <div className="flex items-center justify-between gap-3 mb-2">
                   <h4 className="font-black text-sport-fg">{b.name}</h4>
-                  <span className="shrink-0 text-[10px] font-bold px-2.5 py-1 rounded-full bg-sport-orange/10 text-sport-orange">{b.level}</span>
+                  <span className="shrink-0 text-2xs font-bold px-2.5 py-1 rounded-full bg-sport-orange/10 text-sport-orange">{b.level}</span>
                 </div>
-                <p className="text-[11px] text-sport-gray mb-2">{b.muscles}</p>
+                <p className="text-xxs text-sport-gray mb-2">{b.muscles}</p>
                 <p className="text-sm text-sport-gray leading-relaxed"><strong className="text-sport-fg">{t('technique')}</strong>{b.technique}</p>
                 {b.mistakes && <p className="text-sm text-sport-gray leading-relaxed mt-1.5"><strong className="text-sport-fg">{t('mistakes')}</strong>{b.mistakes}</p>}
               </div>

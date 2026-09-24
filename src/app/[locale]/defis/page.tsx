@@ -47,7 +47,7 @@ export default async function DefisPage({ params }: { params: Promise<{ locale: 
     <div className="min-h-screen bg-sport-dark text-sport-fg">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(listSchema) }} />
       <section className="max-w-5xl mx-auto px-6 py-16 md:py-20">
-        <p className="text-[11px] font-black tracking-[3px] uppercase text-sport-orange mb-3">{t('eyebrow')}</p>
+        <p className="text-xxs font-black tracking-[3px] uppercase text-sport-orange mb-3">{t('eyebrow')}</p>
         <h1 className="text-4xl md:text-5xl font-black mb-4">{t('pageTitle')}</h1>
         <p className="text-lg text-sport-fg max-w-2xl mb-12">{t('pageSubtitle')}</p>
 

@@ -68,7 +68,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 const CATEGORY_COLORS: Record<string, string> = {
   Musculation: 'bg-sport-orange/10 text-sport-orange border-sport-orange/20',
-  Nutrition: 'bg-green-50 text-[#1E7F5A] border-green-200',
+  Nutrition: 'bg-green-50 text-sport-success border-green-200',
   Running: 'bg-blue-50 text-blue-600 border-blue-200',
   HIIT: 'bg-red-50 text-red-600 border-red-200',
   Récupération: 'bg-purple-50 text-purple-600 border-purple-200',
@@ -270,7 +270,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                 <line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" />
               </svg>
             </Link>
-            <p className="text-[11px] text-sport-gray mt-3">{t('cta.note')}</p>
+            <p className="text-xxs text-sport-gray mt-3">{t('cta.note')}</p>
             {disciplineMeta && disciplineSlug && (
               <p className="mt-6 pt-6 border-t border-sport-border/60 text-sm">
                 <Link href={`/disciplines/${disciplineSlug}`} className="inline-flex items-center gap-1.5 text-sport-orange font-bold hover:underline">

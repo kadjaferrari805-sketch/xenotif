@@ -14,7 +14,7 @@ import type { BlogPost } from '@/lib/blog/posts'
 // le SEO est préservé, la recherche est une amélioration progressive.
 const CATEGORY_COLORS: Record<string, string> = {
   Musculation: 'bg-sport-orange/10 text-sport-orange border-sport-orange/20',
-  Nutrition: 'bg-green-50 text-[#1E7F5A] border-green-200',
+  Nutrition: 'bg-green-50 text-sport-success border-green-200',
   Running: 'bg-blue-50 text-blue-600 border-blue-200',
   HIIT: 'bg-red-50 text-red-600 border-red-200',
   Récupération: 'bg-purple-50 text-purple-600 border-purple-200',

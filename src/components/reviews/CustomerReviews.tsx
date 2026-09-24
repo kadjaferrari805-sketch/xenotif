@@ -66,11 +66,11 @@ export function CustomerReviews({ kind, productId }: Props) {
           <div key={r.id} className={`bg-sport-card border border-sport-border rounded-xl p-4${isPlatform ? ' shrink-0 w-[300px] mr-4 self-stretch' : ''}`}>
             <div className="flex items-center justify-between mb-1.5">
               <span className="text-sm font-bold text-sport-fg">{r.author_name}</span>
-              <span className="text-[10px] font-bold text-[#1E7F5A]">{t('verified')}</span>
+              <span className="text-2xs font-bold text-sport-success">{t('verified')}</span>
             </div>
             <StarRating value={r.rating} />
             <p className="text-sm text-sport-gray mt-2 leading-relaxed whitespace-pre-wrap">{r.comment}</p>
-            <p className="text-[10px] text-sport-gray mt-2">{new Date(r.created_at).toLocaleDateString(locale === 'en' ? 'en-US' : 'fr-FR')}</p>
+            <p className="text-2xs text-sport-gray mt-2">{new Date(r.created_at).toLocaleDateString(locale === 'en' ? 'en-US' : 'fr-FR')}</p>
           </div>
         ))
         // Accueil (plateforme) : carrousel continu. Fiche produit : liste verticale.
@@ -80,7 +80,7 @@ export function CustomerReviews({ kind, productId }: Props) {
       })()}
 
       <div className={isPlatform ? 'text-center' : ''}>
-        {done && <p className="text-[#1E7F5A] text-sm font-semibold">{t('thanks')}</p>}
+        {done && <p className="text-sport-success text-sm font-semibold">{t('thanks')}</p>}
 
         {!done && elig && (
           elig.eligible ? (

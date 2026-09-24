@@ -42,7 +42,7 @@ export default async function DashboardLayout({ children }: { children: React.Re
             <Avatar name={fullName ?? user.email ?? 'U'} size={40} />
             <div className="min-w-0 flex-1">
               <p className="text-sm font-bold text-sport-fg truncate">{fullName ?? t('athlete')}</p>
-              <p className="text-[11px] text-sport-gray truncate">{user.email}</p>
+              <p className="text-xxs text-sport-gray truncate">{user.email}</p>
             </div>
             <NotificationBell align="left" />
           </div>
@@ -94,7 +94,7 @@ export default async function DashboardLayout({ children }: { children: React.Re
         {NAV.map(({ href, key, Icon }) => (
           <Link key={href} href={href} className="flex flex-1 min-w-0 flex-col items-center gap-1 px-0.5 py-1.5 text-sport-gray hover:text-sport-orange transition-colors">
             <Icon size={18} aria-hidden="true" />
-            <span className="text-[9px] font-semibold truncate max-w-full">{t(`navShort.${key}`)}</span>
+            <span className="text-micro font-semibold truncate max-w-full">{t(`navShort.${key}`)}</span>
           </Link>
         ))}
       </nav>

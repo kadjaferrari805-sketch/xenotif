@@ -114,7 +114,7 @@ export function Features() {
                   <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent" />
                   {/* Top label */}
                   <div className="absolute top-3 right-3">
-                    <span className={`text-[10px] font-bold px-2.5 py-1 rounded-full ${accent.tag}`}>
+                    <span className={`text-2xs font-bold px-2.5 py-1 rounded-full ${accent.tag}`}>
                       {tr.tag}
                     </span>
                   </div>
@@ -134,7 +134,7 @@ export function Features() {
                   {/* Stats chips */}
                   <div className="flex flex-wrap gap-1.5 mb-4">
                     {tr.stats.map((s) => (
-                      <span key={s} className="text-[10px] text-sport-gray bg-sport-dark border border-sport-border px-2.5 py-1 rounded-full">
+                      <span key={s} className="text-2xs text-sport-gray bg-sport-dark border border-sport-border px-2.5 py-1 rounded-full">
                         {s}
                       </span>
                     ))}

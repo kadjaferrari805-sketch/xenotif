@@ -29,7 +29,7 @@ const FREE_TXT: Record<string, { title: string; sub: string; cta: string }> = {
 
 const STATUS_CLS: Record<string, string> = {
   trialing: 'bg-blue-50 text-blue-700 border-blue-200',
-  active:   'bg-emerald-50 text-[#1E7F5A] border-emerald-200',
+  active:   'bg-emerald-50 text-sport-success border-emerald-200',
   canceled: 'bg-red-50 text-red-700 border-red-200',
   past_due: 'bg-orange-50 text-orange-700 border-orange-200',
   free:     'bg-sport-fg/10 text-sport-gray border-sport-border',
@@ -37,7 +37,7 @@ const STATUS_CLS: Record<string, string> = {
 
 function StatusBadge({ status, label }: { status: string; label: string }) {
   const cls = STATUS_CLS[status] ?? STATUS_CLS.active
-  return <span className={`inline-flex items-center gap-1.5 text-[10px] font-black uppercase tracking-wider px-3 py-1 rounded-full border ${cls}`}>{label}</span>
+  return <span className={`inline-flex items-center gap-1.5 text-2xs font-black uppercase tracking-wider px-3 py-1 rounded-full border ${cls}`}>{label}</span>
 }
 
 export default async function DashboardPage() {
@@ -172,7 +172,7 @@ export default async function DashboardPage() {
           <div>
             <div className="flex items-center gap-3 mb-3">
               <StatusBadge status={access.isPro ? 'active' : 'free'} label={access.isPro ? t('statusShort.active') : t('overview.freeBadge')} />
-              <span className="text-[11px] text-sport-gray font-semibold uppercase tracking-wider">
+              <span className="text-xxs text-sport-gray font-semibold uppercase tracking-wider">
                 {t('overview.plan', { plan: access.isPro ? 'Pro' : t('overview.freePlan') })}
               </span>
             </div>
@@ -195,14 +195,14 @@ export default async function DashboardPage() {
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
         {[
           { icon: Flame,      label: t('overview.statSessionsWeek'), value: sessionsThisWeek.toString(), color: 'text-sport-orange' },
-          { icon: CheckCircle,label: t('overview.statModules'),      value: totalSessions.toString(), color: 'text-[#1E7F5A]' },
+          { icon: CheckCircle,label: t('overview.statModules'),      value: totalSessions.toString(), color: 'text-sport-success' },
           { icon: TrendingUp, label: t('overview.statActiveDays'),   value: activeDays.toString(),    color: 'text-sport-blue' },
           { icon: Award,      label: t('overview.statBadges'),       value: totalSessions >= 5 ? '1' : '0', color: 'text-yellow-600' },
         ].map(({ icon: Icon, label, value, color }) => (
           <div key={label} className="bg-sport-card border border-sport-border rounded-xl p-4">
             <Icon size={18} className={`${color} mb-2`} aria-hidden="true" />
             <p className="text-2xl font-black text-sport-fg">{value}</p>
-            <p className="text-[11px] text-sport-gray mt-0.5 leading-tight">{label}</p>
+            <p className="text-xxs text-sport-gray mt-0.5 leading-tight">{label}</p>
           </div>
         ))}
       </div>
@@ -231,7 +231,7 @@ export default async function DashboardPage() {
                 <div className="w-full bg-sport-dark rounded-full h-1.5 mb-2">
                   <div className="bg-sport-orange h-1.5 rounded-full transition-all" style={{ width: `${pct}%` }} />
                 </div>
-                <p className="text-[11px] text-sport-gray">{t('overview.sessions', { completed, total })}</p>
+                <p className="text-xxs text-sport-gray">{t('overview.sessions', { completed, total })}</p>
               </Link>
             )
           })}
@@ -259,7 +259,7 @@ export default async function DashboardPage() {
                   </div>
                   <div>
                     <p className="text-sm font-bold text-sport-fg capitalize">{w.discipline}</p>
-                    <p className="text-[11px] text-sport-gray">{new Date(w.completed_at).toLocaleDateString(dateLocale)}</p>
+                    <p className="text-xxs text-sport-gray">{new Date(w.completed_at).toLocaleDateString(dateLocale)}</p>
                   </div>
                 </div>
                 <span className="text-xs text-sport-gray">{t('overview.min', { minutes: w.duration_minutes })}</span>

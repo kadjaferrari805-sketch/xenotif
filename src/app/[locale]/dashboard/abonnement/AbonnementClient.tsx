@@ -19,14 +19,14 @@ type Billing = { card: Card | null; invoices: Invoice[] }
 
 const STATUS_CLS: Record<string, string> = {
   trialing: 'bg-blue-50 text-blue-700 border-blue-200',
-  active:   'bg-emerald-50 text-[#1E7F5A] border-emerald-200',
+  active:   'bg-emerald-50 text-sport-success border-emerald-200',
   canceled: 'bg-red-50 text-red-700 border-red-200',
   past_due: 'bg-orange-50 text-orange-700 border-orange-200',
 }
 
 function StatusBadge({ status, label }: { status: string; label: string }) {
   const cls = STATUS_CLS[status] ?? STATUS_CLS.active
-  return <span className={`inline-flex items-center gap-1.5 text-[11px] font-black uppercase tracking-wider px-3 py-1.5 rounded-full border ${cls}`}>{label}</span>
+  return <span className={`inline-flex items-center gap-1.5 text-xxs font-black uppercase tracking-wider px-3 py-1.5 rounded-full border ${cls}`}>{label}</span>
 }
 
 // `initialSub` est récupéré côté serveur → ouverture immédiate, sans spinner ni
@@ -240,7 +240,7 @@ export function AbonnementClient({ initialSub }: { initialSub: Sub | null }) {
           </div>
           <div className="text-right">
             <p className="text-2xl font-black text-sport-fg">{'9,99 €'}</p>
-            <p className="text-[11px] text-sport-gray">{t('perMonth')}</p>
+            <p className="text-xxs text-sport-gray">{t('perMonth')}</p>
           </div>
         </div>
 
@@ -261,7 +261,7 @@ export function AbonnementClient({ initialSub }: { initialSub: Sub | null }) {
             </div>
           )}
           <div className="flex items-center gap-3 text-sm">
-            <ShieldCheck size={15} className="text-[#1E7F5A] shrink-0" />
+            <ShieldCheck size={15} className="text-sport-success shrink-0" />
             <span className="text-sport-gray">{t('securePayment')}</span>
           </div>
         </div>
@@ -273,7 +273,7 @@ export function AbonnementClient({ initialSub }: { initialSub: Sub | null }) {
         <ul className="space-y-2.5">
           {(t.raw('featuresPro') as string[]).map(item => (
             <li key={item} className="flex items-center gap-2.5 text-sm text-sport-gray">
-              <CheckCircle size={13} className="text-[#1E7F5A] shrink-0" />
+              <CheckCircle size={13} className="text-sport-success shrink-0" />
               {item}
             </li>
           ))}
@@ -302,7 +302,7 @@ export function AbonnementClient({ initialSub }: { initialSub: Sub | null }) {
               <p className="text-sport-gray text-sm mb-5">{t('noCard')}</p>
             )}
 
-            <p className="text-[11px] font-bold text-sport-fg uppercase tracking-wider mb-3">{t('invoicesTitle')}</p>
+            <p className="text-xxs font-bold text-sport-fg uppercase tracking-wider mb-3">{t('invoicesTitle')}</p>
             {billing && billing.invoices.length > 0 ? (
               <div className="space-y-2.5">
                 {billing.invoices.map(inv => (
@@ -331,7 +331,7 @@ export function AbonnementClient({ initialSub }: { initialSub: Sub | null }) {
         >
           {portalLoading ? <><Loader size={16} className="text-current" iconClassName="text-current" />{t('loading')}</> : <><CreditCard size={14} /> {t('updateCard')}</>}
         </button>
-        <p className="text-[11px] text-sport-gray text-center">{t('updateCardHint')}</p>
+        <p className="text-xxs text-sport-gray text-center">{t('updateCardHint')}</p>
         {portalError && <Alert variant="warning">{portalError}</Alert>}
 
         {(isTrialing || isActive) && !isCanceled && (
@@ -345,7 +345,7 @@ export function AbonnementClient({ initialSub }: { initialSub: Sub | null }) {
 
         {isCanceled && (
           <div className="text-center p-4 bg-emerald-500/5 border border-emerald-200 rounded-xl">
-            <p className="text-[#1E7F5A] text-sm font-semibold">{t('cancelConfirmed')}</p>
+            <p className="text-sport-success text-sm font-semibold">{t('cancelConfirmed')}</p>
             <p className="text-sport-gray text-xs mt-1">{t('cancelConfirmedDesc')}</p>
             {sub.cancel_at_period_end && sub.status !== 'canceled' ? (
               <>
@@ -358,7 +358,7 @@ export function AbonnementClient({ initialSub }: { initialSub: Sub | null }) {
                     ? <><Loader size={14} className="text-white" iconClassName="text-white" />{t('reactivating')}</>
                     : <><RotateCcw size={14} /> {t('reactivate')}</>}
                 </button>
-                <p className="text-[11px] text-sport-gray mt-2">{t('reactivateHint')}</p>
+                <p className="text-xxs text-sport-gray mt-2">{t('reactivateHint')}</p>
               </>
             ) : (
               <Link href="/auth/signup?plan=pro" className="mt-4 inline-flex items-center justify-center gap-2 bg-sport-orange text-white px-6 py-2.5 rounded-full font-bold text-sm hover:bg-orange-600 transition-all">
@@ -372,7 +372,7 @@ export function AbonnementClient({ initialSub }: { initialSub: Sub | null }) {
         )}
       </div>
 
-      <p className="text-center text-[11px] text-sport-gray mt-6">
+      <p className="text-center text-xxs text-sport-gray mt-6">
         {t('questions')} <a href="mailto:contact@xenotif.com" className="text-sport-orange hover:underline">contact@xenotif.com</a>
       </p>
     </div>

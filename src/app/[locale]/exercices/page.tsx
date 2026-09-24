@@ -85,7 +85,7 @@ export default async function ExercicesHubPage({
     <div className="min-h-screen bg-sport-dark text-sport-fg">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(listSchema) }} />
       <section className="max-w-5xl mx-auto px-6 py-16 md:py-20">
-        <p className="text-[11px] font-bold tracking-[2px] uppercase text-sport-orange mb-3">{t('hubEyebrow')}</p>
+        <p className="text-xxs font-bold tracking-[2px] uppercase text-sport-orange mb-3">{t('hubEyebrow')}</p>
         <h1 className="text-4xl md:text-5xl font-black mb-4">{t('hubTitle')}</h1>
         <p className="text-lg text-sport-fg max-w-2xl mb-6">{t('hubSubtitle')}</p>
 
@@ -157,7 +157,7 @@ export default async function ExercicesHubPage({
                 <h2 className="text-base font-black mb-1.5 group-hover:text-sport-orange transition-colors">{ex.name}</h2>
                 <p className="text-xs text-sport-gray leading-relaxed mb-3 line-clamp-2">{ex.muscles}</p>
                 <div className="flex items-center justify-between">
-                  <span className="inline-flex items-center gap-1 text-[10px] font-bold px-2 py-0.5 rounded-full bg-sport-orange/10 text-sport-orange">
+                  <span className="inline-flex items-center gap-1 text-2xs font-bold px-2 py-0.5 rounded-full bg-sport-orange/10 text-sport-orange">
                     <Zap size={10} aria-hidden="true" /> {ex.level}
                   </span>
                   <span className="inline-flex items-center gap-1 text-sport-orange text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity">

@@ -66,12 +66,12 @@ export function ProductCard({ product, index = 0, source = 'shop' }: ProductCard
             </div>
           </div>
           <div className="p-4">
-            <p className="text-[10px] font-bold uppercase tracking-wider text-sport-gray mb-1">{product.brand} · Amazon</p>
+            <p className="text-2xs font-bold uppercase tracking-wider text-sport-gray mb-1">{product.brand} · Amazon</p>
             <h3 className="text-sm font-black text-sport-fg group-hover:text-sport-orange transition-colors line-clamp-2 mb-2">{product.name}</h3>
             <div className="flex items-center gap-1.5 mb-3">
               <div className="flex">{Array.from({ length: 5 }).map((_, i) => <Star key={i} size={10} className={i < Math.round(product.rating) ? 'fill-sport-orange text-sport-orange' : 'fill-sport-border text-sport-border'} />)}</div>
-              <span className="text-[11px] font-bold text-sport-orange">{product.rating}</span>
-              <span className="text-[10px] text-sport-gray">({product.reviews.toLocaleString(locale)})</span>
+              <span className="text-xxs font-bold text-sport-orange">{product.rating}</span>
+              <span className="text-2xs text-sport-gray">({product.reviews.toLocaleString(locale)})</span>
             </div>
             <div className="flex items-center justify-between">
               <div>
@@ -112,14 +112,14 @@ export function ProductCard({ product, index = 0, source = 'shop' }: ProductCard
           </div>
         </Link>
         <div className="flex flex-1 flex-col p-4">
-          <p className="text-[10px] font-bold uppercase tracking-wider text-sport-gray mb-0.5">{product.brand} · {t(`categories.${product.category}`)}</p>
+          <p className="text-2xs font-bold uppercase tracking-wider text-sport-gray mb-0.5">{product.brand} · {t(`categories.${product.category}`)}</p>
           <Link href={`/boutique/${product.slug}`}>
             <h3 className="text-sm font-black text-sport-fg group-hover:text-sport-orange transition-colors line-clamp-2 mb-2">{product.name}</h3>
           </Link>
           <div className="flex items-center gap-1.5 mb-3">
             <div className="flex">{Array.from({ length: 5 }).map((_, i) => <Star key={i} size={10} className={i < Math.round(product.rating) ? 'fill-sport-orange text-sport-orange' : 'fill-sport-border text-sport-border'} />)}</div>
-            <span className="text-[11px] font-bold text-sport-orange">{product.rating}</span>
-            <span className="text-[10px] text-sport-gray">({product.reviews.toLocaleString(locale)})</span>
+            <span className="text-xxs font-bold text-sport-orange">{product.rating}</span>
+            <span className="text-2xs text-sport-gray">({product.reviews.toLocaleString(locale)})</span>
           </div>
           <div className="mt-auto flex items-center justify-between gap-2">
             <div>

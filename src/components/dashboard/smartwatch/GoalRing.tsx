@@ -24,7 +24,7 @@ export function GoalRing({ label, value, goal, unit, color, icon }: GoalRingProp
           <span className="text-xs font-bold text-sport-gray">{label}</span>
         </div>
         {done && (
-          <span className="text-[10px] font-black text-[#1E7F5A] bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-full">
+          <span className="text-2xs font-black text-sport-success bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-full">
             {t('goalReached')}
           </span>
         )}
@@ -49,7 +49,7 @@ export function GoalRing({ label, value, goal, unit, color, icon }: GoalRingProp
             }}
           />
         </div>
-        <p className="text-[10px] text-sport-gray mt-1.5 text-right">{Math.round(pct)}%</p>
+        <p className="text-2xs text-sport-gray mt-1.5 text-right">{Math.round(pct)}%</p>
       </div>
     </div>
   )

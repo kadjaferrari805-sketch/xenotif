@@ -103,7 +103,7 @@ function ContactForm() {
               </div>
               <div className="flex items-start gap-3">
                 <div className="w-9 h-9 rounded-xl bg-emerald-50 border border-emerald-200 flex items-center justify-center shrink-0">
-                  <MapPin size={15} className="text-[#1E7F5A]" />
+                  <MapPin size={15} className="text-sport-success" />
                 </div>
                 <div>
                   <p className="text-xs font-bold text-sport-fg mb-0.5">Xenotif®</p>
@@ -148,7 +148,7 @@ function ContactForm() {
           {success ? (
             <Card className="p-10 text-center border-emerald-200 hover:-translate-y-0 hover:shadow-sm">
               <div className="w-16 h-16 bg-emerald-50 rounded-full flex items-center justify-center mx-auto mb-5">
-                <CheckCircle size={28} className="text-[#1E7F5A]" />
+                <CheckCircle size={28} className="text-sport-success" />
               </div>
               <h2 className="text-xl font-black text-sport-fg mb-2">{t('successTitle')}</h2>
               <p className="text-sport-gray text-sm mb-6">

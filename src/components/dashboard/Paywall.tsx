@@ -32,7 +32,7 @@ export async function Paywall() {
           {t('cta')} <ArrowRight size={14} aria-hidden="true" />
         </Link>
 
-        <p className="text-[11px] text-sport-gray mt-4">{t('trialNote')}</p>
+        <p className="text-xxs text-sport-gray mt-4">{t('trialNote')}</p>
       </div>
     </div>
   )

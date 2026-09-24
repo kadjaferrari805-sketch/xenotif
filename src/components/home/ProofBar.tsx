@@ -75,7 +75,7 @@ export function ProofBar() {
                 <Counter end={stat.end} suffix={stat.suffix} active={inView} />
               </div>
               <div className="text-xs font-bold text-sport-fg uppercase tracking-widest mt-1">{labels[i].label}</div>
-              <span className="text-[11px] text-sport-gray">{labels[i].sublabel}</span>
+              <span className="text-xxs text-sport-gray">{labels[i].sublabel}</span>
             </motion.div>
             </Tilt3D>
           ))}

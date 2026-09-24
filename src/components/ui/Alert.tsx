@@ -5,7 +5,7 @@ export type AlertVariant = 'info' | 'success' | 'warning' | 'error'
 
 const VARIANT_STYLE: Record<AlertVariant, { wrap: string; icon: React.ElementType }> = {
   info: { wrap: 'bg-sport-gray-light border-sport-border text-sport-fg', icon: Info },
-  success: { wrap: 'bg-emerald-50 border-emerald-200 text-[#1E7F5A]', icon: CheckCircle2 },
+  success: { wrap: 'bg-emerald-50 border-emerald-200 text-sport-success', icon: CheckCircle2 },
   warning: { wrap: 'bg-amber-50 border-amber-200 text-amber-800', icon: AlertTriangle },
   error: { wrap: 'bg-red-50 border-red-200 text-red-700', icon: XCircle },
 }

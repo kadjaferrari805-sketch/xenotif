@@ -62,15 +62,15 @@ export function DeviceCard({ provider, connection, onConnect, onDisconnect, onSy
       {/* Connected badge */}
       {isConnected && (
         <div className="absolute top-3 right-3 flex items-center gap-1.5 bg-emerald-50 border border-emerald-200 rounded-full px-2.5 py-1">
-          <CheckCircle2 size={10} className="text-[#1E7F5A]" />
-          <span className="text-[10px] text-[#1E7F5A] font-bold">{t('connected')}</span>
+          <CheckCircle2 size={10} className="text-sport-success" />
+          <span className="text-2xs text-sport-success font-bold">{t('connected')}</span>
         </div>
       )}
 
       {provider.comingSoon && (
         <div className="absolute top-3 right-3 flex items-center gap-1.5 bg-sport-fg/5 border border-sport-fg/10 rounded-full px-2.5 py-1">
           <Clock size={9} className="text-sport-gray" />
-          <span className="text-[10px] text-sport-gray font-bold">{t('comingSoon')}</span>
+          <span className="text-2xs text-sport-gray font-bold">{t('comingSoon')}</span>
         </div>
       )}
 
@@ -84,13 +84,13 @@ export function DeviceCard({ provider, connection, onConnect, onDisconnect, onSy
         </div>
         <div>
           <p className="text-sm font-black text-sport-fg">{provider.name}</p>
-          <p className="text-[11px] text-sport-gray">{provider.comingSoon ? t('comingSoonDesc') : provider.description}</p>
+          <p className="text-xxs text-sport-gray">{provider.comingSoon ? t('comingSoonDesc') : provider.description}</p>
         </div>
       </div>
 
       {/* Last sync */}
       {lastSync && (
-        <p className="text-[10px] text-sport-gray mb-3 flex items-center gap-1">
+        <p className="text-2xs text-sport-gray mb-3 flex items-center gap-1">
           <RefreshCw size={9} />
           {t('syncedOn', { date: lastSync })}
         </p>

@@ -53,11 +53,11 @@ export function Newsletter() {
       <div aria-hidden="true" className="absolute bottom-0 right-0 w-96 h-96 bg-sport-blue/5 rounded-full blur-3xl pointer-events-none" />
 
       <div className="relative max-w-2xl mx-auto text-center">
-        <span className="inline-flex items-center gap-2 border border-sport-orange/30 bg-sport-orange/10 text-sport-orange text-[11px] font-bold tracking-[2px] uppercase px-4 py-2 rounded-full mb-4">
+        <span className="inline-flex items-center gap-2 border border-sport-orange/30 bg-sport-orange/10 text-sport-orange text-xxs font-bold tracking-[2px] uppercase px-4 py-2 rounded-full mb-4">
           <Gift size={12} aria-hidden="true" />
           {t('giftBadge')}
         </span>
-        <p className="text-[11px] font-bold uppercase tracking-[2px] text-sport-gray mb-4">{t('eyebrow')}</p>
+        <p className="text-xxs font-bold uppercase tracking-[2px] text-sport-gray mb-4">{t('eyebrow')}</p>
 
         <h2 id="newsletter-title" className="text-3d text-4xl md:text-5xl font-black text-sport-fg mb-4 leading-tight">
           {t('titleTop')}
@@ -170,7 +170,7 @@ export function Newsletter() {
         )}
 
         {!submitted && (
-          <p className="text-[11px] text-sport-gray mt-4">
+          <p className="text-xxs text-sport-gray mt-4">
             {t('privacyNote')}
           </p>
         )}

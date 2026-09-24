@@ -47,7 +47,7 @@ export default async function ProgramsHubPage({ params }: { params: Promise<{ lo
     <div className="min-h-screen bg-sport-dark text-sport-fg">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(listSchema) }} />
       <section className="max-w-5xl mx-auto px-6 py-16 md:py-20">
-        <p className="text-[11px] font-bold tracking-[2px] uppercase text-sport-orange mb-3">{t('hubEyebrow')}</p>
+        <p className="text-xxs font-bold tracking-[2px] uppercase text-sport-orange mb-3">{t('hubEyebrow')}</p>
         <h1 className="text-4xl md:text-5xl font-black mb-4">{t('hubTitle')}</h1>
         <p className="text-lg text-sport-fg max-w-2xl mb-12">{t('hubSubtitle')}</p>
 
@@ -74,8 +74,8 @@ export default async function ProgramsHubPage({ params }: { params: Promise<{ lo
                 <h2 className="text-xl font-black mb-2 group-hover:text-sport-orange transition-colors">{guide.title}</h2>
                 <p className="text-sm text-sport-gray leading-relaxed mb-4">{guide.subtitle}</p>
                 <div className="flex flex-wrap gap-2 mb-4">
-                  {guide.level && <span className="text-[10px] font-bold px-2.5 py-1 rounded-full bg-sport-orange/10 text-sport-orange">{guide.level}</span>}
-                  {guide.duration && <span className="text-[10px] font-bold px-2.5 py-1 rounded-full bg-sport-dark border border-sport-border text-sport-gray">{guide.duration}</span>}
+                  {guide.level && <span className="text-2xs font-bold px-2.5 py-1 rounded-full bg-sport-orange/10 text-sport-orange">{guide.level}</span>}
+                  {guide.duration && <span className="text-2xs font-bold px-2.5 py-1 rounded-full bg-sport-dark border border-sport-border text-sport-gray">{guide.duration}</span>}
                 </div>
                 <span className="inline-flex items-center gap-1.5 text-sport-orange text-sm font-bold">
                   {t('seeProgram')} <ArrowRight size={14} aria-hidden="true" />

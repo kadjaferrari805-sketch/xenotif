@@ -16,7 +16,7 @@ export function PreviewNutrition({ calories, target, protein, carbs, fat }: { ca
       <div className="space-y-3">
         {MACROS.map(m => (
           <div key={m.key}>
-            <div className="flex justify-between text-[11px] mb-1">
+            <div className="flex justify-between text-xxs mb-1">
               <span className="text-sport-gray">{m.label}</span>
               <span className="text-sport-fg font-bold">{vals[m.key]} g</span>
             </div>

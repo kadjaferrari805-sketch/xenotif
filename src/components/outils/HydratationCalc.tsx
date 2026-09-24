@@ -37,7 +37,7 @@ export function HydratationCalc() {
             <option value="act3">{t('hydratation.act3')}</option>
           </select>
         </div>
-        <p className="text-[11px] text-sport-gray leading-relaxed pt-1">{t('disclaimer')}</p>
+        <p className="text-xxs text-sport-gray leading-relaxed pt-1">{t('disclaimer')}</p>
       </div>
 
       <div className="rounded-2xl border border-sport-orange/30 bg-gradient-to-br from-sport-orange/15 via-sport-card to-sport-card p-8 flex flex-col items-center justify-center text-center">

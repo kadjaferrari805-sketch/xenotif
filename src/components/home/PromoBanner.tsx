@@ -56,7 +56,7 @@ export function PromoBanner({
       <div className="mx-auto max-w-5xl">
         <div className="relative grid overflow-hidden rounded-3xl border border-sport-border bg-sport-card md:grid-cols-2">
           <div className="relative z-10 flex flex-col justify-center gap-3 p-8 md:p-10">
-            <span className="inline-flex w-fit items-center gap-1.5 rounded-full border border-sport-orange/30 bg-sport-orange/10 px-3 py-1 text-[11px] font-black uppercase tracking-wider text-sport-orange">
+            <span className="inline-flex w-fit items-center gap-1.5 rounded-full border border-sport-orange/30 bg-sport-orange/10 px-3 py-1 text-xxs font-black uppercase tracking-wider text-sport-orange">
               <Icon size={12} aria-hidden="true" /> {t(`${variant}.label`)}
             </span>
             <h3 className="text-2xl font-black leading-tight text-sport-fg md:text-3xl">{t(`${variant}.title`)}</h3>

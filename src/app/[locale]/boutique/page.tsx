@@ -24,7 +24,7 @@ function AmazonRow({ icon: Icon, label, title, subtitle, products }: {
           <Icon size={19} aria-hidden="true" />
         </span>
         <div className="min-w-0">
-          <p className="text-[11px] font-black uppercase tracking-wider text-sport-orange">{label}</p>
+          <p className="text-xxs font-black uppercase tracking-wider text-sport-orange">{label}</p>
           <h2 className="text-xl sm:text-2xl font-black text-sport-fg leading-tight">{title}</h2>
           <p className="text-xs text-sport-fg">{subtitle}</p>
         </div>
@@ -122,7 +122,7 @@ export default function BoutiquePage() {
                 <Icon size={16} className="text-sport-orange shrink-0" />
                 <div className="min-w-0">
                   <p className="text-sm font-black text-sport-fg">{value}</p>
-                  <p className="text-[10px] text-sport-gray truncate">{label}</p>
+                  <p className="text-2xs text-sport-gray truncate">{label}</p>
                 </div>
               </div>
             ))}

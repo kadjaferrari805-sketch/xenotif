@@ -189,7 +189,7 @@ export function Hero() {
               transition={{ duration: 0.5 }}
               className="flex items-center mb-5"
             >
-              <span className="text-[10px] font-black tracking-[3px] uppercase text-sport-orange">
+              <span className="text-2xs font-black tracking-[3px] uppercase text-sport-orange">
                 {t('eyebrow')}
               </span>
             </motion.div>
@@ -202,7 +202,7 @@ export function Hero() {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: 12 }}
                 transition={{ duration: 0.3 }}
-                className="inline-flex items-center gap-2 border border-white/15 bg-white/8 backdrop-blur-sm text-white/80 text-[11px] font-semibold tracking-wide px-3.5 py-1.5 rounded-full mb-5"
+                className="inline-flex items-center gap-2 border border-white/15 bg-white/8 backdrop-blur-sm text-white/80 text-xxs font-semibold tracking-wide px-3.5 py-1.5 rounded-full mb-5"
               >
                 {slides[current].tag}
               </motion.span>
@@ -338,7 +338,7 @@ export function Hero() {
               </div>
               <div>
                 <div className="font-black text-white text-xs">{badge.label}</div>
-                <div className="text-[10px] text-white/50 font-normal">{badge.sub}</div>
+                <div className="text-2xs text-white/50 font-normal">{badge.sub}</div>
               </div>
             </motion.div>
           )
@@ -390,7 +390,7 @@ export function Hero() {
         className="absolute bottom-9 right-8 z-20 hidden md:flex flex-col items-center gap-2 text-white/35"
       >
         <div className="w-px h-10 bg-gradient-to-b from-transparent to-white/30" />
-        <span className="text-[9px] tracking-[3px] uppercase">{t('scroll')}</span>
+        <span className="text-micro tracking-[3px] uppercase">{t('scroll')}</span>
       </motion.div>
     </section>
   )

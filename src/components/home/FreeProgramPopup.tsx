@@ -192,7 +192,7 @@ export function FreeProgramPopup() {
                   <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-sport-orange/15 border border-sport-orange/30">
                     <Gift size={22} className="text-sport-orange" aria-hidden="true" />
                   </div>
-                  <span className="text-[11px] font-black uppercase tracking-wider text-sport-orange">{t('eyebrow')}</span>
+                  <span className="text-xxs font-black uppercase tracking-wider text-sport-orange">{t('eyebrow')}</span>
                   <h2 id="lead-popup-title" className="mt-1 text-2xl font-black leading-tight text-sport-fg">{t('title')}</h2>
                   <p className="mt-2 text-sm text-sport-fg">{t('subtitle')}</p>
 
@@ -240,7 +240,7 @@ export function FreeProgramPopup() {
                     </button>
                   </form>
 
-                  <p className="mt-3 text-center text-[11px] text-sport-gray">{t('privacy')}</p>
+                  <p className="mt-3 text-center text-xxs text-sport-gray">{t('privacy')}</p>
                 </>
               )}
             </div>

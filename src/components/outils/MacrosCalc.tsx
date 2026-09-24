@@ -52,7 +52,7 @@ export function MacrosCalc() {
             ))}
           </div>
         </div>
-        <p className="text-[11px] text-sport-gray leading-relaxed pt-1">{t('disclaimer')}</p>
+        <p className="text-xxs text-sport-gray leading-relaxed pt-1">{t('disclaimer')}</p>
       </div>
 
       <div className="space-y-3">
@@ -62,7 +62,7 @@ export function MacrosCalc() {
             <span className={`text-2xl font-black ${color}`}>{g} <span className="text-sm text-sport-gray font-bold">g</span></span>
           </div>
         ))}
-        <p className="text-[11px] text-sport-gray text-center">{calories} kcal · {t('macros.perDay')}</p>
+        <p className="text-xxs text-sport-gray text-center">{calories} kcal · {t('macros.perDay')}</p>
       </div>
     </div>
   )

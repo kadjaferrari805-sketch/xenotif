@@ -137,7 +137,7 @@ export function TransformationsGallery() {
                           loading="lazy"
                           decoding="async"
                         />
-                        <span className="absolute top-2 left-2 text-[10px] font-black uppercase tracking-wider bg-black/60 text-white rounded px-2 py-0.5" aria-hidden="true">
+                        <span className="absolute top-2 left-2 text-2xs font-black uppercase tracking-wider bg-black/60 text-white rounded px-2 py-0.5" aria-hidden="true">
                           {img.label}
                         </span>
                       </div>

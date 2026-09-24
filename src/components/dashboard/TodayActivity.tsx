@@ -224,21 +224,21 @@ export function TodayActivity({ initialSteps, initialActiveSec, weekly, dateLabe
         {/* Header : date + statut */}
         <div className="relative flex items-start justify-between gap-3 mb-6">
           <div>
-            <p className="text-[10px] font-bold uppercase tracking-[2px] text-sport-gray">{t('title')}</p>
+            <p className="text-2xs font-bold uppercase tracking-[2px] text-sport-gray">{t('title')}</p>
             <p className="text-lg md:text-xl font-black text-sport-fg leading-tight first-letter:uppercase">{dateLabel}</p>
           </div>
 
           {status === 'running' ? (
-            <span className={`inline-flex shrink-0 items-center gap-1.5 rounded-full border px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider ${moving ? 'border-red-500/40 bg-red-50 text-red-600' : 'border-sport-lime/40 bg-sport-lime/10 text-sport-lime'}`}>
+            <span className={`inline-flex shrink-0 items-center gap-1.5 rounded-full border px-2.5 py-1 text-2xs font-bold uppercase tracking-wider ${moving ? 'border-red-500/40 bg-red-50 text-red-600' : 'border-sport-lime/40 bg-sport-lime/10 text-sport-lime'}`}>
               <span className={`h-1.5 w-1.5 rounded-full ${moving ? 'bg-red-500 animate-pulse' : 'bg-sport-lime'}`} />
               {t('liveBadge')}
             </span>
           ) : status === 'nosensor' ? (
-            <span className="inline-flex shrink-0 items-center gap-1.5 rounded-full border border-sport-border bg-sport-dark/60 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-sport-gray">
+            <span className="inline-flex shrink-0 items-center gap-1.5 rounded-full border border-sport-border bg-sport-dark/60 px-2.5 py-1 text-2xs font-bold uppercase tracking-wider text-sport-gray">
               <Smartphone size={12} /> {t('daySaved')}
             </span>
           ) : (
-            <span className="inline-flex shrink-0 items-center gap-1.5 rounded-full border border-sport-border bg-sport-dark/60 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-sport-gray">
+            <span className="inline-flex shrink-0 items-center gap-1.5 rounded-full border border-sport-border bg-sport-dark/60 px-2.5 py-1 text-2xs font-bold uppercase tracking-wider text-sport-gray">
               <Activity size={12} /> {t('phoneSensor')}
             </span>
           )}
@@ -248,7 +248,7 @@ export function TodayActivity({ initialSteps, initialActiveSec, weekly, dateLabe
         <div className="relative flex flex-col sm:flex-row items-center gap-7 sm:gap-9">
           <ActivityRing rings={rings} size={196} strokeWidth={17}>
             <span className="text-[28px] font-black text-sport-fg tabular-nums leading-none">{steps.toLocaleString(numLocale)}</span>
-            <span className="text-[9px] font-bold uppercase tracking-[2px] text-sport-gray mt-1.5">{t('stepsUnit')}</span>
+            <span className="text-micro font-bold uppercase tracking-[2px] text-sport-gray mt-1.5">{t('stepsUnit')}</span>
           </ActivityRing>
 
           <div className="flex-1 w-full space-y-4">
@@ -257,7 +257,7 @@ export function TodayActivity({ initialSteps, initialActiveSec, weekly, dateLabe
               return (
                 <div key={s.label}>
                   <div className="flex items-baseline justify-between gap-2">
-                    <span className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-wider text-sport-gray">
+                    <span className="flex items-center gap-2 text-xxs font-bold uppercase tracking-wider text-sport-gray">
                       <span className="h-2 w-2 rounded-full" style={{ background: s.color, boxShadow: `0 0 6px ${s.color}` }} />
                       {s.label}
                     </span>
@@ -286,7 +286,7 @@ export function TodayActivity({ initialSteps, initialActiveSec, weekly, dateLabe
                 <Icon size={15} style={{ color }} aria-hidden="true" />
               </div>
               <div className="min-w-0">
-                <p className="text-[10px] font-bold uppercase tracking-wider text-sport-gray leading-none">{label}</p>
+                <p className="text-2xs font-bold uppercase tracking-wider text-sport-gray leading-none">{label}</p>
                 <p className="text-lg font-black text-sport-fg tabular-nums leading-tight">{value}</p>
               </div>
             </div>
@@ -296,13 +296,13 @@ export function TodayActivity({ initialSteps, initialActiveSec, weekly, dateLabe
         {/* Pied : statut / invite selon l'état du capteur */}
         <div className="relative mt-5">
           {status === 'running' && (
-            <p className="text-center text-[10px] text-sport-gray">{t('autoSaved')}</p>
+            <p className="text-center text-2xs text-sport-gray">{t('autoSaved')}</p>
           )}
 
           {status === 'needtap' && (
             <div className="flex flex-col items-center gap-3 rounded-2xl border border-sport-lime/20 bg-sport-lime/5 px-4 py-4 text-center">
               <p className="text-sm font-bold text-sport-fg">{t('tapToStart')}</p>
-              <p className="max-w-xs text-[11px] leading-relaxed text-sport-gray">{t('tapHint')}</p>
+              <p className="max-w-xs text-xxs leading-relaxed text-sport-gray">{t('tapHint')}</p>
               <button type="button"
                 onClick={start}
                 className="inline-flex items-center justify-center gap-2 rounded-xl bg-sport-lime px-5 py-2.5 text-sm font-black text-sport-dark transition-all hover:brightness-110"
@@ -314,7 +314,7 @@ export function TodayActivity({ initialSteps, initialActiveSec, weekly, dateLabe
 
           {status === 'denied' && (
             <div className="flex flex-col items-center gap-3 rounded-2xl border border-red-200 bg-red-500/5 px-4 py-4 text-center">
-              <p className="max-w-xs text-[11px] leading-relaxed text-red-600">{t('denied')}</p>
+              <p className="max-w-xs text-xxs leading-relaxed text-red-600">{t('denied')}</p>
               <button type="button"
                 onClick={start}
                 className="inline-flex items-center justify-center gap-2 rounded-xl bg-sport-lime px-5 py-2.5 text-sm font-black text-sport-dark transition-all hover:brightness-110"
@@ -325,7 +325,7 @@ export function TodayActivity({ initialSteps, initialActiveSec, weekly, dateLabe
           )}
 
           {status === 'nosensor' && (
-            <p className="flex items-center justify-center gap-1.5 text-center text-[11px] text-sport-gray">
+            <p className="flex items-center justify-center gap-1.5 text-center text-xxs text-sport-gray">
               <Smartphone size={12} /> {t('openOnPhone')}
             </p>
           )}
@@ -338,7 +338,7 @@ export function TodayActivity({ initialSteps, initialActiveSec, weekly, dateLabe
           <p className="flex items-center gap-2 text-sm font-black text-sport-fg">
             <TrendingUp size={15} className="text-sport-orange" /> {t('trendTitle')}
           </p>
-          <span className="text-[11px] font-semibold text-sport-gray">
+          <span className="text-xxs font-semibold text-sport-gray">
             {t('trendTotal', { steps: weekTotal.toLocaleString(numLocale) })}
           </span>
         </div>
@@ -348,7 +348,7 @@ export function TodayActivity({ initialSteps, initialActiveSec, weekly, dateLabe
             const color = d.isToday ? C_EXER : C_STEP
             return (
               <div key={`${d.label}-${i}`} className="flex flex-1 flex-col items-center gap-2">
-                <span className={`text-[9px] font-bold tabular-nums ${d.isToday ? 'text-sport-fg' : 'text-sport-gray'}`}>
+                <span className={`text-micro font-bold tabular-nums ${d.isToday ? 'text-sport-fg' : 'text-sport-gray'}`}>
                   {d.steps >= 1000 ? `${(d.steps / 1000).toFixed(1)}k` : d.steps || ''}
                 </span>
                 <div className="relative flex w-full flex-1 items-end" style={{ minHeight: 0 }}>
@@ -366,7 +366,7 @@ export function TodayActivity({ initialSteps, initialActiveSec, weekly, dateLabe
                     }}
                   />
                 </div>
-                <span className={`text-[9px] font-bold ${d.isToday ? 'text-sport-fg' : 'text-sport-gray'}`}>{d.label}</span>
+                <span className={`text-micro font-bold ${d.isToday ? 'text-sport-fg' : 'text-sport-gray'}`}>{d.label}</span>
               </div>
             )
           })}

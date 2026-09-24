@@ -39,8 +39,8 @@ export function StickyCheckout() {
               <XenotifMark size={28} />
             </span>
             <div className="leading-tight">
-              <p className="font-black text-sport-fg text-[10px] md:text-xs whitespace-nowrap">{t('lead')}</p>
-              <p className="flex items-center gap-1 text-[9px] md:text-[10px] text-[#1E7F5A] font-bold whitespace-nowrap">
+              <p className="font-black text-sport-fg text-2xs md:text-xs whitespace-nowrap">{t('lead')}</p>
+              <p className="flex items-center gap-1 text-micro md:text-2xs text-sport-success font-bold whitespace-nowrap">
                 <Zap size={8} aria-hidden="true" /> {t('trial')}
               </p>
             </div>
@@ -51,7 +51,7 @@ export function StickyCheckout() {
             <Link
               href="/auth/signup?plan=pro"
               aria-label={t('proAria')}
-              className="flex-none inline-flex items-center justify-center gap-1 md:gap-1.5 bg-sport-orange text-white px-3 md:px-4 py-2 md:py-2.5 rounded-full font-bold text-[11px] md:text-xs hover:bg-orange-600 active:scale-95 transition-all whitespace-nowrap shadow-lg shadow-sport-orange/20"
+              className="flex-none inline-flex items-center justify-center gap-1 md:gap-1.5 bg-sport-orange text-white px-3 md:px-4 py-2 md:py-2.5 rounded-full font-bold text-xxs md:text-xs hover:bg-orange-600 active:scale-95 transition-all whitespace-nowrap shadow-lg shadow-sport-orange/20"
             >
               {t('pro')} <ArrowRight size={11} aria-hidden="true" />
             </Link>

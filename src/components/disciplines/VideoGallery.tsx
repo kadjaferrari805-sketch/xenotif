@@ -49,7 +49,7 @@ export function VideoGallery({ videos, videoMinPlans, accentColor }: { videos: V
                   <Lock size={20} className="text-sport-orange" aria-hidden="true" />
                 </div>
                 <p className="text-xs font-bold text-sport-fg">{t('videos.locked')}</p>
-                <Link href="/#tarifs" className="text-[11px] font-bold text-sport-orange hover:underline">{t('gate.cta')}</Link>
+                <Link href="/#tarifs" className="text-xxs font-bold text-sport-orange hover:underline">{t('gate.cta')}</Link>
               </div>
             </div>
             <div className="p-4">

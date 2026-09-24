@@ -16,7 +16,7 @@ import type { ExerciceDetail as Detail } from '@/lib/exercices/details'
 
 const SPEECH_LANG: Record<string, string> = { fr: 'fr-FR', en: 'en-US', de: 'de-DE' }
 const DIFF_STYLE: Record<string, string> = {
-  debutant: 'text-[#1E7F5A] border-emerald-200 bg-emerald-50',
+  debutant: 'text-sport-success border-emerald-200 bg-emerald-50',
   intermediaire: 'text-sport-blue border-sport-blue/30 bg-sport-blue/10',
   avance: 'text-sport-orange border-sport-orange/30 bg-sport-orange/10',
 }
@@ -62,13 +62,13 @@ function VideoBlock({ url, poster, t }: { url?: string; poster?: string; t: Retu
             )}
           </div>
           <div className="flex items-center gap-2 mt-3">
-            <span className="text-[11px] text-sport-gray">Vitesse :</span>
+            <span className="text-xxs text-sport-gray">Vitesse :</span>
             {[0.5, 1, 1.5, 2].map((r) => (
               <button
                 key={r}
                 type="button"
                 onClick={() => setSpeed(r)}
-                className={`text-[11px] font-bold px-2.5 py-1 rounded-full border transition-colors ${rate === r ? 'bg-sport-orange text-white border-sport-orange' : 'border-sport-border text-sport-gray hover:text-sport-fg'}`}
+                className={`text-xxs font-bold px-2.5 py-1 rounded-full border transition-colors ${rate === r ? 'bg-sport-orange text-white border-sport-orange' : 'border-sport-border text-sport-gray hover:text-sport-fg'}`}
               >
                 {r}×
               </button>
@@ -247,7 +247,7 @@ function NotesCard({ slug, t, locale }: { slug: string; t: ReturnType<typeof use
         />
         <div className="flex items-center gap-3 mt-2">
           <button type="button" onClick={save} className="text-xs font-bold bg-sport-orange text-white px-4 py-2 rounded-full hover:bg-orange-600 transition-colors">{t('notes_save')}</button>
-          {saved && <span className="text-xs text-[#1E7F5A]">{t('notes_saved')}</span>}
+          {saved && <span className="text-xs text-sport-success">{t('notes_saved')}</span>}
         </div>
       </div>
 
@@ -259,7 +259,7 @@ function NotesCard({ slug, t, locale }: { slug: string; t: ReturnType<typeof use
           <ul className="space-y-2">
             {notes.map((n, i) => (
               <li key={i} className="text-sm text-sport-gray bg-sport-dark border border-sport-border rounded-xl px-4 py-2.5">
-                <span className="block text-[11px] text-sport-gray mb-0.5">{new Date(n.ts).toLocaleDateString(locale)}</span>
+                <span className="block text-xxs text-sport-gray mb-0.5">{new Date(n.ts).toLocaleDateString(locale)}</span>
                 {n.text}
               </li>
             ))}
@@ -331,13 +331,13 @@ export function ExerciceDetail({ detail, locale }: { detail: Detail; locale: str
                 ) : (
                   <div className="absolute inset-0 flex items-center justify-center"><span className="text-2xl font-black text-sport-orange/40">{i + 1}</span></div>
                 )}
-                <span className="absolute top-1.5 left-1.5 w-5 h-5 rounded-full bg-sport-orange text-white text-[10px] font-black flex items-center justify-center">{i + 1}</span>
+                <span className="absolute top-1.5 left-1.5 w-5 h-5 rounded-full bg-sport-orange text-white text-2xs font-black flex items-center justify-center">{i + 1}</span>
               </div>
-              <p className="text-[11px] text-sport-gray mt-1.5 text-center">{label}</p>
+              <p className="text-xxs text-sport-gray mt-1.5 text-center">{label}</p>
             </div>
           ))}
         </div>
-        {!d.media.images?.length && <p className="text-[11px] text-sport-gray mt-3">{t('stepsSoon')}</p>}
+        {!d.media.images?.length && <p className="text-xxs text-sport-gray mt-3">{t('stepsSoon')}</p>}
       </Section>
 
       {/* 4. Description */}
@@ -345,13 +345,13 @@ export function ExerciceDetail({ detail, locale }: { detail: Detail; locale: str
         <p className="text-sm text-sport-gray leading-relaxed mb-4">{t('desc_objective', { primary: d.primaryMuscles.join(', ') })} {t('desc_interest')}</p>
         <div className="grid sm:grid-cols-2 gap-4">
           <div className="rounded-xl bg-sport-dark border border-sport-border p-4">
-            <p className="text-[11px] font-black uppercase tracking-wider text-sport-orange mb-2">{t('desc_primary')}</p>
+            <p className="text-xxs font-black uppercase tracking-wider text-sport-orange mb-2">{t('desc_primary')}</p>
             <div className="flex flex-wrap gap-1.5">
               {d.primaryMuscles.map((m) => <span key={m} className="text-xs px-2.5 py-1 rounded-full bg-sport-orange/10 text-sport-orange">{m}</span>)}
             </div>
           </div>
           <div className="rounded-xl bg-sport-dark border border-sport-border p-4">
-            <p className="text-[11px] font-black uppercase tracking-wider text-sport-gray mb-2">{t('desc_secondary')}</p>
+            <p className="text-xxs font-black uppercase tracking-wider text-sport-gray mb-2">{t('desc_secondary')}</p>
             <div className="flex flex-wrap gap-1.5">
               {d.secondaryMuscles.length ? d.secondaryMuscles.map((m) => <span key={m} className="text-xs px-2.5 py-1 rounded-full bg-sport-card border border-sport-border text-sport-gray">{m}</span>) : <span className="text-xs text-sport-gray">{t('desc_secondaryNone')}</span>}
             </div>
@@ -432,12 +432,12 @@ export function ExerciceDetail({ detail, locale }: { detail: Detail; locale: str
           ].map((s, i) => (
             <div key={i} className="rounded-xl bg-sport-dark border border-sport-border p-4">
               <s.icon size={16} aria-hidden="true" className="text-sport-orange mb-2" />
-              <p className="text-[10px] uppercase tracking-wider text-sport-gray">{s.label}</p>
+              <p className="text-2xs uppercase tracking-wider text-sport-gray">{s.label}</p>
               <p className="text-base font-black text-sport-fg mt-0.5">{s.value}</p>
             </div>
           ))}
         </div>
-        <p className="text-[11px] text-sport-gray mt-3">{t('statEstimated')}</p>
+        <p className="text-xxs text-sport-gray mt-3">{t('statEstimated')}</p>
       </Section>
 
       {/* 16. Coach vocal + 17. Minuteur */}
@@ -469,8 +469,8 @@ export function ExerciceDetail({ detail, locale }: { detail: Detail; locale: str
           {d.similar.map((e) => (
             <Link key={e.slug} href={`/exercices/${e.slug}`} className="group bg-sport-dark border border-sport-border rounded-xl p-4 hover:border-sport-orange/50 transition-all hover:-translate-y-0.5">
               <p className="text-sm font-black text-sport-fg group-hover:text-sport-orange transition-colors line-clamp-2">{e.name}</p>
-              <p className="text-[11px] text-sport-gray mt-1 line-clamp-1">{e.muscles}</p>
-              <span className="inline-flex items-center gap-1 text-sport-orange text-[11px] font-bold mt-2 opacity-0 group-hover:opacity-100 transition-opacity">{t('sec_similar')} <ArrowRight size={11} aria-hidden="true" /></span>
+              <p className="text-xxs text-sport-gray mt-1 line-clamp-1">{e.muscles}</p>
+              <span className="inline-flex items-center gap-1 text-sport-orange text-xxs font-bold mt-2 opacity-0 group-hover:opacity-100 transition-opacity">{t('sec_similar')} <ArrowRight size={11} aria-hidden="true" /></span>
             </Link>
           ))}
         </div>

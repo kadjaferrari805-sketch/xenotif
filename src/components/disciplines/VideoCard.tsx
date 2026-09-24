@@ -61,7 +61,7 @@ export function VideoCard({ youtubeIds, title, description, duration, level, acc
   const metaFooter = (
     <div className="p-4">
       <div className="flex items-center gap-2 mb-2">
-        <span className={`inline-flex items-center gap-1.5 text-[10px] font-bold px-2.5 py-1 rounded-full ${accentColor}`}>
+        <span className={`inline-flex items-center gap-1.5 text-2xs font-bold px-2.5 py-1 rounded-full ${accentColor}`}>
           <BarChart2 size={9} />
           {level}
         </span>
@@ -123,7 +123,7 @@ export function VideoCard({ youtubeIds, title, description, duration, level, acc
                 <Play size={24} className="text-white ml-1" fill="white" />
               </div>
             </div>
-            <div aria-hidden="true" className="absolute bottom-3 right-3 flex items-center gap-1.5 bg-black/80 backdrop-blur-sm text-white text-[11px] font-bold px-2.5 py-1 rounded-full">
+            <div aria-hidden="true" className="absolute bottom-3 right-3 flex items-center gap-1.5 bg-black/80 backdrop-blur-sm text-white text-xxs font-bold px-2.5 py-1 rounded-full">
               <Clock size={10} />
               {duration}
             </div>

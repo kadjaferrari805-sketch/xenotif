@@ -24,7 +24,7 @@ export function PreviewDashboard() {
   const stats = [
     { Icon: Flame, label: t('statSessions'), value: PREVIEW.stats.sessionsWeek, color: 'text-sport-orange' },
     { Icon: Clock, label: t('statHours'), value: `${PREVIEW.stats.hours}h`, color: 'text-sport-blue' },
-    { Icon: TrendingUp, label: t('statActiveDays'), value: PREVIEW.stats.activeDays, color: 'text-[#1E7F5A]' },
+    { Icon: TrendingUp, label: t('statActiveDays'), value: PREVIEW.stats.activeDays, color: 'text-sport-success' },
     { Icon: Award, label: t('statBadges'), value: PREVIEW.stats.badges, color: 'text-yellow-600' },
   ]
   return (
@@ -42,13 +42,13 @@ export function PreviewDashboard() {
       <div className="bg-sport-orange/10 border-b border-sport-orange/30 px-3 sm:px-6 pb-2.5 demo-banner-safe flex flex-row items-center justify-between sm:justify-center gap-1 sm:gap-0 sm:relative">
         <Link
           href="/"
-          className="sm:absolute sm:left-6 inline-flex items-center gap-1 sm:gap-1.5 whitespace-nowrap text-[10px] sm:text-xs font-bold text-sport-orange hover:opacity-80 transition-opacity"
+          className="sm:absolute sm:left-6 inline-flex items-center gap-1 sm:gap-1.5 whitespace-nowrap text-2xs sm:text-xs font-bold text-sport-orange hover:opacity-80 transition-opacity"
         >
           <ArrowLeft size={11} className="sm:hidden" aria-hidden="true" />
           <ArrowLeft size={13} className="hidden sm:block" aria-hidden="true" />
           {t('backToHome')}
         </Link>
-        <span className="inline-flex items-center gap-1 sm:gap-2 whitespace-nowrap text-[10px] sm:text-xs font-bold text-sport-orange">
+        <span className="inline-flex items-center gap-1 sm:gap-2 whitespace-nowrap text-2xs sm:text-xs font-bold text-sport-orange">
           <Eye size={11} className="sm:hidden" aria-hidden="true" />
           <Eye size={13} className="hidden sm:block" aria-hidden="true" />
           {t('demoBanner')}
@@ -80,7 +80,7 @@ export function PreviewDashboard() {
             <div key={label} className="bg-sport-card border border-sport-border rounded-xl p-4">
               <Icon size={18} className={`${color} mb-2`} aria-hidden="true" />
               <p className="text-2xl font-black">{value}</p>
-              <p className="text-[11px] text-sport-gray mt-0.5 leading-tight">{label}</p>
+              <p className="text-xxs text-sport-gray mt-0.5 leading-tight">{label}</p>
             </div>
           ))}
         </motion.div>
@@ -113,7 +113,7 @@ export function PreviewDashboard() {
             {PREVIEW.badges.map(b => (
               <div key={b.label} className="rounded-xl p-4 text-center bg-yellow-50 border border-yellow-400/30">
                 <span className="text-3xl block mb-2">{b.icon}</span>
-                <p className="text-[10px] font-black text-yellow-600 leading-tight">{b.label}</p>
+                <p className="text-2xs font-black text-yellow-600 leading-tight">{b.label}</p>
               </div>
             ))}
           </div>

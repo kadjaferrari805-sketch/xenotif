@@ -14,7 +14,7 @@ export function Challenges() {
     <section aria-labelledby="defis-title" className="py-24 px-6 bg-sport-dark">
       <div className="max-w-5xl mx-auto">
         <div className="text-center mb-12">
-          <p className="text-[11px] font-black tracking-[3px] uppercase text-sport-orange mb-3">{t('eyebrow')}</p>
+          <p className="text-xxs font-black tracking-[3px] uppercase text-sport-orange mb-3">{t('eyebrow')}</p>
           <h2 id="defis-title" className="text-3xl md:text-5xl font-black text-sport-fg mb-4">{t('title')}</h2>
           <p className="text-lg text-sport-fg max-w-2xl mx-auto">{t('subtitle')}</p>
         </div>

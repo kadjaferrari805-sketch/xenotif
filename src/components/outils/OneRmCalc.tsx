@@ -31,14 +31,14 @@ export function OneRmCalc() {
           <p className="text-xs font-bold uppercase tracking-wider text-sport-gray mb-1">{t('oneRm.result')}</p>
           <p className="text-4xl font-black text-sport-fg">{r(oneRm)} <span className="text-lg text-sport-gray">kg</span></p>
         </div>
-        <p className="text-[11px] text-sport-gray leading-relaxed">{t('disclaimer')}</p>
+        <p className="text-xxs text-sport-gray leading-relaxed">{t('disclaimer')}</p>
       </div>
 
       <div className="rounded-2xl bg-sport-card border border-sport-border p-5">
         <p className="text-xs font-bold uppercase tracking-wider text-sport-gray mb-3">{t('oneRm.table')}</p>
         <table className="w-full text-sm">
           <thead>
-            <tr className="border-b border-sport-border text-[11px] uppercase tracking-wider text-sport-gray">
+            <tr className="border-b border-sport-border text-xxs uppercase tracking-wider text-sport-gray">
               <th className="text-left py-2 font-bold">{t('oneRm.pct')}</th>
               <th className="text-right py-2 font-bold">{t('oneRm.load')}</th>
             </tr>

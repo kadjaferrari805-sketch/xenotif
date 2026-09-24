@@ -93,7 +93,7 @@ export default async function ProgramPage({ params }: { params: Promise<{ slug: 
           <Link href="/programmes" className="inline-flex items-center gap-1.5 text-xs font-bold text-sport-gray hover:text-sport-fg transition-colors mb-6">
             <ArrowLeft size={13} aria-hidden="true" /> {t('backToHub')}
           </Link>
-          <p className="text-[11px] font-bold tracking-[2px] uppercase text-sport-orange mb-3">{t('eyebrow')}</p>
+          <p className="text-xxs font-bold tracking-[2px] uppercase text-sport-orange mb-3">{t('eyebrow')}</p>
           <h1 className="text-4xl md:text-5xl font-black leading-tight mb-4">{program.title}</h1>
           <p className="text-lg text-sport-gray leading-relaxed mb-6">{program.subtitle}</p>
           <div className="flex flex-wrap gap-3">
@@ -133,7 +133,7 @@ export default async function ProgramPage({ params }: { params: Promise<{ slug: 
             >
               {t('startTrial')} <ArrowRight size={15} aria-hidden="true" />
             </Link>
-            <p className="text-[11px] text-sport-gray mt-3">{t('trialNote')}</p>
+            <p className="text-xxs text-sport-gray mt-3">{t('trialNote')}</p>
           </div>
         )}
       </section>

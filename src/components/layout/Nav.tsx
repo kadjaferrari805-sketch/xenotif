@@ -142,7 +142,7 @@ export function Nav() {
                 >
                   <div className="grid grid-cols-3 gap-5">
                     <div className="col-span-2">
-                      <p className="text-[10px] font-black uppercase tracking-wider text-sport-gray mb-3 px-2">{t('disciplines')}</p>
+                      <p className="text-2xs font-black uppercase tracking-wider text-sport-gray mb-3 px-2">{t('disciplines')}</p>
                       <div className="grid grid-cols-2 gap-1">
                         {DISCIPLINES.map((d) => (
                           <Link
@@ -159,7 +159,7 @@ export function Nav() {
                     </div>
 
                     <div className="border-l border-sport-fg/10 pl-5">
-                      <p className="text-[10px] font-black uppercase tracking-wider text-sport-gray mb-3 px-2">{t('resources')}</p>
+                      <p className="text-2xs font-black uppercase tracking-wider text-sport-gray mb-3 px-2">{t('resources')}</p>
                       <div className="flex flex-col gap-1">
                         {RESOURCES.map(({ href, key, Icon }) => (
                           <Link
@@ -271,7 +271,7 @@ export function Nav() {
                         </Link>
                       ))}
                     </div>
-                    <p className="text-[10px] font-black uppercase tracking-wider text-sport-gray px-2 pt-2 pb-1">{t('disciplines')}</p>
+                    <p className="text-2xs font-black uppercase tracking-wider text-sport-gray px-2 pt-2 pb-1">{t('disciplines')}</p>
                     <div className="grid grid-cols-2 gap-1">
                       {DISCIPLINES.map((d) => (
                         <Link key={d.slug} href={`/disciplines/${d.slug}`} onClick={() => setIsOpen(false)} className="flex items-center gap-2 rounded-lg px-2 py-2 text-sm text-sport-gray hover:text-sport-fg hover:bg-sport-fg/5 transition-colors">

@@ -71,7 +71,7 @@ export function AppInstall() {
     return (
       <Card>
         <div className="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-emerald-50 border border-emerald-200">
-          <Check size={28} className="text-[#1E7F5A]" aria-hidden="true" />
+          <Check size={28} className="text-sport-success" aria-hidden="true" />
         </div>
         <h1 className="text-2xl font-black text-sport-fg mb-2">
           {installed ? t('installedTitle') : t('successTitle')}
@@ -106,7 +106,7 @@ export function AppInstall() {
             <Download size={18} aria-hidden="true" />
             {t('installNow')}
           </button>
-          <p className="text-[11px] text-sport-gray mt-3">{t('androidStep')}</p>
+          <p className="text-xxs text-sport-gray mt-3">{t('androidStep')}</p>
         </>
       ) : platform === 'ios' ? (
         /* iPhone : pas d'API d'installation → guide Partager → écran d'accueil */

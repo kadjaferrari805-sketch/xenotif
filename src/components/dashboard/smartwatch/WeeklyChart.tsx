@@ -32,7 +32,7 @@ export function WeeklyChart({ data, metric, color }: WeeklyChartProps) {
 
   return (
     <div className="w-full">
-      <p className="text-[11px] text-sport-gray font-semibold mb-3 uppercase tracking-wider">{t('chartThisWeek', { label: t(`chartFull.${metric}`) })}</p>
+      <p className="text-xxs text-sport-gray font-semibold mb-3 uppercase tracking-wider">{t('chartThisWeek', { label: t(`chartFull.${metric}`) })}</p>
       <div className="flex items-end gap-2 h-20">
         {data.map((d, i) => {
           const val = d[metric] as number
@@ -53,7 +53,7 @@ export function WeeklyChart({ data, metric, color }: WeeklyChartProps) {
                   }}
                 />
               </div>
-              <span className={`text-[9px] font-bold ${isToday ? 'text-sport-fg' : 'text-sport-gray'}`}>
+              <span className={`text-micro font-bold ${isToday ? 'text-sport-fg' : 'text-sport-gray'}`}>
                 {dayLabel(d.day)}
               </span>
             </div>

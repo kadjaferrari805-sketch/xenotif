@@ -170,14 +170,14 @@ export default async function DisciplinePage({ params }: { params: Promise<{ slu
 
             {/* Badges row */}
             <div className="flex flex-wrap items-center gap-3 mb-5">
-              <span className={`text-[10px] font-bold tracking-widest uppercase px-3 py-1.5 rounded-full ${COLOR_PILL[color]}`}>
+              <span className={`text-2xs font-bold tracking-widest uppercase px-3 py-1.5 rounded-full ${COLOR_PILL[color]}`}>
                 {tag}
               </span>
               <div role="img" className="flex gap-0.5" aria-label={t('ratingAria')}>
                 {Array.from({ length: 5 }).map((_, i) => <Star key={i} size={12} aria-hidden="true" className="fill-sport-orange text-sport-orange" />)}
               </div>
               {content && (
-                <span className="text-[11px] text-white/60 font-medium">{content.heroStat}</span>
+                <span className="text-xxs text-white/60 font-medium">{content.heroStat}</span>
               )}
             </div>
 
@@ -215,7 +215,7 @@ export default async function DisciplinePage({ params }: { params: Promise<{ slu
               <div className={`w-9 h-9 rounded-xl flex items-center justify-center ${COLOR_CARD[color]}`}>
                 <Play size={16} aria-hidden="true" className={COLOR_TEXT[color]} />
               </div>
-              <p className={`text-[11px] font-bold tracking-[2px] uppercase ${COLOR_TEXT[color]}`}>{t('videos.eyebrow')}</p>
+              <p className={`text-xxs font-bold tracking-[2px] uppercase ${COLOR_TEXT[color]}`}>{t('videos.eyebrow')}</p>
             </div>
             <h2 id="videos-title" className="text-3xl md:text-4xl font-black text-sport-fg mb-2">
               {t('videos.title')}
@@ -237,7 +237,7 @@ export default async function DisciplinePage({ params }: { params: Promise<{ slu
               <div className={`w-9 h-9 rounded-xl flex items-center justify-center ${COLOR_CARD[color]}`}>
                 <BookOpen size={16} aria-hidden="true" className={COLOR_TEXT[color]} />
               </div>
-              <p className={`text-[11px] font-bold tracking-[2px] uppercase ${COLOR_TEXT[color]}`}>{t('guide.eyebrow')}</p>
+              <p className={`text-xxs font-bold tracking-[2px] uppercase ${COLOR_TEXT[color]}`}>{t('guide.eyebrow')}</p>
             </div>
             <h2 id="guide-title" className="text-3xl md:text-4xl font-black text-sport-fg mb-10">
               {t('guide.title')}
@@ -272,7 +272,7 @@ export default async function DisciplinePage({ params }: { params: Promise<{ slu
         <section aria-labelledby="tips-title" className="section-tint px-6 border-y border-sport-border">
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-12">
-              <p className={`text-[11px] font-bold tracking-[2px] uppercase mb-3 ${COLOR_TEXT[color]}`}>{t('tips.eyebrow')}</p>
+              <p className={`text-xxs font-bold tracking-[2px] uppercase mb-3 ${COLOR_TEXT[color]}`}>{t('tips.eyebrow')}</p>
               <h2 id="tips-title" className="text-3xl md:text-4xl font-black text-sport-fg">
                 {t('tips.title')}
               </h2>
@@ -300,7 +300,7 @@ export default async function DisciplinePage({ params }: { params: Promise<{ slu
               <div className={`w-9 h-9 rounded-xl flex items-center justify-center ${COLOR_CARD[color]}`}>
                 <Layers size={16} aria-hidden="true" className={COLOR_TEXT[color]} />
               </div>
-              <p className={`text-[11px] font-bold tracking-[2px] uppercase ${COLOR_TEXT[color]}`}>{t('exercises.eyebrow')}</p>
+              <p className={`text-xxs font-bold tracking-[2px] uppercase ${COLOR_TEXT[color]}`}>{t('exercises.eyebrow')}</p>
             </div>
             <h2 id="exercises-title" className="text-3xl md:text-4xl font-black text-sport-fg mb-2">
               {t('exercises.title')}
@@ -317,11 +317,11 @@ export default async function DisciplinePage({ params }: { params: Promise<{ slu
                 >
                   <div className="flex items-start justify-between gap-3 mb-3">
                     <h3 className={`font-black text-sm ${COLOR_TEXT[color]}`}>{ex.name}</h3>
-                    <span className={`shrink-0 text-[10px] font-bold px-2.5 py-1 rounded-full ${COLOR_CARD[color]} ${COLOR_TEXT[color]}`}>
+                    <span className={`shrink-0 text-2xs font-bold px-2.5 py-1 rounded-full ${COLOR_CARD[color]} ${COLOR_TEXT[color]}`}>
                       {ex.difficulty}
                     </span>
                   </div>
-                  <div className="flex items-center gap-3 mb-3 text-[11px] text-sport-gray">
+                  <div className="flex items-center gap-3 mb-3 text-xxs text-sport-gray">
                     <span className="font-bold text-sport-fg">{ex.sets}</span>
                     <span aria-hidden="true">·</span>
                     <span>{ex.muscles}</span>
@@ -383,7 +383,7 @@ export default async function DisciplinePage({ params }: { params: Promise<{ slu
                       {/* Week header */}
                       <div className="px-5 py-3 border-b border-sport-border flex items-center justify-between">
                         <div>
-                          <p className={`text-[10px] font-bold uppercase tracking-wider ${COLOR_TEXT[color]}`}>{block.week}</p>
+                          <p className={`text-2xs font-bold uppercase tracking-wider ${COLOR_TEXT[color]}`}>{block.week}</p>
                           <p className="text-sm font-bold text-sport-fg">{block.theme}</p>
                         </div>
                         <span className={`text-xs font-bold px-2.5 py-1 rounded-full ${COLOR_CARD[color]} ${COLOR_TEXT[color]}`}>
@@ -394,7 +394,7 @@ export default async function DisciplinePage({ params }: { params: Promise<{ slu
                       <ul className="divide-y divide-sport-border">
                         {block.sessions.map((session, si) => (
                           <li key={session.name} className="px-5 py-3.5 flex gap-4">
-                            <span className={`w-6 h-6 rounded-full flex items-center justify-center text-[10px] font-black shrink-0 mt-0.5 ${COLOR_PILL[color]}`} aria-hidden="true">
+                            <span className={`w-6 h-6 rounded-full flex items-center justify-center text-2xs font-black shrink-0 mt-0.5 ${COLOR_PILL[color]}`} aria-hidden="true">
                               {si + 1}
                             </span>
                             <div>
@@ -407,7 +407,7 @@ export default async function DisciplinePage({ params }: { params: Promise<{ slu
                     </div>
                   ))}
                 </div>
-                <p className="text-[11px] text-sport-gray mt-4">
+                <p className="text-xxs text-sport-gray mt-4">
                   {t('program.note')}
                 </p>
                 </SubscriberGate>
@@ -430,7 +430,7 @@ export default async function DisciplinePage({ params }: { params: Promise<{ slu
               <ul className="space-y-2.5 mb-7">
                 {(t.raw('cta.features') as string[]).map((item) => (
                   <li key={item} className="flex items-center gap-2 text-xs text-sport-gray">
-                    <CheckCircle size={13} aria-hidden="true" className="text-[#1E7F5A] shrink-0" />
+                    <CheckCircle size={13} aria-hidden="true" className="text-sport-success shrink-0" />
                     {item}
                   </li>
                 ))}
@@ -448,9 +448,9 @@ export default async function DisciplinePage({ params }: { params: Promise<{ slu
               </Link>
 
               {/* Trust micro */}
-              <div className="mt-5 pt-5 border-t border-sport-border flex justify-center gap-4 text-[10px] text-sport-gray">
-                <span className="flex items-center gap-1"><CheckCircle size={10} className="text-[#1E7F5A]" /> {t('cta.noCard')}</span>
-                <span className="flex items-center gap-1"><CheckCircle size={10} className="text-[#1E7F5A]" /> {t('cta.freeCancel')}</span>
+              <div className="mt-5 pt-5 border-t border-sport-border flex justify-center gap-4 text-2xs text-sport-gray">
+                <span className="flex items-center gap-1"><CheckCircle size={10} className="text-sport-success" /> {t('cta.noCard')}</span>
+                <span className="flex items-center gap-1"><CheckCircle size={10} className="text-sport-success" /> {t('cta.freeCancel')}</span>
               </div>
             </div>
           </aside>
@@ -462,7 +462,7 @@ export default async function DisciplinePage({ params }: { params: Promise<{ slu
         <section aria-labelledby="faq-disc-title" className="section-white px-6 border-t border-sport-border">
           <div className="max-w-3xl mx-auto">
             <div className="text-center mb-12">
-              <p className={`text-[11px] font-bold tracking-[2px] uppercase mb-3 ${COLOR_TEXT[color]}`}>{t('faq.eyebrow')}</p>
+              <p className={`text-xxs font-bold tracking-[2px] uppercase mb-3 ${COLOR_TEXT[color]}`}>{t('faq.eyebrow')}</p>
               <h2 id="faq-disc-title" className="text-3xl md:text-4xl font-black text-sport-fg">
                 {t('faq.title', { name: title })}
               </h2>
@@ -496,7 +496,7 @@ export default async function DisciplinePage({ params }: { params: Promise<{ slu
                 <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/15 to-transparent" />
                 <div className="absolute bottom-4 left-4">
                   <p className="text-sm font-bold text-white">{other.title}</p>
-                  <p className="text-[10px] text-white/55 mt-0.5">{other.tag}</p>
+                  <p className="text-2xs text-white/55 mt-0.5">{other.tag}</p>
                 </div>
                 <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity">
                   <ArrowRight size={16} className="text-white" />

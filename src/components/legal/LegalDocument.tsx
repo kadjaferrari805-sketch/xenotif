@@ -34,7 +34,7 @@ export function LegalDocument({
           <ArrowLeft size={14} aria-hidden="true" /> {backLabel}
         </Link>
 
-        <p className="text-[11px] font-bold tracking-[2px] uppercase text-sport-orange mb-3">{eyebrow}</p>
+        <p className="text-xxs font-bold tracking-[2px] uppercase text-sport-orange mb-3">{eyebrow}</p>
         <h1 className={`text-4xl font-black leading-tight ${intro ? 'mb-3' : 'mb-12'}`}>{title}</h1>
         {intro && <p className="text-sport-gray text-sm mb-12">{intro}</p>}
 
@@ -56,7 +56,7 @@ export function LegalDocument({
         </div>
 
         <div className="mt-14 pt-8 border-t border-sport-border flex flex-col sm:flex-row gap-4 justify-between items-start sm:items-center">
-          <p className="text-[11px] text-sport-gray">{updatedLabel}</p>
+          <p className="text-xxs text-sport-gray">{updatedLabel}</p>
           <Link href={related.href} className="text-xs text-sport-orange hover:underline">
             {related.label} →
           </Link>

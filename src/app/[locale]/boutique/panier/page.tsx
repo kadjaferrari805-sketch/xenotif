@@ -233,7 +233,7 @@ export default function PanierPage() {
                     : <><Lock size={14} /> {t('payNow')}</>
                   }
                 </Button>
-                <div className="mt-3 flex flex-wrap justify-center gap-3 text-[10px] text-sport-gray">
+                <div className="mt-3 flex flex-wrap justify-center gap-3 text-2xs text-sport-gray">
                   {(t.raw('payTrust') as string[]).map((s) => <span key={s}>{s}</span>)}
                 </div>
               </div>

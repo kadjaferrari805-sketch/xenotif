@@ -130,7 +130,7 @@ export default function SignInPage() {
             </div>
           </Card>
 
-          <div className="mt-6 flex items-center justify-center gap-2 text-[11px] text-sport-gray">
+          <div className="mt-6 flex items-center justify-center gap-2 text-xxs text-sport-gray">
             <Zap size={12} className="text-sport-orange" />
             {t('secure')}
           </div>

@@ -82,7 +82,7 @@ export default async function OutilPage({ params }: { params: Promise<{ slug: st
         <Link href="/outils" className="inline-flex items-center gap-1.5 text-xs font-bold text-sport-gray hover:text-sport-fg transition-colors mb-6">
           <ArrowLeft size={13} aria-hidden="true" /> {t('backToHub')}
         </Link>
-        <p className="text-[11px] font-bold tracking-[2px] uppercase text-sport-orange mb-3">{t('hubEyebrow')}</p>
+        <p className="text-xxs font-bold tracking-[2px] uppercase text-sport-orange mb-3">{t('hubEyebrow')}</p>
         <h1 className="text-3xl md:text-4xl font-black mb-3">{t(`${o.key}.title`)}</h1>
         <p className="text-base text-sport-gray mb-8">{t(`${o.key}.subtitle`)}</p>
 

@@ -95,12 +95,12 @@ export function CoachClient() {
           <div>
             <h1 className="text-base font-black text-sport-fg flex items-center gap-2">
               {t('title')}
-              <span className="inline-flex items-center gap-1 text-[9px] font-black uppercase tracking-widest bg-emerald-50 text-[#1E7F5A] border border-emerald-200 px-2 py-0.5 rounded-full">
+              <span className="inline-flex items-center gap-1 text-micro font-black uppercase tracking-widest bg-emerald-50 text-sport-success border border-emerald-200 px-2 py-0.5 rounded-full">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
                 {t('online')}
               </span>
             </h1>
-            <p className="text-[11px] text-sport-gray">{t('poweredBy')}</p>
+            <p className="text-xxs text-sport-gray">{t('poweredBy')}</p>
           </div>
         </div>
         {messages.length > 0 && (
@@ -203,7 +203,7 @@ export function CoachClient() {
             }
           </button>
         </div>
-        <p className="text-center text-[10px] text-sport-gray mt-2 flex items-center justify-center gap-1">
+        <p className="text-center text-2xs text-sport-gray mt-2 flex items-center justify-center gap-1">
           <Zap size={10} className="text-sport-orange" />
           {t('disclaimer')}
         </p>

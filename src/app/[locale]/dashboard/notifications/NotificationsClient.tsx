@@ -69,7 +69,7 @@ export function NotificationsClient() {
               <div className="min-w-0 flex-1">
                 <p className="text-sm font-bold text-sport-fg leading-snug">{n.title}</p>
                 <p className="text-xs text-sport-gray leading-relaxed mt-0.5">{n.body}</p>
-                <p className="text-[10px] text-sport-gray mt-1.5">{`${String(n.hour).padStart(2, '0')}:00 · ${t('today')}`}</p>
+                <p className="text-2xs text-sport-gray mt-1.5">{`${String(n.hour).padStart(2, '0')}:00 · ${t('today')}`}</p>
               </div>
               <ChevronRight size={16} className="shrink-0 text-sport-gray group-hover:text-sport-orange transition-colors" aria-hidden="true" />
             </Link>
