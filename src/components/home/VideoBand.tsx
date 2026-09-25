@@ -1,5 +1,6 @@
 'use client'
 
+import { useState } from 'react'
 import { useTranslations } from 'next-intl'
 import { useInView } from 'react-intersection-observer'
 import { Link } from '@/i18n/navigation'
@@ -11,13 +12,25 @@ export function VideoBand() {
   const t = useTranslations('home.videoBand')
   const { ref, inView } = useInView({ triggerOnce: true, rootMargin: '300px' })
 
+  // `prefers-reduced-motion` : même décision que Hero.tsx (ne pas lancer la
+  // vidéo de fond), et même lecture directe de matchMedia. Instantané pris UNE
+  // SEULE FOIS au montage : la valeur ne peut donc pas basculer en cours de
+  // session, ce qui exclut tout changement visuel intempestif. Quand la
+  // réduction est demandée, l'élément <video> n'est pas monté du tout - le
+  // poster reste affiché et `runner.mp4` n'est jamais requis.
+  const [reduireAnimations] = useState(
+    () =>
+      typeof window !== 'undefined' &&
+      window.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches === true,
+  )
+
   return (
     <section
       ref={ref}
       aria-label={t('title')}
       className="relative h-[75vh] min-h-[440px] overflow-hidden flex items-center justify-center bg-sport-dark"
     >
-      {inView ? (
+      {inView && !reduireAnimations ? (
         <video
           className="absolute inset-0 w-full h-full object-cover"
           autoPlay

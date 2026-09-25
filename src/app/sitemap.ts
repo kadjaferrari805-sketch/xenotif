@@ -45,6 +45,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ['/boutique', { changeFrequency: 'daily', priority: 0.9 }],
     ['/boutique/catalogue', { changeFrequency: 'daily', priority: 0.8 }],
     ['/blog', { changeFrequency: 'weekly', priority: 0.9 }],
+    // Pages publiques liées par Nav/Footer mais absentes du sitemap jusqu'ici.
+    ['/coaching', { changeFrequency: 'monthly', priority: 0.7 }],
+    ['/communaute', { changeFrequency: 'monthly', priority: 0.6 }],
+    ['/nutrition', { changeFrequency: 'monthly', priority: 0.7 }],
     ['/contact', { changeFrequency: 'yearly', priority: 0.5 }],
     ['/confidentialite', { changeFrequency: 'yearly', priority: 0.3 }],
     ['/mentions-legales', { changeFrequency: 'yearly', priority: 0.3 }],
