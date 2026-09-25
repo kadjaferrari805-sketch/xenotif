@@ -54,3 +54,68 @@ describe('campaigns - rotation du thème quotidien', () => {
     expect(themes.has('subscribe')).toBe(true)
   })
 })
+
+// ─── Phase 09.8.5 — localisation du CTA « tarifs » ────────────────────────
+//
+// `src/lib/emails/index.ts` compose l'URL absolue ainsi :
+//     c.ctaUrl.startsWith('http') ? c.ctaUrl : `${BASE_URL}${c.ctaUrl}`
+// Un `ctaUrl` identique dans les trois langues envoyait donc les campagnes EN
+// et DE vers l'accueil FRANÇAIS. Le préfixe de locale est porté par la donnée
+// elle-même, puisque la table `EMAIL` est déjà indexée par langue.
+
+describe('campaigns — CTA tarifs localisé', () => {
+  it.each([
+    ['fr', '/#tarifs'],
+    ['en', '/en/#tarifs'],
+    ['de', '/de/#tarifs'],
+  ])('subscribe / %s → %s', (locale, attendu) => {
+    expect(getCampaignEmail('subscribe', locale).ctaUrl).toBe(attendu)
+  })
+
+  it('URL absolue finale, composée comme le fait src/lib/emails/index.ts', () => {
+    const BASE_URL = 'https://xenotif.com'
+    const absolue = (locale: string) => {
+      const u = getCampaignEmail('subscribe', locale).ctaUrl
+      return u.startsWith('http') ? u : `${BASE_URL}${u}`
+    }
+
+    expect(absolue('fr')).toBe('https://xenotif.com/#tarifs')
+    expect(absolue('en')).toBe('https://xenotif.com/en/#tarifs')
+    expect(absolue('de')).toBe('https://xenotif.com/de/#tarifs')
+  })
+
+  it('CONTRÔLE NÉGATIF : EN et DE ne pointent plus vers l’accueil français', () => {
+    expect(getCampaignEmail('subscribe', 'en').ctaUrl).not.toBe('/#tarifs')
+    expect(getCampaignEmail('subscribe', 'de').ctaUrl).not.toBe('/#tarifs')
+  })
+
+  it('locale inconnue → CTA français, non préfixé', () => {
+    expect(getCampaignEmail('subscribe', 'xx').ctaUrl).toBe('/#tarifs')
+  })
+})
+
+describe('campaigns — ce que la phase 09.8.5 ne devait PAS toucher', () => {
+  // Ces deux CTA souffrent du MÊME défaut de locale, mais le périmètre de la
+  // phase les excluait explicitement. Ce test verrouille leur état actuel :
+  // il échouera si on les corrige un jour sans le décider sciemment.
+  it.each(['fr', 'en', 'de'])('le CTA boutique reste /boutique en %s', (locale) => {
+    expect(getCampaignEmail('boutique', locale).ctaUrl).toBe('/boutique')
+  })
+
+  it.each(['fr', 'en', 'de'])('le CTA guide reste /dashboard/programme en %s', (locale) => {
+    expect(getCampaignEmail('guide', locale).ctaUrl).toBe('/dashboard/programme')
+  })
+
+  it('les textes marketing du thème abonnement sont intacts', () => {
+    expect(getCampaignEmail('subscribe', 'fr').cta).toBe('Voir les offres →')
+    expect(getCampaignEmail('subscribe', 'en').cta).toBe('See the plans →')
+    expect(getCampaignEmail('subscribe', 'de').cta).toBe('Angebote ansehen →')
+  })
+
+  it('les URL des notifications push ne sont pas affectées', () => {
+    for (const locale of ['fr', 'en', 'de']) {
+      expect(getCampaignPush('subscribe', locale).url).not.toContain('/en/')
+      expect(getCampaignPush('subscribe', locale).url).not.toContain('/de/')
+    }
+  })
+})

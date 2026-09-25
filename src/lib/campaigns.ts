@@ -97,17 +97,20 @@ const EMAIL: Record<'boutique' | 'guide' | 'subscribe', Record<CampaignLocale, C
       body: 'L\'abonnement Pro te donne accès à tous les programmes, au coach IA personnalisé et au suivi complet de ta progression. Rejoins les athlètes qui transforment leur corps durablement.',
       cta: 'Voir les offres →', ctaUrl: '/#tarifs',
     },
+    // `ctaUrl` porte le préfixe de locale : `emails/index.ts` se contente de
+    // concaténer BASE_URL + ctaUrl. Sans ce préfixe, les campagnes EN et DE
+    // renvoyaient vers l'accueil FRANÇAIS. Le FR n'en prend pas (`as-needed`).
     en: {
       subject: '🚀 Unlock all of Xenotif® - go Pro',
       headline: 'You\'re one click away from unlocking everything',
       body: 'The Pro membership gives you access to all programs, the personalized AI coach and full progress tracking. Join the athletes transforming their bodies for good.',
-      cta: 'See the plans →', ctaUrl: '/#tarifs',
+      cta: 'See the plans →', ctaUrl: '/en/#tarifs',
     },
     de: {
       subject: '🚀 Schalte ganz Xenotif® frei - werde Pro',
       headline: 'Nur ein Klick bis alles freigeschaltet ist',
       body: 'Das Pro-Abo gibt dir Zugang zu allen Programmen, dem personalisierten KI-Coach und dem vollständigen Fortschritts-Tracking. Schließe dich den Athleten an, die ihren Körper dauerhaft verändern.',
-      cta: 'Angebote ansehen →', ctaUrl: '/#tarifs',
+      cta: 'Angebote ansehen →', ctaUrl: '/de/#tarifs',
     },
   },
 }
