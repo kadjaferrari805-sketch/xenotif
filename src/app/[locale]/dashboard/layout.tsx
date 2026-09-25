@@ -1,7 +1,10 @@
 import { redirect } from 'next/navigation'
+import { headers } from 'next/headers'
 import { getTranslations } from 'next-intl/server'
 import { Link } from '@/i18n/navigation'
 import { getCurrentUser, getProfileName } from '@/lib/supabase/session'
+import { lireEtatOnboardingServeur } from '@/lib/onboarding/website-state.server'
+import { doitAfficherOnboarding } from '@/lib/onboarding/website-state'
 import { LayoutDashboard, Dumbbell, TrendingUp, CreditCard, User, Bot, Watch } from 'lucide-react'
 import { DashboardSignOut } from '@/components/dashboard/SignOut'
 import { DashboardGuard } from '@/components/dashboard/DashboardGuard'
@@ -19,9 +22,42 @@ const NAV = [
   { href: '/dashboard/profil',       key: 'profil',       Icon: User },
 ] as const
 
+/** Chemin du parcours de démarrage, sans préfixe de locale (cf. x-current-path). */
+const CHEMIN_BIENVENUE = '/dashboard/bienvenue'
+
 export default async function DashboardLayout({ children }: { children: React.ReactNode }) {
   const user = await getCurrentUser()
   if (!user) redirect('/auth/signin')
+
+  // GATING DE L'ONBOARDING WEBSITE.
+  //
+  // `src/proxy.ts` pose déjà l'en-tête `x-current-path` (son pathname sans
+  // préfixe de locale) — il n'était lu par aucun code jusqu'ici. C'est
+  // exactement l'information qui manque à un layout, lequel ne reçoit pas le
+  // chemin courant : sans elle, la page de bienvenue, étant un enfant de ce
+  // layout, se redirigerait indéfiniment vers elle-même.
+  //
+  // En l'absence de l'en-tête, on NE garde PAS : mieux vaut afficher le
+  // tableau de bord que risquer une boucle. Même prudence que pour l'état
+  // `indisponible` ci-dessous.
+  let cheminCourant: string | null = null
+  try {
+    cheminCourant = (await headers()).get('x-current-path')
+  } catch {
+    // `headers()` lève hors du périmètre d'une requête (filet structurel de
+    // auth-safety-net, rendu hors contexte). Le chemin devient indéterminable —
+    // exactement la même situation épistémique qu'un en-tête absent. On en tire
+    // donc la même conclusion : ne pas garder, plutôt que faire tomber tout
+    // l'arbre du tableau de bord pour une information de confort.
+    cheminCourant = null
+  }
+  const surLaPageBienvenue = cheminCourant?.startsWith(CHEMIN_BIENVENUE) ?? true
+
+  if (!surLaPageBienvenue) {
+    // `getCurrentUser()` est mémoïsé : aucun second appel d'authentification.
+    const lecture = await lireEtatOnboardingServeur(user.id)
+    if (doitAfficherOnboarding(lecture)) redirect(CHEMIN_BIENVENUE)
+  }
 
   const [t, fullName] = await Promise.all([getTranslations('dashboard'), getProfileName()])
 

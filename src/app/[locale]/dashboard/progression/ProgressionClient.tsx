@@ -11,6 +11,7 @@ import { ChallengesCard } from '@/components/gamification/ChallengesCard'
 import { BadgesGrid } from '@/components/gamification/BadgesGrid'
 import { TransformationsGallery } from '@/components/transformations/TransformationsGallery'
 import { TransformationForm } from '@/components/transformations/TransformationForm'
+import { Alert } from '@/components/ui/Alert'
 import { Input, Select, Textarea, Label } from '@/components/ui/Input'
 import { Loader } from '@/components/ui/Loader'
 import { Progress } from '@/components/ui/Progress'
@@ -18,7 +19,34 @@ import { Progress } from '@/components/ui/Progress'
 type Workout = { discipline: string; duration_minutes: number; completed_at: string }
 type ProgressRow = { discipline: string; completed: boolean }
 
-const DISCIPLINES = ['running-cardio', 'musculation', 'hiit', 'cyclisme', 'natation', 'crossfit', 'yoga', 'boxing', 'stretching', 'nutrition']
+// Exportées pour que le parcours de démarrage (dashboard/bienvenue) réutilise
+// EXACTEMENT la même liste et la même validation, plutôt que d'en dupliquer une
+// seconde qui pourrait diverger. Aucun changement de comportement ici.
+export const DISCIPLINES = ['running-cardio', 'musculation', 'hiit', 'cyclisme', 'natation', 'crossfit', 'yoga', 'boxing', 'stretching', 'nutrition']
+
+// Bornes de durée. Elles étaient posées en `min`/`max` sur l'<input>, mais la
+// modale n'est PAS un <form> et son bouton est `type="button"` : la validation
+// native du navigateur ne s'exécute donc jamais. Elles restent sur l'input pour
+// les flèches du champ, et sont réellement appliquées par parseDuree ci-dessous.
+export const DUREE_MIN = 5
+export const DUREE_MAX = 300
+
+const FORMULAIRE_VIDE = { discipline: 'running-cardio', duration: '45', notes: '' }
+
+/**
+ * Convertit la saisie en minutes entières, ou `null` si elle est invalide.
+ *
+ * Volontairement strict, là où `parseInt(saisie) || 0` ne l'était pas : celui-ci
+ * acceptait « 45abc » (→ 45), et surtout rendait 0 pour une saisie vide ou non
+ * numérique — valeur alors écrite en base malgré `min="5"`.
+ */
+export function parseDuree(saisie: string): number | null {
+  const brut = saisie.trim()
+  if (!/^\d+$/.test(brut)) return null
+  const minutes = Number(brut)
+  if (minutes < DUREE_MIN || minutes > DUREE_MAX) return null
+  return minutes
+}
 
 export function ProgressionClient({ userId, initialWorkouts, initialProgress }: { userId: string; initialWorkouts: Workout[]; initialProgress: ProgressRow[] }) {
   const t = useTranslations('dashboard.progression')
@@ -28,22 +56,49 @@ export function ProgressionClient({ userId, initialWorkouts, initialProgress }: 
   const [workouts, setWorkouts] = useState<Workout[]>(initialWorkouts)
   const progress = initialProgress
   const [adding, setAdding] = useState(false)
-  const [form, setForm] = useState({ discipline: 'running-cardio', duration: '45', notes: '' })
+  const [form, setForm] = useState(FORMULAIRE_VIDE)
   const [saving, setSaving] = useState(false)
+  const [erreur, setErreur] = useState<string | null>(null)
 
   async function addWorkout() {
+    // Validation AVANT l'insertion : les attributs min/max du champ ne sont
+    // jamais évalués (cf. parseDuree).
+    const minutes = parseDuree(form.duration)
+    if (minutes === null) {
+      setErreur(t('errorDuration', { min: DUREE_MIN, max: DUREE_MAX }))
+      return
+    }
+
+    setErreur(null)
     setSaving(true)
-    const supabase = createClient()
-    const { data } = await supabase.from('workouts').insert({
-      user_id: userId,
-      discipline: form.discipline,
-      duration_minutes: parseInt(form.duration) || 0,
-      notes: form.notes,
-    }).select().single()
-    if (data) setWorkouts(prev => [data, ...prev])
-    setSaving(false)
-    setAdding(false)
-    setForm({ discipline: 'running-cardio', duration: '45', notes: '' })
+    try {
+      const supabase = createClient()
+      const { data, error } = await supabase.from('workouts').insert({
+        user_id: userId,
+        discipline: form.discipline,
+        duration_minutes: minutes,
+        notes: form.notes,
+      }).select().single()
+
+      // Le succès est une insertion CONFIRMÉE. Auparavant `error` n'était pas
+      // même extraite : un échec fermait la modale et réinitialisait le
+      // formulaire exactement comme une réussite, sans rien signaler.
+      if (error || !data) {
+        setErreur(t('errorSave'))
+        return
+      }
+
+      setWorkouts(prev => [data, ...prev])
+      setAdding(false)
+      setForm(FORMULAIRE_VIDE)
+    } catch {
+      // Rejet de promesse (réseau coupé). Sans ce catch, la fonction s'arrêtait
+      // ici : `saving` restait vrai et le bouton demeurait désactivé sans fin.
+      setErreur(t('errorNetwork'))
+    } finally {
+      // `finally` : l'état de chargement est restauré sur TOUS les chemins.
+      setSaving(false)
+    }
   }
 
   const totalMinutes = workouts.reduce((a, w) => a + (w.duration_minutes ?? 0), 0)
@@ -67,7 +122,7 @@ export function ProgressionClient({ userId, initialWorkouts, initialProgress }: 
       <div className="flex items-center justify-between mb-8">
         <h1 className="text-2xl font-black text-sport-fg">{t('title')}</h1>
         <button type="button"
-          onClick={() => setAdding(true)}
+          onClick={() => { setErreur(null); setAdding(true) }}
           className="inline-flex items-center gap-2 bg-sport-orange text-white px-4 py-2 rounded-full text-xs font-bold hover:bg-orange-600 active:scale-95 transition-all shadow-lg shadow-sport-orange/20"
         >
           <Plus size={13} /> {t('addSession')}
@@ -92,7 +147,7 @@ export function ProgressionClient({ userId, initialWorkouts, initialProgress }: 
               </div>
               <div>
                 <Label htmlFor="progression-duration" className="uppercase tracking-wider">{t('durationMin')}</Label>
-                <Input id="progression-duration" type="number" min="5" max="300" value={form.duration}
+                <Input id="progression-duration" type="number" min={DUREE_MIN} max={DUREE_MAX} value={form.duration}
                   onChange={e => setForm(f => ({ ...f, duration: e.target.value }))} />
               </div>
               <div>
@@ -101,8 +156,15 @@ export function ProgressionClient({ userId, initialWorkouts, initialProgress }: 
                   placeholder={t('notesPlaceholder')} rows={2} className="resize-none" />
               </div>
             </div>
+
+            {erreur && (
+              <div className="mt-4">
+                <Alert variant="error">{erreur}</Alert>
+              </div>
+            )}
+
             <div className="flex gap-3 mt-6">
-              <button type="button" onClick={() => setAdding(false)}
+              <button type="button" onClick={() => { setErreur(null); setAdding(false) }}
                 className="flex-1 border border-sport-border text-sport-gray py-2.5 rounded-full text-sm font-bold hover:text-sport-fg hover:border-sport-gray transition-all">
                 {t('cancel')}
               </button>

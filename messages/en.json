@@ -1556,6 +1556,55 @@
         "pastDue": "Payment pending"
       }
     },
+    "bienvenue": {
+      "title": "Welcome",
+      "subtitle": "Four quick steps to get started.",
+      "stepOf": "Step {n} of {total}",
+      "continue": "Continue",
+      "back": "Back",
+      "skip": "Skip",
+      "later": "Later",
+      "saving": "Saving…",
+      "ctaDismissed": "Finish setting up",
+      "step1": {
+        "title": "What should we call you?",
+        "subtitle": "Your first name will appear on your dashboard.",
+        "label": "Full name",
+        "placeholder": "Your name"
+      },
+      "step2": {
+        "title": "What's your goal?",
+        "subtitle": "We use it to suggest a discipline. Nothing is locked in.",
+        "goals": {
+          "weight_loss": "Lose weight",
+          "muscle_gain": "Build muscle",
+          "endurance": "Build endurance",
+          "general_fitness": "Get back in shape"
+        }
+      },
+      "step3": {
+        "title": "Where do you want to start?",
+        "subtitle": "You can switch discipline at any time.",
+        "label": "Discipline"
+      },
+      "step4": {
+        "title": "Your first session",
+        "subtitle": "Log it to start your progress.",
+        "duration": "Duration (minutes)",
+        "save": "Log my session"
+      },
+      "done": {
+        "title": "You're all set!",
+        "text": "Your first session is logged. Your dashboard is ready.",
+        "cta": "Go to my dashboard"
+      },
+      "errors": {
+        "name": "Enter your name to continue.",
+        "duration": "Enter a whole duration, between {min} and {max} minutes.",
+        "save": "Could not save. Please try again.",
+        "network": "Connection lost. Check your connection, then try again."
+      }
+    },
     "progression": {
       "title": "My Progress",
       "addSession": "Add session",
@@ -1567,6 +1616,9 @@
       "cancel": "Cancel",
       "saving": "Saving…",
       "save": "Save",
+      "errorDuration": "Enter a whole duration, between {min} and {max} minutes.",
+      "errorSave": "Could not save. Please try again.",
+      "errorNetwork": "Connection lost. Check your connection, then try again.",
       "statTotalSessions": "Total sessions",
       "statHours": "Training hours",
       "statModules": "Modules completed",

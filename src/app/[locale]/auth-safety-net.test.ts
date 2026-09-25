@@ -304,8 +304,12 @@ describe('configuration de locale (matrice d’URL attendue)', () => {
       locales.map(l => (l === routing.defaultLocale ? r : `/${l}${r}`)),
     )
 
-    expect(routes).toHaveLength(11) // 8 dashboard + 3 admin
-    expect(formes).toHaveLength(33) // × 3 locales
+    // RECENSEMENT, et non simple compte : ces deux nombres rendent visible toute
+    // route protégée nouvellement apparue. Ils ont rempli leur office en 09.7.16
+    // en signalant l'ajout de /dashboard/bienvenue (parcours de démarrage
+    // Website), dont la garde est assurée par le layout racine vérifié plus haut.
+    expect(routes).toHaveLength(12) // 9 dashboard + 3 admin
+    expect(formes).toHaveLength(36) // × 3 locales
     expect(formes).toContain('/dashboard')
     expect(formes).toContain('/en/dashboard')
     expect(formes).toContain('/de/admin/content')

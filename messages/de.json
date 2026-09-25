@@ -1556,6 +1556,55 @@
         "pastDue": "Zahlung ausstehend"
       }
     },
+    "bienvenue": {
+      "title": "Willkommen",
+      "subtitle": "Vier kurze Schritte zum Start.",
+      "stepOf": "Schritt {n} von {total}",
+      "continue": "Weiter",
+      "back": "Zurück",
+      "skip": "Überspringen",
+      "later": "Später",
+      "saving": "Wird gespeichert…",
+      "ctaDismissed": "Einrichtung abschließen",
+      "step1": {
+        "title": "Wie sollen wir dich nennen?",
+        "subtitle": "Dein Vorname erscheint auf deinem Dashboard.",
+        "label": "Vollständiger Name",
+        "placeholder": "Dein Name"
+      },
+      "step2": {
+        "title": "Was ist dein Ziel?",
+        "subtitle": "Wir schlagen dir danach eine Disziplin vor. Nichts ist endgültig.",
+        "goals": {
+          "weight_loss": "Abnehmen",
+          "muscle_gain": "Muskeln aufbauen",
+          "endurance": "Ausdauer aufbauen",
+          "general_fitness": "Wieder fit werden"
+        }
+      },
+      "step3": {
+        "title": "Womit möchtest du starten?",
+        "subtitle": "Du kannst die Disziplin jederzeit wechseln.",
+        "label": "Disziplin"
+      },
+      "step4": {
+        "title": "Deine erste Einheit",
+        "subtitle": "Erfasse sie, um deinen Fortschritt zu starten.",
+        "duration": "Dauer (Minuten)",
+        "save": "Einheit erfassen"
+      },
+      "done": {
+        "title": "Los geht's!",
+        "text": "Deine erste Einheit ist erfasst. Dein Dashboard wartet.",
+        "cta": "Zu meinem Dashboard"
+      },
+      "errors": {
+        "name": "Gib deinen Namen ein, um fortzufahren.",
+        "duration": "Gib eine ganze Dauer zwischen {min} und {max} Minuten ein.",
+        "save": "Speichern nicht möglich. Bitte erneut versuchen.",
+        "network": "Verbindung unterbrochen. Prüfe deine Verbindung und versuche es erneut."
+      }
+    },
     "progression": {
       "title": "Mein Fortschritt",
       "addSession": "Einheit hinzufügen",
@@ -1567,6 +1616,9 @@
       "cancel": "Abbrechen",
       "saving": "Wird gespeichert…",
       "save": "Speichern",
+      "errorDuration": "Gib eine ganze Dauer zwischen {min} und {max} Minuten ein.",
+      "errorSave": "Speichern nicht möglich. Bitte erneut versuchen.",
+      "errorNetwork": "Verbindung unterbrochen. Prüfe deine Verbindung und versuche es erneut.",
       "statTotalSessions": "Einheiten insgesamt",
       "statHours": "Trainingsstunden",
       "statModules": "Abgeschlossene Module",
