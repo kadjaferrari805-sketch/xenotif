@@ -3,6 +3,7 @@ import { parseGaClientId } from '@/lib/ga-measurement'
 import { getCurrentUser } from '@/lib/supabase/session'
 import { createStripeClientOrNull } from '@/lib/stripe/server'
 import { getPublicBaseUrl } from '@/lib/env/deployment'
+import { routing } from '@/i18n/routing'
 
 const PLAN_CONFIG = {
   pro: {
@@ -46,6 +47,12 @@ export async function POST(req: NextRequest) {
     const config = PLAN_CONFIG[plan as PlanKey]
     // URL de retour de l'environnement courant : preview → preview, production → production.
     const baseUrl = getPublicBaseUrl()
+    // …et de la LANGUE courante. Le Website est en `localePrefix: 'as-needed'` :
+    // la locale par défaut n'est pas préfixée, les autres le sont (/en, /de).
+    // Sans ce préfixe, un client anglophone ou germanophone qui valide ou annule
+    // son paiement était renvoyé sur l'accueil FRANÇAIS. Même convention que
+    // `src/app/sitemap.ts`, et `routing.defaultLocale` plutôt qu'un 'fr' littéral.
+    const prefixeLocale = locale === routing.defaultLocale ? '' : `/${locale}`
     const isAnnual = period === 'annual'
 
     const priceId = isAnnual ? process.env.STRIPE_PRICE_PRO_ANNUAL : process.env.STRIPE_PRICE_PRO
@@ -97,8 +104,8 @@ export async function POST(req: NextRequest) {
         },
       },
       metadata: { plan, period, locale, user_id: userId ?? '' },
-      success_url: `${baseUrl}/success?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${baseUrl}/#tarifs`,
+      success_url: `${baseUrl}${prefixeLocale}/success?session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${baseUrl}${prefixeLocale}/#tarifs`,
     })
 
     return NextResponse.json({ url: session.url })
